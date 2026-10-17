@@ -661,5 +661,22 @@
       "gen-py": "socialNetwork/gen-py",
       "nginx-web-server": "socialNetwork/nginx-web-server"
     }
+  },
+  "MS043": {
+    "name": "DeathStarBench-hotelReservation",
+    "path": "MS043_DeathStarBench_hotelReservation",
+    "language": "Go",
+    "services": {
+      "reservation": "hotelReservation/services/reservation",
+      "attractions": "hotelReservation/services/attractions",
+      "frontend": "hotelReservation/services/frontend",
+      "user": "hotelReservation/services/user",
+      "search": "hotelReservation/services/search",
+      "review": "hotelReservation/services/review",
+      "geo": "hotelReservation/services/geo",
+      "recommendation": "hotelReservation/services/recommendation",
+      "rate": "hotelReservation/services/rate",
+      "profile": "hotelReservation/services/profile"
+    }
   }
 }
