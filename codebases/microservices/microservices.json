@@ -1301,5 +1301,21 @@
       "cypress-e2e-report": "cypresse2e",
       "mocha-integration": "mocha"
     }
+  },
+  "MS098": {
+    "name": "ultimate-backend",
+    "path": "MS098_ultimate-backend",
+    "language": "Typescript",
+    "services": {
+      "service-webhook": "apps/service-webhook",
+      "service-access": "apps/service-access",
+      "service-billing": "apps/service-billing",
+      "service-account": "apps/service-account",
+      "service-tenant": "apps/service-tenant",
+      "service-notification": "apps/service-notification",
+      "service-project": "apps/service-project",
+      "api-admin": "apps/api-admin",
+      "service-role": "apps/service-role"
+    }
   }
 }
