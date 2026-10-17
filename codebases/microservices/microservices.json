@@ -854,5 +854,16 @@
     "services": {
       "saleor": "saleor"
     }
+  },
+  "MS056": {
+    "name": "example-voting-app",
+    "path": "MS056_example-voting-app",
+    "language": "Dockerfile",
+    "services": {
+      "vote": "vote",
+      "result": "result",
+      "worker": "worker",
+      "seed": "seed-data"
+    }
   }
 }
