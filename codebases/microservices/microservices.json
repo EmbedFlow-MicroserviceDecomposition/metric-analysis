@@ -299,5 +299,15 @@
       "zlt-config": "zlt-config",
       "zlt-demo": "zlt-demo"
     }
+  },
+  "MS024": {
+    "name": "jeecg-boot",
+    "path": "MS024_jeecg-boot",
+    "language": "Java",
+    "services": {
+      "jeecg-boot-mysql": "jeecg-boot/db",
+      "jeecg-boot-system": "jeecg-boot/jeecg-module-system/jeecg-system-start",
+      "jeecg-vue": "jeecgboot-vue3"
+    }
   }
 }
