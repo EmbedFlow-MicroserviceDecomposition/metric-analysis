@@ -955,5 +955,18 @@
     "path": "MS065_docker-hadoop",
     "language": "Makefile",
     "services": {}
+  },
+  "MS066": {
+    "name": "milvus",
+    "path": "MS066_milvus",
+    "language": "Python",
+    "services": {
+      "client": "client",
+      "cmd": "cmd",
+      "tools": "tools",
+      "internal": "internal",
+      "deployments": "deployments",
+      "pkg": "pkg"
+    }
   }
 }
