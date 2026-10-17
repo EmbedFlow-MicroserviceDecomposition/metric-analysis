@@ -1407,5 +1407,21 @@
       "newsletter_with_frontend": "newsletter_with_frontend",
       "bounce_notification": "bounce_notification"
     }
+  },
+  "MS107": {
+    "name": "lagoon",
+    "path": "MS107_lagoon",
+    "language": "Javascript",
+    "services": {
+      "auth-server": "services/auth-server",
+      "webhook-handler": "services/webhook-handler",
+      "api": "services/api",
+      "api-sidecar-handler": "services/api-sidecar-handler",
+      "ssh": "services/ssh",
+      "logs2notifications": "services/logs2notifications",
+      "keycloak": "services/keycloak",
+      "actions-handler": "services/actions-handler",
+      "backup-handler": "services/backup-handler"
+    }
   }
 }
