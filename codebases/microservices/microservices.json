@@ -1455,5 +1455,14 @@
     "path": "MS111_docker",
     "language": "Shell",
     "services": {}
+  },
+  "MS112": {
+    "name": "rasa-sdk",
+    "path": "MS112_rasa-sdk",
+    "language": "Python",
+    "services": {
+      "rasa_sdk": "rasa_sdk",
+      "integration_tests": "integration_tests"
+    }
   }
 }
