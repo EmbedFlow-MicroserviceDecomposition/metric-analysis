@@ -268,5 +268,21 @@
       "services/tools.descartes.teastore.webui": "services/tools.descartes.teastore.webui",
       "./utilities/tools.descartes.teastore.docker.all": "utilities/tools.descartes.teastore.docker.all"
     }
+  },
+  "MS022": {
+    "name": "mall-swarm",
+    "path": "MS022_mall-swarm",
+    "language": "Java",
+    "services": {
+      "mall-common": "mall-common",
+      "mall-mbg": "mall-mbg",
+      "mall-demo": "mall-demo",
+      "mall-admin": "mall-admin",
+      "mall-search": "mall-search",
+      "mall-portal": "mall-portal",
+      "mall-monitor": "mall-monitor",
+      "mall-gateway": "mall-gateway",
+      "mall-auth": "mall-auth"
+    }
   }
 }
