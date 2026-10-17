@@ -1140,5 +1140,19 @@
       "hooks": "services/hooks",
       "built-in-workers": "services/built-in-workers"
     }
+  },
+  "MS083": {
+    "name": "reportportal",
+    "path": "MS083_reportportal",
+    "language": "Shell",
+    "services": {
+      "migrations": "migrations",
+      "index": "service-index",
+      "ui": "service-ui",
+      "api": "service-api",
+      "uat": "service-authorization",
+      "jobs": "service-jobs",
+      "analyzer": "service-auto-analyzer"
+    }
   }
 }
