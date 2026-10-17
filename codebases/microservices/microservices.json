@@ -1121,5 +1121,24 @@
       "go": "src/go",
       "bak": "src/bak"
     }
+  },
+  "MS082": {
+    "name": "taskcluster",
+    "path": "MS082_taskcluster",
+    "language": "Go",
+    "services": {
+      "secrets": "services/secrets",
+      "web-server": "services/web-server",
+      "object": "services/object",
+      "github": "services/github",
+      "auth": "services/auth",
+      "purge-cache": "services/purge-cache",
+      "worker-manager": "services/worker-manager",
+      "queue": "services/queue",
+      "notify": "services/notify",
+      "index": "services/index",
+      "hooks": "services/hooks",
+      "built-in-workers": "services/built-in-workers"
+    }
   }
 }
