@@ -834,5 +834,17 @@
     "services": {
       "gateway": "gateway"
     }
+  },
+  "MS054": {
+    "name": "docker-elk",
+    "path": "MS054_docker-elk",
+    "language": "Dockerfile",
+    "services": {
+      "setup": "setup",
+      "kibana-genkeys": "kibana",
+      "elasticsearch": "elasticsearch",
+      "logstash": "logstash",
+      "kibana": "kibana"
+    }
   }
 }
