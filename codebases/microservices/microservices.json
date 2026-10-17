@@ -688,5 +688,18 @@
       "datasets": "mediaMicroservices/datasets",
       "gen-py": "mediaMicroservices/gen-py"
     }
+  },
+  "MS045": {
+    "name": "DeathStarBench-swarm-ecommerce",
+    "path": "MS045_DeathStarBench_swarm-ecommerce",
+    "language": "Go",
+    "services": {
+      "wrk2": "wrk2",
+      "daprApps_v1": "daprApps_v1",
+      "mediaMicroservices": "mediaMicroservices",
+      "socialNetwork": "socialNetwork",
+      "ms_collecter": "ms_collecter",
+      "hotelReservation": "hotelReservation"
+    }
   }
 }
