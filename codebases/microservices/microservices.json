@@ -1,0 +1,223 @@
+{
+  "MS001": {
+    "name": "spring-petclinic-microservices",
+    "path": "MS001_spring-petclinic-microservices",
+    "language": "Java",
+    "services": {
+      "spring-petclinic-admin-server": "spring-petclinic-admin-server",
+      "spring-petclinic-customers-service": "spring-petclinic-customers-service",
+      "spring-petclinic-vets-service": "spring-petclinic-vets-service",
+      "spring-petclinic-visits-service": "spring-petclinic-visits-service",
+      "spring-petclinic-genai-service": "spring-petclinic-genai-service",
+      "spring-petclinic-config-server": "spring-petclinic-config-server",
+      "spring-petclinic-discovery-server": "spring-petclinic-discovery-server",
+      "spring-petclinic-api-gateway": "spring-petclinic-api-gateway"
+    }
+  },
+  "MS002": {
+    "name": "sample.daytrader.microservices",
+    "path": "MS002_sample.daytrader.microservices",
+    "language": "Polyglot",
+    "services": {}
+  },
+  "MS003": {
+    "name": "acmeair-mainservice-java",
+    "path": "MS003_acmeair-mainservice-java",
+    "language": "Java",
+    "services": {
+      "build": "nginx"
+    }
+  },
+  "MS004": {
+    "name": "ftgo-application",
+    "path": "MS004_ftgo-application",
+    "language": "Java",
+    "services": {
+      "common-swagger": "common-swagger",
+      "ftgo-test-util": "ftgo-test-util",
+      "ftgo-test-util-json-schema": "ftgo-test-util-json-schema",
+      "ftgo-common": "ftgo-common",
+      "ftgo-common-jpa": "ftgo-common-jpa",
+      "ftgo-order-service": "ftgo-order-service",
+      "ftgo-order-service-api": "ftgo-order-service-api",
+      "ftgo-order-service-contracts": "ftgo-order-service-contracts",
+      "ftgo-kitchen-service-api": "ftgo-kitchen-service-api",
+      "ftgo-kitchen-service": "ftgo-kitchen-service",
+      "ftgo-kitchen-service-contracts": "ftgo-kitchen-service-contracts",
+      "ftgo-accounting-service-api": "ftgo-accounting-service-api",
+      "ftgo-accounting-service-api-spec": "ftgo-accounting-service-api-spec",
+      "ftgo-accounting-service": "ftgo-accounting-service",
+      "ftgo-accounting-service-contracts": "ftgo-accounting-service-contracts",
+      "ftgo-consumer-service-api": "ftgo-consumer-service-api",
+      "ftgo-consumer-service-api-spec": "ftgo-consumer-service-api-spec",
+      "ftgo-consumer-service": "ftgo-consumer-service",
+      "ftgo-consumer-service-contracts": "ftgo-consumer-service-contracts",
+      "ftgo-restaurant-service-api": "ftgo-restaurant-service-api",
+      "ftgo-restaurant-service-api-spec": "ftgo-restaurant-service-api-spec",
+      "ftgo-restaurant-service-contracts": "ftgo-restaurant-service-contracts",
+      "ftgo-restaurant-service": "ftgo-restaurant-service",
+      "ftgo-order-history-service": "ftgo-order-history-service",
+      "ftgo-delivery-service": "ftgo-delivery-service",
+      "ftgo-delivery-service-api": "ftgo-delivery-service-api",
+      "ftgo-api-gateway": "ftgo-api-gateway",
+      "ftgo-end-to-end-tests": "ftgo-end-to-end-tests",
+      "ftgo-restaurant-service-aws-lambda": "ftgo-restaurant-service-aws-lambda"
+    }
+  },
+  "MS007": {
+    "name": "coolstore-microservice",
+    "path": "MS007_coolstore-microservice",
+    "language": "Java",
+    "services": {
+      "review-service": "review-service",
+      "pricing-service": "pricing-service",
+      "coolstore-ui": "coolstore-ui",
+      "catalog-service": "catalog-service",
+      "cart-service": "cart-service",
+      "rating-service": "rating-service",
+      "coolstore-gw": "coolstore-gw",
+      "inventory-service": "inventory-service"
+    }
+  },
+  "MS008": {
+    "name": "cargotracker",
+    "path": "MS008_cargotracker",
+    "language": "Java",
+    "services": {
+      "cargotracker": "src"
+    }
+  },
+  "MS009": {
+    "name": "unishop-monolith-to-microservices",
+    "path": "MS009_unishop-monolith-to-microservices",
+    "language": "Java",
+    "services": {
+      "MonoToMicroLegacy": "MonoToMicroLegacy",
+      "MonoToMicroLambda": "MonoToMicroLambda",
+      "MonoToMicroUI": "MonoToMicroUI",
+      "MonoToMicroRefactorSpaces": "MonoToMicroRefactorSpaces"
+    }
+  },
+  "MS010": {
+    "name": "amazon-ecs-java-microservices",
+    "path": "MS010_amazon-ecs-java-microservices",
+    "language": "Java",
+    "services": {
+      "spring-petclinic-rest-owner": "2_ECS_Java_Spring_PetClinic_Microservices/spring-petclinic-rest-owner",
+      "spring-petclinic-rest-pet": "2_ECS_Java_Spring_PetClinic_Microservices/spring-petclinic-rest-pet",
+      "spring-petclinic-rest-system": "2_ECS_Java_Spring_PetClinic_Microservices/spring-petclinic-rest-system",
+      "spring-petclinic-rest-vet": "2_ECS_Java_Spring_PetClinic_Microservices/spring-petclinic-rest-vet",
+      "spring-petclinic-rest-visit": "2_ECS_Java_Spring_PetClinic_Microservices/spring-petclinic-rest-visit"
+    }
+  },
+  "MS011": {
+    "name": "monolith-vs-microservices",
+    "path": "MS011_monolith-vs-microservices",
+    "language": "Java",
+    "services": {
+      "config": "config",
+      "registry": "registry",
+      "gateway": "gateway",
+      "city-service": "city-service",
+      "route-service": "route-service"
+    }
+  },
+  "MS015": {
+    "name": "eShop",
+    "path": "MS015_eShop",
+    "language": "C#",
+    "services": {
+      "EventBusRabbitMQ": "src/EventBusRabbitMQ",
+      "ClientApp": "src/ClientApp",
+      "Webhooks.API": "src/Webhooks.API",
+      "PaymentProcessor": "src/PaymentProcessor",
+      "Ordering.API": "src/Ordering.API",
+      "Ordering.Domain": "src/Ordering.Domain",
+      "WebAppComponents": "src/WebAppComponents",
+      "eShop.AppHost": "src/eShop.AppHost",
+      "Basket.API": "src/Basket.API",
+      "HybridApp": "src/HybridApp",
+      "Ordering.Infrastructure": "src/Ordering.Infrastructure",
+      "EventBus": "src/EventBus",
+      "WebApp": "src/WebApp",
+      "WebhookClient": "src/WebhookClient",
+      "OrderProcessor": "src/OrderProcessor",
+      "Catalog.API": "src/Catalog.API",
+      "IntegrationEventLogEF": "src/IntegrationEventLogEF",
+      "eShop.ServiceDefaults": "src/eShop.ServiceDefaults",
+      "Identity.API": "src/Identity.API",
+      "Shared": "src/Shared"
+    }
+  },
+  "MS016": {
+    "name": "pitstop",
+    "path": "MS016_pitstop",
+    "language": "C#",
+    "services": {
+      "AuditlogService": "src/AuditlogService",
+      "CustomerManagementAPI": "src/CustomerManagementAPI",
+      "InvoiceService": "src/InvoiceService",
+      "NotificationService": "src/NotificationService",
+      "TimeService": "src/TimeService",
+      "VehicleManagementAPI": "src/VehicleManagementAPI",
+      "WebApp": "src/WebApp",
+      "WorkshopManagementAPI": "src/WorkshopManagementAPI",
+      "WorkshopManagementEventHandler": "src/WorkshopManagementEventHandler"
+    }
+  },
+  "MS017": {
+    "name": "monolith-to-microservices",
+    "path": "MS017_monolith-to-microservices",
+    "language": "Node.js",
+    "services": {
+      "orders": "microservices/src/orders",
+      "products": "microservices/src/products",
+      "frontend": "microservices/src/frontend"
+    }
+  },
+  "MS018": {
+    "name": "benchmarking-monolith-to-microservices",
+    "path": "MS018_benchmarking-monolith-to-microservices",
+    "language": "Java",
+    "services": {
+      "static-code-analyser": "static-code-analyser",
+      "result-analyser": "result-analyser"
+    }
+  },
+  "MS020": {
+    "name": "piggymetrics",
+    "path": "MS020_piggymetrics",
+    "language": "Java",
+    "services": {
+      "config": "config",
+      "monitoring": "monitoring",
+      "registry": "registry",
+      "gateway": "gateway",
+      "auth-service": "auth-service",
+      "account-service": "account-service",
+      "statistics-service": "statistics-service",
+      "notification-service": "notification-service",
+      "turbine-stream-service": "turbine-stream-service"
+    }
+  },
+  "MS021": {
+    "name": "TeaStore",
+    "path": "MS021_TeaStore",
+    "language": "Java",
+    "services": {
+      "interfaces/tools.descartes.teastore.entities": "interfaces/tools.descartes.teastore.entities",
+      "./utilities/tools.descartes.teastore.kieker.probes": "utilities/tools.descartes.teastore.kieker.probes",
+      "./utilities/tools.descartes.teastore.kieker.rabbitmq": "utilities/tools.descartes.teastore.kieker.rabbitmq",
+      "utilities/tools.descartes.teastore.registryclient": "utilities/tools.descartes.teastore.registryclient",
+      "utilities/tools.descartes.teastore.dockermemoryconfigurator": "utilities/tools.descartes.teastore.dockermemoryconfigurator",
+      "./utilities/tools.descartes.teastore.dockerbase": "utilities/tools.descartes.teastore.dockerbase",
+      "services/tools.descartes.teastore.image": "services/tools.descartes.teastore.image",
+      "services/tools.descartes.teastore.persistence": "services/tools.descartes.teastore.persistence",
+      "services/tools.descartes.teastore.recommender": "services/tools.descartes.teastore.recommender",
+      "services/tools.descartes.teastore.registry": "services/tools.descartes.teastore.registry",
+      "services/tools.descartes.teastore.auth": "services/tools.descartes.teastore.auth",
+      "services/tools.descartes.teastore.webui": "services/tools.descartes.teastore.webui",
+      "./utilities/tools.descartes.teastore.docker.all": "utilities/tools.descartes.teastore.docker.all"
+    }
+  }
+}
