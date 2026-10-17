@@ -895,5 +895,15 @@
       "microservices-orders": "microservices-orders",
       "connect-streams-pipeline": "connect-streams-pipeline"
     }
+  },
+  "MS060": {
+    "name": "agile-lorawan-support",
+    "path": "MS060_agile-lorawan-support",
+    "language": "Dockerfile",
+    "services": {
+      "backup_app": "backup_app",
+      "backup_app_postgres": "backup_app",
+      "packet-forwarder": "packet-forwarder"
+    }
   }
 }
