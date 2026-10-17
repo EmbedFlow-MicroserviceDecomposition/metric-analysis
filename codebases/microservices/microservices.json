@@ -1154,5 +1154,16 @@
       "jobs": "service-jobs",
       "analyzer": "service-auto-analyzer"
     }
+  },
+  "MS084": {
+    "name": "micro-frontends",
+    "path": "MS084_micro-frontends",
+    "language": "Html",
+    "services": {
+      "0-model-store": "0-model-store",
+      "3-data-fetching": "3-data-fetching",
+      "2-composition-universal": "2-composition-universal",
+      "1-composition-client-only": "1-composition-client-only"
+    }
   }
 }
