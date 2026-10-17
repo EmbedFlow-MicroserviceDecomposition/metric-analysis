@@ -651,5 +651,15 @@
     "services": {
       "graphs": "graphs"
     }
+  },
+  "MS042": {
+    "name": "DeathStarBench-socialNetwork",
+    "path": "MS042_DeathStarBench_socialNetwork",
+    "language": "C++ / Go / Python",
+    "services": {
+      "openshift": "socialNetwork/openshift",
+      "gen-py": "socialNetwork/gen-py",
+      "nginx-web-server": "socialNetwork/nginx-web-server"
+    }
   }
 }
