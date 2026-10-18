@@ -1,0 +1,8 @@
+# Jupytext configuration for analysis/
+# Associates Python percent-formatted scripts with notebooks and enables
+# opening .py files directly as interactive notebooks in Jupyter.
+formats = "ipynb,py:percent"
+default_jupytext_formats = "py:percent"
+# Save kernel info so the notebook can recreate itself seamlessly
+notebook_metadata_filter = "-all,jupytext,kernelspec"
+cell_metadata_filter = "-all"
