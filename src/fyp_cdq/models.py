@@ -71,11 +71,12 @@ class MetricResult:
         res = {
             "metric": self.metric,
             "score": self.score,
-            "bounds": self.bounds,
-            "microservice_scores": self.microservice_scores
         }
         if self.score_relative is not None:
             res["score_relative"] = self.score_relative
+        if self.bounds:
+            res["bounds"] = self.bounds
+        res["microservice_scores"] = self.microservice_scores
         if self.metadata:
             res["metadata"] = self.metadata
         return res

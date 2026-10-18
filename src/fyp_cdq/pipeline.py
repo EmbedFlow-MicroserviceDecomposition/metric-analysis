@@ -133,6 +133,11 @@ class EvaluationPipeline:
                     f"Metric '{metric_name}' requires both monolith and microservice codebases, "
                     f"but monolith codebase was not found for '{system_id}' in {MONOLITHS_DIR}."
                 )
+        else:
+            try:
+                mono_path = resolve_monolith_codebase(system_id)
+            except Exception:
+                mono_path = None
 
         # 4. Parse metric-specific CLI arguments
         metric_kwargs = {}

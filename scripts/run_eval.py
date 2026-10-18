@@ -44,9 +44,11 @@ def main():
         print(f"Parameters: {bounds_str}")
     print(f"Services Detected: {partition.service_count}")
     print(f"Total Classes: {partition.total_classes}")
-    print(f"Score (Fixed): {result.score:.4f}")
     if result.score_relative is not None:
+        print(f"Score (Fixed): {result.score:.4f}")
         print(f"Score (Relative): {result.score_relative:.4f}")
+    else:
+        print(f"Score: {result.score:.4f}")
     print(f"Saved partition to: {out_dir / 'output.json'}")
     print(f"Saved score to:     {out_dir / f'{result.metric.lower()}_score.json'}")
     print("========================================================\n")

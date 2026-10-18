@@ -2,6 +2,9 @@
 
 from typing import Dict, List, Optional
 from fyp_cdq.metrics.base import BaseMetric
+from fyp_cdq.metrics.chd import CHDMetric
+from fyp_cdq.metrics.chm import CHMMetric
+from fyp_cdq.metrics.ifn import IFNMetric
 from fyp_cdq.metrics.ned import NEDMetric
 
 
@@ -10,8 +13,11 @@ class MetricRegistry:
 
     def __init__(self):
         self._metrics: Dict[str, BaseMetric] = {}
-        # Register baseline state-of-the-art metric
+        # Register available state-of-the-art metrics
         self.register(NEDMetric())
+        self.register(CHDMetric())
+        self.register(CHMMetric())
+        self.register(IFNMetric())
 
     def register(self, metric: BaseMetric) -> None:
         self._metrics[metric.name.upper()] = metric

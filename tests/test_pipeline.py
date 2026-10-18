@@ -20,6 +20,17 @@ def test_pipeline_evaluate_ms001(tmp_path: Path):
     assert (tmp_path / "ned_score.json").exists()
 
 
+def test_pipeline_evaluate_ms001_new_metrics(tmp_path: Path):
+    pipeline = EvaluationPipeline(output_base_dir=tmp_path)
+    for m in ["chd", "chm", "ifn"]:
+        m_dir = tmp_path / m
+        partition, result = pipeline.evaluate("MS001", m, output_dir=m_dir)
+        assert result.metric == m.upper()
+        assert result.score >= 0.0
+        assert (m_dir / f"{m}_score.json").exists()
+
+
+
 def test_pipeline_evaluate_with_args(tmp_path: Path):
     pipeline = EvaluationPipeline(output_base_dir=tmp_path)
     partition, result = pipeline.evaluate("MS010", "ned", metric_args=["--lo", "3", "--eps", "0.25"], output_dir=tmp_path)
