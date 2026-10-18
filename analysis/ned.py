@@ -163,7 +163,9 @@ def load_analysis_dataset(outputs_dir: Path, manifest_path: Path) -> pd.DataFram
             "bound_hi": hi,
             "bound_rel_lo": rel_lo,
             "bound_rel_hi": rel_hi,
-            "has_classes": total_classes > 0
+            "has_classes": total_classes > 0,
+            "is_application": language not in ["Infrastructure", "Documentation"],
+            "category": "Application" if language not in ["Infrastructure", "Documentation"] else language
         })
         
     df = pd.DataFrame(records)
@@ -177,12 +179,17 @@ print(f"Loaded {len(df)} systems from outputs/. Systems with extracted classes: 
 df.head(10)
 
 # %% [markdown]
-# ## 2. Descriptive Statistical Summary
+# ## 2. Descriptive Statistical Summary (Segregated by System Nature)
 #
-# Summary statistics across all evaluated microservice architectures with extracted classes.
+# Summary statistics across all evaluated microservice architectures with extracted classes,
+# segregated by Application Systems vs. Infrastructure/Deployment Orchestrators.
 
 # %%
 df_valid = df[df["has_classes"]].copy()
+lang_counts = df_valid["language"].value_counts()
+major_langs = lang_counts[lang_counts >= 3].index.tolist()
+df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in major_langs else "Other")
+df_apps = df_valid[df_valid["is_application"]].copy()
 
 stats_cols = [
     "ned_absolute",
@@ -198,8 +205,29 @@ stats_cols = [
 summary_stats = df_valid[stats_cols].describe().T
 summary_stats["median"] = df_valid[stats_cols].median()
 summary_stats = summary_stats[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
-print("=== GLOBAL DESCRIPTIVE STATISTICS ===")
+
+summary_stats_apps = df_apps[stats_cols].describe().T
+summary_stats_apps["median"] = df_apps[stats_cols].median()
+summary_stats_apps = summary_stats_apps[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
+
+segregation_comparison = df_valid.groupby("category").agg(
+    systems_count=("system_id", "count"),
+    mean_ned_abs=("ned_absolute", "mean"),
+    median_ned_abs=("ned_absolute", "median"),
+    mean_ned_rel=("ned_relative", "mean"),
+    median_ned_rel=("ned_relative", "median"),
+    mean_services=("service_count", "mean"),
+    mean_classes=("total_classes", "mean")
+).reset_index()
+
+print("=== GLOBAL DESCRIPTIVE STATISTICS (ALL SYSTEMS, n={}) ===".format(len(df_valid)))
 print(summary_stats.round(3))
+
+print("\n=== APPLICATION SYSTEMS STATISTICS (FILTERED, n={}) ===".format(len(df_apps)))
+print(summary_stats_apps.round(3))
+
+print("\n=== SEGREGATION COMPARISON: APPLICATION VS INFRASTRUCTURE ===")
+print(segregation_comparison.round(3).to_string(index=False))
 
 # %% [markdown]
 # ## 3. Distribution Comparison: Fixed vs. Relative NED
@@ -309,20 +337,21 @@ print(f"Saved language comparison plot to: {fig_lang_path}")
 plt.show()
 
 # %% [markdown]
-# ## 5. Architectural Archetypes: Most Balanced vs. Most Skewed Systems
+# ## 5. Architectural Archetypes: Most Balanced vs. Most Skewed Systems (Filtered by Application)
 #
-# Identifying the systems that achieve exemplary decomposition balance vs. those with significant skew.
+# Identifying the application systems that achieve exemplary decomposition balance vs. those with significant skew,
+# excluding pure infrastructure/deployment recipes.
 
 # %%
-print("=== TOP 10 BALANCED SYSTEMS (Fixed NED) ===")
-top_balanced = df_valid.sort_values(by=["ned_absolute", "ned_relative"], ascending=[False, False])[
+print("=== TOP 10 BALANCED APPLICATION MICROSERVICES (Fixed NED) ===")
+top_balanced = df_apps.sort_values(by=["ned_absolute", "ned_relative"], ascending=[False, False])[
     ["system_id", "system_name", "language", "service_count", "total_classes", "avg_service_size", "ned_absolute", "ned_relative"]
 ].head(10)
 print(top_balanced.to_string(index=False))
 
 # %%
-print("\n=== TOP 10 SKEWED / EXTREME SYSTEMS (Lowest Fixed NED) ===")
-most_skewed = df_valid[df_valid["total_classes"] > 0].sort_values(
+print("\n=== TOP 10 SKEWED / EXTREME APPLICATION MICROSERVICES (Lowest Fixed NED) ===")
+most_skewed = df_apps[df_apps["total_classes"] > 0].sort_values(
     by=["ned_absolute", "ned_relative"], ascending=[True, True]
 )[
     ["system_id", "system_name", "language", "service_count", "total_classes", "avg_service_size", "tiny_services_count", "god_services_count", "ned_absolute", "ned_relative"]
@@ -330,7 +359,7 @@ most_skewed = df_valid[df_valid["total_classes"] > 0].sort_values(
 print(most_skewed.to_string(index=False))
 
 # %% [markdown]
-# ## 6. Scale Dynamics: Architectural Size vs. NED Score
+# ## 6. Scale Dynamics: Architectural Size vs. NED Score (Application Microservices)
 #
 # Does microservice system scale (number of classes or services) degrade Non-Extreme Distribution balance?
 
@@ -339,7 +368,7 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
 # Plot 1: Total Classes vs Fixed NED
 sns.scatterplot(
-    data=df_valid,
+    data=df_apps,
     x="total_classes",
     y="ned_absolute",
     hue="lang_group",
@@ -349,14 +378,14 @@ sns.scatterplot(
     ax=axes[0]
 )
 axes[0].set_xscale("log")
-axes[0].set_title("Total Classes vs. Fixed NED (Log Scale)", fontsize=13, fontweight="bold")
+axes[0].set_title("Total Classes vs. Fixed NED (Application Systems, Log Scale)", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("Total Classes (log scale)")
 axes[0].set_ylabel("Fixed NED Score")
 axes[0].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # Plot 2: Service Count vs Fixed NED
 sns.scatterplot(
-    data=df_valid,
+    data=df_apps,
     x="service_count",
     y="ned_absolute",
     hue="lang_group",
@@ -365,7 +394,7 @@ sns.scatterplot(
     alpha=0.7,
     ax=axes[1]
 )
-axes[1].set_title("Service Count vs. Fixed NED", fontsize=13, fontweight="bold")
+axes[1].set_title("Service Count vs. Fixed NED (Application Systems)", fontsize=13, fontweight="bold")
 axes[1].set_xlabel("Service Count")
 axes[1].set_ylabel("Fixed NED Score")
 axes[1].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -378,11 +407,11 @@ plt.show()
 
 # %% [markdown]
 # ### Correlation Analysis
-# Numerical rank correlation between system scale and balance.
+# Numerical rank correlation between system scale and balance across application microservices.
 
 # %%
-corr_df = df_valid[["total_classes", "service_count", "avg_service_size", "size_cv", "ned_absolute", "ned_relative"]].corr(method="spearman")
-print("Spearman Rank Correlation Matrix:")
+corr_df = df_apps[["total_classes", "service_count", "avg_service_size", "size_cv", "ned_absolute", "ned_relative"]].corr(method="spearman")
+print("Spearman Rank Correlation Matrix (Application Systems):")
 corr_df.round(3)
 
 # %% [markdown]
@@ -398,9 +427,9 @@ with PdfPages(pdf_report_path) as pdf:
     fig_cover, ax_cover = plt.subplots(figsize=(11, 8.5))
     ax_cover.axis("off")
     ax_cover.text(0.5, 0.90, "Non-Extreme Distribution (NED) Report", fontsize=20, fontweight="bold", ha="center")
-    ax_cover.text(0.5, 0.85, "Decomposition Quality & Service Size Balance Evaluation", fontsize=12, color="gray", ha="center")
+    ax_cover.text(0.5, 0.85, "Decomposition Quality & Service Size Balance Evaluation across Application Systems", fontsize=12, color="gray", ha="center")
     
-    table_data = summary_stats.round(3).reset_index()
+    table_data = summary_stats_apps.round(3).reset_index()
     table_data.columns = ["Metric", "Count", "Mean", "Std", "Min", "25%", "Median", "75%", "Max"]
     table = ax_cover.table(
         cellText=table_data.values,
@@ -414,13 +443,14 @@ with PdfPages(pdf_report_path) as pdf:
     
     summary_text = (
         "Key Insights:\n"
-        f"• Evaluated {len(df_valid)} systems with valid microservice decompositions.\n"
-        f"• Fixed NED: Mean = {df_valid['ned_absolute'].mean():.4f}, Median = {df_valid['ned_absolute'].median():.4f}.\n"
-        f"• Relative NED: Mean = {df_valid['ned_relative'].mean():.4f}, Median = {df_valid['ned_relative'].median():.4f}.\n"
+        f"• Evaluated {len(df_apps)} application microservice systems ({len(df_valid)} total including infrastructure/orchestration).\n"
+        f"• Application Systems - Fixed NED: Mean = {df_apps['ned_absolute'].mean():.4f}, Median = {df_apps['ned_absolute'].median():.4f}.\n"
+        f"• Application Systems - Relative NED: Mean = {df_apps['ned_relative'].mean():.4f}, Median = {df_apps['ned_relative'].median():.4f}.\n"
+        "• Segregated pure infrastructure/deployment recipes (which have 0-1 services/classes) to avoid metric skew.\n"
         "• Fixed NED penalizes systems diverging from the global [5, 20] range.\n"
         "• Relative NED adapts to system scale, offering a fairer assessment of internal balance."
     )
-    ax_cover.text(0.1, 0.18, summary_text, fontsize=10, verticalalignment="top", fontfamily="monospace")
+    ax_cover.text(0.1, 0.16, summary_text, fontsize=9.5, verticalalignment="top", fontfamily="monospace")
     pdf.savefig(fig_cover, dpi=150)
     plt.close(fig_cover)
 

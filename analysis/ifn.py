@@ -130,7 +130,10 @@ def load_ifn_dataset(outputs_dir: Path, manifest_path: Path) -> pd.DataFrame:
             "min_service_ifaces": int(min_ms),
             "max_service_ifaces": int(max_ms),
             "std_service_ifaces": round(std_ms, 2),
-            "has_classes": total_classes > 0
+            "has_classes": total_classes > 0,
+            "is_application": language not in ["Infrastructure", "Documentation"],
+            "category": "Application" if language not in ["Infrastructure", "Documentation"] else language,
+            "has_edges": meta.get("edges_analyzed", 0) > 0
         })
         
     df = pd.DataFrame(records)
@@ -144,12 +147,21 @@ print(f"Loaded {len(df)} systems with IFN scores.")
 df.head(10)
 
 # %% [markdown]
-# ## 2. Descriptive Statistical Summary
+# %% [markdown]
+# ## 2. Descriptive Statistical Summary (Segregated by System Nature & Graph Connectivity)
 #
-# Overall distribution and spread of Interface Numbers across evaluated architectures.
+# Overall distribution and spread of Interface Numbers across evaluated architectures,
+# segregated by Application Systems vs. Infrastructure and Connected Microservice Graphs (>0 edges) vs. Inactive (0 edges).
 
 # %%
 df_valid = df[df["has_classes"]].copy() if not df.empty else df.copy()
+lang_counts = df_valid["language"].value_counts()
+main_langs = lang_counts[lang_counts >= 3].index.tolist()
+df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
+
+df_apps = df_valid[df_valid["is_application"]].copy()
+df_active = df_apps[df_apps["has_edges"]].copy()
+df_inactive = df_valid[~df_valid["has_edges"]].copy()
 
 stats_cols = [
     "ifn_score",
@@ -161,42 +173,83 @@ stats_cols = [
     "edges_analyzed"
 ]
 available_cols = [c for c in stats_cols if c in df_valid.columns]
-summary_stats = df_valid[available_cols].describe().T
-summary_stats["median"] = df_valid[available_cols].median()
-summary_stats = summary_stats[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
-print("=== IFN GLOBAL DESCRIPTIVE STATISTICS ===")
-print(summary_stats.round(3))
+
+summary_stats_global = df_valid[available_cols].describe().T
+summary_stats_global["median"] = df_valid[available_cols].median()
+summary_stats_global = summary_stats_global[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
+
+summary_stats_active = df_active[available_cols].describe().T
+summary_stats_active["median"] = df_active[available_cols].median()
+summary_stats_active = summary_stats_active[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
+
+segregation_comparison = df_valid.groupby(["category", "has_edges"]).agg(
+    systems_count=("system_id", "count"),
+    mean_ifn=("ifn_score", "mean"),
+    median_ifn=("ifn_score", "median"),
+    mean_edges=("edges_analyzed", "mean"),
+    mean_interfaces=("total_interfaces", "mean"),
+    mean_classes=("total_classes", "mean")
+).reset_index()
+
+print(f"=== GLOBAL DESCRIPTIVE STATISTICS (ALL SYSTEMS, n={len(df_valid)}) ===")
+print(summary_stats_global.round(3))
+
+print(f"\n=== ACTIVE CONNECTED APPLICATION MICROSERVICES (EDGES > 0, n={len(df_active)}) ===")
+print(summary_stats_active.round(3))
+
+print("\n=== SEGREGATION COMPARISON: CATEGORY & GRAPH CONNECTIVITY ===")
+print(segregation_comparison.round(3).to_string(index=False))
 
 # %% [markdown]
-# ## 3. Distribution of Interface Numbers
+# ## 3. Distribution of Interface Numbers (Comparative Segregation)
 #
-# Histogram, KDE, and Boxplot of IFN scores.
+# Comparing the distribution of IFN scores for Active Connected Microservices vs. Global Dataset
+# to evaluate the compression caused by 0-edge / pure deployment recipes.
 
 # %%
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-# Plot 1: Histogram & KDE (log scale)
+# Plot 1: Histogram & KDE Comparison
 sns.histplot(
     df_valid["ifn_score"],
     kde=True,
-    color="darkcyan",
+    color="gray",
+    label=f"All Systems (n={len(df_valid)})",
     bins=20,
     ax=axes[0],
-    stat="density"
+    stat="density",
+    alpha=0.4
 )
-axes[0].set_title("Density Distribution: Interface Number (IFN)", fontsize=13, fontweight="bold")
+sns.histplot(
+    df_active["ifn_score"],
+    kde=True,
+    color="darkcyan",
+    label=f"Connected Apps (edges > 0, n={len(df_active)})",
+    bins=20,
+    ax=axes[0],
+    stat="density",
+    alpha=0.7
+)
+axes[0].set_title("Density Distribution: All vs. Connected Applications", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("IFN Score (Avg Exposed Interfaces per Service)")
 axes[0].set_ylabel("Density")
+axes[0].legend()
 
-# Plot 2: Boxplot
+# Plot 2: Boxplot Breakdown by Cohort
+cohort_data = pd.DataFrame({
+    "Cohort": ["Connected Apps\n(edges > 0)"] * len(df_active) + ["Disconnected / Infra\n(edges = 0)"] * len(df_inactive),
+    "IFN Score": list(df_active["ifn_score"]) + list(df_inactive["ifn_score"])
+})
 sns.boxplot(
-    y=df_valid["ifn_score"],
-    color="darkcyan",
+    data=cohort_data,
+    x="Cohort",
+    y="IFN Score",
+    palette=["darkcyan", "lightgray"],
     ax=axes[1],
-    width=0.35
+    width=0.4
 )
 axes[1].set_yscale("symlog")
-axes[1].set_title("IFN Score Spread (SymLog Scale)", fontsize=13, fontweight="bold")
+axes[1].set_title("IFN Spread: Connected vs. Disconnected Cohorts (SymLog)", fontsize=13, fontweight="bold")
 axes[1].set_ylabel("IFN Score (symlog)")
 
 plt.tight_layout()
@@ -216,16 +269,17 @@ main_langs = lang_counts[lang_counts >= 2].index
 df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
 
 fig, ax = plt.subplots(figsize=(10, 5))
+order_langs = sorted(df_apps["lang_group"].unique())
 sns.boxplot(
-    data=df_valid,
+    data=df_apps,
     x="lang_group",
     y="ifn_score",
     palette="GnBu",
     ax=ax,
-    order=sorted(df_valid["lang_group"].unique())
+    order=order_langs
 )
 sns.stripplot(
-    data=df_valid,
+    data=df_apps,
     x="lang_group",
     y="ifn_score",
     color="black",
@@ -233,10 +287,10 @@ sns.stripplot(
     jitter=0.2,
     size=5,
     ax=ax,
-    order=sorted(df_valid["lang_group"].unique())
+    order=order_langs
 )
 ax.set_yscale("symlog")
-ax.set_title("IFN Score Distribution by Primary Language (SymLog Scale)", fontsize=13, fontweight="bold")
+ax.set_title("IFN Score Distribution by Application Primary Language (SymLog Scale)", fontsize=13, fontweight="bold")
 ax.set_xlabel("Implementation Language")
 ax.set_ylabel("IFN Score")
 plt.tight_layout()
@@ -247,30 +301,30 @@ print(f"Saved language breakdown plot to: {fig_lang_path}")
 plt.show()
 
 # %% [markdown]
-# ## 5. Top Lean vs. Heavily Exposed Architectures
+# ## 5. Top Lean vs. Heavily Exposed Architectures (Connected Applications, edges > 0)
 
 # %%
 print("\n=== TOP 10 LEANEST ARCHITECTURES (Minimal Interface Exposure) ===")
-lean_ifn = df_valid[df_valid["edges_analyzed"] > 0].sort_values(by="ifn_score", ascending=True)[
+lean_ifn = df_active.sort_values(by="ifn_score", ascending=True)[
     ["system_id", "system_name", "language", "service_count", "total_classes", "edges_analyzed", "ifn_score", "max_service_ifaces"]
 ].head(10)
 print(lean_ifn.to_string(index=False))
 
 print("\n=== TOP 10 MOST EXPOSED ARCHITECTURES (High Interface Surface / God Interfaces) ===")
-heavy_ifn = df_valid.sort_values(by="ifn_score", ascending=False)[
+heavy_ifn = df_active.sort_values(by="ifn_score", ascending=False)[
     ["system_id", "system_name", "language", "service_count", "total_classes", "edges_analyzed", "ifn_score", "max_service_ifaces"]
 ].head(10)
 print(heavy_ifn.to_string(index=False))
 
 # %% [markdown]
-# ## 6. Scale Dynamics: Architectural Size vs. IFN
+# ## 6. Scale Dynamics: Architectural Size vs. IFN (Connected Applications)
 
 # %%
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
 # Plot 1: Total Classes vs IFN
 sns.scatterplot(
-    data=df_valid,
+    data=df_active,
     x="total_classes",
     y="ifn_score",
     hue="lang_group",
@@ -281,14 +335,14 @@ sns.scatterplot(
 )
 axes[0].set_xscale("log")
 axes[0].set_yscale("symlog")
-axes[0].set_title("Total Classes vs. IFN (Log-SymLog Scale)", fontsize=13, fontweight="bold")
+axes[0].set_title("Total Classes vs. IFN (Connected Apps, Log-SymLog Scale)", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("Total Classes (log scale)")
 axes[0].set_ylabel("IFN Score (symlog)")
 axes[0].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # Plot 2: Service Count vs IFN
 sns.scatterplot(
-    data=df_valid,
+    data=df_active,
     x="service_count",
     y="ifn_score",
     hue="lang_group",
@@ -298,7 +352,7 @@ sns.scatterplot(
     ax=axes[1]
 )
 axes[1].set_yscale("symlog")
-axes[1].set_title("Service Count vs. IFN", fontsize=13, fontweight="bold")
+axes[1].set_title("Service Count vs. IFN (Connected Apps)", fontsize=13, fontweight="bold")
 axes[1].set_xlabel("Service Count")
 axes[1].set_ylabel("IFN Score (symlog)")
 axes[1].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -320,9 +374,9 @@ with PdfPages(pdf_report_path) as pdf:
     fig_cover, ax_cover = plt.subplots(figsize=(11, 8.5))
     ax_cover.axis("off")
     ax_cover.text(0.5, 0.90, "Interface Number of Operations (IFN) Report", fontsize=20, fontweight="bold", ha="center")
-    ax_cover.text(0.5, 0.85, "Cross-System Interface Surface Area & Coupling Evaluation", fontsize=12, color="gray", ha="center")
+    ax_cover.text(0.5, 0.85, "Cross-System Interface Surface Area & Coupling Evaluation (Connected Application Microservices)", fontsize=12, color="gray", ha="center")
     
-    table_data = summary_stats.round(3).reset_index()
+    table_data = summary_stats_active.round(3).reset_index()
     table_data.columns = ["Metric", "Count", "Mean", "Std", "Min", "25%", "Median", "75%", "Max"]
     table = ax_cover.table(
         cellText=table_data.values,
@@ -336,12 +390,13 @@ with PdfPages(pdf_report_path) as pdf:
     
     summary_text = (
         "Key Insights:\n"
-        f"• Evaluated {len(df_valid)} systems with valid microservice decompositions.\n"
-        f"• Mean IFN: {df_valid['ifn_score'].mean():.2f} interfaces/service (Median: {df_valid['ifn_score'].median():.2f}).\n"
+        f"• Evaluated {len(df_valid)} systems total ({len(df_apps)} application systems, {len(df_active)} with connected inter-service edges).\n"
+        f"• Connected Application Microservices IFN: Mean = {df_active['ifn_score'].mean():.2f} interfaces/service (Median: {df_active['ifn_score'].median():.2f}).\n"
+        "• Segregated pure infrastructure/deployment recipes and disconnected repositories which trivially default to IFN=0.\n"
         "• Lower IFN indicates lean microservices with focused, decoupled APIs.\n"
         "• High IFN reveals god interfaces or monolith-style conversational complexity across service boundaries."
     )
-    ax_cover.text(0.1, 0.18, summary_text, fontsize=10, verticalalignment="top", fontfamily="monospace")
+    ax_cover.text(0.1, 0.16, summary_text, fontsize=9.5, verticalalignment="top", fontfamily="monospace")
     pdf.savefig(fig_cover, dpi=150)
     plt.close(fig_cover)
 

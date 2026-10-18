@@ -838,7 +838,7 @@
   "MS054": {
     "name": "docker-elk",
     "path": "MS054_docker-elk",
-    "language": "Dockerfile",
+    "language": "Infrastructure",
     "services": {
       "setup": "setup",
       "kibana-genkeys": "kibana",
@@ -858,7 +858,7 @@
   "MS056": {
     "name": "example-voting-app",
     "path": "MS056_example-voting-app",
-    "language": "Dockerfile",
+    "language": "Polyglot",
     "services": {
       "vote": "vote",
       "result": "result",
@@ -879,7 +879,7 @@
   "MS058": {
     "name": "docker",
     "path": "MS058_docker",
-    "language": "Php",
+    "language": "Infrastructure",
     "services": {}
   },
   "MS059": {
@@ -899,7 +899,7 @@
   "MS060": {
     "name": "agile-lorawan-support",
     "path": "MS060_agile-lorawan-support",
-    "language": "Dockerfile",
+    "language": "Python",
     "services": {
       "backup_app": "backup_app",
       "backup_app_postgres": "backup_app",
@@ -953,7 +953,7 @@
   "MS065": {
     "name": "docker-hadoop",
     "path": "MS065_docker-hadoop",
-    "language": "Makefile",
+    "language": "Infrastructure",
     "services": {}
   },
   "MS066": {
@@ -972,7 +972,7 @@
   "MS067": {
     "name": "mailcow-dockerized",
     "path": "MS067_mailcow-dockerized",
-    "language": "Perl",
+    "language": "PHP",
     "services": {
       "data": "data",
       "helper-scripts": "helper-scripts"
@@ -981,7 +981,7 @@
   "MS068": {
     "name": "crates.io",
     "path": "MS068_crates.io",
-    "language": "Javascript",
+    "language": "Rust",
     "services": {
       "svelte": "svelte",
       "crates": "crates",
@@ -1144,7 +1144,7 @@
   "MS083": {
     "name": "reportportal",
     "path": "MS083_reportportal",
-    "language": "Shell",
+    "language": "Polyglot",
     "services": {
       "migrations": "migrations",
       "index": "service-index",
@@ -1158,7 +1158,7 @@
   "MS084": {
     "name": "micro-frontends",
     "path": "MS084_micro-frontends",
-    "language": "Html",
+    "language": "Javascript",
     "services": {
       "0-model-store": "0-model-store",
       "3-data-fetching": "3-data-fetching",
@@ -1169,7 +1169,7 @@
   "MS085": {
     "name": "kitsu-tools",
     "path": "MS085_kitsu-tools",
-    "language": "Shell",
+    "language": "Infrastructure",
     "services": {
       "router": "router"
     }
@@ -1191,7 +1191,7 @@
   "MS087": {
     "name": "jx-docs",
     "path": "MS087_jx-docs",
-    "language": "Scss",
+    "language": "Documentation",
     "services": {
       "static": "static"
     }
@@ -1218,7 +1218,7 @@
   "MS090": {
     "name": "openvas-docker",
     "path": "MS090_openvas-docker",
-    "language": "Dockerfile",
+    "language": "Infrastructure",
     "services": {
       "9": "9"
     }
@@ -1245,7 +1245,7 @@
   "MS093": {
     "name": "cp-all-in-one",
     "path": "MS093_cp-all-in-one",
-    "language": "Shell",
+    "language": "Infrastructure",
     "services": {
       "github-actions-example": "github-actions-example"
     }
@@ -1321,7 +1321,7 @@
   "MS099": {
     "name": "htpc-download-box",
     "path": "MS099_htpc-download-box",
-    "language": "Polyglot / docker",
+    "language": "Infrastructure",
     "services": {}
   },
   "MS100": {
@@ -1337,7 +1337,7 @@
   "MS101": {
     "name": "spryker-demoshop",
     "path": "MS101_spryker-demoshop",
-    "language": "Php",
+    "language": "PHP",
     "services": {
       "assets": "assets",
       "src": "src"
@@ -1427,13 +1427,13 @@
   "MS108": {
     "name": "php-ddd-example",
     "path": "MS108_php-ddd-example",
-    "language": "Php",
+    "language": "PHP",
     "services": {}
   },
   "MS109": {
     "name": "st2-docker",
     "path": "MS109_st2-docker",
-    "language": "Javascript",
+    "language": "Infrastructure",
     "services": {
       "files": "files"
     }
@@ -1441,7 +1441,7 @@
   "MS110": {
     "name": "flagr",
     "path": "MS110_flagr",
-    "language": "Vue",
+    "language": "Go",
     "services": {
       "cmd": "cmd",
       "integration_tests": "integration_tests",
@@ -1453,7 +1453,7 @@
   "MS111": {
     "name": "docker",
     "path": "MS111_docker",
-    "language": "Shell",
+    "language": "Infrastructure",
     "services": {}
   },
   "MS112": {

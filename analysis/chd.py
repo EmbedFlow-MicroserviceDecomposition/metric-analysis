@@ -134,7 +134,10 @@ def load_chd_dataset(outputs_dir: Path, manifest_path: Path) -> pd.DataFrame:
             "min_service_chd": round(min_ms, 4) if pd.notnull(min_ms) else np.nan,
             "max_service_chd": round(max_ms, 4) if pd.notnull(max_ms) else np.nan,
             "std_service_chd": round(std_ms, 4),
-            "has_classes": total_classes > 0
+            "has_classes": total_classes > 0,
+            "is_application": language not in ["Infrastructure", "Documentation"],
+            "category": "Application" if language not in ["Infrastructure", "Documentation"] else language,
+            "has_calls": meta.get("calls_analyzed", 0) > 0
         })
         
     df = pd.DataFrame(records)
@@ -148,12 +151,20 @@ print(f"Loaded {len(df)} systems with CHD scores.")
 df.head(10)
 
 # %% [markdown]
-# ## 2. Descriptive Statistical Summary
+# ## 2. Descriptive Statistical Summary (Segregated by System Nature & Call Activity)
 #
-# Overall distribution and spread of Domain Cohesion across evaluated architectures.
+# Overall distribution and spread of Domain Cohesion across evaluated architectures,
+# segregated by Application Systems vs. Infrastructure and Active Method Calls (>0) vs. Inactive (0 calls).
 
 # %%
 df_valid = df[df["has_classes"]].copy() if not df.empty else df.copy()
+lang_counts = df_valid["language"].value_counts()
+main_langs = lang_counts[lang_counts >= 3].index.tolist()
+df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
+
+df_apps = df_valid[df_valid["is_application"]].copy()
+df_active = df_apps[df_apps["has_calls"]].copy()
+df_inactive = df_valid[~df_valid["has_calls"]].copy()
 
 stats_cols = [
     "chd_score",
@@ -163,41 +174,81 @@ stats_cols = [
     "std_service_chd"
 ]
 available_cols = [c for c in stats_cols if c in df_valid.columns]
-summary_stats = df_valid[available_cols].describe().T
-summary_stats["median"] = df_valid[available_cols].median()
-summary_stats = summary_stats[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
-print("=== CHD GLOBAL DESCRIPTIVE STATISTICS ===")
-print(summary_stats.round(3))
+
+summary_stats_global = df_valid[available_cols].describe().T
+summary_stats_global["median"] = df_valid[available_cols].median()
+summary_stats_global = summary_stats_global[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
+
+summary_stats_active = df_active[available_cols].describe().T
+summary_stats_active["median"] = df_active[available_cols].median()
+summary_stats_active = summary_stats_active[["count", "mean", "std", "min", "25%", "median", "75%", "max"]]
+
+segregation_comparison = df_valid.groupby(["category", "has_calls"]).agg(
+    systems_count=("system_id", "count"),
+    mean_chd=("chd_score", "mean"),
+    median_chd=("chd_score", "median"),
+    mean_calls=("calls_analyzed", "mean"),
+    mean_classes=("total_classes", "mean")
+).reset_index()
+
+print(f"=== GLOBAL DESCRIPTIVE STATISTICS (ALL SYSTEMS, n={len(df_valid)}) ===")
+print(summary_stats_global.round(3))
+
+print(f"\n=== ACTIVE APPLICATION MICROSERVICES (CALLS > 0, n={len(df_active)}) ===")
+print(summary_stats_active.round(3))
+
+print("\n=== SEGREGATION COMPARISON: CATEGORY & CALL ACTIVITY ===")
+print(segregation_comparison.round(3).to_string(index=False))
 
 # %% [markdown]
-# ## 3. Distribution of Domain Cohesion Scores
+# ## 3. Distribution of Domain Cohesion Scores (Comparative Segregation)
 #
-# We visualize the distribution of system-level CHD scores via Kernel Density Estimation and Boxplot.
+# Comparing the distribution of CHD scores for Active Application Microservices vs. Global Dataset
+# to evaluate the skew introduced by trivial 0-call infrastructure/inactive systems.
 
 # %%
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-# Plot 1: Histogram & KDE
+# Plot 1: Histogram & KDE Comparison
 sns.histplot(
     df_valid["chd_score"],
     kde=True,
-    color="forestgreen",
+    color="gray",
+    label=f"All Systems (n={len(df_valid)})",
     bins=15,
     ax=axes[0],
-    stat="density"
+    stat="density",
+    alpha=0.4
 )
-axes[0].set_title("Density Distribution: Cohesion at Domain Level (CHD)", fontsize=13, fontweight="bold")
+sns.histplot(
+    df_active["chd_score"],
+    kde=True,
+    color="forestgreen",
+    label=f"Active Apps (calls > 0, n={len(df_active)})",
+    bins=15,
+    ax=axes[0],
+    stat="density",
+    alpha=0.7
+)
+axes[0].set_title("Density Distribution: All vs. Active Applications", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("CHD Score [0.0 - 1.0]")
 axes[0].set_ylabel("Density")
+axes[0].legend()
 
-# Plot 2: Boxplot
+# Plot 2: Boxplot Breakdown by Cohort
+cohort_data = pd.DataFrame({
+    "Cohort": ["Active Apps\n(calls > 0)"] * len(df_active) + ["Inactive / Infra\n(calls = 0)"] * len(df_inactive),
+    "CHD Score": list(df_active["chd_score"]) + list(df_inactive["chd_score"])
+})
 sns.boxplot(
-    y=df_valid["chd_score"],
-    color="forestgreen",
+    data=cohort_data,
+    x="Cohort",
+    y="CHD Score",
+    palette=["forestgreen", "salmon"],
     ax=axes[1],
-    width=0.35
+    width=0.4
 )
-axes[1].set_title("CHD Score Spread", fontsize=13, fontweight="bold")
+axes[1].set_title("CHD Spread: Active Application vs. Inactive Cohorts", fontsize=13, fontweight="bold")
 axes[1].set_ylabel("CHD Score")
 
 plt.tight_layout()
@@ -216,17 +267,19 @@ lang_counts = df_valid["language"].value_counts()
 main_langs = lang_counts[lang_counts >= 2].index
 df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
 
+# %%
 fig, ax = plt.subplots(figsize=(10, 5))
+order_langs = sorted(df_apps["lang_group"].unique())
 sns.boxplot(
-    data=df_valid,
+    data=df_apps,
     x="lang_group",
     y="chd_score",
     palette="Set2",
     ax=ax,
-    order=sorted(df_valid["lang_group"].unique())
+    order=order_langs
 )
 sns.stripplot(
-    data=df_valid,
+    data=df_apps,
     x="lang_group",
     y="chd_score",
     color="black",
@@ -234,9 +287,9 @@ sns.stripplot(
     jitter=0.2,
     size=5,
     ax=ax,
-    order=sorted(df_valid["lang_group"].unique())
+    order=order_langs
 )
-ax.set_title("CHD Score Distribution by Primary Language", fontsize=13, fontweight="bold")
+ax.set_title("CHD Score Distribution by Application Primary Language", fontsize=13, fontweight="bold")
 ax.set_xlabel("Implementation Language")
 ax.set_ylabel("CHD Score")
 plt.tight_layout()
@@ -247,23 +300,23 @@ print(f"Saved language breakdown plot to: {fig_lang_path}")
 plt.show()
 
 # %% [markdown]
-# ## 5. Top Highly Cohesive vs. Domain-Fragmented Systems
+# ## 5. Top Highly Cohesive vs. Domain-Fragmented Systems (Active Applications, calls > 0)
 
 # %%
-print("\n=== TOP 10 HIGHEST DOMAIN COHESION (Pure Domain Boundaries) ===")
-top_chd = df_valid.sort_values(by="chd_score", ascending=False)[
+print("\n=== TOP 10 HIGHEST DOMAIN COHESION (Active Application Microservices) ===")
+top_chd = df_active.sort_values(by="chd_score", ascending=False)[
     ["system_id", "system_name", "language", "service_count", "total_classes", "calls_analyzed", "chd_score"]
 ].head(10)
 print(top_chd.to_string(index=False))
 
 print("\n=== TOP 10 LOWEST DOMAIN COHESION (Domain Sprawl / Fragmented) ===")
-low_chd = df_valid[df_valid["calls_analyzed"] > 0].sort_values(by="chd_score", ascending=True)[
+low_chd = df_active.sort_values(by="chd_score", ascending=True)[
     ["system_id", "system_name", "language", "service_count", "total_classes", "calls_analyzed", "chd_score"]
 ].head(10)
 print(low_chd.to_string(index=False))
 
 # %% [markdown]
-# ## 6. Scale Dynamics: Architectural Size vs. CHD
+# ## 6. Scale Dynamics: Architectural Size vs. CHD (Active Application Microservices)
 #
 # Correlation between system scale (classes, services, inter-service calls) and domain cohesion.
 
@@ -272,7 +325,7 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
 # Plot 1: Total Classes vs CHD
 sns.scatterplot(
-    data=df_valid,
+    data=df_active,
     x="total_classes",
     y="chd_score",
     hue="lang_group",
@@ -282,14 +335,14 @@ sns.scatterplot(
     ax=axes[0]
 )
 axes[0].set_xscale("log")
-axes[0].set_title("Total Classes vs. CHD (Log Scale)", fontsize=13, fontweight="bold")
+axes[0].set_title("Total Classes vs. CHD (Active Apps, Log Scale)", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("Total Classes (log scale)")
 axes[0].set_ylabel("CHD Score")
 axes[0].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # Plot 2: Inter-Service Calls vs CHD
 sns.scatterplot(
-    data=df_valid,
+    data=df_active,
     x="calls_analyzed",
     y="chd_score",
     hue="lang_group",
@@ -299,7 +352,7 @@ sns.scatterplot(
     ax=axes[1]
 )
 axes[1].set_xscale("symlog")
-axes[1].set_title("Calls Analyzed vs. CHD", fontsize=13, fontweight="bold")
+axes[1].set_title("Calls Analyzed vs. CHD (Active Apps)", fontsize=13, fontweight="bold")
 axes[1].set_xlabel("Inter-Service Calls (symlog)")
 axes[1].set_ylabel("CHD Score")
 axes[1].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -323,10 +376,10 @@ with PdfPages(pdf_report_path) as pdf:
     fig_cover, ax_cover = plt.subplots(figsize=(11, 8.5))
     ax_cover.axis("off")
     ax_cover.text(0.5, 0.90, "Cohesion at Domain Level (CHD) Report", fontsize=20, fontweight="bold", ha="center")
-    ax_cover.text(0.5, 0.85, "Cross-System Architectural Quality Evaluation", fontsize=12, color="gray", ha="center")
+    ax_cover.text(0.5, 0.85, "Cross-System Architectural Quality Evaluation (Active Application Microservices)", fontsize=12, color="gray", ha="center")
     
     # Render table of summary statistics
-    table_data = summary_stats.round(3).reset_index()
+    table_data = summary_stats_active.round(3).reset_index()
     table_data.columns = ["Metric", "Count", "Mean", "Std", "Min", "25%", "Median", "75%", "Max"]
     table = ax_cover.table(
         cellText=table_data.values,
@@ -341,12 +394,13 @@ with PdfPages(pdf_report_path) as pdf:
     # Key Takeaways
     summary_text = (
         "Key Insights:\n"
-        f"• Evaluated {len(df_valid)} systems with valid microservice decompositions.\n"
-        f"• Mean CHD: {df_valid['chd_score'].mean():.4f} (Median: {df_valid['chd_score'].median():.4f}).\n"
+        f"• Evaluated {len(df_valid)} systems total ({len(df_apps)} application systems, {len(df_active)} with active method invocations).\n"
+        f"• Active Application Systems CHD: Mean = {df_active['chd_score'].mean():.4f}, Median = {df_active['chd_score'].median():.4f}.\n"
+        "• Segregated pure infrastructure/deployment recipes and 0-call repositories which trivially default to CHD=1.0.\n"
         "• High CHD indicates focused domain-driven interfaces with high vocabulary overlap.\n"
         "• Low CHD reveals services accumulating disparate concerns across unrelated functional domains."
     )
-    ax_cover.text(0.1, 0.18, summary_text, fontsize=10, verticalalignment="top", fontfamily="monospace")
+    ax_cover.text(0.1, 0.16, summary_text, fontsize=9.5, verticalalignment="top", fontfamily="monospace")
     pdf.savefig(fig_cover, dpi=150)
     plt.close(fig_cover)
 
