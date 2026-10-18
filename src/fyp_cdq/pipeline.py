@@ -145,16 +145,20 @@ class EvaluationPipeline:
             metric_kwargs = metric_impl.parse_cli_args(metric_args)
         metric_kwargs.update(kwargs)
 
-        # 5. Extract microservice partition (prioritizing microservices.json)
-        partition = self.service_detector.detect_and_extract(ms_path, system_name=system_id)
-        if partition.service_count == 0 or partition.total_classes == 0:
-            raise RuntimeError(f"No classes or microservices detected in {ms_path}")
-
-        # 6. Output directory
+        # 5. Output directory
         out_dir = output_dir or (self.output_base_dir / system_id)
         out_dir = Path(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
-        partition.save_json(out_dir / "output.json")
+
+        # 6. Extract microservice partition (prioritizing existing output.json, then detection)
+        cached_partition = out_dir / "output.json"
+        if cached_partition.exists():
+            partition = Partition.from_json(cached_partition)
+        else:
+            partition = self.service_detector.detect_and_extract(ms_path, system_name=system_id)
+            if partition.service_count == 0 or partition.total_classes == 0:
+                raise RuntimeError(f"No classes or microservices detected in {ms_path}")
+            partition.save_json(cached_partition)
 
         # 7. Evaluate metric
         result = metric_impl.evaluate(

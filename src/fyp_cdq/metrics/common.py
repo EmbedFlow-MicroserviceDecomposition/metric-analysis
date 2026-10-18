@@ -211,6 +211,9 @@ def load_edges_from_dataset(dataset_path: Path) -> List[Edge]:
     return edges
 
 
+_CODEBASE_EXTRACTION_CACHE: Dict[str, Tuple[List[Tuple[str, Operation]], List[Edge], Dict[str, dict]]] = {}
+
+
 def extract_codebase_operations_and_calls(
     codebase_path: Path,
     partition: Partition,
@@ -219,6 +222,10 @@ def extract_codebase_operations_and_calls(
     Extracts declared operations and invocation calls directly from the codebase.
     Used when no external dataset.json is provided.
     """
+    cache_key = f"{codebase_path.resolve()}::{sorted(partition.microservices.keys())}"
+    if cache_key in _CODEBASE_EXTRACTION_CACHE:
+        return _CODEBASE_EXTRACTION_CACHE[cache_key]
+
     methods_dict: Dict[str, Operation] = {}
     methods_by_name: Dict[str, List[Operation]] = {}
     calls: List[Tuple[str, Operation]] = []
@@ -227,35 +234,120 @@ def extract_codebase_operations_and_calls(
 
     get_cluster = resolve_partition(partition.microservices)
 
-    # 1. First pass: extract declared operations across all services
+    parsed_java_classes = []
+    parsed_python_classes = []
+    other_source_files = []
+
+    exclude_dirs = {
+        ".git", ".github", ".idea", ".vscode", "docs", "doc", "scripts", "script",
+        "gradle", ".mvn", "target", "build", "node_modules", "vendor", "test", "tests"
+    }
+
+    # 1. Single-pass file scan and operation extraction
     for root, dirs, files in os.walk(codebase_path):
-        if any(p in root.lower() for p in [".git", "test", "tests", "target", "build", "node_modules"]):
-            continue
+        dirs[:] = [d for d in dirs if d.lower() not in exclude_dirs and not d.startswith(".")]
         for f in files:
             file_path = Path(root) / f
             if f.endswith(".java") and javalang:
-                _extract_java_operations(file_path, methods_dict, methods_by_name, dataset_methods)
+                try:
+                    with open(file_path, "r", encoding="utf-8", errors="ignore") as fp:
+                        code = fp.read()
+                    tree = javalang.parse.parse(code)
+                    pkg = tree.package.name if tree.package else ""
+                    for _, cls_node in tree.filter(javalang.tree.ClassDeclaration):
+                        cname = f"{pkg}.{cls_node.name}" if pkg else cls_node.name
+                        for m in cls_node.methods:
+                            ret = m.return_type.name if m.return_type else "void"
+                            params = tuple(p.type.name for p in m.parameters if hasattr(p, "type") and p.type)
+                            op = Operation(cls=cname, name=m.name, params=params, returns=ret)
+                            full_id = f"{cname}.{m.name}"
+                            methods_dict[full_id] = op
+                            methods_by_name.setdefault(m.name, []).append(op)
+                            dataset_methods[full_id] = {
+                                "package": pkg,
+                                "class": cname,
+                                "method_name": m.name,
+                                "parameters": list(params),
+                                "return_type": ret,
+                            }
+                        parsed_java_classes.append((cname, cls_node))
+                except Exception:
+                    pass
             elif f.endswith(".py"):
-                _extract_python_operations(file_path, methods_dict, methods_by_name, dataset_methods)
+                try:
+                    with open(file_path, "r", encoding="utf-8", errors="ignore") as fp:
+                        tree = ast.parse(fp.read())
+                    mod_name = file_path.stem
+                    for node in ast.walk(tree):
+                        if isinstance(node, ast.ClassDef):
+                            cls_name = f"{mod_name}.{node.name}"
+                            funcs = []
+                            for item in node.body:
+                                if isinstance(item, ast.FunctionDef):
+                                    params = tuple(arg.arg for arg in item.args.args if arg.arg != "self")
+                                    ret = "object"
+                                    op = Operation(cls=cls_name, name=item.name, params=params, returns=ret)
+                                    full_id = f"{cls_name}.{item.name}"
+                                    methods_dict[full_id] = op
+                                    methods_by_name.setdefault(item.name, []).append(op)
+                                    dataset_methods[full_id] = {
+                                        "package": mod_name,
+                                        "class": cls_name,
+                                        "method_name": item.name,
+                                        "parameters": list(params),
+                                        "return_type": ret,
+                                    }
+                                    funcs.append(item)
+                            parsed_python_classes.append((cls_name, funcs))
+                except Exception:
+                    pass
             elif f.endswith(".go"):
                 _extract_go_operations(file_path, methods_dict, methods_by_name, dataset_methods)
+                other_source_files.append(file_path)
             elif f.endswith(".cs"):
                 _extract_csharp_operations(file_path, methods_dict, methods_by_name, dataset_methods)
+                other_source_files.append(file_path)
 
-    # 2. Second pass: extract call invocations between classes
-    for root, dirs, files in os.walk(codebase_path):
-        if any(p in root.lower() for p in [".git", "test", "tests", "target", "build", "node_modules"]):
+    # 2. Second pass: extract call invocations from parsed memory structures
+    for caller_cls, cls_node in parsed_java_classes:
+        caller_cluster = get_cluster(caller_cls)
+        if not caller_cluster:
             continue
-        for f in files:
-            file_path = Path(root) / f
-            if f.endswith(".java") and javalang:
-                _extract_java_calls(file_path, methods_by_name, get_cluster, calls, edges)
-            elif f.endswith(".py"):
-                _extract_python_calls(file_path, methods_by_name, get_cluster, calls, edges)
-            elif f.endswith(".go") or f.endswith(".cs"):
-                _extract_generic_calls(file_path, methods_by_name, get_cluster, calls, edges)
+        for m in cls_node.methods:
+            for _, inv in m.filter(javalang.tree.MethodInvocation):
+                m_name = inv.member
+                if m_name in methods_by_name:
+                    for target_op in methods_by_name[m_name]:
+                        target_cluster = get_cluster(target_op.cls)
+                        if target_cluster and target_cluster != caller_cluster:
+                            calls.append((caller_cls, target_op))
+                            edges.append(Edge(src=caller_cls, dst=target_op.cls, type="CALL"))
 
-    return calls, edges, dataset_methods
+    for caller_cls, funcs in parsed_python_classes:
+        caller_cluster = get_cluster(caller_cls)
+        if not caller_cluster:
+            continue
+        for item in funcs:
+            for sub in ast.walk(item):
+                if isinstance(sub, ast.Call):
+                    func_name = None
+                    if isinstance(sub.func, ast.Name):
+                        func_name = sub.func.id
+                    elif isinstance(sub.func, ast.Attribute):
+                        func_name = sub.func.attr
+                    if func_name and func_name in methods_by_name:
+                        for target_op in methods_by_name[func_name]:
+                            target_cluster = get_cluster(target_op.cls)
+                            if target_cluster and target_cluster != caller_cluster:
+                                calls.append((caller_cls, target_op))
+                                edges.append(Edge(src=caller_cls, dst=target_op.cls, type="CALL"))
+
+    for file_path in other_source_files:
+        _extract_generic_calls(file_path, methods_by_name, get_cluster, calls, edges)
+
+    result = (calls, edges, dataset_methods)
+    _CODEBASE_EXTRACTION_CACHE[cache_key] = result
+    return result
 
 
 def _extract_java_operations(file_path: Path, methods_dict, methods_by_name, dataset_methods):
@@ -438,8 +530,9 @@ def _extract_generic_calls(file_path: Path, methods_by_name, get_cluster, calls,
         if not caller_cluster:
             return
 
-        for m_name in methods_by_name:
-            if re.search(r"\b" + re.escape(m_name) + r"\s*\(", code):
+        invoked = set(re.findall(r"\b([A-Za-z0-9_]+)\s*\(", code))
+        for m_name in invoked:
+            if m_name in methods_by_name:
                 for target_op in methods_by_name[m_name]:
                     target_cluster = get_cluster(target_op.cls)
                     if target_cluster and target_cluster != caller_cluster:

@@ -37,7 +37,10 @@ import os
 from pathlib import Path
 from typing import Dict, List, Optional
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -383,8 +386,75 @@ print("Spearman Rank Correlation Matrix:")
 corr_df.round(3)
 
 # %% [markdown]
-# ## 7. Summary of Empirical Observations
+# ## 8. Multi-page PDF Report Generation
 #
-# 1. **Fixed Bound Sensitivity**: As systems scale above ~500 classes, `ned_absolute` with fixed [5, 20] bounds frequently drops toward zero because enterprise microservices (e.g. `MS048` Jaeger, `MS052` Consul, `MS051` KubeVirt) naturally accumulate 50–300 classes per service.
-# 2. **Relative NED Resilience**: `ned_relative` ($\epsilon = 0.5$) adapts to system scale, offering a fairer representation of internal balance when analyzing large enterprise codebases vs. benchmark toys.
-# 3. **Extreme Service Types**: Skew is primarily driven by "god services" in monolithic conversions, whereas academic benchmarks (like `MS001` PetClinic, `MS010` ECS PetClinic, `MS019` TrainTicket, `MS021` TeaStore) exhibit near-optimal balance under both metrics.
+# Exporting publication-ready PDF analytical report containing summary statistics and all visual figures.
+
+# %%
+pdf_report_path = PROJECT_ROOT / "analysis" / "ned_report.pdf"
+
+with PdfPages(pdf_report_path) as pdf:
+    # Page 1: Title and Summary Table
+    fig_cover, ax_cover = plt.subplots(figsize=(11, 8.5))
+    ax_cover.axis("off")
+    ax_cover.text(0.5, 0.90, "Non-Extreme Distribution (NED) Report", fontsize=20, fontweight="bold", ha="center")
+    ax_cover.text(0.5, 0.85, "Decomposition Quality & Service Size Balance Evaluation", fontsize=12, color="gray", ha="center")
+    
+    table_data = summary_stats.round(3).reset_index()
+    table_data.columns = ["Metric", "Count", "Mean", "Std", "Min", "25%", "Median", "75%", "Max"]
+    table = ax_cover.table(
+        cellText=table_data.values,
+        colLabels=table_data.columns,
+        loc="center",
+        cellLoc="center"
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    table.scale(1.1, 1.6)
+    
+    summary_text = (
+        "Key Insights:\n"
+        f"• Evaluated {len(df_valid)} systems with valid microservice decompositions.\n"
+        f"• Fixed NED: Mean = {df_valid['ned_absolute'].mean():.4f}, Median = {df_valid['ned_absolute'].median():.4f}.\n"
+        f"• Relative NED: Mean = {df_valid['ned_relative'].mean():.4f}, Median = {df_valid['ned_relative'].median():.4f}.\n"
+        "• Fixed NED penalizes systems diverging from the global [5, 20] range.\n"
+        "• Relative NED adapts to system scale, offering a fairer assessment of internal balance."
+    )
+    ax_cover.text(0.1, 0.18, summary_text, fontsize=10, verticalalignment="top", fontfamily="monospace")
+    pdf.savefig(fig_cover, dpi=150)
+    plt.close(fig_cover)
+
+    # Page 2: Distribution Figure
+    fig_dist_p = PROJECT_ROOT / "analysis" / "ned_distributions.png"
+    if fig_dist_p.exists():
+        fig_dist = plt.figure(figsize=(11, 6))
+        img_dist = plt.imread(fig_dist_p)
+        plt.imshow(img_dist)
+        plt.axis("off")
+        plt.title("Distribution of NED Scores Across Systems", fontsize=14, fontweight="bold")
+        pdf.savefig(fig_dist, dpi=150)
+        plt.close(fig_dist)
+
+    # Page 3: Language Breakdown Figure
+    fig_lang_p = PROJECT_ROOT / "analysis" / "ned_by_language.png"
+    if fig_lang_p.exists():
+        fig_lang = plt.figure(figsize=(11, 6))
+        img_lang = plt.imread(fig_lang_p)
+        plt.imshow(img_lang)
+        plt.axis("off")
+        plt.title("NED Distribution Grouped by Language", fontsize=14, fontweight="bold")
+        pdf.savefig(fig_lang, dpi=150)
+        plt.close(fig_lang)
+
+    # Page 4: Scale Correlations Figure
+    if fig_scale_path.exists():
+        fig_scale = plt.figure(figsize=(11, 6))
+        img_scale = plt.imread(fig_scale_path)
+        plt.imshow(img_scale)
+        plt.axis("off")
+        plt.title("Correlation: System Scale vs. NED", fontsize=14, fontweight="bold")
+        pdf.savefig(fig_scale, dpi=150)
+        plt.close(fig_scale)
+
+print(f"Generated multi-page PDF report at: {pdf_report_path}")
+
