@@ -330,10 +330,82 @@ ax.set_xlabel("Language Ecosystem")
 ax.set_ylabel("Average Score")
 ax.set_ylim(0, 1.0)
 ax.legend(title="Metric")
+plt.tight_layout()
 
 fig_lang_path = PROJECT_ROOT / "analysis" / "ned_by_language.png"
 fig.savefig(fig_lang_path, dpi=150)
 print(f"Saved language comparison plot to: {fig_lang_path}")
+plt.show()
+
+# %%
+# Score distributions across language ecosystems: Fixed NED
+fig_abs, ax_abs = plt.subplots(figsize=(10, 5))
+order_langs = sorted(df_apps["lang_group"].unique(), key=lambda l: (l == "Other", l))
+sns.boxplot(
+    data=df_apps,
+    x="lang_group",
+    y="ned_absolute",
+    hue="lang_group",
+    palette="Blues",
+    legend=False,
+    ax=ax_abs,
+    order=order_langs
+)
+sns.stripplot(
+    data=df_apps,
+    x="lang_group",
+    y="ned_absolute",
+    color="black",
+    alpha=0.6,
+    jitter=0.2,
+    size=6,
+    ax=ax_abs,
+    order=order_langs
+)
+ax_abs.set_title("Fixed NED Score Distribution by Implementation Language", fontsize=13, fontweight="bold")
+ax_abs.set_xlabel("Implementation Language")
+ax_abs.set_ylabel("Fixed NED Score")
+ax_abs.set_ylim(-0.05, 1.05)
+plt.tight_layout()
+
+fig_abs_path = PROJECT_ROOT / "analysis" / "ned_absolute_by_language.png"
+fig_abs.savefig(fig_abs_path, dpi=150)
+print(f"Saved Fixed NED language breakdown plot to: {fig_abs_path}")
+plt.show()
+
+# %%
+# Score distributions across language ecosystems: Relative NED
+fig_rel, ax_rel = plt.subplots(figsize=(10, 5))
+sns.boxplot(
+    data=df_apps,
+    x="lang_group",
+    y="ned_relative",
+    hue="lang_group",
+    palette="Oranges",
+    legend=False,
+    ax=ax_rel,
+    order=order_langs
+)
+sns.stripplot(
+    data=df_apps,
+    x="lang_group",
+    y="ned_relative",
+    color="black",
+    alpha=0.6,
+    jitter=0.2,
+    size=6,
+    ax=ax_rel,
+    order=order_langs
+)
+ax_rel.set_title("Relative NED Score Distribution by Implementation Language", fontsize=13, fontweight="bold")
+ax_rel.set_xlabel("Implementation Language")
+ax_rel.set_ylabel("Relative NED Score")
+ax_rel.set_ylim(-0.05, 1.05)
+plt.tight_layout()
+
+fig_rel_path = PROJECT_ROOT / "analysis" / "ned_relative_by_language.png"
+fig_rel.savefig(fig_rel_path, dpi=150)
+print(f"Saved Relative NED language breakdown plot to: {fig_rel_path}")
 plt.show()
 
 # %% [markdown]
@@ -465,18 +537,40 @@ with PdfPages(pdf_report_path) as pdf:
         pdf.savefig(fig_dist, dpi=150)
         plt.close(fig_dist)
 
-    # Page 3: Language Breakdown Figure
+    # Page 3: Language Breakdown Figure (Mean Comparison)
     fig_lang_p = PROJECT_ROOT / "analysis" / "ned_by_language.png"
     if fig_lang_p.exists():
         fig_lang = plt.figure(figsize=(11, 6))
         img_lang = plt.imread(fig_lang_p)
         plt.imshow(img_lang)
         plt.axis("off")
-        plt.title("NED Distribution Grouped by Language", fontsize=14, fontweight="bold")
+        plt.title("Mean NED Score Grouped by Language", fontsize=14, fontweight="bold")
         pdf.savefig(fig_lang, dpi=150)
         plt.close(fig_lang)
 
-    # Page 4: Scale Correlations Figure
+    # Page 4: Fixed NED Language Distribution Figure
+    fig_abs_p = PROJECT_ROOT / "analysis" / "ned_absolute_by_language.png"
+    if fig_abs_p.exists():
+        fig_abs_img = plt.figure(figsize=(11, 6))
+        img_abs = plt.imread(fig_abs_p)
+        plt.imshow(img_abs)
+        plt.axis("off")
+        plt.title("Fixed NED Distribution Grouped by Language", fontsize=14, fontweight="bold")
+        pdf.savefig(fig_abs_img, dpi=150)
+        plt.close(fig_abs_img)
+
+    # Page 5: Relative NED Language Distribution Figure
+    fig_rel_p = PROJECT_ROOT / "analysis" / "ned_relative_by_language.png"
+    if fig_rel_p.exists():
+        fig_rel_img = plt.figure(figsize=(11, 6))
+        img_rel = plt.imread(fig_rel_p)
+        plt.imshow(img_rel)
+        plt.axis("off")
+        plt.title("Relative NED Distribution Grouped by Language", fontsize=14, fontweight="bold")
+        pdf.savefig(fig_rel_img, dpi=150)
+        plt.close(fig_rel_img)
+
+    # Page 6: Scale Correlations Figure
     if fig_scale_path.exists():
         fig_scale = plt.figure(figsize=(11, 6))
         img_scale = plt.imread(fig_scale_path)
