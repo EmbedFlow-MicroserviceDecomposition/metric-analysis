@@ -23,12 +23,14 @@
 #
 # ### Metrics Evaluated:
 # 1. **Fixed-Bounds NED (`ned_absolute`)**:
-#    $$\text{NED}_{\text{fixed}} = 1 - \frac{\sum_{s \in \text{Extreme}} |s|}{\text{Total Classes}}$$
-#    where a service is extreme if $|s| < \text{lo}$ (default: 5) or $|s| > \text{hi}$ (default: 20).
+#    $$\text{NED}_{\text{fixed}} = 1 - \frac{\text{# non-extreme partitions}}{\text{Total Partitions}}$$
+#    where a service partition is non-extreme if $\text{lo} \le |s| \le \text{hi}$ (default: $[5, 20]$).
+#    Lower is better: $0.0 = \text{all partitions non-extreme (ideal)}$, $1.0 = \text{all partitions extreme}$.
 #
 # 2. **Relative-Bounds NED (`ned_relative`)**:
-#    $$\text{NED}_{\text{relative}} = \frac{\sum_{s \in \text{Balanced}} |s|}{\text{Total Classes}}$$
-#    where a service is balanced if its size falls within $[(1-\epsilon)\bar{s}, (1+\epsilon)\bar{s}]$ around the system's average service size $\bar{s}$.
+#    $$\text{NED}_{\text{relative}} = 1 - \frac{\text{# relative-non-extreme partitions}}{\text{Total Partitions}}$$
+#    where a service is relative-non-extreme if its size falls within $[(1-\epsilon)\bar{s}, (1+\epsilon)\bar{s}]$ around the system's average service size $\bar{s}$.
+#    Lower is better: $0.0 = \text{all partitions balanced around mean}$, $1.0 = \text{all partitions extreme}$.
 
 # %%
 import json
@@ -233,6 +235,7 @@ print(segregation_comparison.round(3).to_string(index=False))
 # ## 3. Distribution Comparison: Fixed vs. Relative NED
 #
 # Comparing the distribution of Fixed-Bounds NED (`ned_absolute`) and Relative-Bounds NED (`ned_relative`).
+# - Lower scores indicate better partition size balance (0.0 = all partitions non-extreme, 1.0 = all partitions extreme).
 # - Fixed NED penalizes systems that depart from the global [5, 20] range.
 # - Relative NED evaluates balance with respect to the system's own mean service size.
 
@@ -415,16 +418,16 @@ plt.show()
 # excluding pure infrastructure/deployment recipes.
 
 # %%
-print("=== TOP 10 BALANCED APPLICATION MICROSERVICES (Fixed NED) ===")
-top_balanced = df_apps.sort_values(by=["ned_absolute", "ned_relative"], ascending=[False, False])[
+print("=== TOP 10 BALANCED APPLICATION MICROSERVICES (Lowest Fixed NED, 0.0 = Ideal) ===")
+top_balanced = df_apps.sort_values(by=["ned_absolute", "ned_relative"], ascending=[True, True])[
     ["system_id", "system_name", "language", "service_count", "total_classes", "avg_service_size", "ned_absolute", "ned_relative"]
 ].head(10)
 print(top_balanced.to_string(index=False))
 
 # %%
-print("\n=== TOP 10 SKEWED / EXTREME APPLICATION MICROSERVICES (Lowest Fixed NED) ===")
+print("\n=== TOP 10 SKEWED / EXTREME APPLICATION MICROSERVICES (Highest Fixed NED, 1.0 = All Extreme) ===")
 most_skewed = df_apps[df_apps["total_classes"] > 0].sort_values(
-    by=["ned_absolute", "ned_relative"], ascending=[True, True]
+    by=["ned_absolute", "ned_relative"], ascending=[False, False]
 )[
     ["system_id", "system_name", "language", "service_count", "total_classes", "avg_service_size", "tiny_services_count", "god_services_count", "ned_absolute", "ned_relative"]
 ].head(10)
@@ -519,8 +522,8 @@ with PdfPages(pdf_report_path) as pdf:
         f"• Application Systems - Fixed NED: Mean = {df_apps['ned_absolute'].mean():.4f}, Median = {df_apps['ned_absolute'].median():.4f}.\n"
         f"• Application Systems - Relative NED: Mean = {df_apps['ned_relative'].mean():.4f}, Median = {df_apps['ned_relative'].median():.4f}.\n"
         "• Segregated pure infrastructure/deployment recipes (which have 0-1 services/classes) to avoid metric skew.\n"
-        "• Fixed NED penalizes systems diverging from the global [5, 20] range.\n"
-        "• Relative NED adapts to system scale, offering a fairer assessment of internal balance."
+        "• Fixed NED penalizes systems with partitions diverging from the global [5, 20] range (lower is better, 0.0 = ideal).\n"
+        "• Relative NED adapts to system scale, assessing partition size uniformity relative to mean service size."
     )
     ax_cover.text(0.1, 0.16, summary_text, fontsize=9.5, verticalalignment="top", fontfamily="monospace")
     pdf.savefig(fig_cover, dpi=150)

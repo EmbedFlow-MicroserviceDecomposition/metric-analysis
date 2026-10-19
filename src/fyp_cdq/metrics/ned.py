@@ -16,44 +16,47 @@ def calculate_ned(
     eps: float = DEFAULT_NED_EPS,
 ) -> Tuple[float, float, Dict[str, float]]:
     """
-    Non-Extreme Distribution (NED) calculation extracted from reference SOTA implementations.
+    Non-Extreme Distribution (NED) calculation.
 
     Fixed bounds NED:
-        1 - (#classes in extreme-sized partitions / total classes)
-        where extreme means size < lo or size > hi.
+        1 - (#non-extreme-sized partitions / total partitions)
+        where a partition is non-extreme if lo <= size <= hi.
 
     Relative bounds NED (CHGNN variant):
-        proportion of classes in partitions within [floor(avg*(1-eps)), ceil(avg*(1+eps))]
-        where avg = total_classes / #partitions.
+        1 - (#relative-non-extreme partitions / total partitions)
+        where a partition is non-extreme if floor(avg*(1-eps)) <= size <= ceil(avg*(1+eps)),
+        and avg = total_classes / total_partitions.
 
-    Higher is better. Range: [0.0, 1.0].
+    Lower is better. Range: [0.0, 1.0].
+    (0.0 = perfect balance, 1.0 = completely extreme partitions).
     """
     clusters: Dict[str, set] = {}
     for cls, cid in partition.items():
         clusters.setdefault(cid, set()).add(cls)
 
     total_classes = len(partition)
-    if total_classes == 0 or len(clusters) == 0:
+    total_partitions = len(clusters)
+    if total_classes == 0 or total_partitions == 0:
         return 0.0, 0.0, {}
 
     sizes = {cid: len(members) for cid, members in clusters.items()}
 
-    # 1. Fixed bounds NED
-    extreme_count = sum(size for size in sizes.values() if not (lo <= size <= hi))
-    overall_ned = 1.0 - (extreme_count / total_classes)
+    # 1. Fixed bounds NED: 1 - (#non-extreme partitions / total partitions)
+    non_extreme_count = sum(1 for size in sizes.values() if lo <= size <= hi)
+    overall_ned = 1.0 - (non_extreme_count / total_partitions)
 
-    # 2. Relative bounds NED (CHGNN variant)
-    avg = total_classes / len(clusters)
+    # 2. Relative bounds NED (CHGNN variant): 1 - (#relative-non-extreme partitions / total partitions)
+    avg = total_classes / total_partitions
     rel_lo = math.floor(avg * (1.0 - eps))
     rel_hi = math.ceil(avg * (1.0 + eps))
-    non_extreme_rel_count = sum(size for size in sizes.values() if rel_lo <= size <= rel_hi)
-    overall_ned_relative = non_extreme_rel_count / total_classes
+    non_extreme_rel_count = sum(1 for size in sizes.values() if rel_lo <= size <= rel_hi)
+    overall_ned_relative = 1.0 - (non_extreme_rel_count / total_partitions)
 
-    # Microservice level binary indicator (1.0 if balanced, 0.0 if extreme)
+    # Microservice level binary indicator (0.0 if balanced/non-extreme, 1.0 if extreme)
     microservice_scores = {}
     for cid, size in sizes.items():
-        is_non_extreme = 1.0 if (lo <= size <= hi) else 0.0
-        microservice_scores[cid] = is_non_extreme
+        is_extreme = 0.0 if (lo <= size <= hi) else 1.0
+        microservice_scores[cid] = is_extreme
 
     return overall_ned, overall_ned_relative, microservice_scores
 

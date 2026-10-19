@@ -73,6 +73,7 @@ class MetricResult:
             "score": self.score,
         }
         if self.score_relative is not None:
+            res["score_absolute"] = self.score
             res["score_relative"] = self.score_relative
         if self.bounds:
             res["bounds"] = self.bounds

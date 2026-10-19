@@ -37,7 +37,7 @@ def test_pipeline_evaluate_with_args(tmp_path: Path):
     assert partition.service_count == 5
     assert result.bounds["lo"] == 3
     assert result.bounds["eps"] == 0.25
-    assert result.score == 1.0
+    assert result.score == 0.0
 
 
 def test_pipeline_unsupported_system():
