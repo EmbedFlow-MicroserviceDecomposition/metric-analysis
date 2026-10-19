@@ -244,7 +244,9 @@ sns.boxplot(
     data=cohort_data,
     x="Cohort",
     y="IFN Score",
+    hue="Cohort",
     palette=["darkcyan", "lightgray"],
+    legend=False,
     ax=axes[1],
     width=0.4
 )
@@ -259,40 +261,44 @@ print(f"Saved distribution plot to: {fig_dist_path}")
 plt.show()
 
 # %% [markdown]
-# ## 4. Breakdown by Implementation Language
+# ## 4. Breakdown by Implementation Language (Connected Application Microservices)
 #
-# Comparing exposed interface complexity across programming languages.
+# Comparing exposed interface complexity across programming languages
+# for microservices with active inter-service edge extraction.
 
 # %%
-lang_counts = df_valid["language"].value_counts()
-main_langs = lang_counts[lang_counts >= 2].index
-df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
+active_lang_counts = df_active["language"].value_counts()
+main_langs = active_lang_counts[active_lang_counts >= 3].index.tolist()
+df_active["lang_group"] = df_active["language"].apply(lambda l: l if l in main_langs else "Other")
 
 fig, ax = plt.subplots(figsize=(10, 5))
-order_langs = sorted(df_apps["lang_group"].unique())
+order_langs = sorted(df_active["lang_group"].unique(), key=lambda l: (l == "Other", l))
 sns.boxplot(
-    data=df_apps,
+    data=df_active,
     x="lang_group",
     y="ifn_score",
+    hue="lang_group",
     palette="GnBu",
+    legend=False,
     ax=ax,
     order=order_langs
 )
 sns.stripplot(
-    data=df_apps,
+    data=df_active,
     x="lang_group",
     y="ifn_score",
     color="black",
-    alpha=0.5,
+    alpha=0.6,
     jitter=0.2,
-    size=5,
+    size=6,
     ax=ax,
     order=order_langs
 )
-ax.set_yscale("symlog")
-ax.set_title("IFN Score Distribution by Application Primary Language (SymLog Scale)", fontsize=13, fontweight="bold")
+ax.set_yscale("log")
+ax.set_ylim(bottom=0.1)
+ax.set_title("IFN Score Distribution by Implementation Language (Connected Systems)", fontsize=13, fontweight="bold")
 ax.set_xlabel("Implementation Language")
-ax.set_ylabel("IFN Score")
+ax.set_ylabel("IFN Score (Avg Interfaces / Service, log scale)")
 plt.tight_layout()
 
 fig_lang_path = PROJECT_ROOT / "analysis" / "ifn_by_language.png"
@@ -334,10 +340,11 @@ sns.scatterplot(
     ax=axes[0]
 )
 axes[0].set_xscale("log")
-axes[0].set_yscale("symlog")
-axes[0].set_title("Total Classes vs. IFN (Connected Apps, Log-SymLog Scale)", fontsize=13, fontweight="bold")
+axes[0].set_yscale("log")
+axes[0].set_ylim(bottom=0.1)
+axes[0].set_title("Total Classes vs. IFN (Connected Apps, Log-Log Scale)", fontsize=13, fontweight="bold")
 axes[0].set_xlabel("Total Classes (log scale)")
-axes[0].set_ylabel("IFN Score (symlog)")
+axes[0].set_ylabel("IFN Score (log scale)")
 axes[0].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # Plot 2: Service Count vs IFN
@@ -351,10 +358,11 @@ sns.scatterplot(
     alpha=0.7,
     ax=axes[1]
 )
-axes[1].set_yscale("symlog")
-axes[1].set_title("Service Count vs. IFN (Connected Apps)", fontsize=13, fontweight="bold")
+axes[1].set_yscale("log")
+axes[1].set_ylim(bottom=0.1)
+axes[1].set_title("Service Count vs. IFN (Connected Apps, Log Scale)", fontsize=13, fontweight="bold")
 axes[1].set_xlabel("Service Count")
-axes[1].set_ylabel("IFN Score (symlog)")
+axes[1].set_ylabel("IFN Score (log scale)")
 axes[1].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 
 plt.tight_layout()

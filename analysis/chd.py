@@ -244,7 +244,9 @@ sns.boxplot(
     data=cohort_data,
     x="Cohort",
     y="CHD Score",
+    hue="Cohort",
     palette=["forestgreen", "salmon"],
+    legend=False,
     ax=axes[1],
     width=0.4
 )
@@ -258,38 +260,40 @@ print(f"Saved distribution plot to: {fig_dist_path}")
 plt.show()
 
 # %% [markdown]
-# ## 4. Breakdown by Implementation Language
+# ## 4. Breakdown by Implementation Language (Active Application Microservices)
 #
-# Investigating whether architecture language influences domain term cohesiveness.
+# Investigating whether architecture language influences domain term cohesiveness
+# across microservices with active method invocation extraction.
 
 # %%
-lang_counts = df_valid["language"].value_counts()
-main_langs = lang_counts[lang_counts >= 2].index
-df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in main_langs else "Other")
+active_lang_counts = df_active["language"].value_counts()
+main_langs = active_lang_counts[active_lang_counts >= 3].index.tolist()
+df_active["lang_group"] = df_active["language"].apply(lambda l: l if l in main_langs else "Other")
 
-# %%
 fig, ax = plt.subplots(figsize=(10, 5))
-order_langs = sorted(df_apps["lang_group"].unique())
+order_langs = sorted(df_active["lang_group"].unique(), key=lambda l: (l == "Other", l))
 sns.boxplot(
-    data=df_apps,
+    data=df_active,
     x="lang_group",
     y="chd_score",
+    hue="lang_group",
     palette="Set2",
+    legend=False,
     ax=ax,
     order=order_langs
 )
 sns.stripplot(
-    data=df_apps,
+    data=df_active,
     x="lang_group",
     y="chd_score",
     color="black",
-    alpha=0.5,
+    alpha=0.6,
     jitter=0.2,
-    size=5,
+    size=6,
     ax=ax,
     order=order_langs
 )
-ax.set_title("CHD Score Distribution by Application Primary Language", fontsize=13, fontweight="bold")
+ax.set_title("CHD Score Distribution by Implementation Language (Active Systems)", fontsize=13, fontweight="bold")
 ax.set_xlabel("Implementation Language")
 ax.set_ylabel("CHD Score")
 plt.tight_layout()
@@ -351,9 +355,10 @@ sns.scatterplot(
     alpha=0.7,
     ax=axes[1]
 )
-axes[1].set_xscale("symlog")
-axes[1].set_title("Calls Analyzed vs. CHD (Active Apps)", fontsize=13, fontweight="bold")
-axes[1].set_xlabel("Inter-Service Calls (symlog)")
+axes[1].set_xscale("log")
+axes[1].set_xlim(left=0.8)
+axes[1].set_title("Calls Analyzed vs. CHD (Active Apps, Log Scale)", fontsize=13, fontweight="bold")
+axes[1].set_xlabel("Inter-Service Calls (log scale)")
 axes[1].set_ylabel("CHD Score")
 axes[1].legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 

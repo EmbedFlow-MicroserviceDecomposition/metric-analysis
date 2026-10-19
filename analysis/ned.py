@@ -289,11 +289,11 @@ plt.show()
 
 # %%
 # Group languages with few occurrences into 'Other'
-lang_counts = df_valid["language"].value_counts()
+lang_counts = df_apps["language"].value_counts()
 major_langs = lang_counts[lang_counts >= 3].index.tolist()
-df_valid["lang_group"] = df_valid["language"].apply(lambda l: l if l in major_langs else "Other")
+df_apps["lang_group"] = df_apps["language"].apply(lambda l: l if l in major_langs else "Other")
 
-lang_agg = df_valid.groupby("lang_group").agg(
+lang_agg = df_apps.groupby("lang_group").agg(
     systems_count=("system_id", "count"),
     mean_ned_abs=("ned_absolute", "mean"),
     median_ned_abs=("ned_absolute", "median"),
@@ -308,7 +308,7 @@ print(lang_agg.round(3).to_string(index=False))
 # %%
 fig, ax = plt.subplots(figsize=(10, 5))
 melted_lang = pd.melt(
-    df_valid,
+    df_apps,
     id_vars=["lang_group"],
     value_vars=["ned_absolute", "ned_relative"],
     var_name="Metric",
@@ -325,7 +325,7 @@ sns.barplot(
     errorbar=None,
     ax=ax
 )
-ax.set_title("Mean NED Score by Language Ecosystem", fontsize=13, fontweight="bold")
+ax.set_title("Mean NED Score by Application Language Ecosystem", fontsize=13, fontweight="bold")
 ax.set_xlabel("Language Ecosystem")
 ax.set_ylabel("Average Score")
 ax.set_ylim(0, 1.0)
