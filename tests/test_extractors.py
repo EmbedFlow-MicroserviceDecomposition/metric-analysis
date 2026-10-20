@@ -68,3 +68,35 @@ def test_generic_extractor_csharp(tmp_path: Path):
 
     assert "EShop.Orders.Order" in classes
     assert "EShop.Orders.OrderItem" in classes
+
+
+def test_java_extractor_ignores_comments_and_handles_records(tmp_path: Path):
+    java_code = '''
+    package com.example;
+    /**
+     * This class defines a record that provides data to interface with clients.
+     */
+    public record CustomerDto(String name, int age) {}
+    '''
+    (tmp_path / "CustomerDto.java").write_text(java_code)
+    extractor = JavaExtractor()
+    classes = extractor.extract_classes(tmp_path)
+    assert classes == ["com.example.CustomerDto"]
+
+
+def test_csharp_extractor_ignores_generic_where_class_constraints(tmp_path: Path):
+    cs_code = """
+    namespace EShop.EventBus;
+    // Redirect from class to handler
+    public interface IEventBus
+    {
+        void Subscribe<T, TH>()
+            where T : class
+            where TH : class, IIntegrationEventHandler<T>;
+    }
+    """
+    (tmp_path / "IEventBus.cs").write_text(cs_code)
+    extractor = GenericExtractor(language="C#")
+    classes = extractor.extract_classes(tmp_path)
+    assert classes == ["EShop.EventBus.IEventBus"]
+

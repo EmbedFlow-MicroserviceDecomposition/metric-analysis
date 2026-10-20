@@ -1,11 +1,10 @@
 """Detects microservices in a codebase repository and extracts the partition."""
 
 import json
-import os
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional
 
 from fyp_cdq.config import MICROSERVICES_JSON
 from fyp_cdq.extractors.base import BaseExtractor
@@ -40,10 +39,10 @@ class ServiceDetector:
 
         # 2. Sniffing fallback (only when absolutely necessary)
         service_dirs = self.discover_service_directories(codebase_path)
-        extractor = self._get_extractor(codebase_path)
 
         microservices: Dict[str, List[str]] = {}
         for service_name, sdir in service_dirs.items():
+            extractor = self._get_extractor(sdir)
             classes = extractor.extract_classes(sdir)
             if classes:
                 microservices[service_name] = classes
@@ -77,13 +76,22 @@ class ServiceDetector:
             return None
 
         lang = entry.get("language", "")
-        extractor = self._get_extractor(codebase_path, forced_language=lang)
+        is_multi_lang = "polyglot" in lang.lower() or "/" in lang
         microservices: Dict[str, List[str]] = {}
 
         for sname, rel_dir in entry["services"].items():
             sdir = (codebase_path / rel_dir).resolve()
             if sdir.is_dir():
-                classes = extractor.extract_classes(sdir)
+                if is_multi_lang:
+                    extractor = self._get_extractor(sdir, forced_language="")
+                    classes = extractor.extract_classes(sdir)
+                else:
+                    extractor = self._get_extractor(sdir, forced_language=lang)
+                    classes = extractor.extract_classes(sdir)
+                    if not classes:
+                        # Fallback to per-service language auto-detection (e.g. TS UI service in a Java repo)
+                        fallback_ext = self._get_extractor(sdir, forced_language="")
+                        classes = fallback_ext.extract_classes(sdir)
                 if classes:
                     microservices[sname] = classes
 
@@ -233,37 +241,64 @@ class ServiceDetector:
         return dirs
 
     def _has_source_files(self, path: Path) -> bool:
-        return (
-            any(path.rglob("*.java")) or
-            any(path.rglob("*.go")) or
-            any(path.rglob("*.py")) or
-            any(path.rglob("*.cs")) or
-            any(path.rglob("*.js")) or
-            any(path.rglob("*.ts"))
+        exts = (
+            "*.java", "*.kt", "*.scala", "*.go", "*.py", "*.cs",
+            "*.js", "*.ts", "*.jsx", "*.tsx", "*.vue", "*.php",
+            "*.rb", "*.rs", "*.ex", "*.cpp", "*.cc", "*.hpp", "*.h",
         )
+        return any(any(path.rglob(ext)) for ext in exts)
 
     def _get_extractor(self, root: Path, forced_language: str = "") -> BaseExtractor:
-        lang = forced_language.lower()
-        if "java" in lang:
+        lang = forced_language.lower().strip()
+        if lang == "java":
             return JavaExtractor()
         if "c#" in lang or ".net" in lang:
             return GenericExtractor(language="C#")
-        if "go" in lang:
+        if lang == "go" or "golang" in lang:
             return GenericExtractor(language="Go")
         if "python" in lang:
             return GenericExtractor(language="Python")
-        if any(k in lang for k in ["node", "js", "typescript"]):
+        if any(k in lang for k in ["node", "javascript", "typescript", "vue", "react"]):
             return GenericExtractor(language="Node.js")
+        if "kotlin" in lang and "java" not in lang:
+            return GenericExtractor(language="Kotlin")
+        if "scala" in lang and "java" not in lang:
+            return GenericExtractor(language="Scala")
+        if "php" in lang:
+            return GenericExtractor(language="PHP")
+        if "ruby" in lang:
+            return GenericExtractor(language="Ruby")
+        if "rust" in lang:
+            return GenericExtractor(language="Rust")
+        if "elixir" in lang:
+            return GenericExtractor(language="Elixir")
+        if "c++" in lang or lang == "c":
+            return GenericExtractor(language="C++")
 
-        # Auto-detect from files in root
-        if any(root.rglob("*.java")):
+        # Auto-detect from files in root (or use Polyglot extractor if multiple languages coexist)
+        has_java = any(root.rglob("*.java"))
+        has_kt = any(root.rglob("*.kt"))
+        has_scala = any(root.rglob("*.scala"))
+        if has_java and not (has_kt or has_scala):
             return JavaExtractor()
+        if has_java or has_kt or has_scala:
+            return GenericExtractor(language="Polyglot")
         if any(root.rglob("*.cs")):
             return GenericExtractor(language="C#")
         if any(root.rglob("*.go")):
             return GenericExtractor(language="Go")
         if any(root.rglob("*.py")):
             return GenericExtractor(language="Python")
-        if any(root.rglob("*.js")) or any(root.rglob("*.ts")):
+        if any(root.rglob("*.rs")):
+            return GenericExtractor(language="Rust")
+        if any(root.rglob("*.ex")):
+            return GenericExtractor(language="Elixir")
+        if any(root.rglob("*.php")):
+            return GenericExtractor(language="PHP")
+        if any(root.rglob("*.rb")):
+            return GenericExtractor(language="Ruby")
+        if any(root.rglob("*.cpp")) or any(root.rglob("*.cc")):
+            return GenericExtractor(language="C++")
+        if any(root.rglob("*.ts")) or any(root.rglob("*.js")) or any(root.rglob("*.vue")):
             return GenericExtractor(language="Node.js")
         return GenericExtractor(language="Polyglot")

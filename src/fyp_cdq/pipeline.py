@@ -124,11 +124,18 @@ class EvaluationPipeline:
                 f"Unsupported metric '{metric_name}'. Supported metrics: {supported}"
             )
 
-        # 3. Check if monolith is required
+        # 3. Parse metric-specific CLI arguments
+        metric_kwargs = {}
+        if metric_args:
+            metric_kwargs = metric_impl.parse_cli_args(metric_args)
+        metric_kwargs.update(kwargs)
+
+        # 4. Check if monolith is required
         mono_path = None
         if metric_impl.needs_monolith:
             mono_path = resolve_monolith_codebase(system_id)
-            if not mono_path or not mono_path.exists():
+            has_dataset = bool(metric_kwargs.get("dataset_path"))
+            if not has_dataset and (not mono_path or not mono_path.exists()):
                 raise ValueError(
                     f"Metric '{metric_name}' requires both monolith and microservice codebases, "
                     f"but monolith codebase was not found for '{system_id}' in {MONOLITHS_DIR}."
@@ -138,12 +145,6 @@ class EvaluationPipeline:
                 mono_path = resolve_monolith_codebase(system_id)
             except Exception:
                 mono_path = None
-
-        # 4. Parse metric-specific CLI arguments
-        metric_kwargs = {}
-        if metric_args:
-            metric_kwargs = metric_impl.parse_cli_args(metric_args)
-        metric_kwargs.update(kwargs)
 
         # 5. Output directory
         out_dir = output_dir or (self.output_base_dir / system_id)
