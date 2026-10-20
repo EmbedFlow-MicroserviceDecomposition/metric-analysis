@@ -9,6 +9,7 @@ from fyp_cdq.metrics.base import BaseMetric
 from fyp_cdq.metrics.common import (
     Operation,
     extract_codebase_operations_and_calls,
+    extract_microservice_published_ops,
     jaccard_similarity,
     load_calls_from_dataset,
     pairwise_mean,
@@ -19,9 +20,9 @@ from fyp_cdq.models import MetricResult, Partition
 
 
 _NON_DOMAIN = {
-    "void", "int", "long", "short", "byte", "float", "double", "boolean",
-    "char", "string", "list", "map", "set", "collection", "object",
-    "integer", "optional", "iterable",
+    "void", "int", "long", "short", "byte", "float", "double", "boolean", "bool",
+    "char", "string", "str", "list", "map", "set", "collection", "object", "any",
+    "integer", "optional", "iterable", "dict", "tuple", "none", "unit", "term",
 }
 
 
@@ -35,7 +36,12 @@ def extract_terms(op: Operation) -> Set[str]:
     return {w.lower() for w in words} - _NON_DOMAIN
 
 
-def calculate_chd(get_cluster, clusters: Set[str], calls: List[Tuple[str, Operation]]) -> Tuple[float, Dict[str, float]]:
+def calculate_chd(
+    get_cluster,
+    clusters: Set[str],
+    calls: List[Tuple[str, Operation]],
+    ops_per_ms: Optional[Dict[str, Set[Operation]]] = None,
+) -> Tuple[float, Dict[str, float]]:
     """
     Cohesion at Domain Level (CHD).
     Mean over partitions of the mean pairwise Jaccard similarity of domain terms in operation signatures.
@@ -44,7 +50,9 @@ def calculate_chd(get_cluster, clusters: Set[str], calls: List[Tuple[str, Operat
     def f_dom(a: Operation, b: Operation) -> float:
         return jaccard_similarity(extract_terms(a), extract_terms(b))
 
-    ops_per_ms = published_ops(get_cluster, clusters, calls)
+    if ops_per_ms is None:
+        ops_per_ms = published_ops(get_cluster, clusters, calls)
+
     active_ms = [cid for cid, ops in ops_per_ms.items() if len(ops) >= 2]
     if not active_ms:
         return 1.0, {cid: 1.0 for cid in clusters}
@@ -61,7 +69,8 @@ def calculate_chd(get_cluster, clusters: Set[str], calls: List[Tuple[str, Operat
 class CHDMetric(BaseMetric):
     """
     Evaluator for Cohesion at Domain Level (CHD).
-    Can evaluate from source codebases directly or from an external dataset.json call graph.
+    Extracts published operations per microservice directly from the microservice codebase,
+    or from cross-partition calls when a monolith or dataset.json call graph is provided.
     """
 
     name: str = "CHD"
@@ -84,7 +93,6 @@ class CHDMetric(BaseMetric):
         dataset_path: Optional[Path] = None,
         **kwargs,
     ) -> MetricResult:
-        # 1. Resolve dataset.json if provided or present
         ds_file = None
         if dataset_path:
             ds_file = dataset_path if dataset_path.is_file() else (dataset_path / "dataset.json")
@@ -95,27 +103,32 @@ class CHDMetric(BaseMetric):
         elif mono_dir and (mono_dir / "dataset.json").exists():
             ds_file = mono_dir / "dataset.json"
 
+        clusters = set(partition.microservices.keys())
         calls: List[Tuple[str, Operation]] = []
-        dataset_methods = None
+        ops_per_ms: Optional[Dict[str, Set[Operation]]] = None
 
         if ds_file and ds_file.exists():
             calls, dataset_methods = load_calls_from_dataset(ds_file)
+            get_cluster = resolve_partition(partition.microservices, dataset_methods)
+            ops_per_ms = published_ops(get_cluster, clusters, calls)
+        elif mono_dir and mono_dir.exists():
+            calls, _, dataset_methods = extract_codebase_operations_and_calls(mono_dir, partition)
+            get_cluster = resolve_partition(partition.microservices, dataset_methods)
+            ops_per_ms = published_ops(get_cluster, clusters, calls)
         else:
-            # Extract operations and calls from codebase (prioritizing monolith if available, else ms)
-            search_codebase = mono_dir if mono_dir and mono_dir.exists() else ms_dir
-            calls, _, dataset_methods = extract_codebase_operations_and_calls(search_codebase, partition)
+            get_cluster = resolve_partition(partition.microservices)
+            ops_per_ms = extract_microservice_published_ops(ms_dir, partition)
 
-        clusters = set(partition.microservices.keys())
-        get_cluster = resolve_partition(partition.microservices, dataset_methods)
-
-        score, ms_scores = calculate_chd(get_cluster, clusters, calls)
+        score, ms_scores = calculate_chd(get_cluster, clusters, calls, ops_per_ms=ops_per_ms)
+        total_ops = sum(len(ops) for ops in ops_per_ms.values()) if ops_per_ms else 0
 
         result = MetricResult(
             metric="CHD",
             score=score,
             microservice_scores=ms_scores,
             metadata={
-                "calls_analyzed": len(calls),
+                "calls_analyzed": len(calls) if calls else total_ops,
+                "published_operations_count": total_ops,
                 "services_count": len(clusters),
             },
         )

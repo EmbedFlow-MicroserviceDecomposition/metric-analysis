@@ -1,11 +1,8 @@
 """Unit tests for EvaluationPipeline."""
 
 from pathlib import Path
-from typing import Optional
 import pytest
-from fyp_cdq.metrics.base import BaseMetric
 from fyp_cdq.metrics.registry import registry
-from fyp_cdq.models import MetricResult, Partition
 from fyp_cdq.pipeline import EvaluationPipeline
 
 
@@ -20,15 +17,14 @@ def test_pipeline_evaluate_ms001(tmp_path: Path):
     assert (tmp_path / "ned_score.json").exists()
 
 
-def test_pipeline_evaluate_ms001_new_metrics(tmp_path: Path):
+def test_pipeline_evaluate_ms001_microservice_metrics(tmp_path: Path):
     pipeline = EvaluationPipeline(output_base_dir=tmp_path)
-    for m in ["chd", "chm", "ifn"]:
+    for m in ["chd", "chm"]:
         m_dir = tmp_path / m
         partition, result = pipeline.evaluate("MS001", m, output_dir=m_dir)
         assert result.metric == m.upper()
-        assert result.score >= 0.0
+        assert 0.0 <= result.score <= 1.0
         assert (m_dir / f"{m}_score.json").exists()
-
 
 
 def test_pipeline_evaluate_with_args(tmp_path: Path):
@@ -58,15 +54,10 @@ def test_pipeline_unrecognized_metric_arg():
         pipeline.evaluate("MS001", "ned", metric_args=["--invalid-flag", "123"])
 
 
-def test_pipeline_requires_monolith_missing():
-    # Register a dummy metric that requires monolith
-    class DummyDualMetric(BaseMetric):
-        name = "DUAL_MOCK"
-        needs_monolith = True
-        def evaluate(self, partition: Partition, ms_dir: Path, mono_dir: Optional[Path] = None, output_dir: Optional[Path] = None, **kwargs) -> MetricResult:
-            return MetricResult(metric="DUAL_MOCK", score=1.0)
-
-    registry.register(DummyDualMetric())
+def test_pipeline_decomposition_metrics_require_monolith():
+    assert set(registry.get_metrics_requiring_monolith()) == {"IFN", "SM"}
+    assert set(registry.get_metrics_microservice_only()) == {"NED", "CHD", "CHM"}
     pipeline = EvaluationPipeline()
-    with pytest.raises(ValueError, match="requires both monolith and microservice codebases"):
-        pipeline.evaluate("MS001", "dual_mock")
+    for m in ["ifn", "sm"]:
+        with pytest.raises(ValueError, match="requires both monolith and microservice codebases"):
+            pipeline.evaluate("MS019", m)

@@ -1,6 +1,7 @@
-"""Interface Number of Operations (IFN) metric evaluator."""
+"""Interface Number (IFN) decomposition quality metric evaluator."""
 
 import argparse
+import json
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -16,9 +17,9 @@ from fyp_cdq.models import MetricResult, Partition
 
 def calculate_ifn(get_cluster, clusters: Set[str], edges: List[Edge]) -> Tuple[float, Dict[str, float]]:
     """
-    Interface Number of Operations (IFN).
-    Measures the average number of distinct operations or interfaces exposed by each microservice
-    to other microservices in the system.
+    Interface Number (IFN).
+    Measures the average number of distinct exposed interfaces (target classes in microservice j
+    invoked by classes in microservice i != j in the monolith call graph) across all microservices.
     Range [0, inf), lower is better.
     """
     K = len(clusters)
@@ -44,12 +45,13 @@ def calculate_ifn(get_cluster, clusters: Set[str], edges: List[Edge]) -> Tuple[f
 
 class IFNMetric(BaseMetric):
     """
-    Evaluator for Interface Number of Operations (IFN).
-    Can evaluate from source codebases directly or from an external dataset.json call graph.
+    Evaluator for Interface Number (IFN).
+    Decomposition quality metric: requires the monolith call graph (either via a monolith
+    codebase `mono_dir` or an external `dataset.json`) and a microservice partition.
     """
 
     name: str = "IFN"
-    needs_monolith: bool = False
+    needs_monolith: bool = True
 
     def parse_cli_args(self, args: List[str]) -> Dict[str, any]:
         parser = argparse.ArgumentParser(description="IFN metric options", prog="ifn")
@@ -72,29 +74,31 @@ class IFNMetric(BaseMetric):
         ds_file = None
         if dataset_path:
             ds_file = dataset_path if dataset_path.is_file() else (dataset_path / "dataset.json")
-        elif output_dir and (Path(output_dir) / "dataset.json").exists():
-            ds_file = Path(output_dir) / "dataset.json"
-        elif (ms_dir / "dataset.json").exists():
-            ds_file = ms_dir / "dataset.json"
         elif mono_dir and (mono_dir / "dataset.json").exists():
             ds_file = mono_dir / "dataset.json"
+        elif output_dir and (Path(output_dir) / "dataset.json").exists():
+            ds_file = Path(output_dir) / "dataset.json"
+        elif ms_dir and (ms_dir / "dataset.json").exists():
+            ds_file = ms_dir / "dataset.json"
 
         edges: List[Edge] = []
         dataset_methods = None
 
         if ds_file and ds_file.exists():
             edges = load_edges_from_dataset(ds_file)
-            # Optionally load methods for resolution
             try:
-                import json
                 with open(ds_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
                     dataset_methods = data.get("methods")
             except Exception:
                 pass
+        elif mono_dir and mono_dir.exists():
+            _, edges, dataset_methods = extract_codebase_operations_and_calls(mono_dir, partition)
         else:
-            search_codebase = mono_dir if mono_dir and mono_dir.exists() else ms_dir
-            _, edges, dataset_methods = extract_codebase_operations_and_calls(search_codebase, partition)
+            raise ValueError(
+                "IFN is a decomposition quality metric that requires a monolith call graph "
+                "(provide a monolith codebase in codebases/monoliths/ or --dataset-path)."
+            )
 
         clusters = set(partition.microservices.keys())
         get_cluster = resolve_partition(partition.microservices, dataset_methods)

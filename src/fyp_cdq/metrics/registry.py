@@ -6,6 +6,7 @@ from fyp_cdq.metrics.chd import CHDMetric
 from fyp_cdq.metrics.chm import CHMMetric
 from fyp_cdq.metrics.ifn import IFNMetric
 from fyp_cdq.metrics.ned import NEDMetric
+from fyp_cdq.metrics.sm import SMMetric
 
 
 class MetricRegistry:
@@ -18,6 +19,7 @@ class MetricRegistry:
         self.register(CHDMetric())
         self.register(CHMMetric())
         self.register(IFNMetric())
+        self.register(SMMetric())
 
     def register(self, metric: BaseMetric) -> None:
         self._metrics[metric.name.upper()] = metric

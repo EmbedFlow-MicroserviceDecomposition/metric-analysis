@@ -72,3 +72,42 @@ def test_chd_metric_evaluate_with_dataset(tmp_path: Path):
     assert result.metric == "CHD"
     assert 0.0 <= result.score <= 1.0
     assert (tmp_path / "chd_score.json").exists()
+
+
+def test_chd_metric_standalone_microservices_published_ops(tmp_path: Path):
+    svc1 = tmp_path / "order-service"
+    svc1.mkdir()
+    (svc1 / "OrderController.java").write_text(
+        "package com.shop.order;\n"
+        "import org.springframework.web.bind.annotation.*;\n"
+        "import java.util.List;\n"
+        "@RestController\n"
+        "public class OrderController {\n"
+        "    @PostMapping\n"
+        "    public Order createOrder(OrderRequest req) { return null; }\n"
+        "    @GetMapping\n"
+        "    public List<Order> findOrders() { return null; }\n"
+        "}\n"
+    )
+    (svc1 / "Order.java").write_text(
+        "package com.shop.order;\n"
+        "import jakarta.persistence.Entity;\n"
+        "@Entity\n"
+        "public class Order {\n"
+        "    public Long getId() { return 1L; }\n"
+        "    public void setId(Long id) {}\n"
+        "}\n"
+    )
+
+    partition = Partition(
+        microservices={
+            "order-service": ["com.shop.order.OrderController", "com.shop.order.Order"],
+        },
+        system_name="ShopMS",
+    )
+
+    result = CHDMetric().evaluate(partition, ms_dir=tmp_path)
+    # Only the 2 @RestController endpoints (createOrder, findOrders) are published ops; @Entity getters/setters are excluded
+    assert result.metadata["published_operations_count"] == 2
+    assert 0.0 < result.score <= 1.0
+
