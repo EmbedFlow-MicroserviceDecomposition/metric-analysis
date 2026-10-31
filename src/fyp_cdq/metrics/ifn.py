@@ -5,6 +5,11 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
+from fyp_cdq.extractors.agent_loader import (
+    calculate_ifn_from_extraction,
+    load_agent_extraction,
+    resolve_agent_extraction_path,
+)
 from fyp_cdq.metrics.base import BaseMetric
 from fyp_cdq.metrics.common import (
     Edge,
@@ -46,20 +51,25 @@ def calculate_ifn(get_cluster, clusters: Set[str], edges: List[Edge]) -> Tuple[f
 class IFNMetric(BaseMetric):
     """
     Evaluator for Interface Number (IFN).
-    Decomposition quality metric: requires the monolith call graph (either via a monolith
-    codebase `mono_dir` or an external `dataset.json`) and a microservice partition.
+    Supports evaluation from LLM-extracted inter-service calls (`agent_extraction.json`)
+    counting unique target interfaces (`dst_interface_id`) per microservice, or fallback
+    to a monolith call graph (`mono_dir` / `dataset.json`).
     """
 
     name: str = "IFN"
-    needs_monolith: bool = True
+    needs_monolith: bool = False
 
     def parse_cli_args(self, args: List[str]) -> Dict[str, any]:
         parser = argparse.ArgumentParser(description="IFN metric options", prog="ifn")
         parser.add_argument("--dataset-path", type=str, default=None, help="Path to directory containing dataset.json")
+        parser.add_argument("--extraction-path", type=str, default=None, help="Path to agent_extraction.json")
         parsed, unknown = parser.parse_known_args(args)
         if unknown:
             raise ValueError(f"Unrecognized options for metric 'ifn': {' '.join(unknown)}")
-        return {"dataset_path": Path(parsed.dataset_path) if parsed.dataset_path else None}
+        return {
+            "dataset_path": Path(parsed.dataset_path) if parsed.dataset_path else None,
+            "extraction_path": Path(parsed.extraction_path) if parsed.extraction_path else None,
+        }
 
     def evaluate(
         self,
@@ -68,9 +78,35 @@ class IFNMetric(BaseMetric):
         mono_dir: Optional[Path] = None,
         output_dir: Optional[Path] = None,
         dataset_path: Optional[Path] = None,
+        extraction_path: Optional[Path] = None,
         **kwargs,
     ) -> MetricResult:
-        # 1. Resolve dataset.json if provided or present
+        clusters = set(partition.microservices.keys())
+
+        # 1. Prioritize agent_extraction.json if provided or present in output_dir / ms_dir
+        ext_file = resolve_agent_extraction_path(ms_dir=ms_dir, output_dir=output_dir, extraction_path=extraction_path)
+        if ext_file and ext_file.exists():
+            extraction = load_agent_extraction(ext_file)
+            score, ms_scores = calculate_ifn_from_extraction(extraction, clusters)
+            result = MetricResult(
+                metric="IFN",
+                score=score,
+                microservice_scores=ms_scores,
+                metadata={
+                    "extraction_source": "agent_extraction",
+                    "extractor_tool": extraction.extractor_tool,
+                    "edges_analyzed": len(extraction.inter_service_calls),
+                    "services_count": len(clusters),
+                },
+            )
+            if output_dir:
+                out_dir = Path(output_dir)
+                out_dir.mkdir(parents=True, exist_ok=True)
+                partition.save_json(out_dir / "output.json")
+                result.save_json(out_dir / "ifn_score.json")
+            return result
+
+        # 2. Fallback to dataset.json or monolith codebase
         ds_file = None
         if dataset_path:
             ds_file = dataset_path if dataset_path.is_file() else (dataset_path / "dataset.json")
@@ -83,6 +119,7 @@ class IFNMetric(BaseMetric):
 
         edges: List[Edge] = []
         dataset_methods = None
+        extraction_source = "monolith"
 
         if ds_file and ds_file.exists():
             edges = load_edges_from_dataset(ds_file)
@@ -92,15 +129,15 @@ class IFNMetric(BaseMetric):
                     dataset_methods = data.get("methods")
             except Exception:
                 pass
+            extraction_source = "dataset_json"
         elif mono_dir and mono_dir.exists():
             _, edges, dataset_methods = extract_codebase_operations_and_calls(mono_dir, partition)
         else:
             raise ValueError(
-                "IFN is a decomposition quality metric that requires a monolith call graph "
-                "(provide a monolith codebase in codebases/monoliths/ or --dataset-path)."
+                "Metric 'IFN' requires either an 'agent_extraction.json' file or both monolith and microservice codebases "
+                "(provide agent_extraction.json in outputs/<MS_ID>/, a monolith in codebases/monoliths/, or --dataset-path)."
             )
 
-        clusters = set(partition.microservices.keys())
         get_cluster = resolve_partition(partition.microservices, dataset_methods)
 
         score, ms_scores = calculate_ifn(get_cluster, clusters, edges)
@@ -110,6 +147,7 @@ class IFNMetric(BaseMetric):
             score=score,
             microservice_scores=ms_scores,
             metadata={
+                "extraction_source": extraction_source,
                 "edges_analyzed": len(edges),
                 "services_count": len(clusters),
             },

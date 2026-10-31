@@ -1,0 +1,69 @@
+{
+  "system_id": "MS011",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "config": {
+      "exposed_interfaces": []
+    },
+    "registry": {
+      "exposed_interfaces": []
+    },
+    "gateway": {
+      "exposed_interfaces": []
+    },
+    "city-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CityController.findByName",
+          "class_name": "com.microservices.city.controller.CityController",
+          "method_name": "findByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "City",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CityController.getCity",
+          "class_name": "com.microservices.city.controller.CityController",
+          "method_name": "getCity",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "City",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "route-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RouteController.Euclidean",
+          "class_name": "com.microservices.route.controller.RouteController",
+          "method_name": "Euclidean",
+          "param_types": [
+            "Point",
+            "Point"
+          ],
+          "return_type": "double",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RouteController.getRoute",
+          "class_name": "com.microservices.route.controller.RouteController",
+          "method_name": "getRoute",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

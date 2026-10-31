@@ -1,0 +1,154 @@
+{
+  "system_id": "MS030",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "discovery-service": {
+      "exposed_interfaces": []
+    },
+    "account-service": {
+      "exposed_interfaces": [
+        {
+          "id": "Api.createNewAccount",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "createNewAccount",
+          "param_types": [
+            "Account"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.deleteAccount",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "deleteAccount",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findAll",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Account>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findByCustomer",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "findByCustomer",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<Account>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findById",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "findById",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findByNumber",
+          "class_name": "pl.piomin.microservices.account.api.Api",
+          "method_name": "findByNumber",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "gateway-service": {
+      "exposed_interfaces": []
+    },
+    "customer-service": {
+      "exposed_interfaces": [
+        {
+          "id": "Api.createNewCustomer",
+          "class_name": "pl.piomin.microservices.customer.api.Api",
+          "method_name": "createNewCustomer",
+          "param_types": [
+            "Customer"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.deleteCustomer",
+          "class_name": "pl.piomin.microservices.customer.api.Api",
+          "method_name": "deleteCustomer",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findAll",
+          "class_name": "pl.piomin.microservices.customer.api.Api",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Customer>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findById",
+          "class_name": "pl.piomin.microservices.customer.api.Api",
+          "method_name": "findById",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Api.findByPesel",
+          "class_name": "pl.piomin.microservices.customer.api.Api",
+          "method_name": "findByPesel",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountClient.getAccounts",
+          "class_name": "pl.piomin.microservices.customer.intercomm.AccountClient",
+          "method_name": "getAccounts",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<Account>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "zipkin-service": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

@@ -79,7 +79,7 @@ def test_sm_metric_evaluate_with_monolith_source(tmp_path: Path):
 
     out_dir = tmp_path / "out"
     metric = SMMetric()
-    assert metric.needs_monolith is True
+    assert metric.needs_monolith is False
     result = metric.evaluate(partition, ms_dir=mono_dir, mono_dir=mono_dir, output_dir=out_dir)
 
     assert result.metric == "SM"
@@ -89,3 +89,89 @@ def test_sm_metric_evaluate_with_monolith_source(tmp_path: Path):
     assert result.microservice_scores["payment-ms"] == pytest.approx(-0.25)
     assert result.score == pytest.approx(-0.125)
     assert (out_dir / "sm_score.json").exists()
+
+
+def test_sm_metric_evaluate_with_agent_extraction(tmp_path: Path):
+    ms_dir = tmp_path / "ms"
+    order_dir = ms_dir / "order-ms"
+    payment_dir = ms_dir / "payment-ms"
+    order_dir.mkdir(parents=True)
+    payment_dir.mkdir(parents=True)
+
+    (order_dir / "OrderController.java").write_text(
+        "package com.app.order;\n"
+        "public class OrderController {\n"
+        "    private OrderService orderService;\n"
+        "    public void createOrder() {\n"
+        "        this.orderService.saveOrder();\n"
+        "    }\n"
+        "}\n"
+    )
+    (order_dir / "OrderService.java").write_text(
+        "package com.app.order;\n"
+        "public class OrderService {\n"
+        "    public void saveOrder() {}\n"
+        "}\n"
+    )
+    (payment_dir / "PaymentController.java").write_text(
+        "package com.app.payment;\n"
+        "public class PaymentController {\n"
+        "    public void charge() {}\n"
+        "}\n"
+    )
+
+    ext_data = {
+        "system_id": "MS001",
+        "extractor_tool": "ground_truth",
+        "prompt_version": "v1.0",
+        "microservices": {
+            "order-ms": {"exposed_interfaces": []},
+            "payment-ms": {
+                "exposed_interfaces": [
+                    {
+                        "id": "PaymentController.charge",
+                        "class_name": "com.app.payment.PaymentController",
+                        "method_name": "charge",
+                        "param_types": [],
+                        "return_type": "void",
+                        "protocol": "REST",
+                        "endpoint": "POST /charge",
+                    }
+                ]
+            },
+        },
+        "inter_service_calls": [
+            {
+                "src_service": "order-ms",
+                "src_class": "com.app.order.OrderController",
+                "src_method": "createOrder",
+                "dst_service": "payment-ms",
+                "dst_class": "com.app.payment.PaymentController",
+                "dst_interface_id": "PaymentController.charge",
+                "protocol": "REST",
+                "evidence": "restClient.post('/charge')",
+            }
+        ],
+    }
+
+    out_dir = tmp_path / "out"
+    out_dir.mkdir()
+    (out_dir / "agent_extraction.json").write_text(json.dumps(ext_data), encoding="utf-8")
+
+    partition = Partition(
+        microservices={
+            "order-ms": ["com.app.order.OrderController", "com.app.order.OrderService"],
+            "payment-ms": ["com.app.payment.PaymentController"],
+        },
+        system_name="TestHybrid",
+    )
+
+    metric = SMMetric()
+    result = metric.evaluate(partition, ms_dir=ms_dir, output_dir=out_dir)
+    assert result.metadata["extraction_source"] == "agent_extraction"
+    assert result.metadata["intra_edges_count"] == 1
+    assert result.metadata["inter_edges_count"] == 1
+    assert result.microservice_scores["order-ms"] == pytest.approx(0.0)
+    assert result.microservice_scores["payment-ms"] == pytest.approx(-0.25)
+    assert result.score == pytest.approx(-0.125)
+

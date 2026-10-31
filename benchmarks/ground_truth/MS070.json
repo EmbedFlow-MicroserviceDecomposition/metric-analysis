@@ -1,0 +1,2708 @@
+{
+  "system_id": "MS070",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "ca": {
+      "exposed_interfaces": [
+        {
+          "id": "certificateAuthorityImpl.IssueCertificate",
+          "class_name": "ca.certificateAuthorityImpl",
+          "method_name": "IssueCertificate",
+          "param_types": [
+            "capb.IssueCertificateRequest"
+          ],
+          "return_type": "capb.IssueCertificateResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ra": {
+      "exposed_interfaces": [
+        {
+          "id": "RegistrationAuthorityImpl.AddRateLimitOverride",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "AddRateLimitOverride",
+          "param_types": [
+            "rapb.AddRateLimitOverrideRequest"
+          ],
+          "return_type": "rapb.AddRateLimitOverrideResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.AdministrativelyRevokeCertificate",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "AdministrativelyRevokeCertificate",
+          "param_types": [
+            "rapb.AdministrativelyRevokeCertificateRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.DeactivateAuthorization",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "DeactivateAuthorization",
+          "param_types": [
+            "corepb.Authorization"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.DeactivateRegistration",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "DeactivateRegistration",
+          "param_types": [
+            "rapb.DeactivateRegistrationRequest"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.FinalizeOrder",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "FinalizeOrder",
+          "param_types": [
+            "rapb.FinalizeOrderRequest"
+          ],
+          "return_type": "corepb.Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.GetAuthorization",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "GetAuthorization",
+          "param_types": [
+            "rapb.GetAuthorizationRequest"
+          ],
+          "return_type": "corepb.Authorization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.GetOrder",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "GetOrder",
+          "param_types": [
+            "rapb.GetOrderRequest"
+          ],
+          "return_type": "corepb.Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.GetSCTs",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "GetSCTs",
+          "param_types": [
+            "rapb.SCTRequest"
+          ],
+          "return_type": "rapb.SCTResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.PerformValidation",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "PerformValidation",
+          "param_types": [
+            "rapb.PerformValidationRequest"
+          ],
+          "return_type": "corepb.Authorization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.RevokeCertByApplicant",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "RevokeCertByApplicant",
+          "param_types": [
+            "rapb.RevokeCertByApplicantRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.RevokeCertByKey",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "RevokeCertByKey",
+          "param_types": [
+            "rapb.RevokeCertByKeyRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.UnpauseAccount",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "UnpauseAccount",
+          "param_types": [
+            "rapb.UnpauseAccountRequest"
+          ],
+          "return_type": "rapb.UnpauseAccountResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.UpdateRegistrationKey",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "UpdateRegistrationKey",
+          "param_types": [
+            "rapb.UpdateRegistrationKeyRequest"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.addToBlockedKeys",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "addToBlockedKeys",
+          "param_types": [
+            "crypto.PublicKey",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.checkAuthorizationsCAA",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "checkAuthorizationsCAA",
+          "param_types": [
+            "int64",
+            "map[identifier.ACMEIdentifier]*core.Authorization",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.checkDCVAndCAA",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "checkDCVAndCAA",
+          "param_types": [
+            "vapb.PerformValidationRequest",
+            "vapb.IsCAAValidRequest"
+          ],
+          "return_type": "corepb.ProblemDetails",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.checkOrderAuthorizations",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "checkOrderAuthorizations",
+          "param_types": [
+            "orderID",
+            "accountID",
+            "identifier.ACMEIdentifiers",
+            "time.Time"
+          ],
+          "return_type": "map[identifier.ACMEIdentifier]*core.Authorization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.countCertificateIssued",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "countCertificateIssued",
+          "param_types": [
+            "int64",
+            "identifier.ACMEIdentifiers",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.countFailedValidations",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "countFailedValidations",
+          "param_types": [
+            "int64",
+            "identifier.ACMEIdentifier"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.failOrder",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "failOrder",
+          "param_types": [
+            "corepb.Order",
+            "probs.ProblemDetails"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.issueCertificateInner",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "issueCertificateInner",
+          "param_types": [
+            "x509.CertificateRequest",
+            "map[identifier.ACMEIdentifier]*core.Authorization",
+            "bool",
+            "string",
+            "accountID",
+            "orderID"
+          ],
+          "return_type": "x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.issueCertificateOuter",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "issueCertificateOuter",
+          "param_types": [
+            "corepb.Order",
+            "x509.CertificateRequest",
+            "map[identifier.ACMEIdentifier]*core.Authorization",
+            "certificateRequestEvent"
+          ],
+          "return_type": "corepb.Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.issueMTC",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "issueMTC",
+          "param_types": [
+            "corepb.Order",
+            "[]byte"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.recheckCAA",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "recheckCAA",
+          "param_types": [
+            "[]*core.Authorization"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.resetAccountPausingLimit",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "resetAccountPausingLimit",
+          "param_types": [
+            "int64",
+            "identifier.ACMEIdentifier"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.revokeAuthorizations",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "revokeAuthorizations",
+          "param_types": [
+            "x509.Certificate",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.revokeCertificate",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "revokeCertificate",
+          "param_types": [
+            "x509.Certificate",
+            "revocation.Reason"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.updateRevocationForKeyCompromise",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "updateRevocationForKeyCompromise",
+          "param_types": [
+            "string",
+            "issuance.NameID"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RegistrationAuthorityImpl.validateFinalizeRequest",
+          "class_name": "ra.RegistrationAuthorityImpl",
+          "method_name": "validateFinalizeRequest",
+          "param_types": [
+            "rapb.FinalizeOrderRequest",
+            "certificateRequestEvent"
+          ],
+          "return_type": "x509.CertificateRequest",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "sa": {
+      "exposed_interfaces": [
+        {
+          "id": "SQLStorageAuthority.AddBlockedKey",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "AddBlockedKey",
+          "param_types": [
+            "sapb.AddBlockedKeyRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.AddCertificate",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "AddCertificate",
+          "param_types": [
+            "sapb.AddCertificateRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.AddPrecertificate",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "AddPrecertificate",
+          "param_types": [
+            "sapb.AddCertificateRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.AddRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "AddRateLimitOverride",
+          "param_types": [
+            "sapb.AddRateLimitOverrideRequest"
+          ],
+          "return_type": "sapb.AddRateLimitOverrideResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.AddSerial",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "AddSerial",
+          "param_types": [
+            "sapb.AddSerialRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.DeactivateAuthorization2",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "DeactivateAuthorization2",
+          "param_types": [
+            "sapb.AuthorizationID2"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.DeactivateRegistration",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "DeactivateRegistration",
+          "param_types": [
+            "sapb.RegistrationID"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.DisableRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "DisableRateLimitOverride",
+          "param_types": [
+            "sapb.DisableRateLimitOverrideRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.EnableRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "EnableRateLimitOverride",
+          "param_types": [
+            "sapb.EnableRateLimitOverrideRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.FinalizeAuthorization2",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "FinalizeAuthorization2",
+          "param_types": [
+            "sapb.FinalizeAuthorizationRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.FinalizeMTCOrder",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "FinalizeMTCOrder",
+          "param_types": [
+            "sapb.FinalizeMTCOrderRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.FinalizeOrder",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "FinalizeOrder",
+          "param_types": [
+            "sapb.FinalizeOrderRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.GetLatestRevokedCertByShard",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "GetLatestRevokedCertByShard",
+          "param_types": [
+            "sapb.GetRevokedCertsByShardRequest"
+          ],
+          "return_type": "corepb.CRLEntry",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.Health",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "Health",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.LeaseCRLShard",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "LeaseCRLShard",
+          "param_types": [
+            "sapb.LeaseCRLShardRequest"
+          ],
+          "return_type": "sapb.LeaseCRLShardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.PauseIdentifiers",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "PauseIdentifiers",
+          "param_types": [
+            "sapb.PauseRequest"
+          ],
+          "return_type": "sapb.PauseIdentifiersResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.RevokeAuthorizationsFor",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "RevokeAuthorizationsFor",
+          "param_types": [
+            "sapb.RevokeAuthorizationsForRequest"
+          ],
+          "return_type": "sapb.RevokeAuthorizationsForResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.RevokeCertificate",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "RevokeCertificate",
+          "param_types": [
+            "sapb.RevokeCertificateRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.SetAuthzProcessing",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "SetAuthzProcessing",
+          "param_types": [
+            "sapb.AuthorizationID2"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.SetOrderError",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "SetOrderError",
+          "param_types": [
+            "sapb.SetOrderErrorRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.SetOrderProcessing",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "SetOrderProcessing",
+          "param_types": [
+            "sapb.OrderRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.UnpauseAccount",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "UnpauseAccount",
+          "param_types": [
+            "sapb.RegistrationID"
+          ],
+          "return_type": "sapb.Count",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.UpdateCRLShard",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "UpdateCRLShard",
+          "param_types": [
+            "sapb.UpdateCRLShardRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.UpdateRegistrationKey",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "UpdateRegistrationKey",
+          "param_types": [
+            "sapb.UpdateRegistrationKeyRequest"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.UpdateRevokedCertificate",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "UpdateRevokedCertificate",
+          "param_types": [
+            "sapb.RevokeCertificateRequest"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.checkFQDNSetExists",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "checkFQDNSetExists",
+          "param_types": [
+            "oneSelectorFunc",
+            "identifier.ACMEIdentifiers"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.leaseOldestCRLShard",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "leaseOldestCRLShard",
+          "param_types": [
+            "sapb.LeaseCRLShardRequest"
+          ],
+          "return_type": "sapb.LeaseCRLShardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.leaseSpecificCRLShard",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "leaseSpecificCRLShard",
+          "param_types": [
+            "sapb.LeaseCRLShardRequest"
+          ],
+          "return_type": "sapb.LeaseCRLShardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.setRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "setRateLimitOverride",
+          "param_types": [
+            "int64",
+            "string",
+            "bool"
+          ],
+          "return_type": "emptypb.Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthority.updateRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthority",
+          "method_name": "updateRateLimitOverride",
+          "param_types": [
+            "db.Executor",
+            "overrideModel",
+            "time.Time",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityAdmin.CreateIncident",
+          "class_name": "sa.SQLStorageAuthorityAdmin",
+          "method_name": "CreateIncident",
+          "param_types": [
+            "sapb.CreateIncidentRequest"
+          ],
+          "return_type": "sapb.Incident",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityAdmin.UpdateIncident",
+          "class_name": "sa.SQLStorageAuthorityAdmin",
+          "method_name": "UpdateIncident",
+          "param_types": [
+            "sapb.UpdateIncidentRequest"
+          ],
+          "return_type": "sapb.Incident",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.CheckIdentifiersPaused",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "CheckIdentifiersPaused",
+          "param_types": [
+            "sapb.PauseRequest"
+          ],
+          "return_type": "sapb.Identifiers",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.FQDNSetTimestampsForWindow",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "FQDNSetTimestampsForWindow",
+          "param_types": [
+            "sapb.CountFQDNSetsRequest"
+          ],
+          "return_type": "sapb.Timestamps",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetAuthorization2",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetAuthorization2",
+          "param_types": [
+            "sapb.AuthorizationID2"
+          ],
+          "return_type": "corepb.Authorization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetCertificate",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetCertificate",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "corepb.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetCertificateStatus",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetCertificateStatus",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "corepb.CertificateStatus",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetLintPrecertificate",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetLintPrecertificate",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "corepb.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetOrder",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetOrder",
+          "param_types": [
+            "sapb.OrderRequest"
+          ],
+          "return_type": "corepb.Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetOrderAuthorizations",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetOrderAuthorizations",
+          "param_types": [
+            "sapb.GetOrderAuthorizationsRequest"
+          ],
+          "return_type": "sapb.Authorizations",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetOrderForNames",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetOrderForNames",
+          "param_types": [
+            "sapb.GetOrderForNamesRequest"
+          ],
+          "return_type": "corepb.Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetPausedIdentifiers",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetPausedIdentifiers",
+          "param_types": [
+            "sapb.RegistrationID"
+          ],
+          "return_type": "sapb.Identifiers",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetRateLimitOverride",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetRateLimitOverride",
+          "param_types": [
+            "sapb.GetRateLimitOverrideRequest"
+          ],
+          "return_type": "sapb.RateLimitOverrideResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetRegistration",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetRegistration",
+          "param_types": [
+            "sapb.RegistrationID"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetRegistrationByKey",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetRegistrationByKey",
+          "param_types": [
+            "sapb.JSONWebKey"
+          ],
+          "return_type": "corepb.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetRevocationStatus",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetRevocationStatus",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "sapb.RevocationStatus",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetSerialMetadata",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetSerialMetadata",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "sapb.SerialMetadata",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetSerialsMetadata",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetSerialsMetadata",
+          "param_types": [
+            "sapb.Serials"
+          ],
+          "return_type": "sapb.SerialsMetadata",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetValidAuthorizations2",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetValidAuthorizations2",
+          "param_types": [
+            "sapb.GetValidAuthorizationsRequest"
+          ],
+          "return_type": "sapb.Authorizations",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.GetValidOrderAuthorizations2",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "GetValidOrderAuthorizations2",
+          "param_types": [
+            "sapb.GetOrderAuthorizationsRequest"
+          ],
+          "return_type": "sapb.Authorizations",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.Health",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "Health",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.IncidentsForSerial",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "IncidentsForSerial",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "sapb.Incidents",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.KeyBlocked",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "KeyBlocked",
+          "param_types": [
+            "sapb.SPKIHash"
+          ],
+          "return_type": "sapb.Exists",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.ListIncidents",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "ListIncidents",
+          "param_types": [
+            "emptypb.Empty"
+          ],
+          "return_type": "sapb.Incidents",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.ReplacementOrderExists",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "ReplacementOrderExists",
+          "param_types": [
+            "sapb.Serial"
+          ],
+          "return_type": "sapb.Exists",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SQLStorageAuthorityRO.getAuthorizationsByID",
+          "class_name": "sa.SQLStorageAuthorityRO",
+          "method_name": "getAuthorizationsByID",
+          "param_types": [
+            "[]int64"
+          ],
+          "return_type": "sapb.Authorizations",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectAuthzsMatchingIssuance",
+          "class_name": "sa.model",
+          "method_name": "SelectAuthzsMatchingIssuance",
+          "param_types": [
+            "db.Selector",
+            "int64",
+            "time.Time",
+            "identifier.ACMEIdentifiers"
+          ],
+          "return_type": "[]*corepb.Authorization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectCertificate",
+          "class_name": "sa.model",
+          "method_name": "SelectCertificate",
+          "param_types": [
+            "db.OneSelector",
+            "string"
+          ],
+          "return_type": "corepb.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectCertificateStatus",
+          "class_name": "sa.model",
+          "method_name": "SelectCertificateStatus",
+          "param_types": [
+            "db.OneSelector",
+            "string"
+          ],
+          "return_type": "corepb.CertificateStatus",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectCertificates",
+          "class_name": "sa.model",
+          "method_name": "SelectCertificates",
+          "param_types": [
+            "db.Selector",
+            "string",
+            "map[string]any"
+          ],
+          "return_type": "[]*corepb.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectPrecertificate",
+          "class_name": "sa.model",
+          "method_name": "SelectPrecertificate",
+          "param_types": [
+            "db.OneSelector",
+            "string"
+          ],
+          "return_type": "corepb.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.SelectRevocationStatus",
+          "class_name": "sa.model",
+          "method_name": "SelectRevocationStatus",
+          "param_types": [
+            "db.OneSelector",
+            "string"
+          ],
+          "return_type": "sapb.RevocationStatus",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.addFQDNSet",
+          "class_name": "sa.model",
+          "method_name": "addFQDNSet",
+          "param_types": [
+            "db.Inserter",
+            "identifier.ACMEIdentifiers",
+            "string",
+            "time.Time",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.addIssuedNames",
+          "class_name": "sa.model",
+          "method_name": "addIssuedNames",
+          "param_types": [
+            "db.Execer",
+            "x509.Certificate",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.addKeyHash",
+          "class_name": "sa.model",
+          "method_name": "addKeyHash",
+          "param_types": [
+            "db.Inserter",
+            "x509.Certificate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.addOrderFQDNSet",
+          "class_name": "sa.model",
+          "method_name": "addOrderFQDNSet",
+          "param_types": [
+            "db.Inserter",
+            "identifier.ACMEIdentifiers",
+            "int64",
+            "int64",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.addReplacementOrder",
+          "class_name": "sa.model",
+          "method_name": "addReplacementOrder",
+          "param_types": [
+            "db.SelectExecer",
+            "string",
+            "int64",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.deleteOrderFQDNSet",
+          "class_name": "sa.model",
+          "method_name": "deleteOrderFQDNSet",
+          "param_types": [
+            "db.Execer",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.getAuthorizationStatuses",
+          "class_name": "sa.model",
+          "method_name": "getAuthorizationStatuses",
+          "param_types": [
+            "db.Selector",
+            "[]int64"
+          ],
+          "return_type": "[]authzValidity",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.selectRegistration",
+          "class_name": "sa.model",
+          "method_name": "selectRegistration",
+          "param_types": [
+            "db.OneSelector",
+            "string",
+            "...any"
+          ],
+          "return_type": "regModel",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "model.setReplacementOrderFinalized",
+          "class_name": "sa.model",
+          "method_name": "setReplacementOrderFinalized",
+          "param_types": [
+            "db.Execer",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "sa.addRevokedCertificate",
+          "class_name": "sa.sa",
+          "method_name": "addRevokedCertificate",
+          "param_types": [
+            "db.Executor",
+            "sapb.RevokeCertificateRequest",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "va": {
+      "exposed_interfaces": [
+        {
+          "id": "ValidationAuthorityImpl.DoCAA",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "DoCAA",
+          "param_types": [
+            "vapb.IsCAAValidRequest"
+          ],
+          "return_type": "vapb.IsCAAValidResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.DoDCV",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "DoDCV",
+          "param_types": [
+            "vapb.PerformValidationRequest"
+          ],
+          "return_type": "vapb.ValidationResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.checkCAA",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "checkCAA",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "caaParams"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.checkCAARecords",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "checkCAARecords",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "caaParams"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.doRemoteOperation",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "doRemoteOperation",
+          "param_types": [
+            "remoteOperation",
+            "proto.Message"
+          ],
+          "return_type": "mpicSummary",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.doValidationRequest",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "doValidationRequest",
+          "param_types": [
+            "core.ValidationRecord",
+            "string"
+          ],
+          "return_type": "http.Response",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.getAddrs",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "getAddrs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]netip.Addr",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.getCAA",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "getCAA",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "caaResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.getChallengeCert",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "getChallengeCert",
+          "param_types": [
+            "string",
+            "identifier.ACMEIdentifier"
+          ],
+          "return_type": "x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.parallelCAALookup",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "parallelCAALookup",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]caaResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.processHTTPValidation",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "processHTTPValidation",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.runExperiment",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "runExperiment",
+          "param_types": [
+            "string",
+            "probs.ProblemDetails",
+            "[]core.ValidationRecord"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.tryGetChallengeCert",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "tryGetChallengeCert",
+          "param_types": [
+            "identifier.ACMEIdentifier"
+          ],
+          "return_type": "x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateChallenge",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateChallenge",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "core.AcmeChallenge",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateDNS",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateDNS",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateDNS01",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateDNS01",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateDNSAccount01",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateDNSAccount01",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateDNSPersist01",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateDNSPersist01",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string",
+            "bool"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateHTTP01",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateHTTP01",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ValidationAuthorityImpl.validateTLSALPN01",
+          "class_name": "va.ValidationAuthorityImpl",
+          "method_name": "validateTLSALPN01",
+          "param_types": [
+            "identifier.ACMEIdentifier",
+            "string"
+          ],
+          "return_type": "[]core.ValidationRecord",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "preresolvedDialer.DialContext",
+          "class_name": "va.preresolvedDialer",
+          "method_name": "DialContext",
+          "param_types": [
+            "network",
+            "string"
+          ],
+          "return_type": "net.Conn",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "wfe2": {
+      "exposed_interfaces": [
+        {
+          "id": "WebFrontEndImpl.Account",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Account",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Authorization",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Authorization",
+          "param_types": [
+            "web.RequestEvent",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.AuthorizationHandler",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "AuthorizationHandler",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.BuildID",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "BuildID",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Certificate",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Certificate",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.CertificateInfo",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "CertificateInfo",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Challenge",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Challenge",
+          "param_types": [
+            "web.RequestEvent",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.ChallengeHandler",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "ChallengeHandler",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Directory",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Directory",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.FinalizeOrder",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "FinalizeOrder",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.GetOrder",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "GetOrder",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Handler",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Handler",
+          "param_types": [
+            "prometheus.Registerer",
+            "...otelhttp.Option"
+          ],
+          "return_type": "http.Handler",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Healthz",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Healthz",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Index",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Index",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.KeyRollover",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "KeyRollover",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Nonce",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Nonce",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.Options",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "Options",
+          "param_types": [
+            "string",
+            "map[string]bool"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.RenewalInfo",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "RenewalInfo",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.RevokeCertificate",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "RevokeCertificate",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.acctIDFromURL",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "acctIDFromURL",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "int64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.checkIdentifiersPaused",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "checkIdentifiersPaused",
+          "param_types": [
+            "identifier.ACMEIdentifiers",
+            "int64"
+          ],
+          "return_type": "[]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.checkNewAccountLimits",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "checkNewAccountLimits",
+          "param_types": [
+            "netip.Addr"
+          ],
+          "return_type": "func(",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.checkNewOrderLimits",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "checkNewOrderLimits",
+          "param_types": [
+            "int64",
+            "identifier.ACMEIdentifiers",
+            "bool"
+          ],
+          "return_type": "func(",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.deactivateAuthorization",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "deactivateAuthorization",
+          "param_types": [
+            "corepb.Authorization",
+            "web.RequestEvent",
+            "[]byte"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.determineARIWindow",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "determineARIWindow",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "core.RenewalInfo",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.getChallenge",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "getChallenge",
+          "param_types": [
+            "core.Authorization",
+            "core.Challenge",
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.lookupJWK",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "lookupJWK",
+          "param_types": [
+            "jose.Header",
+            "web.RequestEvent"
+          ],
+          "return_type": "jose.JSONWebKey",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.orderMatchesReplacement",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "orderMatchesReplacement",
+          "param_types": [
+            "core.Registration",
+            "identifier.ACMEIdentifiers",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.orderToOrderJSON",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "orderToOrderJSON",
+          "param_types": [
+            "corepb.Order"
+          ],
+          "return_type": "orderJSON",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.parseJWSRequest",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "parseJWSRequest",
+          "param_types": [],
+          "return_type": "bJSONWebSignature",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.postChallenge",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "postChallenge",
+          "param_types": [
+            "core.Authorization",
+            "int",
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.prepAuthorizationForDisplay",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "prepAuthorizationForDisplay",
+          "param_types": [
+            "core.Authorization"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.prepChallengeForDisplay",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "prepChallengeForDisplay",
+          "param_types": [
+            "core.Authorization",
+            "core.Challenge"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.relativeDirectory",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "relativeDirectory",
+          "param_types": [
+            "map[string]any"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.revokeCertByCertKey",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "revokeCertByCertKey",
+          "param_types": [
+            "bJSONWebSignature",
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.revokeCertBySubscriberKey",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "revokeCertBySubscriberKey",
+          "param_types": [
+            "bJSONWebSignature",
+            "web.RequestEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.sendError",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "sendError",
+          "param_types": [
+            "web.RequestEvent",
+            "any",
+            "error"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.setCORSHeaders",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "setCORSHeaders",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.updateAccount",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "updateAccount",
+          "param_types": [
+            "[]byte",
+            "core.Registration"
+          ],
+          "return_type": "core.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validJWSForAccount",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validJWSForAccount",
+          "param_types": [
+            "bJSONWebSignature",
+            "web.RequestEvent"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validJWSForKey",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validJWSForKey",
+          "param_types": [
+            "bJSONWebSignature",
+            "jose.JSONWebKey"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validKeyRollover",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validKeyRollover",
+          "param_types": [
+            "bJSONWebSignature",
+            "bJSONWebSignature",
+            "jose.JSONWebKey"
+          ],
+          "return_type": "rolloverOperation",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validNonce",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validNonce",
+          "param_types": [
+            "jose.Header"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validPOSTAsGETForAccount",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validPOSTAsGETForAccount",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "core.Registration",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validPOSTForAccount",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validPOSTForAccount",
+          "param_types": [
+            "web.RequestEvent"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validPOSTRequest",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validPOSTRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validPOSTURL",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validPOSTURL",
+          "param_types": [
+            "jose.Header"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validSelfAuthenticatedJWS",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validSelfAuthenticatedJWS",
+          "param_types": [
+            "bJSONWebSignature"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validSelfAuthenticatedPOST",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validSelfAuthenticatedPOST",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.validateReplacementOrder",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "validateReplacementOrder",
+          "param_types": [
+            "core.Registration",
+            "identifier.ACMEIdentifiers",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebFrontEndImpl.writeJsonResponse",
+          "class_name": "wfe2.WebFrontEndImpl",
+          "method_name": "writeJsonResponse",
+          "param_types": [
+            "web.RequestEvent",
+            "int",
+            "any"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "wfe.addNoCacheHeader",
+          "class_name": "wfe2.wfe",
+          "method_name": "addNoCacheHeader",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "wfe.addRequesterHeader",
+          "class_name": "wfe2.wfe",
+          "method_name": "addRequesterHeader",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "wfe.requestProto",
+          "class_name": "wfe2.wfe",
+          "method_name": "requestProto",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "wfe.urlForAuthz",
+          "class_name": "wfe2.wfe",
+          "method_name": "urlForAuthz",
+          "param_types": [
+            "core.Authorization"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "publisher": {
+      "exposed_interfaces": [
+        {
+          "id": "Impl.SubmitToSingleCTWithResult",
+          "class_name": "publisher.Impl",
+          "method_name": "SubmitToSingleCTWithResult",
+          "param_types": [
+            "pubpb.Request"
+          ],
+          "return_type": "pubpb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Impl.singleLogSubmit",
+          "class_name": "publisher.Impl",
+          "method_name": "singleLogSubmit",
+          "param_types": [
+            "[]ct.ASN1Cert",
+            "pubpb.SubmissionType",
+            "Log"
+          ],
+          "return_type": "ct.SignedCertificateTimestamp",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "nonce": {
+      "exposed_interfaces": [
+        {
+          "id": "NonceService.Nonce",
+          "class_name": "nonce.NonceService",
+          "method_name": "Nonce",
+          "param_types": [
+            "emptypb.Empty"
+          ],
+          "return_type": "noncepb.NonceMessage",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "NonceService.Redeem",
+          "class_name": "nonce.NonceService",
+          "method_name": "Redeem",
+          "param_types": [
+            "noncepb.NonceMessage"
+          ],
+          "return_type": "noncepb.ValidMessage",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "crl": {
+      "exposed_interfaces": [
+        {
+          "id": "crlStorer.checkRemovedEntries",
+          "class_name": "storer.crlStorer",
+          "method_name": "checkRemovedEntries",
+          "param_types": [
+            "[]*big.Int",
+            "prevThisUpdate",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.RunOnce",
+          "class_name": "updater.crlUpdater",
+          "method_name": "RunOnce",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.updateShard",
+          "class_name": "updater.crlUpdater",
+          "method_name": "updateShard",
+          "param_types": [
+            "time.Time",
+            "issuance.NameID",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.updateShardWithRetry",
+          "class_name": "updater.crlUpdater",
+          "method_name": "updateShardWithRetry",
+          "param_types": [
+            "time.Time",
+            "issuance.NameID",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "observer": {
+      "exposed_interfaces": [
+        {
+          "id": "CCADBProber.Probe",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getAllIntermediates",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getAllIntermediates",
+          "param_types": [
+            "map[string][]string"
+          ],
+          "return_type": "map[string]*x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getCRLURLs",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getCRLURLs",
+          "param_types": [],
+          "return_type": "map[string][]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getDecadeIntermediates",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getDecadeIntermediates",
+          "param_types": [
+            "int",
+            "map[string][]string"
+          ],
+          "return_type": "map[string]*x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.checkCRL",
+          "class_name": "ccadb.ccadb",
+          "method_name": "checkCRL",
+          "param_types": [
+            "string",
+            "x509.Certificate",
+            "time.Duration"
+          ],
+          "return_type": "x509.RevocationList",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.checkCRLShardNotFound",
+          "class_name": "ccadb.ccadb",
+          "method_name": "checkCRLShardNotFound",
+          "param_types": [
+            "regexp.Regexp",
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.getCSV",
+          "class_name": "ccadb.ccadb",
+          "method_name": "getCSV",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.getBody",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "getBody",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.httpGet",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "httpGet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.httpGetExpectingStatusCode",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "httpGetExpectingStatusCode",
+          "param_types": [
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ObsConf.MakeObserver",
+          "class_name": "observer.ObsConf",
+          "method_name": "MakeObserver",
+          "param_types": [],
+          "return_type": "Observer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Observer.Start",
+          "class_name": "observer.Observer",
+          "method_name": "Start",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "monitor.start",
+          "class_name": "observer.monitor",
+          "method_name": "start",
+          "param_types": [
+            "blog.Logger"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AIAProbe.Probe",
+          "class_name": "probers.AIAProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CRLProbe.Probe",
+          "class_name": "probers.CRLProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DNSProbe.Probe",
+          "class_name": "probers.DNSProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.Instrument",
+          "class_name": "probers.HTTPConf",
+          "method_name": "Instrument",
+          "param_types": [],
+          "return_type": "map[string]prometheus.Collector",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.Kind",
+          "class_name": "probers.HTTPConf",
+          "method_name": "Kind",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.MakeProber",
+          "class_name": "probers.HTTPConf",
+          "method_name": "MakeProber",
+          "param_types": [
+            "map[string]prometheus.Collector"
+          ],
+          "return_type": "probers.Prober",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.UnmarshalSettings",
+          "class_name": "probers.HTTPConf",
+          "method_name": "UnmarshalSettings",
+          "param_types": [
+            "[]byte"
+          ],
+          "return_type": "probers.Configurer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Kind",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Kind",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Name",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Name",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Probe",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "MockProber.Probe",
+          "class_name": "probers.MockProber",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.Probe",
+          "class_name": "probers.TLSProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.probeExpired",
+          "class_name": "probers.TLSProbe",
+          "method_name": "probeExpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.probeUnexpired",
+          "class_name": "probers.TLSProbe",
+          "method_name": "probeUnexpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "tls.checkCRL",
+          "class_name": "probers.tls",
+          "method_name": "checkCRL",
+          "param_types": [
+            "cert",
+            "x509.Certificate",
+            "int"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "tls.checkOCSP",
+          "class_name": "probers.tls",
+          "method_name": "checkOCSP",
+          "param_types": [
+            "cert",
+            "x509.Certificate",
+            "int"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "sfe": {
+      "exposed_interfaces": [
+        {
+          "id": "OverridesImporter.Start",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "Start",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OverridesImporter.processTicket",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "processTicket",
+          "param_types": [
+            "int64",
+            "map[string]string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OverridesImporter.tick",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "tick",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.BuildID",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "BuildID",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.Handler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "Handler",
+          "param_types": [
+            "prometheus.Registerer",
+            "...otelhttp.Option"
+          ],
+          "return_type": "http.Handler",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.Index",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseForm",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseForm",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseStatus",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseSubmit",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseSubmit",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.makeOverrideRequestFormHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "makeOverrideRequestFormHandler",
+          "param_types": [
+            "template.HTML",
+            "rateLimit",
+            "string"
+          ],
+          "return_type": "http.HandlerFunc",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideAutoApprovedSuccessHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideAutoApprovedSuccessHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideRequestHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideRequestHandler",
+          "param_types": [
+            "template.HTML",
+            "rateLimit",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideRequestSubmittedSuccessHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideRequestSubmittedSuccessHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.renderTemplate",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "renderTemplate",
+          "param_types": [
+            "string",
+            "any"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.submitOverrideRequestHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "submitOverrideRequestHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseFailed",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseFailed",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseRequestMalformed",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseRequestMalformed",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseSuccessful",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseSuccessful",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseTokenExpired",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseTokenExpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.validateOverrideFieldHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "validateOverrideFieldHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "overrides.setOverrideRequestFormHeaders",
+          "class_name": "sfe.overrides",
+          "method_name": "setOverrideRequestFormHeaders",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

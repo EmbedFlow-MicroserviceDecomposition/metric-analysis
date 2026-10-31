@@ -1,0 +1,259 @@
+{
+  "system_id": "MS001",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "verified",
+  "microservices": {
+    "spring-petclinic-admin-server": {
+      "exposed_interfaces": []
+    },
+    "spring-petclinic-customers-service": {
+      "exposed_interfaces": [
+        {
+          "id": "OwnerResource.createOwner",
+          "class_name": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+          "method_name": "createOwner",
+          "param_types": [
+            "OwnerRequest"
+          ],
+          "return_type": "Owner",
+          "protocol": "REST",
+          "endpoint": "POST /owners"
+        },
+        {
+          "id": "OwnerResource.findAll",
+          "class_name": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Owner>",
+          "protocol": "REST",
+          "endpoint": "GET /owners"
+        },
+        {
+          "id": "OwnerResource.findOwner",
+          "class_name": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+          "method_name": "findOwner",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "Owner",
+          "protocol": "REST",
+          "endpoint": "GET /owners/{ownerId}"
+        },
+        {
+          "id": "OwnerResource.updateOwner",
+          "class_name": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+          "method_name": "updateOwner",
+          "param_types": [
+            "int",
+            "OwnerRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /owners/{ownerId}"
+        },
+        {
+          "id": "PetResource.findPet",
+          "class_name": "org.springframework.samples.petclinic.customers.web.PetResource",
+          "method_name": "findPet",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "PetDetails",
+          "protocol": "REST",
+          "endpoint": "GET /owners/*/pets/{petId}"
+        },
+        {
+          "id": "PetResource.getPetTypes",
+          "class_name": "org.springframework.samples.petclinic.customers.web.PetResource",
+          "method_name": "getPetTypes",
+          "param_types": [],
+          "return_type": "List<PetType>",
+          "protocol": "REST",
+          "endpoint": "GET /petTypes"
+        },
+        {
+          "id": "PetResource.processCreationForm",
+          "class_name": "org.springframework.samples.petclinic.customers.web.PetResource",
+          "method_name": "processCreationForm",
+          "param_types": [
+            "PetRequest",
+            "int"
+          ],
+          "return_type": "Pet",
+          "protocol": "REST",
+          "endpoint": "POST /owners/{ownerId}/pets"
+        },
+        {
+          "id": "PetResource.processUpdateForm",
+          "class_name": "org.springframework.samples.petclinic.customers.web.PetResource",
+          "method_name": "processUpdateForm",
+          "param_types": [
+            "PetRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /owners/*/pets/{petId}"
+        }
+      ]
+    },
+    "spring-petclinic-vets-service": {
+      "exposed_interfaces": [
+        {
+          "id": "VetResource.showResourcesVetList",
+          "class_name": "org.springframework.samples.petclinic.vets.web.VetResource",
+          "method_name": "showResourcesVetList",
+          "param_types": [],
+          "return_type": "List<Vet>",
+          "protocol": "REST",
+          "endpoint": "GET /vets"
+        }
+      ]
+    },
+    "spring-petclinic-visits-service": {
+      "exposed_interfaces": [
+        {
+          "id": "VisitResource.create",
+          "class_name": "org.springframework.samples.petclinic.visits.web.VisitResource",
+          "method_name": "create",
+          "param_types": [
+            "Visit",
+            "int"
+          ],
+          "return_type": "Visit",
+          "protocol": "REST",
+          "endpoint": "POST /owners/*/pets/{petId}/visits"
+        },
+        {
+          "id": "VisitResource.readByPetId",
+          "class_name": "org.springframework.samples.petclinic.visits.web.VisitResource",
+          "method_name": "read",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "List<Visit>",
+          "protocol": "REST",
+          "endpoint": "GET /owners/*/pets/{petId}/visits"
+        },
+        {
+          "id": "VisitResource.readByPetIds",
+          "class_name": "org.springframework.samples.petclinic.visits.web.VisitResource",
+          "method_name": "read",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Visits",
+          "protocol": "REST",
+          "endpoint": "GET /pets/visits"
+        }
+      ]
+    },
+    "spring-petclinic-genai-service": {
+      "exposed_interfaces": [
+        {
+          "id": "PetclinicChatClient.exchange",
+          "class_name": "org.springframework.samples.petclinic.genai.PetclinicChatClient",
+          "method_name": "exchange",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /chatclient"
+        }
+      ]
+    },
+    "spring-petclinic-config-server": {
+      "exposed_interfaces": []
+    },
+    "spring-petclinic-discovery-server": {
+      "exposed_interfaces": []
+    },
+    "spring-petclinic-api-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "ApiGatewayController.getOwnerDetails",
+          "class_name": "org.springframework.samples.petclinic.api.boundary.web.ApiGatewayController",
+          "method_name": "getOwnerDetails",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "OwnerDetails",
+          "protocol": "REST",
+          "endpoint": "GET /owners/{ownerId}"
+        },
+        {
+          "id": "FallbackController.fallback",
+          "class_name": "org.springframework.samples.petclinic.api.boundary.web.FallbackController",
+          "method_name": "fallback",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /fallback"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "spring-petclinic-api-gateway",
+      "src_class": "org.springframework.samples.petclinic.api.application.CustomersServiceClient",
+      "src_method": "getOwner",
+      "dst_service": "spring-petclinic-customers-service",
+      "dst_class": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+      "dst_interface_id": "OwnerResource.findOwner",
+      "protocol": "REST",
+      "evidence": "CustomersServiceClient.java:37 webClientBuilder.build().get().uri(\"http://customers-service/owners/{ownerId}\", ownerId)"
+    },
+    {
+      "src_service": "spring-petclinic-api-gateway",
+      "src_class": "org.springframework.samples.petclinic.api.application.VisitsServiceClient",
+      "src_method": "getVisitsForPets",
+      "dst_service": "spring-petclinic-visits-service",
+      "dst_class": "org.springframework.samples.petclinic.visits.web.VisitResource",
+      "dst_interface_id": "VisitResource.readByPetIds",
+      "protocol": "REST",
+      "evidence": "VisitsServiceClient.java:45 webClientBuilder.build().get().uri(hostname + \"pets/visits?petId={petId}\", joinIds(petIds))"
+    },
+    {
+      "src_service": "spring-petclinic-genai-service",
+      "src_class": "org.springframework.samples.petclinic.genai.AIDataProvider",
+      "src_method": "getAllOwners",
+      "dst_service": "spring-petclinic-customers-service",
+      "dst_class": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+      "dst_interface_id": "OwnerResource.findAll",
+      "protocol": "REST",
+      "evidence": "AIDataProvider.java:45 restClient.get().uri(getCustomerServiceUri() + \"/owners\")"
+    },
+    {
+      "src_service": "spring-petclinic-genai-service",
+      "src_class": "org.springframework.samples.petclinic.genai.AIDataProvider",
+      "src_method": "addPetToOwner",
+      "dst_service": "spring-petclinic-customers-service",
+      "dst_class": "org.springframework.samples.petclinic.customers.web.PetResource",
+      "dst_interface_id": "PetResource.processCreationForm",
+      "protocol": "REST",
+      "evidence": "AIDataProvider.java:73 restClient.post().uri(getCustomerServiceUri() + \"/owners/\" + ownerId + \"/pets\")"
+    },
+    {
+      "src_service": "spring-petclinic-genai-service",
+      "src_class": "org.springframework.samples.petclinic.genai.AIDataProvider",
+      "src_method": "addOwnerToPetclinic",
+      "dst_service": "spring-petclinic-customers-service",
+      "dst_class": "org.springframework.samples.petclinic.customers.web.OwnerResource",
+      "dst_interface_id": "OwnerResource.createOwner",
+      "protocol": "REST",
+      "evidence": "AIDataProvider.java:82 restClient.post().uri(getCustomerServiceUri() + \"/owners\")"
+    },
+    {
+      "src_service": "spring-petclinic-genai-service",
+      "src_class": "org.springframework.samples.petclinic.genai.VectorStoreController",
+      "src_method": "loadVetDataToVectorStoreOnStartup",
+      "dst_service": "spring-petclinic-vets-service",
+      "dst_class": "org.springframework.samples.petclinic.vets.web.VetResource",
+      "dst_interface_id": "VetResource.showResourcesVetList",
+      "protocol": "REST",
+      "evidence": "VectorStoreController.java:69 webClient.get().uri(vetsHostname + \"vets\")"
+    }
+  ]
+}

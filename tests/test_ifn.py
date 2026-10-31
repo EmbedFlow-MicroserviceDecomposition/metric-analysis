@@ -64,7 +64,7 @@ def test_ifn_metric_evaluate_with_dataset(tmp_path: Path):
     )
 
     metric = IFNMetric()
-    assert metric.needs_monolith is True
+    assert metric.needs_monolith is False
     result = metric.evaluate(partition, ms_dir=tmp_path, output_dir=tmp_path)
 
     assert result.metric == "IFN"
@@ -122,3 +122,73 @@ def test_ifn_metric_evaluate_with_monolith_source(tmp_path: Path):
     assert result.microservice_scores["billing-ms"] == 1.0
     assert result.microservice_scores["inventory-ms"] == 1.0
     assert result.score == pytest.approx(2.0 / 3.0)
+
+
+def test_ifn_metric_evaluate_with_agent_extraction(tmp_path: Path):
+    ext_data = {
+        "system_id": "MS001",
+        "extractor_tool": "ground_truth",
+        "prompt_version": "v1.0",
+        "microservices": {
+            "svc1": {
+                "exposed_interfaces": [
+                    {
+                        "id": "SvcA.op1",
+                        "class_name": "pkg.SvcA",
+                        "method_name": "op1",
+                        "param_types": ["int"],
+                        "return_type": "String",
+                        "protocol": "REST",
+                        "endpoint": "GET /op1",
+                    },
+                    {
+                        "id": "SvcA.op2",
+                        "class_name": "pkg.SvcA",
+                        "method_name": "op2",
+                        "param_types": [],
+                        "return_type": "void",
+                        "protocol": "REST",
+                        "endpoint": "POST /op2",
+                    },
+                ]
+            },
+            "svc2": {"exposed_interfaces": []},
+        },
+        "inter_service_calls": [
+            {
+                "src_service": "svc2",
+                "src_class": "pkg.SvcB",
+                "src_method": "callA1",
+                "dst_service": "svc1",
+                "dst_class": "pkg.SvcA",
+                "dst_interface_id": "SvcA.op1",
+                "protocol": "REST",
+                "evidence": "GET /op1",
+            },
+            {
+                "src_service": "svc2",
+                "src_class": "pkg.SvcB",
+                "src_method": "callA2",
+                "dst_service": "svc1",
+                "dst_class": "pkg.SvcA",
+                "dst_interface_id": "SvcA.op2",
+                "protocol": "REST",
+                "evidence": "POST /op2",
+            },
+        ],
+    }
+    ext_file = tmp_path / "agent_extraction.json"
+    ext_file.write_text(json.dumps(ext_data), encoding="utf-8")
+
+    partition = Partition(
+        microservices={"svc1": ["pkg.SvcA"], "svc2": ["pkg.SvcB"]},
+        system_name="MS001",
+    )
+
+    metric = IFNMetric()
+    result = metric.evaluate(partition, ms_dir=tmp_path, output_dir=tmp_path)
+    assert result.metadata["extraction_source"] == "agent_extraction"
+    assert result.microservice_scores["svc1"] == 2.0
+    assert result.microservice_scores["svc2"] == 0.0
+    assert result.score == pytest.approx(1.0)
+

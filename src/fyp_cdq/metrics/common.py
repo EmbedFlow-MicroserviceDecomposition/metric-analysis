@@ -1378,3 +1378,122 @@ def _extract_generic_calls(file_path: Path, methods_by_name, get_cluster, calls,
                     edges.append(Edge(src=caller_cls, dst=target_op.cls, type="CALL"))
     except Exception:
         pass
+
+
+# ==============================================================================
+# 3. Standalone Microservice Intra-Service Call Edge Extractor (for SM)
+# ==============================================================================
+
+_MS_INTRA_EDGES_CACHE: Dict[str, List[Edge]] = {}
+
+_SOURCE_EXTENSIONS = (
+    ".java", ".py", ".go", ".cs", ".ts", ".js", ".tsx", ".jsx",
+    ".kt", ".scala", ".php", ".rb", ".rs", ".ex", ".cpp", ".cc", ".hpp", ".h",
+)
+
+
+def extract_intra_service_edges(
+    ms_dir: Path,
+    partition: Partition,
+) -> List[Edge]:
+    """
+    Extracts intra-microservice class-to-class dependency/call edges (mu_k in SM)
+    directly from each microservice's source directory.
+    All returned edges are strictly internal to a single microservice (src != dst,
+    get_cluster(src) == get_cluster(dst)) and deduplicated at the (src, dst) pair level.
+    """
+    cache_key = f"{ms_dir.resolve()}::{sorted(partition.microservices.keys())}"
+    if cache_key in _MS_INTRA_EDGES_CACHE:
+        return list(_MS_INTRA_EDGES_CACHE[cache_key])
+
+    service_dirs = _resolve_service_directories(ms_dir, partition)
+    all_edges: List[Edge] = []
+    seen_pairs: Set[Tuple[str, str]] = set()
+
+    for cid, member_classes in partition.microservices.items():
+        if len(member_classes) < 2:
+            continue
+
+        sdir = service_dirs.get(cid, ms_dir)
+        if not sdir or not sdir.is_dir():
+            continue
+
+        sub_partition = Partition(
+            microservices={cid: list(member_classes)},
+            system_name=f"{partition.system_name}_{cid}",
+        )
+        clusters_map, get_sub_cluster = resolve_partition_with_clusters(sub_partition.microservices)
+        canonical_members = clusters_map.get(cid, set(member_classes))
+
+        # 1. AST-resolved Java/Python method & constructor call edges within sdir
+        _, ast_edges, _ = extract_codebase_operations_and_calls(sdir, sub_partition)
+        for e in ast_edges:
+            if get_sub_cluster(e.src) == cid and get_sub_cluster(e.dst) == cid:
+                # Normalize to canonical names if possible
+                src_c = _normalize_to_canonical(e.src, canonical_members)
+                dst_c = _normalize_to_canonical(e.dst, canonical_members)
+                if src_c and dst_c and src_c != dst_c and (src_c, dst_c) not in seen_pairs:
+                    seen_pairs.add((src_c, dst_c))
+                    all_edges.append(Edge(src=src_c, dst=dst_c, type="CALL", weight=1.0))
+
+        # 2. Multi-language symbol/type/call reference edges within sdir across member classes
+        simple_to_canonical: Dict[str, List[str]] = {}
+        for m_cls in canonical_members:
+            simple = m_cls.split(".")[-1].split("/")[-1]
+            if len(simple) >= 3:
+                simple_to_canonical.setdefault(simple, []).append(m_cls)
+
+        unique_simples = {s: c_list[0] for s, c_list in simple_to_canonical.items() if len(c_list) == 1}
+        if len(unique_simples) < 2:
+            continue
+
+        for root, dirs, files in os.walk(sdir):
+            dirs[:] = [d for d in dirs if d.lower() not in _EXCLUDE_DIRS and not d.startswith(".")]
+            rel_parts = [p.lower() for p in Path(root).relative_to(sdir).parts]
+            if any(p in ("test", "tests", "testing", "__tests__", "testdata", "e2e", "migrations") for p in rel_parts):
+                continue
+
+            for f in files:
+                fl = f.lower()
+                if not fl.endswith(_SOURCE_EXTENSIONS):
+                    continue
+                if fl.endswith(("test.java", "tests.java", "it.java", "_test.go", ".pb.go", "_test.py", ".spec.ts", ".test.ts", ".spec.js", ".test.js")):
+                    continue
+                file_path = Path(root) / f
+                stem = file_path.stem
+                caller_cls = unique_simples.get(stem)
+                if not caller_cls:
+                    # Check if stem matches any canonical class suffix
+                    cands = simple_to_canonical.get(stem, [])
+                    if len(cands) == 1:
+                        caller_cls = cands[0]
+                if not caller_cls:
+                    continue
+
+                try:
+                    code = file_path.read_text(encoding="utf-8", errors="ignore")
+                except Exception:
+                    continue
+                cleaned = strip_java_comments_and_strings(code)
+                tokens = set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]{2,}\b", cleaned))
+
+                for tok in tokens:
+                    callee_cls = unique_simples.get(tok)
+                    if callee_cls and callee_cls != caller_cls:
+                        if (caller_cls, callee_cls) not in seen_pairs:
+                            seen_pairs.add((caller_cls, callee_cls))
+                            all_edges.append(Edge(src=caller_cls, dst=callee_cls, type="CALL", weight=1.0))
+
+    _MS_INTRA_EDGES_CACHE[cache_key] = list(all_edges)
+    return all_edges
+
+
+def _normalize_to_canonical(cls_name: str, canonical_members: Set[str]) -> Optional[str]:
+    if cls_name in canonical_members:
+        return cls_name
+    simple = cls_name.split(".")[-1]
+    matches = [c for c in canonical_members if c.split(".")[-1] == simple]
+    if len(matches) == 1:
+        return matches[0]
+    return cls_name if matches else None
+

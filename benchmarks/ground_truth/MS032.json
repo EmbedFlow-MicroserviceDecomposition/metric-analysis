@@ -1,0 +1,130 @@
+{
+  "system_id": "MS032",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "user-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.createUser",
+          "class_name": "io.example.domain.UserController",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserController.getUser",
+          "class_name": "io.example.domain.UserController",
+          "method_name": "getUser",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserController.updateUser",
+          "class_name": "io.example.domain.UserController",
+          "method_name": "updateUser",
+          "param_types": [
+            "Long",
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "friend-service": {
+      "exposed_interfaces": [
+        {
+          "id": "FriendController.addFriend",
+          "class_name": "io.example.domain.friend.FriendController",
+          "method_name": "addFriend",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "Mono",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "FriendController.getFriend",
+          "class_name": "io.example.domain.friend.FriendController",
+          "method_name": "getFriend",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Friend",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "FriendController.getFriends",
+          "class_name": "io.example.domain.friend.FriendController",
+          "method_name": "getFriends",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Friend>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "FriendController.removeFriend",
+          "class_name": "io.example.domain.friend.FriendController",
+          "method_name": "removeFriend",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "Void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "recommendation-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.getMutualFriends",
+          "class_name": "io.example.domain.user.UserController",
+          "method_name": "getMutualFriends",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserController.recommendFriends",
+          "class_name": "io.example.domain.user.UserController",
+          "method_name": "recommendFriends",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<RankedUser>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "discovery-service": {
+      "exposed_interfaces": []
+    },
+    "edge-service": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

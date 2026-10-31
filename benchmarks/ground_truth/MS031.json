@@ -1,0 +1,244 @@
+{
+  "system_id": "MS031",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "discovery-service": {
+      "exposed_interfaces": []
+    },
+    "config-service": {
+      "exposed_interfaces": []
+    },
+    "employee-service": {
+      "exposed_interfaces": [
+        {
+          "id": "EmployeeController.add",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "add",
+          "param_types": [
+            "Employee"
+          ],
+          "return_type": "Employee",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findAll",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findByDepartment",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findByDepartment",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findById",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Employee",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findByOrganization",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findByOrganization",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "department-service": {
+      "exposed_interfaces": [
+        {
+          "id": "EmployeeClient.findByDepartment",
+          "class_name": "pl.piomin.services.department.client.EmployeeClient",
+          "method_name": "findByDepartment",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentController.add",
+          "class_name": "pl.piomin.services.department.controller.DepartmentController",
+          "method_name": "add",
+          "param_types": [
+            "Department"
+          ],
+          "return_type": "Department",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentController.findAll",
+          "class_name": "pl.piomin.services.department.controller.DepartmentController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Department>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentController.findById",
+          "class_name": "pl.piomin.services.department.controller.DepartmentController",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Department",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentController.findByOrganization",
+          "class_name": "pl.piomin.services.department.controller.DepartmentController",
+          "method_name": "findByOrganization",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Department>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentController.findByOrganizationWithEmployees",
+          "class_name": "pl.piomin.services.department.controller.DepartmentController",
+          "method_name": "findByOrganizationWithEmployees",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Department>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "organization-service": {
+      "exposed_interfaces": [
+        {
+          "id": "DepartmentClient.findByOrganization",
+          "class_name": "pl.piomin.services.organization.client.DepartmentClient",
+          "method_name": "findByOrganization",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Department>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DepartmentClient.findByOrganizationWithEmployees",
+          "class_name": "pl.piomin.services.organization.client.DepartmentClient",
+          "method_name": "findByOrganizationWithEmployees",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Department>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeClient.findByOrganization",
+          "class_name": "pl.piomin.services.organization.client.EmployeeClient",
+          "method_name": "findByOrganization",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.add",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "add",
+          "param_types": [
+            "Organization"
+          ],
+          "return_type": "Organization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.findAll",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Organization>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.findById",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Organization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.findByIdWithDepartments",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "findByIdWithDepartments",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Organization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.findByIdWithDepartmentsAndEmployees",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "findByIdWithDepartmentsAndEmployees",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Organization",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrganizationController.findByIdWithEmployees",
+          "class_name": "pl.piomin.services.organization.controller.OrganizationController",
+          "method_name": "findByIdWithEmployees",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Organization",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "gateway-service": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

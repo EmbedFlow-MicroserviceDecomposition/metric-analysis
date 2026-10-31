@@ -54,10 +54,11 @@ def test_pipeline_unrecognized_metric_arg():
         pipeline.evaluate("MS001", "ned", metric_args=["--invalid-flag", "123"])
 
 
-def test_pipeline_decomposition_metrics_require_monolith():
-    assert set(registry.get_metrics_requiring_monolith()) == {"IFN", "SM"}
-    assert set(registry.get_metrics_microservice_only()) == {"NED", "CHD", "CHM"}
-    pipeline = EvaluationPipeline()
+def test_pipeline_decomposition_metrics_require_extraction_or_monolith(tmp_path: Path):
+    assert set(registry.get_metrics_requiring_monolith()) == set()
+    assert set(registry.get_metrics_microservice_only()) == {"NED", "CHD", "CHM", "IFN", "SM"}
+    pipeline = EvaluationPipeline(output_base_dir=tmp_path)
     for m in ["ifn", "sm"]:
-        with pytest.raises(ValueError, match="requires both monolith and microservice codebases"):
-            pipeline.evaluate("MS019", m)
+        with pytest.raises(ValueError, match="requires either an 'agent_extraction.json' file or both monolith and microservice codebases"):
+            pipeline.evaluate("MS019", m, output_dir=tmp_path / m)
+

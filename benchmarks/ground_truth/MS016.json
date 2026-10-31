@@ -1,0 +1,670 @@
+{
+  "system_id": "MS016",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "AuditlogService": {
+      "exposed_interfaces": [
+        {
+          "id": "AuditLogWorker.HandleMessageAsync",
+          "class_name": "AuditLogWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AuditLogWorker.StartAsync",
+          "class_name": "AuditLogWorker",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AuditLogWorker.StopAsync",
+          "class_name": "AuditLogWorker",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "CustomerManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "CustomersController.GetAllAsync",
+          "class_name": "CustomersController",
+          "method_name": "GetAllAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomersController.GetByCustomerId",
+          "class_name": "CustomersController",
+          "method_name": "GetByCustomerId",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomersController.RegisterAsync",
+          "class_name": "CustomersController",
+          "method_name": "RegisterAsync",
+          "param_types": [
+            "RegisterCustomer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "InvoiceService": {
+      "exposed_interfaces": [
+        {
+          "id": "InvoiceWorker.HandleMessageAsync",
+          "class_name": "InvoiceWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "InvoiceWorker.StartAsync",
+          "class_name": "InvoiceWorker",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "InvoiceWorker.StopAsync",
+          "class_name": "InvoiceWorker",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "NotificationService": {
+      "exposed_interfaces": [
+        {
+          "id": "Customer.CreateFrom",
+          "class_name": "Customer",
+          "method_name": "CreateFrom",
+          "param_types": [
+            "CustomerRegistered"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "MaintenanceJob.CreateFrom",
+          "class_name": "MaintenanceJob",
+          "method_name": "CreateFrom",
+          "param_types": [
+            "MaintenanceJobPlanned"
+          ],
+          "return_type": "MaintenanceJob",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "NotificationWorker.HandleMessageAsync",
+          "class_name": "NotificationWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "NotificationWorker.StartAsync",
+          "class_name": "NotificationWorker",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "NotificationWorker.StopAsync",
+          "class_name": "NotificationWorker",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SMTPEmailNotifier.SendEmailAsync",
+          "class_name": "SMTPEmailNotifier",
+          "method_name": "SendEmailAsync",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SqlServerNotificationRepository.GetCustomerAsync",
+          "class_name": "SqlServerNotificationRepository",
+          "method_name": "GetCustomerAsync",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SqlServerNotificationRepository.GetMaintenanceJobsForTodayAsync",
+          "class_name": "SqlServerNotificationRepository",
+          "method_name": "GetMaintenanceJobsForTodayAsync",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "List<MaintenanceJob>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SqlServerNotificationRepository.RegisterCustomerAsync",
+          "class_name": "SqlServerNotificationRepository",
+          "method_name": "RegisterCustomerAsync",
+          "param_types": [
+            "Customer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SqlServerNotificationRepository.RegisterMaintenanceJobAsync",
+          "class_name": "SqlServerNotificationRepository",
+          "method_name": "RegisterMaintenanceJobAsync",
+          "param_types": [
+            "MaintenanceJob"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SqlServerNotificationRepository.RemoveMaintenanceJobsAsync",
+          "class_name": "SqlServerNotificationRepository",
+          "method_name": "RemoveMaintenanceJobsAsync",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "TimeService": {
+      "exposed_interfaces": [
+        {
+          "id": "TimeWorker.StartAsync",
+          "class_name": "TimeWorker",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TimeWorker.StopAsync",
+          "class_name": "TimeWorker",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "VehicleManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "VehiclesController.GetAllAsync",
+          "class_name": "VehiclesController",
+          "method_name": "GetAllAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehiclesController.GetByLicenseNumber",
+          "class_name": "VehiclesController",
+          "method_name": "GetByLicenseNumber",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehiclesController.RegisterAsync",
+          "class_name": "VehiclesController",
+          "method_name": "RegisterAsync",
+          "param_types": [
+            "RegisterVehicle"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "WebApp": {
+      "exposed_interfaces": [
+        {
+          "id": "HomeController.About",
+          "class_name": "HomeController",
+          "method_name": "About",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Error",
+          "class_name": "HomeController",
+          "method_name": "Error",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Index",
+          "class_name": "HomeController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomerManagementController.Details",
+          "class_name": "PitStop.WebApp.Controllers.CustomerManagementController",
+          "method_name": "Details",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomerManagementController.Index",
+          "class_name": "PitStop.WebApp.Controllers.CustomerManagementController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomerManagementController.New",
+          "class_name": "PitStop.WebApp.Controllers.CustomerManagementController",
+          "method_name": "New",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomerManagementController.Register",
+          "class_name": "PitStop.WebApp.Controllers.CustomerManagementController",
+          "method_name": "Register",
+          "param_types": [
+            "CustomerManagementNewViewModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehicleManagementController.Details",
+          "class_name": "VehicleManagementController",
+          "method_name": "Details",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehicleManagementController.Error",
+          "class_name": "VehicleManagementController",
+          "method_name": "Error",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehicleManagementController.Index",
+          "class_name": "VehicleManagementController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehicleManagementController.New",
+          "class_name": "VehicleManagementController",
+          "method_name": "New",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "VehicleManagementController.Register",
+          "class_name": "VehicleManagementController",
+          "method_name": "Register",
+          "param_types": [
+            "VehicleManagementNewViewModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.Details",
+          "class_name": "WorkshopManagementController",
+          "method_name": "Details",
+          "param_types": [
+            "DateTime",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.Error",
+          "class_name": "WorkshopManagementController",
+          "method_name": "Error",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.Finish",
+          "class_name": "WorkshopManagementController",
+          "method_name": "Finish",
+          "param_types": [
+            "DateTime",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.FinishMaintenanceJob",
+          "class_name": "WorkshopManagementController",
+          "method_name": "FinishMaintenanceJob",
+          "param_types": [
+            "WorkshopManagementFinishViewModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.Index",
+          "class_name": "WorkshopManagementController",
+          "method_name": "Index",
+          "param_types": [
+            "DateTime?"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.New",
+          "class_name": "WorkshopManagementController",
+          "method_name": "New",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopManagementController.RegisterMaintenanceJob",
+          "class_name": "WorkshopManagementController",
+          "method_name": "RegisterMaintenanceJob",
+          "param_types": [
+            "WorkshopManagementNewViewModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "WorkshopManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "FinishMaintenanceJobCommandHandler.HandleCommandAsync",
+          "class_name": "Pitstop.WorkshopManagementAPI.CommandHandlers.FinishMaintenanceJobCommandHandler",
+          "method_name": "HandleCommandAsync",
+          "param_types": [
+            "DateTime",
+            "FinishMaintenanceJob"
+          ],
+          "return_type": "WorkshopPlanning",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "PlanMaintenanceJobCommandHandler.HandleCommandAsync",
+          "class_name": "Pitstop.WorkshopManagementAPI.CommandHandlers.PlanMaintenanceJobCommandHandler",
+          "method_name": "HandleCommandAsync",
+          "param_types": [
+            "DateTime",
+            "PlanMaintenanceJob"
+          ],
+          "return_type": "WorkshopPlanning",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RefDataController.GetCustomerByCustomerId",
+          "class_name": "RefDataController",
+          "method_name": "GetCustomerByCustomerId",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RefDataController.GetCustomers",
+          "class_name": "RefDataController",
+          "method_name": "GetCustomers",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RefDataController.GetVehicleByLicenseNumber",
+          "class_name": "RefDataController",
+          "method_name": "GetVehicleByLicenseNumber",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RefDataController.GetVehicles",
+          "class_name": "RefDataController",
+          "method_name": "GetVehicles",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopPlanningController.FinishMaintenanceJobAsync",
+          "class_name": "WorkshopPlanningController",
+          "method_name": "FinishMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "Guid",
+            "FinishMaintenanceJob"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopPlanningController.GetByDate",
+          "class_name": "WorkshopPlanningController",
+          "method_name": "GetByDate",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopPlanningController.GetMaintenanceJobAsync",
+          "class_name": "WorkshopPlanningController",
+          "method_name": "GetMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WorkshopPlanningController.PlanMaintenanceJobAsync",
+          "class_name": "WorkshopPlanningController",
+          "method_name": "PlanMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "PlanMaintenanceJob"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "WorkshopManagementEventHandler": {
+      "exposed_interfaces": [
+        {
+          "id": "DBInitializer.Initialize",
+          "class_name": "DBInitializer",
+          "method_name": "Initialize",
+          "param_types": [
+            "WorkshopManagementDBContext"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EventHandlerWorker.HandleMessageAsync",
+          "class_name": "EventHandlerWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EventHandlerWorker.Start",
+          "class_name": "EventHandlerWorker",
+          "method_name": "Start",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EventHandlerWorker.StartAsync",
+          "class_name": "EventHandlerWorker",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EventHandlerWorker.Stop",
+          "class_name": "EventHandlerWorker",
+          "method_name": "Stop",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EventHandlerWorker.StopAsync",
+          "class_name": "EventHandlerWorker",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

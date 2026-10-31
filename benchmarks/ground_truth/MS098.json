@@ -1,0 +1,1600 @@
+{
+  "system_id": "MS098",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "service-webhook": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-webhook.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateWebhookCommand"
+          ],
+          "return_type": "CreateWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "delete-webhook.handler",
+          "method_name": "execute",
+          "param_types": [
+            "DeleteWebhookCommand"
+          ],
+          "return_type": "DeleteWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "find-webhook.handler",
+          "method_name": "execute",
+          "param_types": [
+            "FindWebhookQuery"
+          ],
+          "return_type": "FindWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "read-webhook.handler",
+          "method_name": "execute",
+          "param_types": [
+            "ReadWebhookQuery"
+          ],
+          "return_type": "ReadWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-webhook.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateWebhookCommand"
+          ],
+          "return_type": "CreateWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createWebhook",
+          "class_name": "webhook.controller",
+          "method_name": "createWebhook",
+          "param_types": [
+            "CreateWebhookRequest",
+            "any"
+          ],
+          "return_type": "CreateWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteWebhook",
+          "class_name": "webhook.controller",
+          "method_name": "deleteWebhook",
+          "param_types": [
+            "DeleteWebhookRequest",
+            "any"
+          ],
+          "return_type": "DeleteWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findWebhook",
+          "class_name": "webhook.controller",
+          "method_name": "findWebhook",
+          "param_types": [
+            "FindWebhookRequest",
+            "any"
+          ],
+          "return_type": "FindWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readWebhook",
+          "class_name": "webhook.controller",
+          "method_name": "readWebhook",
+          "param_types": [
+            "ReadWebhookRequest",
+            "any"
+          ],
+          "return_type": "ReadWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.updateWebhook",
+          "class_name": "webhook.controller",
+          "method_name": "updateWebhook",
+          "param_types": [
+            "UpdateWebhookRequest",
+            "any"
+          ],
+          "return_type": "UpdateWebhookResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-access": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.createAccess",
+          "class_name": "access-token.controller",
+          "method_name": "createAccess",
+          "param_types": [
+            "CreateAccessRequest",
+            "any"
+          ],
+          "return_type": "CreateAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteAccess",
+          "class_name": "access-token.controller",
+          "method_name": "deleteAccess",
+          "param_types": [
+            "DeleteAccessRequest",
+            "any"
+          ],
+          "return_type": "DeleteAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findAccess",
+          "class_name": "access-token.controller",
+          "method_name": "findAccess",
+          "param_types": [
+            "FindAccessRequest",
+            "any"
+          ],
+          "return_type": "FindAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.hasRights",
+          "class_name": "access-token.controller",
+          "method_name": "hasRights",
+          "param_types": [
+            "HasRightsRequest",
+            "any"
+          ],
+          "return_type": "HasRightsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readAccess",
+          "class_name": "access-token.controller",
+          "method_name": "readAccess",
+          "param_types": [
+            "ReadAccessRequest",
+            "any"
+          ],
+          "return_type": "ReadAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-access.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateAccessCommand"
+          ],
+          "return_type": "CreateAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "delete-access.handler",
+          "method_name": "execute",
+          "param_types": [
+            "DeleteAccessCommand"
+          ],
+          "return_type": "DeleteAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "find-access.handler",
+          "method_name": "execute",
+          "param_types": [
+            "FindAccessQuery"
+          ],
+          "return_type": "FindAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "has-rights.handler",
+          "method_name": "execute",
+          "param_types": [
+            "HasRightsQuery"
+          ],
+          "return_type": "HasRightsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "read-access.handler",
+          "method_name": "execute",
+          "param_types": [
+            "ReadAccessQuery"
+          ],
+          "return_type": "ReadAccessResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-billing": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.cancelSubscription",
+          "class_name": "billings.controller",
+          "method_name": "cancelSubscription",
+          "param_types": [
+            "CancelSubscriptionRequest",
+            "any"
+          ],
+          "return_type": "CancelSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.changeSubscription",
+          "class_name": "billings.controller",
+          "method_name": "changeSubscription",
+          "param_types": [
+            "ChangeSubscriptionRequest",
+            "any"
+          ],
+          "return_type": "ChangeSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createCard",
+          "class_name": "billings.controller",
+          "method_name": "createCard",
+          "param_types": [
+            "CreateCardRequest",
+            "any"
+          ],
+          "return_type": "CreateCardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createCustomer",
+          "class_name": "billings.controller",
+          "method_name": "createCustomer",
+          "param_types": [
+            "CreateCustomerRequest",
+            "any"
+          ],
+          "return_type": "CreateCustomerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createPlan",
+          "class_name": "billings.controller",
+          "method_name": "createPlan",
+          "param_types": [
+            "CreatePlanRequest",
+            "any"
+          ],
+          "return_type": "CreatePlanResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createSubscription",
+          "class_name": "billings.controller",
+          "method_name": "createSubscription",
+          "param_types": [
+            "CreateSubscriptionRequest",
+            "any"
+          ],
+          "return_type": "CreateSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteCard",
+          "class_name": "billings.controller",
+          "method_name": "deleteCard",
+          "param_types": [
+            "DeleteCardRequest",
+            "any"
+          ],
+          "return_type": "DeleteCardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteCustomer",
+          "class_name": "billings.controller",
+          "method_name": "deleteCustomer",
+          "param_types": [
+            "DeleteCustomerRequest",
+            "any"
+          ],
+          "return_type": "DeleteCustomerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findCards",
+          "class_name": "billings.controller",
+          "method_name": "findCards",
+          "param_types": [
+            "FindCardsRequest",
+            "any"
+          ],
+          "return_type": "FindCardsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findInvoices",
+          "class_name": "billings.controller",
+          "method_name": "findInvoices",
+          "param_types": [
+            "FindInvoicesRequest",
+            "any"
+          ],
+          "return_type": "FindInvoicesResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findPlans",
+          "class_name": "billings.controller",
+          "method_name": "findPlans",
+          "param_types": [
+            "FindPlansRequest",
+            "any"
+          ],
+          "return_type": "FindPlansResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findStripePlans",
+          "class_name": "billings.controller",
+          "method_name": "findStripePlans",
+          "param_types": [
+            "FindStripePlansRequest",
+            "any"
+          ],
+          "return_type": "FindStripePlansResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findSubscriptions",
+          "class_name": "billings.controller",
+          "method_name": "findSubscriptions",
+          "param_types": [
+            "FindSubscriptionsRequest",
+            "any"
+          ],
+          "return_type": "FindSubscriptionsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readCard",
+          "class_name": "billings.controller",
+          "method_name": "readCard",
+          "param_types": [
+            "ReadCardRequest",
+            "any"
+          ],
+          "return_type": "ReadCardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readCustomer",
+          "class_name": "billings.controller",
+          "method_name": "readCustomer",
+          "param_types": [
+            "ReadCustomerRequest",
+            "any"
+          ],
+          "return_type": "ReadCustomerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readInvoice",
+          "class_name": "billings.controller",
+          "method_name": "readInvoice",
+          "param_types": [
+            "ReadInvoiceRequest",
+            "any"
+          ],
+          "return_type": "ReadInvoiceResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readPlan",
+          "class_name": "billings.controller",
+          "method_name": "readPlan",
+          "param_types": [
+            "ReadPlanRequest",
+            "any"
+          ],
+          "return_type": "ReadPlanResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readStripePlan",
+          "class_name": "billings.controller",
+          "method_name": "readStripePlan",
+          "param_types": [
+            "ReadStripePlanRequest",
+            "any"
+          ],
+          "return_type": "ReadStripePlanResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readSubscription",
+          "class_name": "billings.controller",
+          "method_name": "readSubscription",
+          "param_types": [
+            "ReadSubscriptionRequest",
+            "any"
+          ],
+          "return_type": "ReadSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.setDefaultCard",
+          "class_name": "billings.controller",
+          "method_name": "setDefaultCard",
+          "param_types": [
+            "SetDefaultCardRequest",
+            "any"
+          ],
+          "return_type": "SetDefaultCardResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "cancel-subscription.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CancelSubscriptionCommand"
+          ],
+          "return_type": "CancelSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "change-subscription.handler",
+          "method_name": "execute",
+          "param_types": [
+            "ChangeSubscriptionCommand"
+          ],
+          "return_type": "ChangeSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-plan.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreatePlanCommand"
+          ],
+          "return_type": "any",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-stripe-customer.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateStripeCustomerCommand"
+          ],
+          "return_type": "CreateCustomerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-subscription.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateSubscriptionCommand"
+          ],
+          "return_type": "CreateSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "delete-plan.handler",
+          "method_name": "execute",
+          "param_types": [
+            "DeletePlanCommand"
+          ],
+          "return_type": "any",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "delete-stripe-customer.handler",
+          "method_name": "execute",
+          "param_types": [
+            "DeleteStripeCustomerCommand"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-invoice.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetInvoiceQuery"
+          ],
+          "return_type": "ReadInvoiceResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-invoices.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetInvoicesQuery"
+          ],
+          "return_type": "FindInvoicesResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-plan.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetPlanQuery"
+          ],
+          "return_type": "ReadPlanResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-plans.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetPlansQuery"
+          ],
+          "return_type": "FindPlansResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-subscription.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetSubscriptionQuery"
+          ],
+          "return_type": "ReadSubscriptionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-subscriptions.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetSubscriptionsQuery"
+          ],
+          "return_type": "FindSubscriptionsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-plan.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdatePlanCommand"
+          ],
+          "return_type": "CreatePlanResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-stripe-customer.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateStripeCustomerCommand"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-account": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.create",
+          "class_name": "accounts.controller",
+          "method_name": "create",
+          "param_types": [
+            "CreateRequest",
+            "any"
+          ],
+          "return_type": "CreateResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.delete",
+          "class_name": "accounts.controller",
+          "method_name": "delete",
+          "param_types": [
+            "DeleteRequest",
+            "any"
+          ],
+          "return_type": "DeleteResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.forgotPassword",
+          "class_name": "accounts.controller",
+          "method_name": "forgotPassword",
+          "param_types": [
+            "ForgotPasswordRequest",
+            "any"
+          ],
+          "return_type": "ForgotPasswordResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.login",
+          "class_name": "accounts.controller",
+          "method_name": "login",
+          "param_types": [
+            "LoginRequest",
+            "any"
+          ],
+          "return_type": "LoginResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.logout",
+          "class_name": "accounts.controller",
+          "method_name": "logout",
+          "param_types": [
+            "LogoutRequest",
+            "any"
+          ],
+          "return_type": "LogoutResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.read",
+          "class_name": "accounts.controller",
+          "method_name": "read",
+          "param_types": [
+            "ReadRequest",
+            "any"
+          ],
+          "return_type": "ReadResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readSession",
+          "class_name": "accounts.controller",
+          "method_name": "readSession",
+          "param_types": [
+            "ReadSessionRequest",
+            "any"
+          ],
+          "return_type": "ReadSessionResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.resendVerificationCode",
+          "class_name": "accounts.controller",
+          "method_name": "resendVerificationCode",
+          "param_types": [
+            "ResendVerificationCodeRequest",
+            "any"
+          ],
+          "return_type": "ResendVerificationCodeResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.search",
+          "class_name": "accounts.controller",
+          "method_name": "search",
+          "param_types": [
+            "SearchRequest",
+            "any"
+          ],
+          "return_type": "SearchResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.update",
+          "class_name": "accounts.controller",
+          "method_name": "update",
+          "param_types": [
+            "UpdateRequest",
+            "any"
+          ],
+          "return_type": "UpdateResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.updatePassword",
+          "class_name": "accounts.controller",
+          "method_name": "updatePassword",
+          "param_types": [
+            "UpdatePasswordRequest",
+            "any"
+          ],
+          "return_type": "UpdatePasswordResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.verifyAccount",
+          "class_name": "accounts.controller",
+          "method_name": "verifyAccount",
+          "param_types": [
+            "VerifyAccountRequest",
+            "any"
+          ],
+          "return_type": "VerifyAccountResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.verifyActivationLink",
+          "class_name": "accounts.controller",
+          "method_name": "verifyActivationLink",
+          "param_types": [
+            "VerifyActivationLinkRequest",
+            "any"
+          ],
+          "return_type": "VerifyActivationLinkResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "forgot-password.handler",
+          "method_name": "execute",
+          "param_types": [
+            "ForgotPasswordCommand"
+          ],
+          "return_type": "ForgotPasswordResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-user.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetUserQuery"
+          ],
+          "return_type": "UserEntity",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "login-user.handler",
+          "method_name": "execute",
+          "param_types": [
+            "LoginUserCommand"
+          ],
+          "return_type": "LoginResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.getLoginQuery",
+          "class_name": "login-user.handler",
+          "method_name": "getLoginQuery",
+          "param_types": [
+            "LoginRequest"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "register-user.handler",
+          "method_name": "execute",
+          "param_types": [
+            "RegisterUserCommand"
+          ],
+          "return_type": "CreateResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "resend-verification-email.handler",
+          "method_name": "execute",
+          "param_types": [
+            "ResendVerificationEmailCommand"
+          ],
+          "return_type": "ResendVerificationCodeResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-user-password.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateUserPasswordCommand"
+          ],
+          "return_type": "UpdatePasswordResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-tenant": {
+      "exposed_interfaces": [
+        {
+          "id": "handler.execute",
+          "class_name": "accept-invitation.handler",
+          "method_name": "execute",
+          "param_types": [
+            "AcceptInvitationCommand"
+          ],
+          "return_type": "AcceptMemberInvitationResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-tenant.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateTenantCommand"
+          ],
+          "return_type": "CreateTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-member.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetMemberQuery"
+          ],
+          "return_type": "ReadMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-members.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetMembersQuery"
+          ],
+          "return_type": "FindMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-tenant.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetTenantQuery"
+          ],
+          "return_type": "ReadTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-tenants.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetTenantsQuery"
+          ],
+          "return_type": "FindTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "invite-member.handler",
+          "method_name": "execute",
+          "param_types": [
+            "InviteMemberCommand"
+          ],
+          "return_type": "InviteMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.acceptMemberInvitation",
+          "class_name": "members.controller",
+          "method_name": "acceptMemberInvitation",
+          "param_types": [
+            "AcceptMemberInvitationRequest",
+            "any"
+          ],
+          "return_type": "AcceptMemberInvitationResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteMember",
+          "class_name": "members.controller",
+          "method_name": "deleteMember",
+          "param_types": [
+            "DeleteMemberRequest",
+            "any"
+          ],
+          "return_type": "DeleteMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findMembers",
+          "class_name": "members.controller",
+          "method_name": "findMembers",
+          "param_types": [
+            "FindMemberRequest",
+            "any"
+          ],
+          "return_type": "FindMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.inviteMember",
+          "class_name": "members.controller",
+          "method_name": "inviteMember",
+          "param_types": [
+            "InviteMemberRequest",
+            "any"
+          ],
+          "return_type": "InviteMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readMember",
+          "class_name": "members.controller",
+          "method_name": "readMember",
+          "param_types": [
+            "ReadMemberRequest",
+            "any"
+          ],
+          "return_type": "ReadMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.updateMember",
+          "class_name": "members.controller",
+          "method_name": "updateMember",
+          "param_types": [
+            "UpdateMemberRequest",
+            "any"
+          ],
+          "return_type": "UpdateMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "remove-member.handler",
+          "method_name": "execute",
+          "param_types": [
+            "RemoveMemberCommand"
+          ],
+          "return_type": "DeleteMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "remove-tenant.handler",
+          "method_name": "execute",
+          "param_types": [
+            "RemoveTenantCommand"
+          ],
+          "return_type": "DeleteTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "tenant-available.handler",
+          "method_name": "execute",
+          "param_types": [
+            "TenantAvailableQuery"
+          ],
+          "return_type": "TenantAvailableResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createTenant",
+          "class_name": "tenants.controller",
+          "method_name": "createTenant",
+          "param_types": [
+            "CreateTenantRequest",
+            "any"
+          ],
+          "return_type": "CreateTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteTenant",
+          "class_name": "tenants.controller",
+          "method_name": "deleteTenant",
+          "param_types": [
+            "DeleteTenantRequest",
+            "any"
+          ],
+          "return_type": "DeleteTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findTenant",
+          "class_name": "tenants.controller",
+          "method_name": "findTenant",
+          "param_types": [
+            "FindTenantRequest",
+            "any"
+          ],
+          "return_type": "FindTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readTenant",
+          "class_name": "tenants.controller",
+          "method_name": "readTenant",
+          "param_types": [
+            "ReadTenantRequest",
+            "any"
+          ],
+          "return_type": "ReadTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.tenantAvailable",
+          "class_name": "tenants.controller",
+          "method_name": "tenantAvailable",
+          "param_types": [
+            "TenantAvailableRequest",
+            "any"
+          ],
+          "return_type": "TenantAvailableResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.updateTenant",
+          "class_name": "tenants.controller",
+          "method_name": "updateTenant",
+          "param_types": [
+            "UpdateTenantRequest",
+            "any"
+          ],
+          "return_type": "UpdateTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-member.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateMemberCommand"
+          ],
+          "return_type": "UpdateMemberResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-tenant.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateTenantCommand"
+          ],
+          "return_type": "UpdateTenantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-notification": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-project": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "create-project.handler",
+          "method_name": "execute",
+          "param_types": [
+            "CreateProjectCommand"
+          ],
+          "return_type": "CreateProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "delete-project.handler",
+          "method_name": "execute",
+          "param_types": [
+            "DeleteProjectCommand"
+          ],
+          "return_type": "DeleteProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-project.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetProjectQuery"
+          ],
+          "return_type": "ReadProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "get-projects.handler",
+          "method_name": "execute",
+          "param_types": [
+            "GetProjectsQuery"
+          ],
+          "return_type": "FindProjectsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createProject",
+          "class_name": "projects.controller",
+          "method_name": "createProject",
+          "param_types": [
+            "CreateProjectRequest",
+            "any"
+          ],
+          "return_type": "CreateProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.deleteProject",
+          "class_name": "projects.controller",
+          "method_name": "deleteProject",
+          "param_types": [
+            "DeleteProjectRequest",
+            "any"
+          ],
+          "return_type": "DeleteProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.findProjects",
+          "class_name": "projects.controller",
+          "method_name": "findProjects",
+          "param_types": [
+            "FindProjectsRequest",
+            "any"
+          ],
+          "return_type": "FindProjectsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readProject",
+          "class_name": "projects.controller",
+          "method_name": "readProject",
+          "param_types": [
+            "ReadProjectRequest",
+            "any"
+          ],
+          "return_type": "ReadProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.updateProject",
+          "class_name": "projects.controller",
+          "method_name": "updateProject",
+          "param_types": [
+            "UpdateProjectRequest",
+            "any"
+          ],
+          "return_type": "UpdateProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handler.execute",
+          "class_name": "update-project.handler",
+          "method_name": "execute",
+          "param_types": [
+            "UpdateProjectCommand"
+          ],
+          "return_type": "UpdateProjectResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "api-admin": {
+      "exposed_interfaces": [
+        {
+          "id": "resolver.accessTokenMutation",
+          "class_name": "access-token.resolver",
+          "method_name": "accessTokenMutation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.facebookAuth",
+          "class_name": "accounts.controller",
+          "method_name": "facebookAuth",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.githubAuth",
+          "class_name": "accounts.controller",
+          "method_name": "githubAuth",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.googleAuth",
+          "class_name": "accounts.controller",
+          "method_name": "googleAuth",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.billing",
+          "class_name": "billings.resolver",
+          "method_name": "billing",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.billingQuery",
+          "class_name": "billings.resolver",
+          "method_name": "billingQuery",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.cardMutation",
+          "class_name": "cards.resolver",
+          "method_name": "cardMutation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.roles",
+          "class_name": "roles.resolver",
+          "method_name": "roles",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.memberMutations",
+          "class_name": "tenant-members.resolver",
+          "method_name": "memberMutations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.Args",
+          "class_name": "tenants.resolver",
+          "method_name": "Args",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.tenantMutation",
+          "class_name": "tenants.resolver",
+          "method_name": "tenantMutation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.profileMutation",
+          "class_name": "users.resolver",
+          "method_name": "profileMutation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "resolver.webhookMutations",
+          "class_name": "webhooks.resolver",
+          "method_name": "webhookMutations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "service-role": {
+      "exposed_interfaces": [
+        {
+          "id": "controller.getHello",
+          "class_name": "app.controller",
+          "method_name": "getHello",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.addPolicy",
+          "class_name": "roles.controller",
+          "method_name": "addPolicy",
+          "param_types": [
+            "AddPolicyRequest",
+            "any"
+          ],
+          "return_type": "AddPolicyResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.addTenantRoles",
+          "class_name": "roles.controller",
+          "method_name": "addTenantRoles",
+          "param_types": [
+            "AddTenantRolesRequest",
+            "any"
+          ],
+          "return_type": "AddTenantRolesResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.addUserToRole",
+          "class_name": "roles.controller",
+          "method_name": "addUserToRole",
+          "param_types": [
+            "AddUserToRoleRequest",
+            "Map<string",
+            "any>"
+          ],
+          "return_type": "AddUserToRoleResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.createRole",
+          "class_name": "roles.controller",
+          "method_name": "createRole",
+          "param_types": [
+            "CreateRoleRequest",
+            "any"
+          ],
+          "return_type": "CreateRoleResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.hasRights",
+          "class_name": "roles.controller",
+          "method_name": "hasRights",
+          "param_types": [
+            "HasRightsRequest",
+            "any"
+          ],
+          "return_type": "HasRightsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readRole",
+          "class_name": "roles.controller",
+          "method_name": "readRole",
+          "param_types": [
+            "ReadRoleRequest",
+            "any"
+          ],
+          "return_type": "ReadRoleResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.readUserRoles",
+          "class_name": "roles.controller",
+          "method_name": "readUserRoles",
+          "param_types": [
+            "ReadUserRolesRequest",
+            "Map<string",
+            "any>"
+          ],
+          "return_type": "ReadUserRolesResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controller.removeUserFromRole",
+          "class_name": "roles.controller",
+          "method_name": "removeUserFromRole",
+          "param_types": [
+            "RemoveUserFromRoleRequest",
+            "any"
+          ],
+          "return_type": "RemoveUserFromRoleResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

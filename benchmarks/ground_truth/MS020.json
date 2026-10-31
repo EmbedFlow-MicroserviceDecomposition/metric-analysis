@@ -1,0 +1,1874 @@
+{
+  "system_id": "MS020",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "config": {
+      "exposed_interfaces": []
+    },
+    "monitoring": {
+      "exposed_interfaces": []
+    },
+    "registry": {
+      "exposed_interfaces": []
+    },
+    "gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "dashboard.animatecircle",
+          "class_name": "dashboard",
+          "method_name": "animatecircle",
+          "param_types": [
+            "beforevalue",
+            "aftervalue",
+            "sum",
+            "title"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.drawChartLine",
+          "class_name": "dashboard",
+          "method_name": "drawChartLine",
+          "param_types": [
+            "position"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.getConverted",
+          "class_name": "dashboard",
+          "method_name": "getConverted",
+          "param_types": [
+            "column"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.initSavingsSlider",
+          "class_name": "dashboard",
+          "method_name": "initSavingsSlider",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.initStatisticPage",
+          "class_name": "dashboard",
+          "method_name": "initStatisticPage",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.separateNumber",
+          "class_name": "dashboard",
+          "method_name": "separateNumber",
+          "param_types": [
+            "val"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "dashboard.simpleanimatecircle",
+          "class_name": "dashboard",
+          "method_name": "simpleanimatecircle",
+          "param_types": [
+            "before",
+            "after",
+            "duration"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.A",
+          "class_name": "extrascripts",
+          "method_name": "A",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.A",
+          "class_name": "extrascripts",
+          "method_name": "A",
+          "param_types": [
+            "e"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.B",
+          "class_name": "extrascripts",
+          "method_name": "B",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.C",
+          "class_name": "extrascripts",
+          "method_name": "C",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.E",
+          "class_name": "extrascripts",
+          "method_name": "E",
+          "param_types": [
+            "n",
+            "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.L",
+          "class_name": "extrascripts",
+          "method_name": "L",
+          "param_types": [
+            "t",
+            "n",
+            "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.N",
+          "class_name": "extrascripts",
+          "method_name": "N",
+          "param_types": [
+            "e",
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.O",
+          "class_name": "extrascripts",
+          "method_name": "O",
+          "param_types": [
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.S",
+          "class_name": "extrascripts",
+          "method_name": "S",
+          "param_types": [
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.T",
+          "class_name": "extrascripts",
+          "method_name": "T",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.a",
+          "class_name": "extrascripts",
+          "method_name": "a",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.b",
+          "class_name": "extrascripts",
+          "method_name": "b",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.b",
+          "class_name": "extrascripts",
+          "method_name": "b",
+          "param_types": [
+            "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.b",
+          "class_name": "extrascripts",
+          "method_name": "b",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.c",
+          "class_name": "extrascripts",
+          "method_name": "c",
+          "param_types": [
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.c",
+          "class_name": "extrascripts",
+          "method_name": "c",
+          "param_types": [
+            "e",
+            "t",
+            "r",
+            "i"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.c",
+          "class_name": "extrascripts",
+          "method_name": "c",
+          "param_types": [
+            "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.c",
+          "class_name": "extrascripts",
+          "method_name": "c",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.d",
+          "class_name": "extrascripts",
+          "method_name": "d",
+          "param_types": [
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.d",
+          "class_name": "extrascripts",
+          "method_name": "d",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.d",
+          "class_name": "extrascripts",
+          "method_name": "d",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.doSelect",
+          "class_name": "extrascripts",
+          "method_name": "doSelect",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.e",
+          "class_name": "extrascripts",
+          "method_name": "e",
+          "param_types": [
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.f",
+          "class_name": "extrascripts",
+          "method_name": "f",
+          "param_types": [
+            "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.f",
+          "class_name": "extrascripts",
+          "method_name": "f",
+          "param_types": [
+            "t",
+            "r",
+            "i"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.g",
+          "class_name": "extrascripts",
+          "method_name": "g",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.g",
+          "class_name": "extrascripts",
+          "method_name": "g",
+          "param_types": [
+            "d"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.g",
+          "class_name": "extrascripts",
+          "method_name": "g",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "n",
+            "i"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.i",
+          "class_name": "extrascripts",
+          "method_name": "i",
+          "param_types": [
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.i",
+          "class_name": "extrascripts",
+          "method_name": "i",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.k",
+          "class_name": "extrascripts",
+          "method_name": "k",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.k",
+          "class_name": "extrascripts",
+          "method_name": "k",
+          "param_types": [
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.l",
+          "class_name": "extrascripts",
+          "method_name": "l",
+          "param_types": [
+            "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.l",
+          "class_name": "extrascripts",
+          "method_name": "l",
+          "param_types": [
+            "e",
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.l",
+          "class_name": "extrascripts",
+          "method_name": "l",
+          "param_types": [
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.m",
+          "class_name": "extrascripts",
+          "method_name": "m",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.m",
+          "class_name": "extrascripts",
+          "method_name": "m",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.m",
+          "class_name": "extrascripts",
+          "method_name": "m",
+          "param_types": [
+            "e"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.n",
+          "class_name": "extrascripts",
+          "method_name": "n",
+          "param_types": [
+            "e",
+            "n",
+            "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.o",
+          "class_name": "extrascripts",
+          "method_name": "o",
+          "param_types": [
+            "e"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.o",
+          "class_name": "extrascripts",
+          "method_name": "o",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.p",
+          "class_name": "extrascripts",
+          "method_name": "p",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.p",
+          "class_name": "extrascripts",
+          "method_name": "p",
+          "param_types": [
+            "n",
+            "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.p",
+          "class_name": "extrascripts",
+          "method_name": "p",
+          "param_types": [
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.q",
+          "class_name": "extrascripts",
+          "method_name": "q",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.r",
+          "class_name": "extrascripts",
+          "method_name": "r",
+          "param_types": [
+            "e"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.r",
+          "class_name": "extrascripts",
+          "method_name": "r",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.s",
+          "class_name": "extrascripts",
+          "method_name": "s",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.s",
+          "class_name": "extrascripts",
+          "method_name": "s",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.t",
+          "class_name": "extrascripts",
+          "method_name": "t",
+          "param_types": [
+            "e"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.t",
+          "class_name": "extrascripts",
+          "method_name": "t",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.u",
+          "class_name": "extrascripts",
+          "method_name": "u",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.u",
+          "class_name": "extrascripts",
+          "method_name": "u",
+          "param_types": [
+            "e",
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.v",
+          "class_name": "extrascripts",
+          "method_name": "v",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.v",
+          "class_name": "extrascripts",
+          "method_name": "v",
+          "param_types": [
+            "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.w",
+          "class_name": "extrascripts",
+          "method_name": "w",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.w",
+          "class_name": "extrascripts",
+          "method_name": "w",
+          "param_types": [
+            "n",
+            "r",
+            "i"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.x",
+          "class_name": "extrascripts",
+          "method_name": "x",
+          "param_types": [
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.x",
+          "class_name": "extrascripts",
+          "method_name": "x",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.y",
+          "class_name": "extrascripts",
+          "method_name": "y",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.y",
+          "class_name": "extrascripts",
+          "method_name": "y",
+          "param_types": [
+            "b",
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.z",
+          "class_name": "extrascripts",
+          "method_name": "z",
+          "param_types": [
+            "b",
+            "a",
+            "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.getCurrentAccount",
+          "class_name": "launch",
+          "method_name": "getCurrentAccount",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.getOauthTokenFromStorage",
+          "class_name": "launch",
+          "method_name": "getOauthTokenFromStorage",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.removeOauthTokenFromStorage",
+          "class_name": "launch",
+          "method_name": "removeOauthTokenFromStorage",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.requestOauthToken",
+          "class_name": "launch",
+          "method_name": "requestOauthToken",
+          "param_types": [
+            "username",
+            "password"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.showGreetingPage",
+          "class_name": "launch",
+          "method_name": "showGreetingPage",
+          "param_types": [
+            "account"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "launch.showLoginForm",
+          "class_name": "launch",
+          "method_name": "showLoginForm",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.OnHoverShaking",
+          "class_name": "login",
+          "method_name": "OnHoverShaking",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.autoShake",
+          "class_name": "login",
+          "method_name": "autoShake",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.flipForm",
+          "class_name": "login",
+          "method_name": "flipForm",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.hoverShake",
+          "class_name": "login",
+          "method_name": "hoverShake",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.initialShaking",
+          "class_name": "login",
+          "method_name": "initialShaking",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.login",
+          "class_name": "login",
+          "method_name": "login",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.logout",
+          "class_name": "login",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "login.toggleInfo",
+          "class_name": "login",
+          "method_name": "toggleInfo",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.AddExpense",
+          "class_name": "main",
+          "method_name": "AddExpense",
+          "param_types": [
+            "expense_id",
+            "title",
+            "icon",
+            "currency",
+            "period",
+            "amount"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.AddIncome",
+          "class_name": "main",
+          "method_name": "AddIncome",
+          "param_types": [
+            "income_id",
+            "title",
+            "icon",
+            "currency",
+            "period",
+            "amount"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.Savings",
+          "class_name": "main",
+          "method_name": "Savings",
+          "param_types": [
+            "money",
+            "deposit",
+            "capitalization",
+            "interest"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.User",
+          "class_name": "main",
+          "method_name": "User",
+          "param_types": [
+            "username",
+            "lastSeen",
+            "currency",
+            "note"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.escape",
+          "class_name": "main",
+          "method_name": "escape",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.initAccount",
+          "class_name": "main",
+          "method_name": "initAccount",
+          "param_types": [
+            "account"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.B",
+          "class_name": "touchscreens",
+          "method_name": "B",
+          "param_types": [
+            "a7",
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.C",
+          "class_name": "touchscreens",
+          "method_name": "C",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.E",
+          "class_name": "touchscreens",
+          "method_name": "E",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.F",
+          "class_name": "touchscreens",
+          "method_name": "F",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.FastClick",
+          "class_name": "touchscreens",
+          "method_name": "FastClick",
+          "param_types": [
+            "a"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.H",
+          "class_name": "touchscreens",
+          "method_name": "H",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.I",
+          "class_name": "touchscreens",
+          "method_name": "I",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.L",
+          "class_name": "touchscreens",
+          "method_name": "L",
+          "param_types": [
+            "a9",
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.M",
+          "class_name": "touchscreens",
+          "method_name": "M",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.N",
+          "class_name": "touchscreens",
+          "method_name": "N",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.O",
+          "class_name": "touchscreens",
+          "method_name": "O",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.S",
+          "class_name": "touchscreens",
+          "method_name": "S",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.U",
+          "class_name": "touchscreens",
+          "method_name": "U",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.V",
+          "class_name": "touchscreens",
+          "method_name": "V",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.X",
+          "class_name": "touchscreens",
+          "method_name": "X",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.Z",
+          "class_name": "touchscreens",
+          "method_name": "Z",
+          "param_types": [
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.a2",
+          "class_name": "touchscreens",
+          "method_name": "a2",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.a3",
+          "class_name": "touchscreens",
+          "method_name": "a3",
+          "param_types": [
+            "a7",
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.a4",
+          "class_name": "touchscreens",
+          "method_name": "a4",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.a5",
+          "class_name": "touchscreens",
+          "method_name": "a5",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.a6",
+          "class_name": "touchscreens",
+          "method_name": "a6",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aA",
+          "class_name": "touchscreens",
+          "method_name": "aA",
+          "param_types": [
+            "ba",
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aB",
+          "class_name": "touchscreens",
+          "method_name": "aB",
+          "param_types": [
+            "ba",
+            "a7",
+            "a9"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aC",
+          "class_name": "touchscreens",
+          "method_name": "aC",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aD",
+          "class_name": "touchscreens",
+          "method_name": "aD",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aE",
+          "class_name": "touchscreens",
+          "method_name": "aE",
+          "param_types": [
+            "a7",
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aG",
+          "class_name": "touchscreens",
+          "method_name": "aG",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aH",
+          "class_name": "touchscreens",
+          "method_name": "aH",
+          "param_types": [
+            "a8",
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aI",
+          "class_name": "touchscreens",
+          "method_name": "aI",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aJ",
+          "class_name": "touchscreens",
+          "method_name": "aJ",
+          "param_types": [
+            "a9"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aK",
+          "class_name": "touchscreens",
+          "method_name": "aK",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aO",
+          "class_name": "touchscreens",
+          "method_name": "aO",
+          "param_types": [
+            "a8",
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aP",
+          "class_name": "touchscreens",
+          "method_name": "aP",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aQ",
+          "class_name": "touchscreens",
+          "method_name": "aQ",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aR",
+          "class_name": "touchscreens",
+          "method_name": "aR",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aT",
+          "class_name": "touchscreens",
+          "method_name": "aT",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aU",
+          "class_name": "touchscreens",
+          "method_name": "aU",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aW",
+          "class_name": "touchscreens",
+          "method_name": "aW",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aZ",
+          "class_name": "touchscreens",
+          "method_name": "aZ",
+          "param_types": [
+            "ba"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ab",
+          "class_name": "touchscreens",
+          "method_name": "ab",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ad",
+          "class_name": "touchscreens",
+          "method_name": "ad",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ae",
+          "class_name": "touchscreens",
+          "method_name": "ae",
+          "param_types": [
+            "a8",
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.af",
+          "class_name": "touchscreens",
+          "method_name": "af",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ah",
+          "class_name": "touchscreens",
+          "method_name": "ah",
+          "param_types": [
+            "a7",
+            "a8"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ai",
+          "class_name": "touchscreens",
+          "method_name": "ai",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aj",
+          "class_name": "touchscreens",
+          "method_name": "aj",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ak",
+          "class_name": "touchscreens",
+          "method_name": "ak",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.al",
+          "class_name": "touchscreens",
+          "method_name": "al",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.an",
+          "class_name": "touchscreens",
+          "method_name": "an",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ao",
+          "class_name": "touchscreens",
+          "method_name": "ao",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ap",
+          "class_name": "touchscreens",
+          "method_name": "ap",
+          "param_types": [
+            "ba",
+            "a9"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ar",
+          "class_name": "touchscreens",
+          "method_name": "ar",
+          "param_types": [
+            "a7"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.at",
+          "class_name": "touchscreens",
+          "method_name": "at",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.aw",
+          "class_name": "touchscreens",
+          "method_name": "aw",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ax",
+          "class_name": "touchscreens",
+          "method_name": "ax",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.ay",
+          "class_name": "touchscreens",
+          "method_name": "ay",
+          "param_types": [
+            "bb"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.b",
+          "class_name": "touchscreens",
+          "method_name": "b",
+          "param_types": [
+            "a",
+            "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.u",
+          "class_name": "touchscreens",
+          "method_name": "u",
+          "param_types": [
+            "B"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "touchscreens.z",
+          "class_name": "touchscreens",
+          "method_name": "z",
+          "param_types": [
+            "a0",
+            "aq"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "auth-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.createUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserController.getUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "getUser",
+          "param_types": [],
+          "return_type": "Principal",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "account-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthServiceClient.createUser",
+          "class_name": "com.piggymetrics.account.client.AuthServiceClient",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "StatisticsServiceClient.updateStatistics",
+          "class_name": "com.piggymetrics.account.client.StatisticsServiceClient",
+          "method_name": "updateStatistics",
+          "param_types": [
+            "String",
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.createNewAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "createNewAccount",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.getAccountByName",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getAccountByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.getCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getCurrentAccount",
+          "param_types": [],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.saveCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "saveCurrentAccount",
+          "param_types": [
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "statistics-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ExchangeRatesClient.getRates",
+          "class_name": "com.piggymetrics.statistics.client.ExchangeRatesClient",
+          "method_name": "getRates",
+          "param_types": [
+            "Currency"
+          ],
+          "return_type": "ExchangeRatesContainer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "StatisticsController.getCurrentAccountStatistics",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "getCurrentAccountStatistics",
+          "param_types": [],
+          "return_type": "List<DataPoint>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "StatisticsController.getStatisticsByAccountName",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "getStatisticsByAccountName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<DataPoint>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "StatisticsController.saveAccountStatistics",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "saveAccountStatistics",
+          "param_types": [
+            "String",
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "notification-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountServiceClient.getAccount",
+          "class_name": "com.piggymetrics.notification.client.AccountServiceClient",
+          "method_name": "getAccount",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RecipientController.getCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "getCurrentNotificationsSettings",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RecipientController.saveCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "saveCurrentNotificationsSettings",
+          "param_types": [
+            "Recipient"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "turbine-stream-service": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,120 @@
+{
+  "system_id": "MS010",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "spring-petclinic-rest-owner": {
+      "exposed_interfaces": [
+        {
+          "id": "OwnerController.getOwnerVisits",
+          "class_name": "org.springframework.samples.petclinic.owner.OwnerController",
+          "method_name": "getOwnerVisits",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "List<Visit>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OwnerRepository.findById",
+          "class_name": "org.springframework.samples.petclinic.owner.OwnerRepository",
+          "method_name": "findById",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Owner",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OwnerRepository.findByLastName",
+          "class_name": "org.springframework.samples.petclinic.owner.OwnerRepository",
+          "method_name": "findByLastName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Owner>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "spring-petclinic-rest-pet": {
+      "exposed_interfaces": [
+        {
+          "id": "PetRepository.findById",
+          "class_name": "org.springframework.samples.petclinic.pet.PetRepository",
+          "method_name": "findById",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Pet",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "PetRepository.findPetTypes",
+          "class_name": "org.springframework.samples.petclinic.pet.PetRepository",
+          "method_name": "findPetTypes",
+          "param_types": [],
+          "return_type": "List<PetType>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "spring-petclinic-rest-system": {
+      "exposed_interfaces": [
+        {
+          "id": "ApplicationController.home",
+          "class_name": "org.springframework.samples.petclinic.system.ApplicationController",
+          "method_name": "home",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CrashController.triggerException",
+          "class_name": "org.springframework.samples.petclinic.system.CrashController",
+          "method_name": "triggerException",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "spring-petclinic-rest-vet": {
+      "exposed_interfaces": [
+        {
+          "id": "VetRepository.findAll",
+          "class_name": "org.springframework.samples.petclinic.vet.VetRepository",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Vet>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "spring-petclinic-rest-visit": {
+      "exposed_interfaces": [
+        {
+          "id": "VisitRepository.findByPetId",
+          "class_name": "org.springframework.samples.petclinic.visit.VisitRepository",
+          "method_name": "findByPetId",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<Visit>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

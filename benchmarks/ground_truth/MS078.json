@@ -1,0 +1,398 @@
+{
+  "system_id": "MS078",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "identity-server": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountController.AccessDenied",
+          "class_name": "IdentityServer.Quickstart.Account.AccountController",
+          "method_name": "AccessDenied",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Login",
+          "class_name": "IdentityServer.Quickstart.Account.AccountController",
+          "method_name": "Login",
+          "param_types": [
+            "LoginInputModel",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Login",
+          "class_name": "IdentityServer.Quickstart.Account.AccountController",
+          "method_name": "Login",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Logout",
+          "class_name": "IdentityServer.Quickstart.Account.AccountController",
+          "method_name": "Logout",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Logout",
+          "class_name": "IdentityServer.Quickstart.Account.AccountController",
+          "method_name": "Logout",
+          "param_types": [
+            "LogoutInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ExternalController.Callback",
+          "class_name": "IdentityServer.Quickstart.Account.ExternalController",
+          "method_name": "Callback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ExternalController.Challenge",
+          "class_name": "IdentityServer.Quickstart.Account.ExternalController",
+          "method_name": "Challenge",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.CreateScopeViewModel",
+          "class_name": "IdentityServer.Quickstart.Consent.ConsentController",
+          "method_name": "CreateScopeViewModel",
+          "param_types": [
+            "ParsedScopeValue",
+            "ApiScope",
+            "bool"
+          ],
+          "return_type": "ScopeViewModel",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.Index",
+          "class_name": "IdentityServer.Quickstart.Consent.ConsentController",
+          "method_name": "Index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.Index",
+          "class_name": "IdentityServer.Quickstart.Consent.ConsentController",
+          "method_name": "Index",
+          "param_types": [
+            "ConsentInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.Callback",
+          "class_name": "IdentityServer.Quickstart.Device.DeviceController",
+          "method_name": "Callback",
+          "param_types": [
+            "DeviceAuthorizationInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.CreateScopeViewModel",
+          "class_name": "IdentityServer.Quickstart.Device.DeviceController",
+          "method_name": "CreateScopeViewModel",
+          "param_types": [
+            "ParsedScopeValue",
+            "ApiScope",
+            "bool"
+          ],
+          "return_type": "ScopeViewModel",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.Index",
+          "class_name": "IdentityServer.Quickstart.Device.DeviceController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.UserCodeCapture",
+          "class_name": "IdentityServer.Quickstart.Device.DeviceController",
+          "method_name": "UserCodeCapture",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DiagnosticsController.Index",
+          "class_name": "IdentityServer.Quickstart.Diagnostics.DiagnosticsController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "GrantsController.Index",
+          "class_name": "IdentityServer.Quickstart.Grants.GrantsController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "GrantsController.Revoke",
+          "class_name": "IdentityServer.Quickstart.Grants.GrantsController",
+          "method_name": "Revoke",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Error",
+          "class_name": "IdentityServer.Quickstart.Home.HomeController",
+          "method_name": "Error",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Index",
+          "class_name": "IdentityServer.Quickstart.Home.HomeController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "wallet-spa": {
+      "exposed_interfaces": [
+        {
+          "id": "accountsService.delete_accounts_id",
+          "class_name": "accountsService",
+          "method_name": "delete_accounts_id",
+          "param_types": [
+            "delete"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "accountsService.get_accounts",
+          "class_name": "accountsService",
+          "method_name": "get_accounts",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "accountsService.get_accounts_id",
+          "class_name": "accountsService",
+          "method_name": "get_accounts_id",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "accountsService.post_accounts",
+          "class_name": "accountsService",
+          "method_name": "post_accounts",
+          "param_types": [
+            "post"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "transactionService.patch_transactions_accountId_deposit",
+          "class_name": "transactionService",
+          "method_name": "patch_transactions_accountId_deposit",
+          "param_types": [
+            "patch"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "transactionService.patch_transactions_accountId_withdraw",
+          "class_name": "transactionService",
+          "method_name": "patch_transactions_accountId_withdraw",
+          "param_types": [
+            "patch"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "transactionService.patch_transactions_originAccountId_destinationAccountId",
+          "class_name": "transactionService",
+          "method_name": "patch_transactions_originAccountId_destinationAccountId",
+          "param_types": [
+            "patch"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "accounts-api": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountsController.Close",
+          "class_name": "WebApi.UseCases.V1.Accounts.CloseAccount.AccountsController",
+          "method_name": "Close",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountsController.Get",
+          "class_name": "WebApi.UseCases.V1.Accounts.GetAccount.AccountsController",
+          "method_name": "Get",
+          "param_types": [
+            "IGetAccountUseCase",
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountsController.Get",
+          "class_name": "WebApi.UseCases.V1.Accounts.GetAccounts.AccountsController",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountsController.Post",
+          "class_name": "WebApi.UseCases.V1.Accounts.OpenAccount.AccountsController",
+          "method_name": "Post",
+          "param_types": [
+            "Forgery"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CustomErrorController.CustomError",
+          "class_name": "WebApi.UseCases.V1.CustomError.CustomErrorController",
+          "method_name": "CustomError",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TransactionsController.Deposit",
+          "class_name": "WebApi.UseCases.V1.Transactions.Deposit.TransactionsController",
+          "method_name": "Deposit",
+          "param_types": [
+            "Forgery"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TransactionsController.Transfer",
+          "class_name": "WebApi.UseCases.V1.Transactions.Transfer.TransactionsController",
+          "method_name": "Transfer",
+          "param_types": [
+            "Forgery"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TransactionsController.Withdraw",
+          "class_name": "WebApi.UseCases.V1.Transactions.Withdraw.TransactionsController",
+          "method_name": "Withdraw",
+          "param_types": [
+            "Forgery"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountsController.Get",
+          "class_name": "WebApi.UseCases.V2.Accounts.GetAccount.AccountsController",
+          "method_name": "Get",
+          "param_types": [
+            "IGetAccountUseCase",
+            "GetAccountDetailsRequestV2"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

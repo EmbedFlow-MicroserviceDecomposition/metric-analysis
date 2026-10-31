@@ -1,0 +1,562 @@
+{
+  "system_id": "MS043",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "reservation": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.CheckAvailability",
+          "class_name": "reservation.Server",
+          "method_name": "CheckAvailability",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.MakeReservation",
+          "class_name": "reservation.Server",
+          "method_name": "MakeReservation",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "reservation.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "attractions": {
+      "exposed_interfaces": [
+        {
+          "id": "Cinema.Id",
+          "class_name": "attractions.Cinema",
+          "method_name": "Id",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Cinema.Lat",
+          "class_name": "attractions.Cinema",
+          "method_name": "Lat",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Cinema.Lon",
+          "class_name": "attractions.Cinema",
+          "method_name": "Lon",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Museum.Id",
+          "class_name": "attractions.Museum",
+          "method_name": "Id",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Museum.Lat",
+          "class_name": "attractions.Museum",
+          "method_name": "Lat",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Museum.Lon",
+          "class_name": "attractions.Museum",
+          "method_name": "Lon",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Restaurant.Id",
+          "class_name": "attractions.Restaurant",
+          "method_name": "Id",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Restaurant.Lat",
+          "class_name": "attractions.Restaurant",
+          "method_name": "Lat",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Restaurant.Lon",
+          "class_name": "attractions.Restaurant",
+          "method_name": "Lon",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.NearbyCinema",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyCinema",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.NearbyMus",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyMus",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.NearbyRest",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyRest",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "attractions.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.getNearbyPointsCinema",
+          "class_name": "attractions.Server",
+          "method_name": "getNearbyPointsCinema",
+          "param_types": [
+            "lat",
+            "float64"
+          ],
+          "return_type": "[]geoindex.Point",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.getNearbyPointsHotel",
+          "class_name": "attractions.Server",
+          "method_name": "getNearbyPointsHotel",
+          "param_types": [
+            "lat",
+            "float64"
+          ],
+          "return_type": "[]geoindex.Point",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.getNearbyPointsMus",
+          "class_name": "attractions.Server",
+          "method_name": "getNearbyPointsMus",
+          "param_types": [
+            "lat",
+            "float64"
+          ],
+          "return_type": "[]geoindex.Point",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.getNearbyPointsRest",
+          "class_name": "attractions.Server",
+          "method_name": "getNearbyPointsRest",
+          "param_types": [
+            "lat",
+            "float64"
+          ],
+          "return_type": "[]geoindex.Point",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Id",
+          "class_name": "attractions.point",
+          "method_name": "Id",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Lat",
+          "class_name": "attractions.point",
+          "method_name": "Lat",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Lon",
+          "class_name": "attractions.point",
+          "method_name": "Lon",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.cinemaHandler",
+          "class_name": "frontend.Server",
+          "method_name": "cinemaHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.museumHandler",
+          "class_name": "frontend.Server",
+          "method_name": "museumHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.recommendHandler",
+          "class_name": "frontend.Server",
+          "method_name": "recommendHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.reservationHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reservationHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.restaurantHandler",
+          "class_name": "frontend.Server",
+          "method_name": "restaurantHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.reviewHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reviewHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.searchHandler",
+          "class_name": "frontend.Server",
+          "method_name": "searchHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.userHandler",
+          "class_name": "frontend.Server",
+          "method_name": "userHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "user": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.CheckUser",
+          "class_name": "user.Server",
+          "method_name": "CheckUser",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "user.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "search": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.Nearby",
+          "class_name": "search.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "pb.NearbyRequest"
+          ],
+          "return_type": "pb.SearchResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "search.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "review": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetReviews",
+          "class_name": "review.Server",
+          "method_name": "GetReviews",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "review.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "geo": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.Nearby",
+          "class_name": "geo.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "geo.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.getNearbyPoints",
+          "class_name": "geo.Server",
+          "method_name": "getNearbyPoints",
+          "param_types": [
+            "lat",
+            "float64"
+          ],
+          "return_type": "[]geoindex.Point",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Id",
+          "class_name": "geo.point",
+          "method_name": "Id",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Lat",
+          "class_name": "geo.point",
+          "method_name": "Lat",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "point.Lon",
+          "class_name": "geo.point",
+          "method_name": "Lon",
+          "param_types": [],
+          "return_type": "float64",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "recommendation": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetRecommendations",
+          "class_name": "recommendation.Server",
+          "method_name": "GetRecommendations",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "recommendation.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "rate": {
+      "exposed_interfaces": [
+        {
+          "id": "RatePlans.Len",
+          "class_name": "rate.RatePlans",
+          "method_name": "Len",
+          "param_types": [],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RatePlans.Less",
+          "class_name": "rate.RatePlans",
+          "method_name": "Less",
+          "param_types": [
+            "i",
+            "int"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RatePlans.Swap",
+          "class_name": "rate.RatePlans",
+          "method_name": "Swap",
+          "param_types": [
+            "i",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.GetRates",
+          "class_name": "rate.Server",
+          "method_name": "GetRates",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "rate.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "profile": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetProfiles",
+          "class_name": "profile.Server",
+          "method_name": "GetProfiles",
+          "param_types": [
+            "pb.Request"
+          ],
+          "return_type": "pb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Server.Shutdown",
+          "class_name": "profile.Server",
+          "method_name": "Shutdown",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

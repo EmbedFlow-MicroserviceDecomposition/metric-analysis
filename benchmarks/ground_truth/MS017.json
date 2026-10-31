@@ -1,0 +1,76 @@
+{
+  "system_id": "MS017",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "orders": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_orders",
+          "class_name": "server",
+          "method_name": "get_orders",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_orders_id",
+          "class_name": "server",
+          "method_name": "get_orders_id",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "products": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_products",
+          "class_name": "server",
+          "method_name": "get_products",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_products_id",
+          "class_name": "server",
+          "method_name": "get_products_id",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get",
+          "class_name": "server",
+          "method_name": "get",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

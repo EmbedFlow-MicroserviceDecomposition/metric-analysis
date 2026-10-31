@@ -1,0 +1,976 @@
+{
+  "system_id": "MS039",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cartservice": {
+      "exposed_interfaces": [
+        {
+          "id": "CartService.AddItem",
+          "class_name": "cartservice.services.CartService",
+          "method_name": "AddItem",
+          "param_types": [
+            "AddItemRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CartService.EmptyCart",
+          "class_name": "cartservice.services.CartService",
+          "method_name": "EmptyCart",
+          "param_types": [
+            "EmptyCartRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CartService.GetCart",
+          "class_name": "cartservice.services.CartService",
+          "method_name": "GetCart",
+          "param_types": [
+            "GetCartRequest"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HealthCheckService.Check",
+          "class_name": "cartservice.services.HealthCheckService",
+          "method_name": "Check",
+          "param_types": [
+            "HealthCheckRequest"
+          ],
+          "return_type": "HealthCheckResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "frontendServer.addToCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "addToCartHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.assistantHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "assistantHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.chatBotHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "chatBotHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.chooseAd",
+          "class_name": "main.frontendServer",
+          "method_name": "chooseAd",
+          "param_types": [
+            "[]string",
+            "logrus.FieldLogger"
+          ],
+          "return_type": "pb.Ad",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.convertCurrency",
+          "class_name": "main.frontendServer",
+          "method_name": "convertCurrency",
+          "param_types": [
+            "pb.Money",
+            "string"
+          ],
+          "return_type": "pb.Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.emptyCart",
+          "class_name": "main.frontendServer",
+          "method_name": "emptyCart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.emptyCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "emptyCartHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getAd",
+          "class_name": "main.frontendServer",
+          "method_name": "getAd",
+          "param_types": [
+            "[]string"
+          ],
+          "return_type": "[]*pb.Ad",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getCart",
+          "class_name": "main.frontendServer",
+          "method_name": "getCart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]*pb.CartItem",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getCurrencies",
+          "class_name": "main.frontendServer",
+          "method_name": "getCurrencies",
+          "param_types": [],
+          "return_type": "[]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getProduct",
+          "class_name": "main.frontendServer",
+          "method_name": "getProduct",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "pb.Product",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getProductByID",
+          "class_name": "main.frontendServer",
+          "method_name": "getProductByID",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getProducts",
+          "class_name": "main.frontendServer",
+          "method_name": "getProducts",
+          "param_types": [],
+          "return_type": "[]*pb.Product",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getRecommendations",
+          "class_name": "main.frontendServer",
+          "method_name": "getRecommendations",
+          "param_types": [
+            "string",
+            "[]string"
+          ],
+          "return_type": "[]*pb.Product",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.getShippingQuote",
+          "class_name": "main.frontendServer",
+          "method_name": "getShippingQuote",
+          "param_types": [
+            "[]*pb.CartItem",
+            "string"
+          ],
+          "return_type": "pb.Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.homeHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "homeHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.insertCart",
+          "class_name": "main.frontendServer",
+          "method_name": "insertCart",
+          "param_types": [
+            "userID",
+            "string",
+            "int32"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.logoutHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "logoutHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.placeOrderHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "placeOrderHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.productHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "productHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.setCurrencyHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "setCurrencyHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "frontendServer.viewCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "viewCartHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handlers.currentCurrency",
+          "class_name": "main.handlers",
+          "method_name": "currentCurrency",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handlers.injectCommonTemplateData",
+          "class_name": "main.handlers",
+          "method_name": "injectCommonTemplateData",
+          "param_types": [
+            "map[string]interface{}"
+          ],
+          "return_type": "map[string]interface",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handlers.renderHTTPError",
+          "class_name": "main.handlers",
+          "method_name": "renderHTTPError",
+          "param_types": [
+            "logrus.FieldLogger",
+            "error",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "handlers.sessionID",
+          "class_name": "main.handlers",
+          "method_name": "sessionID",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.initTracing",
+          "class_name": "main.main",
+          "method_name": "initTracing",
+          "param_types": [
+            "logrus.FieldLogger",
+            "frontendServer"
+          ],
+          "return_type": "sdktrace.TracerProvider",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.mustConnGRPC",
+          "class_name": "main.main",
+          "method_name": "mustConnGRPC",
+          "param_types": [
+            "grpc.ClientConn",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "shoppingassistantservice": {
+      "exposed_interfaces": []
+    },
+    "emailservice": {
+      "exposed_interfaces": [
+        {
+          "id": "email_server.initStackdriverProfiling",
+          "class_name": "email_server",
+          "method_name": "initStackdriverProfiling",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "email_server.start",
+          "class_name": "email_server",
+          "method_name": "start",
+          "param_types": [
+            "dummy_mode"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "BaseEmailService.Check",
+          "class_name": "email_server.BaseEmailService",
+          "method_name": "Check",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "BaseEmailService.Watch",
+          "class_name": "email_server.BaseEmailService",
+          "method_name": "Watch",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DummyEmailService.SendOrderConfirmation",
+          "class_name": "email_server.DummyEmailService",
+          "method_name": "SendOrderConfirmation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmailService.SendOrderConfirmation",
+          "class_name": "email_server.EmailService",
+          "method_name": "SendOrderConfirmation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmailService.send_email",
+          "class_name": "email_server.EmailService",
+          "method_name": "send_email",
+          "param_types": [
+            "client",
+            "email_address",
+            "content"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HealthCheck.Check",
+          "class_name": "email_server.HealthCheck",
+          "method_name": "Check",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "loadgenerator": {
+      "exposed_interfaces": [
+        {
+          "id": "locustfile.addToCart",
+          "class_name": "locustfile",
+          "method_name": "addToCart",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.browseProduct",
+          "class_name": "locustfile",
+          "method_name": "browseProduct",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.checkout",
+          "class_name": "locustfile",
+          "method_name": "checkout",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.empty_cart",
+          "class_name": "locustfile",
+          "method_name": "empty_cart",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.index",
+          "class_name": "locustfile",
+          "method_name": "index",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.logout",
+          "class_name": "locustfile",
+          "method_name": "logout",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.setCurrency",
+          "class_name": "locustfile",
+          "method_name": "setCurrency",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "locustfile.viewCart",
+          "class_name": "locustfile",
+          "method_name": "viewCart",
+          "param_types": [
+            "l"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserBehavior.on_start",
+          "class_name": "locustfile.UserBehavior",
+          "method_name": "on_start",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "recommendationservice": {
+      "exposed_interfaces": [
+        {
+          "id": "recommendation_server.initStackdriverProfiling",
+          "class_name": "recommendation_server",
+          "method_name": "initStackdriverProfiling",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RecommendationService.Check",
+          "class_name": "recommendation_server.RecommendationService",
+          "method_name": "Check",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RecommendationService.ListRecommendations",
+          "class_name": "recommendation_server.RecommendationService",
+          "method_name": "ListRecommendations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RecommendationService.Watch",
+          "class_name": "recommendation_server.RecommendationService",
+          "method_name": "Watch",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "checkoutservice": {
+      "exposed_interfaces": [
+        {
+          "id": "checkoutService.Check",
+          "class_name": "main.checkoutService",
+          "method_name": "Check",
+          "param_types": [
+            "healthpb.HealthCheckRequest"
+          ],
+          "return_type": "healthpb.HealthCheckResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.PlaceOrder",
+          "class_name": "main.checkoutService",
+          "method_name": "PlaceOrder",
+          "param_types": [
+            "pb.PlaceOrderRequest"
+          ],
+          "return_type": "pb.PlaceOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.chargeCard",
+          "class_name": "main.checkoutService",
+          "method_name": "chargeCard",
+          "param_types": [
+            "pb.Money",
+            "pb.CreditCardInfo"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.convertCurrency",
+          "class_name": "main.checkoutService",
+          "method_name": "convertCurrency",
+          "param_types": [
+            "pb.Money",
+            "string"
+          ],
+          "return_type": "pb.Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.emptyUserCart",
+          "class_name": "main.checkoutService",
+          "method_name": "emptyUserCart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.getUserCart",
+          "class_name": "main.checkoutService",
+          "method_name": "getUserCart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]*pb.CartItem",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.prepOrderItems",
+          "class_name": "main.checkoutService",
+          "method_name": "prepOrderItems",
+          "param_types": [
+            "[]*pb.CartItem",
+            "string"
+          ],
+          "return_type": "[]*pb.OrderItem",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.prepareOrderItemsAndShippingQuoteFromCart",
+          "class_name": "main.checkoutService",
+          "method_name": "prepareOrderItemsAndShippingQuoteFromCart",
+          "param_types": [
+            "userID",
+            "string",
+            "pb.Address"
+          ],
+          "return_type": "orderPrep",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.quoteShipping",
+          "class_name": "main.checkoutService",
+          "method_name": "quoteShipping",
+          "param_types": [
+            "pb.Address",
+            "[]*pb.CartItem"
+          ],
+          "return_type": "pb.Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.sendOrderConfirmation",
+          "class_name": "main.checkoutService",
+          "method_name": "sendOrderConfirmation",
+          "param_types": [
+            "string",
+            "pb.OrderResult"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "checkoutService.shipOrder",
+          "class_name": "main.checkoutService",
+          "method_name": "shipOrder",
+          "param_types": [
+            "pb.Address",
+            "[]*pb.CartItem"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "main.mustConnGRPC",
+          "class_name": "main.main",
+          "method_name": "mustConnGRPC",
+          "param_types": [
+            "grpc.ClientConn",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "productcatalogservice": {
+      "exposed_interfaces": [
+        {
+          "id": "productCatalog.Check",
+          "class_name": "main.productCatalog",
+          "method_name": "Check",
+          "param_types": [
+            "healthpb.HealthCheckRequest"
+          ],
+          "return_type": "healthpb.HealthCheckResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "productCatalog.GetProduct",
+          "class_name": "main.productCatalog",
+          "method_name": "GetProduct",
+          "param_types": [
+            "pb.GetProductRequest"
+          ],
+          "return_type": "pb.Product",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "productCatalog.ListProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "ListProducts",
+          "param_types": [
+            "pb.Empty"
+          ],
+          "return_type": "pb.ListProductsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "productCatalog.SearchProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "SearchProducts",
+          "param_types": [
+            "pb.SearchProductsRequest"
+          ],
+          "return_type": "pb.SearchProductsResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.mustConnGRPC",
+          "class_name": "main.server",
+          "method_name": "mustConnGRPC",
+          "param_types": [
+            "grpc.ClientConn",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "currencyservice": {
+      "exposed_interfaces": [
+        {
+          "id": "server.check",
+          "class_name": "server",
+          "method_name": "check",
+          "param_types": [
+            "call",
+            "callback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.convert",
+          "class_name": "server",
+          "method_name": "convert",
+          "param_types": [
+            "call",
+            "callback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.getSupportedCurrencies",
+          "class_name": "server",
+          "method_name": "getSupportedCurrencies",
+          "param_types": [
+            "call",
+            "callback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.level",
+          "class_name": "server",
+          "method_name": "level",
+          "param_types": [
+            "logLevelString",
+            "logLevelNum"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.main",
+          "class_name": "server",
+          "method_name": "main",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "shippingservice": {
+      "exposed_interfaces": [
+        {
+          "id": "server.Check",
+          "class_name": "main.server",
+          "method_name": "Check",
+          "param_types": [
+            "healthpb.HealthCheckRequest"
+          ],
+          "return_type": "healthpb.HealthCheckResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.GetQuote",
+          "class_name": "main.server",
+          "method_name": "GetQuote",
+          "param_types": [
+            "pb.GetQuoteRequest"
+          ],
+          "return_type": "pb.GetQuoteResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.ShipOrder",
+          "class_name": "main.server",
+          "method_name": "ShipOrder",
+          "param_types": [
+            "pb.ShipOrderRequest"
+          ],
+          "return_type": "pb.ShipOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.Watch",
+          "class_name": "main.server",
+          "method_name": "Watch",
+          "param_types": [
+            "healthpb.HealthCheckRequest",
+            "healthpb.Health_WatchServer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "paymentservice": {
+      "exposed_interfaces": [
+        {
+          "id": "server.ChargeServiceHandler",
+          "class_name": "server",
+          "method_name": "ChargeServiceHandler",
+          "param_types": [
+            "call",
+            "callback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.CheckHandler",
+          "class_name": "server",
+          "method_name": "CheckHandler",
+          "param_types": [
+            "call",
+            "callback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.listen",
+          "class_name": "server",
+          "method_name": "listen",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.loadAllProtos",
+          "class_name": "server",
+          "method_name": "loadAllProtos",
+          "param_types": [
+            "protoRoot"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.loadProto",
+          "class_name": "server",
+          "method_name": "loadProto",
+          "param_types": [
+            "path"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "adservice": {
+      "exposed_interfaces": [
+        {
+          "id": "AdServiceClient.getAds",
+          "class_name": "hipstershop.AdServiceClient",
+          "method_name": "getAds",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AdServiceImpl.getAds",
+          "class_name": "hipstershop.AdServiceImpl",
+          "method_name": "getAds",
+          "param_types": [
+            "AdRequest",
+            "StreamObserver<AdResponse>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

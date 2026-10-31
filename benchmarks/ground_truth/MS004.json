@@ -1,0 +1,537 @@
+{
+  "system_id": "MS004",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "common-swagger": {
+      "exposed_interfaces": []
+    },
+    "ftgo-test-util": {
+      "exposed_interfaces": []
+    },
+    "ftgo-test-util-json-schema": {
+      "exposed_interfaces": []
+    },
+    "ftgo-common": {
+      "exposed_interfaces": [
+        {
+          "id": "CommonJsonMapperInitializer.initialize",
+          "class_name": "net.chrisrichardson.ftgo.common.CommonJsonMapperInitializer",
+          "method_name": "initialize",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CommonJsonMapperInitializer.registerMoneyModule",
+          "class_name": "net.chrisrichardson.ftgo.common.CommonJsonMapperInitializer",
+          "method_name": "registerMoneyModule",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Money.add",
+          "class_name": "net.chrisrichardson.ftgo.common.Money",
+          "method_name": "add",
+          "param_types": [
+            "Money"
+          ],
+          "return_type": "Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Money.asLong",
+          "class_name": "net.chrisrichardson.ftgo.common.Money",
+          "method_name": "asLong",
+          "param_types": [],
+          "return_type": "Long",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Money.asString",
+          "class_name": "net.chrisrichardson.ftgo.common.Money",
+          "method_name": "asString",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Money.isGreaterThanOrEqual",
+          "class_name": "net.chrisrichardson.ftgo.common.Money",
+          "method_name": "isGreaterThanOrEqual",
+          "param_types": [
+            "Money"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Money.multiply",
+          "class_name": "net.chrisrichardson.ftgo.common.Money",
+          "method_name": "multiply",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "MoneyDeserializer.deserialize",
+          "class_name": "net.chrisrichardson.ftgo.common.MoneyDeserializer",
+          "method_name": "deserialize",
+          "param_types": [
+            "JsonParser",
+            "DeserializationContext"
+          ],
+          "return_type": "Money",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "MoneySerializer.serialize",
+          "class_name": "net.chrisrichardson.ftgo.common.MoneySerializer",
+          "method_name": "serialize",
+          "param_types": [
+            "Money",
+            "JsonGenerator",
+            "SerializerProvider"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-order-service": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderController.cancel",
+          "class_name": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
+          "method_name": "cancel",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderController.create",
+          "class_name": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
+          "method_name": "create",
+          "param_types": [
+            "CreateOrderRequest"
+          ],
+          "return_type": "CreateOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderController.getOrder",
+          "class_name": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
+          "method_name": "getOrder",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderController.revise",
+          "class_name": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
+          "method_name": "revise",
+          "param_types": [
+            "long",
+            "ReviseOrderRequest"
+          ],
+          "return_type": "GetOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RestaurantController.getRestaurant",
+          "class_name": "net.chrisrichardson.ftgo.orderservice.web.RestaurantController",
+          "method_name": "getRestaurant",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetRestaurantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-order-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-kitchen-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-kitchen-service": {
+      "exposed_interfaces": [
+        {
+          "id": "KitchenServiceCommandHandler.beginReviseTicket",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.messagehandlers.KitchenServiceCommandHandler",
+          "method_name": "beginReviseTicket",
+          "param_types": [
+            "CommandMessage<BeginReviseTicketCommand>"
+          ],
+          "return_type": "Message",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "KitchenServiceCommandHandler.commandHandlers",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.messagehandlers.KitchenServiceCommandHandler",
+          "method_name": "commandHandlers",
+          "param_types": [],
+          "return_type": "CommandHandlers",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "KitchenServiceCommandHandler.confirmReviseTicket",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.messagehandlers.KitchenServiceCommandHandler",
+          "method_name": "confirmReviseTicket",
+          "param_types": [
+            "CommandMessage<ConfirmReviseTicketCommand>"
+          ],
+          "return_type": "Message",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "KitchenServiceCommandHandler.undoBeginReviseTicket",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.messagehandlers.KitchenServiceCommandHandler",
+          "method_name": "undoBeginReviseTicket",
+          "param_types": [
+            "CommandMessage<UndoBeginReviseTicketCommand>"
+          ],
+          "return_type": "Message",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "KitchenController.acceptTicket",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.web.KitchenController",
+          "method_name": "acceptTicket",
+          "param_types": [
+            "long",
+            "TicketAcceptance"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RestaurantController.getRestaurant",
+          "class_name": "net.chrisrichardson.ftgo.kitchenservice.web.RestaurantController",
+          "method_name": "getRestaurant",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetRestaurantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-accounting-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-accounting-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountingServiceCommandHandler.authorize",
+          "class_name": "net.chrisrichardson.ftgo.accountingservice.messaging.AccountingServiceCommandHandler",
+          "method_name": "authorize",
+          "param_types": [
+            "CommandMessage<AuthorizeCommand>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountingServiceCommandHandler.commandHandlers",
+          "class_name": "net.chrisrichardson.ftgo.accountingservice.messaging.AccountingServiceCommandHandler",
+          "method_name": "commandHandlers",
+          "param_types": [],
+          "return_type": "CommandHandlers",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountingServiceCommandHandler.reverseAuthorization",
+          "class_name": "net.chrisrichardson.ftgo.accountingservice.messaging.AccountingServiceCommandHandler",
+          "method_name": "reverseAuthorization",
+          "param_types": [
+            "CommandMessage<ReverseAuthorizationCommand>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountingServiceCommandHandler.reviseAuthorization",
+          "class_name": "net.chrisrichardson.ftgo.accountingservice.messaging.AccountingServiceCommandHandler",
+          "method_name": "reviseAuthorization",
+          "param_types": [
+            "CommandMessage<ReviseAuthorization>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountsController.getAccount",
+          "class_name": "net.chrisrichardson.ftgo.accountingservice.web.AccountsController",
+          "method_name": "getAccount",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "GetAccountResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-consumer-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-consumer-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ConsumerController.create",
+          "class_name": "net.chrisrichardson.ftgo.consumerservice.web.ConsumerController",
+          "method_name": "create",
+          "param_types": [
+            "CreateConsumerRequest"
+          ],
+          "return_type": "CreateConsumerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsumerController.get",
+          "class_name": "net.chrisrichardson.ftgo.consumerservice.web.ConsumerController",
+          "method_name": "get",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetConsumerResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-restaurant-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-restaurant-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RestaurantController.create",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.web.RestaurantController",
+          "method_name": "create",
+          "param_types": [
+            "CreateRestaurantRequest"
+          ],
+          "return_type": "CreateRestaurantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RestaurantController.get",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.web.RestaurantController",
+          "method_name": "get",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "GetRestaurantResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-order-history-service": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderHistoryController.getOrder",
+          "class_name": "net.chrisrichardson.ftgo.cqrs.orderhistory.web.OrderHistoryController",
+          "method_name": "getOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "GetOrderResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderHistoryController.getOrders",
+          "class_name": "net.chrisrichardson.ftgo.cqrs.orderhistory.web.OrderHistoryController",
+          "method_name": "getOrders",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "GetOrdersResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-delivery-service": {
+      "exposed_interfaces": [
+        {
+          "id": "DeliveryServiceController.getDeliveryStatus",
+          "class_name": "net.chrisrichardson.ftgo.deliveryservice.web.DeliveryServiceController",
+          "method_name": "getDeliveryStatus",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "DeliveryStatus",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeliveryServiceController.updateCourierLocation",
+          "class_name": "net.chrisrichardson.ftgo.deliveryservice.web.DeliveryServiceController",
+          "method_name": "updateCourierLocation",
+          "param_types": [
+            "long",
+            "CourierAvailability"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-delivery-service-api": {
+      "exposed_interfaces": []
+    },
+    "ftgo-api-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountingService.findBillByOrderId",
+          "class_name": "net.chrisrichardson.ftgo.apiagateway.proxies.AccountingService",
+          "method_name": "findBillByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "BillInfo",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeliveryService.findDeliveryByOrderId",
+          "class_name": "net.chrisrichardson.ftgo.apiagateway.proxies.DeliveryService",
+          "method_name": "findDeliveryByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "DeliveryInfo",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "KitchenService.findTicketById",
+          "class_name": "net.chrisrichardson.ftgo.apiagateway.proxies.KitchenService",
+          "method_name": "findTicketById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TicketInfo",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderServiceProxy.findOrderById",
+          "class_name": "net.chrisrichardson.ftgo.apiagateway.proxies.OrderServiceProxy",
+          "method_name": "findOrderById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OrderInfo",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ftgo-restaurant-service-aws-lambda": {
+      "exposed_interfaces": [
+        {
+          "id": "AbstractHttpHandler.beforeHandling",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.aws.AbstractHttpHandler",
+          "method_name": "beforeHandling",
+          "param_types": [
+            "APIGatewayProxyRequestEvent",
+            "Context"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AbstractHttpHandler.handleHttpRequest",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.aws.AbstractHttpHandler",
+          "method_name": "handleHttpRequest",
+          "param_types": [
+            "APIGatewayProxyRequestEvent",
+            "Context"
+          ],
+          "return_type": "APIGatewayProxyResponseEvent",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AbstractHttpHandler.handleRequest",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.aws.AbstractHttpHandler",
+          "method_name": "handleRequest",
+          "param_types": [
+            "APIGatewayProxyRequestEvent",
+            "Context"
+          ],
+          "return_type": "APIGatewayProxyResponseEvent",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AbstractAutowiringHttpRequestHandler.beforeHandling",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.lambda.AbstractAutowiringHttpRequestHandler",
+          "method_name": "beforeHandling",
+          "param_types": [
+            "APIGatewayProxyRequestEvent",
+            "Context"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "FindRestaurantRequestHandler.handleHttpRequest",
+          "class_name": "net.chrisrichardson.ftgo.restaurantservice.lambda.FindRestaurantRequestHandler",
+          "method_name": "handleHttpRequest",
+          "param_types": [
+            "APIGatewayProxyRequestEvent",
+            "Context"
+          ],
+          "return_type": "APIGatewayProxyResponseEvent",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,1273 @@
+{
+  "system_id": "MS015",
+  "extractor_tool": "ground_truth",
+  "prompt_version": "v1.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "EventBusRabbitMQ": {
+      "exposed_interfaces": [
+        {
+          "id": "RabbitMQEventBus.PublishAsync",
+          "class_name": "RabbitMQEventBus",
+          "method_name": "PublishAsync",
+          "param_types": [
+            "IntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RabbitMQEventBus.StartAsync",
+          "class_name": "RabbitMQEventBus",
+          "method_name": "StartAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RabbitMQEventBus.StopAsync",
+          "class_name": "RabbitMQEventBus",
+          "method_name": "StopAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "ClientApp": {
+      "exposed_interfaces": [
+        {
+          "id": "FadeToAnimation.FadeIn",
+          "class_name": "eShop.ClientApp.Animations.FadeToAnimation",
+          "method_name": "FadeIn",
+          "param_types": [],
+          "return_type": "Animation",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "FadeToAnimation.FadeOut",
+          "class_name": "eShop.ClientApp.Animations.FadeToAnimation",
+          "method_name": "FadeOut",
+          "param_types": [],
+          "return_type": "Animation",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Webhooks.API": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderStatusChangedToPaidIntegrationEventHandler.Handle",
+          "class_name": "OrderStatusChangedToPaidIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToPaidIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToShippedIntegrationEventHandler.Handle",
+          "class_name": "OrderStatusChangedToShippedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToShippedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ProductPriceChangedIntegrationEventHandler.Handle",
+          "class_name": "ProductPriceChangedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "ProductPriceChangedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebHooksApi.MapWebHooksApiV1",
+          "class_name": "Webhooks.API.WebHooksApi",
+          "method_name": "MapWebHooksApiV1",
+          "param_types": [],
+          "return_type": "RouteGroupBuilder",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "PaymentProcessor": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderStatusChangedToStockConfirmedIntegrationEventHandler.Handle",
+          "class_name": "OrderStatusChangedToStockConfirmedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToStockConfirmedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Ordering.API": {
+      "exposed_interfaces": [
+        {
+          "id": "CancelOrderCommandHandler.Handle",
+          "class_name": "CancelOrderCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "CancelOrderCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CreateOrderCommandHandler.Handle",
+          "class_name": "CreateOrderCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "CreateOrderCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CreateOrderDraftCommandHandler.FromOrder",
+          "class_name": "CreateOrderDraftCommandHandler",
+          "method_name": "FromOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "OrderDraftDTO",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CreateOrderDraftCommandHandler.Handle",
+          "class_name": "CreateOrderDraftCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "CreateOrderDraftCommand"
+          ],
+          "return_type": "OrderDraftDTO",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "GracePeriodConfirmedIntegrationEventHandler.Handle",
+          "class_name": "GracePeriodConfirmedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "GracePeriodConfirmedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IdentifiedCommandHandler.Handle",
+          "class_name": "IdentifiedCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "R>"
+          ],
+          "return_type": "R",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderPaymentFailedIntegrationEventHandler.Handle",
+          "class_name": "OrderPaymentFailedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderPaymentFailedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderPaymentSucceededIntegrationEventHandler.Handle",
+          "class_name": "OrderPaymentSucceededIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderPaymentSucceededIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStockConfirmedIntegrationEventHandler.Handle",
+          "class_name": "OrderStockConfirmedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStockConfirmedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStockRejectedIntegrationEventHandler.Handle",
+          "class_name": "OrderStockRejectedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStockRejectedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrdersApi.CreateOrderDraftAsync",
+          "class_name": "OrdersApi",
+          "method_name": "CreateOrderDraftAsync",
+          "param_types": [
+            "CreateOrderDraftCommand",
+            "OrderServices"
+          ],
+          "return_type": "OrderDraftDTO",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrdersApi.GetCardTypesAsync",
+          "class_name": "OrdersApi",
+          "method_name": "GetCardTypesAsync",
+          "param_types": [
+            "IOrderQueries"
+          ],
+          "return_type": "Ok<IEnumerable<CardType>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrdersApi.GetOrdersByUserAsync",
+          "class_name": "OrdersApi",
+          "method_name": "GetOrdersByUserAsync",
+          "param_types": [
+            "OrderServices"
+          ],
+          "return_type": "Ok<IEnumerable<OrderSummary>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrdersApi.MapOrdersApiV1",
+          "class_name": "OrdersApi",
+          "method_name": "MapOrdersApiV1",
+          "param_types": [],
+          "return_type": "RouteGroupBuilder",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SetAwaitingValidationOrderStatusCommandHandler.Handle",
+          "class_name": "SetAwaitingValidationOrderStatusCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "SetAwaitingValidationOrderStatusCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SetPaidOrderStatusCommandHandler.Handle",
+          "class_name": "SetPaidOrderStatusCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "SetPaidOrderStatusCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SetStockConfirmedOrderStatusCommandHandler.Handle",
+          "class_name": "SetStockConfirmedOrderStatusCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "SetStockConfirmedOrderStatusCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SetStockRejectedOrderStatusCommandHandler.Handle",
+          "class_name": "SetStockRejectedOrderStatusCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "SetStockRejectedOrderStatusCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ShipOrderCommandHandler.Handle",
+          "class_name": "ShipOrderCommandHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "ShipOrderCommand"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Ordering.Domain": {
+      "exposed_interfaces": [
+        {
+          "id": "ValueObject.GetCopy",
+          "class_name": "ValueObject",
+          "method_name": "GetCopy",
+          "param_types": [],
+          "return_type": "ValueObject",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Buyer.VerifyOrAddPaymentMethod",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.BuyerAggregate.Buyer",
+          "method_name": "VerifyOrAddPaymentMethod",
+          "param_types": [
+            "int",
+            "string",
+            "string",
+            "string",
+            "string",
+            "DateTime",
+            "int"
+          ],
+          "return_type": "PaymentMethod",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "PaymentMethod.IsEqualTo",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.BuyerAggregate.PaymentMethod",
+          "method_name": "IsEqualTo",
+          "param_types": [
+            "int",
+            "string",
+            "DateTime"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.AddOrderItem",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "AddOrderItem",
+          "param_types": [
+            "int",
+            "string",
+            "decimal",
+            "decimal",
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.GetTotal",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "GetTotal",
+          "param_types": [],
+          "return_type": "decimal",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.NewDraft",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "NewDraft",
+          "param_types": [],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetAwaitingValidationStatus",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetAwaitingValidationStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetCancelledStatus",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetCancelledStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetCancelledStatusWhenStockIsRejected",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetCancelledStatusWhenStockIsRejected",
+          "param_types": [
+            "List<int>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetPaidStatus",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetPaidStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetPaymentMethodVerified",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetPaymentMethodVerified",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetShippedStatus",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetShippedStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Order.SetStockConfirmedStatus",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.Order",
+          "method_name": "SetStockConfirmedStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderItem.AddUnits",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.OrderItem",
+          "method_name": "AddUnits",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderItem.SetNewDiscount",
+          "class_name": "eShop.Ordering.Domain.AggregatesModel.OrderAggregate.OrderItem",
+          "method_name": "SetNewDiscount",
+          "param_types": [
+            "decimal"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "WebAppComponents": {
+      "exposed_interfaces": [
+        {
+          "id": "ItemHelper.Url",
+          "class_name": "eShop.WebAppComponents.Item.ItemHelper",
+          "method_name": "Url",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetBrands",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetBrands",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogFacets",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetCatalogFacets",
+          "param_types": [
+            "int?",
+            "int?"
+          ],
+          "return_type": "CatalogFacets",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItem",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetCatalogItem",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CatalogItem?",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "int",
+            "int",
+            "int?",
+            "int?"
+          ],
+          "return_type": "CatalogResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "List<int>"
+          ],
+          "return_type": "List<CatalogItem>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItemsWithSemanticRelevance",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetCatalogItemsWithSemanticRelevance",
+          "param_types": [
+            "int",
+            "int",
+            "string"
+          ],
+          "return_type": "CatalogResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetTypes",
+          "class_name": "eShop.WebAppComponents.Services.CatalogService",
+          "method_name": "GetTypes",
+          "param_types": [],
+          "return_type": "List<CatalogItemType>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "eShop.AppHost": {
+      "exposed_interfaces": []
+    },
+    "Basket.API": {
+      "exposed_interfaces": [
+        {
+          "id": "BasketService.DeleteBasket",
+          "class_name": "eShop.Basket.API.Grpc.BasketService",
+          "method_name": "DeleteBasket",
+          "param_types": [
+            "DeleteBasketRequest"
+          ],
+          "return_type": "DeleteBasketResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "BasketService.GetBasket",
+          "class_name": "eShop.Basket.API.Grpc.BasketService",
+          "method_name": "GetBasket",
+          "param_types": [
+            "GetBasketRequest"
+          ],
+          "return_type": "CustomerBasketResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "BasketService.UpdateBasket",
+          "class_name": "eShop.Basket.API.Grpc.BasketService",
+          "method_name": "UpdateBasket",
+          "param_types": [
+            "UpdateBasketRequest"
+          ],
+          "return_type": "CustomerBasketResponse",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStartedIntegrationEventHandler.Handle",
+          "class_name": "eShop.Basket.API.IntegrationEvents.EventHandling.OrderStartedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStartedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "HybridApp": {
+      "exposed_interfaces": [
+        {
+          "id": "CatalogService.GetBrands",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetBrands",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItem",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetCatalogItem",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CatalogItem?",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "List<int>"
+          ],
+          "return_type": "List<CatalogItem>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "int",
+            "int",
+            "int?",
+            "int?"
+          ],
+          "return_type": "CatalogResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetCatalogItemsWithSemanticRelevance",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetCatalogItemsWithSemanticRelevance",
+          "param_types": [
+            "int",
+            "int",
+            "string"
+          ],
+          "return_type": "CatalogResult",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogService.GetTypes",
+          "class_name": "eShop.HybridApp.Services.CatalogService",
+          "method_name": "GetTypes",
+          "param_types": [],
+          "return_type": "List<CatalogItemType>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Ordering.Infrastructure": {
+      "exposed_interfaces": [
+        {
+          "id": "RequestManager.ExistAsync",
+          "class_name": "RequestManager",
+          "method_name": "ExistAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "EventBus": {
+      "exposed_interfaces": []
+    },
+    "WebApp": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderStatusChangedToAwaitingValidationIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToAwaitingValidationIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToAwaitingValidationIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToCancelledIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToCancelledIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToCancelledIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToPaidIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToPaidIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToPaidIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToShippedIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToShippedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToShippedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToStockConfirmedIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToStockConfirmedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToStockConfirmedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToSubmittedIntegrationEventHandler.Handle",
+          "class_name": "eShop.WebApp.Services.OrderStatus.IntegrationEvents.OrderStatusChangedToSubmittedIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToSubmittedIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "WebhookClient": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthenticationEndpoints.MapAuthenticationEndpoints",
+          "class_name": "eShop.WebhookClient.Endpoints.AuthenticationEndpoints",
+          "method_name": "MapAuthenticationEndpoints",
+          "param_types": [],
+          "return_type": "IEndpointRouteBuilder",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "WebhookEndpoints.MapWebhookEndpoints",
+          "class_name": "eShop.WebhookClient.Endpoints.WebhookEndpoints",
+          "method_name": "MapWebhookEndpoints",
+          "param_types": [],
+          "return_type": "IEndpointRouteBuilder",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "OrderProcessor": {
+      "exposed_interfaces": [
+        {
+          "id": "GracePeriodManagerService.CheckConfirmedGracePeriodOrders",
+          "class_name": "eShop.OrderProcessor.Services.GracePeriodManagerService",
+          "method_name": "CheckConfirmedGracePeriodOrders",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IGracePeriodOrdersRepository.GetConfirmedGracePeriodOrdersAsync",
+          "class_name": "eShop.OrderProcessor.Services.IGracePeriodOrdersRepository",
+          "method_name": "GetConfirmedGracePeriodOrdersAsync",
+          "param_types": [
+            "TimeSpan"
+          ],
+          "return_type": "List<int>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Catalog.API": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderStatusChangedToAwaitingValidationIntegrationEventHandler.Handle",
+          "class_name": "OrderStatusChangedToAwaitingValidationIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToAwaitingValidationIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OrderStatusChangedToPaidIntegrationEventHandler.Handle",
+          "class_name": "OrderStatusChangedToPaidIntegrationEventHandler",
+          "method_name": "Handle",
+          "param_types": [
+            "OrderStatusChangedToPaidIntegrationEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.CreateItem",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "CreateItem",
+          "param_types": [
+            "CatalogServices",
+            "CatalogItem"
+          ],
+          "return_type": "Created",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetAllItems",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetAllItems",
+          "param_types": [
+            "PaginationRequest",
+            "CatalogServices",
+            "to"
+          ],
+          "return_type": "Ok<PaginatedItems<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetAllItemsV1",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetAllItemsV1",
+          "param_types": [
+            "PaginationRequest",
+            "CatalogServices"
+          ],
+          "return_type": "Ok<PaginatedItems<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetCatalogFacets",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetCatalogFacets",
+          "param_types": [
+            "CatalogServices",
+            "multiple"
+          ],
+          "return_type": "Ok<CatalogFacets>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetItemsByBrandAndTypeId",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetItemsByBrandAndTypeId",
+          "param_types": [
+            "PaginationRequest",
+            "CatalogServices",
+            "to"
+          ],
+          "return_type": "Ok<PaginatedItems<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetItemsByBrandId",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetItemsByBrandId",
+          "param_types": [
+            "PaginationRequest",
+            "CatalogServices",
+            "to"
+          ],
+          "return_type": "Ok<PaginatedItems<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetItemsByIds",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetItemsByIds",
+          "param_types": [
+            "CatalogServices",
+            "to"
+          ],
+          "return_type": "Ok<List<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.GetItemsByName",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "GetItemsByName",
+          "param_types": [
+            "PaginationRequest",
+            "CatalogServices",
+            "to"
+          ],
+          "return_type": "Ok<PaginatedItems<CatalogItem>>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogApi.MapCatalogApi",
+          "class_name": "eShop.Catalog.API.CatalogApi",
+          "method_name": "MapCatalogApi",
+          "param_types": [],
+          "return_type": "IEndpointRouteBuilder",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "IntegrationEventLogEF": {
+      "exposed_interfaces": [
+        {
+          "id": "IntegrationEventLogService.MarkEventAsFailedAsync",
+          "class_name": "IntegrationEventLogService",
+          "method_name": "MarkEventAsFailedAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IntegrationEventLogService.MarkEventAsInProgressAsync",
+          "class_name": "IntegrationEventLogService",
+          "method_name": "MarkEventAsInProgressAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IntegrationEventLogService.MarkEventAsPublishedAsync",
+          "class_name": "IntegrationEventLogService",
+          "method_name": "MarkEventAsPublishedAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IntegrationEventLogService.RetrieveEventLogsPendingToPublishAsync",
+          "class_name": "IntegrationEventLogService",
+          "method_name": "RetrieveEventLogsPendingToPublishAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "List<IntegrationEventLogEntry>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IntegrationEventLogService.SaveEventAsync",
+          "class_name": "IntegrationEventLogService",
+          "method_name": "SaveEventAsync",
+          "param_types": [
+            "IntegrationEvent",
+            "IDbContextTransaction"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "IntegrationEventLogEntry.DeserializeJsonContent",
+          "class_name": "eShop.IntegrationEventLogEF.IntegrationEventLogEntry",
+          "method_name": "DeserializeJsonContent",
+          "param_types": [
+            "Type"
+          ],
+          "return_type": "IntegrationEventLogEntry",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "eShop.ServiceDefaults": {
+      "exposed_interfaces": []
+    },
+    "Identity.API": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountController.AccessDenied",
+          "class_name": "IdentityServerHost.Quickstart.UI.AccountController",
+          "method_name": "AccessDenied",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Login",
+          "class_name": "IdentityServerHost.Quickstart.UI.AccountController",
+          "method_name": "Login",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Login",
+          "class_name": "IdentityServerHost.Quickstart.UI.AccountController",
+          "method_name": "Login",
+          "param_types": [
+            "LoginInputModel",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Logout",
+          "class_name": "IdentityServerHost.Quickstart.UI.AccountController",
+          "method_name": "Logout",
+          "param_types": [
+            "LogoutInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.Logout",
+          "class_name": "IdentityServerHost.Quickstart.UI.AccountController",
+          "method_name": "Logout",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.CreateScopeViewModel",
+          "class_name": "IdentityServerHost.Quickstart.UI.ConsentController",
+          "method_name": "CreateScopeViewModel",
+          "param_types": [
+            "ParsedScopeValue",
+            "ApiScope",
+            "bool"
+          ],
+          "return_type": "ScopeViewModel",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.ConsentController",
+          "method_name": "Index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ConsentController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.ConsentController",
+          "method_name": "Index",
+          "param_types": [
+            "ConsentInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.Callback",
+          "class_name": "IdentityServerHost.Quickstart.UI.DeviceController",
+          "method_name": "Callback",
+          "param_types": [
+            "DeviceAuthorizationInputModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.CreateScopeViewModel",
+          "class_name": "IdentityServerHost.Quickstart.UI.DeviceController",
+          "method_name": "CreateScopeViewModel",
+          "param_types": [
+            "ParsedScopeValue",
+            "ApiScope",
+            "bool"
+          ],
+          "return_type": "ScopeViewModel",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.DeviceController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DeviceController.UserCodeCapture",
+          "class_name": "IdentityServerHost.Quickstart.UI.DeviceController",
+          "method_name": "UserCodeCapture",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DiagnosticsController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.DiagnosticsController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ExternalController.Callback",
+          "class_name": "IdentityServerHost.Quickstart.UI.ExternalController",
+          "method_name": "Callback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ExternalController.Challenge",
+          "class_name": "IdentityServerHost.Quickstart.UI.ExternalController",
+          "method_name": "Challenge",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "GrantsController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.GrantsController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "GrantsController.Revoke",
+          "class_name": "IdentityServerHost.Quickstart.UI.GrantsController",
+          "method_name": "Revoke",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Error",
+          "class_name": "IdentityServerHost.Quickstart.UI.HomeController",
+          "method_name": "Error",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HomeController.Index",
+          "class_name": "IdentityServerHost.Quickstart.UI.HomeController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "Shared": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

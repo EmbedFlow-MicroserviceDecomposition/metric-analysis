@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fyp-cdq.local/schemas/agent_extraction.json",
+  "title": "Microservice Interface & Inter-Service Call Extraction",
+  "description": "Canonical schema for Ground Truth and LLM Agent extraction of exposed microservice interfaces and cross-service call edges.",
+  "type": "object",
+  "required": [
+    "system_id",
+    "extractor_tool",
+    "prompt_version",
+    "microservices",
+    "inter_service_calls"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "system_id": {
+      "type": "string",
+      "pattern": "^MS[0-9]{3}$",
+      "description": "System identifier matching microservices.json (e.g. 'MS001')."
+    },
+    "extractor_tool": {
+      "type": "string",
+      "enum": [
+        "ground_truth",
+        "antigravity-cli",
+        "claude-code",
+        "codex"
+      ],
+      "description": "Tool or curation source that produced this extraction."
+    },
+    "prompt_version": {
+      "type": "string",
+      "description": "Version tag of the extraction prompt used (e.g. 'v1.0')."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "pending_manual_review",
+        "candidate"
+      ],
+      "default": "verified",
+      "description": "Curation verification status."
+    },
+    "microservices": {
+      "type": "object",
+      "description": "Map from canonical microservice ID (must match keys in outputs/<MS_ID>/output.json) to its exposed interfaces.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "exposed_interfaces"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "exposed_interfaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/InterfaceSpec"
+            }
+          }
+        }
+      }
+    },
+    "inter_service_calls": {
+      "type": "array",
+      "description": "Directed cross-service invocations where src_service != dst_service.",
+      "items": {
+        "$ref": "#/$defs/InterServiceCall"
+      }
+    }
+  },
+  "$defs": {
+    "InterfaceSpec": {
+      "type": "object",
+      "required": [
+        "id",
+        "class_name",
+        "method_name",
+        "param_types",
+        "return_type",
+        "protocol",
+        "endpoint"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique identifier within the service, formatted as '<SimpleClassName>.<method_name>' (e.g. 'OwnerResource.findOwner')."
+        },
+        "class_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical class name from outputs/<MS_ID>/output.json declaring this interface operation."
+        },
+        "method_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Declared method or handler function name."
+        },
+        "param_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ordered list of domain/payload parameter types (excluding framework context parameters like HttpServletRequest, gin.Context, CancellationToken)."
+        },
+        "return_type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unwrapped domain return type (e.g. 'Owner', 'List<Visit>', 'void'; unwrap ResponseEntity<T>, Mono<T>, Task<ActionResult<T>> to T)."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "REST",
+            "gRPC",
+            "Messaging",
+            "GraphQL",
+            "RPC",
+            "WebSocket"
+          ],
+          "description": "Communication protocol exposing the operation."
+        },
+        "endpoint": {
+          "type": "string",
+          "description": "HTTP verb + route path, gRPC service/method, or message topic/queue/channel."
+        }
+      }
+    },
+    "InterServiceCall": {
+      "type": "object",
+      "required": [
+        "src_service",
+        "src_class",
+        "src_method",
+        "dst_service",
+        "dst_class",
+        "dst_interface_id",
+        "protocol",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "src_service": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical caller microservice ID from output.json."
+        },
+        "src_class": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical caller class name from output.json."
+        },
+        "src_method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Method in src_class that initiates the cross-service call."
+        },
+        "dst_service": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical target microservice ID from output.json (must differ from src_service)."
+        },
+        "dst_class": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical target class name in dst_service from output.json."
+        },
+        "dst_interface_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Target interface ID matching an entry in microservices[dst_service].exposed_interfaces (e.g. 'OwnerResource.findOwner')."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "REST",
+            "gRPC",
+            "Messaging",
+            "GraphQL",
+            "RPC",
+            "GatewayRoute"
+          ],
+          "description": "Mechanism used for the cross-service invocation."
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Concise code snippet or file:line reference proving the cross-service call."
+        }
+      }
+    }
+  }
+}

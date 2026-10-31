@@ -17,6 +17,13 @@ MONOLITHS_JSON = MONOLITHS_DIR / "monoliths.json"
 # Output and Results Directories
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"
+BENCHMARKS_DIR = PROJECT_ROOT / "benchmarks"
+GROUND_TRUTH_DIR = BENCHMARKS_DIR / "ground_truth"
+CALIBRATION_RUNS_DIR = BENCHMARKS_DIR / "calibration_runs"
+PROMPTS_DIR = PROJECT_ROOT / "prompts"
+
+# Canonical Agent Extraction Filename
+AGENT_EXTRACTION_FILENAME = "agent_extraction.json"
 
 # Default NED Bounds
 DEFAULT_NED_LO = 5
