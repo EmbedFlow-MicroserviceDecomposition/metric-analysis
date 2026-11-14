@@ -47,7 +47,7 @@ codebases/microservices/MS010_amazon-ecs-java-microservices/
 .../spring-petclinic-rest-owner/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java
 ```
 **Check:**
-- `[ ]` Line 45 — `@RequestMapping(value = "/owner/{ownerId}/getVisits", method = RequestMethod.GET)` → confirms `getOwnerVisits` endpoint
+- `[✅ ]` Line 45 — `@RequestMapping(value = "/owner/{ownerId}/getVisits", method = RequestMethod.GET)` → confirms `getOwnerVisits` endpoint
 
 ```
 .../owner/OwnerRepository.java

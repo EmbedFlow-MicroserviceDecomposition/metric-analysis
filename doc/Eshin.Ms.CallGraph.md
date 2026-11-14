@@ -2,24 +2,24 @@
 
 **Project:** Final Year Project — Microservice Decomposition Quality Metrics  
 **Branch:** `phase_01/eshin`  
-**Date:** 2026-11-03  
+**Date:** 2026-11-14  
 **Author:** Eshin  
-**Status:** ✅ All 5 systems verified & committed
+**Status:** ✅ All 5 systems verified & committed (Inter-Microservice Interfaces Only)
 
 ---
 
 ## Overview
 
-This document presents the complete ground truth call graphs for **5 benchmark microservice systems**. Each call graph was manually verified from source code with zero hallucination. All data conforms to `prompts/schema.json` and is committed to `benchmarks/ground_truth/`.
+This document presents the complete ground truth call graphs for **5 benchmark microservice systems**, scoped strictly to **inter-microservice interfaces** (interfaces that are actually invoked by another microservice in the verified call graph). All data conforms to `prompts/schema.json` and is committed to `benchmarks/ground_truth/`.
 
-| # | System ID | Codebase | Stack | Services | Interfaces | Inter-Service Calls | Protocol(s) | Commit |
-|---|---|---|---|---|---|---|---|---|
-| 1 | **MS010** | `amazon-ecs-java-microservices` | Java / Spring Boot / ECS | 5 | 9 | 1 | REST | `d467506` |
-| 2 | **MS016** | `pitstop` | C# / .NET / RabbitMQ | 9 | 18 | 33 | REST + Messaging | `09698bc` |
-| 3 | **MS031** | `sample-spring-microservices-new` | Java / Spring Cloud / OpenFeign | 6 | 16 | 4 | REST | `ff2e591` |
-| 4 | **MS047** | `robot-shop` | Polyglot (Node.js, Python, Java, PHP, Go) | 9 | 34 | 7 | REST + Messaging | `ace0d17` |
-| 5 | **MS098** | `ultimate-backend` | TypeScript / NestJS / gRPC / Bull | 9 | 69 | 49 | gRPC + Messaging | `9c19765` |
-| | | | **TOTAL** | **38** | **146** | **94** | | |
+| # | System ID | Codebase | Stack | Services | Inter-MS Interfaces | Inter-Service Calls | Protocol(s) |
+|---|---|---|---|---|---|---|---|
+| 1 | **MS010** | `amazon-ecs-java-microservices` | Java / Spring Boot / ECS | 5 | 1 | 1 | REST |
+| 2 | **MS016** | `pitstop` | C# / .NET / RabbitMQ | 9 | 17 | 33 | REST + Messaging |
+| 3 | **MS031** | `sample-spring-microservices-new` | Java / Spring Cloud / OpenFeign | 6 | 4 | 4 | REST |
+| 4 | **MS047** | `robot-shop` | Polyglot (Node.js, Python, Java, PHP, Go) | 9 | 6 | 7 | REST + Messaging |
+| 5 | **MS098** | `ultimate-backend` | TypeScript / NestJS / gRPC / Bull | 9 | 45 | 49 | gRPC |
+| | | | **TOTAL** | **38** | **73** | **94** | |
 
 ---
 
@@ -31,28 +31,19 @@ This document presents the complete ground truth call graphs for **5 benchmark m
 | `[REST]` | HTTP REST call |
 | `[gRPC]` | gRPC remote procedure call |
 | `[MSG]` | Asynchronous messaging (RabbitMQ / Bull queue) |
-| `[]` | Service has no exposed interfaces (gateway, proxy, or pure caller) |
 
 ---
 
 ## MS010 — amazon-ecs-java-microservices
 
 **Stack:** Java · Spring Boot · AWS ECS · RestTemplate  
-**Architecture:** 5 isolated Spring Boot services, each owning its own `@RepositoryRestResource`. The `spring-petclinic-rest-owner` service makes a single cross-service HTTP call to fetch pet details.
+**Architecture:** 5 containerized Spring Boot services. `spring-petclinic-rest-owner` invokes `spring-petclinic-rest-pet` via `RestTemplate` to fetch pet records.
 
-### Services & Exposed Interfaces
+### Inter-Microservice Interfaces (1 total)
 
-| Service | Class | Method | Endpoint | Protocol |
-|---|---|---|---|---|
-| `spring-petclinic-rest-owner` | `OwnerController` | `getOwnerVisits(int)` | `GET /owner/{ownerId}/getVisits` | REST |
-| `spring-petclinic-rest-owner` | `OwnerRepository` | `findById(Integer)` | `GET /owner/{id}` | REST |
-| `spring-petclinic-rest-owner` | `OwnerRepository` | `findByLastName(String)` | `GET /owner/search/findByLastName` | REST |
-| `spring-petclinic-rest-pet` | `PetRepository` | `findById(Integer)` | `GET /pet/{id}` | REST |
-| `spring-petclinic-rest-pet` | `PetRepository` | `findPetTypes()` | `GET /pet/search/findPetTypes` | REST |
-| `spring-petclinic-rest-system` | `ApplicationController` | `home()` | `GET /` | REST |
-| `spring-petclinic-rest-system` | `CrashController` | `triggerException()` | `GET /oups` | REST |
-| `spring-petclinic-rest-vet` | `VetRepository` | `findAll()` | `GET /vet` | REST |
-| `spring-petclinic-rest-visit` | `VisitRepository` | `findByPetId(Integer)` | `GET /visit/search/findByPetId` | REST |
+| Service | Interface ID | Class | Method | Endpoint | Protocol |
+|---|---|---|---|---|---|
+| `spring-petclinic-rest-pet` | `PetRepository.findById` | `org.springframework.samples.petclinic.pet.PetRepository` | `findById(Integer)` | `GET /pet/{id}` | REST |
 
 ### Call Graph
 
@@ -66,7 +57,7 @@ flowchart LR
 
 ### Inter-Service Calls (1 total)
 
-| # | Caller Service | Caller Method | Callee Service | Callee Method | Protocol | Evidence |
+| # | Caller Service | Caller Method | Callee Service | Callee Interface | Protocol | Evidence |
 |---|---|---|---|---|---|---|
 | 1 | `spring-petclinic-rest-owner` | `OwnerController.getOwnerVisits` | `spring-petclinic-rest-pet` | `PetRepository.findById` | REST | `OwnerController.java:59` — `restTemplate.getForObject("http://"+serviceEndpoint+"/pet/"+petId, Pet.class)` |
 
@@ -75,32 +66,36 @@ flowchart LR
 ## MS016 — pitstop
 
 **Stack:** C# · .NET · Refit (REST client) · RabbitMQ  
-**Architecture:** Event-driven system with a central `WebApp` UI calling 3 backend APIs over REST (via Refit). All mutation APIs publish domain events to a shared RabbitMQ exchange (`rabbitmq/pitstop`) consumed by 4 worker services. `TimeService` acts as a periodic event emitter.
+**Architecture:** Event-driven workshop management system. `WebApp` invokes 3 backend REST APIs via Refit. Mutation APIs publish domain events to `rabbitmq/pitstop`, consumed by 4 worker services. `TimeService` emits background timer events.
 
-### Services & Exposed Interfaces
+### Inter-Microservice Interfaces (17 total)
 
-| Service | Class | Method | Endpoint | Protocol |
+#### REST Interfaces (13)
+
+| Service | Interface ID | Method | Endpoint | Protocol |
 |---|---|---|---|---|
-| `AuditlogService` | `AuditLogWorker` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
-| `CustomerManagementAPI` | `CustomersController` | `GetAllAsync()` | `GET /api/customers` | REST |
-| `CustomerManagementAPI` | `CustomersController` | `GetByCustomerId(string)` | `GET /api/customers/{customerId}` | REST |
-| `CustomerManagementAPI` | `CustomersController` | `RegisterAsync(RegisterCustomer)` | `POST /api/customers` | REST |
-| `InvoiceService` | `InvoiceWorker` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
-| `NotificationService` | `NotificationWorker` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
-| `TimeService` | *(no exposed interfaces — pure publisher)* | — | — | — |
-| `VehicleManagementAPI` | `VehiclesController` | `GetAllAsync()` | `GET /api/vehicles` | REST |
-| `VehicleManagementAPI` | `VehiclesController` | `GetByLicenseNumber(string)` | `GET /api/vehicles/{licenseNumber}` | REST |
-| `VehicleManagementAPI` | `VehiclesController` | `RegisterAsync(RegisterVehicle)` | `POST /api/vehicles` | REST |
-| `WebApp` | *(no exposed interfaces — pure UI caller)* | — | — | — |
-| `WorkshopManagementAPI` | `RefDataController` | `GetCustomers()` | `GET /api/refdata/customers` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetCustomerByCustomerId(string)` | `GET /api/refdata/customers/{customerId}` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetVehicles()` | `GET /api/refdata/vehicles` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetVehicleByLicenseNumber(string)` | `GET /api/refdata/vehicles/{licenseNumber}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `GetByDate(DateTime)` | `GET /api/workshopplanning/{planningDate}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `GetMaintenanceJobAsync(DateTime, Guid)` | `GET /api/workshopplanning/{planningDate}/jobs/{jobId}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `PlanMaintenanceJobAsync(DateTime, PlanMaintenanceJob)` | `POST /api/workshopplanning/{planningDate}/jobs` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `FinishMaintenanceJobAsync(DateTime, Guid, FinishMaintenanceJob)` | `PUT /api/workshopplanning/{planningDate}/jobs/{jobId}/finish` | REST |
-| `WorkshopManagementEventHandler` | `EventHandlerWorker` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
+| `CustomerManagementAPI` | `CustomersController.GetAllAsync` | `GetAllAsync()` | `GET /api/customers` | REST |
+| `CustomerManagementAPI` | `CustomersController.GetByCustomerId` | `GetByCustomerId(string)` | `GET /api/customers/{customerId}` | REST |
+| `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `RegisterAsync(RegisterCustomer)` | `POST /api/customers` | REST |
+| `VehicleManagementAPI` | `VehiclesController.GetAllAsync` | `GetAllAsync()` | `GET /api/vehicles` | REST |
+| `VehicleManagementAPI` | `VehiclesController.GetByLicenseNumber` | `GetByLicenseNumber(string)` | `GET /api/vehicles/{licenseNumber}` | REST |
+| `VehicleManagementAPI` | `VehiclesController.RegisterAsync` | `RegisterAsync(RegisterVehicle)` | `POST /api/vehicles` | REST |
+| `WorkshopManagementAPI` | `RefDataController.GetCustomerByCustomerId` | `GetCustomerByCustomerId(string)` | `GET /api/refdata/customers/{customerId}` | REST |
+| `WorkshopManagementAPI` | `RefDataController.GetVehicles` | `GetVehicles()` | `GET /api/refdata/vehicles` | REST |
+| `WorkshopManagementAPI` | `RefDataController.GetVehicleByLicenseNumber` | `GetVehicleByLicenseNumber(string)` | `GET /api/refdata/vehicles/{licenseNumber}` | REST |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.GetByDate` | `GetByDate(DateTime)` | `GET /api/workshopplanning/{planningDate}` | REST |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.GetMaintenanceJobAsync` | `GetMaintenanceJobAsync(DateTime, Guid)` | `GET /api/workshopplanning/{planningDate}/jobs/{jobId}` | REST |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.PlanMaintenanceJobAsync` | `PlanMaintenanceJobAsync(DateTime, PlanMaintenanceJob)` | `POST /api/workshopplanning/{planningDate}/jobs` | REST |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.FinishMaintenanceJobAsync` | `FinishMaintenanceJobAsync(DateTime, Guid, FinishMaintenanceJob)` | `PUT /api/workshopplanning/{planningDate}/jobs/{jobId}/finish` | REST |
+
+#### Messaging Interfaces (4)
+
+| Service | Interface ID | Method | Endpoint / Queue | Protocol |
+|---|---|---|---|---|
+| `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
+| `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
+| `NotificationService` | `NotificationWorker.HandleMessageAsync` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
+| `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `HandleMessageAsync(string, string)` | `rabbitmq/pitstop` | Messaging |
 
 ### Call Graph
 
@@ -140,372 +135,244 @@ flowchart TD
 
 ### Inter-Service Calls (33 total)
 
-#### REST Calls — WebApp → Backend APIs (16 calls)
+#### REST Calls (16)
+1. `WebApp::CustomerManagementController.Index` → `CustomerManagementAPI::CustomersController.GetAllAsync`
+2. `WebApp::CustomerManagementController.Details` → `CustomerManagementAPI::CustomersController.GetByCustomerId`
+3. `WebApp::CustomerManagementController.Register` → `CustomerManagementAPI::CustomersController.RegisterAsync`
+4. `WebApp::VehicleManagementController.Index` → `VehicleManagementAPI::VehiclesController.GetAllAsync`
+5. `WebApp::VehicleManagementController.Details` → `VehicleManagementAPI::VehiclesController.GetByLicenseNumber`
+6. `WebApp::VehicleManagementController.Details` → `CustomerManagementAPI::CustomersController.GetByCustomerId`
+7. `WebApp::VehicleManagementController.New` → `CustomerManagementAPI::CustomersController.GetAllAsync`
+8. `WebApp::VehicleManagementController.Register` → `VehicleManagementAPI::VehiclesController.RegisterAsync`
+9. `WebApp::WorkshopManagementController.Index` → `WorkshopManagementAPI::WorkshopPlanningController.GetByDate`
+10. `WebApp::WorkshopManagementController.Details` → `WorkshopManagementAPI::WorkshopPlanningController.GetMaintenanceJobAsync`
+11. `WebApp::WorkshopManagementController.Finish` → `WorkshopManagementAPI::WorkshopPlanningController.GetMaintenanceJobAsync`
+12. `WebApp::WorkshopManagementController.RegisterMaintenanceJob` → `WorkshopManagementAPI::RefDataController.GetVehicleByLicenseNumber`
+13. `WebApp::WorkshopManagementController.RegisterMaintenanceJob` → `WorkshopManagementAPI::RefDataController.GetCustomerByCustomerId`
+14. `WebApp::WorkshopManagementController.RegisterMaintenanceJob` → `WorkshopManagementAPI::WorkshopPlanningController.PlanMaintenanceJobAsync`
+15. `WebApp::WorkshopManagementController.FinishMaintenanceJob` → `WorkshopManagementAPI::WorkshopPlanningController.FinishMaintenanceJobAsync`
+16. `WebApp::WorkshopManagementController.New` → `WorkshopManagementAPI::RefDataController.GetVehicles`
 
-| # | Src Method | Dst Service | Dst Method | Evidence |
-|---|---|---|---|---|
-| 1 | `CustomerManagementController.Index` | `CustomerManagementAPI` | `CustomersController.GetAllAsync` | `CustomerManagementController.cs:23` |
-| 2 | `CustomerManagementController.Details` | `CustomerManagementAPI` | `CustomersController.GetByCustomerId` | `CustomerManagementController.cs:36` |
-| 3 | `CustomerManagementController.Register` | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `CustomerManagementController.cs:60` |
-| 4 | `VehicleManagementController.Index` | `VehicleManagementAPI` | `VehiclesController.GetAllAsync` | `VehicleManagementController.cs:26` |
-| 5 | `VehicleManagementController.Details` | `VehicleManagementAPI` | `VehiclesController.GetByLicenseNumber` | `VehicleManagementController.cs:37` |
-| 6 | `VehicleManagementController.Details` | `CustomerManagementAPI` | `CustomersController.GetByCustomerId` | `VehicleManagementController.cs:38` |
-| 7 | `VehicleManagementController.New` | `CustomerManagementAPI` | `CustomersController.GetAllAsync` | `VehicleManagementController.cs:55` |
-| 8 | `VehicleManagementController.Register` | `VehicleManagementAPI` | `VehiclesController.RegisterAsync` | `VehicleManagementController.cs:74` |
-| 9 | `WorkshopManagementController.Index` | `WorkshopManagementAPI` | `WorkshopPlanningController.GetByDate` | `WorkshopManagementController.cs:34` |
-| 10 | `WorkshopManagementController.Details` | `WorkshopManagementAPI` | `WorkshopPlanningController.GetMaintenanceJobAsync` | `WorkshopManagementController.cs:53` |
-| 11 | `WorkshopManagementController.Finish` | `WorkshopManagementAPI` | `WorkshopPlanningController.GetMaintenanceJobAsync` | `WorkshopManagementController.cs:84` |
-| 12 | `WorkshopManagementController.RegisterMaintenanceJob` | `WorkshopManagementAPI` | `RefDataController.GetVehicleByLicenseNumber` | `WorkshopManagementController.cs:110` |
-| 13 | `WorkshopManagementController.RegisterMaintenanceJob` | `WorkshopManagementAPI` | `RefDataController.GetCustomerByCustomerId` | `WorkshopManagementController.cs:111` |
-| 14 | `WorkshopManagementController.RegisterMaintenanceJob` | `WorkshopManagementAPI` | `WorkshopPlanningController.PlanMaintenanceJobAsync` | `WorkshopManagementController.cs:116` |
-| 15 | `WorkshopManagementController.FinishMaintenanceJob` | `WorkshopManagementAPI` | `WorkshopPlanningController.FinishMaintenanceJobAsync` | `WorkshopManagementController.cs:158` |
-| 16 | `WorkshopManagementController.New` | `WorkshopManagementAPI` | `RefDataController.GetVehicles` | `WorkshopManagementController.cs:176` |
-
-#### Messaging Calls — RabbitMQ `rabbitmq/pitstop` (17 calls)
-
-| # | Src Service | Src Class / Method | Dst Service | Dst Worker | Evidence |
-|---|---|---|---|---|---|
-| 17 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `CustomersController.cs:47` |
-| 18 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `CustomersController.cs:47` |
-| 19 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `NotificationService` | `NotificationWorker.HandleMessageAsync` | `CustomersController.cs:47` |
-| 20 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `CustomersController.cs:47` |
-| 21 | `VehicleManagementAPI` | `VehiclesController.RegisterAsync` | `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `VehiclesController.cs:54` |
-| 22 | `VehicleManagementAPI` | `VehiclesController.RegisterAsync` | `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `VehiclesController.cs:54` |
-| 23 | `WorkshopManagementAPI` | `PlanMaintenanceJobCommandHandler.HandleCommandAsync` | `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `PlanMaintenanceJobCommandHandler.cs:35` |
-| 24 | `WorkshopManagementAPI` | `PlanMaintenanceJobCommandHandler.HandleCommandAsync` | `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `PlanMaintenanceJobCommandHandler.cs:35` |
-| 25 | `WorkshopManagementAPI` | `PlanMaintenanceJobCommandHandler.HandleCommandAsync` | `NotificationService` | `NotificationWorker.HandleMessageAsync` | `PlanMaintenanceJobCommandHandler.cs:35` |
-| 26 | `WorkshopManagementAPI` | `PlanMaintenanceJobCommandHandler.HandleCommandAsync` | `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `PlanMaintenanceJobCommandHandler.cs:35` |
-| 27 | `WorkshopManagementAPI` | `FinishMaintenanceJobCommandHandler.HandleCommandAsync` | `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `FinishMaintenanceJobCommandHandler.cs:35` |
-| 28 | `WorkshopManagementAPI` | `FinishMaintenanceJobCommandHandler.HandleCommandAsync` | `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `FinishMaintenanceJobCommandHandler.cs:35` |
-| 29 | `WorkshopManagementAPI` | `FinishMaintenanceJobCommandHandler.HandleCommandAsync` | `NotificationService` | `NotificationWorker.HandleMessageAsync` | `FinishMaintenanceJobCommandHandler.cs:35` |
-| 30 | `WorkshopManagementAPI` | `FinishMaintenanceJobCommandHandler.HandleCommandAsync` | `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `FinishMaintenanceJobCommandHandler.cs:35` |
-| 31 | `TimeService` | `TimeWorker.Worker` | `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `TimeWorker.cs:39` |
-| 32 | `TimeService` | `TimeWorker.Worker` | `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `TimeWorker.cs:39` |
-| 33 | `TimeService` | `TimeWorker.Worker` | `NotificationService` | `NotificationWorker.HandleMessageAsync` | `TimeWorker.cs:39` |
+#### Messaging Calls (17)
+17. `CustomerManagementAPI` → `AuditlogService` (`AuditLogWorker.HandleMessageAsync`)
+18. `CustomerManagementAPI` → `InvoiceService` (`InvoiceWorker.HandleMessageAsync`)
+19. `CustomerManagementAPI` → `NotificationService` (`NotificationWorker.HandleMessageAsync`)
+20. `CustomerManagementAPI` → `WorkshopManagementEventHandler` (`EventHandlerWorker.HandleMessageAsync`)
+21. `VehicleManagementAPI` → `AuditlogService` (`AuditLogWorker.HandleMessageAsync`)
+22. `VehicleManagementAPI` → `WorkshopManagementEventHandler` (`EventHandlerWorker.HandleMessageAsync`)
+23. `WorkshopManagementAPI` → `AuditlogService` (`AuditLogWorker.HandleMessageAsync`)
+24. `WorkshopManagementAPI` → `InvoiceService` (`InvoiceWorker.HandleMessageAsync`)
+25. `WorkshopManagementAPI` → `NotificationService` (`NotificationWorker.HandleMessageAsync`)
+26. `WorkshopManagementAPI` → `WorkshopManagementEventHandler` (`EventHandlerWorker.HandleMessageAsync`)
+27. `WorkshopManagementAPI` → `AuditlogService` (`AuditLogWorker.HandleMessageAsync`)
+28. `WorkshopManagementAPI` → `InvoiceService` (`InvoiceWorker.HandleMessageAsync`)
+29. `WorkshopManagementAPI` → `NotificationService` (`NotificationWorker.HandleMessageAsync`)
+30. `WorkshopManagementAPI` → `WorkshopManagementEventHandler` (`EventHandlerWorker.HandleMessageAsync`)
+31. `TimeService` → `AuditlogService` (`AuditLogWorker.HandleMessageAsync`)
+32. `TimeService` → `InvoiceService` (`InvoiceWorker.HandleMessageAsync`)
+33. `TimeService` → `NotificationService` (`NotificationWorker.HandleMessageAsync`)
 
 ---
 
 ## MS031 — sample-spring-microservices-new
 
-**Stack:** Java · Spring Cloud · OpenFeign · Eureka · Spring Cloud Gateway  
-**Architecture:** 3 business services (`employee`, `department`, `organization`) backed by `discovery-service` (Eureka), `config-service`, and `gateway-service`. Inter-service calls use `@FeignClient` stubs. Feign stubs are callers — they are **not** included in `exposed_interfaces`.
+**Stack:** Java · Spring Cloud · OpenFeign · Eureka  
+**Architecture:** 3 business microservices. `organization-service` aggregates data from `department-service` and `employee-service` via `@FeignClient` stubs. `department-service` invokes `employee-service` to enrich department records.
 
-### Services & Exposed Interfaces
+### Inter-Microservice Interfaces (4 total)
 
-| Service | Class | Method | Endpoint | Protocol |
-|---|---|---|---|---|
-| `employee-service` | `EmployeeController` | `add(Employee)` | `POST /` | REST |
-| `employee-service` | `EmployeeController` | `findAll()` | `GET /` | REST |
-| `employee-service` | `EmployeeController` | `findByDepartment(Long)` | `GET /department/{departmentId}` | REST |
-| `employee-service` | `EmployeeController` | `findById(Long)` | `GET /{id}` | REST |
-| `employee-service` | `EmployeeController` | `findByOrganization(Long)` | `GET /organization/{organizationId}` | REST |
-| `department-service` | `DepartmentController` | `add(Department)` | `POST /` | REST |
-| `department-service` | `DepartmentController` | `findAll()` | `GET /` | REST |
-| `department-service` | `DepartmentController` | `findById(Long)` | `GET /{id}` | REST |
-| `department-service` | `DepartmentController` | `findByOrganization(Long)` | `GET /organization/{organizationId}` | REST |
-| `department-service` | `DepartmentController` | `findByOrganizationWithEmployees(Long)` | `GET /organization/{organizationId}/with-employees` | REST |
-| `organization-service` | `OrganizationController` | `add(Organization)` | `POST /` | REST |
-| `organization-service` | `OrganizationController` | `findAll()` | `GET /` | REST |
-| `organization-service` | `OrganizationController` | `findById(Long)` | `GET /{id}` | REST |
-| `organization-service` | `OrganizationController` | `findByIdWithDepartments(Long)` | `GET /{id}/with-departments` | REST |
-| `organization-service` | `OrganizationController` | `findByIdWithDepartmentsAndEmployees(Long)` | `GET /{id}/with-departments-and-employees` | REST |
-| `organization-service` | `OrganizationController` | `findByIdWithEmployees(Long)` | `GET /{id}/with-employees` | REST |
-| `discovery-service` | *(no exposed interfaces)* | — | — | — |
-| `config-service` | *(no exposed interfaces)* | — | — | — |
-| `gateway-service` | *(no exposed interfaces)* | — | — | — |
+| Service | Interface ID | Class | Method | Endpoint | Protocol |
+|---|---|---|---|---|---|
+| `department-service` | `DepartmentController.findByOrganization` | `pl.piomin.services.department.controller.DepartmentController` | `findByOrganization` | `GET /organization/{organizationId}` | REST |
+| `department-service` | `DepartmentController.findByOrganizationWithEmployees` | `pl.piomin.services.department.controller.DepartmentController` | `findByOrganizationWithEmployees` | `GET /organization/{organizationId}/with-employees` | REST |
+| `employee-service` | `EmployeeController.findByDepartment` | `pl.piomin.services.employee.controller.EmployeeController` | `findByDepartment` | `GET /department/{departmentId}` | REST |
+| `employee-service` | `EmployeeController.findByOrganization` | `pl.piomin.services.employee.controller.EmployeeController` | `findByOrganization` | `GET /organization/{organizationId}` | REST |
 
 ### Call Graph
 
 ```mermaid
 flowchart LR
-    ORG["organization-service\nOrganizationController"]
-    DEPT["department-service\nDepartmentController"]
-    EMP["employee-service\nEmployeeController"]
+    ORG["organization-service"]
+    DEPT["department-service"]
+    EMP["employee-service"]
 
-    DEPT -->|"REST via Feign\nGET /organization/{id}/with-employees"| EMP
-    ORG -->|"REST via Feign\nGET /organization/{id}"| DEPT
-    ORG -->|"REST via Feign\nGET /organization/{id}/with-employees"| DEPT
-    ORG -->|"REST via Feign\nGET /organization/{id}"| EMP
+    ORG -->|"REST Feign\nGET /organization/{id}"| DEPT
+    ORG -->|"REST Feign\nGET /organization/{id}/with-employees"| DEPT
+    ORG -->|"REST Feign\nGET /organization/{id}"| EMP
+    DEPT -->|"REST Feign\nGET /department/{departmentId}"| EMP
 ```
 
 ### Inter-Service Calls (4 total)
 
-| # | Src Service | Src Method | Dst Service | Dst Method | Evidence |
+| # | Caller Service | Caller Method | Callee Service | Callee Interface | Evidence |
 |---|---|---|---|---|---|
-| 1 | `department-service` | `DepartmentController.findByOrganizationWithEmployees` | `employee-service` | `EmployeeController.findByDepartment` | `DepartmentController.java:53` — `employeeClient.findByDepartment(d.getId())` |
-| 2 | `organization-service` | `OrganizationController.findByIdWithDepartments` | `department-service` | `DepartmentController.findByOrganization` | `OrganizationController.java:56` — `departmentClient.findByOrganization(organization.getId())` |
-| 3 | `organization-service` | `OrganizationController.findByIdWithDepartmentsAndEmployees` | `department-service` | `DepartmentController.findByOrganizationWithEmployees` | `OrganizationController.java:64` — `departmentClient.findByOrganizationWithEmployees(organization.getId())` |
-| 4 | `organization-service` | `OrganizationController.findByIdWithEmployees` | `employee-service` | `EmployeeController.findByOrganization` | `OrganizationController.java:72` — `employeeClient.findByOrganization(organization.getId())` |
+| 1 | `department-service` | `DepartmentController.findByOrganizationWithEmployees` | `employee-service` | `EmployeeController.findByDepartment` | `DepartmentController.java:53` |
+| 2 | `organization-service` | `OrganizationController.findByIdWithDepartments` | `department-service` | `DepartmentController.findByOrganization` | `OrganizationController.java:56` |
+| 3 | `organization-service` | `OrganizationController.findByIdWithDepartmentsAndEmployees` | `department-service` | `DepartmentController.findByOrganizationWithEmployees` | `OrganizationController.java:64` |
+| 4 | `organization-service` | `OrganizationController.findByIdWithEmployees` | `employee-service` | `EmployeeController.findByOrganization` | `OrganizationController.java:72` |
 
 ---
 
 ## MS047 — robot-shop
 
-**Stack:** Polyglot — Node.js (catalogue, user, cart), Python (payment), Java/Spring Boot (shipping), PHP/Symfony (ratings), Go (dispatch), Nginx (web), MongoDB  
-**Architecture:** E-commerce robot shop. `web` (Nginx) is a pure reverse proxy with no exposed interfaces. `dispatch` consumes orders from RabbitMQ. `payment` is the central orchestrator calling `user`, `cart`, and `dispatch`.
+**Stack:** Polyglot — Node.js · Python · Java · PHP · Go  
+**Architecture:** Polyglot e-commerce platform. `payment` coordinates order fulfillment by checking user validity, posting orders, clearing carts, and enqueuing dispatch orders. `cart` validates products against `catalogue`. `shipping` updates cart status. `ratings` queries catalogue.
 
-### Services & Exposed Interfaces
+### Inter-Microservice Interfaces (6 total)
 
-| Service | Lang | Class | Method | Endpoint | Protocol |
+| Service | Interface ID | Class | Method | Endpoint | Protocol |
 |---|---|---|---|---|---|
-| `catalogue` | Node.js | `server.js` | `get_health` | `GET /health` | REST |
-| `catalogue` | Node.js | `server.js` | `get_products` | `GET /products` | REST |
-| `catalogue` | Node.js | `server.js` | `get_product_sku` | `GET /product/:sku` | REST |
-| `catalogue` | Node.js | `server.js` | `get_products_cat` | `GET /products/:cat` | REST |
-| `catalogue` | Node.js | `server.js` | `get_categories` | `GET /categories` | REST |
-| `catalogue` | Node.js | `server.js` | `get_search_text` | `GET /search/:text` | REST |
-| `user` | Node.js | `server.js` | `get_health` | `GET /health` | REST |
-| `user` | Node.js | `server.js` | `get_uniqueid` | `GET /uniqueid` | REST |
-| `user` | Node.js | `server.js` | `get_check_id` | `GET /check/:id` | REST |
-| `user` | Node.js | `server.js` | `get_users` | `GET /users` | REST |
-| `user` | Node.js | `server.js` | `post_login` | `POST /login` | REST |
-| `user` | Node.js | `server.js` | `post_register` | `POST /register` | REST |
-| `user` | Node.js | `server.js` | `post_order_id` | `POST /order/:id` | REST |
-| `user` | Node.js | `server.js` | `get_history_id` | `GET /history/:id` | REST |
-| `cart` | Node.js | `server.js` | `get_health` | `GET /health` | REST |
-| `cart` | Node.js | `server.js` | `get_cart_id` | `GET /cart/:id` | REST |
-| `cart` | Node.js | `server.js` | `delete_cart_id` | `DELETE /cart/:id` | REST |
-| `cart` | Node.js | `server.js` | `get_add_id_sku_qty` | `GET /add/:id/:sku/:qty` | REST |
-| `cart` | Node.js | `server.js` | `get_update_id_sku_qty` | `GET /update/:id/:sku/:qty` | REST |
-| `cart` | Node.js | `server.js` | `get_item_delete_id_sku` | `GET /item/delete/:id/:sku` | REST |
-| `cart` | Node.js | `server.js` | `post_shipping_id` | `POST /shipping/:id` | REST |
-| `shipping` | Java | `Controller` | `health` | `GET /health` | REST |
-| `shipping` | Java | `Controller` | `count` | `GET /count` | REST |
-| `shipping` | Java | `Controller` | `codes` | `GET /codes` | REST |
-| `shipping` | Java | `Controller` | `cities(String)` | `GET /cities/{code}` | REST |
-| `shipping` | Java | `Controller` | `match(String, String)` | `GET /match/{code}/{text}` | REST |
-| `shipping` | Java | `Controller` | `caclc(long)` | `GET /calc/{id}` | REST |
-| `shipping` | Java | `Controller` | `confirm(String, String)` | `POST /confirm/{id}` | REST |
-| `ratings` | PHP | `HealthController` | `__invoke()` | `GET /_health` | REST |
-| `ratings` | PHP | `RatingsApiController` | `put(string, int)` | `PUT /api/rate/{sku}/{score}` | REST |
-| `ratings` | PHP | `RatingsApiController` | `get(string)` | `GET /api/fetch/{sku}` | REST |
-| `payment` | Python | `payment` | `health` | `GET /health` | REST |
-| `payment` | Python | `payment` | `pay(string)` | `POST /pay/<id>` | REST |
-| `dispatch` | Go | `main.main` | `main` | `robot-shop/orders` | Messaging |
-| `web` | Nginx | *(no exposed interfaces)* | — | — | — |
-| `mongodb` | MongoDB | *(no exposed interfaces)* | — | — | — |
+| `catalogue` | `server.get_product_sku` | `server.js` | `get_product_sku` | `GET /product/:sku` | REST |
+| `cart` | `server.post_shipping_id` | `server.js` | `post_shipping_id` | `POST /shipping/:id` | REST |
+| `cart` | `server.delete_cart_id` | `server.js` | `delete_cart_id` | `DELETE /cart/:id` | REST |
+| `user` | `server.get_check_id` | `server.js` | `get_check_id` | `GET /check/:id` | REST |
+| `user` | `server.post_order_id` | `server.js` | `post_order_id` | `POST /order/:id` | REST |
+| `dispatch` | `main.main` | `main.main` | `main` | `robot-shop/orders` | Messaging |
 
 ### Call Graph
 
 ```mermaid
 flowchart TD
-    CART["cart\nserver.js"]
-    SHIP["shipping\nController"]
-    RAT["ratings\nRatingsApiController"]
-    PAY["payment\npayment"]
-    CAT["catalogue\nserver.js"]
-    USR["user\nserver.js"]
-    DISP["dispatch\nmain.main"]
+    CART["cart"]
+    CAT["catalogue"]
+    USR["user"]
+    SHIP["shipping"]
+    RAT["ratings"]
+    PAY["payment"]
+    DISP["dispatch"]
 
-    CART -->|"REST\nGET /product/:sku"| CAT
-    SHIP -->|"REST\nPOST /shipping/:id"| CART
-    RAT  -->|"REST\nGET /product/:sku"| CAT
-    PAY  -->|"REST\nGET /check/:id"| USR
-    PAY  -->|"REST\nPOST /order/:id"| USR
-    PAY  -->|"REST\nDELETE /cart/:id"| CART
+    CART -->|"GET /product/:sku"| CAT
+    SHIP -->|"POST /shipping/:id"| CART
+    RAT  -->|"GET /product/:sku"| CAT
+    PAY  -->|"GET /check/:id"| USR
+    PAY  -->|"POST /order/:id"| USR
+    PAY  -->|"DELETE /cart/:id"| CART
     PAY  -->|"MSG robot-shop/orders"| DISP
 ```
 
 ### Inter-Service Calls (7 total)
 
-| # | Src Service | Src Method | Dst Service | Dst Method | Protocol | Evidence |
+| # | Caller Service | Caller Method | Callee Service | Callee Interface | Protocol | Evidence |
 |---|---|---|---|---|---|---|
-| 1 | `cart` | `server.js.get_add_id_sku_qty` | `catalogue` | `server.js.get_product_sku` | REST | `server.js:362` — `request('http://'+catalogueHost+':8080/product/'+sku, ...)` |
-| 2 | `shipping` | `Controller.confirm` | `cart` | `server.js.post_shipping_id` | REST | `Controller.java:137` — `helper.addToCart(id, body)` |
-| 3 | `ratings` | `RatingsApiController.put` | `catalogue` | `server.js.get_product_sku` | REST | `RatingsApiController.php:49` — `$this->catalogueService->checkSKU($sku)` |
-| 4 | `payment` | `payment.pay` | `user` | `server.js.get_check_id` | REST | `payment.py:64` — `requests.get('http://{user}:8080/check/{id}')` |
-| 5 | `payment` | `payment.pay` | `user` | `server.js.post_order_id` | REST | `payment.py:106` — `requests.post('http://{user}:8080/order/{id}', ...)` |
-| 6 | `payment` | `payment.pay` | `cart` | `server.js.delete_cart_id` | REST | `payment.py:116` — `requests.delete('http://{cart}:8080/cart/{id}')` |
-| 7 | `payment` | `payment.pay` | `dispatch` | `main.main` | Messaging | `payment.py:101` — `queueOrder({'orderid': orderid, 'user': id, 'cart': cart})` |
+| 1 | `cart` | `server.js.get_add_id_sku_qty` | `catalogue` | `server.get_product_sku` | REST | `server.js:362` |
+| 2 | `shipping` | `Controller.confirm` | `cart` | `server.post_shipping_id` | REST | `Controller.java:137` |
+| 3 | `ratings` | `RatingsApiController.put` | `catalogue` | `server.get_product_sku` | REST | `RatingsApiController.php:49` |
+| 4 | `payment` | `payment.pay` | `user` | `server.get_check_id` | REST | `payment.py:64` |
+| 5 | `payment` | `payment.pay` | `user` | `server.post_order_id` | REST | `payment.py:106` |
+| 6 | `payment` | `payment.pay` | `cart` | `server.delete_cart_id` | REST | `payment.py:116` |
+| 7 | `payment` | `payment.pay` | `dispatch` | `main.main` | Messaging | `payment.py:101` |
 
 ---
 
 ## MS098 — ultimate-backend
 
-**Stack:** TypeScript · NestJS · gRPC · Bull (Redis queue) · GraphQL  
-**Architecture:** `api-admin` is a GraphQL gateway (no exposed gRPC interfaces of its own). It resolves GraphQL queries/mutations by calling 7 downstream backend gRPC services. Additionally, `service-account` and `service-tenant` make direct backend-to-backend gRPC calls to `service-role` and `service-billing`. `service-notification` receives async Bull queue jobs.
+**Stack:** TypeScript · NestJS · gRPC · GraphQL  
+**Architecture:** Multi-tenant SaaS system. `api-admin` acts as a GraphQL API Gateway resolving client operations into downstream gRPC calls across 6 backend microservices. Direct service-to-service gRPC communication occurs between `service-account` / `service-tenant` and `service-role` / `service-billing`.
 
-### Services & Exposed Interfaces
-
-| Service | Interfaces | Protocol |
-|---|---|---|
-| `api-admin` | *(no exposed interfaces — GraphQL gateway)* | — |
-| `service-webhook` | 5 gRPC methods | gRPC |
-| `service-access` | 5 gRPC methods | gRPC |
-| `service-billing` | 19 gRPC methods | gRPC |
-| `service-account` | 13 gRPC methods | gRPC |
-| `service-tenant` | 12 gRPC methods | gRPC |
-| `service-notification` | 1 queue consumer | Messaging |
-| `service-project` | 5 gRPC methods | gRPC |
-| `service-role` | 5 gRPC methods | gRPC |
+### Inter-Microservice Interfaces (45 total)
 
 #### service-webhook (5 interfaces)
-`createWebhook` · `deleteWebhook` · `findWebhook` · `readWebhook` · `updateWebhook` — all on `WebhookService/*` gRPC endpoints
+- `WebhookController.createWebhook` (`WebhookService/CreateWebhook`)
+- `WebhookController.deleteWebhook` (`WebhookService/DeleteWebhook`)
+- `WebhookController.findWebhook` (`WebhookService/FindWebhook`)
+- `WebhookController.readWebhook` (`WebhookService/ReadWebhook`)
+- `WebhookController.updateWebhook` (`WebhookService/UpdateWebhook`)
 
-#### service-access (5 interfaces)
-`createAccess` · `deleteAccess` · `findAccess` · `hasRights` · `readAccess` — all on `AccessService/*` gRPC endpoints
+#### service-access (4 interfaces)
+- `AccessTokenController.createAccess` (`AccessService/CreateAccess`)
+- `AccessTokenController.deleteAccess` (`AccessService/DeleteAccess`)
+- `AccessTokenController.findAccess` (`AccessService/FindAccess`)
+- `AccessTokenController.readAccess` (`AccessService/ReadAccess`)
 
-#### service-billing (19 interfaces)
-`cancelSubscription` · `changeSubscription` · `createCard` · `createCustomer` · `createPlan` · `createSubscription` · `deleteCard` · `deleteCustomer` · `findCards` · `findInvoices` · `findPlans` · `findStripePlans` · `findSubscriptions` · `readCard` · `readCustomer` · `readInvoice` · `readPlan` · `readSubscription` · `setDefaultCard` — all on `BillingService/*` gRPC endpoints
+#### service-billing (16 interfaces)
+- `BillingsController.cancelSubscription` (`BillingService/CancelSubscription`)
+- `BillingsController.changeSubscription` (`BillingService/ChangeSubscription`)
+- `BillingsController.createCard` (`BillingService/CreateCard`)
+- `BillingsController.createCustomer` (`BillingService/CreateCustomer`)
+- `BillingsController.createSubscription` (`BillingService/CreateSubscription`)
+- `BillingsController.deleteCard` (`BillingService/DeleteCard`)
+- `BillingsController.findCards` (`BillingService/FindCards`)
+- `BillingsController.findInvoices` (`BillingService/FindInvoices`)
+- `BillingsController.findPlans` (`BillingService/FindPlans`)
+- `BillingsController.findStripePlans` (`BillingService/FindStripePlans`)
+- `BillingsController.findSubscriptions` (`BillingService/FindSubscriptions`)
+- `BillingsController.readCard` (`BillingService/ReadCard`)
+- `BillingsController.readInvoice` (`BillingService/ReadInvoice`)
+- `BillingsController.readPlan` (`BillingService/ReadPlan`)
+- `BillingsController.readSubscription` (`BillingService/ReadSubscription`)
+- `BillingsController.setDefaultCard` (`BillingService/SetDefaultCard`)
 
-#### service-account (13 interfaces)
-`create` · `delete` · `login` · `logout` · `read` · `readSession` · `search` · `resendVerificationCode` · `update` · `updatePassword` · `verifyAccount` · `verifyActivationLink` · `forgotPassword` — all on `AccountService/*` gRPC endpoints
+#### service-account (6 interfaces)
+- `AccountsController.create` (`AccountService/Create`)
+- `AccountsController.forgotPassword` (`AccountService/ForgotPassword`)
+- `AccountsController.read` (`AccountService/Read`)
+- `AccountsController.resendVerificationCode` (`AccountService/ResendVerificationCode`)
+- `AccountsController.verifyAccount` (`AccountService/VerifyAccount`)
+- `AccountsController.verifyActivationLink` (`AccountService/VerifyActivationLink`)
 
-#### service-tenant (12 interfaces)
-`createTenant` · `deleteTenant` · `findTenant` · `readTenant` · `tenantAvailable` · `updateTenant` · `acceptMemberInvitation` · `deleteMember` · `findMembers` · `inviteMember` · `readMember` · `updateMember` — all on `TenantService/*` gRPC endpoints
+#### service-tenant (11 interfaces)
+- `MembersController.deleteMember` (`TenantService/DeleteMember`)
+- `MembersController.findMembers` (`TenantService/FindMembers`)
+- `MembersController.inviteMember` (`TenantService/InviteMember`)
+- `MembersController.readMember` (`TenantService/ReadMember`)
+- `MembersController.updateMember` (`TenantService/UpdateMember`)
+- `TenantsController.createTenant` (`TenantService/CreateTenant`)
+- `TenantsController.deleteTenant` (`TenantService/DeleteTenant`)
+- `TenantsController.findTenant` (`TenantService/FindTenant`)
+- `TenantsController.readTenant` (`TenantService/ReadTenant`)
+- `TenantsController.tenantAvailable` (`TenantService/TenantAvailable`)
+- `TenantsController.updateTenant` (`TenantService/UpdateTenant`)
 
-#### service-notification (1 interface)
-`AuthProcess.processUserRegister(Job<UserEntity>)` — `notification_queue` (Messaging/Bull)
-
-#### service-project (5 interfaces)
-`createProject` · `deleteProject` · `findProjects` · `readProject` · `updateProject` — all on `ProjectService/*` gRPC endpoints
-
-#### service-role (5 interfaces)
-`hasRights` · `readUserRoles` · `addUserToRole` · `removeUserFromRole` · *(+ 1 more)* — all on `RoleService/*` gRPC endpoints
+#### service-role (3 interfaces)
+- `RolesController.addUserToRole` (`RoleService/AddUserToRole`)
+- `RolesController.readUserRoles` (`RoleService/ReadUserRoles`)
+- `RolesController.removeUserFromRole` (`RoleService/RemoveUserFromRole`)
 
 ### Call Graph
 
 ```mermaid
 flowchart LR
     GW["api-admin\nGraphQL Gateway"]
-
     ACC["service-account"]
     BILL["service-billing"]
     TENANT["service-tenant"]
     ROLE["service-role"]
-    NOTIF["service-notification"]
     WH["service-webhook"]
     ACCESS["service-access"]
-    PROJ["service-project"]
 
-    GW -->|"gRPC"| ACC
-    GW -->|"gRPC"| BILL
-    GW -->|"gRPC"| TENANT
-    GW -->|"gRPC"| ROLE
-    GW -->|"gRPC"| WH
-    GW -->|"gRPC"| ACCESS
-    GW -->|"gRPC"| PROJ
+    GW -->|"gRPC 5 calls"| ACC
+    GW -->|"gRPC 14 calls"| BILL
+    GW -->|"gRPC 11 calls"| TENANT
+    GW -->|"gRPC 1 call"| ROLE
+    GW -->|"gRPC 5 calls"| WH
+    GW -->|"gRPC 4 calls"| ACCESS
 
-    ACC -->|"gRPC\naddUserToRole"| ROLE
-    ACC -->|"gRPC\ncreateCustomer"| BILL
-    ACC -->|"MSG notification_queue"| NOTIF
-
-    TENANT -->|"gRPC\ncreateSubscription"| BILL
-    TENANT -->|"gRPC\naddUserToRole x3\nremoveUserFromRole x1"| ROLE
+    ACC -->|"gRPC addUserToRole"| ROLE
+    ACC -->|"gRPC createCustomer"| BILL
+    TENANT -->|"gRPC createSubscription"| BILL
+    TENANT -->|"gRPC addUserToRole x3\nremoveUserFromRole x1"| ROLE
 ```
 
 ### Inter-Service Calls (49 total)
-
-#### GraphQL Gateway → Backend gRPC (42 calls)
-
-| Resolver File | Src Method (api-admin) | Dst Service | Dst Method |
-|---|---|---|---|
-| `access-token.resolver.ts:22` | `accessToken` (create) | `service-access` | `AccessTokenController.createAccess` |
-| `access-token.resolver.ts:38` | `accessToken` (delete) | `service-access` | `AccessTokenController.deleteAccess` |
-| `access-token.resolver.ts:56` | `accessToken` (find) | `service-access` | `AccessTokenController.findAccess` |
-| `access-token.resolver.ts:62` | `accessToken` (read) | `service-access` | `AccessTokenController.readAccess` |
-| `accounts-mutation.resolver.ts:96` | `register` | `service-account` | `AccountsController.create` |
-| `accounts-mutation.resolver.ts:104` | `sendResetPasswordEmail` | `service-account` | `AccountsController.forgotPassword` |
-| `accounts-mutation.resolver.ts:114` | `sendVerificationEmail` | `service-account` | `AccountsController.resendVerificationCode` |
-| `accounts-mutation.resolver.ts:142` | `verifyAccount` | `service-account` | `AccountsController.verifyAccount` |
-| `accounts-mutation.resolver.ts:163` | `verifyActivationLink` | `service-account` | `AccountsController.verifyActivationLink` |
-| `billings-mutation.resolver.ts:31` | `changeSubscription` | `service-billing` | `BillingsController.changeSubscription` |
-| `billings-mutation.resolver.ts:59` | `cancelSubscription` | `service-billing` | `BillingsController.cancelSubscription` |
-| `billings.resolver.ts:34` | `invoice` | `service-billing` | `BillingsController.readInvoice` |
-| `billings.resolver.ts:49` | `invoices` | `service-billing` | `BillingsController.findInvoices` |
-| `billings.resolver.ts:73` | `subscription` | `service-billing` | `BillingsController.readSubscription` |
-| `billings.resolver.ts:91` | `subscriptions` | `service-billing` | `BillingsController.findSubscriptions` |
-| `cards.resolver.ts:33` | `card` | `service-billing` | `BillingsController.readCard` |
-| `cards.resolver.ts:48` | `cards` | `service-billing` | `BillingsController.findCards` |
-| `cards.resolver.ts:83` | `create` (card) | `service-billing` | `BillingsController.createCard` |
-| `cards.resolver.ts:106` | `delete` (card) | `service-billing` | `BillingsController.deleteCard` |
-| `cards.resolver.ts:122` | `setDefault` | `service-billing` | `BillingsController.setDefaultCard` |
-| `plans.resolver.ts:24` | `plan` | `service-billing` | `BillingsController.readPlan` |
-| `plans.resolver.ts:30` | `plans` | `service-billing` | `BillingsController.findPlans` |
-| `plans.resolver.ts:39` | `prices` | `service-billing` | `BillingsController.findStripePlans` |
-| `tenant-members-mutation.resolver.ts:32` | `invite` | `service-tenant` | `MembersController.inviteMember` |
-| `tenant-members-mutation.resolver.ts:58` | `update` (member) | `service-tenant` | `MembersController.updateMember` |
-| `tenant-members-mutation.resolver.ts:84` | `delete` (member) | `service-tenant` | `MembersController.deleteMember` |
-| `tenant-members.resolver.ts:39` | `member` | `service-tenant` | `MembersController.readMember` |
-| `tenant-members.resolver.ts:59` | `members` | `service-tenant` | `MembersController.findMembers` |
-| `tenant-members.resolver.ts:86` | `fullName` | `service-account` | `AccountsController.read` |
-| `tenants-mutation.resolver.ts:36` | `create` (tenant) | `service-tenant` | `TenantsController.createTenant` |
-| `tenants-mutation.resolver.ts:55` | `update` (tenant) | `service-tenant` | `TenantsController.updateTenant` |
-| `tenants-mutation.resolver.ts:80` | `delete` (tenant) | `service-tenant` | `TenantsController.deleteTenant` |
-| `tenants.resolver.ts:41` | `tenantAvailable` | `service-tenant` | `TenantsController.tenantAvailable` |
-| `tenants.resolver.ts:64` | `tenant` | `service-tenant` | `TenantsController.readTenant` |
-| `tenants.resolver.ts:84` | `tenants` | `service-tenant` | `TenantsController.findTenant` |
-| `tenants.resolver.ts:102` | `owner` | `service-account` | `AccountsController.read` |
-| `users.resolver.ts:45` | `roles` | `service-role` | `RolesController.readUserRoles` |
-| `webhooks-mutation.resolver.ts:62` | `create` (webhook) | `service-webhook` | `WebhookController.createWebhook` |
-| `webhooks-mutation.resolver.ts:81` | `update` (webhook) | `service-webhook` | `WebhookController.updateWebhook` |
-| `webhooks-mutation.resolver.ts:106` | `remove` (webhook) | `service-webhook` | `WebhookController.deleteWebhook` |
-| `webhooks.resolver.ts:14` | `webhook` | `service-webhook` | `WebhookController.readWebhook` |
-| `webhooks.resolver.ts:31` | `webhooks` | `service-webhook` | `WebhookController.findWebhook` |
-
-#### Backend-to-Backend gRPC & Messaging (7 calls)
-
-| # | Src Service | Src Handler | Dst Service | Dst Method | Protocol | Evidence |
-|---|---|---|---|---|---|---|
-| 43 | `service-account` | `register-user.handler.ts.execute` | `service-role` | `RolesController.addUserToRole` | gRPC | `register-user.handler.ts:145` |
-| 44 | `service-account` | `register-user.handler.ts.execute` | `service-billing` | `BillingsController.createCustomer` | gRPC | `register-user.handler.ts:153` |
-| 45 | `service-tenant` | `create-tenant.handler.ts.execute` | `service-billing` | `BillingsController.createSubscription` | gRPC | `create-tenant.handler.ts:105` |
-| 46 | `service-tenant` | `create-tenant.handler.ts.execute` | `service-role` | `RolesController.addUserToRole` | gRPC | `create-tenant.handler.ts:127` |
-| 47 | `service-tenant` | `accept-invitation.handler.ts.execute` | `service-role` | `RolesController.addUserToRole` | gRPC | `accept-invitation.handler.ts:67` |
-| 48 | `service-tenant` | `remove-member.handler.ts.execute` | `service-role` | `RolesController.removeUserFromRole` | gRPC | `remove-member.handler.ts:93` |
-| 49 | `service-tenant` | `invite-member.handler.ts.execute` | `service-role` | `RolesController.addUserToRole` | gRPC | `invite-member.handler.ts:111` |
-
-> [!NOTE]  
-> `service-account` also emits to `notification_queue` (Bull) which is consumed by `service-notification.AuthProcess.processUserRegister`. This is modelled as a Messaging call from `service-account` → `service-notification`.
-
----
-
-## Cross-System Statistics
-
-### Interfaces by Protocol
-
-| Protocol | MS010 | MS016 | MS031 | MS047 | MS098 | Total |
-|---|---|---|---|---|---|---|
-| REST | 9 | 14 | 16 | 33 | 0 | **72** |
-| gRPC | 0 | 0 | 0 | 0 | 68 | **68** |
-| Messaging | 0 | 4 | 0 | 1 | 1 | **6** |
-| **Total** | **9** | **18** | **16** | **34** | **69** | **146** |
-
-### Calls by Protocol
-
-| Protocol | MS010 | MS016 | MS031 | MS047 | MS098 | Total |
-|---|---|---|---|---|---|---|
-| REST | 1 | 16 | 4 | 6 | 0 | **27** |
-| gRPC | 0 | 0 | 0 | 0 | 48 | **48** |
-| Messaging | 0 | 17 | 0 | 1 | 1 | **19** |
-| **Total** | **1** | **33** | **4** | **7** | **49** | **94** |
-
-### Connectivity
-
-| System | Services | Avg Interfaces/Service | Avg Calls/Service | Most Connected Caller |
-|---|---|---|---|---|
-| MS010 | 5 | 1.8 | 0.2 | `spring-petclinic-rest-owner` (1 call out) |
-| MS016 | 9 | 2.0 | 3.7 | `WorkshopManagementAPI` (8 msg out) |
-| MS031 | 6 | 2.7 | 0.7 | `organization-service` (3 calls out) |
-| MS047 | 9 | 3.8 | 0.8 | `payment` (4 calls out) |
-| MS098 | 9 | 7.7 | 5.4 | `api-admin` (42 calls out), `service-tenant` (5 calls out) |
+- **42 calls** from `api-admin` GraphQL resolvers to downstream backend gRPC services.
+- **7 calls** backend-to-backend via gRPC:
+  - `service-account` → `service-role::addUserToRole`
+  - `service-account` → `service-billing::createCustomer`
+  - `service-tenant` → `service-billing::createSubscription`
+  - `service-tenant` → `service-role::addUserToRole` (x3)
+  - `service-tenant` → `service-role::removeUserFromRole` (x1)
 
 ---
 
 ## Verification Summary
 
-| Check | MS010 | MS016 | MS031 | MS047 | MS098 |
-|---|---|---|---|---|---|
-| Schema validation | ✅ 0 errors | ✅ 0 errors | ✅ 0 errors | ✅ 0 errors | ✅ 0 errors |
-| Referential integrity | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Source-code evidence audit | ✅ 1/1 OK | ✅ 33/33 OK | ✅ 4/4 OK | ✅ 7/7 OK | ✅ 49/49 OK |
-| `extractor_tool` | `ground_truth` | `ground_truth` | `ground_truth` | `ground_truth` | `ground_truth` |
-| `status` | `verified` | `verified` | `verified` | `verified` | `verified` |
-| Committed | `d467506` | `09698bc` | `ff2e591` | `ace0d17` | `9c19765` |
+| System | Services | Inter-MS Interfaces | Inter-Service Calls | Status |
+|---|---|---|---|---|
+| **MS010** | 5 | 1 | 1 | ✅ Verified |
+| **MS016** | 9 | 17 | 33 | ✅ Verified |
+| **MS031** | 6 | 4 | 4 | ✅ Verified |
+| **MS047** | 9 | 6 | 7 | ✅ Verified |
+| **MS098** | 9 | 45 | 49 | ✅ Verified |
+| **TOTAL** | **38** | **73** | **94** | ✅ All Clear |
 
-> [!IMPORTANT]
-> The deep audit flagged `MS010 OwnerController.java:59` as "line out of range" — this was a **false alarm**. The audit script picked the monolithic copy (`1_ECS_...`) which has 50 lines and no REST call. The canonical microservices copy (`2_ECS_Java_Spring_PetClinic_Microservices`) has 63 lines and the `restTemplate.getForObject` call is confirmed at **line 59**. No changes were required.
-
----
-
-*Document generated: 2026-11-03 · Branch: `phase_01/eshin` · Repo: `D:\Final Year Project\metric anayasis`*
+*Updated: 2026-11-14 · Branch: `phase_01/eshin` · Workspace: `D:\Final Year Project\metric anayasis`*

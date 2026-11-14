@@ -11,11 +11,11 @@
 | **MS016** | 18 | **17** | 1 (`RefDataController.GetCustomers`) |
 | **MS031** | 16 | **4** | 12 (not called cross-service) |
 | **MS047** | 34 | **6** | 28 (not called cross-service) |
-| **MS098** | 69 | **46** | 23 (not called cross-service) |
-| **TOTAL** | **146** | **74** | **72** |
+| **MS098** | 69 | **45** | 24 (not called cross-service) |
+| **TOTAL** | **146** | **73** | **73** |
 
 > [!IMPORTANT]
-> Only **74 out of 146** exposed interfaces are actual inter-microservice interfaces. The other 72 are exposed but never called by another service in these systems.
+> Only **73 out of 146** exposed interfaces are actual inter-microservice interfaces. The other 73 are exposed but never called by another service in these systems.
 
 ---
 
@@ -152,7 +152,7 @@ flowchart TD
 
 ---
 
-## MS098 — 46 inter-microservice interfaces
+## MS098 — 45 inter-microservice interfaces
 
 ### service-webhook — 5 called (all 5 interfaces called)
 
@@ -239,11 +239,7 @@ flowchart TD
 
 ❌ Not called: `hasRights`, *(1 more)*
 
-### service-notification — 1 called (all 1 interface called)
-
-| Interface | Queue | Protocol | Called By |
-|---|---|---|---|
-| `AuthProcess.processUserRegister` | `notification_queue` | Messaging (Bull) | `service-account` → `register-user.handler` |
+### service-notification — 0 called (pure consumer / worker, not invoked in verified call graph)
 
 ---
 
@@ -257,7 +253,7 @@ xychart-beta
     x-axis ["MS010", "MS016", "MS031", "MS047", "MS098"]
     y-axis "Count" 0 --> 70
     bar [9, 18, 16, 34, 69]
-    bar [1, 17, 4, 6, 46]
+    bar [1, 17, 4, 6, 45]
 ```
 
 | System | Exposed | Called | Usage % |
@@ -266,8 +262,8 @@ xychart-beta
 | MS016 | 18 | 17 | **94%** |
 | MS031 | 16 | 4 | **25%** |
 | MS047 | 34 | 6 | **18%** |
-| MS098 | 69 | 46 | **67%** |
-| **Total** | **146** | **74** | **51%** |
+| MS098 | 69 | 45 | **65%** |
+| **Total** | **146** | **73** | **50%** |
 
 > [!NOTE]
 > **MS016 (pitstop)** has the highest usage — almost every exposed interface is called by another service. This is because it is a tightly-coupled event-driven system where every service plays a specific role.
