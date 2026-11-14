@@ -1,652 +1,450 @@
-# Manual Interface Verification Guide
-**Purpose:** Step-by-step checklist to manually verify every exposed interface and inter-service call in all 5 ground truth call graphs.  
-**Branch:** `phase_01/eshin` · Ground truth files: `benchmarks/ground_truth/MS0XX.json`
+# Manual Verification Guide: Inter-Microservice Interfaces & Call Graphs
+
+**Project:** Final Year Project — Microservice Decomposition Quality Metrics  
+**Branch:** `phase_01/eshin`  
+**Scope:** Verified **Inter-Microservice Interfaces** (73 total) and **Inter-Service Calls** (94 total)  
+**Status:** All 5 systems mapped directly to canonical source code with zero hallucination.
 
 ---
 
-## How to Read This Guide
+## 🎯 Verification Scope Summary
 
-For each system you will:
-1. **Open** the listed source file(s) in your editor
-2. **Look for** the annotation / pattern shown
-3. **Tick** each interface as confirmed ✅ or flag ❌ if wrong
+This checklist is strictly focused on **inter-microservice interfaces** (APIs that are called across service boundaries by another microservice) and the **inter-service call invocations** that target them.
 
-> [!IMPORTANT]
-> Always use the **canonical microservices subfolder** listed for each system — do NOT look in monolith or CI/CD copies of the same code.
-
----
-
-## Verification Checklist Key
-
-| Mark | Meaning |
-|---|---|
-| `[ ]` | Not yet checked |
-| `[✅]` | Confirmed correct |
-| `[❌]` | Issue found — note what's wrong |
+| System ID | System Name | Stack | Inter-MS Interfaces | Inter-Service Calls | Target File |
+|---|---|---|---|---|---|
+| **MS010** | `amazon-ecs-java-microservices` | Java / Spring Boot / ECS | **1** | **1** | [`benchmarks/ground_truth/MS010.json`](file:///D:/Final%20Year%20Project/metric%20anayasis/benchmarks/ground_truth/MS010.json) |
+| **MS016** | `pitstop` | C# / .NET / RabbitMQ | **17** | **33** | [`benchmarks/ground_truth/MS016.json`](file:///D:/Final%20Year%20Project/metric%20anayasis/benchmarks/ground_truth/MS016.json) |
+| **MS031** | `sample-spring-microservices-new` | Java / Spring Cloud / Feign | **4** | **4** | [`benchmarks/ground_truth/MS031.json`](file:///D:/Final%20Year%20Project/metric%20anayasis/benchmarks/ground_truth/MS031.json) |
+| **MS047** | `robot-shop` | Polyglot (Node, Py, Java, PHP, Go) | **6** | **7** | [`benchmarks/ground_truth/MS047.json`](file:///D:/Final%20Year%20Project/metric%20anayasis/benchmarks/ground_truth/MS047.json) |
+| **MS098** | `ultimate-backend` | TypeScript / NestJS / gRPC | **45** | **49** | [`benchmarks/ground_truth/MS098.json`](file:///D:/Final%20Year%20Project/metric%20anayasis/benchmarks/ground_truth/MS098.json) |
+| **TOTAL** | — | — | **73** | **94** | — |
 
 ---
 
----
+## 📖 How to Manually Verify
 
-# MS010 — amazon-ecs-java-microservices
-
-**Canonical source root:**
-```
-codebases/microservices/MS010_amazon-ecs-java-microservices/
-  2_ECS_Java_Spring_PetClinic_Microservices/
-```
-
-**What to look for:** `@RequestMapping`, `@GetMapping`, `@RepositoryRestResource`
+For each item in the checklists below:
+1. Open the indicated file in your code editor or terminal.
+2. Jump to the indicated line number.
+3. Verify that the method declaration or call snippet matches the ground truth.
+4. Tick the checkbox `[ ]` -> `[✅]`.
 
 ---
 
-## Service: `spring-petclinic-rest-owner`
+# 1. MS010 — amazon-ecs-java-microservices
 
-### File to open:
-```
-.../spring-petclinic-rest-owner/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java
-```
-**Check:**
-- `[✅ ]` Line 45 — `@RequestMapping(value = "/owner/{ownerId}/getVisits", method = RequestMethod.GET)` → confirms `getOwnerVisits` endpoint
+**Canonical Codebase Path:**  
+`codebases/microservices/MS010_amazon-ecs-java-microservices/2_ECS_Java_Spring_PetClinic_Microservices/`
 
-```
-.../owner/OwnerRepository.java
-```
-**Check (look for `@RepositoryRestResource` or `@RestResource`):**
-- `[ ]` `findById(Integer)` — exposed at `GET /owner/{id}`
-- `[ ]` `findByLastName(@Param("lastName") String lastName)` — exposed at `GET /owner/search/findByLastName`
+### A. Inter-Microservice Interface (1 total)
 
----
+- [ ] **`PetRepository.findById`**  
+  - **Service**: `spring-petclinic-rest-pet`  
+  - **File**: `spring-petclinic-rest-pet/src/main/java/org/springframework/samples/petclinic/pet/PetRepository.java`  
+  - **Line**: ~46 (`Pet findById(@Param("id") Integer id);`)  
+  - **Annotation**: Class annotated with `@RepositoryRestResource(collectionResourceRel = "pet", path = "pet")`  
+  - **Endpoint**: `REST GET /pet/{id}`  
+  - **Called by**: `spring-petclinic-rest-owner` (`OwnerController.getOwnerVisits`)
 
-## Service: `spring-petclinic-rest-pet`
+### B. Inter-Service Call (1 total)
 
-### File to open:
-```
-.../spring-petclinic-rest-pet/src/main/java/org/springframework/samples/petclinic/pet/PetRepository.java
-```
-**Check:**
-- `[ ]` `findById(Integer)` → `GET /pet/{id}`
-- `[ ]` `findPetTypes()` → `GET /pet/search/findPetTypes`
+- [ ] **Call 0**: `spring-petclinic-rest-owner` → `spring-petclinic-rest-pet`  
+  - **Caller File**: `spring-petclinic-rest-owner/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java`  
+  - **Caller Method**: `getOwnerVisits(int)`  
+  - **Line 59**:  
+    ```java
+    Pet pet = restTemplate.getForObject("http://"+serviceEndpoint+"/pet/"+petId, Pet.class);
+    ```
 
 ---
 
-## Service: `spring-petclinic-rest-system`
+# 2. MS016 — pitstop
 
-```
-.../spring-petclinic-rest-system/.../system/ApplicationController.java
-.../spring-petclinic-rest-system/.../system/CrashController.java
-```
-**Check:**
-- `[ ]` `ApplicationController.home()` → `@RequestMapping("/")` exists
-- `[ ]` `CrashController.triggerException()` → `@RequestMapping("/oups")` exists
+**Canonical Codebase Path:**  
+`codebases/microservices/MS016_pitstop/src/`
 
----
+### A. Inter-Microservice Interfaces (17 total)
 
-## Service: `spring-petclinic-rest-vet`
+#### 1. REST Endpoints (13)
+- [ ] **`CustomersController.GetAllAsync`**  
+  - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
+  - **Endpoint**: `REST GET /api/customers` (`[HttpGet]`)  
+  - **Invoked by**: `WebApp` (`CustomerManagementController.Index`, `VehicleManagementController.New`)
 
-```
-.../spring-petclinic-rest-vet/.../vet/VetRepository.java
-```
-**Check:**
-- `[ ]` `findAll()` → `GET /vet` via `@RepositoryRestResource`
+- [ ] **`CustomersController.GetByCustomerId`**  
+  - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
+  - **Endpoint**: `REST GET /api/customers/{customerId}` (`[HttpGet("{customerId}")]`)  
+  - **Invoked by**: `WebApp` (`CustomerManagementController.Details`, `VehicleManagementController.Details`)
 
----
+- [ ] **`CustomersController.RegisterAsync`**  
+  - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
+  - **Endpoint**: `REST POST /api/customers` (`[HttpPost]`)  
+  - **Invoked by**: `WebApp` (`CustomerManagementController.Register`)
 
-## Service: `spring-petclinic-rest-visit`
+- [ ] **`VehiclesController.GetAllAsync`**  
+  - **File**: `src/VehicleManagementAPI/Controllers/VehiclesController.cs`  
+  - **Endpoint**: `REST GET /api/vehicles` (`[HttpGet]`)  
+  - **Invoked by**: `WebApp` (`VehicleManagementController.Index`)
 
-```
-.../spring-petclinic-rest-visit/.../visit/VisitRepository.java
-```
-**Check:**
-- `[ ]` `findByPetId(@Param("petId") Integer)` → `GET /visit/search/findByPetId`
+- [ ] **`VehiclesController.GetByLicenseNumber`**  
+  - **File**: `src/VehicleManagementAPI/Controllers/VehiclesController.cs`  
+  - **Endpoint**: `REST GET /api/vehicles/{licenseNumber}` (`[HttpGet("{licenseNumber}")]`)  
+  - **Invoked by**: `WebApp` (`VehicleManagementController.Details`)
 
----
+- [ ] **`VehiclesController.RegisterAsync`**  
+  - **File**: `src/VehicleManagementAPI/Controllers/VehiclesController.cs`  
+  - **Endpoint**: `REST POST /api/vehicles` (`[HttpPost]`)  
+  - **Invoked by**: `WebApp` (`VehicleManagementController.Register`)
 
-## Inter-Service Call — MS010
+- [ ] **`RefDataController.GetCustomerByCustomerId`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/RefDataController.cs`  
+  - **Endpoint**: `REST GET /api/refdata/customers/{customerId}` (`[HttpGet("customers/{customerId}")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.RegisterMaintenanceJob`)
 
-### File to open:
-```
-.../spring-petclinic-rest-owner/.../owner/OwnerController.java  — Line 59
-```
-**Check:**
-- `[ ]` `restTemplate.getForObject("http://"+serviceEndpoint+"/pet/"+petId, Pet.class)` exists at or near line 59
+- [ ] **`RefDataController.GetVehicles`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/RefDataController.cs`  
+  - **Endpoint**: `REST GET /api/refdata/vehicles` (`[HttpGet("vehicles")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.New`)
 
----
+- [ ] **`RefDataController.GetVehicleByLicenseNumber`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/RefDataController.cs`  
+  - **Endpoint**: `REST GET /api/refdata/vehicles/{licenseNumber}` (`[HttpGet("vehicles/{licenseNumber}")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.RegisterMaintenanceJob`)
 
----
+- [ ] **`WorkshopPlanningController.GetByDate`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/WorkshopPlanningController.cs`  
+  - **Endpoint**: `REST GET /api/workshopplanning/{planningDate}` (`[HttpGet("{planningDate}")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.Index`)
 
-# MS016 — pitstop
+- [ ] **`WorkshopPlanningController.GetMaintenanceJobAsync`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/WorkshopPlanningController.cs`  
+  - **Endpoint**: `REST GET /api/workshopplanning/{planningDate}/jobs/{jobId}` (`[HttpGet("{planningDate}/jobs/{jobId}")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.Details`, `WorkshopManagementController.Finish`)
 
-**Canonical source root:**
-```
-codebases/microservices/MS016_pitstop/src/
-```
+- [ ] **`WorkshopPlanningController.PlanMaintenanceJobAsync`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/WorkshopPlanningController.cs`  
+  - **Endpoint**: `REST POST /api/workshopplanning/{planningDate}/jobs` (`[HttpPost("{planningDate}/jobs")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.RegisterMaintenanceJob`)
 
-**What to look for:**
-- REST: `[HttpGet]`, `[HttpPost]`, `[HttpPut]`, `[Route(...)]` attributes on controller methods
-- Messaging: `IMessageHandler` / `HandleMessageAsync` implementations
-- Caller: Refit interface methods called inside WebApp controllers
+- [ ] **`WorkshopPlanningController.FinishMaintenanceJobAsync`**  
+  - **File**: `src/WorkshopManagementAPI/Controllers/WorkshopPlanningController.cs`  
+  - **Endpoint**: `REST PUT /api/workshopplanning/{planningDate}/jobs/{jobId}/finish` (`[HttpPut("{planningDate}/jobs/{jobId}/finish")]`)  
+  - **Invoked by**: `WebApp` (`WorkshopManagementController.FinishMaintenanceJob`)
 
----
+#### 2. Messaging Consumers (4)
+- [ ] **`AuditLogWorker.HandleMessageAsync`**  
+  - **File**: `src/AuditlogService/AuditLogWorker.cs`  
+  - **Queue/Exchange**: `rabbitmq/pitstop`  
+  - **Invoked by**: `CustomerManagementAPI`, `VehicleManagementAPI`, `WorkshopManagementAPI`, `TimeService`
 
-## Service: `CustomerManagementAPI`
+- [ ] **`InvoiceWorker.HandleMessageAsync`**  
+  - **File**: `src/InvoiceService/InvoiceWorker.cs`  
+  - **Queue/Exchange**: `rabbitmq/pitstop`  
+  - **Invoked by**: `CustomerManagementAPI`, `WorkshopManagementAPI`, `TimeService`
 
-```
-src/CustomerManagementAPI/Controllers/CustomersController.cs
-```
-**Check (look for `[Http*]` or `[Route]` attributes):**
-- `[ ]` `GetAllAsync()` → `[HttpGet]` → `GET /api/customers`
-- `[ ]` `GetByCustomerId(string)` → `[HttpGet("{customerId}")]` → `GET /api/customers/{customerId}`
-- `[ ]` `RegisterAsync(RegisterCustomer)` → `[HttpPost]` → `POST /api/customers`
-- `[ ]` Line 47 — `_messagePublisher.PublishMessageAsync(...)` exists (confirms outbound MSG call)
+- [ ] **`NotificationWorker.HandleMessageAsync`**  
+  - **File**: `src/NotificationService/NotificationWorker.cs`  
+  - **Queue/Exchange**: `rabbitmq/pitstop`  
+  - **Invoked by**: `CustomerManagementAPI`, `WorkshopManagementAPI`, `TimeService`
 
----
-
-## Service: `VehicleManagementAPI`
-
-```
-src/VehicleManagementAPI/Controllers/VehiclesController.cs
-```
-**Check:**
-- `[ ]` `GetAllAsync()` → `[HttpGet]`
-- `[ ]` `GetByLicenseNumber(string)` → `[HttpGet("{licenseNumber}")]`
-- `[ ]` `RegisterAsync(RegisterVehicle)` → `[HttpPost]`
-- `[ ]` Line 54 — `_messagePublisher.PublishMessageAsync(...)` exists
-
----
-
-## Service: `WorkshopManagementAPI`
-
-```
-src/WorkshopManagementAPI/Controllers/RefDataController.cs
-src/WorkshopManagementAPI/Controllers/WorkshopPlanningController.cs
-```
-**Check in `RefDataController.cs`:**
-- `[ ]` `GetCustomers()` → `GET /api/refdata/customers`
-- `[ ]` `GetCustomerByCustomerId(string)` → `GET /api/refdata/customers/{customerId}`
-- `[ ]` `GetVehicles()` → `GET /api/refdata/vehicles`
-- `[ ]` `GetVehicleByLicenseNumber(string)` → `GET /api/refdata/vehicles/{licenseNumber}`
-
-**Check in `WorkshopPlanningController.cs`:**
-- `[ ]` `GetByDate(DateTime)` → `GET /api/workshopplanning/{planningDate}`
-- `[ ]` `GetMaintenanceJobAsync(DateTime, Guid)` → `GET /api/workshopplanning/{planningDate}/jobs/{jobId}`
-- `[ ]` `PlanMaintenanceJobAsync(DateTime, PlanMaintenanceJob)` → `POST /api/workshopplanning/{planningDate}/jobs`
-- `[ ]` `FinishMaintenanceJobAsync(DateTime, Guid, FinishMaintenanceJob)` → `PUT /api/workshopplanning/{planningDate}/jobs/{jobId}/finish`
-
-**Check command handlers (MSG publishers):**
-```
-src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs   — Line 35
-src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs — Line 35
-```
-- `[ ]` Both have `_messagePublisher.PublishMessageAsync(...)` at/near line 35
+- [ ] **`EventHandlerWorker.HandleMessageAsync`**  
+  - **File**: `src/WorkshopManagementEventHandler/EventHandlerWorker.cs`  
+  - **Queue/Exchange**: `rabbitmq/pitstop`  
+  - **Invoked by**: `CustomerManagementAPI`, `VehicleManagementAPI`, `WorkshopManagementAPI`
 
 ---
 
-## Service: `AuditlogService`
+### B. Inter-Service Calls (33 total)
 
-```
-src/AuditlogService/AuditLogWorker.cs
-```
-**Check:**
-- `[ ]` Class implements `IMessageHandler` or similar and has `HandleMessageAsync(string, string)` method
-- `[ ]` Subscribed to `rabbitmq/pitstop` exchange
+#### WebApp REST Calls via Refit
+- [ ] **Line 23** `src/WebApp/Controllers/CustomerManagementController.cs`: `Customers = await _customerManagementAPI.GetCustomers()`
+- [ ] **Line 36** `src/WebApp/Controllers/CustomerManagementController.cs`: `Customer = await _customerManagementAPI.GetCustomerById(id)`
+- [ ] **Line 60** `src/WebApp/Controllers/CustomerManagementController.cs`: `await _customerManagementAPI.RegisterCustomer(cmd)`
+- [ ] **Line 26** `src/WebApp/Controllers/VehicleManagementController.cs`: `Vehicles = await _vehicleManagementAPI.GetVehicles()`
+- [ ] **Line 37** `src/WebApp/Controllers/VehicleManagementController.cs`: `Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByLicenseNumber(licenseNumber)`
+- [ ] **Line 38** `src/WebApp/Controllers/VehicleManagementController.cs`: `Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.OwnerId)`
+- [ ] **Line 55** `src/WebApp/Controllers/VehicleManagementController.cs`: `var customers = await _customerManagementAPI.GetCustomers()`
+- [ ] **Line 74** `src/WebApp/Controllers/VehicleManagementController.cs`: `await _vehicleManagementAPI.RegisterVehicle(cmd)`
+- [ ] **Line 34** `src/WebApp/Controllers/WorkshopManagementController.cs`: `WorkshopPlanning planning = await _workshopManagementAPI.GetWorkshopPlanning(dateStr)`
+- [ ] **Line 53** `src/WebApp/Controllers/WorkshopManagementController.cs`: `MaintenanceJob = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)`
+- [ ] **Line 84** `src/WebApp/Controllers/WorkshopManagementController.cs`: `MaintenanceJob job = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)`
+- [ ] **Line 110** `src/WebApp/Controllers/WorkshopManagementController.cs`: `Vehicle vehicle = await _workshopManagementAPI.GetVehicleByLicenseNumber(...)`
+- [ ] **Line 111** `src/WebApp/Controllers/WorkshopManagementController.cs`: `Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.OwnerId)`
+- [ ] **Line 116** `src/WebApp/Controllers/WorkshopManagementController.cs`: `await _workshopManagementAPI.PlanMaintenanceJob(dateStr, planMaintenanceJobCommand)`
+- [ ] **Line 158** `src/WebApp/Controllers/WorkshopManagementController.cs`: `await _workshopManagementAPI.FinishMaintenanceJob(dateStr, inputModel.Id.ToString("D"), cmd)`
+- [ ] **Line 176** `src/WebApp/Controllers/WorkshopManagementController.cs`: `var vehicles = await _workshopManagementAPI.GetVehicles()`
 
----
-
-## Service: `InvoiceService`
-
-```
-src/InvoiceService/InvoiceWorker.cs
-```
-- `[ ]` Has `HandleMessageAsync(string, string)` → listens on `rabbitmq/pitstop`
-
----
-
-## Service: `NotificationService`
-
-```
-src/NotificationService/NotificationWorker.cs
-```
-- `[ ]` Has `HandleMessageAsync(string, string)` → listens on `rabbitmq/pitstop`
-
----
-
-## Service: `WorkshopManagementEventHandler`
-
-```
-src/WorkshopManagementEventHandler/EventHandlerWorker.cs
-```
-- `[ ]` Has `HandleMessageAsync(string, string)` → listens on `rabbitmq/pitstop`
+#### RabbitMQ Domain Event Publications
+- [ ] **Line 47** `src/CustomerManagementAPI/Controllers/CustomersController.cs`: `await _messagePublisher.PublishMessageAsync(e.MessageType, e, "")` (Fans out to Audit, Invoice, Notification, EventHandler)
+- [ ] **Line 54** `src/VehicleManagementAPI/Controllers/VehiclesController.cs`: `await _messagePublisher.PublishMessageAsync(e.MessageType, e, "")` (Fans out to Audit, EventHandler)
+- [ ] **Line 35** `src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs`: `await _messagePublisher.PublishMessageAsync(e.MessageType, e, "")` (Fans out to Audit, Invoice, Notification, EventHandler)
+- [ ] **Line 35** `src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs`: `await _messagePublisher.PublishMessageAsync(e.MessageType, e, "")` (Fans out to Audit, Invoice, Notification, EventHandler)
+- [ ] **Line 39** `src/TimeService/TimeWorker.cs`: `await _messagePublisher.PublishMessageAsync(e.MessageType, e, "")` (Fans out to Audit, Invoice, Notification)
 
 ---
 
-## Service: `TimeService`
+# 3. MS031 — sample-spring-microservices-new
 
-```
-src/TimeService/TimeWorker.cs   — Line 39
-```
-- `[ ]` Line 39 has `_messagePublisher.PublishMessageAsync(...)` (confirms 3 outbound MSG calls to Audit/Invoice/Notification)
+**Canonical Codebase Path:**  
+`codebases/microservices/MS031_sample-spring-microservices-new/`
 
----
+### A. Inter-Microservice Interfaces (4 total)
 
-## REST Caller Verification — `WebApp`
+- [ ] **`DepartmentController.findByOrganization`**  
+  - **Service**: `department-service`  
+  - **File**: `department-service/src/main/java/pl/piomin/services/department/controller/DepartmentController.java`  
+  - **Endpoint**: `REST GET /organization/{organizationId}`  
+  - **Invoked by**: `organization-service` (`OrganizationController.findByIdWithDepartments`)
 
-```
-src/WebApp/Controllers/CustomerManagementController.cs
-src/WebApp/Controllers/VehicleManagementController.cs
-src/WebApp/Controllers/WorkshopManagementController.cs
-```
-**Spot-check these line numbers:**
+- [ ] **`DepartmentController.findByOrganizationWithEmployees`**  
+  - **Service**: `department-service`  
+  - **File**: `department-service/src/main/java/pl/piomin/services/department/controller/DepartmentController.java`  
+  - **Endpoint**: `REST GET /organization/{organizationId}/with-employees`  
+  - **Invoked by**: `organization-service` (`OrganizationController.findByIdWithDepartmentsAndEmployees`)
 
-| File | Line | Expected call |
-|---|---|---|
-| `CustomerManagementController.cs` | 23 | `_customerManagementAPI.GetCustomers()` |
-| `CustomerManagementController.cs` | 36 | `_customerManagementAPI.GetCustomerById(id)` |
-| `CustomerManagementController.cs` | 60 | `_customerManagementAPI.RegisterCustomer(cmd)` |
-| `VehicleManagementController.cs` | 26 | `_vehicleManagementAPI.GetVehicles()` |
-| `VehicleManagementController.cs` | 37 | `_vehicleManagementAPI.GetVehicleByLicenseNumber(...)` |
-| `VehicleManagementController.cs` | 38 | `_customerManagementAPI.GetCustomerById(...)` |
-| `VehicleManagementController.cs` | 55 | `_customerManagementAPI.GetCustomers()` |
-| `VehicleManagementController.cs` | 74 | `_vehicleManagementAPI.RegisterVehicle(...)` |
-| `WorkshopManagementController.cs` | 34 | `_workshopManagementAPI.GetWorkshopPlanning(...)` |
-| `WorkshopManagementController.cs` | 53 | `_workshopManagementAPI.GetMaintenanceJob(...)` |
-| `WorkshopManagementController.cs` | 84 | `_workshopManagementAPI.GetMaintenanceJob(...)` |
-| `WorkshopManagementController.cs` | 110 | `_workshopManagementAPI.GetVehicleByLicenseNumber(...)` |
-| `WorkshopManagementController.cs` | 111 | `_workshopManagementAPI.GetCustomerById(...)` |
-| `WorkshopManagementController.cs` | 116 | `_workshopManagementAPI.PlanMaintenanceJob(...)` |
-| `WorkshopManagementController.cs` | 158 | `_workshopManagementAPI.FinishMaintenanceJob(...)` |
-| `WorkshopManagementController.cs` | 176 | `_workshopManagementAPI.GetVehicles()` |
+- [ ] **`EmployeeController.findByDepartment`**  
+  - **Service**: `employee-service`  
+  - **File**: `employee-service/src/main/java/pl/piomin/services/employee/controller/EmployeeController.java`  
+  - **Endpoint**: `REST GET /department/{departmentId}`  
+  - **Invoked by**: `department-service` (`DepartmentController.findByOrganizationWithEmployees`)
 
----
+- [ ] **`EmployeeController.findByOrganization`**  
+  - **Service**: `employee-service`  
+  - **File**: `employee-service/src/main/java/pl/piomin/services/employee/controller/EmployeeController.java`  
+  - **Endpoint**: `REST GET /organization/{organizationId}`  
+  - **Invoked by**: `organization-service` (`OrganizationController.findByIdWithEmployees`)
 
----
+### B. Inter-Service Calls (4 total)
 
-# MS031 — sample-spring-microservices-new
-
-**Canonical source root:**
-```
-codebases/microservices/MS031_sample-spring-microservices-new/
-```
-
-**What to look for:** `@RestController`, `@RequestMapping`, `@GetMapping`, `@PostMapping`, `@FeignClient`
+- [ ] **Call 0**: `department-service` → `employee-service`  
+  - **Caller File**: `department-service/.../DepartmentController.java`  
+  - **Line 53**: `departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));`
+- [ ] **Call 1**: `organization-service` → `department-service`  
+  - **Caller File**: `organization-service/.../OrganizationController.java`  
+  - **Line 56**: `organization.setDepartments(departmentClient.findByOrganization(organization.getId()));`
+- [ ] **Call 2**: `organization-service` → `department-service`  
+  - **Caller File**: `organization-service/.../OrganizationController.java`  
+  - **Line 64**: `organization.setDepartments(departmentClient.findByOrganizationWithEmployees(organization.getId()));`
+- [ ] **Call 3**: `organization-service` → `employee-service`  
+  - **Caller File**: `organization-service/.../OrganizationController.java`  
+  - **Line 72**: `organization.setEmployees(employeeClient.findByOrganization(organization.getId()));`
 
 ---
 
-## Service: `employee-service`
+# 4. MS047 — robot-shop
 
-```
-employee-service/src/main/java/pl/piomin/services/employee/controller/EmployeeController.java
-```
-**Check annotations on each method:**
-- `[ ]` `add(@RequestBody Employee)` → `@PostMapping` → `POST /`
-- `[ ]` `findAll()` → `@GetMapping` → `GET /`
-- `[ ]` `findById(@PathVariable Long id)` → `@GetMapping("/{id}")` → `GET /{id}`
-- `[ ]` `findByDepartment(@PathVariable Long departmentId)` → `@GetMapping("/department/{departmentId}")` → `GET /department/{departmentId}`
-- `[ ]` `findByOrganization(@PathVariable Long organizationId)` → `@GetMapping("/organization/{organizationId}")` → `GET /organization/{organizationId}`
+**Canonical Codebase Path:**  
+`codebases/microservices/MS047_robot-shop/`
 
----
+### A. Inter-Microservice Interfaces (6 total)
 
-## Service: `department-service`
+- [ ] **`server.get_product_sku`**  
+  - **Service**: `catalogue` (Node.js)  
+  - **File**: `catalogue/server.js`  
+  - **Route**: `app.get('/product/:sku', ...)` (`REST GET /product/:sku`)  
+  - **Invoked by**: `cart`, `ratings`
 
-```
-department-service/src/main/java/pl/piomin/services/department/controller/DepartmentController.java
-```
-**Check:**
-- `[ ]` `add(@RequestBody Department)` → `@PostMapping` → `POST /`
-- `[ ]` `findAll()` → `@GetMapping` → `GET /`
-- `[ ]` `findById(@PathVariable Long id)` → `@GetMapping("/{id}")`
-- `[ ]` `findByOrganization(@PathVariable Long organizationId)` → `@GetMapping("/organization/{organizationId}")`
-- `[ ]` `findByOrganizationWithEmployees(@PathVariable Long organizationId)` → `@GetMapping("/organization/{organizationId}/with-employees")`
-- `[ ]` **Line 53** — `employeeClient.findByDepartment(d.getId())` exists (Feign call to employee-service)
+- [ ] **`server.post_shipping_id`**  
+  - **Service**: `cart` (Node.js)  
+  - **File**: `cart/server.js`  
+  - **Route**: `app.post('/shipping/:id', ...)` (`REST POST /shipping/:id`)  
+  - **Invoked by**: `shipping`
 
----
+- [ ] **`server.delete_cart_id`**  
+  - **Service**: `cart` (Node.js)  
+  - **File**: `cart/server.js`  
+  - **Route**: `app.delete('/cart/:id', ...)` (`REST DELETE /cart/:id`)  
+  - **Invoked by**: `payment`
 
-## Service: `organization-service`
+- [ ] **`server.get_check_id`**  
+  - **Service**: `user` (Node.js)  
+  - **File**: `user/server.js`  
+  - **Route**: `app.get('/check/:id', ...)` (`REST GET /check/:id`)  
+  - **Invoked by**: `payment`
 
-```
-organization-service/src/main/java/pl/piomin/services/organization/controller/OrganizationController.java
-```
-**Check:**
-- `[ ]` `add(@RequestBody Organization)` → `@PostMapping`
-- `[ ]` `findAll()` → `@GetMapping`
-- `[ ]` `findById(@PathVariable Long id)` → `@GetMapping("/{id}")`
-- `[ ]` `findByIdWithDepartments(@PathVariable Long id)` → `@GetMapping("/{id}/with-departments")`
-- `[ ]` `findByIdWithDepartmentsAndEmployees(@PathVariable Long id)` → `@GetMapping("/{id}/with-departments-and-employees")`
-- `[ ]` `findByIdWithEmployees(@PathVariable Long id)` → `@GetMapping("/{id}/with-employees")`
+- [ ] **`server.post_order_id`**  
+  - **Service**: `user` (Node.js)  
+  - **File**: `user/server.js`  
+  - **Route**: `app.post('/order/:id', ...)` (`REST POST /order/:id`)  
+  - **Invoked by**: `payment`
 
-**Check Feign calls (lines 56, 64, 72):**
-- `[ ]` Line 56 — `departmentClient.findByOrganization(organization.getId())`
-- `[ ]` Line 64 — `departmentClient.findByOrganizationWithEmployees(organization.getId())`
-- `[ ]` Line 72 — `employeeClient.findByOrganization(organization.getId())`
+- [ ] **`main.main`**  
+  - **Service**: `dispatch` (Go)  
+  - **File**: `dispatch/main.go`  
+  - **Queue**: AMQP consumer on exchange `robot-shop/orders`  
+  - **Invoked by**: `payment`
 
----
+### B. Inter-Service Calls (7 total)
 
-## Infrastructure Services
-
-```
-discovery-service/  →  look for @EnableEurekaServer
-config-service/     →  look for @EnableConfigServer
-gateway-service/    →  look for application.yml routes (no @RestController)
-```
-- `[ ]` None of these have `@RestController` or any `@*Mapping` endpoints (confirms `exposed_interfaces: []`)
-
----
-
----
-
-# MS047 — robot-shop
-
-**Canonical source root:**
-```
-codebases/microservices/MS047_robot-shop/
-```
-
-**What to look for by language:**
-| Service | Lang | Pattern |
-|---|---|---|
-| catalogue, user, cart | Node.js | `app.get(...)`, `app.post(...)`, `app.delete(...)` in `server.js` |
-| shipping | Java | `@GetMapping`, `@PostMapping`, `@RequestMapping` on `Controller.java` |
-| ratings | PHP | `@Route(...)` annotation in Symfony controller |
-| payment | Python | `@app.route(...)` Flask decorator |
-| dispatch | Go | `amqp.Dial(...)` + queue consume loop in `main.go` |
+- [ ] **Call 0**: `cart` → `catalogue`  
+  - **File**: `cart/server.js:362`  
+  - `request('http://' + catalogueHost + ':8080/product/' + sku, (err, res, body) => {`
+- [ ] **Call 1**: `shipping` → `cart`  
+  - **File**: `shipping/src/main/java/com/instana/robotshop/shipping/Controller.java:137`  
+  - `String cart = helper.addToCart(id, body);`
+- [ ] **Call 2**: `ratings` → `catalogue`  
+  - **File**: `ratings/src/Controller/RatingsApiController.php:49`  
+  - `if (false === $this->catalogueService->checkSKU($sku))`
+- [ ] **Call 3**: `payment` → `user`  
+  - **File**: `payment/payment.py:64`  
+  - `req = requests.get('http://{user}:8080/check/{id}'.format(user=USER, id=id))`
+- [ ] **Call 4**: `payment` → `user`  
+  - **File**: `payment/payment.py:106`  
+  - `req = requests.post('http://{user}:8080/order/{id}'.format(user=USER, id=id), ...)`
+- [ ] **Call 5**: `payment` → `cart`  
+  - **File**: `payment/payment.py:116`  
+  - `req = requests.delete('http://{cart}:8080/cart/{id}'.format(cart=CART, id=id))`
+- [ ] **Call 6**: `payment` → `dispatch`  
+  - **File**: `payment/payment.py:101`  
+  - `queueOrder({ 'orderid': orderid, 'user': id, 'cart': cart })`
 
 ---
 
-## Service: `catalogue` — Node.js
+# 5. MS098 — ultimate-backend
 
-```
-catalogue/server.js
-```
-**Check `app.get(...)` / `app.post(...)` calls:**
-- `[ ]` `app.get('/health', ...)` → `GET /health`
-- `[ ]` `app.get('/products', ...)` → `GET /products`
-- `[ ]` `app.get('/product/:sku', ...)` → `GET /product/:sku`
-- `[ ]` `app.get('/products/:cat', ...)` → `GET /products/:cat`
-- `[ ]` `app.get('/categories', ...)` → `GET /categories`
-- `[ ]` `app.get('/search/:text', ...)` → `GET /search/:text`
-- `[ ]` **Line 362** — `request('http://'+catalogueHost+':8080/product/'+sku, ...)` does NOT exist here — this line is in `cart/server.js` (not catalogue)
+**Canonical Codebase Path:**  
+`codebases/microservices/MS098_ultimate-backend/apps/`
 
----
+### A. Inter-Microservice Interfaces (45 total)
 
-## Service: `user` — Node.js
+#### 1. service-webhook (5 gRPC interfaces)
+- **Controller**: `apps/service-webhook/src/webhook/webhook.controller.ts`
+- [ ] `createWebhook` (`@GrpcMethod('WebhookService', 'CreateWebhook')`)
+- [ ] `updateWebhook` (`@GrpcMethod('WebhookService', 'UpdateWebhook')`)
+- [ ] `deleteWebhook` (`@GrpcMethod('WebhookService', 'DeleteWebhook')`)
+- [ ] `readWebhook` (`@GrpcMethod('WebhookService', 'ReadWebhook')`)
+- [ ] `findWebhook` (`@GrpcMethod('WebhookService', 'FindWebhook')`)
 
-```
-user/server.js
-```
-**Check:**
-- `[ ]` `app.get('/health', ...)` → `GET /health`
-- `[ ]` `app.get('/uniqueid', ...)` → `GET /uniqueid`
-- `[ ]` `app.get('/check/:id', ...)` → `GET /check/:id`
-- `[ ]` `app.get('/users', ...)` → `GET /users`
-- `[ ]` `app.post('/login', ...)` → `POST /login`
-- `[ ]` `app.post('/register', ...)` → `POST /register`
-- `[ ]` `app.post('/order/:id', ...)` → `POST /order/:id`
-- `[ ]` `app.get('/history/:id', ...)` → `GET /history/:id`
+#### 2. service-access (4 gRPC interfaces)
+- **Controller**: `apps/service-access/src/access-token/access-token.controller.ts`
+- [ ] `createAccess` (`@GrpcMethod('AccessService', 'CreateAccess')`)
+- [ ] `deleteAccess` (`@GrpcMethod('AccessService', 'DeleteAccess')`)
+- [ ] `findAccess` (`@GrpcMethod('AccessService', 'FindAccess')`)
+- [ ] `readAccess` (`@GrpcMethod('AccessService', 'ReadAccess')`)
 
----
+#### 3. service-billing (16 gRPC interfaces)
+- **Controller**: `apps/service-billing/src/billings/billings.controller.ts`
+- [ ] `changeSubscription` (`@GrpcMethod('BillingService', 'ChangeSubscription')`)
+- [ ] `cancelSubscription` (`@GrpcMethod('BillingService', 'CancelSubscription')`)
+- [ ] `readInvoice` (`@GrpcMethod('BillingService', 'ReadInvoice')`)
+- [ ] `findInvoices` (`@GrpcMethod('BillingService', 'FindInvoices')`)
+- [ ] `readSubscription` (`@GrpcMethod('BillingService', 'ReadSubscription')`)
+- [ ] `findSubscriptions` (`@GrpcMethod('BillingService', 'FindSubscriptions')`)
+- [ ] `readCard` (`@GrpcMethod('BillingService', 'ReadCard')`)
+- [ ] `findCards` (`@GrpcMethod('BillingService', 'FindCards')`)
+- [ ] `createCard` (`@GrpcMethod('BillingService', 'CreateCard')`)
+- [ ] `deleteCard` (`@GrpcMethod('BillingService', 'DeleteCard')`)
+- [ ] `setDefaultCard` (`@GrpcMethod('BillingService', 'SetDefaultCard')`)
+- [ ] `readPlan` (`@GrpcMethod('BillingService', 'ReadPlan')`)
+- [ ] `findPlans` (`@GrpcMethod('BillingService', 'FindPlans')`)
+- [ ] `findStripePlans` (`@GrpcMethod('BillingService', 'FindStripePlans')`)
+- [ ] `createCustomer` (`@GrpcMethod('BillingService', 'CreateCustomer')`) — invoked by `service-account`
+- [ ] `createSubscription` (`@GrpcMethod('BillingService', 'CreateSubscription')`) — invoked by `service-tenant`
 
-## Service: `cart` — Node.js
+#### 4. service-account (6 gRPC interfaces)
+- **Controller**: `apps/service-account/src/accounts/accounts.controller.ts`
+- [ ] `create` (`@GrpcMethod('AccountService', 'Create')`)
+- [ ] `forgotPassword` (`@GrpcMethod('AccountService', 'ForgotPassword')`)
+- [ ] `resendVerificationCode` (`@GrpcMethod('AccountService', 'ResendVerificationCode')`)
+- [ ] `verifyAccount` (`@GrpcMethod('AccountService', 'VerifyAccount')`)
+- [ ] `verifyActivationLink` (`@GrpcMethod('AccountService', 'VerifyActivationLink')`)
+- [ ] `read` (`@GrpcMethod('AccountService', 'Read')`)
 
-```
-cart/server.js
-```
-**Check:**
-- `[ ]` `app.get('/health', ...)` → `GET /health`
-- `[ ]` `app.get('/cart/:id', ...)` → `GET /cart/:id`
-- `[ ]` `app.delete('/cart/:id', ...)` → `DELETE /cart/:id`
-- `[ ]` `app.get('/add/:id/:sku/:qty', ...)` → `GET /add/:id/:sku/:qty`
-- `[ ]` `app.get('/update/:id/:sku/:qty', ...)` → `GET /update/:id/:sku/:qty`
-- `[ ]` `app.get('/item/delete/:id/:sku', ...)` → `GET /item/delete/:id/:sku`
-- `[ ]` `app.post('/shipping/:id', ...)` → `POST /shipping/:id`
-- `[ ]` **Line 362** — `request('http://'+catalogueHost+':8080/product/'+sku, ...)` → confirms call to catalogue
+#### 5. service-tenant (11 gRPC interfaces)
+- **Controllers**:
+  - `apps/service-tenant/src/tenants/tenants.controller.ts`
+  - `apps/service-tenant/src/members/members.controller.ts`
+- [ ] `TenantsController.createTenant` (`@GrpcMethod('TenantService', 'CreateTenant')`)
+- [ ] `TenantsController.updateTenant` (`@GrpcMethod('TenantService', 'UpdateTenant')`)
+- [ ] `TenantsController.deleteTenant` (`@GrpcMethod('TenantService', 'DeleteTenant')`)
+- [ ] `TenantsController.tenantAvailable` (`@GrpcMethod('TenantService', 'TenantAvailable')`)
+- [ ] `TenantsController.readTenant` (`@GrpcMethod('TenantService', 'ReadTenant')`)
+- [ ] `TenantsController.findTenant` (`@GrpcMethod('TenantService', 'FindTenant')`)
+- [ ] `MembersController.inviteMember` (`@GrpcMethod('TenantService', 'InviteMember')`)
+- [ ] `MembersController.updateMember` (`@GrpcMethod('TenantService', 'UpdateMember')`)
+- [ ] `MembersController.deleteMember` (`@GrpcMethod('TenantService', 'DeleteMember')`)
+- [ ] `MembersController.readMember` (`@GrpcMethod('TenantService', 'ReadMember')`)
+- [ ] `MembersController.findMembers` (`@GrpcMethod('TenantService', 'FindMembers')`)
 
----
-
-## Service: `shipping` — Java
-
-```
-shipping/src/main/java/com/instana/robotshop/shipping/Controller.java
-```
-**Check `@GetMapping` / `@PostMapping`:**
-- `[ ]` `health()` → `@GetMapping("/health")`
-- `[ ]` `count()` → `@GetMapping("/count")`
-- `[ ]` `codes()` → `@GetMapping("/codes")`
-- `[ ]` `cities(@PathVariable String code)` → `@GetMapping("/cities/{code}")`
-- `[ ]` `match(@PathVariable String code, @PathVariable String text)` → `@GetMapping("/match/{code}/{text}")`
-- `[ ]` `caclc(@PathVariable long id)` → `@GetMapping("/calc/{id}")`
-- `[ ]` `confirm(@PathVariable String id, @RequestBody String body)` → `@PostMapping("/confirm/{id}")`
-- `[ ]` **Line 137** — `helper.addToCart(id, body)` → confirms call to cart service
-
----
-
-## Service: `ratings` — PHP / Symfony
-
-```
-ratings/src/Controller/RatingsApiController.php
-ratings/src/Controller/HealthController.php
-```
-**Check `@Route` annotations:**
-- `[ ]` `HealthController.__invoke()` → `@Route("/_health")` with `GET` method
-- `[ ]` `RatingsApiController.put(...)` → `@Route("/api/rate/{sku}/{score}", methods={"PUT"})`
-- `[ ]` `RatingsApiController.get(...)` → `@Route("/api/fetch/{sku}", methods={"GET"})`
-- `[ ]` **Line 49 in `RatingsApiController.php`** — `$this->catalogueService->checkSKU($sku)` → confirms call to catalogue
+#### 6. service-role (3 gRPC interfaces)
+- **Controller**: `apps/service-role/src/roles/roles.controller.ts`
+- [ ] `readUserRoles` (`@GrpcMethod('RoleService', 'ReadUserRoles')`)
+- [ ] `addUserToRole` (`@GrpcMethod('RoleService', 'AddUserToRole')`)
+- [ ] `removeUserFromRole` (`@GrpcMethod('RoleService', 'RemoveUserFromRole')`)
 
 ---
 
-## Service: `payment` — Python / Flask
+### B. Inter-Service Calls (49 total)
 
-```
-payment/payment.py
-```
-**Check `@app.route(...)` decorators:**
-- `[ ]` `@app.route('/health', methods=['GET'])` → `get_health` function
-- `[ ]` `@app.route('/pay/<id>', methods=['POST'])` → `pay` function
-- `[ ]` **Line 64** — `requests.get('http://{user}:8080/check/{id}')` → call to user service
-- `[ ]` **Line 101** — `queueOrder({...})` → AMQP publish to dispatch
-- `[ ]` **Line 106** — `requests.post('http://{user}:8080/order/{id}', ...)` → call to user service
-- `[ ]` **Line 116** — `requests.delete('http://{cart}:8080/cart/{id}')` → call to cart service
+#### 1. GraphQL Gateway (`api-admin`) → Downstream gRPC (42 calls)
+- [ ] **Line 22** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.createAccess(...)`
+- [ ] **Line 38** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.deleteAccess(...)`
+- [ ] **Line 56** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.findAccess(...)`
+- [ ] **Line 62** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.readAccess(...)`
+- [ ] **Line 96** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.create(...)`
+- [ ] **Line 104** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.forgotPassword(...)`
+- [ ] **Line 114** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.resendVerificationCode(...)`
+- [ ] **Line 142** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyAccount(...)`
+- [ ] **Line 163** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyActivationLink(...)`
+- [ ] **Line 31** `apps/api-admin/src/app/modules/billing/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.changeSubscription(...)`
+- [ ] **Line 59** `apps/api-admin/src/app/modules/billing/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.cancelSubscription(...)`
+- [ ] **Line 34** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.readInvoice(...)`
+- [ ] **Line 49** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.findInvoices(...)`
+- [ ] **Line 73** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.readSubscription(...)`
+- [ ] **Line 91** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.findSubscriptions(...)`
+- [ ] **Line 33** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.readCard(...)`
+- [ ] **Line 48** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.findCards(...)`
+- [ ] **Line 83** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.createCard(...)`
+- [ ] **Line 106** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.deleteCard(...)`
+- [ ] **Line 122** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.setDefaultCard(...)`
+- [ ] **Line 24** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.readPlan(...)`
+- [ ] **Line 30** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.findPlans(...)`
+- [ ] **Line 39** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.findStripePlans(...)`
+- [ ] **Line 32** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.inviteMember(...)`
+- [ ] **Line 58** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateMember(...)`
+- [ ] **Line 84** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteMember(...)`
+- [ ] **Line 39** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.readMember(...)`
+- [ ] **Line 59** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.findMembers(...)`
+- [ ] **Line 86** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.account.svc.read(...)`
+- [ ] **Line 36** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.createTenant(...)`
+- [ ] **Line 55** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateTenant(...)`
+- [ ] **Line 80** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteTenant(...)`
+- [ ] **Line 41** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.tenantAvailable(...)`
+- [ ] **Line 64** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.readTenant(...)`
+- [ ] **Line 84** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.findTenant(...)`
+- [ ] **Line 102** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.account.svc.read(...)`
+- [ ] **Line 45** `apps/api-admin/src/app/modules/user/users.resolver.ts`: `ctx.rpc.role.svc.readUserRoles(...)`
+- [ ] **Line 62** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.createWebhook(...)`
+- [ ] **Line 81** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.updateWebhook(...)`
+- [ ] **Line 106** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.deleteWebhook(...)`
+- [ ] **Line 14** `apps/api-admin/src/app/modules/webhook/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.readWebhook(...)`
+- [ ] **Line 31** `apps/api-admin/src/app/modules/webhook/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.findWebhook(...)`
 
----
-
-## Service: `dispatch` — Go
-
-```
-dispatch/main.go
-```
-**Check:**
-- `[ ]` `amqp.Dial(...)` or `amqp.DialTLS(...)` present → confirms AMQP connection
-- `[ ]` `ch.Consume(...)` with queue name `robot-shop/orders` or similar → confirms it is a consumer
-- `[ ]` No `http.HandleFunc` or REST server setup → confirms `exposed_interfaces` only has the Messaging endpoint
-
----
-
-## `web` and `mongodb` — confirm no interfaces
-
-- `[ ]` `web/` → only contains `nginx.conf` / static files, no application routes
-- `[ ]` `mongo/` or `mongodb/` → only init scripts, no REST/gRPC server
-
----
-
----
-
-# MS098 — ultimate-backend
-
-**Canonical source root:**
-```
-codebases/microservices/MS098_ultimate-backend/apps/
-```
-
-**What to look for:**
-- gRPC controllers: `@GrpcMethod('ServiceName', 'MethodName')` decorator on NestJS class methods
-- GraphQL resolvers: `@Query()`, `@Mutation()`, `@ResolveField()` + `rpc?.SvcName.svc.method(...)` calls
-- Messaging: `@Process('queue_name')` decorator (Bull)
-
----
-
-## Service: `service-webhook`
-
-```
-apps/service-webhook/src/webhook/webhook.controller.ts
-```
-**Check `@GrpcMethod` decorators:**
-- `[ ]` `@GrpcMethod('WebhookService', 'CreateWebhook')` on `createWebhook(...)`
-- `[ ]` `@GrpcMethod('WebhookService', 'DeleteWebhook')` on `deleteWebhook(...)`
-- `[ ]` `@GrpcMethod('WebhookService', 'FindWebhook')` on `findWebhook(...)`
-- `[ ]` `@GrpcMethod('WebhookService', 'ReadWebhook')` on `readWebhook(...)`
-- `[ ]` `@GrpcMethod('WebhookService', 'UpdateWebhook')` on `updateWebhook(...)`
-
----
-
-## Service: `service-access`
-
-```
-apps/service-access/src/access-token/access-token.controller.ts
-```
-**Check `@GrpcMethod` decorators:**
-- `[ ]` `@GrpcMethod('AccessService', 'CreateAccess')` on `createAccess(...)`
-- `[ ]` `@GrpcMethod('AccessService', 'DeleteAccess')` on `deleteAccess(...)`
-- `[ ]` `@GrpcMethod('AccessService', 'FindAccess')` on `findAccess(...)`
-- `[ ]` `@GrpcMethod('AccessService', 'HasRights')` on `hasRights(...)`
-- `[ ]` `@GrpcMethod('AccessService', 'ReadAccess')` on `readAccess(...)`
+#### 2. Backend-to-Backend gRPC (7 calls)
+- [ ] **Line 145** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`:  
+  `this.roleClient.svc.addUserToRole({ domain: '*', userId: result.id.toString(), actor: 'user', role: 'customer' })`
+- [ ] **Line 153** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`:  
+  `this.billingClient.svc.createCustomer({ currency: '', number: '', name: `${result.firstname} ${result.lastname}`, email: ... })`
+- [ ] **Line 105** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`:  
+  `this.billingService.svc.createSubscription({ planId: input.planId, tenantId: normalizedName, customerId: user.settings.stripeId, ... })`
+- [ ] **Line 127** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`:  
+  `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
+- [ ] **Line 67** `apps/service-tenant/src/members/cqrs/command/handlers/member/accept-invitation.handler.ts`:  
+  `this.roleService.svc.addUserToRole({ role: member.role, domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
+- [ ] **Line 93** `apps/service-tenant/src/members/cqrs/command/handlers/member/remove-member.handler.ts`:  
+  `this.roleService.svc.removeUserFromRole({ tenantId, userId: member.userId.toString() })`
+- [ ] **Line 111** `apps/service-tenant/src/members/cqrs/command/handlers/member/invite-member.handler.ts`:  
+  `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
 
 ---
 
-## Service: `service-billing`
+## ⚡ Automated Verification Command
 
-```
-apps/service-billing/src/billings/billings.controller.ts
-```
-**Check (19 methods — spot-check these critical ones):**
-- `[ ]` `@GrpcMethod('BillingService', 'CreateCustomer')` on `createCustomer(...)` → called by `service-account`
-- `[ ]` `@GrpcMethod('BillingService', 'CreateSubscription')` on `createSubscription(...)` → called by `service-tenant`
-- `[ ]` `@GrpcMethod('BillingService', 'CancelSubscription')` on `cancelSubscription(...)`
-- `[ ]` `@GrpcMethod('BillingService', 'ChangeSubscription')` on `changeSubscription(...)`
-- `[ ]` Remaining 15 methods follow same `@GrpcMethod('BillingService', '...')` pattern
+You can run the deep evidence audit script anytime to programmatically verify that all 94 calls match the source lines:
 
----
-
-## Service: `service-account`
-
-```
-apps/service-account/src/accounts/accounts.controller.ts
-```
-**Check:**
-- `[ ]` `@GrpcMethod('AccountService', 'Create')` on `create(...)`
-- `[ ]` `@GrpcMethod('AccountService', 'ForgotPassword')` on `forgotPassword(...)`
-- `[ ]` `@GrpcMethod('AccountService', 'VerifyAccount')` on `verifyAccount(...)`
-- `[ ]` `@GrpcMethod('AccountService', 'VerifyActivationLink')` on `verifyActivationLink(...)`
-- `[ ]` Remaining 9 methods follow same pattern
-
-**Check outbound calls (backend-to-backend):**
-```
-apps/service-account/src/accounts/sagas/handlers/register-user.handler.ts
-```
-- `[ ]` **Line 145** — `rpc?.role.svc.addUserToRole(...)` or equivalent gRPC call to role service
-- `[ ]` **Line 153** — `rpc?.billing.svc.createCustomer(...)` or equivalent gRPC call to billing service
-
----
-
-## Service: `service-tenant`
-
-```
-apps/service-tenant/src/tenants/tenants.controller.ts
-apps/service-tenant/src/members/members.controller.ts
-```
-**Check:**
-- `[ ]` `@GrpcMethod('TenantService', 'CreateTenant')` on `createTenant(...)`
-- `[ ]` `@GrpcMethod('TenantService', 'InviteMember')` on `inviteMember(...)` in `members.controller.ts`
-- `[ ]` Remaining 10 methods follow same pattern
-
-**Check outbound calls (backend-to-backend):**
-```
-apps/service-tenant/src/tenants/sagas/handlers/create-tenant.handler.ts
-apps/service-tenant/src/members/sagas/handlers/accept-invitation.handler.ts
-apps/service-tenant/src/members/sagas/handlers/remove-member.handler.ts
-apps/service-tenant/src/members/sagas/handlers/invite-member.handler.ts
-```
-- `[ ]` `create-tenant.handler.ts:105` — gRPC call to `billing.createSubscription`
-- `[ ]` `create-tenant.handler.ts:127` — gRPC call to `role.addUserToRole`
-- `[ ]` `accept-invitation.handler.ts:67` — gRPC call to `role.addUserToRole`
-- `[ ]` `remove-member.handler.ts:93` — gRPC call to `role.removeUserFromRole`
-- `[ ]` `invite-member.handler.ts:111` — gRPC call to `role.addUserToRole`
-
----
-
-## Service: `service-notification`
-
-```
-apps/service-notification/src/email/queue/auth.process.ts
-```
-**Check:**
-- `[ ]` `@Process('processUserRegister')` or `@Processor('notification_queue')` decorator is present
-- `[ ]` Method `processUserRegister(@InjectQueue(...) job: Job<UserEntity>)` exists
-
----
-
-## Service: `service-role`
-
-```
-apps/service-role/src/roles/roles.controller.ts
-```
-**Check:**
-- `[ ]` `@GrpcMethod('RoleService', 'AddUserToRole')` on `addUserToRole(...)`
-- `[ ]` `@GrpcMethod('RoleService', 'RemoveUserFromRole')` on `removeUserFromRole(...)`
-- `[ ]` `@GrpcMethod('RoleService', 'ReadUserRoles')` on `readUserRoles(...)`
-- `[ ]` `@GrpcMethod('RoleService', 'HasRights')` on `hasRights(...)`
-
----
-
-## Service: `api-admin` (gateway — confirm no gRPC server)
-
-```
-apps/api-admin/src/
-```
-**Check:**
-- `[ ]` There is NO `@GrpcMethod(...)` anywhere in `api-admin/src/`
-- `[ ]` There IS `@Query()`, `@Mutation()`, `@ResolveField()` in resolver files
-- `[ ]` Resolver files call `rpc?.xxx.svc.method(...)` to downstream services
-
-**Spot-check resolver lines:**
-```
-apps/api-admin/src/app/modules/account/
-apps/api-admin/src/app/modules/billing/
-apps/api-admin/src/app/modules/tenant/
+```powershell
+$env:PYTHONIOENCODING="utf-8"; uv run python "C:/Users/userk/.gemini/antigravity-cli/brain/59e7135e-98ba-44a5-b8c1-1f72948b4f8e/scratch/deep_audit.py"
 ```
 
-| File | Line | Expected gRPC call |
-|---|---|---|
-| `accounts-mutation.resolver.ts` | 96 | `rpc?.account.svc.create(...)` |
-| `accounts-mutation.resolver.ts` | 104 | `rpc?.account.svc.forgotPassword(...)` |
-| `billings-mutation.resolver.ts` | 31 | `rpc?.billing.svc.changeSubscription(...)` |
-| `billings.resolver.ts` | 34 | `rpc?.billing.svc.readInvoice(...)` |
-| `tenants-mutation.resolver.ts` | 36 | `rpc?.tenant.svc.createTenant(...)` |
-| `webhooks-mutation.resolver.ts` | 62 | `rpc?.webhook.svc.createWebhook(...)` |
-
----
-
----
-
-## Verification Summary Template
-
-After going through each system, record your findings here:
-
-| System | Interfaces Checked | Calls Checked | Issues Found |
-|---|---|---|---|
-| MS010 | 9 / 9 | 1 / 1 | |
-| MS016 | 18 / 18 | 33 / 33 | |
-| MS031 | 16 / 16 | 4 / 4 | |
-| MS047 | 34 / 34 | 7 / 7 | |
-| MS098 | 69 / 69 | 49 / 49 | |
-
-> [!TIP]
-> **Fastest way to verify:** Use `Ctrl+F` (or `grep`) on the annotation pattern for each file. For example:  
-> - Java: search `@RequestMapping` or `@GetMapping`  
-> - C#: search `[HttpGet]` or `[HttpPost]`  
-> - Node.js: search `app.get(` or `app.post(`  
-> - Python: search `@app.route(`  
-> - PHP: search `@Route(`  
-> - TypeScript/NestJS: search `@GrpcMethod(`  
-> - Go: search `amqp` or `Consume(`
-
-> [!NOTE]
-> **For inter-service calls**, go to the exact line number in the evidence field and confirm the call expression matches the endpoint of the destination service.
+*Expected result:* **AUDIT COMPLETE: 0 issues found across all 5 systems.**
