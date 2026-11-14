@@ -107,18 +107,6 @@
           "endpoint": "AccessService/FindAccess"
         },
         {
-          "id": "AccessTokenController.hasRights",
-          "class_name": "src/access-token/access-token.controller.ts",
-          "method_name": "hasRights",
-          "param_types": [
-            "HasRightsRequest",
-            "any"
-          ],
-          "return_type": "HasRightsResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccessService/HasRights"
-        },
-        {
           "id": "AccessTokenController.readAccess",
           "class_name": "src/access-token/access-token.controller.ts",
           "method_name": "readAccess",
@@ -183,18 +171,6 @@
           "endpoint": "BillingService/CreateCustomer"
         },
         {
-          "id": "BillingsController.createPlan",
-          "class_name": "src/billings/billings.controller.ts",
-          "method_name": "createPlan",
-          "param_types": [
-            "CreatePlanRequest",
-            "any"
-          ],
-          "return_type": "CreatePlanResponse",
-          "protocol": "gRPC",
-          "endpoint": "BillingService/CreatePlan"
-        },
-        {
           "id": "BillingsController.createSubscription",
           "class_name": "src/billings/billings.controller.ts",
           "method_name": "createSubscription",
@@ -217,18 +193,6 @@
           "return_type": "DeleteCardResponse",
           "protocol": "gRPC",
           "endpoint": "BillingService/DeleteCard"
-        },
-        {
-          "id": "BillingsController.deleteCustomer",
-          "class_name": "src/billings/billings.controller.ts",
-          "method_name": "deleteCustomer",
-          "param_types": [
-            "DeleteCustomerRequest",
-            "any"
-          ],
-          "return_type": "DeleteCustomerResponse",
-          "protocol": "gRPC",
-          "endpoint": "BillingService/DeleteCustomer"
         },
         {
           "id": "BillingsController.findCards",
@@ -303,18 +267,6 @@
           "endpoint": "BillingService/ReadCard"
         },
         {
-          "id": "BillingsController.readCustomer",
-          "class_name": "src/billings/billings.controller.ts",
-          "method_name": "readCustomer",
-          "param_types": [
-            "ReadCustomerRequest",
-            "any"
-          ],
-          "return_type": "ReadCustomerResponse",
-          "protocol": "gRPC",
-          "endpoint": "BillingService/ReadCustomer"
-        },
-        {
           "id": "BillingsController.readInvoice",
           "class_name": "src/billings/billings.controller.ts",
           "method_name": "readInvoice",
@@ -337,18 +289,6 @@
           "return_type": "ReadPlanResponse",
           "protocol": "gRPC",
           "endpoint": "BillingService/ReadPlan"
-        },
-        {
-          "id": "BillingsController.readStripePlan",
-          "class_name": "src/billings/billings.controller.ts",
-          "method_name": "readStripePlan",
-          "param_types": [
-            "ReadStripePlanRequest",
-            "any"
-          ],
-          "return_type": "ReadStripePlanResponse",
-          "protocol": "gRPC",
-          "endpoint": "BillingService/ReadStripePlan"
         },
         {
           "id": "BillingsController.readSubscription",
@@ -391,42 +331,6 @@
           "endpoint": "AccountService/Create"
         },
         {
-          "id": "AccountsController.delete",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "delete",
-          "param_types": [
-            "DeleteRequest",
-            "any"
-          ],
-          "return_type": "DeleteResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/Delete"
-        },
-        {
-          "id": "AccountsController.login",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "login",
-          "param_types": [
-            "LoginRequest",
-            "any"
-          ],
-          "return_type": "LoginResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/Login"
-        },
-        {
-          "id": "AccountsController.logout",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "logout",
-          "param_types": [
-            "LogoutRequest",
-            "any"
-          ],
-          "return_type": "LogoutResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/Logout"
-        },
-        {
           "id": "AccountsController.read",
           "class_name": "src/accounts/accounts.controller.ts",
           "method_name": "read",
@@ -439,30 +343,6 @@
           "endpoint": "AccountService/Read"
         },
         {
-          "id": "AccountsController.readSession",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "readSession",
-          "param_types": [
-            "ReadSessionRequest",
-            "any"
-          ],
-          "return_type": "ReadSessionResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/ReadSession"
-        },
-        {
-          "id": "AccountsController.search",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "search",
-          "param_types": [
-            "SearchRequest",
-            "any"
-          ],
-          "return_type": "SearchResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/Search"
-        },
-        {
           "id": "AccountsController.resendVerificationCode",
           "class_name": "src/accounts/accounts.controller.ts",
           "method_name": "resendVerificationCode",
@@ -473,30 +353,6 @@
           "return_type": "ResendVerificationCodeResponse",
           "protocol": "gRPC",
           "endpoint": "AccountService/ResendVerificationCode"
-        },
-        {
-          "id": "AccountsController.update",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "update",
-          "param_types": [
-            "UpdateRequest",
-            "any"
-          ],
-          "return_type": "UpdateResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/Update"
-        },
-        {
-          "id": "AccountsController.updatePassword",
-          "class_name": "src/accounts/accounts.controller.ts",
-          "method_name": "updatePassword",
-          "param_types": [
-            "UpdatePasswordRequest",
-            "any"
-          ],
-          "return_type": "UpdatePasswordResponse",
-          "protocol": "gRPC",
-          "endpoint": "AccountService/UpdatePassword"
         },
         {
           "id": "AccountsController.verifyAccount",
@@ -611,18 +467,6 @@
           "endpoint": "TenantService/UpdateTenant"
         },
         {
-          "id": "MembersController.acceptMemberInvitation",
-          "class_name": "src/members/members.controller.ts",
-          "method_name": "acceptMemberInvitation",
-          "param_types": [
-            "AcceptMemberInvitationRequest",
-            "any"
-          ],
-          "return_type": "AcceptMemberInvitationResponse",
-          "protocol": "gRPC",
-          "endpoint": "TenantService/AcceptMemberInvitation"
-        },
-        {
           "id": "MembersController.deleteMember",
           "class_name": "src/members/members.controller.ts",
           "method_name": "deleteMember",
@@ -685,101 +529,16 @@
       ]
     },
     "service-notification": {
-      "exposed_interfaces": [
-        {
-          "id": "AuthProcess.processUserRegister",
-          "class_name": "src/email/queue/auth.process.ts",
-          "method_name": "processUserRegister",
-          "param_types": [
-            "Job<UserEntity>"
-          ],
-          "return_type": "void",
-          "protocol": "Messaging",
-          "endpoint": "notification_queue"
-        }
-      ]
+      "exposed_interfaces": []
     },
     "service-project": {
-      "exposed_interfaces": [
-        {
-          "id": "ProjectsController.createProject",
-          "class_name": "src/projects/projects.controller.ts",
-          "method_name": "createProject",
-          "param_types": [
-            "CreateProjectRequest",
-            "any"
-          ],
-          "return_type": "CreateProjectResponse",
-          "protocol": "gRPC",
-          "endpoint": "ProjectService/CreateProject"
-        },
-        {
-          "id": "ProjectsController.deleteProject",
-          "class_name": "src/projects/projects.controller.ts",
-          "method_name": "deleteProject",
-          "param_types": [
-            "DeleteProjectRequest",
-            "any"
-          ],
-          "return_type": "DeleteProjectResponse",
-          "protocol": "gRPC",
-          "endpoint": "ProjectService/DeleteProject"
-        },
-        {
-          "id": "ProjectsController.findProjects",
-          "class_name": "src/projects/projects.controller.ts",
-          "method_name": "findProjects",
-          "param_types": [
-            "FindProjectsRequest",
-            "any"
-          ],
-          "return_type": "FindProjectsResponse",
-          "protocol": "gRPC",
-          "endpoint": "ProjectService/FindProjects"
-        },
-        {
-          "id": "ProjectsController.readProject",
-          "class_name": "src/projects/projects.controller.ts",
-          "method_name": "readProject",
-          "param_types": [
-            "ReadProjectRequest",
-            "any"
-          ],
-          "return_type": "ReadProjectResponse",
-          "protocol": "gRPC",
-          "endpoint": "ProjectService/ReadProject"
-        },
-        {
-          "id": "ProjectsController.updateProject",
-          "class_name": "src/projects/projects.controller.ts",
-          "method_name": "updateProject",
-          "param_types": [
-            "UpdateProjectRequest",
-            "any"
-          ],
-          "return_type": "UpdateProjectResponse",
-          "protocol": "gRPC",
-          "endpoint": "ProjectService/UpdateProject"
-        }
-      ]
+      "exposed_interfaces": []
     },
     "api-admin": {
       "exposed_interfaces": []
     },
     "service-role": {
       "exposed_interfaces": [
-        {
-          "id": "RolesController.hasRights",
-          "class_name": "src/roles/roles.controller.ts",
-          "method_name": "hasRights",
-          "param_types": [
-            "HasRightsRequest",
-            "any"
-          ],
-          "return_type": "HasRightsResponse",
-          "protocol": "gRPC",
-          "endpoint": "RoleService/HasRights"
-        },
         {
           "id": "RolesController.readUserRoles",
           "class_name": "src/roles/roles.controller.ts",
@@ -805,42 +564,6 @@
           "endpoint": "RoleService/AddUserToRole"
         },
         {
-          "id": "RolesController.addTenantRoles",
-          "class_name": "src/roles/roles.controller.ts",
-          "method_name": "addTenantRoles",
-          "param_types": [
-            "AddTenantRolesRequest",
-            "any"
-          ],
-          "return_type": "AddTenantRolesResponse",
-          "protocol": "gRPC",
-          "endpoint": "RoleService/AddTenantRoles"
-        },
-        {
-          "id": "RolesController.createRole",
-          "class_name": "src/roles/roles.controller.ts",
-          "method_name": "createRole",
-          "param_types": [
-            "CreateRoleRequest",
-            "any"
-          ],
-          "return_type": "CreateRoleResponse",
-          "protocol": "gRPC",
-          "endpoint": "RoleService/CreateRole"
-        },
-        {
-          "id": "RolesController.readRole",
-          "class_name": "src/roles/roles.controller.ts",
-          "method_name": "readRole",
-          "param_types": [
-            "ReadRoleRequest",
-            "any"
-          ],
-          "return_type": "ReadRoleResponse",
-          "protocol": "gRPC",
-          "endpoint": "RoleService/ReadRole"
-        },
-        {
           "id": "RolesController.removeUserFromRole",
           "class_name": "src/roles/roles.controller.ts",
           "method_name": "removeUserFromRole",
@@ -851,18 +574,6 @@
           "return_type": "RemoveUserFromRoleResponse",
           "protocol": "gRPC",
           "endpoint": "RoleService/RemoveUserFromRole"
-        },
-        {
-          "id": "RolesController.addPolicy",
-          "class_name": "src/roles/roles.controller.ts",
-          "method_name": "addPolicy",
-          "param_types": [
-            "AddPolicyRequest",
-            "any"
-          ],
-          "return_type": "AddPolicyResponse",
-          "protocol": "gRPC",
-          "endpoint": "RoleService/AddPolicy"
         }
       ]
     }

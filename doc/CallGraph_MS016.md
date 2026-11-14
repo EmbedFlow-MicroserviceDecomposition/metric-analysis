@@ -1,13 +1,15 @@
 # MS016 — Call Graph
 **System:** `pitstop`  
-**Stack:** C# · .NET · Refit (REST client) · RabbitMQ  
+**Stack:** C# · .NET · Refit · RabbitMQ  
 **Branch:** `phase_01/eshin` · Commit: `09698bc`
+
+> **Scope:** Only inter-microservice interfaces are listed (interfaces actually called by another service).
 
 ---
 
 ## Architecture Overview
 
-Event-driven automotive workshop management system. `WebApp` is a Razor Pages UI that calls 3 backend REST APIs via **Refit** typed HTTP clients. All mutation operations publish domain events to a shared **RabbitMQ** exchange (`rabbitmq/pitstop`), consumed by 4 downstream worker services. `TimeService` is a background timer that emits time-passed events periodically.
+Event-driven automotive workshop system. `WebApp` calls 3 REST APIs via Refit. All mutation operations publish domain events to `rabbitmq/pitstop` consumed by 4 worker services. `TimeService` emits periodic time events.
 
 ---
 
@@ -15,35 +17,29 @@ Event-driven automotive workshop management system. `WebApp` is a Razor Pages UI
 
 ```mermaid
 flowchart TD
-    WA["WebApp\nRazor Pages UI\n(C# / .NET)"]
-
-    CMA["CustomerManagementAPI\nCustomersController\n(REST)"]
-    VMA["VehicleManagementAPI\nVehiclesController\n(REST)"]
-    WSAPI["WorkshopManagementAPI\nWorkshopPlanningController + RefDataController\n(REST)"]
-    TS["TimeService\nTimeWorker\n(Background)"]
-
-    ALS["AuditlogService\nAuditLogWorker\n(RabbitMQ Consumer)"]
-    INV["InvoiceService\nInvoiceWorker\n(RabbitMQ Consumer)"]
-    NOT["NotificationService\nNotificationWorker\n(RabbitMQ Consumer)"]
-    EH["WorkshopManagementEventHandler\nEventHandlerWorker\n(RabbitMQ Consumer)"]
+    WA["WebApp"]
+    CMA["CustomerManagementAPI"]
+    VMA["VehicleManagementAPI"]
+    WSAPI["WorkshopManagementAPI"]
+    TS["TimeService"]
+    ALS["AuditlogService"]
+    INV["InvoiceService"]
+    NOT["NotificationService"]
+    EH["WorkshopManagementEventHandler"]
 
     WA -->|"REST"| CMA
     WA -->|"REST"| VMA
     WA -->|"REST"| WSAPI
-
     CMA -->|"MSG rabbitmq/pitstop"| ALS
     CMA -->|"MSG rabbitmq/pitstop"| INV
     CMA -->|"MSG rabbitmq/pitstop"| NOT
     CMA -->|"MSG rabbitmq/pitstop"| EH
-
     VMA -->|"MSG rabbitmq/pitstop"| ALS
     VMA -->|"MSG rabbitmq/pitstop"| EH
-
     WSAPI -->|"MSG rabbitmq/pitstop"| ALS
     WSAPI -->|"MSG rabbitmq/pitstop"| INV
     WSAPI -->|"MSG rabbitmq/pitstop"| NOT
     WSAPI -->|"MSG rabbitmq/pitstop"| EH
-
     TS -->|"MSG rabbitmq/pitstop"| ALS
     TS -->|"MSG rabbitmq/pitstop"| INV
     TS -->|"MSG rabbitmq/pitstop"| NOT
@@ -51,38 +47,42 @@ flowchart TD
 
 ---
 
-## Exposed Interfaces (18 total)
+## Inter-Microservice Interfaces (17)
 
-| Service | Class | Method | Endpoint | Protocol |
+### REST Interfaces (13)
+
+| Service | Interface ID | Method | Endpoint | Called By |
 |---|---|---|---|---|
-| `AuditlogService` | `AuditLogWorker` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | Messaging |
-| `CustomerManagementAPI` | `CustomersController` | `GetAllAsync()` | `GET /api/customers` | REST |
-| `CustomerManagementAPI` | `CustomersController` | `GetByCustomerId(string)` | `GET /api/customers/{customerId}` | REST |
-| `CustomerManagementAPI` | `CustomersController` | `RegisterAsync(RegisterCustomer)` | `POST /api/customers` | REST |
-| `InvoiceService` | `InvoiceWorker` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | Messaging |
-| `NotificationService` | `NotificationWorker` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | Messaging |
-| `TimeService` | — | *(no exposed interfaces — pure publisher)* | — | — |
-| `VehicleManagementAPI` | `VehiclesController` | `GetAllAsync()` | `GET /api/vehicles` | REST |
-| `VehicleManagementAPI` | `VehiclesController` | `GetByLicenseNumber(string)` | `GET /api/vehicles/{licenseNumber}` | REST |
-| `VehicleManagementAPI` | `VehiclesController` | `RegisterAsync(RegisterVehicle)` | `POST /api/vehicles` | REST |
-| `WebApp` | — | *(no exposed interfaces — pure UI caller)* | — | — |
-| `WorkshopManagementAPI` | `RefDataController` | `GetCustomers()` | `GET /api/refdata/customers` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetCustomerByCustomerId(string)` | `GET /api/refdata/customers/{customerId}` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetVehicles()` | `GET /api/refdata/vehicles` | REST |
-| `WorkshopManagementAPI` | `RefDataController` | `GetVehicleByLicenseNumber(string)` | `GET /api/refdata/vehicles/{licenseNumber}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `GetByDate(DateTime)` | `GET /api/workshopplanning/{date}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `GetMaintenanceJobAsync(DateTime,Guid)` | `GET /api/workshopplanning/{date}/jobs/{jobId}` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `PlanMaintenanceJobAsync(DateTime,PlanMaintenanceJob)` | `POST /api/workshopplanning/{date}/jobs` | REST |
-| `WorkshopManagementAPI` | `WorkshopPlanningController` | `FinishMaintenanceJobAsync(DateTime,Guid,FinishMaintenanceJob)` | `PUT /api/workshopplanning/{date}/jobs/{jobId}/finish` | REST |
-| `WorkshopManagementEventHandler` | `EventHandlerWorker` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | Messaging |
+| `CustomerManagementAPI` | `CustomersController.GetAllAsync` | `GetAllAsync()` | `GET /api/customers` | `WebApp` |
+| `CustomerManagementAPI` | `CustomersController.GetByCustomerId` | `GetByCustomerId(string)` | `GET /api/customers/{customerId}` | `WebApp` |
+| `CustomerManagementAPI` | `CustomersController.RegisterAsync` | `RegisterAsync(RegisterCustomer)` | `POST /api/customers` | `WebApp` |
+| `VehicleManagementAPI` | `VehiclesController.GetAllAsync` | `GetAllAsync()` | `GET /api/vehicles` | `WebApp` |
+| `VehicleManagementAPI` | `VehiclesController.GetByLicenseNumber` | `GetByLicenseNumber(string)` | `GET /api/vehicles/{licenseNumber}` | `WebApp` |
+| `VehicleManagementAPI` | `VehiclesController.RegisterAsync` | `RegisterAsync(RegisterVehicle)` | `POST /api/vehicles` | `WebApp` |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.GetByDate` | `GetByDate(DateTime)` | `GET /api/workshopplanning/{planningDate}` | `WebApp` |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.GetMaintenanceJobAsync` | `GetMaintenanceJobAsync(DateTime,Guid)` | `GET /api/workshopplanning/{planningDate}/jobs/{jobId}` | `WebApp` |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.PlanMaintenanceJobAsync` | `PlanMaintenanceJobAsync(DateTime,PlanMaintenanceJob)` | `POST /api/workshopplanning/{planningDate}/jobs` | `WebApp` |
+| `WorkshopManagementAPI` | `WorkshopPlanningController.FinishMaintenanceJobAsync` | `FinishMaintenanceJobAsync(DateTime,Guid,FinishMaintenanceJob)` | `PUT /api/workshopplanning/{planningDate}/jobs/{jobId}/finish` | `WebApp` |
+| `WorkshopManagementAPI` | `RefDataController.GetVehicleByLicenseNumber` | `GetVehicleByLicenseNumber(string)` | `GET /api/refdata/vehicles/{licenseNumber}` | `WebApp` |
+| `WorkshopManagementAPI` | `RefDataController.GetCustomerByCustomerId` | `GetCustomerByCustomerId(string)` | `GET /api/refdata/customers/{customerId}` | `WebApp` |
+| `WorkshopManagementAPI` | `RefDataController.GetVehicles` | `GetVehicles()` | `GET /api/refdata/vehicles` | `WebApp` |
+
+### Messaging Interfaces (4)
+
+| Service | Interface ID | Method | Queue | Called By |
+|---|---|---|---|---|
+| `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | `CustomerManagementAPI`, `VehicleManagementAPI`, `WorkshopManagementAPI`, `TimeService` |
+| `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | `CustomerManagementAPI`, `WorkshopManagementAPI`, `TimeService` |
+| `NotificationService` | `NotificationWorker.HandleMessageAsync` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | `CustomerManagementAPI`, `WorkshopManagementAPI`, `TimeService` |
+| `WorkshopManagementEventHandler` | `EventHandlerWorker.HandleMessageAsync` | `HandleMessageAsync(string,string)` | `rabbitmq/pitstop` | `CustomerManagementAPI`, `VehicleManagementAPI`, `WorkshopManagementAPI` |
 
 ---
 
-## Inter-Service Calls (33 total)
+## Inter-Service Calls (33)
 
-### REST Calls — WebApp → APIs (16 calls)
+### REST Calls — WebApp → APIs (16)
 
-| # | Src Method | → Dst Service | Dst Method | Evidence |
+| # | From Method | → To Service | To Interface | Evidence |
 |---|---|---|---|---|
 | 1 | `CustomerManagementController.Index` | → `CustomerManagementAPI` | `CustomersController.GetAllAsync` | `CustomerManagementController.cs:23` |
 | 2 | `CustomerManagementController.Details` | → `CustomerManagementAPI` | `CustomersController.GetByCustomerId` | `CustomerManagementController.cs:36` |
@@ -101,9 +101,9 @@ flowchart TD
 | 15 | `WorkshopManagementController.FinishMaintenanceJob` | → `WorkshopManagementAPI` | `WorkshopPlanningController.FinishMaintenanceJobAsync` | `WorkshopManagementController.cs:158` |
 | 16 | `WorkshopManagementController.New` | → `WorkshopManagementAPI` | `RefDataController.GetVehicles` | `WorkshopManagementController.cs:176` |
 
-### Messaging Calls — RabbitMQ `rabbitmq/pitstop` (17 calls)
+### Messaging Calls — RabbitMQ (17)
 
-| # | Src Service | Src Method | → Dst Service | Dst Worker | Evidence |
+| # | From Service | From Method | → To Service | To Interface | Evidence |
 |---|---|---|---|---|---|
 | 17 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | → `AuditlogService` | `AuditLogWorker.HandleMessageAsync` | `CustomersController.cs:47` |
 | 18 | `CustomerManagementAPI` | `CustomersController.RegisterAsync` | → `InvoiceService` | `InvoiceWorker.HandleMessageAsync` | `CustomersController.cs:47` |

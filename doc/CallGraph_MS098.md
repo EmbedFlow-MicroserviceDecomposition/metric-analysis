@@ -1,15 +1,17 @@
 # MS098 — Call Graph
 **System:** `ultimate-backend`  
-**Stack:** TypeScript · NestJS · gRPC · GraphQL · Bull (Redis queue)  
+**Stack:** TypeScript · NestJS · gRPC · GraphQL · Bull  
 **Branch:** `phase_01/eshin` · Commit: `9c19765`
+
+> **Scope:** Only inter-microservice interfaces are listed (interfaces actually called by another service).
 
 ---
 
 ## Architecture Overview
 
-Multi-tenant SaaS backend. `api-admin` is a **GraphQL gateway** — it exposes a single GraphQL API to clients and resolves each query/mutation by calling downstream **gRPC** backend services. Backend services also make direct gRPC calls to each other (backend-to-backend). `service-notification` consumes async jobs from a **Bull** Redis queue.
+Multi-tenant SaaS backend. `api-admin` is a GraphQL gateway that resolves queries/mutations by calling 6 downstream gRPC services. `service-account` and `service-tenant` additionally make direct backend-to-backend gRPC calls. `service-notification` consumes Bull queue jobs.
 
-> **`api-admin`** has `exposed_interfaces: []` — it is a pure caller/gateway with no gRPC server surface of its own.
+> `service-project` and `service-notification.AuthProcess` are exposed but **not called** in the verified inter-service call graph.
 
 ---
 
@@ -17,151 +19,113 @@ Multi-tenant SaaS backend. `api-admin` is a **GraphQL gateway** — it exposes a
 
 ```mermaid
 flowchart LR
-    GW["api-admin\nGraphQL Gateway\n(NestJS)"]
+    GW["api-admin\nGraphQL Gateway"]
+    ACC["service-account"]
+    BILL["service-billing"]
+    TENANT["service-tenant"]
+    ROLE["service-role"]
+    WH["service-webhook"]
+    ACCESS["service-access"]
 
-    ACC["service-account\nAccountsController\n(gRPC)"]
-    BILL["service-billing\nBillingsController\n(gRPC)"]
-    TENANT["service-tenant\nTenantsController + MembersController\n(gRPC)"]
-    ROLE["service-role\nRolesController\n(gRPC)"]
-    NOTIF["service-notification\nAuthProcess\n(Bull Queue)"]
-    WH["service-webhook\nWebhookController\n(gRPC)"]
-    ACCESS["service-access\nAccessTokenController\n(gRPC)"]
-    PROJ["service-project\nProjectsController\n(gRPC)"]
+    GW -->|"gRPC 5 calls"| ACC
+    GW -->|"gRPC 14 calls"| BILL
+    GW -->|"gRPC 11 calls"| TENANT
+    GW -->|"gRPC 1 call"| ROLE
+    GW -->|"gRPC 5 calls"| WH
+    GW -->|"gRPC 4 calls"| ACCESS
 
-    GW -->|"gRPC  5 calls"| ACC
-    GW -->|"gRPC  14 calls"| BILL
-    GW -->|"gRPC  8 calls"| TENANT
-    GW -->|"gRPC  1 call"| ROLE
-    GW -->|"gRPC  5 calls"| WH
-    GW -->|"gRPC  4 calls"| ACCESS
-    GW -->|"gRPC  5 calls"| PROJ
-
-    ACC -->|"gRPC  addUserToRole"| ROLE
-    ACC -->|"gRPC  createCustomer"| BILL
-    ACC -->|"MSG   notification_queue"| NOTIF
-
-    TENANT -->|"gRPC  createSubscription"| BILL
-    TENANT -->|"gRPC  addUserToRole x3\nremoveUserFromRole x1"| ROLE
+    ACC -->|"gRPC addUserToRole"| ROLE
+    ACC -->|"gRPC createCustomer"| BILL
+    TENANT -->|"gRPC createSubscription"| BILL
+    TENANT -->|"gRPC addUserToRole x3\nremoveUserFromRole x1"| ROLE
 ```
 
 ---
 
-## Exposed Interfaces (69 total)
+## Inter-Microservice Interfaces (45)
 
-### service-webhook (5 interfaces — gRPC)
+### service-webhook — 5 interfaces
 
-| Method | gRPC Endpoint | Params → Return |
-|---|---|---|
-| `createWebhook` | `WebhookService/CreateWebhook` | `CreateWebhookRequest` → `CreateWebhookResponse` |
-| `deleteWebhook` | `WebhookService/DeleteWebhook` | `DeleteWebhookRequest` → `DeleteWebhookResponse` |
-| `findWebhook` | `WebhookService/FindWebhook` | `FindWebhookRequest` → `FindWebhookResponse` |
-| `readWebhook` | `WebhookService/ReadWebhook` | `ReadWebhookRequest` → `ReadWebhookResponse` |
-| `updateWebhook` | `WebhookService/UpdateWebhook` | `UpdateWebhookRequest` → `UpdateWebhookResponse` |
-
-### service-access (5 interfaces — gRPC)
-
-| Method | gRPC Endpoint | Params → Return |
-|---|---|---|
-| `createAccess` | `AccessService/CreateAccess` | `CreateAccessRequest` → `CreateAccessResponse` |
-| `deleteAccess` | `AccessService/DeleteAccess` | `DeleteAccessRequest` → `DeleteAccessResponse` |
-| `findAccess` | `AccessService/FindAccess` | `FindAccessRequest` → `FindAccessResponse` |
-| `hasRights` | `AccessService/HasRights` | `HasRightsRequest` → `HasRightsResponse` |
-| `readAccess` | `AccessService/ReadAccess` | `ReadAccessRequest` → `ReadAccessResponse` |
-
-### service-billing (19 interfaces — gRPC)
-
-| Method | gRPC Endpoint |
-|---|---|
-| `cancelSubscription` | `BillingService/CancelSubscription` |
-| `changeSubscription` | `BillingService/ChangeSubscription` |
-| `createCard` | `BillingService/CreateCard` |
-| `createCustomer` | `BillingService/CreateCustomer` |
-| `createPlan` | `BillingService/CreatePlan` |
-| `createSubscription` | `BillingService/CreateSubscription` |
-| `deleteCard` | `BillingService/DeleteCard` |
-| `deleteCustomer` | `BillingService/DeleteCustomer` |
-| `findCards` | `BillingService/FindCards` |
-| `findInvoices` | `BillingService/FindInvoices` |
-| `findPlans` | `BillingService/FindPlans` |
-| `findStripePlans` | `BillingService/FindStripePlans` |
-| `findSubscriptions` | `BillingService/FindSubscriptions` |
-| `readCard` | `BillingService/ReadCard` |
-| `readCustomer` | `BillingService/ReadCustomer` |
-| `readInvoice` | `BillingService/ReadInvoice` |
-| `readPlan` | `BillingService/ReadPlan` |
-| `readSubscription` | `BillingService/ReadSubscription` |
-| `setDefaultCard` | `BillingService/SetDefaultCard` |
-
-### service-account (13 interfaces — gRPC)
-
-| Method | gRPC Endpoint |
-|---|---|
-| `create` | `AccountService/Create` |
-| `delete` | `AccountService/Delete` |
-| `forgotPassword` | `AccountService/ForgotPassword` |
-| `login` | `AccountService/Login` |
-| `logout` | `AccountService/Logout` |
-| `read` | `AccountService/Read` |
-| `readSession` | `AccountService/ReadSession` |
-| `resendVerificationCode` | `AccountService/ResendVerificationCode` |
-| `search` | `AccountService/Search` |
-| `update` | `AccountService/Update` |
-| `updatePassword` | `AccountService/UpdatePassword` |
-| `verifyAccount` | `AccountService/VerifyAccount` |
-| `verifyActivationLink` | `AccountService/VerifyActivationLink` |
-
-### service-tenant (12 interfaces — gRPC)
-
-| Method | gRPC Endpoint |
-|---|---|
-| `createTenant` | `TenantService/CreateTenant` |
-| `deleteTenant` | `TenantService/DeleteTenant` |
-| `findTenant` | `TenantService/FindTenant` |
-| `readTenant` | `TenantService/ReadTenant` |
-| `tenantAvailable` | `TenantService/TenantAvailable` |
-| `updateTenant` | `TenantService/UpdateTenant` |
-| `acceptMemberInvitation` | `TenantService/AcceptMemberInvitation` |
-| `deleteMember` | `TenantService/DeleteMember` |
-| `findMembers` | `TenantService/FindMembers` |
-| `inviteMember` | `TenantService/InviteMember` |
-| `readMember` | `TenantService/ReadMember` |
-| `updateMember` | `TenantService/UpdateMember` |
-
-### service-notification (1 interface — Messaging)
-
-| Class | Method | Queue | Protocol |
+| Interface ID | Method | gRPC Endpoint | Called By |
 |---|---|---|---|
-| `AuthProcess` | `processUserRegister(Job<UserEntity>)` | `notification_queue` | Messaging (Bull) |
+| `WebhookController.createWebhook` | `createWebhook` | `WebhookService/CreateWebhook` | `api-admin` |
+| `WebhookController.updateWebhook` | `updateWebhook` | `WebhookService/UpdateWebhook` | `api-admin` |
+| `WebhookController.deleteWebhook` | `deleteWebhook` | `WebhookService/DeleteWebhook` | `api-admin` |
+| `WebhookController.readWebhook` | `readWebhook` | `WebhookService/ReadWebhook` | `api-admin` |
+| `WebhookController.findWebhook` | `findWebhook` | `WebhookService/FindWebhook` | `api-admin` |
 
-### service-project (5 interfaces — gRPC)
+### service-access — 4 interfaces
 
-| Method | gRPC Endpoint |
-|---|---|
-| `createProject` | `ProjectService/CreateProject` |
-| `deleteProject` | `ProjectService/DeleteProject` |
-| `findProjects` | `ProjectService/FindProjects` |
-| `readProject` | `ProjectService/ReadProject` |
-| `updateProject` | `ProjectService/UpdateProject` |
+| Interface ID | Method | gRPC Endpoint | Called By |
+|---|---|---|---|
+| `AccessTokenController.createAccess` | `createAccess` | `AccessService/CreateAccess` | `api-admin` |
+| `AccessTokenController.deleteAccess` | `deleteAccess` | `AccessService/DeleteAccess` | `api-admin` |
+| `AccessTokenController.findAccess` | `findAccess` | `AccessService/FindAccess` | `api-admin` |
+| `AccessTokenController.readAccess` | `readAccess` | `AccessService/ReadAccess` | `api-admin` |
 
-### service-role (5 interfaces — gRPC)
+### service-billing — 16 interfaces
 
-| Method | gRPC Endpoint |
-|---|---|
-| `addUserToRole` | `RoleService/AddUserToRole` |
-| `hasRights` | `RoleService/HasRights` |
-| `readUserRoles` | `RoleService/ReadUserRoles` |
-| `removeUserFromRole` | `RoleService/RemoveUserFromRole` |
-| *(+ 1 more)* | `RoleService/*` |
+| Interface ID | Method | gRPC Endpoint | Called By |
+|---|---|---|---|
+| `BillingsController.changeSubscription` | `changeSubscription` | `BillingService/ChangeSubscription` | `api-admin` |
+| `BillingsController.cancelSubscription` | `cancelSubscription` | `BillingService/CancelSubscription` | `api-admin` |
+| `BillingsController.readInvoice` | `readInvoice` | `BillingService/ReadInvoice` | `api-admin` |
+| `BillingsController.findInvoices` | `findInvoices` | `BillingService/FindInvoices` | `api-admin` |
+| `BillingsController.readSubscription` | `readSubscription` | `BillingService/ReadSubscription` | `api-admin` |
+| `BillingsController.findSubscriptions` | `findSubscriptions` | `BillingService/FindSubscriptions` | `api-admin` |
+| `BillingsController.readCard` | `readCard` | `BillingService/ReadCard` | `api-admin` |
+| `BillingsController.findCards` | `findCards` | `BillingService/FindCards` | `api-admin` |
+| `BillingsController.createCard` | `createCard` | `BillingService/CreateCard` | `api-admin` |
+| `BillingsController.deleteCard` | `deleteCard` | `BillingService/DeleteCard` | `api-admin` |
+| `BillingsController.setDefaultCard` | `setDefaultCard` | `BillingService/SetDefaultCard` | `api-admin` |
+| `BillingsController.readPlan` | `readPlan` | `BillingService/ReadPlan` | `api-admin` |
+| `BillingsController.findPlans` | `findPlans` | `BillingService/FindPlans` | `api-admin` |
+| `BillingsController.findStripePlans` | `findStripePlans` | `BillingService/FindStripePlans` | `api-admin` |
+| `BillingsController.createCustomer` | `createCustomer` | `BillingService/CreateCustomer` | `service-account` |
+| `BillingsController.createSubscription` | `createSubscription` | `BillingService/CreateSubscription` | `service-tenant` |
 
-### api-admin — no exposed interfaces (GraphQL gateway only)
+### service-account — 6 interfaces
+
+| Interface ID | Method | gRPC Endpoint | Called By |
+|---|---|---|---|
+| `AccountsController.create` | `create` | `AccountService/Create` | `api-admin` |
+| `AccountsController.forgotPassword` | `forgotPassword` | `AccountService/ForgotPassword` | `api-admin` |
+| `AccountsController.resendVerificationCode` | `resendVerificationCode` | `AccountService/ResendVerificationCode` | `api-admin` |
+| `AccountsController.verifyAccount` | `verifyAccount` | `AccountService/VerifyAccount` | `api-admin` |
+| `AccountsController.verifyActivationLink` | `verifyActivationLink` | `AccountService/VerifyActivationLink` | `api-admin` |
+| `AccountsController.read` | `read` | `AccountService/Read` | `api-admin` (×2) |
+
+### service-tenant — 11 interfaces
+
+| Interface ID | Method | gRPC Endpoint | Called By |
+|---|---|---|---|
+| `MembersController.inviteMember` | `inviteMember` | `TenantService/InviteMember` | `api-admin` |
+| `MembersController.updateMember` | `updateMember` | `TenantService/UpdateMember` | `api-admin` |
+| `MembersController.deleteMember` | `deleteMember` | `TenantService/DeleteMember` | `api-admin` |
+| `MembersController.readMember` | `readMember` | `TenantService/ReadMember` | `api-admin` |
+| `MembersController.findMembers` | `findMembers` | `TenantService/FindMembers` | `api-admin` |
+| `TenantsController.createTenant` | `createTenant` | `TenantService/CreateTenant` | `api-admin` |
+| `TenantsController.updateTenant` | `updateTenant` | `TenantService/UpdateTenant` | `api-admin` |
+| `TenantsController.deleteTenant` | `deleteTenant` | `TenantService/DeleteTenant` | `api-admin` |
+| `TenantsController.tenantAvailable` | `tenantAvailable` | `TenantService/TenantAvailable` | `api-admin` |
+| `TenantsController.readTenant` | `readTenant` | `TenantService/ReadTenant` | `api-admin` |
+| `TenantsController.findTenant` | `findTenant` | `TenantService/FindTenant` | `api-admin` |
+
+### service-role — 3 interfaces
+
+| Interface ID | Method | gRPC Endpoint | Called By |
+|---|---|---|---|
+| `RolesController.readUserRoles` | `readUserRoles` | `RoleService/ReadUserRoles` | `api-admin` |
+| `RolesController.addUserToRole` | `addUserToRole` | `RoleService/AddUserToRole` | `service-account`, `service-tenant` (×3) |
+| `RolesController.removeUserFromRole` | `removeUserFromRole` | `RoleService/RemoveUserFromRole` | `service-tenant` |
 
 ---
 
-## Inter-Service Calls (49 total)
+## Inter-Service Calls (49)
 
 ### GraphQL Gateway → Backend gRPC (42 calls)
 
-| # | Resolver File | GraphQL Operation | → Dst Service | Dst Method |
+| # | Resolver File | GraphQL Op | → Dst Service | To Interface |
 |---|---|---|---|---|
 | 1 | `access-token.resolver.ts:22` | `accessToken` (create) | → `service-access` | `AccessTokenController.createAccess` |
 | 2 | `access-token.resolver.ts:38` | `accessToken` (delete) | → `service-access` | `AccessTokenController.deleteAccess` |
@@ -206,23 +170,14 @@ flowchart LR
 | 41 | `webhooks.resolver.ts:14` | `webhook` | → `service-webhook` | `WebhookController.readWebhook` |
 | 42 | `webhooks.resolver.ts:31` | `webhooks` | → `service-webhook` | `WebhookController.findWebhook` |
 
-### Backend-to-Backend (7 calls)
+### Backend-to-Backend gRPC (7 calls)
 
-| # | From Service | Handler File | → To Service | To Method | Protocol | Evidence |
-|---|---|---|---|---|---|---|
-| 43 | `service-account` | `register-user.handler.ts:145` | → `service-role` | `RolesController.addUserToRole` | gRPC | line 145 |
-| 44 | `service-account` | `register-user.handler.ts:153` | → `service-billing` | `BillingsController.createCustomer` | gRPC | line 153 |
-| 45 | `service-tenant` | `create-tenant.handler.ts:105` | → `service-billing` | `BillingsController.createSubscription` | gRPC | line 105 |
-| 46 | `service-tenant` | `create-tenant.handler.ts:127` | → `service-role` | `RolesController.addUserToRole` | gRPC | line 127 |
-| 47 | `service-tenant` | `accept-invitation.handler.ts:67` | → `service-role` | `RolesController.addUserToRole` | gRPC | line 67 |
-| 48 | `service-tenant` | `remove-member.handler.ts:93` | → `service-role` | `RolesController.removeUserFromRole` | gRPC | line 93 |
-| 49 | `service-tenant` | `invite-member.handler.ts:111` | → `service-role` | `RolesController.addUserToRole` | gRPC | line 111 |
-
----
-
-## Notes
-
-- `api-admin` is the heaviest caller: **42 outbound gRPC calls** across 7 services.
-- `service-role` is the most called backend service: receives calls from `api-admin`, `service-account` (1), and `service-tenant` (4) = **6 total callers**.
-- `service-tenant` makes **5 backend-to-backend gRPC calls** on lifecycle events (create tenant, invite, remove member).
-- `service-notification` is a **pure consumer** — receives Bull queue jobs and sends emails; no outbound service calls.
+| # | From Service | Handler File | → To Service | To Interface | Evidence |
+|---|---|---|---|---|---|
+| 43 | `service-account` | `register-user.handler.ts:145` | → `service-role` | `RolesController.addUserToRole` | line 145 |
+| 44 | `service-account` | `register-user.handler.ts:153` | → `service-billing` | `BillingsController.createCustomer` | line 153 |
+| 45 | `service-tenant` | `create-tenant.handler.ts:105` | → `service-billing` | `BillingsController.createSubscription` | line 105 |
+| 46 | `service-tenant` | `create-tenant.handler.ts:127` | → `service-role` | `RolesController.addUserToRole` | line 127 |
+| 47 | `service-tenant` | `accept-invitation.handler.ts:67` | → `service-role` | `RolesController.addUserToRole` | line 67 |
+| 48 | `service-tenant` | `remove-member.handler.ts:93` | → `service-role` | `RolesController.removeUserFromRole` | line 93 |
+| 49 | `service-tenant` | `invite-member.handler.ts:111` | → `service-role` | `RolesController.addUserToRole` | line 111 |
