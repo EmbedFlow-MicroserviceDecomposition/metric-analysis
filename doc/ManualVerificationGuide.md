@@ -39,7 +39,7 @@ For each item in the checklists below:
 
 ### A. Inter-Microservice Interface (1 total)
 
-- [ ] **`PetRepository.findById`**  
+- [x] **`PetRepository.findById`**  
   - **Service**: `spring-petclinic-rest-pet`  
   - **File**: `spring-petclinic-rest-pet/src/main/java/org/springframework/samples/petclinic/pet/PetRepository.java`  
   - **Line**: ~46 (`Pet findById(@Param("id") Integer id);`)  
@@ -49,7 +49,7 @@ For each item in the checklists below:
 
 ### B. Inter-Service Call (1 total)
 
-- [ ] **Call 0**: `spring-petclinic-rest-owner` → `spring-petclinic-rest-pet`  
+- [x] **Call 0**: `spring-petclinic-rest-owner` → `spring-petclinic-rest-pet`  
   - **Caller File**: `spring-petclinic-rest-owner/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java`  
   - **Caller Method**: `getOwnerVisits(int)`  
   - **Line 59**:  
@@ -67,27 +67,27 @@ For each item in the checklists below:
 ### A. Inter-Microservice Interfaces (17 total)
 
 #### 1. REST Endpoints (13)
-- [ ] **`CustomersController.GetAllAsync`**  
+- [x] **`CustomersController.GetAllAsync`**  
   - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
   - **Endpoint**: `REST GET /api/customers` (`[HttpGet]`)  
   - **Invoked by**: `WebApp` (`CustomerManagementController.Index`, `VehicleManagementController.New`)
 
-- [ ] **`CustomersController.GetByCustomerId`**  
+- [x] **`CustomersController.GetByCustomerId`**  
   - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
   - **Endpoint**: `REST GET /api/customers/{customerId}` (`[HttpGet("{customerId}")]`)  
   - **Invoked by**: `WebApp` (`CustomerManagementController.Details`, `VehicleManagementController.Details`)
 
-- [ ] **`CustomersController.RegisterAsync`**  
+- [x] **`CustomersController.RegisterAsync`**  
   - **File**: `src/CustomerManagementAPI/Controllers/CustomersController.cs`  
   - **Endpoint**: `REST POST /api/customers` (`[HttpPost]`)  
   - **Invoked by**: `WebApp` (`CustomerManagementController.Register`)
 
-- [ ] **`VehiclesController.GetAllAsync`**  
+- [x] **`VehiclesController.GetAllAsync`**  
   - **File**: `src/VehicleManagementAPI/Controllers/VehiclesController.cs`  
   - **Endpoint**: `REST GET /api/vehicles` (`[HttpGet]`)  
   - **Invoked by**: `WebApp` (`VehicleManagementController.Index`)
 
-- [ ] **`VehiclesController.GetByLicenseNumber`**  
+- [x] **`VehiclesController.GetByLicenseNumber`**  
   - **File**: `src/VehicleManagementAPI/Controllers/VehiclesController.cs`  
   - **Endpoint**: `REST GET /api/vehicles/{licenseNumber}` (`[HttpGet("{licenseNumber}")]`)  
   - **Invoked by**: `WebApp` (`VehicleManagementController.Details`)
@@ -378,64 +378,57 @@ For each item in the checklists below:
 ### B. Inter-Service Calls (49 total)
 
 #### 1. GraphQL Gateway (`api-admin`) → Downstream gRPC (42 calls)
-- [ ] **Line 22** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.createAccess(...)`
-- [ ] **Line 38** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.deleteAccess(...)`
-- [ ] **Line 56** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.findAccess(...)`
-- [ ] **Line 62** `apps/api-admin/src/app/modules/access-token/access-token.resolver.ts`: `ctx.rpc.access.svc.readAccess(...)`
-- [ ] **Line 96** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.create(...)`
-- [ ] **Line 104** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.forgotPassword(...)`
-- [ ] **Line 114** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.resendVerificationCode(...)`
-- [ ] **Line 142** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyAccount(...)`
-- [ ] **Line 163** `apps/api-admin/src/app/modules/account/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyActivationLink(...)`
-- [ ] **Line 31** `apps/api-admin/src/app/modules/billing/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.changeSubscription(...)`
-- [ ] **Line 59** `apps/api-admin/src/app/modules/billing/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.cancelSubscription(...)`
-- [ ] **Line 34** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.readInvoice(...)`
-- [ ] **Line 49** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.findInvoices(...)`
-- [ ] **Line 73** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.readSubscription(...)`
-- [ ] **Line 91** `apps/api-admin/src/app/modules/billing/billings.resolver.ts`: `ctx.rpc.billing.svc.findSubscriptions(...)`
-- [ ] **Line 33** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.readCard(...)`
-- [ ] **Line 48** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.findCards(...)`
-- [ ] **Line 83** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.createCard(...)`
-- [ ] **Line 106** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.deleteCard(...)`
-- [ ] **Line 122** `apps/api-admin/src/app/modules/billing/cards.resolver.ts`: `ctx.rpc.billing.svc.setDefaultCard(...)`
-- [ ] **Line 24** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.readPlan(...)`
-- [ ] **Line 30** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.findPlans(...)`
-- [ ] **Line 39** `apps/api-admin/src/app/modules/billing/plans.resolver.ts`: `ctx.rpc.billing.svc.findStripePlans(...)`
-- [ ] **Line 32** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.inviteMember(...)`
-- [ ] **Line 58** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateMember(...)`
-- [ ] **Line 84** `apps/api-admin/src/app/modules/tenant/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteMember(...)`
-- [ ] **Line 39** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.readMember(...)`
-- [ ] **Line 59** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.findMembers(...)`
-- [ ] **Line 86** `apps/api-admin/src/app/modules/tenant/tenant-members.resolver.ts`: `ctx.rpc.account.svc.read(...)`
-- [ ] **Line 36** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.createTenant(...)`
-- [ ] **Line 55** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateTenant(...)`
-- [ ] **Line 80** `apps/api-admin/src/app/modules/tenant/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteTenant(...)`
-- [ ] **Line 41** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.tenantAvailable(...)`
-- [ ] **Line 64** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.readTenant(...)`
-- [ ] **Line 84** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.tenant.svc.findTenant(...)`
-- [ ] **Line 102** `apps/api-admin/src/app/modules/tenant/tenants.resolver.ts`: `ctx.rpc.account.svc.read(...)`
-- [ ] **Line 45** `apps/api-admin/src/app/modules/user/users.resolver.ts`: `ctx.rpc.role.svc.readUserRoles(...)`
-- [ ] **Line 62** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.createWebhook(...)`
-- [ ] **Line 81** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.updateWebhook(...)`
-- [ ] **Line 106** `apps/api-admin/src/app/modules/webhook/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.deleteWebhook(...)`
-- [ ] **Line 14** `apps/api-admin/src/app/modules/webhook/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.readWebhook(...)`
-- [ ] **Line 31** `apps/api-admin/src/app/modules/webhook/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.findWebhook(...)`
+- [ ] **Line 30** `apps/api-admin/src/access-token/access-token-mutation.resolver.ts`: `ctx.rpc.accessToken.svc.deleteAccess(...)` → `service-access` (AccessTokenController.deleteAccess)
+- [ ] **Line 54** `apps/api-admin/src/access-token/access-token-mutation.resolver.ts`: `ctx.rpc.accessToken.svc.createAccess(...)` → `service-access` (AccessTokenController.createAccess)
+- [ ] **Line 38** `apps/api-admin/src/access-token/access-token.resolver.ts`: `ctx.rpc.accessToken.svc.findAccess(...)` → `service-access` (AccessTokenController.findAccess)
+- [ ] **Line 62** `apps/api-admin/src/access-token/access-token.resolver.ts`: `ctx.rpc.accessToken.svc.readAccess(...)` → `service-access` (AccessTokenController.readAccess)
+- [ ] **Line 96** `apps/api-admin/src/accounts/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.create(...)` → `service-account` (AccountsController.create)
+- [ ] **Line 104** `apps/api-admin/src/accounts/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.forgotPassword(...)` → `service-account` (AccountsController.forgotPassword)
+- [ ] **Line 114** `apps/api-admin/src/accounts/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.resendVerificationCode(...)` → `service-account` (AccountsController.resendVerificationCode)
+- [ ] **Line 142** `apps/api-admin/src/accounts/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyAccount(...)` → `service-account` (AccountsController.verifyAccount)
+- [ ] **Line 163** `apps/api-admin/src/accounts/accounts-mutation.resolver.ts`: `ctx.rpc.account.svc.verifyActivationLink(...)` → `service-account` (AccountsController.verifyActivationLink)
+- [ ] **Line 31** `apps/api-admin/src/billings/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.changeSubscription(...)` → `service-billing` (BillingsController.changeSubscription)
+- [ ] **Line 59** `apps/api-admin/src/billings/billings-mutation.resolver.ts`: `ctx.rpc.billing.svc.cancelSubscription(...)` → `service-billing` (BillingsController.cancelSubscription)
+- [ ] **Line 34** `apps/api-admin/src/billings/billings.resolver.ts`: `ctx.rpc.billing.svc.readInvoice(...)` → `service-billing` (BillingsController.readInvoice)
+- [ ] **Line 49** `apps/api-admin/src/billings/billings.resolver.ts`: `ctx.rpc.billing.svc.findInvoices(...)` → `service-billing` (BillingsController.findInvoices)
+- [ ] **Line 73** `apps/api-admin/src/billings/billings.resolver.ts`: `ctx.rpc.billing.svc.readSubscription(...)` → `service-billing` (BillingsController.readSubscription)
+- [ ] **Line 91** `apps/api-admin/src/billings/billings.resolver.ts`: `ctx.rpc.billing.svc.findSubscriptions(...)` → `service-billing` (BillingsController.findSubscriptions)
+- [ ] **Line 33** `apps/api-admin/src/cards/cards.resolver.ts`: `ctx.rpc.billing.svc.readCard(...)` → `service-billing` (BillingsController.readCard)
+- [ ] **Line 48** `apps/api-admin/src/cards/cards.resolver.ts`: `ctx.rpc.billing.svc.findCards(...)` → `service-billing` (BillingsController.findCards)
+- [ ] **Line 83** `apps/api-admin/src/cards/cards.resolver.ts`: `ctx.rpc.billing.svc.createCard(...)` → `service-billing` (BillingsController.createCard)
+- [ ] **Line 106** `apps/api-admin/src/cards/cards.resolver.ts`: `ctx.rpc.billing.svc.deleteCard(...)` → `service-billing` (BillingsController.deleteCard)
+- [ ] **Line 122** `apps/api-admin/src/cards/cards.resolver.ts`: `ctx.rpc.billing.svc.setDefaultCard(...)` → `service-billing` (BillingsController.setDefaultCard)
+- [ ] **Line 24** `apps/api-admin/src/plans/plans.resolver.ts`: `ctx.rpc.billing.svc.readPlan(...)` → `service-billing` (BillingsController.readPlan)
+- [ ] **Line 30** `apps/api-admin/src/plans/plans.resolver.ts`: `ctx.rpc.billing.svc.findPlans(...)` → `service-billing` (BillingsController.findPlans)
+- [ ] **Line 39** `apps/api-admin/src/plans/plans.resolver.ts`: `ctx.rpc.billing.svc.findStripePlans(...)` → `service-billing` (BillingsController.findStripePlans)
+- [ ] **Line 32** `apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.inviteMember(...)` → `service-tenant` (MembersController.inviteMember)
+- [ ] **Line 58** `apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateMember(...)` → `service-tenant` (MembersController.updateMember)
+- [ ] **Line 84** `apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteMember(...)` → `service-tenant` (MembersController.deleteMember)
+- [ ] **Line 39** `apps/api-admin/src/tenant-members/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.readMember(...)` → `service-tenant` (MembersController.readMember)
+- [ ] **Line 59** `apps/api-admin/src/tenant-members/tenant-members.resolver.ts`: `ctx.rpc.tenant.svc.findMembers(...)` → `service-tenant` (MembersController.findMembers)
+- [ ] **Line 86** `apps/api-admin/src/tenant-members/tenant-members.resolver.ts`: `ctx.rpc.account.svc.read(...)` → `service-account` (AccountsController.read)
+- [ ] **Line 36** `apps/api-admin/src/tenants/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.createTenant(...)` → `service-tenant` (TenantsController.createTenant)
+- [ ] **Line 55** `apps/api-admin/src/tenants/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.updateTenant(...)` → `service-tenant` (TenantsController.updateTenant)
+- [ ] **Line 80** `apps/api-admin/src/tenants/tenants-mutation.resolver.ts`: `ctx.rpc.tenant.svc.deleteTenant(...)` → `service-tenant` (TenantsController.deleteTenant)
+- [ ] **Line 41** `apps/api-admin/src/tenants/tenants.resolver.ts`: `ctx.rpc.tenant.svc.tenantAvailable(...)` → `service-tenant` (TenantsController.tenantAvailable)
+- [ ] **Line 64** `apps/api-admin/src/tenants/tenants.resolver.ts`: `ctx.rpc.tenant.svc.readTenant(...)` → `service-tenant` (TenantsController.readTenant)
+- [ ] **Line 84** `apps/api-admin/src/tenants/tenants.resolver.ts`: `ctx.rpc.tenant.svc.findTenant(...)` → `service-tenant` (TenantsController.findTenant)
+- [ ] **Line 102** `apps/api-admin/src/tenants/tenants.resolver.ts`: `ctx.rpc.account.svc.read(...)` → `service-account` (AccountsController.read)
+- [ ] **Line 45** `apps/api-admin/src/users/users.resolver.ts`: `ctx.rpc.role.svc.readUserRoles(...)` → `service-role` (RolesController.readUserRoles)
+- [ ] **Line 62** `apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.createWebhook(...)` → `service-webhook` (WebhookController.createWebhook)
+- [ ] **Line 81** `apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.updateWebhook(...)` → `service-webhook` (WebhookController.updateWebhook)
+- [ ] **Line 106** `apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts`: `ctx.rpc.webhook.svc.deleteWebhook(...)` → `service-webhook` (WebhookController.deleteWebhook)
+- [ ] **Line 14** `apps/api-admin/src/webhooks/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.readWebhook(...)` → `service-webhook` (WebhookController.readWebhook)
+- [ ] **Line 31** `apps/api-admin/src/webhooks/webhooks.resolver.ts`: `ctx.rpc.webhook.svc.findWebhook(...)` → `service-webhook` (WebhookController.findWebhook)
 
 #### 2. Backend-to-Backend gRPC (7 calls)
-- [ ] **Line 145** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`:  
-  `this.roleClient.svc.addUserToRole({ domain: '*', userId: result.id.toString(), actor: 'user', role: 'customer' })`
-- [ ] **Line 153** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`:  
-  `this.billingClient.svc.createCustomer({ currency: '', number: '', name: `${result.firstname} ${result.lastname}`, email: ... })`
-- [ ] **Line 105** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`:  
-  `this.billingService.svc.createSubscription({ planId: input.planId, tenantId: normalizedName, customerId: user.settings.stripeId, ... })`
-- [ ] **Line 127** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`:  
-  `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
-- [ ] **Line 67** `apps/service-tenant/src/members/cqrs/command/handlers/member/accept-invitation.handler.ts`:  
-  `this.roleService.svc.addUserToRole({ role: member.role, domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
-- [ ] **Line 93** `apps/service-tenant/src/members/cqrs/command/handlers/member/remove-member.handler.ts`:  
-  `this.roleService.svc.removeUserFromRole({ tenantId, userId: member.userId.toString() })`
-- [ ] **Line 111** `apps/service-tenant/src/members/cqrs/command/handlers/member/invite-member.handler.ts`:  
-  `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })`
+- [ ] **Line 145** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`: `this.roleClient.svc.addUserToRole({ domain: '*', userId: result.id.toString(), actor: 'user', role: 'customer' })` → `service-role` (RolesController.addUserToRole)
+- [ ] **Line 153** `apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts`: `this.billingClient.svc.createCustomer({ currency: '', number: '', name: `${result.firstname} ${result.lastname}`, email: ... })` → `service-billing` (BillingsController.createCustomer)
+- [ ] **Line 105** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`: `this.billingService.svc.createSubscription({ planId: input.planId, tenantId: normalizedName, customerId: user.settings.stripeId, ... })` → `service-billing` (BillingsController.createSubscription)
+- [ ] **Line 127** `apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts`: `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })` → `service-role` (RolesController.addUserToRole)
+- [ ] **Line 67** `apps/service-tenant/src/members/cqrs/command/handlers/member/accept-invitation.handler.ts`: `this.roleService.svc.addUserToRole({ role: member.role, domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })` → `service-role` (RolesController.addUserToRole)
+- [ ] **Line 93** `apps/service-tenant/src/members/cqrs/command/handlers/member/remove-member.handler.ts`: `this.roleService.svc.removeUserFromRole({ tenantId, userId: member.userId.toString() })` → `service-role` (RolesController.removeUserFromRole)
+- [ ] **Line 111** `apps/service-tenant/src/members/cqrs/command/handlers/member/invite-member.handler.ts`: `this.roleService.svc.addUserToRole({ role: 'owner', domain: tenant.normalizedName, actor: 'user', userId: user.id.toString() })` → `service-role` (RolesController.addUserToRole)
 
 ---
 

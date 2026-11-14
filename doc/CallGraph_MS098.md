@@ -127,10 +127,10 @@ flowchart LR
 
 | # | Resolver File | GraphQL Op | → Dst Service | To Interface |
 |---|---|---|---|---|
-| 1 | `access-token.resolver.ts:22` | `accessToken` (create) | → `service-access` | `AccessTokenController.createAccess` |
-| 2 | `access-token.resolver.ts:38` | `accessToken` (delete) | → `service-access` | `AccessTokenController.deleteAccess` |
-| 3 | `access-token.resolver.ts:56` | `accessToken` (find) | → `service-access` | `AccessTokenController.findAccess` |
-| 4 | `access-token.resolver.ts:62` | `accessToken` (read) | → `service-access` | `AccessTokenController.readAccess` |
+| 1 | `access-token-mutation.resolver.ts:30` | `delete` | → `service-access` | `AccessTokenController.deleteAccess` |
+| 2 | `access-token-mutation.resolver.ts:54` | `create` | → `service-access` | `AccessTokenController.createAccess` |
+| 3 | `access-token.resolver.ts:38` | `accessTokens` | → `service-access` | `AccessTokenController.findAccess` |
+| 4 | `access-token.resolver.ts:62` | `accessToken` | → `service-access` | `AccessTokenController.readAccess` |
 | 5 | `accounts-mutation.resolver.ts:96` | `register` | → `service-account` | `AccountsController.create` |
 | 6 | `accounts-mutation.resolver.ts:104` | `sendResetPasswordEmail` | → `service-account` | `AccountsController.forgotPassword` |
 | 7 | `accounts-mutation.resolver.ts:114` | `sendVerificationEmail` | → `service-account` | `AccountsController.resendVerificationCode` |
@@ -144,29 +144,29 @@ flowchart LR
 | 15 | `billings.resolver.ts:91` | `subscriptions` | → `service-billing` | `BillingsController.findSubscriptions` |
 | 16 | `cards.resolver.ts:33` | `card` | → `service-billing` | `BillingsController.readCard` |
 | 17 | `cards.resolver.ts:48` | `cards` | → `service-billing` | `BillingsController.findCards` |
-| 18 | `cards.resolver.ts:83` | `create` (card) | → `service-billing` | `BillingsController.createCard` |
-| 19 | `cards.resolver.ts:106` | `delete` (card) | → `service-billing` | `BillingsController.deleteCard` |
+| 18 | `cards.resolver.ts:83` | `create` | → `service-billing` | `BillingsController.createCard` |
+| 19 | `cards.resolver.ts:106` | `delete` | → `service-billing` | `BillingsController.deleteCard` |
 | 20 | `cards.resolver.ts:122` | `setDefault` | → `service-billing` | `BillingsController.setDefaultCard` |
 | 21 | `plans.resolver.ts:24` | `plan` | → `service-billing` | `BillingsController.readPlan` |
 | 22 | `plans.resolver.ts:30` | `plans` | → `service-billing` | `BillingsController.findPlans` |
 | 23 | `plans.resolver.ts:39` | `prices` | → `service-billing` | `BillingsController.findStripePlans` |
 | 24 | `tenant-members-mutation.resolver.ts:32` | `invite` | → `service-tenant` | `MembersController.inviteMember` |
-| 25 | `tenant-members-mutation.resolver.ts:58` | `update` (member) | → `service-tenant` | `MembersController.updateMember` |
-| 26 | `tenant-members-mutation.resolver.ts:84` | `delete` (member) | → `service-tenant` | `MembersController.deleteMember` |
+| 25 | `tenant-members-mutation.resolver.ts:58` | `update` | → `service-tenant` | `MembersController.updateMember` |
+| 26 | `tenant-members-mutation.resolver.ts:84` | `delete` | → `service-tenant` | `MembersController.deleteMember` |
 | 27 | `tenant-members.resolver.ts:39` | `member` | → `service-tenant` | `MembersController.readMember` |
 | 28 | `tenant-members.resolver.ts:59` | `members` | → `service-tenant` | `MembersController.findMembers` |
 | 29 | `tenant-members.resolver.ts:86` | `fullName` | → `service-account` | `AccountsController.read` |
-| 30 | `tenants-mutation.resolver.ts:36` | `create` (tenant) | → `service-tenant` | `TenantsController.createTenant` |
-| 31 | `tenants-mutation.resolver.ts:55` | `update` (tenant) | → `service-tenant` | `TenantsController.updateTenant` |
-| 32 | `tenants-mutation.resolver.ts:80` | `delete` (tenant) | → `service-tenant` | `TenantsController.deleteTenant` |
+| 30 | `tenants-mutation.resolver.ts:36` | `create` | → `service-tenant` | `TenantsController.createTenant` |
+| 31 | `tenants-mutation.resolver.ts:55` | `update` | → `service-tenant` | `TenantsController.updateTenant` |
+| 32 | `tenants-mutation.resolver.ts:80` | `delete` | → `service-tenant` | `TenantsController.deleteTenant` |
 | 33 | `tenants.resolver.ts:41` | `tenantAvailable` | → `service-tenant` | `TenantsController.tenantAvailable` |
 | 34 | `tenants.resolver.ts:64` | `tenant` | → `service-tenant` | `TenantsController.readTenant` |
 | 35 | `tenants.resolver.ts:84` | `tenants` | → `service-tenant` | `TenantsController.findTenant` |
 | 36 | `tenants.resolver.ts:102` | `owner` | → `service-account` | `AccountsController.read` |
 | 37 | `users.resolver.ts:45` | `roles` | → `service-role` | `RolesController.readUserRoles` |
-| 38 | `webhooks-mutation.resolver.ts:62` | `create` (webhook) | → `service-webhook` | `WebhookController.createWebhook` |
-| 39 | `webhooks-mutation.resolver.ts:81` | `update` (webhook) | → `service-webhook` | `WebhookController.updateWebhook` |
-| 40 | `webhooks-mutation.resolver.ts:106` | `remove` (webhook) | → `service-webhook` | `WebhookController.deleteWebhook` |
+| 38 | `webhooks-mutation.resolver.ts:62` | `create` | → `service-webhook` | `WebhookController.createWebhook` |
+| 39 | `webhooks-mutation.resolver.ts:81` | `update` | → `service-webhook` | `WebhookController.updateWebhook` |
+| 40 | `webhooks-mutation.resolver.ts:106` | `remove` | → `service-webhook` | `WebhookController.deleteWebhook` |
 | 41 | `webhooks.resolver.ts:14` | `webhook` | → `service-webhook` | `WebhookController.readWebhook` |
 | 42 | `webhooks.resolver.ts:31` | `webhooks` | → `service-webhook` | `WebhookController.findWebhook` |
 
