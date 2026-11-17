@@ -86,7 +86,7 @@
         "id": {
           "type": "string",
           "minLength": 1,
-          "description": "Unique identifier within the service, formatted as '<SimpleClassName>.<method_name>' (e.g. 'OwnerResource.findOwner')."
+          "description": "Method-based identifier '<SimpleClassName>.<method_name>' (e.g. 'OwnerResource.findOwner'); repeated IDs are permitted for distinct endpoints/signatures. An empty method name produces '<SimpleClassName>.' (e.g. 'Program.')."
         },
         "class_name": {
           "type": "string",
@@ -95,8 +95,7 @@
         },
         "method_name": {
           "type": "string",
-          "minLength": 1,
-          "description": "Declared method or handler function name."
+          "description": "Actual declared handler or enclosing registration method name; empty string when no method is declared, such as top-level startup statements. Do not invent a method name."
         },
         "param_types": {
           "type": "array",
@@ -154,8 +153,7 @@
         },
         "src_method": {
           "type": "string",
-          "minLength": 1,
-          "description": "Method in src_class that initiates the cross-service call."
+          "description": "Actual caller or enclosing registration method name; empty string when the invocation is declared without a method, such as top-level startup statements."
         },
         "dst_service": {
           "type": "string",
