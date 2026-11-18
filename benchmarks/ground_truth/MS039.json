@@ -2,7 +2,7 @@
   "system_id": "MS039",
   "extractor_tool": "ground_truth",
   "prompt_version": "v1.0",
-  "status": "pending_manual_review",
+  "status": "verified",
   "microservices": {
     "cartservice": {
       "exposed_interfaces": [
@@ -14,19 +14,8 @@
             "AddItemRequest"
           ],
           "return_type": "Empty",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CartService.EmptyCart",
-          "class_name": "cartservice.services.CartService",
-          "method_name": "EmptyCart",
-          "param_types": [
-            "EmptyCartRequest"
-          ],
-          "return_type": "Empty",
-          "protocol": "REST",
-          "endpoint": ""
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CartService/AddItem"
         },
         {
           "id": "CartService.GetCart",
@@ -36,179 +25,24 @@
             "GetCartRequest"
           ],
           "return_type": "Cart",
-          "protocol": "REST",
-          "endpoint": ""
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CartService/GetCart"
         },
         {
-          "id": "HealthCheckService.Check",
-          "class_name": "cartservice.services.HealthCheckService",
-          "method_name": "Check",
+          "id": "CartService.EmptyCart",
+          "class_name": "cartservice.services.CartService",
+          "method_name": "EmptyCart",
           "param_types": [
-            "HealthCheckRequest"
+            "EmptyCartRequest"
           ],
-          "return_type": "HealthCheckResponse",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CartService/EmptyCart"
         }
       ]
     },
     "frontend": {
       "exposed_interfaces": [
-        {
-          "id": "frontendServer.addToCartHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "addToCartHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.assistantHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "assistantHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.chatBotHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "chatBotHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.chooseAd",
-          "class_name": "main.frontendServer",
-          "method_name": "chooseAd",
-          "param_types": [
-            "[]string",
-            "logrus.FieldLogger"
-          ],
-          "return_type": "pb.Ad",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.convertCurrency",
-          "class_name": "main.frontendServer",
-          "method_name": "convertCurrency",
-          "param_types": [
-            "pb.Money",
-            "string"
-          ],
-          "return_type": "pb.Money",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.emptyCart",
-          "class_name": "main.frontendServer",
-          "method_name": "emptyCart",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.emptyCartHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "emptyCartHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getAd",
-          "class_name": "main.frontendServer",
-          "method_name": "getAd",
-          "param_types": [
-            "[]string"
-          ],
-          "return_type": "[]*pb.Ad",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getCart",
-          "class_name": "main.frontendServer",
-          "method_name": "getCart",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "[]*pb.CartItem",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getCurrencies",
-          "class_name": "main.frontendServer",
-          "method_name": "getCurrencies",
-          "param_types": [],
-          "return_type": "[]string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getProduct",
-          "class_name": "main.frontendServer",
-          "method_name": "getProduct",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "pb.Product",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getProductByID",
-          "class_name": "main.frontendServer",
-          "method_name": "getProductByID",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getProducts",
-          "class_name": "main.frontendServer",
-          "method_name": "getProducts",
-          "param_types": [],
-          "return_type": "[]*pb.Product",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getRecommendations",
-          "class_name": "main.frontendServer",
-          "method_name": "getRecommendations",
-          "param_types": [
-            "string",
-            "[]string"
-          ],
-          "return_type": "[]*pb.Product",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.getShippingQuote",
-          "class_name": "main.frontendServer",
-          "method_name": "getShippingQuote",
-          "param_types": [
-            "[]*pb.CartItem",
-            "string"
-          ],
-          "return_type": "pb.Money",
-          "protocol": "REST",
-          "endpoint": ""
-        },
         {
           "id": "frontendServer.homeHandler",
           "class_name": "main.frontendServer",
@@ -216,38 +50,7 @@
           "param_types": [],
           "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.insertCart",
-          "class_name": "main.frontendServer",
-          "method_name": "insertCart",
-          "param_types": [
-            "userID",
-            "string",
-            "int32"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.logoutHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "logoutHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.placeOrderHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "placeOrderHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /"
         },
         {
           "id": "frontendServer.productHandler",
@@ -256,16 +59,7 @@
           "param_types": [],
           "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "frontendServer.setCurrencyHandler",
-          "class_name": "main.frontendServer",
-          "method_name": "setCurrencyHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /product/{id}"
         },
         {
           "id": "frontendServer.viewCartHandler",
@@ -274,614 +68,229 @@
           "param_types": [],
           "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /cart"
         },
         {
-          "id": "handlers.currentCurrency",
-          "class_name": "main.handlers",
-          "method_name": "currentCurrency",
+          "id": "frontendServer.addToCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "addToCartHandler",
           "param_types": [],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "handlers.injectCommonTemplateData",
-          "class_name": "main.handlers",
-          "method_name": "injectCommonTemplateData",
-          "param_types": [
-            "map[string]interface{}"
-          ],
-          "return_type": "map[string]interface",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "handlers.renderHTTPError",
-          "class_name": "main.handlers",
-          "method_name": "renderHTTPError",
-          "param_types": [
-            "logrus.FieldLogger",
-            "error",
-            "int"
-          ],
           "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "POST /cart"
         },
         {
-          "id": "handlers.sessionID",
-          "class_name": "main.handlers",
-          "method_name": "sessionID",
+          "id": "frontendServer.emptyCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "emptyCartHandler",
           "param_types": [],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "main.initTracing",
-          "class_name": "main.main",
-          "method_name": "initTracing",
-          "param_types": [
-            "logrus.FieldLogger",
-            "frontendServer"
-          ],
-          "return_type": "sdktrace.TracerProvider",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "main.mustConnGRPC",
-          "class_name": "main.main",
-          "method_name": "mustConnGRPC",
-          "param_types": [
-            "grpc.ClientConn",
-            "string"
-          ],
           "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "POST /cart/empty"
+        },
+        {
+          "id": "frontendServer.setCurrencyHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "setCurrencyHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /setCurrency"
+        },
+        {
+          "id": "frontendServer.logoutHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "logoutHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /logout"
+        },
+        {
+          "id": "frontendServer.placeOrderHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "placeOrderHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/checkout"
+        },
+        {
+          "id": "frontendServer.assistantHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "assistantHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /assistant"
+        },
+        {
+          "id": "frontendServer.getProductByID",
+          "class_name": "main.frontendServer",
+          "method_name": "getProductByID",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /product-meta/{ids}"
+        },
+        {
+          "id": "frontendServer.chatBotHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "chatBotHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /bot"
         }
       ]
     },
     "shoppingassistantservice": {
-      "exposed_interfaces": []
+      "exposed_interfaces": [
+        {
+          "id": "shoppingassistantservice.talkToGemini",
+          "class_name": "shoppingassistantservice",
+          "method_name": "talkToGemini",
+          "param_types": [],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
     },
     "emailservice": {
       "exposed_interfaces": [
         {
-          "id": "email_server.initStackdriverProfiling",
-          "class_name": "email_server",
-          "method_name": "initStackdriverProfiling",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "email_server.start",
-          "class_name": "email_server",
-          "method_name": "start",
-          "param_types": [
-            "dummy_mode"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "BaseEmailService.Check",
-          "class_name": "email_server.BaseEmailService",
-          "method_name": "Check",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "BaseEmailService.Watch",
-          "class_name": "email_server.BaseEmailService",
-          "method_name": "Watch",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "DummyEmailService.SendOrderConfirmation",
-          "class_name": "email_server.DummyEmailService",
-          "method_name": "SendOrderConfirmation",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "EmailService.SendOrderConfirmation",
           "class_name": "email_server.EmailService",
           "method_name": "SendOrderConfirmation",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "EmailService.send_email",
-          "class_name": "email_server.EmailService",
-          "method_name": "send_email",
           "param_types": [
-            "client",
-            "email_address",
-            "content"
+            "SendOrderConfirmationRequest"
           ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HealthCheck.Check",
-          "class_name": "email_server.HealthCheck",
-          "method_name": "Check",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.EmailService/SendOrderConfirmation"
         }
       ]
     },
     "loadgenerator": {
-      "exposed_interfaces": [
-        {
-          "id": "locustfile.addToCart",
-          "class_name": "locustfile",
-          "method_name": "addToCart",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.browseProduct",
-          "class_name": "locustfile",
-          "method_name": "browseProduct",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.checkout",
-          "class_name": "locustfile",
-          "method_name": "checkout",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.empty_cart",
-          "class_name": "locustfile",
-          "method_name": "empty_cart",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.index",
-          "class_name": "locustfile",
-          "method_name": "index",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.logout",
-          "class_name": "locustfile",
-          "method_name": "logout",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.setCurrency",
-          "class_name": "locustfile",
-          "method_name": "setCurrency",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "locustfile.viewCart",
-          "class_name": "locustfile",
-          "method_name": "viewCart",
-          "param_types": [
-            "l"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "UserBehavior.on_start",
-          "class_name": "locustfile.UserBehavior",
-          "method_name": "on_start",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
+      "exposed_interfaces": []
     },
     "recommendationservice": {
       "exposed_interfaces": [
         {
-          "id": "recommendation_server.initStackdriverProfiling",
-          "class_name": "recommendation_server",
-          "method_name": "initStackdriverProfiling",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "RecommendationService.Check",
-          "class_name": "recommendation_server.RecommendationService",
-          "method_name": "Check",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "RecommendationService.ListRecommendations",
           "class_name": "recommendation_server.RecommendationService",
           "method_name": "ListRecommendations",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "RecommendationService.Watch",
-          "class_name": "recommendation_server.RecommendationService",
-          "method_name": "Watch",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
+          "param_types": [
+            "ListRecommendationsRequest"
+          ],
+          "return_type": "ListRecommendationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.RecommendationService/ListRecommendations"
         }
       ]
     },
     "checkoutservice": {
       "exposed_interfaces": [
         {
-          "id": "checkoutService.Check",
-          "class_name": "main.checkoutService",
-          "method_name": "Check",
-          "param_types": [
-            "healthpb.HealthCheckRequest"
-          ],
-          "return_type": "healthpb.HealthCheckResponse",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "checkoutService.PlaceOrder",
           "class_name": "main.checkoutService",
           "method_name": "PlaceOrder",
           "param_types": [
-            "pb.PlaceOrderRequest"
+            "PlaceOrderRequest"
           ],
-          "return_type": "pb.PlaceOrderResponse",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.chargeCard",
-          "class_name": "main.checkoutService",
-          "method_name": "chargeCard",
-          "param_types": [
-            "pb.Money",
-            "pb.CreditCardInfo"
-          ],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.convertCurrency",
-          "class_name": "main.checkoutService",
-          "method_name": "convertCurrency",
-          "param_types": [
-            "pb.Money",
-            "string"
-          ],
-          "return_type": "pb.Money",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.emptyUserCart",
-          "class_name": "main.checkoutService",
-          "method_name": "emptyUserCart",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.getUserCart",
-          "class_name": "main.checkoutService",
-          "method_name": "getUserCart",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "[]*pb.CartItem",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.prepOrderItems",
-          "class_name": "main.checkoutService",
-          "method_name": "prepOrderItems",
-          "param_types": [
-            "[]*pb.CartItem",
-            "string"
-          ],
-          "return_type": "[]*pb.OrderItem",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.prepareOrderItemsAndShippingQuoteFromCart",
-          "class_name": "main.checkoutService",
-          "method_name": "prepareOrderItemsAndShippingQuoteFromCart",
-          "param_types": [
-            "userID",
-            "string",
-            "pb.Address"
-          ],
-          "return_type": "orderPrep",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.quoteShipping",
-          "class_name": "main.checkoutService",
-          "method_name": "quoteShipping",
-          "param_types": [
-            "pb.Address",
-            "[]*pb.CartItem"
-          ],
-          "return_type": "pb.Money",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.sendOrderConfirmation",
-          "class_name": "main.checkoutService",
-          "method_name": "sendOrderConfirmation",
-          "param_types": [
-            "string",
-            "pb.OrderResult"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "checkoutService.shipOrder",
-          "class_name": "main.checkoutService",
-          "method_name": "shipOrder",
-          "param_types": [
-            "pb.Address",
-            "[]*pb.CartItem"
-          ],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "main.mustConnGRPC",
-          "class_name": "main.main",
-          "method_name": "mustConnGRPC",
-          "param_types": [
-            "grpc.ClientConn",
-            "string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "PlaceOrderResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CheckoutService/PlaceOrder"
         }
       ]
     },
     "productcatalogservice": {
       "exposed_interfaces": [
         {
-          "id": "productCatalog.Check",
+          "id": "productCatalog.ListProducts",
           "class_name": "main.productCatalog",
-          "method_name": "Check",
+          "method_name": "ListProducts",
           "param_types": [
-            "healthpb.HealthCheckRequest"
+            "Empty"
           ],
-          "return_type": "healthpb.HealthCheckResponse",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "ListProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.ProductCatalogService/ListProducts"
         },
         {
           "id": "productCatalog.GetProduct",
           "class_name": "main.productCatalog",
           "method_name": "GetProduct",
           "param_types": [
-            "pb.GetProductRequest"
+            "GetProductRequest"
           ],
-          "return_type": "pb.Product",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "productCatalog.ListProducts",
-          "class_name": "main.productCatalog",
-          "method_name": "ListProducts",
-          "param_types": [
-            "pb.Empty"
-          ],
-          "return_type": "pb.ListProductsResponse",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "Product",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.ProductCatalogService/GetProduct"
         },
         {
           "id": "productCatalog.SearchProducts",
           "class_name": "main.productCatalog",
           "method_name": "SearchProducts",
           "param_types": [
-            "pb.SearchProductsRequest"
+            "SearchProductsRequest"
           ],
-          "return_type": "pb.SearchProductsResponse",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.mustConnGRPC",
-          "class_name": "main.server",
-          "method_name": "mustConnGRPC",
-          "param_types": [
-            "grpc.ClientConn",
-            "string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "SearchProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.ProductCatalogService/SearchProducts"
         }
       ]
     },
     "currencyservice": {
       "exposed_interfaces": [
         {
-          "id": "server.check",
-          "class_name": "server",
-          "method_name": "check",
+          "id": "server.getSupportedCurrencies",
+          "class_name": "server.js",
+          "method_name": "getSupportedCurrencies",
           "param_types": [
-            "call",
-            "callback"
+            "Empty"
           ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "GetSupportedCurrenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CurrencyService/GetSupportedCurrencies"
         },
         {
           "id": "server.convert",
-          "class_name": "server",
+          "class_name": "server.js",
           "method_name": "convert",
           "param_types": [
-            "call",
-            "callback"
+            "CurrencyConversionRequest"
           ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.getSupportedCurrencies",
-          "class_name": "server",
-          "method_name": "getSupportedCurrencies",
-          "param_types": [
-            "call",
-            "callback"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.level",
-          "class_name": "server",
-          "method_name": "level",
-          "param_types": [
-            "logLevelString",
-            "logLevelNum"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.main",
-          "class_name": "server",
-          "method_name": "main",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "Money",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.CurrencyService/Convert"
         }
       ]
     },
     "shippingservice": {
       "exposed_interfaces": [
         {
-          "id": "server.Check",
-          "class_name": "main.server",
-          "method_name": "Check",
-          "param_types": [
-            "healthpb.HealthCheckRequest"
-          ],
-          "return_type": "healthpb.HealthCheckResponse",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "server.GetQuote",
           "class_name": "main.server",
           "method_name": "GetQuote",
           "param_types": [
-            "pb.GetQuoteRequest"
+            "GetQuoteRequest"
           ],
-          "return_type": "pb.GetQuoteResponse",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "GetQuoteResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.ShippingService/GetQuote"
         },
         {
           "id": "server.ShipOrder",
           "class_name": "main.server",
           "method_name": "ShipOrder",
           "param_types": [
-            "pb.ShipOrderRequest"
+            "ShipOrderRequest"
           ],
-          "return_type": "pb.ShipOrderResponse",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.Watch",
-          "class_name": "main.server",
-          "method_name": "Watch",
-          "param_types": [
-            "healthpb.HealthCheckRequest",
-            "healthpb.Health_WatchServer"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "ShipOrderResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.ShippingService/ShipOrder"
         }
       ]
     },
@@ -889,88 +298,303 @@
       "exposed_interfaces": [
         {
           "id": "server.ChargeServiceHandler",
-          "class_name": "server",
+          "class_name": "server.js",
           "method_name": "ChargeServiceHandler",
           "param_types": [
-            "call",
-            "callback"
+            "ChargeRequest"
           ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.CheckHandler",
-          "class_name": "server",
-          "method_name": "CheckHandler",
-          "param_types": [
-            "call",
-            "callback"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.listen",
-          "class_name": "server",
-          "method_name": "listen",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.loadAllProtos",
-          "class_name": "server",
-          "method_name": "loadAllProtos",
-          "param_types": [
-            "protoRoot"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.loadProto",
-          "class_name": "server",
-          "method_name": "loadProto",
-          "param_types": [
-            "path"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "ChargeResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.PaymentService/Charge"
         }
       ]
     },
     "adservice": {
       "exposed_interfaces": [
         {
-          "id": "AdServiceClient.getAds",
-          "class_name": "hipstershop.AdServiceClient",
-          "method_name": "getAds",
-          "param_types": [
-            "String"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "AdServiceImpl.getAds",
           "class_name": "hipstershop.AdServiceImpl",
           "method_name": "getAds",
           "param_types": [
-            "AdRequest",
-            "StreamObserver<AdResponse>"
+            "AdRequest"
           ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
+          "return_type": "AdResponse",
+          "protocol": "gRPC",
+          "endpoint": "hipstershop.AdService/GetAds"
         }
       ]
     }
   },
-  "inter_service_calls": []
+  "inter_service_calls": [
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "on_start",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.homeHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:35,81 def on_start(self): index(self) -> l.client.get(\"/\")"
+    },
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "setCurrency",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.setCurrencyHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:39,84 l.client.post(\"/setCurrency\", {'currency_code': random.choice(currencies)})"
+    },
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "browseProduct",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.productHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:43,85 l.client.get(\"/product/\" + random.choice(products))"
+    },
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "addToCart",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.addToCartHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:51,86 l.client.post(\"/cart\", {'product_id': product, 'quantity': random.randint(1,10)})"
+    },
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "viewCart",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.viewCartHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:46,87 l.client.get(\"/cart\")"
+    },
+    {
+      "src_service": "loadgenerator",
+      "src_class": "locustfile.UserBehavior",
+      "src_method": "checkout",
+      "dst_service": "frontend",
+      "dst_class": "main.frontendServer",
+      "dst_interface_id": "frontendServer.placeOrderHandler",
+      "protocol": "REST",
+      "evidence": "locustfile.py:61,88 l.client.post(\"/cart/checkout\", {...})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getCurrencies",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.getSupportedCurrencies",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:31-32 pb.NewCurrencyServiceClient(fe.currencySvcConn).GetSupportedCurrencies(ctx, &pb.Empty{})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "convertCurrency",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.convert",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:81-84 pb.NewCurrencyServiceClient(fe.currencySvcConn).Convert(ctx, &pb.CurrencyConversionRequest{From: money, ToCode: currency})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getProducts",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:46-47 pb.NewProductCatalogServiceClient(fe.productCatalogSvcConn).ListProducts(ctx, &pb.Empty{})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getProduct",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:52-53 pb.NewProductCatalogServiceClient(fe.productCatalogSvcConn).GetProduct(ctx, &pb.GetProductRequest{Id: id})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getCart",
+      "dst_service": "cartservice",
+      "dst_class": "cartservice.services.CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:58 pb.NewCartServiceClient(fe.cartSvcConn).GetCart(ctx, &pb.GetCartRequest{UserId: userID})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "emptyCart",
+      "dst_service": "cartservice",
+      "dst_class": "cartservice.services.CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:63 pb.NewCartServiceClient(fe.cartSvcConn).EmptyCart(ctx, &pb.EmptyCartRequest{UserId: userID})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "insertCart",
+      "dst_service": "cartservice",
+      "dst_class": "cartservice.services.CartService",
+      "dst_interface_id": "CartService.AddItem",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:68-73 pb.NewCartServiceClient(fe.cartSvcConn).AddItem(ctx, &pb.AddItemRequest{UserId: userID, Item: &pb.CartItem{ProductId: productID, Quantity: quantity}})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getShippingQuote",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.GetQuote",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:88-91 pb.NewShippingServiceClient(fe.shippingSvcConn).GetQuote(ctx, &pb.GetQuoteRequest{Address: nil, Items: items})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getRecommendations",
+      "dst_service": "recommendationservice",
+      "dst_class": "recommendation_server.RecommendationService",
+      "dst_interface_id": "RecommendationService.ListRecommendations",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:100-101 pb.NewRecommendationServiceClient(fe.recommendationSvcConn).ListRecommendations(ctx, &pb.ListRecommendationsRequest{UserId: userID, ProductIds: productIDs})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getAd",
+      "dst_service": "adservice",
+      "dst_class": "hipstershop.AdServiceImpl",
+      "dst_interface_id": "AdServiceImpl.getAds",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:123-125 pb.NewAdServiceClient(fe.adSvcConn).GetAds(ctx, &pb.AdRequest{ContextKeys: ctxKeys})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "placeOrderHandler",
+      "dst_service": "checkoutservice",
+      "dst_class": "main.checkoutService",
+      "dst_interface_id": "checkoutService.PlaceOrder",
+      "protocol": "gRPC",
+      "evidence": "handlers.go:354-355 pb.NewCheckoutServiceClient(fe.checkoutSvcConn).PlaceOrder(r.Context(), &pb.PlaceOrderRequest{...})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "chatBotHandler",
+      "dst_service": "shoppingassistantservice",
+      "dst_class": "shoppingassistantservice",
+      "dst_interface_id": "shoppingassistantservice.talkToGemini",
+      "protocol": "REST",
+      "evidence": "handlers.go:464-472 req, err := http.NewRequest(http.MethodPost, \"http://\" + fe.shoppingAssistantSvcAddr, r.Body); res, err := http.DefaultClient.Do(req)"
+    },
+    {
+      "src_service": "recommendationservice",
+      "src_class": "recommendation_server.RecommendationService",
+      "src_method": "ListRecommendations",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "recommendation_server.py:73 cat_response = product_catalog_stub.ListProducts(demo_pb2.Empty())"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "quoteShipping",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.GetQuote",
+      "protocol": "gRPC",
+      "evidence": "main.go:314-317 pb.NewShippingServiceClient(cs.shippingSvcConn).GetQuote(ctx, &pb.GetQuoteRequest{Address: address, Items: items})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "shipOrder",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.ShipOrder",
+      "protocol": "gRPC",
+      "evidence": "main.go:387-389 pb.NewShippingServiceClient(cs.shippingSvcConn).ShipOrder(ctx, &pb.ShipOrderRequest{Address: address, Items: items})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "getUserCart",
+      "dst_service": "cartservice",
+      "dst_class": "cartservice.services.CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "main.go:325 pb.NewCartServiceClient(cs.cartSvcConn).GetCart(ctx, &pb.GetCartRequest{UserId: userID})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "emptyUserCart",
+      "dst_service": "cartservice",
+      "dst_class": "cartservice.services.CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "main.go:333 pb.NewCartServiceClient(cs.cartSvcConn).EmptyCart(ctx, &pb.EmptyCartRequest{UserId: userID})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "prepOrderItems",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "main.go:341,344 cl := pb.NewProductCatalogServiceClient(cs.productCatalogSvcConn); cl.GetProduct(ctx, &pb.GetProductRequest{Id: item.GetProductId()})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "convertCurrency",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.convert",
+      "protocol": "gRPC",
+      "evidence": "main.go:360-362 pb.NewCurrencyServiceClient(cs.currencySvcConn).Convert(context.TODO(), &pb.CurrencyConversionRequest{From: from, ToCode: toCurrency})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "chargeCard",
+      "dst_service": "paymentservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.ChargeServiceHandler",
+      "protocol": "gRPC",
+      "evidence": "main.go:370-372 pb.NewPaymentServiceClient(cs.paymentSvcConn).Charge(ctx, &pb.ChargeRequest{Amount: amount, CreditCard: paymentInfo})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "sendOrderConfirmation",
+      "dst_service": "emailservice",
+      "dst_class": "email_server.EmailService",
+      "dst_interface_id": "EmailService.SendOrderConfirmation",
+      "protocol": "gRPC",
+      "evidence": "main.go:380-382 pb.NewEmailServiceClient(cs.emailSvcConn).SendOrderConfirmation(ctx, &pb.SendOrderConfirmationRequest{Email: email, Order: order})"
+    }
+  ]
 }
