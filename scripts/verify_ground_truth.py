@@ -39,10 +39,11 @@ OUTBOUND_PATTERNS = [
     r"convertAndSend\(", r"\.Publish(Async)?\(", r"\w*[Hh]ttp[Cc]lient\w*\??\.(Get|Post|Put|Delete|Patch|Send)\w*Async\(",
     r"\bfetch\(", r"axios\.", r"\.(get|post|put|patch|delete)\(\s*[`\"']/", r"requests\.(get|post|put|delete)\(", r"http\.(Get|Post)\(",
     r"\.NewRequest\(", r"pb\.New\w+Client\(",
+    r"LoadBalanced(CRUD|Image|Recommender|Store)Operations\b", r"ServiceLoadBalancer\s*\.\s*(loadBalance|multicast)\w*\(",
 ]
 # Sites that may expose an operation across the service boundary.
 ENTRYPOINT_PATTERNS = [
-    r"@(Get|Post|Put|Delete|Patch|Request)Mapping", r"@(GET|POST|PUT|DELETE|PATCH)\b",
+    r"@(Get|Post|Put|Delete|Patch|Request)Mapping", r"@(GET|POST|PUT|DELETE|PATCH)\b", r"@WebServlet\b",
     r"@StreamListener", r"@KafkaListener", r"@RabbitListener", r"@JmsListener",
     r"\[Http(Get|Post|Put|Delete|Patch)", r"\.Map(Get|Post|Put|Delete)\(",
     r"pb\.Register\w+Server\(",
@@ -95,6 +96,7 @@ def gate_a(gt: dict, partition: Partition) -> List[str]:
             ns = iface["class_name"].split(".")[:-1]
             allowed = {base_id} | {f"{'.'.join(ns[i:])}.{base_id}" for i in range(len(ns))}
             allowed |= {f"{base_id}[{verb}]" for verb in ("GET", "POST", "PUT", "PATCH", "DELETE")}
+            allowed.add(f"{base_id}({','.join(iface['param_types'])})")  # same-verb overloads
             if iface["id"] not in allowed:
                 errors.append(f"{where}: id '{iface['id']}' should be '{base_id}' (or qualified on collision).")
             if iface["id"] in iface_ids[svc]:
@@ -140,6 +142,8 @@ def gate_b(gt: dict, ms_path: Path) -> Tuple[List[str], Set[Tuple[Path, int]]]:
 def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: dict) -> List[str]:
     """Every grep hit must be cited by a call, be an exposed interface, or be explicitly excluded."""
     excluded = {(e["path"], int(e["line"])) for e in exclusions.get("excluded_sites", [])}
+    # Shared client libraries whose outbound sites are attributed to their in-service callers.
+    excluded_outbound_dirs = tuple(e["path"] for e in exclusions.get("excluded_outbound_paths", []))
     iface_counts = Counter(
         (iface["class_name"].split(".")[-1], iface["method_name"])
         for obj in gt["microservices"].values() for iface in obj["exposed_interfaces"]
@@ -155,16 +159,27 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
     method_re = re.compile(r"\b(\w+)\s*\(")
     unaccounted = []
     entry_sites: Dict[Tuple[str, str], List[str]] = {}
-    for f in _source_files(ms_path):
+    servlet_classes: Dict[str, str] = {}
+    subclasses: Dict[str, List[str]] = {}
+    sources = [(f, f.read_text(encoding="utf-8", errors="replace").splitlines()) for f in _source_files(ms_path)]
+    for f, lines in sources:
+        for sub, base in re.findall(r"\bclass\s+(\w+)(?:<[^>]*>)?\s+extends\s+(\w+)", "\n".join(lines)):
+            subclasses.setdefault(base, []).append(sub)
+    for f, lines in sources:
         rel = str(f.relative_to(ms_path))
-        lines = f.read_text(encoding="utf-8", errors="replace").splitlines()
         for idx, line in enumerate(lines, 1):
-            if (rel, idx) in excluded:
+            s = line.strip()
+            if (rel, idx) in excluded or s.startswith(("import ", "package ", "//", "*", "/*")) \
+                    or re.match(r"using\s+[\w.]+\s*;", s):
                 continue
             if out_re.search(line) and (f.resolve(), idx) not in cited:
-                unaccounted.append(f"OUTBOUND   {rel}:{idx}  {line.strip()[:110]}")
+                if not (excluded_outbound_dirs and rel.startswith(excluded_outbound_dirs)):
+                    unaccounted.append(f"OUTBOUND   {rel}:{idx}  {line.strip()[:110]}")
             elif entry_re.search(line):
                 if (f.resolve(), idx) in cited and f.stem in src_stems:
+                    continue
+                if "@WebServlet" in line:
+                    servlet_classes[f.stem] = f"{rel}:{idx}  {line.strip()[:90]}"
                     continue
                 if re.search(r"\b(class|interface)\s+\w+", " ".join(lines[idx - 1: idx + 4])):
                     continue  # type-level mapping (e.g. @RequestMapping("/v1") on a controller)
@@ -180,12 +195,19 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
                 names = method_re.findall(signature)
                 key = (f.stem, names[0] if names else "?")
                 entry_sites.setdefault(key, []).append(f"{rel}:{idx}  {line.strip()[:90]}")
+    # Endpoints declared in a base class are served by each concrete subclass, so they are required there.
+    required: Dict[Tuple[str, str], List[str]] = {}
+    for (cls, meth), sites in entry_sites.items():
+        for owner in subclasses.get(cls, [cls]):
+            required.setdefault((owner, meth), []).extend(sites)
     # Count-based so that overloads (e.g. GET and POST Login) cannot mask each other.
-    for key, sites in entry_sites.items():
-        missing = len(sites) - iface_counts.get(key, 0)
-        if missing > 0:
+    for key, sites in required.items():
+        if len(sites) > iface_counts.get(key, 0):
             unaccounted.extend(f"ENTRYPOINT {s}  ({key[0]}.{key[1]}: {len(sites)} in code, "
                                f"{iface_counts.get(key, 0)} in ground truth)" for s in sites)
+    iface_classes = {cls for cls, _ in iface_counts}
+    unaccounted.extend(f"ENTRYPOINT {site}  (servlet {cls} has no interface in ground truth)"
+                       for cls, site in servlet_classes.items() if cls not in iface_classes)
     return unaccounted
 
 

@@ -1,0 +1,53 @@
+
+### STEP 1 index, login page  13:58:44
+  GET  / -> HTTP 200
+  GET  /login -> HTTP 200
+  category id: 2
+
+### STEP 2 login as user1  13:58:44
+  POST /loginAction -d username=user1 -d password=password -> HTTP 302
+
+### STEP 3 category page + page size  13:58:50
+  GET  /category?category=2&page=1 -> HTTP 200
+  product ids: 7 8
+  POST /category -d number=20 -d page=1 -d category=2 -> HTTP 302
+
+### STEP 4 product page  13:58:55
+  GET  /product?id=7 -> HTTP 200
+
+### STEP 5 cart: add two, update, remove one  13:58:56
+  POST /cartAction -d addToCart= -d productid=7 -> HTTP 302
+  POST /cartAction -d addToCart= -d productid=8 -> HTTP 302
+  GET  /cart -> HTTP 200
+  POST /cartAction -d updateCartQuantities= -d orderitem_7=3 -d orderitem_8=1 -> HTTP 302
+  POST /cartAction -d removeProduct_8= -> HTTP 302
+
+### STEP 6 checkout and confirm order  13:58:56
+  POST /cartAction -d proceedtoCheckout= -> HTTP 302
+  GET  /order -> HTTP 200
+  POST /order  -> HTTP 200
+  POST /cartAction -d firstname=User -d lastname=User -d adress1=Road -d adress2=City -d cardtype=volvo -d cardnumber=314159265359 -d expirydate=12/2050 -d confirm=Confirm -> HTTP 302
+
+### STEP 7 profile, about, status, database, error pages  13:58:56
+  GET  /profile -> HTTP 200
+  GET  /about -> HTTP 200
+  GET  /status -> HTTP 200
+  GET  /database -> HTTP 200
+  GET  /error -> HTTP 302
+
+### STEP 8 regenerate database (admin)  14:13:22
+  GET  /dataBaseAction?categories=2&products=5&users=5&orders=3&confirm=Start -> HTTP 302
+
+### STEP 9 status after regeneration  14:37:24
+  GET  /status -> HTTP 200
+
+### STEP 10 logout  14:37:29
+  POST /loginAction -d logout= -> HTTP 302
+
+### DONE 14:37:34
+### CHECKOUT RE-RUN  15:43:33  (correct field names address1/address2)
+  POST /loginAction -> 302
+  category 2 product 4
+  POST /cartAction addToCart -> 302
+  POST /cartAction confirm -> 302 redirect=http://localhost:8080/tools.descartes.teastore.webui/
+  profile order mentions: 4

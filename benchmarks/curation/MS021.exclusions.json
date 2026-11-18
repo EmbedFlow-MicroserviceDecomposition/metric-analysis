@@ -1,0 +1,45 @@
+{
+  "system_id": "MS021",
+  "excluded_outbound_paths": [
+    {
+      "path": "utilities/tools.descartes.teastore.registryclient/",
+      "reason": "Shared client library packaged inside each service; its request-building code is attributed to the in-service caller that invokes it (D1). RegistryClient registry lookups/heartbeats here are service discovery."
+    },
+    {
+      "path": "examples/",
+      "reason": "Locust load-generator script (examples/locust/locustfile.py) acting as an external user against the webui; not a service."
+    }
+  ],
+  "excluded_sites": [
+    {
+      "path": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/repository/CacheManager.java",
+      "line": 52,
+      "reason": "persistence -> other persistence instances (multicastRESTToOtherServiceInstances): same service, not an inter-service call."
+    },
+    {
+      "path": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/repository/CacheManager.java",
+      "line": 81,
+      "reason": "persistence -> other persistence instances (multicastRESTToOtherServiceInstances): same service, not an inter-service call."
+    },
+    {
+      "path": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/repository/CacheManager.java",
+      "line": 137,
+      "reason": "persistence -> other persistence instances (multicastRESTToOtherServiceInstances): same service, not an inter-service call."
+    },
+    {
+      "path": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/repository/DataGenerator.java",
+      "line": 415,
+      "reason": "persistence -> other persistence instances (multicastRESTToOtherServiceInstances): same service, not an inter-service call."
+    },
+    {
+      "path": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/TrainingSynchronizer.java",
+      "line": 214,
+      "reason": "recommender -> other recommender instances (multicast GET train/timestamp): same service."
+    },
+    {
+      "path": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/DataBaseActionServlet.java",
+      "line": 84,
+      "reason": "Dead call: multicasts GET <recommender>/rest/train/async, but TrainEndpoint has no 'async' path (only /train, /train/timestamp, /train/isready), so no interface exists to receive it (404 at runtime)."
+    }
+  ]
+}

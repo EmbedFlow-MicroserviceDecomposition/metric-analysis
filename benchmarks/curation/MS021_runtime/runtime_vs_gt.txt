@@ -1,0 +1,45 @@
+== Observed service->service requests matched to a GT interface (32 distinct)
+  IN GT     auth         -> persistence  OrderEndpoint.create                           x1
+  IN GT     auth         -> persistence  OrderItemEndpoint.create                       x1
+  IN GT     auth         -> persistence  ProductEndpoint.findById                       x3
+  IN GT     auth         -> persistence  UserEndpoint.findById(String)                  x3
+  IN GT     image        -> persistence  CategoryEndpoint.listAll                       x2
+  IN GT     image        -> persistence  DatabaseGenerationEndpoint.isFinshed           x9
+  IN GT     image        -> persistence  ProductEndpoint.listAllForCategory             x7
+  IN GT     recommender  -> persistence  DatabaseGenerationEndpoint.isFinshed           x1
+  IN GT     recommender  -> persistence  OrderEndpoint.listAll                          x1
+  IN GT     recommender  -> persistence  OrderItemEndpoint.listAll                      x1
+  IN GT     webui        -> auth         AuthCartRest.addProductToCart                  x3
+  IN GT     webui        -> auth         AuthCartRest.removeProductFromCart             x1
+  IN GT     webui        -> auth         AuthCartRest.updateQuantity                    x2
+  IN GT     webui        -> auth         AuthUserActionsRest.isLoggedIn                 x17
+  IN GT     webui        -> auth         AuthUserActionsRest.login                      x3
+  IN GT     webui        -> auth         AuthUserActionsRest.logout                     x1
+  IN GT     webui        -> auth         AuthUserActionsRest.placeOrder                 x1
+  IN GT     webui        -> image        ImageProviderEndpoint.getProductImages         x5
+  IN GT     webui        -> image        ImageProviderEndpoint.getWebUIImages           x23
+  IN GT     webui        -> image        ImageProviderEndpoint.isFinished               x6
+  IN GT     webui        -> image        ImageProviderEndpoint.regenerateImages         x1
+  IN GT     webui        -> persistence  CategoryEndpoint.findById                      x2
+  IN GT     webui        -> persistence  CategoryEndpoint.listAll                       x13
+  IN GT     webui        -> persistence  DatabaseGenerationEndpoint.generateDataBase    x1
+  IN GT     webui        -> persistence  DatabaseGenerationEndpoint.isFinshed           x6
+  IN GT     webui        -> persistence  OrderEndpoint.listAllForUser                   x2
+  IN GT     webui        -> persistence  ProductEndpoint.countForCategory               x2
+  IN GT     webui        -> persistence  ProductEndpoint.findById                       x23
+  IN GT     webui        -> persistence  ProductEndpoint.listAllForCategory             x2
+  IN GT     webui        -> persistence  UserEndpoint.findById(Long)                    x2
+  IN GT     webui        -> recommender  RecommendEndpoint.recommend                    x2
+  IN GT     webui        -> recommender  TrainEndpoint.isReady                          x6
+
+== Observed requests matching NO GT interface (excl. self/host)
+  auth         -> registry     discovery (excluded by rule)                                 x308
+  image        -> registry     discovery (excluded by rule)                                 x313
+  persistence  -> registry     discovery (excluded by rule)                                 x275
+  recommender  -> registry     discovery (excluded by rule)                                 x450
+  webui        -> recommender  GET /tools.descartes.teastore.recommender/rest/train/async   x1
+  webui        -> registry     discovery (excluded by rule)                                 x848
+
+== GT (src_service, dst_interface) pairs NOT observed
+
+SUMMARY: GT pairs 32 | observed 32 | observed but not in GT 0

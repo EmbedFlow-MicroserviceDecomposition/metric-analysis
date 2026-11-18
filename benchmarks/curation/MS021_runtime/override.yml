@@ -1,0 +1,10 @@
+# Runtime-check override: use the :development images (2023-12-07, native arm64; only Tracing.java and the
+# docker memory configurator changed in Java since, neither touching routes or calls).
+services:
+  registry: {image: "descartesresearch/teastore-registry:development"}
+  db: {image: "descartesresearch/teastore-db:development"}
+  persistence: {image: "descartesresearch/teastore-persistence:development"}
+  auth: {image: "descartesresearch/teastore-auth:development"}
+  image: {image: "descartesresearch/teastore-image:development"}
+  recommender: {image: "descartesresearch/teastore-recommender:development"}
+  webui: {image: "descartesresearch/teastore-webui:development"}
