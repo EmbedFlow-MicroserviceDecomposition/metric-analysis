@@ -1,0 +1,58 @@
+
+### STEP 1 createNewAccount ravi15330 (expect: account -> auth POST /uaa/users)  10:25:48
+$ curl -X POST http://localhost:4000/accounts/ -H Content-Type: application/json -d {"username":"ravi15330","password":"password1"}
+{"name":"ravi15330","lastSeen":"2026-11-18T10:25:54.496+0000","incomes":null,"expenses":null,"saving":{"amount":0,"currency":"USD","interest":0,"deposit":false,"capitalization":false},"note":null}  [HTTP 200]
+
+
+### STEP 2 login: password grant via gateway (OAuth2 plumbing, excluded D3)  10:25:56
+token acquired: 5c62da5d...
+
+### STEP 3 getUser via gateway (auth-service, no cross-service effect)  10:25:57
+$ curl http://localhost:4000/uaa/users/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+{"authorities":[],"details":{"remoteAddress":"172.18.0.11","sessionId":null,"tokenValue":"5c62da5d-0aff-4406-9a21-3f1d7244aef0","tokenType":"Bearer","decodedDetails":null},"authenticated":true,"userAuthentication":{"authorities":[],"details":{"grant_type":"password","scope":"ui","username":"ravi1533
+
+
+### STEP 4 getCurrentAccount (expect: only token validation account -> auth, excluded D3)  10:25:57
+$ curl http://localhost:4000/accounts/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+{"name":"ravi15330","lastSeen":"2026-11-18T10:25:54.496+0000","incomes":null,"expenses":null,"saving":{"amount":0,"currency":"USD","interest":0,"deposit":false,"capitalization":false},"note":null}  [HTTP 200]
+
+
+### STEP 5 saveCurrentAccount (expect: account -> statistics PUT /statistics/ravi15330)  10:25:57
+$ curl -X PUT http://localhost:4000/accounts/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0 -H Content-Type: application/json -d {
+  "incomes":[{"title":"Salary","amount":4000,"currency":"USD","period":"MONTH","icon":"wallet"}],
+  "expenses":[{"title":"Rent","amount":1200,"currency":"EUR","period":"MONTH","icon":"home"}],
+  "saving":{"amount":1500,"currency":"USD","interest":3.5,"deposit":true,"capitalization":false},
+  "note":"runtime check"}
+  [HTTP 200]
+
+
+### STEP 6 getCurrentAccountStatistics (no cross-service effect beyond token validation)  10:26:02
+$ curl http://localhost:4000/statistics/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+[]  [HTTP 200]
+
+
+### STEP 7 getAccountByName demo / getStatisticsByAccountName demo (public demo account)  10:26:03
+$ curl http://localhost:4000/accounts/demo -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+{"name":"demo","lastSeen":"2026-11-18T10:23:32.115+0000","incomes":[{"title":"Salary","amount":42000.0,"currency":"USD","period":"YEAR","icon":"wallet"},{"title":"Scholarship","amount":500.0,"currency":"USD","period":"MONTH","icon":"edu"}],"expenses":[{"title":"Rent","amount":1300.0,"currency":"USD"
+
+$ curl http://localhost:4000/statistics/demo -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+[]  [HTTP 200]
+
+
+### STEP 8 saveCurrentNotificationsSettings with BACKUP due (sets up scheduled notification -> account call)  10:26:03
+$ curl -X PUT http://localhost:4000/notifications/recipients/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0 -H Content-Type: application/json -d {
+  "email":"ravi@example.com",
+  "scheduledNotifications":{
+    "BACKUP":{"active":true,"frequency":"WEEKLY","lastNotified":"2020-01-01T00:00:00.000+0000"},
+    "REMIND":{"active":false,"frequency":"WEEKLY"}}}
+{"accountName":"ravi15330","email":"ravi@example.com","scheduledNotifications":{"BACKUP":{"active":true,"frequency":"WEEKLY","lastNotified":"2020-01-01T00:00:00.000+0000"},"REMIND":{"active":false,"frequency":"WEEKLY","lastNotified":"2026-11-18T10:26:04.670+0000"}}}  [HTTP 200]
+
+
+### STEP 9 getCurrentNotificationsSettings  10:26:04
+$ curl http://localhost:4000/notifications/recipients/current -H Authorization: Bearer 5c62da5d-0aff-4406-9a21-3f1d7244aef0
+{"accountName":"ravi15330","email":"ravi@example.com","scheduledNotifications":{"BACKUP":{"active":true,"frequency":"WEEKLY","lastNotified":"2020-01-01T00:00:00.000+0000"},"REMIND":{"active":false,"frequency":"WEEKLY","lastNotified":"2026-11-18T10:26:04.670+0000"}}}  [HTTP 200]
+
+
+### STEP 10 wait for backup cron (every minute; expect: notification -> account GET /accounts/ravi15330)  10:26:05
+
+### DONE 10:28:15  user=ravi15330

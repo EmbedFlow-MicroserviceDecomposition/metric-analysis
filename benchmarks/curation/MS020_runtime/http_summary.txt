@@ -1,0 +1,19 @@
+FROM                   TO                     REQUEST                                    N
+account-service        auth-service           GET /uaa/users/current                     5
+account-service        auth-service           POST /uaa/oauth/token                      1
+account-service        auth-service           POST /uaa/users                            1
+account-service        statistics-service     PUT /statistics/{user}                     1
+gateway                account-service        GET /accounts/current                      1
+gateway                account-service        GET /accounts/demo                         1
+gateway                account-service        POST /accounts/                            1
+gateway                account-service        PUT /accounts/current                      1
+gateway                auth-service           GET /uaa/users/current                     1
+gateway                auth-service           POST /uaa/oauth/token                      1
+gateway                notification-service   GET /notifications/recipients/current      1
+gateway                notification-service   PUT /notifications/recipients/current      1
+gateway                statistics-service     GET /statistics/current                    1
+gateway                statistics-service     GET /statistics/demo                       1
+notification-service   account-service        GET /accounts/{user}                       2
+notification-service   auth-service           GET /uaa/users/current                     2
+notification-service   auth-service           POST /uaa/oauth/token                      1
+statistics-service     auth-service           GET /uaa/users/current                     4

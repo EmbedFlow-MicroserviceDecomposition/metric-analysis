@@ -1,0 +1,20 @@
+# Runtime-check override: amd64 emulation; gateway on host port 4000 (instead of 80);
+# config server reads a copy of shared/*.yml whose only change is backup.cron = every minute.
+services:
+  config:
+    platform: linux/amd64
+    environment:
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS: "file:/shared-override/"
+    volumes: ["<scratchpad>/runtime_MS020/shared-override:/shared-override:ro"]
+  registry: {platform: linux/amd64}
+  gateway: {platform: linux/amd64, ports: !override ["4000:4000"]}
+  auth-service: {platform: linux/amd64}
+  auth-mongodb: {platform: linux/amd64}
+  account-service: {platform: linux/amd64}
+  account-mongodb: {platform: linux/amd64}
+  statistics-service: {platform: linux/amd64}
+  statistics-mongodb: {platform: linux/amd64}
+  notification-service: {platform: linux/amd64}
+  notification-mongodb: {platform: linux/amd64}
+  monitoring: {platform: linux/amd64}
+  turbine-stream-service: {platform: linux/amd64}

@@ -150,7 +150,8 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
                 continue
             if out_re.search(line) and (f.resolve(), idx) not in cited:
                 unaccounted.append(f"OUTBOUND   {rel}:{idx}  {line.strip()[:110]}")
-            elif entry_re.search(line):
+            elif entry_re.search(line) and (f.resolve(), idx) not in cited:
+                # Cited mapping lines are client-side declarations (e.g. Feign), not entry points.
                 # The annotated method's signature is on one of the next few lines.
                 window = " ".join(lines[idx - 1: idx + 4])
                 if re.search(r"\b(class|interface)\s+\w+", window):

@@ -1,0 +1,14 @@
+== statistics-service (ExchangeRatesClient external failure)
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is feign.FeignException: status 401 reading ExchangeRatesClient#getRates(Currency); content:
+Caused by: feign.FeignException: status 401 reading ExchangeRatesClient#getRates(Currency); content:
+== account-service
+2026-11-18 10:25:54.709  INFO [account-service,7a7bb66154d53f3e,9f5a48bddcb47d49,false] 1 --- [nio-6000-exec-1] c.p.account.service.AccountServiceImpl   : new account has been created: ravi15330
+2026-11-18 10:25:59.308 ERROR [account-service,1f4ef10bb1503912,7ca72720fee86911,false] 1 --- [stics-service-1] c.p.a.c.StatisticsServiceClientFallback  : Error during update statistics for account: ravi15330
+== notification-service
+2026-11-18 10:25:00.377  INFO [notification-service,1d97397312ea787d,1d97397312ea787d,false] 1 --- [ask-scheduler-4] c.p.n.service.NotificationServiceImpl    : found 0 recipients for backup notification
+2026-11-18 10:26:00.051  INFO [notification-service,b926297d9e544280,b926297d9e544280,false] 1 --- [ask-scheduler-8] c.p.n.service.NotificationServiceImpl    : found 0 recipients for backup notification
+2026-11-18 10:26:04.841  INFO [notification-service,5b09b336d23d22d8,2717b2f38b740b0e,false] 1 --- [nio-8000-exec-1] c.p.n.service.RecipientServiceImpl       : recipient Recipient{accountName='ravi15330', email='ravi@example.com'} settings 
+2026-11-18 10:27:00.063  INFO [notification-service,842612fc1f6ffd0d,842612fc1f6ffd0d,false] 1 --- [ask-scheduler-2] c.p.n.service.NotificationServiceImpl    : found 1 recipients for backup notification
+2026-11-18 10:27:05.261 ERROR [notification-service,,,] 1 --- [onPool-worker-9] c.p.n.service.NotificationServiceImpl    : an error during backup notification for Recipient{accountName='ravi15330', email='ravi@example.com'}
+2026-11-18 10:28:00.071  INFO [notification-service,e4fe90c508a3b240,e4fe90c508a3b240,false] 1 --- [ask-scheduler-9] c.p.n.service.NotificationServiceImpl    : found 1 recipients for backup notification
+2026-11-18 10:28:03.444 ERROR [notification-service,,,] 1 --- [onPool-worker-2] c.p.n.service.NotificationServiceImpl    : an error during backup notification for Recipient{accountName='ravi15330', email='ravi@example.com'}

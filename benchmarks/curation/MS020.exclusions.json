@@ -1,0 +1,25 @@
+{
+  "system_id": "MS020",
+  "excluded_sites": [
+    {
+      "path": "account-service/src/main/java/com/piggymetrics/account/service/security/CustomUserInfoTokenServices.java",
+      "line": 129,
+      "reason": "OAuth2 token validation against auth-service user-info-uri (/uaa/users/current): security infrastructure, excluded by team decision (D3)."
+    },
+    {
+      "path": "statistics-service/src/main/java/com/piggymetrics/statistics/service/security/CustomUserInfoTokenServices.java",
+      "line": 129,
+      "reason": "OAuth2 token validation against auth-service user-info-uri (/uaa/users/current): security infrastructure, excluded by team decision (D3)."
+    },
+    {
+      "path": "statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java",
+      "line": 10,
+      "reason": "Feign client to the external API https://api.exchangeratesapi.io (rates.url), not a service in this system (D4)."
+    },
+    {
+      "path": "statistics-service/src/main/java/com/piggymetrics/statistics/client/ExchangeRatesClient.java",
+      "line": 13,
+      "reason": "Request mapping of the external exchange-rates Feign client, client-side declaration (D4)."
+    }
+  ]
+}
