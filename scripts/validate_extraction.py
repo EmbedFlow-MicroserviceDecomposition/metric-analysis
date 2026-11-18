@@ -5,13 +5,14 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
-from fyp_cdq.config import GROUND_TRUTH_DIR, OUTPUTS_DIR
+from fyp_cdq.config import GROUND_TRUTH_DIR
 from fyp_cdq.extractors.agent_loader import validate_agent_extraction_schema
+from fyp_cdq.extractors.service_detector import ServiceDetector
 from fyp_cdq.metrics.chd import CHDMetric
 from fyp_cdq.metrics.chm import CHMMetric
 from fyp_cdq.metrics.ifn import IFNMetric
 from fyp_cdq.metrics.sm import SMMetric
-from fyp_cdq.models import AgentExtraction, Partition
+from fyp_cdq.models import AgentExtraction
 from fyp_cdq.pipeline import resolve_system_codebase
 
 
@@ -34,9 +35,8 @@ def evaluate_single_system(
     pred_file: Path,
 ) -> Dict[str, any]:
     """Compares a single predicted extraction file against its Ground-Truth file."""
-    part_file = OUTPUTS_DIR / system_id / "output.json"
-    partition = Partition.from_json(part_file) if part_file.exists() else None
     _, ms_path = resolve_system_codebase(system_id)
+    partition = ServiceDetector().detect_and_extract(ms_path, system_name=system_id)
 
     with open(pred_file, "r", encoding="utf-8") as f:
         raw_pred = json.load(f)
@@ -77,9 +77,17 @@ def evaluate_single_system(
     pred_svc_edges = {(c.src_service, c.dst_service) for c in pred_ext.inter_service_calls if c.src_service != c.dst_service}
     se_p, se_r, se_f1, _, _ = _prf1(gt_svc_edges, pred_svc_edges)
 
-    # 3b. Class-level directed edges (for SM): (src_class, dst_class)
-    gt_cls_edges = {(c.src_class, c.dst_class) for c in gt_ext.inter_service_calls if c.src_service != c.dst_service}
-    pred_cls_edges = {(c.src_class, c.dst_class) for c in pred_ext.inter_service_calls if c.src_service != c.dst_service}
+    # 3b. Service-scoped class-level directed edges (for SM): (src_service, src_class, dst_service, dst_class)
+    gt_cls_edges = {
+        (c.src_service, c.src_class, c.dst_service, c.dst_class)
+        for c in gt_ext.inter_service_calls
+        if c.src_service != c.dst_service
+    }
+    pred_cls_edges = {
+        (c.src_service, c.src_class, c.dst_service, c.dst_class)
+        for c in pred_ext.inter_service_calls
+        if c.src_service != c.dst_service
+    }
     ce_p, ce_r, ce_f1, ce_fp, ce_fn = _prf1(gt_cls_edges, pred_cls_edges)
 
     # 3c. Target interface invocations (for IFN): (src_service, dst_service, dst_interface_id)

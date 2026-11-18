@@ -44,7 +44,7 @@
     },
     "microservices": {
       "type": "object",
-      "description": "Map from canonical microservice ID (must match keys in outputs/<MS_ID>/output.json) to its exposed interfaces.",
+      "description": "Map from canonical microservice ID (must match keys in codebases/microservices/microservices.json[<system_id>].services) to its exposed interfaces.",
       "additionalProperties": {
         "type": "object",
         "required": [
@@ -91,7 +91,7 @@
         "class_name": {
           "type": "string",
           "minLength": 1,
-          "description": "Canonical class name from outputs/<MS_ID>/output.json declaring this interface operation."
+          "description": "Fully qualified class name or module identifier in the service declaring this interface operation."
         },
         "method_name": {
           "type": "string",
@@ -145,12 +145,12 @@
         "src_service": {
           "type": "string",
           "minLength": 1,
-          "description": "Canonical caller microservice ID from output.json."
+          "description": "Canonical caller microservice ID from codebases/microservices/microservices.json."
         },
         "src_class": {
           "type": "string",
           "minLength": 1,
-          "description": "Canonical caller class name from output.json."
+          "description": "Caller class name or module identifier in src_service."
         },
         "src_method": {
           "type": "string",
@@ -160,12 +160,12 @@
         "dst_service": {
           "type": "string",
           "minLength": 1,
-          "description": "Canonical target microservice ID from output.json (must differ from src_service)."
+          "description": "Canonical target microservice ID from codebases/microservices/microservices.json (must differ from src_service)."
         },
         "dst_class": {
           "type": "string",
           "minLength": 1,
-          "description": "Canonical target class name in dst_service from output.json."
+          "description": "Target class name or module identifier in dst_service."
         },
         "dst_interface_id": {
           "type": "string",

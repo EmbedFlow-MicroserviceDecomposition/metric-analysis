@@ -175,3 +175,69 @@ def test_sm_metric_evaluate_with_agent_extraction(tmp_path: Path):
     assert result.microservice_scores["payment-ms"] == pytest.approx(-0.25)
     assert result.score == pytest.approx(-0.125)
 
+
+def test_sm_metric_same_class_name_across_services(tmp_path: Path):
+    ms_dir = tmp_path / "ms"
+    orders_dir = ms_dir / "orders"
+    products_dir = ms_dir / "products"
+    orders_dir.mkdir(parents=True)
+    products_dir.mkdir(parents=True)
+
+    (orders_dir / "server.js").write_text("app.get('/orders', () => {});\n", encoding="utf-8")
+    (products_dir / "server.js").write_text("app.get('/products', () => {});\n", encoding="utf-8")
+
+    ext_data = {
+        "system_id": "MS900",
+        "extractor_tool": "ground_truth",
+        "prompt_version": "v1.0",
+        "microservices": {
+            "orders": {"exposed_interfaces": []},
+            "products": {
+                "exposed_interfaces": [
+                    {
+                        "id": "server.get_products",
+                        "class_name": "server.js",
+                        "method_name": "get_products",
+                        "param_types": [],
+                        "return_type": "List<Product>",
+                        "protocol": "REST",
+                        "endpoint": "GET /products",
+                    }
+                ]
+            },
+        },
+        "inter_service_calls": [
+            {
+                "src_service": "orders",
+                "src_class": "server.js",
+                "src_method": "fetchProducts",
+                "dst_service": "products",
+                "dst_class": "server.js",
+                "dst_interface_id": "server.get_products",
+                "protocol": "REST",
+                "evidence": "fetch('http://products/products')",
+            }
+        ],
+    }
+
+    out_dir = tmp_path / "out"
+    out_dir.mkdir()
+    (out_dir / "agent_extraction.json").write_text(json.dumps(ext_data), encoding="utf-8")
+
+    partition = Partition(
+        microservices={
+            "orders": ["server.js"],
+            "products": ["server.js"],
+        },
+        system_name="TestCollision",
+    )
+
+    metric = SMMetric()
+    result = metric.evaluate(partition, ms_dir=ms_dir, output_dir=out_dir)
+    assert result.metadata["services_count"] == 2
+    assert result.metadata["inter_edges_count"] == 1
+    assert result.microservice_scores["orders"] == pytest.approx(-0.5)
+    assert result.microservice_scores["products"] == pytest.approx(-0.5)
+    assert result.score == pytest.approx(-0.5)
+
+

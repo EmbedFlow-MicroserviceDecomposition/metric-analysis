@@ -1395,20 +1395,26 @@ _SOURCE_EXTENSIONS = (
 def extract_intra_service_edges(
     ms_dir: Path,
     partition: Partition,
+    qualify_with_service_id: bool = True,
 ) -> List[Edge]:
     """
     Extracts intra-microservice class-to-class dependency/call edges (mu_k in SM)
     directly from each microservice's source directory.
     All returned edges are strictly internal to a single microservice (src != dst,
     get_cluster(src) == get_cluster(dst)) and deduplicated at the (src, dst) pair level.
+    When `qualify_with_service_id=True`, endpoints are namespaced as `<service_id>::<class_name>`
+    so identical class names across different services never collide.
     """
-    cache_key = f"{ms_dir.resolve()}::{sorted(partition.microservices.keys())}"
+    cache_key = f"{ms_dir.resolve()}::{qualify_with_service_id}::{sorted(partition.microservices.keys())}"
     if cache_key in _MS_INTRA_EDGES_CACHE:
         return list(_MS_INTRA_EDGES_CACHE[cache_key])
 
     service_dirs = _resolve_service_directories(ms_dir, partition)
     all_edges: List[Edge] = []
     seen_pairs: Set[Tuple[str, str]] = set()
+
+    def _fmt_node(service_id: str, cls_name: str) -> str:
+        return f"{service_id}::{cls_name}" if qualify_with_service_id else cls_name
 
     for cid, member_classes in partition.microservices.items():
         if len(member_classes) < 2:
@@ -1432,9 +1438,12 @@ def extract_intra_service_edges(
                 # Normalize to canonical names if possible
                 src_c = _normalize_to_canonical(e.src, canonical_members)
                 dst_c = _normalize_to_canonical(e.dst, canonical_members)
-                if src_c and dst_c and src_c != dst_c and (src_c, dst_c) not in seen_pairs:
-                    seen_pairs.add((src_c, dst_c))
-                    all_edges.append(Edge(src=src_c, dst=dst_c, type="CALL", weight=1.0))
+                if src_c and dst_c and src_c != dst_c:
+                    src_node = _fmt_node(cid, src_c)
+                    dst_node = _fmt_node(cid, dst_c)
+                    if (src_node, dst_node) not in seen_pairs:
+                        seen_pairs.add((src_node, dst_node))
+                        all_edges.append(Edge(src=src_node, dst=dst_node, type="CALL", weight=1.0))
 
         # 2. Multi-language symbol/type/call reference edges within sdir across member classes
         simple_to_canonical: Dict[str, List[str]] = {}
@@ -1480,9 +1489,11 @@ def extract_intra_service_edges(
                 for tok in tokens:
                     callee_cls = unique_simples.get(tok)
                     if callee_cls and callee_cls != caller_cls:
-                        if (caller_cls, callee_cls) not in seen_pairs:
-                            seen_pairs.add((caller_cls, callee_cls))
-                            all_edges.append(Edge(src=caller_cls, dst=callee_cls, type="CALL", weight=1.0))
+                        src_node = _fmt_node(cid, caller_cls)
+                        dst_node = _fmt_node(cid, callee_cls)
+                        if (src_node, dst_node) not in seen_pairs:
+                            seen_pairs.add((src_node, dst_node))
+                            all_edges.append(Edge(src=src_node, dst=dst_node, type="CALL", weight=1.0))
 
     _MS_INTRA_EDGES_CACHE[cache_key] = list(all_edges)
     return all_edges
