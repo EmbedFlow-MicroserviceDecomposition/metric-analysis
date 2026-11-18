@@ -4,6 +4,21 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get",
+          "class_name": "server",
+          "method_name": "get",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
     "orders": {
       "exposed_interfaces": [
         {
@@ -49,21 +64,6 @@
           "method_name": "get_products_id",
           "param_types": [
             "id"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "frontend": {
-      "exposed_interfaces": [
-        {
-          "id": "server.get",
-          "class_name": "server",
-          "method_name": "get",
-          "param_types": [
-            "get"
           ],
           "return_type": "object",
           "protocol": "REST",

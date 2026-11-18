@@ -1,11 +1,32 @@
 """Loader and converter for LLM-extracted or Ground-Truth microservice interfaces and call edges."""
 
+import json
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
-from fyp_cdq.config import AGENT_EXTRACTION_FILENAME
+from fyp_cdq.config import AGENT_EXTRACTION_FILENAME, MICROSERVICES_JSON
 from fyp_cdq.metrics.common import Edge, Operation
 from fyp_cdq.models import AgentExtraction, Partition
+
+
+def load_manifest_services(system_id: str, manifest_path: Optional[Path] = None) -> Optional[Set[str]]:
+    """
+    Loads the canonical microservice IDs for `system_id` from `codebases/microservices/microservices.json`.
+    Returns None if `system_id` is empty, the manifest does not exist, or `system_id` is not present.
+    """
+    if not system_id:
+        return None
+    m_path = Path(manifest_path) if manifest_path is not None else MICROSERVICES_JSON
+    if not m_path.is_file():
+        return None
+    try:
+        data = json.loads(m_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    entry = data.get(system_id)
+    if not entry or not isinstance(entry.get("services"), dict):
+        return None
+    return set(entry["services"].keys())
 
 
 def resolve_agent_extraction_path(
@@ -68,10 +89,15 @@ def extraction_to_published_ops(
     return ops_per_ms
 
 
-def extraction_to_inter_service_edges(extraction: AgentExtraction) -> List[Edge]:
+def extraction_to_inter_service_edges(
+    extraction: AgentExtraction,
+    qualify_with_service_id: bool = True,
+) -> List[Edge]:
     """
-    Converts `inter_service_calls` from an `AgentExtraction` into deduplicated `(src_class, dst_class)`
+    Converts `inter_service_calls` from an `AgentExtraction` into deduplicated directed
     `Edge` objects for Structural Modularity (`SM`).
+    When `qualify_with_service_id=True`, endpoints are namespaced as `<service_id>::<class_name>`
+    so calls between same-named classes in different services are never dropped or conflated.
     """
     edges: List[Edge] = []
     seen: Set[Tuple[str, str]] = set()
@@ -82,12 +108,20 @@ def extraction_to_inter_service_edges(extraction: AgentExtraction) -> List[Edge]
             continue
         src_cls = call.src_class
         dst_cls = call.dst_class
-        if not src_cls or not dst_cls or src_cls == dst_cls:
+        if not src_cls or not dst_cls:
             continue
-        pair = (src_cls, dst_cls)
+        if qualify_with_service_id:
+            src_node = f"{call.src_service}::{src_cls}"
+            dst_node = f"{call.dst_service}::{dst_cls}"
+        else:
+            if src_cls == dst_cls:
+                continue
+            src_node = src_cls
+            dst_node = dst_cls
+        pair = (src_node, dst_node)
         if pair not in seen:
             seen.add(pair)
-            edges.append(Edge(src=src_cls, dst=dst_cls, type="CALL", weight=1.0))
+            edges.append(Edge(src=src_node, dst=dst_node, type="CALL", weight=1.0))
     return edges
 
 
@@ -124,10 +158,12 @@ def calculate_ifn_from_extraction(
 def validate_agent_extraction_schema(
     data: dict,
     partition: Optional[Partition] = None,
+    manifest_services: Optional[Set[str]] = None,
 ) -> List[str]:
     """
-    Validates raw JSON dictionary against the canonical `agent_extraction.json` schema
-    and (optionally) checks service & class membership against a canonical `Partition`.
+    Validates raw JSON dictionary against the canonical `agent_extraction.json` schema,
+    checking microservice keys against `codebases/microservices/microservices.json` (or `partition` fallback),
+    per-service interface ID uniqueness, and `dst_interface_id` referential integrity.
     Returns a list of error strings (empty if valid).
     """
     errors: List[str] = []
@@ -143,18 +179,26 @@ def validate_agent_extraction_schema(
         errors.append("'microservices' must be an object mapping service IDs to {'exposed_interfaces': [...]}.")
         ms_map = {}
 
-    known_services = set(partition.microservices.keys()) if partition else set(ms_map.keys())
-    known_classes_per_svc: Dict[str, Set[str]] = {}
-    if partition:
-        for cid, clist in partition.microservices.items():
-            known_classes_per_svc[cid] = set(clist) | {c.split(".")[-1] for c in clist}
+    if manifest_services is None:
+        manifest_services = load_manifest_services(data.get("system_id", ""))
 
+    if manifest_services is not None:
+        known_services = manifest_services
+        source_label = "microservices.json"
+    elif partition is not None:
+        known_services = set(partition.microservices.keys())
+        source_label = "partition"
+    else:
+        known_services = set(ms_map.keys())
+        source_label = "payload"
+
+    if manifest_services is not None or partition is not None:
         missing_svcs = known_services - set(ms_map.keys())
         extra_svcs = set(ms_map.keys()) - known_services
         if missing_svcs:
-            errors.append(f"Missing canonical microservices in 'microservices': {sorted(missing_svcs)}")
+            errors.append(f"Missing canonical microservices in 'microservices' (from {source_label}): {sorted(missing_svcs)}")
         if extra_svcs:
-            errors.append(f"Unknown microservices in 'microservices' (not in output.json): {sorted(extra_svcs)}")
+            errors.append(f"Unknown microservices in 'microservices' (not in {source_label}): {sorted(extra_svcs)}")
 
     declared_interface_ids: Dict[str, Set[str]] = {cid: set() for cid in ms_map}
 
@@ -173,16 +217,17 @@ def validate_agent_extraction_schema(
             for k in ("id", "class_name", "method_name", "param_types", "return_type"):
                 if k not in iface:
                     errors.append(f"microservices['{cid}'].exposed_interfaces[{idx}] missing key '{k}'.")
-            iface_id = iface.get("id", "")
-            if iface_id:
+            if not str(iface.get("class_name", "")).strip():
+                errors.append(f"microservices['{cid}'].exposed_interfaces[{idx}] has empty 'class_name'.")
+            if not str(iface.get("method_name", "")).strip():
+                errors.append(f"microservices['{cid}'].exposed_interfaces[{idx}] has empty 'method_name'.")
+            iface_id = str(iface.get("id", "")).strip()
+            if not iface_id:
+                errors.append(f"microservices['{cid}'].exposed_interfaces[{idx}] has empty 'id'.")
+            elif iface_id in declared_interface_ids[cid]:
+                errors.append(f"microservices['{cid}'] contains duplicate exposed_interface id '{iface_id}'.")
+            else:
                 declared_interface_ids[cid].add(iface_id)
-            cls_name = iface.get("class_name", "")
-            if partition and cid in known_classes_per_svc and cls_name:
-                if cls_name not in known_classes_per_svc[cid] and cls_name.split(".")[-1] not in known_classes_per_svc[cid]:
-                    errors.append(
-                        f"microservices['{cid}'].exposed_interfaces[{idx}] class_name '{cls_name}' "
-                        f"not found in canonical partition classes for '{cid}'."
-                    )
 
     calls = data.get("inter_service_calls")
     if not isinstance(calls, list):
@@ -192,29 +237,24 @@ def validate_agent_extraction_schema(
             if not isinstance(call, dict):
                 errors.append(f"inter_service_calls[{idx}] must be an object.")
                 continue
-            for k in ("src_service", "src_class", "dst_service", "dst_class", "dst_interface_id"):
-                if not call.get(k):
+            for k in ("src_service", "src_class", "src_method", "dst_service", "dst_class", "dst_interface_id"):
+                if not str(call.get(k, "")).strip():
                     errors.append(f"inter_service_calls[{idx}] missing or empty required field '{k}'.")
             src_s = call.get("src_service", "")
             dst_s = call.get("dst_service", "")
             if src_s and dst_s and src_s == dst_s:
                 errors.append(f"inter_service_calls[{idx}] has src_service == dst_service ('{src_s}').")
-            if partition:
+            if manifest_services is not None or partition is not None:
                 if src_s and src_s not in known_services:
                     errors.append(f"inter_service_calls[{idx}] unknown src_service '{src_s}'.")
                 if dst_s and dst_s not in known_services:
                     errors.append(f"inter_service_calls[{idx}] unknown dst_service '{dst_s}'.")
-                src_cls = call.get("src_class", "")
-                if src_s in known_classes_per_svc and src_cls:
-                    if src_cls not in known_classes_per_svc[src_s] and src_cls.split(".")[-1] not in known_classes_per_svc[src_s]:
-                        errors.append(
-                            f"inter_service_calls[{idx}] src_class '{src_cls}' not found in canonical classes for '{src_s}'."
-                        )
-                dst_cls = call.get("dst_class", "")
-                if dst_s in known_classes_per_svc and dst_cls:
-                    if dst_cls not in known_classes_per_svc[dst_s] and dst_cls.split(".")[-1] not in known_classes_per_svc[dst_s]:
-                        errors.append(
-                            f"inter_service_calls[{idx}] dst_class '{dst_cls}' not found in canonical classes for '{dst_s}'."
-                        )
+            dst_iface = str(call.get("dst_interface_id", "")).strip()
+            if dst_s and dst_iface and dst_s in declared_interface_ids:
+                if dst_iface not in declared_interface_ids[dst_s]:
+                    errors.append(
+                        f"inter_service_calls[{idx}] dst_interface_id '{dst_iface}' "
+                        f"not found in microservices['{dst_s}'].exposed_interfaces."
+                    )
 
     return errors

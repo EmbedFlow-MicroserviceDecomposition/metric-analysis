@@ -4,9 +4,6 @@
   "prompt_version": "v1.0",
   "status": "verified",
   "microservices": {
-    "spring-petclinic-admin-server": {
-      "exposed_interfaces": []
-    },
     "spring-petclinic-customers-service": {
       "exposed_interfaces": [
         {
@@ -162,12 +159,6 @@
           "endpoint": "POST /chatclient"
         }
       ]
-    },
-    "spring-petclinic-config-server": {
-      "exposed_interfaces": []
-    },
-    "spring-petclinic-discovery-server": {
-      "exposed_interfaces": []
     },
     "spring-petclinic-api-gateway": {
       "exposed_interfaces": [

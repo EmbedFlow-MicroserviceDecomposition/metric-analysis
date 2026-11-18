@@ -4,13 +4,10 @@
     "path": "MS001_spring-petclinic-microservices",
     "language": "Java",
     "services": {
-      "spring-petclinic-admin-server": "spring-petclinic-admin-server",
       "spring-petclinic-customers-service": "spring-petclinic-customers-service",
       "spring-petclinic-vets-service": "spring-petclinic-vets-service",
       "spring-petclinic-visits-service": "spring-petclinic-visits-service",
       "spring-petclinic-genai-service": "spring-petclinic-genai-service",
-      "spring-petclinic-config-server": "spring-petclinic-config-server",
-      "spring-petclinic-discovery-server": "spring-petclinic-discovery-server",
       "spring-petclinic-api-gateway": "spring-petclinic-api-gateway"
     }
   },
@@ -33,34 +30,14 @@
     "path": "MS004_ftgo-application",
     "language": "Java",
     "services": {
-      "common-swagger": "common-swagger",
-      "ftgo-test-util": "ftgo-test-util",
-      "ftgo-test-util-json-schema": "ftgo-test-util-json-schema",
-      "ftgo-common": "ftgo-common",
-      "ftgo-common-jpa": "ftgo-common-jpa",
       "ftgo-order-service": "ftgo-order-service",
-      "ftgo-order-service-api": "ftgo-order-service-api",
-      "ftgo-order-service-contracts": "ftgo-order-service-contracts",
-      "ftgo-kitchen-service-api": "ftgo-kitchen-service-api",
       "ftgo-kitchen-service": "ftgo-kitchen-service",
-      "ftgo-kitchen-service-contracts": "ftgo-kitchen-service-contracts",
-      "ftgo-accounting-service-api": "ftgo-accounting-service-api",
-      "ftgo-accounting-service-api-spec": "ftgo-accounting-service-api-spec",
       "ftgo-accounting-service": "ftgo-accounting-service",
-      "ftgo-accounting-service-contracts": "ftgo-accounting-service-contracts",
-      "ftgo-consumer-service-api": "ftgo-consumer-service-api",
-      "ftgo-consumer-service-api-spec": "ftgo-consumer-service-api-spec",
       "ftgo-consumer-service": "ftgo-consumer-service",
-      "ftgo-consumer-service-contracts": "ftgo-consumer-service-contracts",
-      "ftgo-restaurant-service-api": "ftgo-restaurant-service-api",
-      "ftgo-restaurant-service-api-spec": "ftgo-restaurant-service-api-spec",
-      "ftgo-restaurant-service-contracts": "ftgo-restaurant-service-contracts",
       "ftgo-restaurant-service": "ftgo-restaurant-service",
       "ftgo-order-history-service": "ftgo-order-history-service",
       "ftgo-delivery-service": "ftgo-delivery-service",
-      "ftgo-delivery-service-api": "ftgo-delivery-service-api",
       "ftgo-api-gateway": "ftgo-api-gateway",
-      "ftgo-end-to-end-tests": "ftgo-end-to-end-tests",
       "ftgo-restaurant-service-aws-lambda": "ftgo-restaurant-service-aws-lambda"
     }
   },
@@ -115,8 +92,6 @@
     "path": "MS011_monolith-vs-microservices",
     "language": "Java",
     "services": {
-      "config": "config",
-      "registry": "registry",
       "gateway": "gateway",
       "city-service": "city-service",
       "route-service": "route-service"
@@ -127,26 +102,17 @@
     "path": "MS015_eShop",
     "language": "C#",
     "services": {
-      "EventBusRabbitMQ": "src/EventBusRabbitMQ",
       "ClientApp": "src/ClientApp",
       "Webhooks.API": "src/Webhooks.API",
       "PaymentProcessor": "src/PaymentProcessor",
       "Ordering.API": "src/Ordering.API",
-      "Ordering.Domain": "src/Ordering.Domain",
-      "WebAppComponents": "src/WebAppComponents",
-      "eShop.AppHost": "src/eShop.AppHost",
       "Basket.API": "src/Basket.API",
       "HybridApp": "src/HybridApp",
-      "Ordering.Infrastructure": "src/Ordering.Infrastructure",
-      "EventBus": "src/EventBus",
       "WebApp": "src/WebApp",
       "WebhookClient": "src/WebhookClient",
       "OrderProcessor": "src/OrderProcessor",
       "Catalog.API": "src/Catalog.API",
-      "IntegrationEventLogEF": "src/IntegrationEventLogEF",
-      "eShop.ServiceDefaults": "src/eShop.ServiceDefaults",
-      "Identity.API": "src/Identity.API",
-      "Shared": "src/Shared"
+      "Identity.API": "src/Identity.API"
     }
   },
   "MS016": {
@@ -189,7 +155,6 @@
     "path": "MS019_train-ticket",
     "language": "Java",
     "services": {
-      "ts-common": "ts-common",
       "ts-verification-code-service": "ts-verification-code-service",
       "ts-contacts-service": "ts-contacts-service",
       "ts-order-service": "ts-order-service",
@@ -238,17 +203,17 @@
     "path": "MS020_piggymetrics",
     "language": "Java",
     "services": {
-      "config": "config",
-      "monitoring": "monitoring",
-      "registry": "registry",
       "gateway": "gateway",
       "auth-service": "auth-service",
       "account-service": "account-service",
       "statistics-service": "statistics-service",
-      "notification-service": "notification-service",
-      "turbine-stream-service": "turbine-stream-service"
+      "notification-service": "notification-service"
     },
     "non_services": {
+      "config": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
+      "registry": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
+      "monitoring": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
+      "turbine-stream-service": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
       "mongodb": "MongoDB image (Dockerfile + init script + data dump) used by the services' databases; no application code."
     }
   },
@@ -257,7 +222,6 @@
     "path": "MS021_TeaStore",
     "language": "Java",
     "services": {
-      "./utilities/tools.descartes.teastore.kieker.rabbitmq": "utilities/tools.descartes.teastore.kieker.rabbitmq",
       "services/tools.descartes.teastore.image": "services/tools.descartes.teastore.image",
       "services/tools.descartes.teastore.persistence": "services/tools.descartes.teastore.persistence",
       "services/tools.descartes.teastore.recommender": "services/tools.descartes.teastore.recommender",
@@ -266,6 +230,7 @@
       "services/tools.descartes.teastore.webui": "services/tools.descartes.teastore.webui"
     },
     "non_services": {
+      "./utilities/tools.descartes.teastore.kieker.rabbitmq": "Monitoring add-on (RabbitMQ + Kieker log viewer), removed per GROUND_TRUTH_GUIDE.md Step 1 Bucket D (monitoring).",
       "interfaces/tools.descartes.teastore.entities": "Shared entity/DTO library packaged into every service; not deployed on its own.",
       "./utilities/tools.descartes.teastore.kieker.probes": "Kieker monitoring-probe library (AspectJ aspects + record types) packaged into services; not deployed on its own.",
       "utilities/tools.descartes.teastore.registryclient": "Shared client library (registry client, load-balanced REST operations, generic AbstractCRUDEndpoint) packaged into every service; not deployed on its own.",
@@ -279,13 +244,10 @@
     "path": "MS022_mall-swarm",
     "language": "Java",
     "services": {
-      "mall-common": "mall-common",
-      "mall-mbg": "mall-mbg",
       "mall-demo": "mall-demo",
       "mall-admin": "mall-admin",
       "mall-search": "mall-search",
       "mall-portal": "mall-portal",
-      "mall-monitor": "mall-monitor",
       "mall-gateway": "mall-gateway",
       "mall-auth": "mall-auth"
     }
@@ -295,13 +257,11 @@
     "path": "MS023_microservices-platform",
     "language": "Java",
     "services": {
-      "zlt-commons": "zlt-commons",
       "zlt-uaa": "zlt-uaa",
       "zlt-gateway": "zlt-gateway",
       "zlt-business": "zlt-business",
       "zlt-web": "zlt-web",
       "zlt-monitor": "zlt-monitor",
-      "zlt-config": "zlt-config",
       "zlt-demo": "zlt-demo"
     }
   },
@@ -310,7 +270,6 @@
     "path": "MS024_jeecg-boot",
     "language": "Java",
     "services": {
-      "jeecg-boot-mysql": "jeecg-boot/db",
       "jeecg-boot-system": "jeecg-boot/jeecg-module-system/jeecg-system-start",
       "jeecg-vue": "jeecgboot-vue3"
     }
@@ -333,17 +292,14 @@
       "kork": "kork",
       "igor": "igor",
       "spin": "spin",
-      "examples": "examples",
       "gate": "gate",
       "kayenta": "kayenta",
       "front50": "front50",
       "clouddriver": "clouddriver",
-      "spinnaker-gradle-project": "spinnaker-gradle-project",
       "keel": "keel",
       "deck": "deck",
       "fiat": "fiat",
       "rosco": "rosco",
-      "spinnaker-kustomize": "spinnaker-kustomize",
       "orca": "orca",
       "echo": "echo"
     }
@@ -361,11 +317,6 @@
     "path": "MS028_besu",
     "language": "Java",
     "services": {
-      "catalogless-test-plugins": "acceptance-tests/catalogless-test-plugins",
-      "dsl": "acceptance-tests/dsl",
-      "tests": "acceptance-tests/tests",
-      "shanghai": "acceptance-tests/tests/shanghai",
-      "osaka": "acceptance-tests/tests/osaka",
       "app": "app",
       "config": "config",
       "clique": "consensus/clique",
@@ -394,20 +345,16 @@
       "mock-p2p": "ethereum/mock-p2p",
       "p2p": "ethereum/p2p",
       "permissioning": "ethereum/permissioning",
-      "referencetests": "ethereum/referencetests",
       "rlp": "ethereum/rlp",
       "ethstats": "ethereum/ethstats",
       "trie": "ethereum/trie",
       "evm": "evm",
       "rocksdb": "plugins/rocksdb",
       "nat": "nat",
-      "platform": "platform",
       "health": "plugins/health",
       "kvstore": "services/kvstore",
       "pipeline": "services/pipeline",
       "tasks": "services/tasks",
-      "testfuzz": "testfuzz",
-      "testutil": "testutil",
       "util": "util"
     }
   },
@@ -416,17 +363,11 @@
     "path": "MS029_kapua",
     "language": "Java",
     "services": {
-      "build-tools": "build-tools",
-      "dev-tools": "dev-tools",
-      "deployment": "deployment",
-      "commons": "commons",
-      "commons-rest": "commons-rest",
       "locator": "locator",
       "service": "service",
       "message": "message",
       "transport": "transport",
       "translator": "translator",
-      "qa": "qa",
       "extras": "extras",
       "plug-ins": "plug-ins",
       "rest-api": "rest-api",
@@ -435,7 +376,6 @@
       "consumer": "consumer",
       "client": "client",
       "simulator-kura": "simulator-kura",
-      "assembly": "assembly",
       "console": "console"
     }
   },
@@ -444,11 +384,9 @@
     "path": "MS030_sample-spring-microservices",
     "language": "Java",
     "services": {
-      "discovery-service": "discovery-service",
       "account-service": "account-service",
       "gateway-service": "gateway-service",
-      "customer-service": "customer-service",
-      "zipkin-service": "zipkin-service"
+      "customer-service": "customer-service"
     }
   },
   "MS031": {
@@ -456,8 +394,6 @@
     "path": "MS031_sample-spring-microservices-new",
     "language": "Java",
     "services": {
-      "discovery-service": "discovery-service",
-      "config-service": "config-service",
       "employee-service": "employee-service",
       "department-service": "department-service",
       "organization-service": "organization-service",
@@ -472,8 +408,10 @@
       "user-service": "user-service",
       "friend-service": "friend-service",
       "recommendation-service": "recommendation-service",
-      "discovery-service": "discovery-service",
       "edge-service": "edge-service"
+    },
+    "non_services": {
+      "discovery-service": "Eureka server: 1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D)."
     }
   },
   "MS033": {
@@ -483,8 +421,6 @@
     "services": {
       "todo-infra": "todo-infra",
       "mail-service": "mail-service",
-      "jmx-monitoring": "jmx-monitoring",
-      "config-server": "config-server",
       "remainder-service": "remainder-service"
     }
   },
@@ -505,22 +441,13 @@
     "services": {
       "query-side-blog-service": "query-side-blog-service",
       "authserver": "authserver",
-      "configserver": "configserver",
       "command-side-blog": "command-side-blog",
-      "circuit-breaker": "circuit-breaker",
-      "common-project": "common-project",
       "query-side-project": "query-side-project",
       "command-side-project": "command-side-project",
-      "documentation": "documentation",
-      "common": "common",
       "command-side-project-service": "command-side-project-service",
       "command-side-blog-service": "command-side-blog-service",
-      "monolithic": "monolithic",
-      "common-blog": "common-blog",
       "query-side-blog": "query-side-blog",
       "query-side-project-service": "query-side-project-service",
-      "registry": "registry",
-      "adminserver": "adminserver",
       "api-gateway": "api-gateway"
     }
   },
@@ -541,15 +468,10 @@
     "path": "MS037_abixen-platform",
     "language": "Java",
     "services": {
-      "abixen-platform-common": "abixen-platform-common",
       "abixen-platform-core": "abixen-platform-core",
       "abixen-platform-gateway": "abixen-platform-gateway",
       "abixen-platform-business-intelligence-service": "abixen-platform-business-intelligence-service",
       "abixen-platform-web-client": "abixen-platform-web-client",
-      "abixen-platform-eureka": "abixen-platform-eureka",
-      "abixen-platform-configuration": "abixen-platform-configuration",
-      "abixen-platform-hystrix-dashboard": "abixen-platform-hystrix-dashboard",
-      "abixen-platform-zipkin": "abixen-platform-zipkin",
       "abixen-platform-web-content-service": "abixen-platform-web-content-service"
     }
   },
@@ -562,7 +484,6 @@
       "s3": "s3",
       "couchbase": "couchbase",
       "solr": "solr",
-      "doc-examples": "doc-examples",
       "unix-domain-socket": "unix-domain-socket",
       "spring-web": "spring-web",
       "sns": "sns",
@@ -596,7 +517,6 @@
       "dynamodb": "dynamodb",
       "mqtt-streaming": "mqtt-streaming",
       "google-common": "google-common",
-      "avroparquet-tests": "avroparquet-tests",
       "file": "file",
       "hbase": "hbase",
       "google-cloud-storage": "google-cloud-storage",
@@ -617,7 +537,6 @@
       "frontend": "src/frontend",
       "shoppingassistantservice": "src/shoppingassistantservice",
       "emailservice": "src/emailservice",
-      "loadgenerator": "src/loadgenerator",
       "recommendationservice": "src/recommendationservice",
       "checkoutservice": "src/checkoutservice",
       "productcatalogservice": "src/productcatalogservice",
@@ -632,14 +551,12 @@
     "path": "MS040_opentelemetry-demo",
     "language": "Polyglot",
     "services": {
-      "shared": "src/shared",
       "frontend": "src/frontend",
       "accounting": "src/accounting",
       "flagd-ui": "src/flagd-ui",
       "recommendation": "src/recommendation",
       "payment": "src/payment",
       "react-native-app": "src/react-native-app",
-      "load-generator": "src/load-generator",
       "ad": "src/ad",
       "chatbot": "src/chatbot",
       "agent": "src/agent",
@@ -699,7 +616,6 @@
     "path": "MS045_DeathStarBench_swarm-ecommerce",
     "language": "Go",
     "services": {
-      "wrk2": "wrk2",
       "daprApps_v1": "daprApps_v1",
       "mediaMicroservices": "mediaMicroservices",
       "socialNetwork": "socialNetwork",
@@ -712,7 +628,6 @@
     "path": "MS046_DeathStarBench_banking",
     "language": "C++",
     "services": {
-      "wrk2": "wrk2",
       "daprApps_v1": "daprApps_v1",
       "mediaMicroservices": "mediaMicroservices",
       "socialNetwork": "socialNetwork",
@@ -725,11 +640,9 @@
     "path": "MS047_robot-shop",
     "language": "Polyglot",
     "services": {
-      "mongodb": "mongo",
       "catalogue": "catalogue",
       "user": "user",
       "cart": "cart",
-      "mysql": "mysql",
       "shipping": "shipping",
       "ratings": "ratings",
       "payment": "payment",
@@ -742,7 +655,6 @@
     "path": "MS048_jaeger",
     "language": "Go",
     "services": {
-      "examples": "examples",
       "cmd": "cmd",
       "ports": "ports",
       "internal": "internal",
@@ -756,7 +668,6 @@
     "path": "MS049_thanos",
     "language": "Go",
     "services": {
-      "examples": "examples",
       "cmd": "cmd",
       "internal": "internal",
       "pkg": "pkg"
@@ -813,7 +724,6 @@
       "logging": "logging",
       "tools": "tools",
       "internal": "internal",
-      "grpcmocks": "grpcmocks",
       "command": "command",
       "ui": "ui",
       "sdk": "sdk",
@@ -823,11 +733,8 @@
       "types": "types",
       "proto-public": "proto-public",
       "sentinel": "sentinel",
-      "testrpc": "testrpc",
       "agent": "agent",
       "tlsutil": "tlsutil",
-      "testing": "testing",
-      "test-integ": "test-integ",
       "connect": "connect",
       "envoyextensions": "envoyextensions"
     }
@@ -867,8 +774,7 @@
     "services": {
       "vote": "vote",
       "result": "result",
-      "worker": "worker",
-      "seed": "seed-data"
+      "worker": "worker"
     }
   },
   "MS057": {
@@ -876,8 +782,6 @@
     "path": "MS057_rasa_nlu",
     "language": "Python",
     "services": {
-      "data": "data",
-      "examples": "examples",
       "rasa": "rasa"
     }
   },
@@ -907,8 +811,7 @@
     "language": "Python",
     "services": {
       "backup_app": "backup_app",
-      "backup_app_postgres": "backup_app",
-      "packet-forwarder": "packet-forwarder"
+      "backup_app_postgres": "backup_app"
     }
   },
   "MS061": {
@@ -937,12 +840,8 @@
     "language": "Java",
     "services": {
       "www": "www",
-      "examples": "examples",
-      "docker": "docker",
-      "build-support": "build-support",
       "java": "java",
       "python": "python",
-      "thirdparty": "thirdparty",
       "src": "src"
     }
   },
@@ -990,7 +889,6 @@
     "services": {
       "svelte": "svelte",
       "crates": "crates",
-      "e2e": "e2e",
       "packages": "packages"
     }
   },
@@ -1046,7 +944,6 @@
     "services": {
       "cmd": "cmd",
       "tools": "tools",
-      "integration": "integration",
       "pkg": "pkg"
     }
   },
@@ -1067,8 +964,7 @@
     "language": "Python",
     "services": {
       "frontend": "frontend",
-      "backend": "backend",
-      "migrations": "migrations"
+      "backend": "backend"
     }
   },
   "MS074": {
@@ -1077,8 +973,7 @@
     "language": "Ruby",
     "services": {
       "lib": "lib",
-      "app": "app",
-      "spec": "spec"
+      "app": "app"
     }
   },
   "MS075": {
@@ -1104,7 +999,6 @@
     "path": "MS077_Mayan-EDMS",
     "language": "Python",
     "services": {
-      "docker": "docker",
       "mayan": "mayan",
       "contrib": "contrib"
     }
@@ -1153,8 +1047,7 @@
     "services": {
       "web": "src/web",
       "dotnet": "src/dotnet",
-      "go": "src/go",
-      "bak": "src/bak"
+      "go": "src/go"
     }
   },
   "MS082": {
@@ -1181,7 +1074,6 @@
     "path": "MS083_reportportal",
     "language": "Polyglot",
     "services": {
-      "migrations": "migrations",
       "index": "service-index",
       "ui": "service-ui",
       "api": "service-api",
@@ -1214,7 +1106,6 @@
     "path": "MS086_cds",
     "language": "Go",
     "services": {
-      "LICENSES": "LICENSES",
       "cli": "cli",
       "tools": "tools",
       "ui": "ui",
@@ -1237,8 +1128,7 @@
     "language": "Ruby",
     "services": {
       "app": "app",
-      "db": "db",
-      "spec": "spec"
+      "db": "db"
     }
   },
   "MS089": {
@@ -1272,9 +1162,7 @@
     "language": "Python",
     "services": {
       "ddtrace": "ddtrace",
-      "benchmarks": "benchmarks",
-      "lib-injection": "lib-injection",
-      "templates": "templates"
+      "lib-injection": "lib-injection"
     }
   },
   "MS093": {
@@ -1290,9 +1178,6 @@
     "path": "MS094_bugsnag-js",
     "language": "Javascript",
     "services": {
-      "config": "config",
-      "examples": "examples",
-      "jest": "jest",
       "packages": "packages"
     }
   },
@@ -1303,8 +1188,6 @@
     "services": {
       "cmd": "cmd",
       "tools": "tools",
-      "test-e2e": "test-e2e",
-      "website": "website",
       "internal": "internal",
       "ui": "ui",
       "builtin": "builtin",
@@ -1318,7 +1201,6 @@
     "path": "MS096_Veniqa",
     "language": "Javascript",
     "services": {
-      "mongo": "mongo",
       "shopping-server": "shopping-server",
       "management-server": "management-server",
       "shopping-webclient": "shopping-webclient",
@@ -1331,10 +1213,7 @@
     "language": "Javascript",
     "services": {
       "backend-service": "backend",
-      "client": "client",
-      "cypress-e2e-tests": "cypresse2e",
-      "cypress-e2e-report": "cypresse2e",
-      "mocha-integration": "mocha"
+      "client": "client"
     }
   },
   "MS098": {
@@ -1385,11 +1264,7 @@
     "services": {
       "Microservices": "src/Microservices",
       "IdentityServers": "src/IdentityServers",
-      "EndToEndApiTests": "src/EndToEndApiTests",
-      "UIs": "src/UIs",
-      "EndToEndUiTests": "src/EndToEndUiTests",
-      "ModularMonolith": "src/ModularMonolith",
-      "Monolith": "src/Monolith"
+      "UIs": "src/UIs"
     }
   },
   "MS103": {
@@ -1397,7 +1272,6 @@
     "path": "MS103_run-aspnetcore-microservices",
     "language": "C#",
     "services": {
-      "BuildingBlocks": "src/BuildingBlocks",
       "ApiGateways": "src/ApiGateways",
       "WebApps": "src/WebApps",
       "Services": "src/Services"
@@ -1437,8 +1311,6 @@
       "api": "api",
       "newsletter": "newsletter",
       "settings": "settings",
-      "apitest": "apitest",
-      "send_email_microservice": "send_email_microservice",
       "newsletter_with_frontend": "newsletter_with_frontend",
       "bounce_notification": "bounce_notification"
     }
@@ -1479,8 +1351,6 @@
     "language": "Go",
     "services": {
       "cmd": "cmd",
-      "integration_tests": "integration_tests",
-      "swagger_gen": "swagger_gen",
       "browser": "browser",
       "pkg": "pkg"
     }
@@ -1496,8 +1366,7 @@
     "path": "MS112_rasa-sdk",
     "language": "Python",
     "services": {
-      "rasa_sdk": "rasa_sdk",
-      "integration_tests": "integration_tests"
+      "rasa_sdk": "rasa_sdk"
     }
   }
 }

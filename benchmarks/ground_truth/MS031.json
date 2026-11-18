@@ -4,69 +4,6 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
-    "discovery-service": {
-      "exposed_interfaces": []
-    },
-    "config-service": {
-      "exposed_interfaces": []
-    },
-    "employee-service": {
-      "exposed_interfaces": [
-        {
-          "id": "EmployeeController.add",
-          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
-          "method_name": "add",
-          "param_types": [
-            "Employee"
-          ],
-          "return_type": "Employee",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "EmployeeController.findAll",
-          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
-          "method_name": "findAll",
-          "param_types": [],
-          "return_type": "List<Employee>",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "EmployeeController.findByDepartment",
-          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
-          "method_name": "findByDepartment",
-          "param_types": [
-            "Long"
-          ],
-          "return_type": "List<Employee>",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "EmployeeController.findById",
-          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
-          "method_name": "findById",
-          "param_types": [
-            "Long"
-          ],
-          "return_type": "Employee",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "EmployeeController.findByOrganization",
-          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
-          "method_name": "findByOrganization",
-          "param_types": [
-            "Long"
-          ],
-          "return_type": "List<Employee>",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
     "department-service": {
       "exposed_interfaces": [
         {
@@ -134,6 +71,66 @@
           "endpoint": ""
         }
       ]
+    },
+    "employee-service": {
+      "exposed_interfaces": [
+        {
+          "id": "EmployeeController.add",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "add",
+          "param_types": [
+            "Employee"
+          ],
+          "return_type": "Employee",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findAll",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findByDepartment",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findByDepartment",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findById",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Employee",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "EmployeeController.findByOrganization",
+          "class_name": "pl.piomin.services.employee.controller.EmployeeController",
+          "method_name": "findByOrganization",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Employee>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "gateway-service": {
+      "exposed_interfaces": []
     },
     "organization-service": {
       "exposed_interfaces": [
@@ -235,9 +232,6 @@
           "endpoint": ""
         }
       ]
-    },
-    "gateway-service": {
-      "exposed_interfaces": []
     }
   },
   "inter_service_calls": []
