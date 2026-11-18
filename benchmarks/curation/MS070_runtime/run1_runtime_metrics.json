@@ -1,0 +1,385 @@
+{
+ "remoteva-a": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 81.0,
+   "/va.VA/DoDCV": 88.0
+  }
+ },
+ "remoteva-b": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 81.0,
+   "/va.VA/DoDCV": 88.0
+  }
+ },
+ "remoteva-c": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 81.0,
+   "/va.VA/DoDCV": 88.0
+  }
+ },
+ "remoteva-d": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 81.0,
+   "/va.VA/DoDCV": 88.0
+  }
+ },
+ "boulder-sa-1": {
+  "client": {},
+  "server": {
+   "/sa.StorageAuthority/RevokeCertificate": 24.0,
+   "/grpc.health.v1.Health/Watch": 38.0,
+   "/sa.StorageAuthorityReadOnly/GetCertificate": 26.0,
+   "/sa.StorageAuthority/GetOrderForNames": 50.0,
+   "/sa.StorageAuthorityReadOnly/GetRegistrationByKey": 54.0,
+   "/sa.StorageAuthority/AddBlockedKey": 8.0,
+   "/sa.StorageAuthority/AddCertificate": 31.0,
+   "/sa.StorageAuthority/AddPrecertificate": 30.0,
+   "/sa.StorageAuthority/AddSerial": 41.0,
+   "/grpc.health.v1.Health/Check": 175.0,
+   "/sa.StorageAuthorityReadOnly/CheckIdentifiersPaused": 39.0,
+   "/sa.StorageAuthority/DeactivateRegistration": 2.0,
+   "/sa.StorageAuthority/FQDNSetTimestampsForWindow": 42.0,
+   "/sa.StorageAuthorityReadOnly/FQDNSetTimestampsForWindow": 54.0,
+   "/sa.StorageAuthority/FinalizeAuthorization2": 46.0,
+   "/sa.StorageAuthority/FinalizeOrder": 24.0,
+   "/sa.StorageAuthority/GetAuthorization2": 135.0,
+   "/sa.StorageAuthority/GetCertificate": 1.0,
+   "/sa.StorageAuthority/GetCertificateStatus": 1.0,
+   "/sa.StorageAuthorityReadOnly/GetCertificateStatus": 2.0,
+   "/sa.StorageAuthority/GetLintPrecertificate": 2.0,
+   "/sa.StorageAuthorityReadOnly/GetOrder": 27.0,
+   "/sa.StorageAuthority/GetRegistration": 70.0,
+   "/sa.StorageAuthorityReadOnly/GetRegistration": 259.0,
+   "/sa.StorageAuthority/GetRevokedCertsByShard": 800.0,
+   "/sa.StorageAuthority/GetSerialMetadata": 9.0,
+   "/sa.StorageAuthority/GetValidAuthorizations2": 45.0,
+   "/sa.StorageAuthority/GetValidOrderAuthorizations2": 32.0,
+   "/sa.StorageAuthorityReadOnly/IncidentsForSerial": 4.0,
+   "/sa.StorageAuthority/KeyBlocked": 115.0,
+   "/sa.StorageAuthorityReadOnly/KeyBlocked": 68.0,
+   "/sa.StorageAuthority/LeaseCRLShard": 768.0,
+   "/sa.StorageAuthority/NewOrderAndAuthzs": 43.0,
+   "/sa.StorageAuthority/NewRegistration": 52.0,
+   "/sa.StorageAuthority/PauseIdentifiers": 1.0,
+   "/sa.StorageAuthorityReadOnly/ReplacementOrderExists": 1.0,
+   "/sa.StorageAuthority/SetOrderError": 7.0,
+   "/sa.StorageAuthority/SetOrderProcessing": 31.0,
+   "/sa.StorageAuthority/UpdateCRLShard": 774.0,
+   "/sa.StorageAuthority/UpdateRegistrationKey": 1.0
+  }
+ },
+ "boulder-sa-2": {
+  "client": {},
+  "server": {
+   "/sa.StorageAuthority/RevokeCertificate": 21.0,
+   "/grpc.health.v1.Health/Watch": 39.0,
+   "/sa.StorageAuthority/GetOrderForNames": 34.0,
+   "/sa.StorageAuthorityReadOnly/GetRegistrationByKey": 62.0,
+   "/sa.StorageAuthority/AddBlockedKey": 10.0,
+   "/sa.StorageAuthority/AddCertificate": 22.0,
+   "/sa.StorageAuthority/AddPrecertificate": 39.0,
+   "/sa.StorageAuthority/AddSerial": 28.0,
+   "/grpc.health.v1.Health/Check": 178.0,
+   "/sa.StorageAuthorityReadOnly/CheckIdentifiersPaused": 52.0,
+   "/sa.StorageAuthority/FQDNSetTimestampsForWindow": 27.0,
+   "/sa.StorageAuthorityReadOnly/FQDNSetTimestampsForWindow": 35.0,
+   "/sa.StorageAuthority/FinalizeAuthorization2": 42.0,
+   "/sa.StorageAuthority/FinalizeOrder": 27.0,
+   "/sa.StorageAuthority/GetAuthorization2": 132.0,
+   "/sa.StorageAuthorityReadOnly/GetCertificate": 30.0,
+   "/sa.StorageAuthority/GetCertificateStatus": 2.0,
+   "/sa.StorageAuthorityReadOnly/GetCertificateStatus": 3.0,
+   "/sa.StorageAuthority/GetLintPrecertificate": 5.0,
+   "/sa.StorageAuthorityReadOnly/GetOrder": 48.0,
+   "/sa.StorageAuthority/GetRegistration": 88.0,
+   "/sa.StorageAuthorityReadOnly/GetRegistration": 253.0,
+   "/sa.StorageAuthority/GetRevokedCertsByShard": 760.0,
+   "/sa.StorageAuthority/GetSerialMetadata": 13.0,
+   "/sa.StorageAuthority/GetValidAuthorizations2": 45.0,
+   "/sa.StorageAuthority/GetValidOrderAuthorizations2": 38.0,
+   "/sa.StorageAuthorityReadOnly/IncidentsForSerial": 1.0,
+   "/sa.StorageAuthority/KeyBlocked": 126.0,
+   "/sa.StorageAuthorityReadOnly/KeyBlocked": 49.0,
+   "/sa.StorageAuthority/LeaseCRLShard": 792.0,
+   "/sa.StorageAuthority/NewOrderAndAuthzs": 41.0,
+   "/sa.StorageAuthority/NewRegistration": 47.0,
+   "/sa.StorageAuthorityReadOnly/ReplacementOrderExists": 1.0,
+   "/sa.StorageAuthority/SetOrderError": 11.0,
+   "/sa.StorageAuthority/SetOrderProcessing": 38.0,
+   "/sa.StorageAuthority/UnpauseAccount": 1.0,
+   "/sa.StorageAuthority/UpdateCRLShard": 786.0,
+   "/sa.StorageAuthority/UpdateRegistrationKey": 1.0,
+   "/sa.StorageAuthority/UpdateRevokedCertificate": 1.0
+  }
+ },
+ "ct-test-srv": {
+  "error": "HTTP Error 404: Not Found"
+ },
+ "boulder-publisher-1": {
+  "client": {},
+  "server": {
+   "/Publisher/SubmitToSingleCTWithResult": 197.0,
+   "/grpc.health.v1.Health/Watch": 10.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ },
+ "boulder-publisher-2": {
+  "client": {},
+  "server": {
+   "/Publisher/SubmitToSingleCTWithResult": 201.0,
+   "/grpc.health.v1.Health/Watch": 10.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ },
+ "boulder-va-1": {
+  "client": {
+   "/va.CAA/DoCAA": 176.0,
+   "/va.VA/DoDCV": 148.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 48.0,
+   "/va.VA/DoDCV": 37.0
+  }
+ },
+ "boulder-va-2": {
+  "client": {
+   "/va.CAA/DoCAA": 148.0,
+   "/va.VA/DoDCV": 204.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/va.CAA/DoCAA": 37.0,
+   "/va.VA/DoDCV": 51.0
+  }
+ },
+ "boulder-ca-1": {
+  "client": {
+   "/ra.SCTProvider/GetSCTs": 38.0,
+   "/sa.StorageAuthority/AddCertificate": 31.0,
+   "/sa.StorageAuthority/AddPrecertificate": 38.0,
+   "/sa.StorageAuthority/AddSerial": 38.0,
+   "/sa.StorageAuthority/KeyBlocked": 38.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 32.0,
+   "/ca.CertificateAuthority/IssueCertificate": 38.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/ca.CRLGenerator/GenerateCRL": 830.0
+  }
+ },
+ "boulder-ca-2": {
+  "client": {
+   "/ra.SCTProvider/GetSCTs": 31.0,
+   "/sa.StorageAuthority/AddCertificate": 22.0,
+   "/sa.StorageAuthority/AddPrecertificate": 31.0,
+   "/sa.StorageAuthority/AddSerial": 31.0,
+   "/sa.StorageAuthority/KeyBlocked": 31.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 32.0,
+   "/ca.CertificateAuthority/IssueCertificate": 31.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/ca.CRLGenerator/GenerateCRL": 730.0
+  }
+ },
+ "s3-test-srv": {
+  "error": "HTTP Error 404: Not Found"
+ },
+ "crl-storer": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 26.0,
+   "/storer.CRLStorer/UploadCRL": 1560.0
+  }
+ },
+ "boulder-ra-1": {
+  "client": {
+   "/sa.StorageAuthority/RevokeCertificate": 26.0,
+   "/ca.CertificateAuthority/IssueCertificate": 32.0,
+   "/sa.StorageAuthority/GetOrderForNames": 45.0,
+   "/sa.StorageAuthority/AddBlockedKey": 10.0,
+   "/va.CAA/DoCAA": 42.0,
+   "/va.VA/DoDCV": 42.0,
+   "/sa.StorageAuthority/FQDNSetTimestampsForWindow": 32.0,
+   "/sa.StorageAuthority/FinalizeAuthorization2": 42.0,
+   "/sa.StorageAuthority/FinalizeOrder": 23.0,
+   "/sa.StorageAuthority/GetAuthorization2": 132.0,
+   "/sa.StorageAuthority/GetCertificateStatus": 1.0,
+   "/sa.StorageAuthority/GetLintPrecertificate": 6.0,
+   "/sa.StorageAuthority/GetRegistration": 75.0,
+   "/sa.StorageAuthority/GetSerialMetadata": 12.0,
+   "/sa.StorageAuthority/GetValidAuthorizations2": 48.0,
+   "/sa.StorageAuthority/GetValidOrderAuthorizations2": 33.0,
+   "/sa.StorageAuthority/KeyBlocked": 87.0,
+   "/sa.StorageAuthority/NewOrderAndAuthzs": 45.0,
+   "/sa.StorageAuthority/NewRegistration": 52.0,
+   "/sa.StorageAuthority/SetOrderError": 9.0,
+   "/sa.StorageAuthority/SetOrderProcessing": 32.0,
+   "/Publisher/SubmitToSingleCTWithResult": 46.0,
+   "/sa.StorageAuthority/UpdateRegistrationKey": 1.0
+  },
+  "server": {
+   "/ra.RegistrationAuthority/RevokeCertByApplicant": 12.0,
+   "/ra.RegistrationAuthority/RevokeCertByKey": 6.0,
+   "/grpc.health.v1.Health/Watch": 13.0,
+   "/ra.RegistrationAuthority/FinalizeOrder": 35.0,
+   "/ra.RegistrationAuthority/NewOrder": 47.0,
+   "/ra.RegistrationAuthority/AdministrativelyRevokeCertificate": 8.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/ra.RegistrationAuthority/GetAuthorization": 132.0,
+   "/ra.RegistrationAuthority/NewRegistration": 52.0,
+   "/ra.RegistrationAuthority/PerformValidation": 42.0,
+   "/ra.RegistrationAuthority/UpdateRegistrationKey": 1.0
+  }
+ },
+ "boulder-ra-2": {
+  "client": {
+   "/sa.StorageAuthority/RevokeCertificate": 19.0,
+   "/ca.CertificateAuthority/IssueCertificate": 37.0,
+   "/sa.StorageAuthority/GetOrderForNames": 39.0,
+   "/sa.StorageAuthority/AddBlockedKey": 8.0,
+   "/sa.StorageAuthority/DeactivateRegistration": 2.0,
+   "/va.CAA/DoCAA": 43.0,
+   "/va.VA/DoDCV": 46.0,
+   "/sa.StorageAuthority/FQDNSetTimestampsForWindow": 37.0,
+   "/sa.StorageAuthority/FinalizeAuthorization2": 46.0,
+   "/sa.StorageAuthority/FinalizeOrder": 28.0,
+   "/sa.StorageAuthority/GetAuthorization2": 135.0,
+   "/sa.StorageAuthority/GetCertificate": 1.0,
+   "/sa.StorageAuthority/GetCertificateStatus": 2.0,
+   "/sa.StorageAuthority/GetLintPrecertificate": 1.0,
+   "/sa.StorageAuthority/GetRegistration": 83.0,
+   "/sa.StorageAuthority/GetSerialMetadata": 10.0,
+   "/sa.StorageAuthority/GetValidAuthorizations2": 42.0,
+   "/sa.StorageAuthority/GetValidOrderAuthorizations2": 37.0,
+   "/sa.StorageAuthority/KeyBlocked": 85.0,
+   "/sa.StorageAuthority/NewOrderAndAuthzs": 39.0,
+   "/sa.StorageAuthority/NewRegistration": 47.0,
+   "/sa.StorageAuthority/SetOrderError": 9.0,
+   "/sa.StorageAuthority/SetOrderProcessing": 37.0,
+   "/Publisher/SubmitToSingleCTWithResult": 56.0,
+   "/sa.StorageAuthority/UpdateRegistrationKey": 1.0,
+   "/sa.StorageAuthority/UpdateRevokedCertificate": 1.0
+  },
+  "server": {
+   "/ra.RegistrationAuthority/RevokeCertByApplicant": 10.0,
+   "/ra.RegistrationAuthority/RevokeCertByKey": 7.0,
+   "/grpc.health.v1.Health/Watch": 13.0,
+   "/ra.RegistrationAuthority/FinalizeOrder": 38.0,
+   "/ra.RegistrationAuthority/NewOrder": 40.0,
+   "/ra.RegistrationAuthority/AdministrativelyRevokeCertificate": 2.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/ra.RegistrationAuthority/DeactivateRegistration": 2.0,
+   "/ra.RegistrationAuthority/GetAuthorization": 135.0,
+   "/ra.RegistrationAuthority/NewRegistration": 47.0,
+   "/ra.RegistrationAuthority/PerformValidation": 46.0,
+   "/ra.RegistrationAuthority/UpdateRegistrationKey": 1.0
+  }
+ },
+ "boulder-ra-sct-provider-1": {
+  "client": {
+   "/Publisher/SubmitToSingleCTWithResult": 150.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/ra.SCTProvider/GetSCTs": 34.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ },
+ "boulder-ra-sct-provider-2": {
+  "client": {
+   "/Publisher/SubmitToSingleCTWithResult": 146.0
+  },
+  "server": {
+   "/grpc.health.v1.Health/Watch": 6.0,
+   "/ra.SCTProvider/GetSCTs": 35.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ },
+ "bad-key-revoker": {
+  "client": {
+   "/ra.RegistrationAuthority/AdministrativelyRevokeCertificate": 3.0
+  },
+  "server": {}
+ },
+ "nonce-service-taro-1": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 3.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/nonce.NonceService/Nonce": 524.0,
+   "/nonce.NonceService/Redeem": 459.0
+  }
+ },
+ "nonce-service-taro-2": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 3.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/nonce.NonceService/Nonce": 522.0,
+   "/nonce.NonceService/Redeem": 481.0
+  }
+ },
+ "nonce-service-zinc-1": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 3.0,
+   "/grpc.health.v1.Health/Check": 1.0,
+   "/nonce.NonceService/Nonce": 2.0
+  }
+ },
+ "salesforce-test-srv": {
+  "error": "HTTP Error 404: Not Found"
+ },
+ "email-exporter": {
+  "client": {},
+  "server": {}
+ },
+ "boulder-wfe2": {
+  "error": "HTTP Error 404: Not Found"
+ },
+ "zendesk-test-srv": {
+  "error": "HTTP Error 404: Not Found"
+ },
+ "sfe": {
+  "client": {},
+  "server": {}
+ },
+ "log-validator": {
+  "client": {},
+  "server": {}
+ },
+ "boulder-mtca-1": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 2.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ },
+ "boulder-mtpublisher-1": {
+  "client": {},
+  "server": {}
+ },
+ "boulder-mtcb": {
+  "client": {},
+  "server": {
+   "/grpc.health.v1.Health/Watch": 2.0,
+   "/grpc.health.v1.Health/Check": 1.0
+  }
+ }
+}

@@ -1,0 +1,90 @@
+== processes not scraped: [('ct-test-srv', 'HTTP Error 404: Not Found'), ('s3-test-srv', 'HTTP Error 404: Not Found'), ('zendesk-test-srv', 'HTTP Error 404: Not Found'), ('salesforce-test-srv', 'HTTP Error 404: Not Found')]
+
+== Observed caller-service -> interface pairs (55)
+  IN GT     bad-key-revoker  -> ra             RegistrationAuthorityImpl.AdministrativelyRevokeCertificate x6
+  IN GT     ca               -> ra             RegistrationAuthorityImpl.GetSCTs                          x157
+  IN GT     ca               -> sa             SQLStorageAuthority.AddCertificate                         x125
+  IN GT     ca               -> sa             SQLStorageAuthority.AddPrecertificate                      x157
+  IN GT     ca               -> sa             SQLStorageAuthority.AddSerial                              x157
+  IN GT     ca               -> sa             SQLStorageAuthority.KeyBlocked                             x157
+  IN GT     ra               -> ca             certificateAuthorityImpl.IssueCertificate                  x157
+  IN GT     ra               -> publisher      Impl.SubmitToSingleCTWithResult                            x897
+  IN GT     ra               -> sa             SQLStorageAuthority.AddBlockedKey                          x36
+  IN GT     ra               -> sa             SQLStorageAuthority.DeactivateAuthorization2               x4
+  IN GT     ra               -> sa             SQLStorageAuthority.DeactivateRegistration                 x4
+  IN GT     ra               -> sa             SQLStorageAuthority.FQDNSetTimestampsForWindow             x157
+  IN GT     ra               -> sa             SQLStorageAuthority.FinalizeAuthorization2                 x212
+  IN GT     ra               -> sa             SQLStorageAuthority.FinalizeOrder                          x121
+  IN GT     ra               -> sa             SQLStorageAuthority.GetAuthorization2                      x718
+  IN GT     ra               -> sa             SQLStorageAuthority.GetCertificate                         x2
+  IN GT     ra               -> sa             SQLStorageAuthority.GetCertificateStatus                   x6
+  IN GT     ra               -> sa             SQLStorageAuthority.GetLintPrecertificate                  x14
+  IN GT     ra               -> sa             SQLStorageAuthority.GetOrderForNames                       x216
+  IN GT     ra               -> sa             SQLStorageAuthority.GetRegistration                        x371
+  IN GT     ra               -> sa             SQLStorageAuthority.GetSerialMetadata                      x44
+  IN GT     ra               -> sa             SQLStorageAuthority.GetValidAuthorizations2                x218
+  IN GT     ra               -> sa             SQLStorageAuthority.GetValidOrderAuthorizations2           x159
+  IN GT     ra               -> sa             SQLStorageAuthority.KeyBlocked                             x401
+  IN GT     ra               -> sa             SQLStorageAuthority.NewOrderAndAuthzs                      x206
+  IN GT     ra               -> sa             SQLStorageAuthority.NewRegistration                        x237
+  IN GT     ra               -> sa             SQLStorageAuthority.RevokeCertificate                      x90
+  IN GT     ra               -> sa             SQLStorageAuthority.SetOrderError                          x36
+  IN GT     ra               -> sa             SQLStorageAuthority.SetOrderProcessing                     x157
+  IN GT     ra               -> sa             SQLStorageAuthority.UpdateRegistrationKey                  x4
+  IN GT     ra               -> sa             SQLStorageAuthority.UpdateRevokedCertificate               x2
+  IN GT     ra               -> va             ValidationAuthorityImpl.DoCAA                              x194
+  IN GT     ra               -> va             ValidationAuthorityImpl.DoDCV                              x212
+  IN GT     wfe2             -> nonce          NonceService.Nonce                                         x1126
+  IN GT     wfe2             -> nonce          NonceService.Redeem                                        x979
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.DeactivateAuthorization          x4
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.DeactivateRegistration           x2
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.FinalizeOrder                    x91
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.GetAuthorization                 x451
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.NewOrder                         x140
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.NewRegistration                  x138
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.PerformValidation                x124
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.RevokeCertByApplicant            x22
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.RevokeCertByKey                  x13
+  IN GT     wfe2             -> ra             RegistrationAuthorityImpl.UpdateRegistrationKey            x2
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.CheckIdentifiersPaused               x147
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.FQDNSetTimestampsForWindow           x145
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.GetCertificate                       x75
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.GetCertificateStatus                 x5
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.GetOrder                             x114
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.GetRegistration                      x810
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.GetRegistrationByKey                 x157
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.IncidentsForSerial                   x5
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.KeyBlocked                           x158
+  IN GT     wfe2             -> sa             SQLStorageAuthorityRO.ReplacementOrderExists               x2
+
+== Same-service calls (excluded by rule):
+  va -> ValidationAuthorityImpl.DoCAA x736
+  va -> ValidationAuthorityImpl.DoDCV x792
+
+== Client calls to methods with no GT interface:
+
+== GT pairs NOT observed (caller process scraped?):
+  crl-storer       -> sa             SQLStorageAuthorityRO.GetSerialsMetadata                   caller scraped=True  server-side count=0
+  crl-updater      -> ca             crlImpl.GenerateCRL                                        caller scraped=False  server-side count=3120
+  crl-updater      -> crl-storer     crlStorer.UploadCRL                                        caller scraped=False  server-side count=3120
+  crl-updater      -> sa             SQLStorageAuthority.GetLatestRevokedCertByShard            caller scraped=False  server-side count=0
+  crl-updater      -> sa             SQLStorageAuthority.GetRevokedCertsByShard                 caller scraped=False  server-side count=3120
+  crl-updater      -> sa             SQLStorageAuthority.LeaseCRLShard                          caller scraped=False  server-side count=3120
+  crl-updater      -> sa             SQLStorageAuthority.UpdateCRLShard                         caller scraped=False  server-side count=3120
+  ra               -> mtca           mtca.Issue                                                 caller scraped=True  server-side count=0
+  ra               -> mtcb           mtcb.StandaloneReady                                       caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.AddRateLimitOverride                   caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.FinalizeMTCOrder                       caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.GetOrder                               caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.PauseIdentifiers                       caller scraped=True  server-side count=2
+  ra               -> sa             SQLStorageAuthority.RevokeAuthorizationsFor                caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.SetAuthzProcessing                     caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.UnpauseAccount                         caller scraped=True  server-side count=2
+  sfe              -> email-exporter ExporterImpl.SendContacts                                  caller scraped=True  server-side count=0
+  sfe              -> ra             RegistrationAuthorityImpl.AddRateLimitOverride             caller scraped=True  server-side count=0
+  sfe              -> ra             RegistrationAuthorityImpl.UnpauseAccount                   caller scraped=True  server-side count=0
+  wfe2             -> email-exporter ExporterImpl.SendContacts                                  caller scraped=True  server-side count=0
+  wfe2             -> ra             RegistrationAuthorityImpl.GetOrder                         caller scraped=True  server-side count=0
+  wfe2             -> sa             SQLStorageAuthorityRO.GetSerialMetadata                    caller scraped=True  server-side count=0
+
+SUMMARY: GT pairs 77 | observed 55 | observed-but-not-in-GT 0 | not observed 22 (of which caller not a scraped long-running process: 6)

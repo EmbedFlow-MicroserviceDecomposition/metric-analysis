@@ -1,0 +1,1225 @@
+{
+  "system_id": "MS070",
+  "generated_by": "benchmarks/curation/MS070_analysis (go/packages, type-checked, 0 load errors)",
+  "outbound": [
+    {
+      "path": "ca/ca.go",
+      "line": 276,
+      "what": "sa/proto.StorageAuthorityCertificateClient.AddSerial"
+    },
+    {
+      "path": "ca/ca.go",
+      "line": 323,
+      "what": "sa/proto.StorageAuthorityCertificateClient.AddPrecertificate"
+    },
+    {
+      "path": "ca/ca.go",
+      "line": 372,
+      "what": "ra/proto.SCTProviderClient.GetSCTs"
+    },
+    {
+      "path": "ca/ca.go",
+      "line": 446,
+      "what": "sa/proto.StorageAuthorityCertificateClient.AddCertificate"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 169,
+      "what": "cmd/admin.adminRAClient.AdministrativelyRevokeCertificate"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 184,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.SerialsForIncident"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 237,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetSerialsByKey"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 258,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistration"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 263,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetSerialsByAccount"
+    },
+    {
+      "path": "cmd/admin/cert.go",
+      "line": 328,
+      "what": "cmd/admin.adminRAClient.AdministrativelyRevokeCertificate"
+    },
+    {
+      "path": "cmd/admin/incident.go",
+      "line": 50,
+      "what": "cmd/admin.saAdminClient.CreateIncident"
+    },
+    {
+      "path": "cmd/admin/incident.go",
+      "line": 74,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.ListIncidents"
+    },
+    {
+      "path": "cmd/admin/incident.go",
+      "line": 130,
+      "what": "cmd/admin.saAdminClient.UpdateIncident"
+    },
+    {
+      "path": "cmd/admin/incident.go",
+      "line": 241,
+      "what": "cmd/admin.saAdminClient.AddSerialsToIncident"
+    },
+    {
+      "path": "cmd/admin/key.go",
+      "line": 253,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.KeyBlocked"
+    },
+    {
+      "path": "cmd/admin/key.go",
+      "line": 261,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetSerialsByKey"
+    },
+    {
+      "path": "cmd/admin/key.go",
+      "line": 280,
+      "what": "cmd/admin.adminSAClient.AddBlockedKey"
+    },
+    {
+      "path": "cmd/admin/overrides_add.go",
+      "line": 130,
+      "what": "cmd/admin.adminSAClient.AddRateLimitOverride"
+    },
+    {
+      "path": "cmd/admin/overrides_dump.go",
+      "line": 33,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetEnabledRateLimitOverrides"
+    },
+    {
+      "path": "cmd/admin/overrides_import.go",
+      "line": 67,
+      "what": "cmd/admin.adminSAClient.AddRateLimitOverride"
+    },
+    {
+      "path": "cmd/admin/overrides_toggle.go",
+      "line": 82,
+      "what": "cmd/admin.adminSAClient.EnableRateLimitOverride"
+    },
+    {
+      "path": "cmd/admin/overrides_toggle.go",
+      "line": 93,
+      "what": "cmd/admin.adminSAClient.DisableRateLimitOverride"
+    },
+    {
+      "path": "cmd/admin/pause_identifier.go",
+      "line": 82,
+      "what": "cmd/admin.adminSAClient.PauseIdentifiers"
+    },
+    {
+      "path": "cmd/admin/unpause_account.go",
+      "line": 97,
+      "what": "cmd/admin.adminSAClient.UnpauseAccount"
+    },
+    {
+      "path": "cmd/bad-key-revoker/main.go",
+      "line": 186,
+      "what": "cmd/bad-key-revoker.revoker.AdministrativelyRevokeCertificate"
+    },
+    {
+      "path": "ctpolicy/ctpolicy.go",
+      "line": 96,
+      "what": "publisher/proto.PublisherClient.SubmitToSingleCTWithResult"
+    },
+    {
+      "path": "ctpolicy/ctpolicy.go",
+      "line": 251,
+      "what": "publisher/proto.PublisherClient.SubmitToSingleCTWithResult"
+    },
+    {
+      "path": "va/caa.go",
+      "line": 134,
+      "what": "va/proto.CAAClient.DoCAA"
+    },
+    {
+      "path": "va/va.go",
+      "line": 880,
+      "what": "va/proto.VAClient.DoDCV"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 518,
+      "what": "sa/proto.StorageAuthorityClient.NewRegistration"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 608,
+      "what": "sa/proto.StorageAuthorityClient.GetValidOrderAuthorizations2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 784,
+      "what": "va/proto.CAAClient.DoCAA"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 867,
+      "what": "sa/proto.StorageAuthorityClient.SetOrderError"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 926,
+      "what": "sa/proto.StorageAuthorityClient.SetOrderProcessing"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 986,
+      "what": "mtca/proto.MTCAClient.Issue"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 995,
+      "what": "sa/proto.StorageAuthorityClient.FinalizeMTCOrder"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1099,
+      "what": "sa/proto.StorageAuthorityClient.GetRegistration"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1170,
+      "what": "sa/proto.StorageAuthorityClient.FQDNSetTimestampsForWindow"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1317,
+      "what": "ca/proto.CertificateAuthorityClient.IssueCertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1338,
+      "what": "sa/proto.StorageAuthorityClient.FinalizeOrder"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1382,
+      "what": "sa/proto.StorageAuthorityClient.UpdateRegistrationKey"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1418,
+      "what": "sa/proto.StorageAuthorityClient.PauseIdentifiers"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1454,
+      "what": "va/proto.VAClient.DoDCV"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1464,
+      "what": "va/proto.CAAClient.DoCAA"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1529,
+      "what": "sa/proto.StorageAuthorityClient.GetRegistration"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1549,
+      "what": "sa/proto.StorageAuthorityClient.SetAuthzProcessing"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1596,
+      "what": "sa/proto.StorageAuthorityClient.FinalizeAuthorization2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1642,
+      "what": "sa/proto.StorageAuthorityClient.RevokeCertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1662,
+      "what": "sa/proto.StorageAuthorityClient.GetCertificateStatus"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1676,
+      "what": "sa/proto.StorageAuthorityClient.GetCertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1690,
+      "what": "sa/proto.StorageAuthorityClient.UpdateRevokedCertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1722,
+      "what": "sa/proto.StorageAuthorityClient.RevokeAuthorizationsFor"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1785,
+      "what": "sa/proto.StorageAuthorityClient.GetSerialMetadata"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1800,
+      "what": "sa/proto.StorageAuthorityClient.GetValidAuthorizations2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1902,
+      "what": "sa/proto.StorageAuthorityClient.AddBlockedKey"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2055,
+      "what": "sa/proto.StorageAuthorityClient.GetLintPrecertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2074,
+      "what": "sa/proto.StorageAuthorityClient.GetCertificateStatus"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2086,
+      "what": "sa/proto.StorageAuthorityClient.RevokeCertificate"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2128,
+      "what": "sa/proto.StorageAuthorityClient.DeactivateRegistration"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2143,
+      "what": "sa/proto.StorageAuthorityClient.DeactivateAuthorization2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2217,
+      "what": "sa/proto.StorageAuthorityClient.GetOrderForNames"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2259,
+      "what": "sa/proto.StorageAuthorityClient.GetValidAuthorizations2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2413,
+      "what": "sa/proto.StorageAuthorityClient.NewOrderAndAuthzs"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2433,
+      "what": "sa/proto.StorageAuthorityClient.GetOrder"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2451,
+      "what": "mtcb/proto.MTCBClient.StandaloneReady"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2498,
+      "what": "sa/proto.StorageAuthorityClient.UnpauseAccount"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2513,
+      "what": "sa/proto.StorageAuthorityClient.GetAuthorization2"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 2537,
+      "what": "sa/proto.StorageAuthorityClient.AddRateLimitOverride"
+    },
+    {
+      "path": "wfe2/verify.go",
+      "line": 229,
+      "what": "nonce.Redeemer.Redeem"
+    },
+    {
+      "path": "wfe2/verify.go",
+      "line": 510,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistration"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 324,
+      "what": "nonce.Getter.Nonce"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 832,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistrationByKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 899,
+      "what": "ra/proto.RegistrationAuthorityClient.NewRegistration"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 902,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistrationByKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 952,
+      "what": "salesforce/email/proto.ExporterClient.SendContacts"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1058,
+      "what": "ra/proto.RegistrationAuthorityClient.RevokeCertByApplicant"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1110,
+      "what": "ra/proto.RegistrationAuthorityClient.RevokeCertByKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1196,
+      "what": "ra/proto.RegistrationAuthorityClient.GetAuthorization"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1402,
+      "what": "ra/proto.RegistrationAuthorityClient.PerformValidation"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1511,
+      "what": "ra/proto.RegistrationAuthorityClient.DeactivateRegistration"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1551,
+      "what": "ra/proto.RegistrationAuthorityClient.DeactivateAuthorization"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1609,
+      "what": "ra/proto.RegistrationAuthorityClient.GetAuthorization"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1685,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetSerialMetadata"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 1748,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetCertificate"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2024,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistrationByKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2037,
+      "what": "ra/proto.RegistrationAuthorityClient.UpdateRegistrationKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2044,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetRegistrationByKey"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2167,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetCertificate"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2200,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.IncidentsForSerial"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2218,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetCertificateStatus"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2231,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetCertificate"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2270,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.ReplacementOrderExists"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2324,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.CheckIdentifiersPaused"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2461,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.FQDNSetTimestampsForWindow"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2515,
+      "what": "ra/proto.RegistrationAuthorityClient.NewOrder"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2575,
+      "what": "ra/proto.RegistrationAuthorityClient.GetOrder"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2577,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetOrder"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2662,
+      "what": "ra/proto.RegistrationAuthorityClient.GetOrder"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2664,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetOrder"
+    },
+    {
+      "path": "wfe2/wfe.go",
+      "line": 2731,
+      "what": "ra/proto.RegistrationAuthorityClient.FinalizeOrder"
+    },
+    {
+      "path": "crl/storer/storer.go",
+      "line": 109,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetSerialsMetadata"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 171,
+      "what": "sa/proto.StorageAuthorityClient.LeaseCRLShard"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 204,
+      "what": "sa/proto.StorageAuthorityClient.UpdateCRLShard"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 253,
+      "what": "sa/proto.StorageAuthorityClient.GetRevokedCertsByShard"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 278,
+      "what": "sa/proto.StorageAuthorityClient.GetLatestRevokedCertByShard"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 305,
+      "what": "ca/proto.CRLGeneratorClient.GenerateCRL"
+    },
+    {
+      "path": "crl/updater/updater.go",
+      "line": 358,
+      "what": "crl/storer/proto.CRLStorerClient.UploadCRL"
+    },
+    {
+      "path": "sfe/overrides.go",
+      "line": 634,
+      "what": "ra/proto.RegistrationAuthorityClient.AddRateLimitOverride"
+    },
+    {
+      "path": "sfe/overrides.go",
+      "line": 698,
+      "what": "salesforce/email/proto.ExporterClient.SendContacts"
+    },
+    {
+      "path": "sfe/overridesimporter.go",
+      "line": 253,
+      "what": "ra/proto.RegistrationAuthorityClient.AddRateLimitOverride"
+    },
+    {
+      "path": "sfe/sfe.go",
+      "line": 280,
+      "what": "ra/proto.RegistrationAuthorityClient.UnpauseAccount"
+    },
+    {
+      "path": "mocks/sa.go",
+      "line": 187,
+      "what": "mocks.StorageAuthorityReadOnly.GetSerialMetadata"
+    },
+    {
+      "path": "sa/satest/satest.go",
+      "line": 19,
+      "what": "sa/proto.StorageAuthorityClient.NewRegistration"
+    },
+    {
+      "path": "test/health-checker/main.go",
+      "line": 83,
+      "what": "google.golang.org/grpc/health/grpc_health_v1.HealthClient.Check"
+    },
+    {
+      "path": "test/inmem/nonce/nonce.go",
+      "line": 45,
+      "what": "nonce/proto.NonceServiceClient.Nonce"
+    },
+    {
+      "path": "cmd/boulder-ca/main.go",
+      "line": 215,
+      "what": "sa/proto.StorageAuthorityClient.KeyBlocked"
+    },
+    {
+      "path": "cmd/boulder-ra/main.go",
+      "line": 268,
+      "what": "sa/proto.StorageAuthorityClient.KeyBlocked"
+    },
+    {
+      "path": "cmd/boulder-ra/main.go",
+      "line": 287,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetEnabledRateLimitOverrides"
+    },
+    {
+      "path": "cmd/boulder-wfe2/main.go",
+      "line": 410,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.KeyBlocked"
+    },
+    {
+      "path": "cmd/boulder-wfe2/main.go",
+      "line": 437,
+      "what": "sa/proto.StorageAuthorityReadOnlyClient.GetEnabledRateLimitOverrides"
+    },
+    {
+      "path": "csr/csr.go",
+      "line": 52,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "ca/ca.go",
+      "line": 236,
+      "what": "csr.VerifyCSR"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 505,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1078,
+      "what": "csr.VerifyCSR"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1330,
+      "what": "ctpolicy.SubmitFinalCert"
+    },
+    {
+      "path": "ra/ra.go",
+      "line": 1356,
+      "what": "ctpolicy.GetSCTs"
+    },
+    {
+      "path": "wfe2/verify.go",
+      "line": 721,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "wfe2/verify.go",
+      "line": 779,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "cmd/cert-checker/main.go",
+      "line": 534,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "cmd/ceremony/main.go",
+      "line": 63,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "cmd/ceremony/main.go",
+      "line": 108,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "cmd/ceremony/main.go",
+      "line": 479,
+      "what": "ctpolicy.GoodKey"
+    },
+    {
+      "path": "cmd/ceremony/main.go",
+      "line": 575,
+      "what": "ctpolicy.GoodKey"
+    }
+  ],
+  "entrypoints": [
+    {
+      "class": "ca.crlImpl",
+      "method": "GenerateCRL"
+    },
+    {
+      "class": "ca.certificateAuthorityImpl",
+      "method": "IssueCertificate"
+    },
+    {
+      "class": "mtca.mtca",
+      "method": "Issue"
+    },
+    {
+      "class": "mtcb.mtcb",
+      "method": "StandaloneReady"
+    },
+    {
+      "class": "mtcb.mtcb",
+      "method": "GetStandalone"
+    },
+    {
+      "class": "mtcb.mtcb",
+      "method": "GetLandmarkRelative"
+    },
+    {
+      "class": "publisher.Impl",
+      "method": "SubmitToSingleCTWithResult"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "GetSCTs"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "NewRegistration"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "UpdateRegistrationKey"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "DeactivateRegistration"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "PerformValidation"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "DeactivateAuthorization"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "RevokeCertByApplicant"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "RevokeCertByKey"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "AdministrativelyRevokeCertificate"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "NewOrder"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "GetOrder"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "GetAuthorization"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "FinalizeOrder"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "UnpauseAccount"
+    },
+    {
+      "class": "ra.RegistrationAuthorityImpl",
+      "method": "AddRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "FQDNSetTimestampsForWindow"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetAuthorization2"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetCertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetLintPrecertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetCertificateStatus"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetOrder"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetOrderForNames"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetRegistration"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetRegistrationByKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetRevocationStatus"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetRevokedCertsByShard"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetSerialMetadata"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetSerialsMetadata"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetSerialsByAccount"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetSerialsByKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetValidAuthorizations2"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetValidOrderAuthorizations2"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetOrderAuthorizations"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "IncidentsForSerial"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "KeyBlocked"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "ListIncidents"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "ReplacementOrderExists"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "SerialsForIncident"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "CheckIdentifiersPaused"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetPausedIdentifiers"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetEnabledRateLimitOverrides"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "AddBlockedKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "AddCertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "AddPrecertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "AddSerial"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "DeactivateAuthorization2"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "DeactivateRegistration"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "FinalizeAuthorization2"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "FinalizeOrder"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "FinalizeMTCOrder"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "NewOrderAndAuthzs"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "NewRegistration"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "RevokeCertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "SetAuthzProcessing"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "SetOrderError"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "SetOrderProcessing"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "UpdateRegistrationKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "UpdateRevokedCertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "LeaseCRLShard"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "UpdateCRLShard"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "PauseIdentifiers"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "UnpauseAccount"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "AddRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "DisableRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "EnableRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "RevokeAuthorizationsFor"
+    },
+    {
+      "class": "sa.SQLStorageAuthority",
+      "method": "GetLatestRevokedCertByShard"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "FQDNSetTimestampsForWindow"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetAuthorization2"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetCertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetLintPrecertificate"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetCertificateStatus"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetOrder"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetOrderForNames"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetRegistration"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetRegistrationByKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetRevocationStatus"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetRevokedCertsByShard"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetSerialMetadata"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetSerialsMetadata"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetSerialsByAccount"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetSerialsByKey"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetValidAuthorizations2"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetValidOrderAuthorizations2"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetOrderAuthorizations"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "IncidentsForSerial"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "KeyBlocked"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "ListIncidents"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "ReplacementOrderExists"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "SerialsForIncident"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "CheckIdentifiersPaused"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetPausedIdentifiers"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetRateLimitOverride"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityRO",
+      "method": "GetEnabledRateLimitOverrides"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityAdmin",
+      "method": "CreateIncident"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityAdmin",
+      "method": "UpdateIncident"
+    },
+    {
+      "class": "sa.SQLStorageAuthorityAdmin",
+      "method": "AddSerialsToIncident"
+    },
+    {
+      "class": "va.ValidationAuthorityImpl",
+      "method": "DoCAA"
+    },
+    {
+      "class": "va.ValidationAuthorityImpl",
+      "method": "DoDCV"
+    },
+    {
+      "class": "storer.crlStorer",
+      "method": "UploadCRL"
+    },
+    {
+      "class": "salesforce.ExporterImpl",
+      "method": "SendContacts"
+    },
+    {
+      "class": "nonce.NonceService",
+      "method": "Nonce"
+    },
+    {
+      "class": "nonce.NonceService",
+      "method": "Redeem"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "NewAccount"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Account"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "RevokeCertificate"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "KeyRollover"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "NewOrder"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "FinalizeOrder"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Directory"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Nonce"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "GetOrder"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "AuthorizationHandler"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "ChallengeHandler"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Certificate"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "RenewalInfo"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "CertificateInfo"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "BuildID"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Healthz"
+    },
+    {
+      "class": "wfe2.WebFrontEndImpl",
+      "method": "Index"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "Index"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "BuildID"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "UnpauseForm"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "UnpauseSubmit"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "UnpauseStatus"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "makeOverrideRequestFormHandler"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "overrideAutoApprovedSuccessHandler"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "overrideRequestSubmittedSuccessHandler"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "validateOverrideFieldHandler"
+    },
+    {
+      "class": "sfe.SelfServiceFrontEndImpl",
+      "method": "submitOverrideRequestHandler"
+    }
+  ]
+}

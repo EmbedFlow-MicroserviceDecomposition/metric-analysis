@@ -1,0 +1,90 @@
+== processes not scraped: [('ct-test-srv', 'HTTP Error 404: Not Found'), ('s3-test-srv', 'HTTP Error 404: Not Found'), ('salesforce-test-srv', 'HTTP Error 404: Not Found'), ('boulder-wfe2', 'HTTP Error 404: Not Found'), ('zendesk-test-srv', 'HTTP Error 404: Not Found')]
+
+== Observed caller-service -> interface pairs (32)
+  IN GT     bad-key-revoker  -> ra             RegistrationAuthorityImpl.AdministrativelyRevokeCertificate x3
+  IN GT     ca               -> ra             RegistrationAuthorityImpl.GetSCTs                          x69
+  IN GT     ca               -> sa             SQLStorageAuthority.AddCertificate                         x53
+  IN GT     ca               -> sa             SQLStorageAuthority.AddPrecertificate                      x69
+  IN GT     ca               -> sa             SQLStorageAuthority.AddSerial                              x69
+  IN GT     ca               -> sa             SQLStorageAuthority.KeyBlocked                             x69
+  IN GT     ra               -> ca             certificateAuthorityImpl.IssueCertificate                  x69
+  IN GT     ra               -> publisher      Impl.SubmitToSingleCTWithResult                            x398
+  IN GT     ra               -> sa             SQLStorageAuthority.AddBlockedKey                          x18
+  IN GT     ra               -> sa             SQLStorageAuthority.DeactivateRegistration                 x2
+  IN GT     ra               -> sa             SQLStorageAuthority.FQDNSetTimestampsForWindow             x69
+  IN GT     ra               -> sa             SQLStorageAuthority.FinalizeAuthorization2                 x88
+  IN GT     ra               -> sa             SQLStorageAuthority.FinalizeOrder                          x51
+  IN GT     ra               -> sa             SQLStorageAuthority.GetAuthorization2                      x267
+  IN GT     ra               -> sa             SQLStorageAuthority.GetCertificate                         x1
+  IN GT     ra               -> sa             SQLStorageAuthority.GetCertificateStatus                   x3
+  IN GT     ra               -> sa             SQLStorageAuthority.GetLintPrecertificate                  x7
+  IN GT     ra               -> sa             SQLStorageAuthority.GetOrderForNames                       x84
+  IN GT     ra               -> sa             SQLStorageAuthority.GetRegistration                        x158
+  IN GT     ra               -> sa             SQLStorageAuthority.GetSerialMetadata                      x22
+  IN GT     ra               -> sa             SQLStorageAuthority.GetValidAuthorizations2                x90
+  IN GT     ra               -> sa             SQLStorageAuthority.GetValidOrderAuthorizations2           x70
+  IN GT     ra               -> sa             SQLStorageAuthority.KeyBlocked                             x172
+  IN GT     ra               -> sa             SQLStorageAuthority.NewOrderAndAuthzs                      x84
+  IN GT     ra               -> sa             SQLStorageAuthority.NewRegistration                        x99
+  IN GT     ra               -> sa             SQLStorageAuthority.RevokeCertificate                      x45
+  IN GT     ra               -> sa             SQLStorageAuthority.SetOrderError                          x18
+  IN GT     ra               -> sa             SQLStorageAuthority.SetOrderProcessing                     x69
+  IN GT     ra               -> sa             SQLStorageAuthority.UpdateRegistrationKey                  x2
+  IN GT     ra               -> sa             SQLStorageAuthority.UpdateRevokedCertificate               x1
+  IN GT     ra               -> va             ValidationAuthorityImpl.DoCAA                              x85
+  IN GT     ra               -> va             ValidationAuthorityImpl.DoDCV                              x88
+
+== Same-service calls (excluded by rule):
+  va -> ValidationAuthorityImpl.DoCAA x324
+  va -> ValidationAuthorityImpl.DoDCV x352
+
+== Client calls to methods with no GT interface:
+
+== GT pairs NOT observed (caller process scraped?):
+  crl-storer       -> sa             SQLStorageAuthorityRO.GetSerialsMetadata                   caller scraped=True  server-side count=0
+  crl-updater      -> ca             crlImpl.GenerateCRL                                        caller scraped=False  server-side count=1560
+  crl-updater      -> crl-storer     crlStorer.UploadCRL                                        caller scraped=False  server-side count=1560
+  crl-updater      -> sa             SQLStorageAuthority.GetLatestRevokedCertByShard            caller scraped=False  server-side count=0
+  crl-updater      -> sa             SQLStorageAuthority.GetRevokedCertsByShard                 caller scraped=False  server-side count=1560
+  crl-updater      -> sa             SQLStorageAuthority.LeaseCRLShard                          caller scraped=False  server-side count=1560
+  crl-updater      -> sa             SQLStorageAuthority.UpdateCRLShard                         caller scraped=False  server-side count=1560
+  ra               -> mtca           mtca.Issue                                                 caller scraped=True  server-side count=0
+  ra               -> mtcb           mtcb.StandaloneReady                                       caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.AddRateLimitOverride                   caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.DeactivateAuthorization2               caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.FinalizeMTCOrder                       caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.GetOrder                               caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.PauseIdentifiers                       caller scraped=True  server-side count=1
+  ra               -> sa             SQLStorageAuthority.RevokeAuthorizationsFor                caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.SetAuthzProcessing                     caller scraped=True  server-side count=0
+  ra               -> sa             SQLStorageAuthority.UnpauseAccount                         caller scraped=True  server-side count=1
+  sfe              -> email-exporter ExporterImpl.SendContacts                                  caller scraped=True  server-side count=0
+  sfe              -> ra             RegistrationAuthorityImpl.AddRateLimitOverride             caller scraped=True  server-side count=0
+  sfe              -> ra             RegistrationAuthorityImpl.UnpauseAccount                   caller scraped=True  server-side count=0
+  wfe2             -> email-exporter ExporterImpl.SendContacts                                  caller scraped=False  server-side count=0
+  wfe2             -> nonce          NonceService.Nonce                                         caller scraped=False  server-side count=1048
+  wfe2             -> nonce          NonceService.Redeem                                        caller scraped=False  server-side count=940
+  wfe2             -> ra             RegistrationAuthorityImpl.DeactivateAuthorization          caller scraped=False  server-side count=0
+  wfe2             -> ra             RegistrationAuthorityImpl.DeactivateRegistration           caller scraped=False  server-side count=2
+  wfe2             -> ra             RegistrationAuthorityImpl.FinalizeOrder                    caller scraped=False  server-side count=73
+  wfe2             -> ra             RegistrationAuthorityImpl.GetAuthorization                 caller scraped=False  server-side count=267
+  wfe2             -> ra             RegistrationAuthorityImpl.GetOrder                         caller scraped=False  server-side count=0
+  wfe2             -> ra             RegistrationAuthorityImpl.NewOrder                         caller scraped=False  server-side count=87
+  wfe2             -> ra             RegistrationAuthorityImpl.NewRegistration                  caller scraped=False  server-side count=99
+  wfe2             -> ra             RegistrationAuthorityImpl.PerformValidation                caller scraped=False  server-side count=88
+  wfe2             -> ra             RegistrationAuthorityImpl.RevokeCertByApplicant            caller scraped=False  server-side count=22
+  wfe2             -> ra             RegistrationAuthorityImpl.RevokeCertByKey                  caller scraped=False  server-side count=13
+  wfe2             -> ra             RegistrationAuthorityImpl.UpdateRegistrationKey            caller scraped=False  server-side count=2
+  wfe2             -> sa             SQLStorageAuthorityRO.CheckIdentifiersPaused               caller scraped=False  server-side count=91
+  wfe2             -> sa             SQLStorageAuthorityRO.FQDNSetTimestampsForWindow           caller scraped=False  server-side count=89
+  wfe2             -> sa             SQLStorageAuthorityRO.GetCertificate                       caller scraped=False  server-side count=56
+  wfe2             -> sa             SQLStorageAuthorityRO.GetCertificateStatus                 caller scraped=False  server-side count=5
+  wfe2             -> sa             SQLStorageAuthorityRO.GetOrder                             caller scraped=False  server-side count=75
+  wfe2             -> sa             SQLStorageAuthorityRO.GetRegistration                      caller scraped=False  server-side count=512
+  wfe2             -> sa             SQLStorageAuthorityRO.GetRegistrationByKey                 caller scraped=False  server-side count=116
+  wfe2             -> sa             SQLStorageAuthorityRO.GetSerialMetadata                    caller scraped=False  server-side count=0
+  wfe2             -> sa             SQLStorageAuthorityRO.IncidentsForSerial                   caller scraped=False  server-side count=5
+  wfe2             -> sa             SQLStorageAuthorityRO.KeyBlocked                           caller scraped=False  server-side count=117
+  wfe2             -> sa             SQLStorageAuthorityRO.ReplacementOrderExists               caller scraped=False  server-side count=2
+
+SUMMARY: GT pairs 77 | observed 32 | observed-but-not-in-GT 0 | not observed 45 (of which caller not a scraped long-running process: 31)

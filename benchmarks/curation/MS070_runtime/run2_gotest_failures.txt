@@ -1,0 +1,5 @@
+5354:--- FAIL: TestIPCNRejected (0.02s)
+5355-    issuance_test.go:364: creating order: acme: error code 429 "urn:ietf:params:acme:error:rateLimited": too many certificates (2) already issued for this exact set of identifiers in the last 3h0m0s, retry after 2026-11-18 19:55:25 UTC: see https://letsencrypt.org/docs/rate-limits/#new-certificates-per-exact-set-of-identifiers
+5356:--- FAIL: TestDuplicateFQDNRateLimit (0.01s)
+5357-    ratelimit_test.go:25: Failed to issue first certificate: acme: error code 429 "urn:ietf:params:acme:error:rateLimited": too many certificates (2) already issued for "64.112.117.122/32" in the last 2160h0m0s, retry after 2027-01-03 20:17:37 UTC: see https://letsencrypt.org/docs/rate-limits/#new-certificates-per-registered-domain
+5358-FAIL

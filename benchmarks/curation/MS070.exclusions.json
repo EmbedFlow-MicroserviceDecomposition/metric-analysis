@@ -1,0 +1,108 @@
+{
+  "system_id": "MS070",
+  "excluded_outbound_paths": [
+    {
+      "path": "cmd/admin/",
+      "reason": "Operator CLI (non_service): one-shot admin commands against RA/SA, not a service."
+    },
+    {
+      "path": "mocks/",
+      "reason": "Test doubles."
+    },
+    {
+      "path": "sa/satest/",
+      "reason": "Test helper package."
+    },
+    {
+      "path": "test/",
+      "reason": "Integration-test helpers and fake external servers."
+    },
+    {
+      "path": "grpc/",
+      "reason": "boulder's gRPC plumbing (client interceptors, health), not service logic."
+    },
+    {
+      "path": "cmd/crl-checker/",
+      "reason": "CLI tool (non_service)."
+    },
+    {
+      "path": "sfe/static/",
+      "reason": "sfe's own browser JavaScript calling sfe endpoints (same service)."
+    },
+    {
+      "path": "cmd/cert-checker/",
+      "reason": "Batch audit job (non_service)."
+    },
+    {
+      "path": "cmd/ceremony/",
+      "reason": "Offline key-ceremony CLI (non_service)."
+    }
+  ],
+  "excluded_sites": [
+    {
+      "path": "va/va.go",
+      "line": 880,
+      "reason": "va -> remote VA perspectives (DoDCV): the same va.ValidationAuthorityImpl code in a remote role (cmd/remoteva registers the same type), so same service."
+    },
+    {
+      "path": "va/caa.go",
+      "line": 134,
+      "reason": "va -> remote VA perspectives (DoCAA): same service."
+    },
+    {
+      "path": "cmd/boulder-va/main.go",
+      "line": 143,
+      "reason": "Constructs the VA clients to remote perspectives (same service)."
+    },
+    {
+      "path": "cmd/boulder-va/main.go",
+      "line": 144,
+      "reason": "Constructs the CAA clients to remote perspectives (same service)."
+    },
+    {
+      "path": "cmd/boulder-ra/main.go",
+      "line": 286,
+      "reason": "Read-only SA client built only for the rate-limit override refresher. Rate-limit override refresher: configuration loading (rate-limit overrides fetched from SA every 30 min by a ratelimits background job wired in main(); no service type invokes it), excluded like MS020's config-server fetches (Ravishan's decision). Enabled in test/config-next (OverridesFromDB: true), not in test/config."
+    },
+    {
+      "path": "cmd/boulder-ra/main.go",
+      "line": 287,
+      "reason": "Rate-limit override refresher: configuration loading (rate-limit overrides fetched from SA every 30 min by a ratelimits background job wired in main(); no service type invokes it), excluded like MS020's config-server fetches (Ravishan's decision). Enabled in test/config-next (OverridesFromDB: true), not in test/config."
+    },
+    {
+      "path": "cmd/boulder-wfe2/main.go",
+      "line": 437,
+      "reason": "Rate-limit override refresher: configuration loading (rate-limit overrides fetched from SA every 30 min by a ratelimits background job wired in main(); no service type invokes it), excluded like MS020's config-server fetches (Ravishan's decision). Enabled in test/config-next (OverridesFromDB: true), not in test/config."
+    },
+    {
+      "path": "cmd/sfe/main.go",
+      "line": 157,
+      "reason": "Dead wiring: sfe builds an SA read-only client and stores it (sfe/sfe.go:59,111) but never uses it; the type checker finds no call or method value on it."
+    },
+    {
+      "path": "mtca/mtca.go",
+      "line": 205,
+      "reason": "Publish writes Merkle-tree tiles to S3 (external object storage), not another service."
+    },
+    {
+      "path": "mtca/mtca.go",
+      "line": 574,
+      "reason": "Same as mtca.go:205 (S3 tile publishing)."
+    },
+    {
+      "path": "mtpublisher/mtpublisher.go",
+      "line": 140,
+      "reason": "Publishes tiles to S3 (external object storage), not another service."
+    },
+    {
+      "path": "salesforce/pardot.go",
+      "line": 186,
+      "reason": "email-exporter -> Salesforce Pardot API (external third-party)."
+    },
+    {
+      "path": "sfe/zendesk/zendesk.go",
+      "line": 166,
+      "reason": "sfe -> Zendesk API (external third-party)."
+    }
+  ]
+}

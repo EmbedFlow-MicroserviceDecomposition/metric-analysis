@@ -61,7 +61,7 @@ def _source_files(ms_path: Path) -> List[Path]:
     files = []
     for glob in SOURCE_GLOBS:
         for f in ms_path.rglob(glob):
-            if not SKIP_PARTS.intersection(f.relative_to(ms_path).parts):
+            if not SKIP_PARTS.intersection(f.relative_to(ms_path).parts) and not re.search(r"(_test\.go|\.(test|spec)\.[jt]sx?)$", f.name):
                 files.append(f)
     return sorted(files)
 
@@ -86,6 +86,7 @@ def gate_a(gt: dict, partition: Partition) -> List[str]:
             errors.append(f"{where}: '{cls}' resolves to service '{resolved}', but is declared under '{declared}'.")
 
     iface_ids: Dict[str, Set[str]] = {}
+    iface_owner: Dict[Tuple[str, str], str] = {}
     for svc, obj in gt["microservices"].items():
         iface_ids[svc] = set()
         for i, iface in enumerate(obj["exposed_interfaces"]):
@@ -102,6 +103,7 @@ def gate_a(gt: dict, partition: Partition) -> List[str]:
             if iface["id"] in iface_ids[svc]:
                 errors.append(f"{where}: duplicate interface id '{iface['id']}'.")
             iface_ids[svc].add(iface["id"])
+            iface_owner[(svc, iface["id"])] = iface["class_name"]
 
     seen: Set[Tuple[str, str, str, str]] = set()
     for i, call in enumerate(gt["inter_service_calls"]):
@@ -110,6 +112,9 @@ def gate_a(gt: dict, partition: Partition) -> List[str]:
         check_class(call["dst_class"], call["dst_service"], where)
         if call["dst_interface_id"] not in iface_ids.get(call["dst_service"], set()):
             errors.append(f"{where}: dst_interface_id '{call['dst_interface_id']}' is not exposed by '{call['dst_service']}'.")
+        elif iface_owner.get((call["dst_service"], call["dst_interface_id"])) != call["dst_class"]:
+            errors.append(f"{where}: dst_class '{call['dst_class']}' does not own interface '{call['dst_interface_id']}' "
+                          f"(owner: '{iface_owner.get((call['dst_service'], call['dst_interface_id']))}').")
         key = (call["src_class"], call["src_method"], call["dst_service"], call["dst_interface_id"])
         if key in seen:
             errors.append(f"{where}: duplicate call {key}.")
@@ -208,7 +213,31 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
     iface_classes = {cls for cls, _ in iface_counts}
     unaccounted.extend(f"ENTRYPOINT {site}  (servlet {cls} has no interface in ground truth)"
                        for cls, site in servlet_classes.items() if cls not in iface_classes)
+    unaccounted.extend(gate_c_sites(gt, ms_path, cited, exclusions, excluded, excluded_outbound_dirs, iface_counts))
     return unaccounted
+
+
+def gate_c_sites(gt, ms_path, cited, exclusions, excluded, excluded_outbound_dirs, iface_counts) -> List[str]:
+    """Coverage against a sites file produced by a type-checking analyzer (curation/<SID>.sites.json).
+
+    Used where grep cannot resolve calls reliably (e.g. Go gRPC clients): every listed outbound site
+    must be cited or excluded, and every listed entry point must be an exposed interface.
+    """
+    sites_file = CURATION_DIR / f"{gt['system_id']}.sites.json"
+    if not sites_file.exists():
+        return []
+    sites = json.loads(sites_file.read_text(encoding="utf-8"))
+    problems = []
+    for s in sites.get("outbound", []):
+        rel, line = s["path"], int(s["line"])
+        if (rel, line) in excluded or (excluded_outbound_dirs and rel.startswith(excluded_outbound_dirs)):
+            continue
+        if ((ms_path / rel).resolve(), line) not in cited:
+            problems.append(f"OUTBOUND   {rel}:{line}  {s.get('what', '')}  (type-resolved site neither cited nor excluded)")
+    for e in sites.get("entrypoints", []):
+        if iface_counts.get((e["class"].split(".")[-1], e["method"]), 0) == 0:
+            problems.append(f"ENTRYPOINT {e['class']}.{e['method']}  (served, but not an exposed interface)")
+    return problems
 
 
 def main() -> None:
