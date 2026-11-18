@@ -1,0 +1,11 @@
+FROM            TO                      REQUEST                                              N
+edge-service    friend-service          GET /v1/friends/{id}                                 1
+edge-service    friend-service          GET /v1/users/{id}/friends                           2
+edge-service    friend-service          POST /v1/users/{id}/commands/addFriend               3
+edge-service    friend-service          POST /v1/users/{id}/commands/removeFriend            1
+edge-service    recommendation-service  GET /v1/users/{id}/commands/findMutualFriends        1
+edge-service    recommendation-service  GET /v1/users/{id}/commands/recommendFriends         1
+edge-service    user-service            GET /v1/users/{id}                                   1
+edge-service    user-service            POST /v1/users                                       3
+edge-service    user-service            PUT /v1/users/{id}                                   1
+friend-service  user-service            GET /v1/users/{id}                                   6

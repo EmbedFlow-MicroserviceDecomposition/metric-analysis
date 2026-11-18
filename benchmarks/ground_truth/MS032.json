@@ -2,93 +2,76 @@
   "system_id": "MS032",
   "extractor_tool": "ground_truth",
   "prompt_version": "v1.0",
-  "status": "pending_manual_review",
+  "status": "verified",
   "microservices": {
     "user-service": {
       "exposed_interfaces": [
         {
-          "id": "UserController.createUser",
-          "class_name": "io.example.domain.UserController",
-          "method_name": "createUser",
-          "param_types": [
-            "User"
-          ],
-          "return_type": "User",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "UserController.getUser",
           "class_name": "io.example.domain.UserController",
           "method_name": "getUser",
-          "param_types": [
-            "Long"
-          ],
+          "param_types": ["Long"],
           "return_type": "User",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /v1/users/{userId}"
+        },
+        {
+          "id": "UserController.createUser",
+          "class_name": "io.example.domain.UserController",
+          "method_name": "createUser",
+          "param_types": ["User"],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users"
         },
         {
           "id": "UserController.updateUser",
           "class_name": "io.example.domain.UserController",
           "method_name": "updateUser",
-          "param_types": [
-            "Long",
-            "User"
-          ],
+          "param_types": ["Long", "User"],
           "return_type": "User",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "PUT /v1/users/{userId}"
         }
       ]
     },
     "friend-service": {
       "exposed_interfaces": [
         {
-          "id": "FriendController.addFriend",
-          "class_name": "io.example.domain.friend.FriendController",
-          "method_name": "addFriend",
-          "param_types": [
-            "Long",
-            "Long"
-          ],
-          "return_type": "Mono",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
           "id": "FriendController.getFriend",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "getFriend",
-          "param_types": [
-            "Long"
-          ],
+          "param_types": ["Long"],
           "return_type": "Friend",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /v1/friends/{id}"
         },
         {
           "id": "FriendController.getFriends",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "getFriends",
-          "param_types": [
-            "Long"
-          ],
+          "param_types": ["Long"],
           "return_type": "List<Friend>",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /v1/users/{userId}/friends"
+        },
+        {
+          "id": "FriendController.addFriend",
+          "class_name": "io.example.domain.friend.FriendController",
+          "method_name": "addFriend",
+          "param_types": ["Long", "Long"],
+          "return_type": "Friend",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users/{userId}/commands/addFriend"
         },
         {
           "id": "FriendController.removeFriend",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "removeFriend",
-          "param_types": [
-            "Long",
-            "Long"
-          ],
-          "return_type": "Void",
+          "param_types": ["Long", "Long"],
+          "return_type": "void",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "POST /v1/users/{userId}/commands/removeFriend"
         }
       ]
     },
@@ -98,24 +81,37 @@
           "id": "UserController.getMutualFriends",
           "class_name": "io.example.domain.user.UserController",
           "method_name": "getMutualFriends",
-          "param_types": [
-            "Long",
-            "Long"
-          ],
+          "param_types": ["Long", "Long"],
           "return_type": "List<User>",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /v1/users/{userId}/commands/findMutualFriends"
         },
         {
           "id": "UserController.recommendFriends",
           "class_name": "io.example.domain.user.UserController",
           "method_name": "recommendFriends",
-          "param_types": [
-            "Long"
-          ],
+          "param_types": ["Long"],
           "return_type": "List<RankedUser>",
           "protocol": "REST",
-          "endpoint": ""
+          "endpoint": "GET /v1/users/{userId}/commands/recommendFriends"
+        },
+        {
+          "id": "UserProcessor.apply",
+          "class_name": "io.example.domain.user.UserProcessor",
+          "method_name": "apply",
+          "param_types": ["UserEvent"],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "kafka topic: user"
+        },
+        {
+          "id": "FriendProcessor.apply",
+          "class_name": "io.example.domain.friend.FriendProcessor",
+          "method_name": "apply",
+          "param_types": ["FriendEvent"],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "kafka topic: friend"
         }
       ]
     },
@@ -126,5 +122,56 @@
       "exposed_interfaces": []
     }
   },
-  "inter_service_calls": []
+  "inter_service_calls": [
+    {
+      "src_service": "friend-service",
+      "src_class": "io.example.domain.user.UserClient",
+      "src_method": "getUser",
+      "dst_service": "user-service",
+      "dst_class": "io.example.domain.UserController",
+      "dst_interface_id": "UserController.getUser",
+      "protocol": "REST",
+      "evidence": "friend-service/src/main/java/io/example/domain/user/UserClient.java:22 `userWebClient.baseUrl(\"http://user-service/\").build().get()` | friend-service/src/main/java/io/example/domain/user/UserClient.java:23 `.uri(\"v1/users/{userId}\", userId)`"
+    },
+    {
+      "src_service": "user-service",
+      "src_class": "io.example.domain.UserController",
+      "src_method": "createUser",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.user.UserProcessor",
+      "dst_interface_id": "UserProcessor.apply",
+      "protocol": "Messaging",
+      "evidence": "user-service/src/main/java/io/example/domain/UserController.java:55 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | user-service/src/main/resources/application.yml:11 `destination: user` | recommendation-service/src/main/java/io/example/domain/user/UserProcessor.java:30 `@StreamListener(value = UserSink.INPUT)`"
+    },
+    {
+      "src_service": "user-service",
+      "src_class": "io.example.domain.UserController",
+      "src_method": "updateUser",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.user.UserProcessor",
+      "dst_interface_id": "UserProcessor.apply",
+      "protocol": "Messaging",
+      "evidence": "user-service/src/main/java/io/example/domain/UserController.java:85 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | user-service/src/main/resources/application.yml:11 `destination: user` | recommendation-service/src/main/java/io/example/domain/user/UserProcessor.java:30 `@StreamListener(value = UserSink.INPUT)`"
+    },
+    {
+      "src_service": "friend-service",
+      "src_class": "io.example.domain.friend.FriendController",
+      "src_method": "addFriend",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.friend.FriendProcessor",
+      "dst_interface_id": "FriendProcessor.apply",
+      "protocol": "Messaging",
+      "evidence": "friend-service/src/main/java/io/example/domain/friend/FriendController.java:94 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | friend-service/src/main/resources/application.yml:9 `destination: friend` | recommendation-service/src/main/java/io/example/domain/friend/FriendProcessor.java:33 `@StreamListener(value = FriendSink.INPUT)`"
+    },
+    {
+      "src_service": "friend-service",
+      "src_class": "io.example.domain.friend.FriendController",
+      "src_method": "removeFriend",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.friend.FriendProcessor",
+      "dst_interface_id": "FriendProcessor.apply",
+      "protocol": "Messaging",
+      "evidence": "friend-service/src/main/java/io/example/domain/friend/FriendController.java:136 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | friend-service/src/main/resources/application.yml:9 `destination: friend` | recommendation-service/src/main/java/io/example/domain/friend/FriendProcessor.java:33 `@StreamListener(value = FriendSink.INPUT)`"
+    }
+  ]
 }

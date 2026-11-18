@@ -1,0 +1,12 @@
+# Runtime-check override: infra pins + amd64 emulation. Service images/config unchanged.
+services:
+  discovery-service: {platform: linux/amd64}
+  edge-service: {platform: linux/amd64}
+  friend-service: {platform: linux/amd64}
+  user-service: {platform: linux/amd64}
+  recommendation-service: {platform: linux/amd64}
+  kafka: {image: "confluentinc/cp-kafka:7.5.3"}
+  zookeeper: {image: "confluentinc/cp-zookeeper:7.5.3"}
+  friend-db: {image: "postgres:15"}
+  user-db: {image: "postgres:15"}
+  neo4j: {platform: linux/amd64}
