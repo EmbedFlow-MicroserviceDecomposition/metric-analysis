@@ -6,11 +6,12 @@ Every mapping below was reviewed against the code (see benchmarks/curation/MS070
 import json, re
 from pathlib import Path
 
-SP = Path("/private/tmp/claude-501/-Users-ravishan-Desktop-FYP/d847329e-7971-4487-8e02-93587adeb48b/scratchpad")
+# Inputs: the analyzer output (out.json) and protos.py output (rpcs.json), written next to this script.
+SP = Path(__file__).resolve().parent
 CB = Path("codebases/microservices/MS070_boulder")
 B = "github.com/letsencrypt/boulder/"
-an = json.load(open(SP / "ms070_analyzer/out.json"))
-rpcs = json.load(open(SP / "ms070_rpcs.json"))
+an = json.load(open(SP / "out.json"))
+rpcs = json.load(open(SP / "rpcs.json"))
 part = json.load(open("outputs/MS070/output.json"))["microservices"]
 svc_of = {c: s for s, v in part.items() for c in v}
 
