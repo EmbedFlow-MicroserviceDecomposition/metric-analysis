@@ -172,9 +172,6 @@
         }
       ]
     },
-    "loadgenerator": {
-      "exposed_interfaces": []
-    },
     "recommendationservice": {
       "exposed_interfaces": [
         {
@@ -326,66 +323,6 @@
     }
   },
   "inter_service_calls": [
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "on_start",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.homeHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:35,81 def on_start(self): index(self) -> l.client.get(\"/\")"
-    },
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "setCurrency",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.setCurrencyHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:39,84 l.client.post(\"/setCurrency\", {'currency_code': random.choice(currencies)})"
-    },
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "browseProduct",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.productHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:43,85 l.client.get(\"/product/\" + random.choice(products))"
-    },
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "addToCart",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.addToCartHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:51,86 l.client.post(\"/cart\", {'product_id': product, 'quantity': random.randint(1,10)})"
-    },
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "viewCart",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.viewCartHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:46,87 l.client.get(\"/cart\")"
-    },
-    {
-      "src_service": "loadgenerator",
-      "src_class": "locustfile.UserBehavior",
-      "src_method": "checkout",
-      "dst_service": "frontend",
-      "dst_class": "main.frontendServer",
-      "dst_interface_id": "frontendServer.placeOrderHandler",
-      "protocol": "REST",
-      "evidence": "locustfile.py:61,88 l.client.post(\"/cart/checkout\", {...})"
-    },
     {
       "src_service": "frontend",
       "src_class": "main.frontendServer",

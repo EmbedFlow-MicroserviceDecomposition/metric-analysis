@@ -4,14 +4,98 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
-    "config": {
-      "exposed_interfaces": []
+    "account-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthServiceClient.createUser",
+          "class_name": "com.piggymetrics.account.client.AuthServiceClient",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "StatisticsServiceClient.updateStatistics",
+          "class_name": "com.piggymetrics.account.client.StatisticsServiceClient",
+          "method_name": "updateStatistics",
+          "param_types": [
+            "String",
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.createNewAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "createNewAccount",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.getAccountByName",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getAccountByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.getCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getCurrentAccount",
+          "param_types": [],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AccountController.saveCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "saveCurrentAccount",
+          "param_types": [
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
     },
-    "monitoring": {
-      "exposed_interfaces": []
-    },
-    "registry": {
-      "exposed_interfaces": []
+    "auth-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.createUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "UserController.getUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "getUser",
+          "param_types": [],
+          "return_type": "Principal",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
     },
     "gateway": {
       "exposed_interfaces": [
@@ -98,8 +182,7 @@
           "class_name": "extrascripts",
           "method_name": "A",
           "param_types": [
-            "b",
-            "a"
+            "e"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -110,7 +193,8 @@
           "class_name": "extrascripts",
           "method_name": "A",
           "param_types": [
-            "e"
+            "b",
+            "a"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -230,18 +314,6 @@
           "class_name": "extrascripts",
           "method_name": "b",
           "param_types": [
-            "e",
-            "n"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.b",
-          "class_name": "extrascripts",
-          "method_name": "b",
-          "param_types": [
             "b"
           ],
           "return_type": "object",
@@ -258,11 +330,12 @@
           "endpoint": ""
         },
         {
-          "id": "extrascripts.c",
+          "id": "extrascripts.b",
           "class_name": "extrascripts",
-          "method_name": "c",
+          "method_name": "b",
           "param_types": [
-            "c"
+            "e",
+            "n"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -288,6 +361,17 @@
           "method_name": "c",
           "param_types": [
             "b"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.c",
+          "class_name": "extrascripts",
+          "method_name": "c",
+          "param_types": [
+            "c"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -396,7 +480,8 @@
           "class_name": "extrascripts",
           "method_name": "g",
           "param_types": [
-            "d"
+            "e",
+            "n"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -407,8 +492,7 @@
           "class_name": "extrascripts",
           "method_name": "g",
           "param_types": [
-            "e",
-            "n"
+            "d"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -421,17 +505,6 @@
           "param_types": [
             "e",
             "t"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.h",
-          "class_name": "extrascripts",
-          "method_name": "h",
-          "param_types": [
-            "b"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -456,6 +529,17 @@
           "method_name": "h",
           "param_types": [
             "c"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.h",
+          "class_name": "extrascripts",
+          "method_name": "h",
+          "param_types": [
+            "b"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -523,6 +607,19 @@
           "class_name": "extrascripts",
           "method_name": "l",
           "param_types": [
+            "e",
+            "t",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.l",
+          "class_name": "extrascripts",
+          "method_name": "l",
+          "param_types": [
             "b"
           ],
           "return_type": "object",
@@ -534,32 +631,7 @@
           "class_name": "extrascripts",
           "method_name": "l",
           "param_types": [
-            "e",
             "t",
-            "n"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.l",
-          "class_name": "extrascripts",
-          "method_name": "l",
-          "param_types": [
-            "t",
-            "n"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.m",
-          "class_name": "extrascripts",
-          "method_name": "m",
-          "param_types": [
-            "e",
             "n"
           ],
           "return_type": "object",
@@ -591,6 +663,18 @@
           "endpoint": ""
         },
         {
+          "id": "extrascripts.m",
+          "class_name": "extrascripts",
+          "method_name": "m",
+          "param_types": [
+            "e",
+            "n"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
           "id": "extrascripts.n",
           "class_name": "extrascripts",
           "method_name": "n",
@@ -598,17 +682,6 @@
             "e",
             "n",
             "r"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.o",
-          "class_name": "extrascripts",
-          "method_name": "o",
-          "param_types": [
-            "e"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -627,12 +700,11 @@
           "endpoint": ""
         },
         {
-          "id": "extrascripts.p",
+          "id": "extrascripts.o",
           "class_name": "extrascripts",
-          "method_name": "p",
+          "method_name": "o",
           "param_types": [
-            "b",
-            "a"
+            "e"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -645,6 +717,18 @@
           "param_types": [
             "n",
             "r"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.p",
+          "class_name": "extrascripts",
+          "method_name": "p",
+          "param_types": [
+            "b",
+            "a"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -679,7 +763,9 @@
           "class_name": "extrascripts",
           "method_name": "r",
           "param_types": [
-            "e"
+            "b",
+            "a",
+            "c"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -690,21 +776,7 @@
           "class_name": "extrascripts",
           "method_name": "r",
           "param_types": [
-            "b",
-            "a",
-            "c"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "extrascripts.s",
-          "class_name": "extrascripts",
-          "method_name": "s",
-          "param_types": [
-            "b",
-            "a"
+            "e"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -717,6 +789,18 @@
           "param_types": [
             "e",
             "t"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "extrascripts.s",
+          "class_name": "extrascripts",
+          "method_name": "s",
+          "param_types": [
+            "b",
+            "a"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -750,8 +834,8 @@
           "class_name": "extrascripts",
           "method_name": "u",
           "param_types": [
-            "b",
-            "a"
+            "e",
+            "t"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -762,8 +846,8 @@
           "class_name": "extrascripts",
           "method_name": "u",
           "param_types": [
-            "e",
-            "t"
+            "b",
+            "a"
           ],
           "return_type": "object",
           "protocol": "REST",
@@ -1691,94 +1775,36 @@
         }
       ]
     },
-    "auth-service": {
+    "notification-service": {
       "exposed_interfaces": [
         {
-          "id": "UserController.createUser",
-          "class_name": "com.piggymetrics.auth.controller.UserController",
-          "method_name": "createUser",
-          "param_types": [
-            "User"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "UserController.getUser",
-          "class_name": "com.piggymetrics.auth.controller.UserController",
-          "method_name": "getUser",
-          "param_types": [],
-          "return_type": "Principal",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "account-service": {
-      "exposed_interfaces": [
-        {
-          "id": "AuthServiceClient.createUser",
-          "class_name": "com.piggymetrics.account.client.AuthServiceClient",
-          "method_name": "createUser",
-          "param_types": [
-            "User"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "StatisticsServiceClient.updateStatistics",
-          "class_name": "com.piggymetrics.account.client.StatisticsServiceClient",
-          "method_name": "updateStatistics",
-          "param_types": [
-            "String",
-            "Account"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "AccountController.createNewAccount",
-          "class_name": "com.piggymetrics.account.controller.AccountController",
-          "method_name": "createNewAccount",
-          "param_types": [
-            "User"
-          ],
-          "return_type": "Account",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "AccountController.getAccountByName",
-          "class_name": "com.piggymetrics.account.controller.AccountController",
-          "method_name": "getAccountByName",
+          "id": "AccountServiceClient.getAccount",
+          "class_name": "com.piggymetrics.notification.client.AccountServiceClient",
+          "method_name": "getAccount",
           "param_types": [
             "String"
           ],
-          "return_type": "Account",
+          "return_type": "String",
           "protocol": "REST",
           "endpoint": ""
         },
         {
-          "id": "AccountController.getCurrentAccount",
-          "class_name": "com.piggymetrics.account.controller.AccountController",
-          "method_name": "getCurrentAccount",
+          "id": "RecipientController.getCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "getCurrentNotificationsSettings",
           "param_types": [],
-          "return_type": "Account",
+          "return_type": "Object",
           "protocol": "REST",
           "endpoint": ""
         },
         {
-          "id": "AccountController.saveCurrentAccount",
-          "class_name": "com.piggymetrics.account.controller.AccountController",
-          "method_name": "saveCurrentAccount",
+          "id": "RecipientController.saveCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "saveCurrentNotificationsSettings",
           "param_types": [
-            "Account"
+            "Recipient"
           ],
-          "return_type": "void",
+          "return_type": "Object",
           "protocol": "REST",
           "endpoint": ""
         }
@@ -1830,44 +1856,6 @@
           "endpoint": ""
         }
       ]
-    },
-    "notification-service": {
-      "exposed_interfaces": [
-        {
-          "id": "AccountServiceClient.getAccount",
-          "class_name": "com.piggymetrics.notification.client.AccountServiceClient",
-          "method_name": "getAccount",
-          "param_types": [
-            "String"
-          ],
-          "return_type": "String",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "RecipientController.getCurrentNotificationsSettings",
-          "class_name": "com.piggymetrics.notification.controller.RecipientController",
-          "method_name": "getCurrentNotificationsSettings",
-          "param_types": [],
-          "return_type": "Object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "RecipientController.saveCurrentNotificationsSettings",
-          "class_name": "com.piggymetrics.notification.controller.RecipientController",
-          "method_name": "saveCurrentNotificationsSettings",
-          "param_types": [
-            "Recipient"
-          ],
-          "return_type": "Object",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "turbine-stream-service": {
-      "exposed_interfaces": []
     }
   },
   "inter_service_calls": []

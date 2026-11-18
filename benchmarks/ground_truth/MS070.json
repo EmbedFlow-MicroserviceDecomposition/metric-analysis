@@ -19,6 +19,413 @@
         }
       ]
     },
+    "crl": {
+      "exposed_interfaces": [
+        {
+          "id": "crlStorer.checkRemovedEntries",
+          "class_name": "storer.crlStorer",
+          "method_name": "checkRemovedEntries",
+          "param_types": [
+            "[]*big.Int",
+            "prevThisUpdate",
+            "time.Time"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.RunOnce",
+          "class_name": "updater.crlUpdater",
+          "method_name": "RunOnce",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.updateShard",
+          "class_name": "updater.crlUpdater",
+          "method_name": "updateShard",
+          "param_types": [
+            "time.Time",
+            "issuance.NameID",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "crlUpdater.updateShardWithRetry",
+          "class_name": "updater.crlUpdater",
+          "method_name": "updateShardWithRetry",
+          "param_types": [
+            "time.Time",
+            "issuance.NameID",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "nonce": {
+      "exposed_interfaces": [
+        {
+          "id": "NonceService.Nonce",
+          "class_name": "nonce.NonceService",
+          "method_name": "Nonce",
+          "param_types": [
+            "emptypb.Empty"
+          ],
+          "return_type": "noncepb.NonceMessage",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "NonceService.Redeem",
+          "class_name": "nonce.NonceService",
+          "method_name": "Redeem",
+          "param_types": [
+            "noncepb.NonceMessage"
+          ],
+          "return_type": "noncepb.ValidMessage",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "observer": {
+      "exposed_interfaces": [
+        {
+          "id": "CCADBProber.Probe",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getAllIntermediates",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getAllIntermediates",
+          "param_types": [
+            "map[string][]string"
+          ],
+          "return_type": "map[string]*x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getCRLURLs",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getCRLURLs",
+          "param_types": [],
+          "return_type": "map[string][]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CCADBProber.getDecadeIntermediates",
+          "class_name": "ccadb.CCADBProber",
+          "method_name": "getDecadeIntermediates",
+          "param_types": [
+            "int",
+            "map[string][]string"
+          ],
+          "return_type": "map[string]*x509.Certificate",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.checkCRL",
+          "class_name": "ccadb.ccadb",
+          "method_name": "checkCRL",
+          "param_types": [
+            "string",
+            "x509.Certificate",
+            "time.Duration"
+          ],
+          "return_type": "x509.RevocationList",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.checkCRLShardNotFound",
+          "class_name": "ccadb.ccadb",
+          "method_name": "checkCRLShardNotFound",
+          "param_types": [
+            "regexp.Regexp",
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ccadb.getCSV",
+          "class_name": "ccadb.ccadb",
+          "method_name": "getCSV",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.getBody",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "getBody",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.httpGet",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "httpGet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "retryhttp.httpGetExpectingStatusCode",
+          "class_name": "ccadb.retryhttp",
+          "method_name": "httpGetExpectingStatusCode",
+          "param_types": [
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "ObsConf.MakeObserver",
+          "class_name": "observer.ObsConf",
+          "method_name": "MakeObserver",
+          "param_types": [],
+          "return_type": "Observer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Observer.Start",
+          "class_name": "observer.Observer",
+          "method_name": "Start",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "monitor.start",
+          "class_name": "observer.monitor",
+          "method_name": "start",
+          "param_types": [
+            "blog.Logger"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "AIAProbe.Probe",
+          "class_name": "probers.AIAProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CRLProbe.Probe",
+          "class_name": "probers.CRLProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "DNSProbe.Probe",
+          "class_name": "probers.DNSProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.Instrument",
+          "class_name": "probers.HTTPConf",
+          "method_name": "Instrument",
+          "param_types": [],
+          "return_type": "map[string]prometheus.Collector",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.Kind",
+          "class_name": "probers.HTTPConf",
+          "method_name": "Kind",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.MakeProber",
+          "class_name": "probers.HTTPConf",
+          "method_name": "MakeProber",
+          "param_types": [
+            "map[string]prometheus.Collector"
+          ],
+          "return_type": "probers.Prober",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPConf.UnmarshalSettings",
+          "class_name": "probers.HTTPConf",
+          "method_name": "UnmarshalSettings",
+          "param_types": [
+            "[]byte"
+          ],
+          "return_type": "probers.Configurer",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Kind",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Kind",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Name",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Name",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "HTTPProbe.Probe",
+          "class_name": "probers.HTTPProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "MockProber.Probe",
+          "class_name": "probers.MockProber",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.Probe",
+          "class_name": "probers.TLSProbe",
+          "method_name": "Probe",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.probeExpired",
+          "class_name": "probers.TLSProbe",
+          "method_name": "probeExpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "TLSProbe.probeUnexpired",
+          "class_name": "probers.TLSProbe",
+          "method_name": "probeUnexpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "tls.checkCRL",
+          "class_name": "probers.tls",
+          "method_name": "checkCRL",
+          "param_types": [
+            "cert",
+            "x509.Certificate",
+            "int"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "tls.checkOCSP",
+          "class_name": "probers.tls",
+          "method_name": "checkOCSP",
+          "param_types": [
+            "cert",
+            "x509.Certificate",
+            "int"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "publisher": {
+      "exposed_interfaces": [
+        {
+          "id": "Impl.SubmitToSingleCTWithResult",
+          "class_name": "publisher.Impl",
+          "method_name": "SubmitToSingleCTWithResult",
+          "param_types": [
+            "pubpb.Request"
+          ],
+          "return_type": "pubpb.Result",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Impl.singleLogSubmit",
+          "class_name": "publisher.Impl",
+          "method_name": "singleLogSubmit",
+          "param_types": [
+            "[]ct.ASN1Cert",
+            "pubpb.SubmissionType",
+            "Log"
+          ],
+          "return_type": "ct.SignedCertificateTimestamp",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
     "ra": {
       "exposed_interfaces": [
         {
@@ -1196,6 +1603,218 @@
         }
       ]
     },
+    "sfe": {
+      "exposed_interfaces": [
+        {
+          "id": "OverridesImporter.Start",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "Start",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OverridesImporter.processTicket",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "processTicket",
+          "param_types": [
+            "int64",
+            "map[string]string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "OverridesImporter.tick",
+          "class_name": "sfe.OverridesImporter",
+          "method_name": "tick",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.BuildID",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "BuildID",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.Handler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "Handler",
+          "param_types": [
+            "prometheus.Registerer",
+            "...otelhttp.Option"
+          ],
+          "return_type": "http.Handler",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.Index",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseForm",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseForm",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseStatus",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseStatus",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.UnpauseSubmit",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "UnpauseSubmit",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.makeOverrideRequestFormHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "makeOverrideRequestFormHandler",
+          "param_types": [
+            "template.HTML",
+            "rateLimit",
+            "string"
+          ],
+          "return_type": "http.HandlerFunc",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideAutoApprovedSuccessHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideAutoApprovedSuccessHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideRequestHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideRequestHandler",
+          "param_types": [
+            "template.HTML",
+            "rateLimit",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.overrideRequestSubmittedSuccessHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "overrideRequestSubmittedSuccessHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.renderTemplate",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "renderTemplate",
+          "param_types": [
+            "string",
+            "any"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.submitOverrideRequestHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "submitOverrideRequestHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseFailed",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseFailed",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseRequestMalformed",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseRequestMalformed",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseSuccessful",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseSuccessful",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.unpauseTokenExpired",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "unpauseTokenExpired",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "SelfServiceFrontEndImpl.validateOverrideFieldHandler",
+          "class_name": "sfe.SelfServiceFrontEndImpl",
+          "method_name": "validateOverrideFieldHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "overrides.setOverrideRequestFormHeaders",
+          "class_name": "sfe.overrides",
+          "method_name": "setOverrideRequestFormHeaders",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
     "va": {
       "exposed_interfaces": [
         {
@@ -2079,625 +2698,6 @@
             "core.Authorization"
           ],
           "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "publisher": {
-      "exposed_interfaces": [
-        {
-          "id": "Impl.SubmitToSingleCTWithResult",
-          "class_name": "publisher.Impl",
-          "method_name": "SubmitToSingleCTWithResult",
-          "param_types": [
-            "pubpb.Request"
-          ],
-          "return_type": "pubpb.Result",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "Impl.singleLogSubmit",
-          "class_name": "publisher.Impl",
-          "method_name": "singleLogSubmit",
-          "param_types": [
-            "[]ct.ASN1Cert",
-            "pubpb.SubmissionType",
-            "Log"
-          ],
-          "return_type": "ct.SignedCertificateTimestamp",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "nonce": {
-      "exposed_interfaces": [
-        {
-          "id": "NonceService.Nonce",
-          "class_name": "nonce.NonceService",
-          "method_name": "Nonce",
-          "param_types": [
-            "emptypb.Empty"
-          ],
-          "return_type": "noncepb.NonceMessage",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "NonceService.Redeem",
-          "class_name": "nonce.NonceService",
-          "method_name": "Redeem",
-          "param_types": [
-            "noncepb.NonceMessage"
-          ],
-          "return_type": "noncepb.ValidMessage",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "crl": {
-      "exposed_interfaces": [
-        {
-          "id": "crlStorer.checkRemovedEntries",
-          "class_name": "storer.crlStorer",
-          "method_name": "checkRemovedEntries",
-          "param_types": [
-            "[]*big.Int",
-            "prevThisUpdate",
-            "time.Time"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "crlUpdater.RunOnce",
-          "class_name": "updater.crlUpdater",
-          "method_name": "RunOnce",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "crlUpdater.updateShard",
-          "class_name": "updater.crlUpdater",
-          "method_name": "updateShard",
-          "param_types": [
-            "time.Time",
-            "issuance.NameID",
-            "int"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "crlUpdater.updateShardWithRetry",
-          "class_name": "updater.crlUpdater",
-          "method_name": "updateShardWithRetry",
-          "param_types": [
-            "time.Time",
-            "issuance.NameID",
-            "int"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "observer": {
-      "exposed_interfaces": [
-        {
-          "id": "CCADBProber.Probe",
-          "class_name": "ccadb.CCADBProber",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CCADBProber.getAllIntermediates",
-          "class_name": "ccadb.CCADBProber",
-          "method_name": "getAllIntermediates",
-          "param_types": [
-            "map[string][]string"
-          ],
-          "return_type": "map[string]*x509.Certificate",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CCADBProber.getCRLURLs",
-          "class_name": "ccadb.CCADBProber",
-          "method_name": "getCRLURLs",
-          "param_types": [],
-          "return_type": "map[string][]string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CCADBProber.getDecadeIntermediates",
-          "class_name": "ccadb.CCADBProber",
-          "method_name": "getDecadeIntermediates",
-          "param_types": [
-            "int",
-            "map[string][]string"
-          ],
-          "return_type": "map[string]*x509.Certificate",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "ccadb.checkCRL",
-          "class_name": "ccadb.ccadb",
-          "method_name": "checkCRL",
-          "param_types": [
-            "string",
-            "x509.Certificate",
-            "time.Duration"
-          ],
-          "return_type": "x509.RevocationList",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "ccadb.checkCRLShardNotFound",
-          "class_name": "ccadb.ccadb",
-          "method_name": "checkCRLShardNotFound",
-          "param_types": [
-            "regexp.Regexp",
-            "string",
-            "int"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "ccadb.getCSV",
-          "class_name": "ccadb.ccadb",
-          "method_name": "getCSV",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "[]string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "retryhttp.getBody",
-          "class_name": "ccadb.retryhttp",
-          "method_name": "getBody",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "[]byte",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "retryhttp.httpGet",
-          "class_name": "ccadb.retryhttp",
-          "method_name": "httpGet",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "[]byte",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "retryhttp.httpGetExpectingStatusCode",
-          "class_name": "ccadb.retryhttp",
-          "method_name": "httpGetExpectingStatusCode",
-          "param_types": [
-            "string",
-            "int"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "ObsConf.MakeObserver",
-          "class_name": "observer.ObsConf",
-          "method_name": "MakeObserver",
-          "param_types": [],
-          "return_type": "Observer",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "Observer.Start",
-          "class_name": "observer.Observer",
-          "method_name": "Start",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "monitor.start",
-          "class_name": "observer.monitor",
-          "method_name": "start",
-          "param_types": [
-            "blog.Logger"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "AIAProbe.Probe",
-          "class_name": "probers.AIAProbe",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CRLProbe.Probe",
-          "class_name": "probers.CRLProbe",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "DNSProbe.Probe",
-          "class_name": "probers.DNSProbe",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPConf.Instrument",
-          "class_name": "probers.HTTPConf",
-          "method_name": "Instrument",
-          "param_types": [],
-          "return_type": "map[string]prometheus.Collector",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPConf.Kind",
-          "class_name": "probers.HTTPConf",
-          "method_name": "Kind",
-          "param_types": [],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPConf.MakeProber",
-          "class_name": "probers.HTTPConf",
-          "method_name": "MakeProber",
-          "param_types": [
-            "map[string]prometheus.Collector"
-          ],
-          "return_type": "probers.Prober",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPConf.UnmarshalSettings",
-          "class_name": "probers.HTTPConf",
-          "method_name": "UnmarshalSettings",
-          "param_types": [
-            "[]byte"
-          ],
-          "return_type": "probers.Configurer",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPProbe.Kind",
-          "class_name": "probers.HTTPProbe",
-          "method_name": "Kind",
-          "param_types": [],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPProbe.Name",
-          "class_name": "probers.HTTPProbe",
-          "method_name": "Name",
-          "param_types": [],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "HTTPProbe.Probe",
-          "class_name": "probers.HTTPProbe",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "MockProber.Probe",
-          "class_name": "probers.MockProber",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "TLSProbe.Probe",
-          "class_name": "probers.TLSProbe",
-          "method_name": "Probe",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "TLSProbe.probeExpired",
-          "class_name": "probers.TLSProbe",
-          "method_name": "probeExpired",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "TLSProbe.probeUnexpired",
-          "class_name": "probers.TLSProbe",
-          "method_name": "probeUnexpired",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "tls.checkCRL",
-          "class_name": "probers.tls",
-          "method_name": "checkCRL",
-          "param_types": [
-            "cert",
-            "x509.Certificate",
-            "int"
-          ],
-          "return_type": "bool",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "tls.checkOCSP",
-          "class_name": "probers.tls",
-          "method_name": "checkOCSP",
-          "param_types": [
-            "cert",
-            "x509.Certificate",
-            "int"
-          ],
-          "return_type": "bool",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "sfe": {
-      "exposed_interfaces": [
-        {
-          "id": "OverridesImporter.Start",
-          "class_name": "sfe.OverridesImporter",
-          "method_name": "Start",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "OverridesImporter.processTicket",
-          "class_name": "sfe.OverridesImporter",
-          "method_name": "processTicket",
-          "param_types": [
-            "int64",
-            "map[string]string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "OverridesImporter.tick",
-          "class_name": "sfe.OverridesImporter",
-          "method_name": "tick",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.BuildID",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "BuildID",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.Handler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "Handler",
-          "param_types": [
-            "prometheus.Registerer",
-            "...otelhttp.Option"
-          ],
-          "return_type": "http.Handler",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.Index",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "Index",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseForm",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseForm",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseStatus",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseStatus",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseSubmit",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseSubmit",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.makeOverrideRequestFormHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "makeOverrideRequestFormHandler",
-          "param_types": [
-            "template.HTML",
-            "rateLimit",
-            "string"
-          ],
-          "return_type": "http.HandlerFunc",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.overrideAutoApprovedSuccessHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "overrideAutoApprovedSuccessHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.overrideRequestHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "overrideRequestHandler",
-          "param_types": [
-            "template.HTML",
-            "rateLimit",
-            "string"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.overrideRequestSubmittedSuccessHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "overrideRequestSubmittedSuccessHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.renderTemplate",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "renderTemplate",
-          "param_types": [
-            "string",
-            "any"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.submitOverrideRequestHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "submitOverrideRequestHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.unpauseFailed",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "unpauseFailed",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.unpauseRequestMalformed",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "unpauseRequestMalformed",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.unpauseSuccessful",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "unpauseSuccessful",
-          "param_types": [
-            "int64"
-          ],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.unpauseTokenExpired",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "unpauseTokenExpired",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.validateOverrideFieldHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "validateOverrideFieldHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "overrides.setOverrideRequestFormHeaders",
-          "class_name": "sfe.overrides",
-          "method_name": "setOverrideRequestFormHeaders",
-          "param_types": [],
-          "return_type": "void",
           "protocol": "REST",
           "endpoint": ""
         }

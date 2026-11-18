@@ -4,18 +4,6 @@
   "prompt_version": "v1.0",
   "status": "verified",
   "microservices": {
-    "common-swagger": {
-      "exposed_interfaces": []
-    },
-    "ftgo-test-util": {
-      "exposed_interfaces": []
-    },
-    "ftgo-test-util-json-schema": {
-      "exposed_interfaces": []
-    },
-    "ftgo-common": {
-      "exposed_interfaces": []
-    },
     "ftgo-order-service": {
       "exposed_interfaces": [
         {
@@ -219,12 +207,6 @@
         }
       ]
     },
-    "ftgo-order-service-api": {
-      "exposed_interfaces": []
-    },
-    "ftgo-kitchen-service-api": {
-      "exposed_interfaces": []
-    },
     "ftgo-kitchen-service": {
       "exposed_interfaces": [
         {
@@ -373,9 +355,6 @@
         }
       ]
     },
-    "ftgo-accounting-service-api": {
-      "exposed_interfaces": []
-    },
     "ftgo-accounting-service": {
       "exposed_interfaces": [
         {
@@ -435,9 +414,6 @@
         }
       ]
     },
-    "ftgo-consumer-service-api": {
-      "exposed_interfaces": []
-    },
     "ftgo-consumer-service": {
       "exposed_interfaces": [
         {
@@ -474,9 +450,6 @@
           "endpoint": "consumerService/ValidateOrderByConsumer"
         }
       ]
-    },
-    "ftgo-restaurant-service-api": {
-      "exposed_interfaces": []
     },
     "ftgo-restaurant-service": {
       "exposed_interfaces": [
@@ -644,9 +617,6 @@
           "endpoint": "net.chrisrichardson.ftgo.restaurantservice.domain.Restaurant/RestaurantCreated"
         }
       ]
-    },
-    "ftgo-delivery-service-api": {
-      "exposed_interfaces": []
     },
     "ftgo-api-gateway": {
       "exposed_interfaces": [

@@ -119,10 +119,13 @@ class SMMetric(BaseMetric):
         extraction_source = "monolith"
         extra_meta = {}
 
+        clusters: Dict[str, Set[str]] = {}
+        get_cluster = None
+
         if ext_file and ext_file.exists():
             extraction = load_agent_extraction(ext_file)
-            intra_edges = extract_intra_service_edges(ms_dir, partition)
-            inter_edges = extraction_to_inter_service_edges(extraction)
+            intra_edges = extract_intra_service_edges(ms_dir, partition, qualify_with_service_id=True)
+            inter_edges = extraction_to_inter_service_edges(extraction, qualify_with_service_id=True)
             seen = set()
             for e in intra_edges + inter_edges:
                 if e.src != e.dst and (e.src, e.dst) not in seen:
@@ -134,6 +137,11 @@ class SMMetric(BaseMetric):
                 "inter_edges_count": len(inter_edges),
                 "extractor_tool": extraction.extractor_tool,
             }
+            clusters = {
+                cid: {f"{cid}::{cls}" for cls in members}
+                for cid, members in partition.microservices.items()
+            }
+            get_cluster = lambda node_id: node_id.split("::", 1)[0] if (node_id and "::" in node_id) else None
         else:
             # 2. Fallback to dataset.json or monolith call graph
             ds_file = None
@@ -164,7 +172,7 @@ class SMMetric(BaseMetric):
                     "(provide agent_extraction.json in outputs/<MS_ID>/, a monolith in codebases/monoliths/, or --dataset-path)."
                 )
 
-        clusters, get_cluster = resolve_partition_with_clusters(partition.microservices, dataset_methods)
+            clusters, get_cluster = resolve_partition_with_clusters(partition.microservices, dataset_methods)
 
         score, ms_scores = calculate_sm(get_cluster, clusters, edges, undirected=undirected)
 

@@ -4,9 +4,11 @@ import argparse
 from pathlib import Path
 from typing import List
 
-from fyp_cdq.config import CALIBRATION_RUNS_DIR, GROUND_TRUTH_DIR, OUTPUTS_DIR
+from fyp_cdq.config import CALIBRATION_RUNS_DIR, GROUND_TRUTH_DIR
+from fyp_cdq.extractors.agent_loader import load_manifest_services
+from fyp_cdq.extractors.service_detector import ServiceDetector
 from fyp_cdq.metrics.common import extract_microservice_published_ops
-from fyp_cdq.models import AgentExtraction, InterfaceSpec, Partition
+from fyp_cdq.models import AgentExtraction, InterfaceSpec
 from fyp_cdq.pipeline import resolve_system_codebase
 
 # 20 Stratified Benchmark Systems across Languages, Scale, and Communication Patterns
@@ -48,12 +50,11 @@ def scaffold_system_ground_truth(
             return out_file
 
     _, ms_path = resolve_system_codebase(system_id)
-    part_file = OUTPUTS_DIR / system_id / "output.json"
-    if not part_file.exists():
-        raise FileNotFoundError(f"Partition file not found at {part_file}. Run NED evaluation first.")
-    partition = Partition.from_json(part_file)
+    partition = ServiceDetector().detect_and_extract(ms_path, system_name=system_id)
+    manifest_services = load_manifest_services(system_id)
+    service_ids = list(manifest_services) if manifest_services is not None else list(partition.microservices.keys())
 
-    ms_interfaces = {cid: [] for cid in partition.microservices}
+    ms_interfaces = {cid: [] for cid in sorted(service_ids)}
     if prepopulate_candidates:
         ops_per_ms = extract_microservice_published_ops(ms_path, partition)
         for cid, ops in ops_per_ms.items():

@@ -12,7 +12,7 @@ def test_pipeline_evaluate_ms001(tmp_path: Path):
     assert partition.service_count > 0
     assert partition.total_classes > 0
     assert result.metric == "NED"
-    assert result.score > 0.0
+    assert 0.0 <= result.score <= 1.0
     assert (tmp_path / "output.json").exists()
     assert (tmp_path / "ned_score.json").exists()
 

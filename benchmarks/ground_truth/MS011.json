@@ -4,15 +4,6 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
-    "config": {
-      "exposed_interfaces": []
-    },
-    "registry": {
-      "exposed_interfaces": []
-    },
-    "gateway": {
-      "exposed_interfaces": []
-    },
     "city-service": {
       "exposed_interfaces": [
         {
@@ -38,6 +29,9 @@
           "endpoint": ""
         }
       ]
+    },
+    "gateway": {
+      "exposed_interfaces": []
     },
     "route-service": {
       "exposed_interfaces": [

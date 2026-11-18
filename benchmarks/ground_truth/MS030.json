@@ -4,9 +4,6 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
-    "discovery-service": {
-      "exposed_interfaces": []
-    },
     "account-service": {
       "exposed_interfaces": [
         {
@@ -74,9 +71,6 @@
           "endpoint": ""
         }
       ]
-    },
-    "gateway-service": {
-      "exposed_interfaces": []
     },
     "customer-service": {
       "exposed_interfaces": [
@@ -146,7 +140,7 @@
         }
       ]
     },
-    "zipkin-service": {
+    "gateway-service": {
       "exposed_interfaces": []
     }
   },
