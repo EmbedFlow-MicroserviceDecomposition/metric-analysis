@@ -247,6 +247,9 @@
       "statistics-service": "statistics-service",
       "notification-service": "notification-service",
       "turbine-stream-service": "turbine-stream-service"
+    },
+    "non_services": {
+      "mongodb": "MongoDB image (Dockerfile + init script + data dump) used by the services' databases; no application code."
     }
   },
   "MS021": {
@@ -254,19 +257,21 @@
     "path": "MS021_TeaStore",
     "language": "Java",
     "services": {
-      "interfaces/tools.descartes.teastore.entities": "interfaces/tools.descartes.teastore.entities",
-      "./utilities/tools.descartes.teastore.kieker.probes": "utilities/tools.descartes.teastore.kieker.probes",
       "./utilities/tools.descartes.teastore.kieker.rabbitmq": "utilities/tools.descartes.teastore.kieker.rabbitmq",
-      "utilities/tools.descartes.teastore.registryclient": "utilities/tools.descartes.teastore.registryclient",
-      "utilities/tools.descartes.teastore.dockermemoryconfigurator": "utilities/tools.descartes.teastore.dockermemoryconfigurator",
-      "./utilities/tools.descartes.teastore.dockerbase": "utilities/tools.descartes.teastore.dockerbase",
       "services/tools.descartes.teastore.image": "services/tools.descartes.teastore.image",
       "services/tools.descartes.teastore.persistence": "services/tools.descartes.teastore.persistence",
       "services/tools.descartes.teastore.recommender": "services/tools.descartes.teastore.recommender",
       "services/tools.descartes.teastore.registry": "services/tools.descartes.teastore.registry",
       "services/tools.descartes.teastore.auth": "services/tools.descartes.teastore.auth",
-      "services/tools.descartes.teastore.webui": "services/tools.descartes.teastore.webui",
-      "./utilities/tools.descartes.teastore.docker.all": "utilities/tools.descartes.teastore.docker.all"
+      "services/tools.descartes.teastore.webui": "services/tools.descartes.teastore.webui"
+    },
+    "non_services": {
+      "interfaces/tools.descartes.teastore.entities": "Shared entity/DTO library packaged into every service; not deployed on its own.",
+      "./utilities/tools.descartes.teastore.kieker.probes": "Kieker monitoring-probe library (AspectJ aspects + record types) packaged into services; not deployed on its own.",
+      "utilities/tools.descartes.teastore.registryclient": "Shared client library (registry client, load-balanced REST operations, generic AbstractCRUDEndpoint) packaged into every service; not deployed on its own.",
+      "utilities/tools.descartes.teastore.dockermemoryconfigurator": "Container start-up helper that sizes the JVM heap; not a service.",
+      "./utilities/tools.descartes.teastore.dockerbase": "Base Docker image (Tomcat + Kieker + config) that the service images build on; no application code.",
+      "./utilities/tools.descartes.teastore.docker.all": "All-in-one packaging image bundling the services; no application code of its own."
     }
   },
   "MS022": {
@@ -1093,6 +1098,10 @@
       "identity-server": "identity-server",
       "wallet-spa": "wallet-spa",
       "accounts-api": "accounts-api"
+    },
+    "non_services": {
+      "nginx": "Reverse proxy built from nginx.conf only (path routing to the three services); no application code.",
+      "accounts-api-seed": "One-off database-migration job (dotnet-ef over accounts-api's own code); not a long-running service and has no code of its own."
     }
   },
   "MS079": {

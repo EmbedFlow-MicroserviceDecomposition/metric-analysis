@@ -4,12 +4,6 @@
   "prompt_version": "v1.0",
   "status": "verified",
   "microservices": {
-    "interfaces/tools.descartes.teastore.entities": {
-      "exposed_interfaces": []
-    },
-    "./utilities/tools.descartes.teastore.kieker.probes": {
-      "exposed_interfaces": []
-    },
     "./utilities/tools.descartes.teastore.kieker.rabbitmq": {
       "exposed_interfaces": [
         {
@@ -40,12 +34,6 @@
           "endpoint": "GET /logs/reset"
         }
       ]
-    },
-    "utilities/tools.descartes.teastore.registryclient": {
-      "exposed_interfaces": []
-    },
-    "utilities/tools.descartes.teastore.dockermemoryconfigurator": {
-      "exposed_interfaces": []
     },
     "services/tools.descartes.teastore.image": {
       "exposed_interfaces": [
