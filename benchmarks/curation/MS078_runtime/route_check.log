@@ -1,0 +1,7 @@
+1. getAccounts   /api/v1/accounts                                               HTTP 200  -> 'WebApi.UseCases.V1.Accounts.GetAccounts.AccountsController.Get (WebApi)'
+2. getAccount    /api/v1/accounts/4c510cfe-5d61-4a46-a3d9-c4313426655f          HTTP 200  -> 'WebApi.UseCases.V1.Accounts.GetAccount.AccountsController.Get (WebApi)'
+3. openAccount   -X POST /api/v1/accounts                                       HTTP 200  -> 'WebApi.UseCases.V1.Accounts.OpenAccount.AccountsController.Post (WebApi)'
+4. deposit       -X PATCH /api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/deposit HTTP 200  -> 'WebApi.UseCases.V1.Transactions.Deposit.TransactionsController.Deposit (WebApi)'
+5. withdraw      -X PATCH /api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/withdraw HTTP 200  -> 'WebApi.UseCases.V1.Transactions.Withdraw.TransactionsController.Withdraw (WebApi)'
+6. transfer      -X PATCH /api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/4c510cfe-5d61-4a46-a3d9-c4313426655f HTTP 200  -> 'WebApi.UseCases.V1.Transactions.Transfer.TransactionsController.Transfer (WebApi)'
+7. closeAccount  -X DELETE /api/v1/accounts/975be960-bf0e-42e8-9c8c-349473185d75 HTTP 200  -> 'WebApi.UseCases.V1.Accounts.CloseAccount.AccountsController.Close (WebApi)'

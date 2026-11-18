@@ -15,6 +15,7 @@ import argparse
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
@@ -35,8 +36,8 @@ OUTBOUND_PATTERNS = [
     r"\.(get|post|put|delete|patch)ForObject\(", r"\.(get|post|put|delete|patch)ForEntity\(",
     r"WebClient.*\.(baseUrl|uri)\(", r"\.uri\(\s*\"", r"baseUrl\(\s*\"http",
     r"\boutput\(\)\.send\(", r"StreamBridge", r"KafkaTemplate", r"RabbitTemplate",
-    r"convertAndSend\(", r"\.Publish(Async)?\(", r"HttpClient\b.*\.(Get|Post|Put|Delete|Send)\w*Async\(",
-    r"\bfetch\(", r"axios\.", r"requests\.(get|post|put|delete)\(", r"http\.(Get|Post)\(",
+    r"convertAndSend\(", r"\.Publish(Async)?\(", r"\w*[Hh]ttp[Cc]lient\w*\??\.(Get|Post|Put|Delete|Patch|Send)\w*Async\(",
+    r"\bfetch\(", r"axios\.", r"\.(get|post|put|patch|delete)\(\s*[`\"']/", r"requests\.(get|post|put|delete)\(", r"http\.(Get|Post)\(",
     r"\.NewRequest\(", r"pb\.New\w+Client\(",
 ]
 # Sites that may expose an operation across the service boundary.
@@ -47,7 +48,8 @@ ENTRYPOINT_PATTERNS = [
     r"pb\.Register\w+Server\(",
 ]
 
-_EVIDENCE_RE = re.compile(r"^(?P<path>[^\s:]+):(?P<line>\d+)\s+`(?P<snippet>[^`]+)`")
+# The snippet must be the whole backticked part: a stray backtick inside it would truncate the check.
+_EVIDENCE_RE = re.compile(r"^(?P<path>[^\s:]+):(?P<line>\d+)\s+`(?P<snippet>[^`]+)`\s*$")
 
 
 def _norm(s: str) -> str:
@@ -88,9 +90,13 @@ def gate_a(gt: dict, partition: Partition) -> List[str]:
         for i, iface in enumerate(obj["exposed_interfaces"]):
             where = f"microservices['{svc}'][{i}]"
             check_class(iface["class_name"], svc, where)
-            expected_id = f"{iface['class_name'].split('.')[-1]}.{iface['method_name']}"
-            if iface["id"] != expected_id:
-                errors.append(f"{where}: id '{iface['id']}' should be '{expected_id}'.")
+            base_id = f"{iface['class_name'].split('.')[-1]}.{iface['method_name']}"
+            # Collisions are disambiguated by the shortest unique namespace suffix or an HTTP-verb suffix.
+            ns = iface["class_name"].split(".")[:-1]
+            allowed = {base_id} | {f"{'.'.join(ns[i:])}.{base_id}" for i in range(len(ns))}
+            allowed |= {f"{base_id}[{verb}]" for verb in ("GET", "POST", "PUT", "PATCH", "DELETE")}
+            if iface["id"] not in allowed:
+                errors.append(f"{where}: id '{iface['id']}' should be '{base_id}' (or qualified on collision).")
             if iface["id"] in iface_ids[svc]:
                 errors.append(f"{where}: duplicate interface id '{iface['id']}'.")
             iface_ids[svc].add(iface["id"])
@@ -134,14 +140,21 @@ def gate_b(gt: dict, ms_path: Path) -> Tuple[List[str], Set[Tuple[Path, int]]]:
 def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: dict) -> List[str]:
     """Every grep hit must be cited by a call, be an exposed interface, or be explicitly excluded."""
     excluded = {(e["path"], int(e["line"])) for e in exclusions.get("excluded_sites", [])}
-    iface_methods = {
+    iface_counts = Counter(
         (iface["class_name"].split(".")[-1], iface["method_name"])
         for obj in gt["microservices"].values() for iface in obj["exposed_interfaces"]
+    )
+    # Mapping annotations inside a caller's own client file (e.g. a Feign interface) describe the
+    # outgoing request, not an entry point.
+    src_stems = {
+        Path(c["src_class"]).stem if "/" in c["src_class"] else c["src_class"].split(".")[-1]
+        for c in gt["inter_service_calls"]
     }
     out_re = re.compile("|".join(OUTBOUND_PATTERNS))
     entry_re = re.compile("|".join(ENTRYPOINT_PATTERNS))
     method_re = re.compile(r"\b(\w+)\s*\(")
     unaccounted = []
+    entry_sites: Dict[Tuple[str, str], List[str]] = {}
     for f in _source_files(ms_path):
         rel = str(f.relative_to(ms_path))
         lines = f.read_text(encoding="utf-8", errors="replace").splitlines()
@@ -150,15 +163,29 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
                 continue
             if out_re.search(line) and (f.resolve(), idx) not in cited:
                 unaccounted.append(f"OUTBOUND   {rel}:{idx}  {line.strip()[:110]}")
-            elif entry_re.search(line) and (f.resolve(), idx) not in cited:
-                # Cited mapping lines are client-side declarations (e.g. Feign), not entry points.
-                # The annotated method's signature is on one of the next few lines.
-                window = " ".join(lines[idx - 1: idx + 4])
-                if re.search(r"\b(class|interface)\s+\w+", window):
+            elif entry_re.search(line):
+                if (f.resolve(), idx) in cited and f.stem in src_stems:
+                    continue
+                if re.search(r"\b(class|interface)\s+\w+", " ".join(lines[idx - 1: idx + 4])):
                     continue  # type-level mapping (e.g. @RequestMapping("/v1") on a controller)
-                names = {n for n in method_re.findall(window.split(")", 1)[-1])}
-                if not any((f.stem, n) in iface_methods for n in names):
-                    unaccounted.append(f"ENTRYPOINT {rel}:{idx}  {line.strip()[:110]}")
+                # The annotated method is the first signature line after any stacked attributes,
+                # comments or preprocessor directives; stopping there keeps a neighbouring method
+                # from masking a missing interface.
+                signature = line
+                for nxt in lines[idx: idx + 8]:
+                    s = nxt.strip()
+                    if s and not s.startswith(("@", "[", "//", "*", "/*", "#")) and "(" in s:
+                        signature = nxt
+                        break
+                names = method_re.findall(signature)
+                key = (f.stem, names[0] if names else "?")
+                entry_sites.setdefault(key, []).append(f"{rel}:{idx}  {line.strip()[:90]}")
+    # Count-based so that overloads (e.g. GET and POST Login) cannot mask each other.
+    for key, sites in entry_sites.items():
+        missing = len(sites) - iface_counts.get(key, 0)
+        if missing > 0:
+            unaccounted.extend(f"ENTRYPOINT {s}  ({key[0]}.{key[1]}: {len(sites)} in code, "
+                               f"{iface_counts.get(key, 0)} in ground truth)" for s in sites)
     return unaccounted
 
 

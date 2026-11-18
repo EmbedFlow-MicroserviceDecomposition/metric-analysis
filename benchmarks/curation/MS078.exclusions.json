@@ -1,0 +1,15 @@
+{
+  "system_id": "MS078",
+  "excluded_sites": [
+    {
+      "path": "accounts-api/src/Infrastructure/CurrencyExchange/CurrencyExchangeService.cs",
+      "line": 38,
+      "reason": "GET https://api.exchangeratesapi.io/latest (CurrencyExchangeService._exchangeUrl): external third-party API, not a service in the system."
+    },
+    {
+      "path": "wallet-spa/src/serviceWorker.js",
+      "line": 103,
+      "reason": "Create-React-App service worker fetching its own service-worker.js from the SPA's origin; not a call to another service."
+    }
+  ]
+}

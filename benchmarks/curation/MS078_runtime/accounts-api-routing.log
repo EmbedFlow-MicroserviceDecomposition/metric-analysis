@@ -1,0 +1,23 @@
+      Request starting HTTP/1.1 GET http://localhost:5080/health - -
+      Request finished HTTP/1.1 GET http://localhost:5080/health - - - 200 - application/json 21.0279ms
+      Request starting HTTP/1.1 GET http://localhost:5080/api/v1/accounts - -
+      Executing endpoint 'WebApi.UseCases.V1.Accounts.GetAccounts.AccountsController.Get (WebApi)'
+      Request finished HTTP/1.1 GET http://localhost:5080/api/v1/accounts - - - 200 - application/json;+charset=utf-8 81.9482ms
+      Request starting HTTP/1.1 GET http://localhost:5080/api/v1/accounts/4c510cfe-5d61-4a46-a3d9-c4313426655f - -
+      Executing endpoint 'WebApi.UseCases.V1.Accounts.GetAccount.AccountsController.Get (WebApi)'
+      Request finished HTTP/1.1 GET http://localhost:5080/api/v1/accounts/4c510cfe-5d61-4a46-a3d9-c4313426655f - - - 200 - application/json;+charset=utf-8 36.7285ms
+      Request starting HTTP/1.1 POST http://localhost:5080/api/v1/accounts multipart/form-data;+boundary=------------------------56HpBQMCQM6ATP3K0lBgvM 262
+      Executing endpoint 'WebApi.UseCases.V1.Accounts.OpenAccount.AccountsController.Post (WebApi)'
+      Request finished HTTP/1.1 POST http://localhost:5080/api/v1/accounts multipart/form-data;+boundary=------------------------56HpBQMCQM6ATP3K0lBgvM 262 - 200 - application/json;+charset=utf-8 26.3979ms
+      Request starting HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/deposit multipart/form-data;+boundary=------------------------Ce6m6OhcixO2dSmjrLHQBI 261
+      Executing endpoint 'WebApi.UseCases.V1.Transactions.Deposit.TransactionsController.Deposit (WebApi)'
+      Request finished HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/deposit multipart/form-data;+boundary=------------------------Ce6m6OhcixO2dSmjrLHQBI 261 - 200 - application/json;+charset=utf-8 18.8217ms
+      Request starting HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/withdraw multipart/form-data;+boundary=------------------------i6hI5ewMtT5HqI5KEtevGr 261
+      Executing endpoint 'WebApi.UseCases.V1.Transactions.Withdraw.TransactionsController.Withdraw (WebApi)'
+      Request finished HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/withdraw multipart/form-data;+boundary=------------------------i6hI5ewMtT5HqI5KEtevGr 261 - 200 - application/json;+charset=utf-8 14.5818ms
+      Request starting HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/4c510cfe-5d61-4a46-a3d9-c4313426655f multipart/form-data;+boundary=------------------------pbLAYL1dzksTgNFlwBVX5P 262
+      Executing endpoint 'WebApi.UseCases.V1.Transactions.Transfer.TransactionsController.Transfer (WebApi)'
+      Request finished HTTP/1.1 PATCH http://localhost:5080/api/v1/transactions/975be960-bf0e-42e8-9c8c-349473185d75/4c510cfe-5d61-4a46-a3d9-c4313426655f multipart/form-data;+boundary=------------------------pbLAYL1dzksTgNFlwBVX5P 262 - 200 - application/json;+charset=utf-8 13.4592ms
+      Request starting HTTP/1.1 DELETE http://localhost:5080/api/v1/accounts/975be960-bf0e-42e8-9c8c-349473185d75 - -
+      Executing endpoint 'WebApi.UseCases.V1.Accounts.CloseAccount.AccountsController.Close (WebApi)'
+      Request finished HTTP/1.1 DELETE http://localhost:5080/api/v1/accounts/975be960-bf0e-42e8-9c8c-349473185d75 - - - 200 - application/json;+charset=utf-8 6.8212ms
