@@ -1,0 +1,72 @@
+[
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/accountsService.js",
+    "src_method": "getAccounts",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Accounts.GetAccounts.AccountsController",
+    "dst_interface_id": "GetAccounts.AccountsController.Get",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/accountsService.js:5 `.get(\"/api/v1/accounts\");` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Accounts/GetAccounts/AccountsController.cs:42 `[HttpGet]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/accountsService.js",
+    "src_method": "getAccount",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Accounts.GetAccount.AccountsController",
+    "dst_interface_id": "V1.Accounts.GetAccount.AccountsController.Get",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/accountsService.js:10 `/api/v1/accounts/${id}` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Accounts/GetAccount/AccountsController.cs:54 `[HttpGet(\"{accountId:guid}\", Name = \"GetAccount\")]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/accountsService.js",
+    "src_method": "openAccount",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Accounts.OpenAccount.AccountsController",
+    "dst_interface_id": "AccountsController.Post",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/accountsService.js:15 `.post(\"/api/v1/accounts\", data);` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Accounts/OpenAccount/AccountsController.cs:57 `[HttpPost]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/accountsService.js",
+    "src_method": "closeAccount",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Accounts.CloseAccount.AccountsController",
+    "dst_interface_id": "AccountsController.Close",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/accountsService.js:20 `/api/v1/accounts/${id}` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Accounts/CloseAccount/AccountsController.cs:61 `[HttpDelete(\"{accountId:guid}\")]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/transactionService.js",
+    "src_method": "deposit",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Transactions.Deposit.TransactionsController",
+    "dst_interface_id": "TransactionsController.Deposit",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/transactionService.js:5 `/api/v1/transactions/${accountId}/deposit` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Transactions/Deposit/TransactionsController.cs:60 `[HttpPatch(\"{accountId:guid}/Deposit\")]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/transactionService.js",
+    "src_method": "withdraw",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Transactions.Withdraw.TransactionsController",
+    "dst_interface_id": "TransactionsController.Withdraw",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/transactionService.js:10 `/api/v1/transactions/${accountId}/withdraw` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Transactions/Withdraw/TransactionsController.cs:69 `[HttpPatch(\"{accountId:guid}/Withdraw\")]`"
+  },
+  {
+    "src_service": "wallet-spa",
+    "src_class": "src/store/transactionService.js",
+    "src_method": "transfer",
+    "dst_service": "accounts-api",
+    "dst_class": "WebApi.UseCases.V1.Transactions.Transfer.TransactionsController",
+    "dst_interface_id": "TransactionsController.Transfer",
+    "protocol": "REST",
+    "evidence": "wallet-spa/src/store/transactionService.js:15 `/api/v1/transactions/${originAccountId}/${destinationAccountId}` | wallet-spa/src/store/oauth.js:3 `const api = axios.create({` | wallet-spa/src/store/oauth.js:7 `process.env.REACT_APP_ACCOUNTS_API` | accounts-api/src/WebApi/UseCases/V1/Transactions/Transfer/TransactionsController.cs:64 `[HttpPatch(\"{accountId:guid}/{destinationAccountId:guid}\")]`"
+  }
+]

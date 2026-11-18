@@ -27,7 +27,7 @@ from fyp_cdq.pipeline import resolve_system_codebase
 
 CURATION_DIR = GROUND_TRUTH_DIR.parent / "curation"
 
-SOURCE_GLOBS = ("*.java", "*.kt", "*.cs", "*.go", "*.py", "*.js", "*.ts")
+SOURCE_GLOBS = ("*.java", "*.kt", "*.cs", "*.go", "*.py", "*.js", "*.ts", "*.yml", "*.yaml")
 SKIP_PARTS = {"test", "tests", "target", "build", "node_modules", "vendor", ".git", "mocks"}
 
 # Sites that may originate a cross-service call.
@@ -40,6 +40,8 @@ OUTBOUND_PATTERNS = [
     r"\bfetch\(", r"axios\.", r"\.(get|post|put|patch|delete)\(\s*[`\"']/", r"requests\.(get|post|put|delete)\(", r"http\.(Get|Post)\(",
     r"\.NewRequest\(", r"pb\.New\w+Client\(",
     r"LoadBalanced(CRUD|Image|Recommender|Store)Operations\b", r"ServiceLoadBalancer\s*\.\s*(loadBalance|multicast)\w*\(",
+    # Gateway route definitions (counted as GatewayRoute calls per GROUND_TRUTH_GUIDE.md)
+    r"^\s*uri:\s*lb://", r"^\s*serviceId:\s*[\w-]+\s*$", r"^\s*url:\s*https?://[\w-]+:\d+\s*$",
 ]
 # Sites that may expose an operation across the service boundary.
 ENTRYPOINT_PATTERNS = [
@@ -149,6 +151,8 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
     excluded = {(e["path"], int(e["line"])) for e in exclusions.get("excluded_sites", [])}
     # Shared client libraries whose outbound sites are attributed to their in-service callers.
     excluded_outbound_dirs = tuple(e["path"] for e in exclusions.get("excluded_outbound_paths", []))
+    # Directories whose HTTP handlers are deliberately not interfaces (e.g. UI-only services, per GROUND_TRUTH_GUIDE.md).
+    excluded_entry_dirs = tuple(e["path"] for e in exclusions.get("excluded_entry_paths", []))
     iface_counts = Counter(
         (iface["class_name"].split(".")[-1], iface["method_name"])
         for obj in gt["microservices"].values() for iface in obj["exposed_interfaces"]
@@ -180,11 +184,15 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
             if out_re.search(line) and (f.resolve(), idx) not in cited:
                 if not (excluded_outbound_dirs and rel.startswith(excluded_outbound_dirs)):
                     unaccounted.append(f"OUTBOUND   {rel}:{idx}  {line.strip()[:110]}")
-            elif entry_re.search(line):
+            elif entry_re.search(line) and not (excluded_entry_dirs and rel.startswith(excluded_entry_dirs)):
                 if (f.resolve(), idx) in cited and f.stem in src_stems:
                     continue
                 if "@WebServlet" in line:
                     servlet_classes[f.stem] = f"{rel}:{idx}  {line.strip()[:90]}"
+                    for j, l2 in enumerate(lines, 1):
+                        hm = re.search(r"\b(?:protected|public)\s+(?:final\s+)?void\s+(doGet|doPost|doPut|doDelete|handleGETRequest|handlePOSTRequest)\s*\(", l2)
+                        if hm:
+                            entry_sites.setdefault((f.stem, hm[1]), []).append(f"{rel}:{j}  {l2.strip()[:90]}")
                     continue
                 if re.search(r"\b(class|interface)\s+\w+", " ".join(lines[idx - 1: idx + 4])):
                     continue  # type-level mapping (e.g. @RequestMapping("/v1") on a controller)
@@ -214,6 +222,14 @@ def gate_c(gt: dict, ms_path: Path, cited: Set[Tuple[Path, int]], exclusions: di
     unaccounted.extend(f"ENTRYPOINT {site}  (servlet {cls} has no interface in ground truth)"
                        for cls, site in servlet_classes.items() if cls not in iface_classes)
     unaccounted.extend(gate_c_sites(gt, ms_path, cited, exclusions, excluded, excluded_outbound_dirs, iface_counts))
+    routes: Dict[Tuple[str, str, str], Set[str]] = {}
+    for c in gt["inter_service_calls"]:
+        if c.get("protocol") == "GatewayRoute":
+            routes.setdefault((c["src_service"], c["src_method"], c["dst_service"]), set()).add(c["dst_interface_id"])
+    for (src, route, dst), ids in routes.items():
+        rest = {i["id"] for i in gt["microservices"][dst]["exposed_interfaces"] if i.get("protocol") == "REST"}
+        for missing in sorted(rest - ids):
+            unaccounted.append(f"ROUTE      {src} {route} -> {dst}: REST interface {missing} reachable through the route but not recorded")
     return unaccounted
 
 

@@ -1280,15 +1280,6 @@
           "endpoint": "GET /build"
         },
         {
-          "id": "WebFrontEndImpl.Healthz",
-          "class_name": "wfe2.WebFrontEndImpl",
-          "method_name": "Healthz",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /healthz"
-        },
-        {
           "id": "WebFrontEndImpl.Index",
           "class_name": "wfe2.WebFrontEndImpl",
           "method_name": "Index",
@@ -1362,98 +1353,7 @@
       "exposed_interfaces": []
     },
     "sfe": {
-      "exposed_interfaces": [
-        {
-          "id": "SelfServiceFrontEndImpl.Index",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "Index",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.BuildID",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "BuildID",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /build"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseForm",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseForm",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /sfe/v1/unpause"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseSubmit",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseSubmit",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /sfe/v1/do-unpause"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.UnpauseStatus",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "UnpauseStatus",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /sfe/v1/unpause-status"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.makeOverrideRequestFormHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "makeOverrideRequestFormHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /sfe/v1/overrides/new-orders-per-account | GET /sfe/v1/overrides/certificates-per-domain | GET /sfe/v1/overrides/certificates-per-ip | GET /sfe/v1/overrides/certificates-per-domain-per-account"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.overrideAutoApprovedSuccessHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "overrideAutoApprovedSuccessHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /sfe/v1/overrides/auto-approved-success"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.overrideRequestSubmittedSuccessHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "overrideRequestSubmittedSuccessHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /sfe/v1/overrides/request-submitted-success"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.validateOverrideFieldHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "validateOverrideFieldHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /sfe/v1/overrides/validate-field"
-        },
-        {
-          "id": "SelfServiceFrontEndImpl.submitOverrideRequestHandler",
-          "class_name": "sfe.SelfServiceFrontEndImpl",
-          "method_name": "submitOverrideRequestHandler",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /sfe/v1/overrides/submit-override-request"
-        }
-      ]
+      "exposed_interfaces": []
     },
     "bad-key-revoker": {
       "exposed_interfaces": []

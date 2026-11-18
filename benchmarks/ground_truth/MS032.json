@@ -10,7 +10,9 @@
           "id": "UserController.getUser",
           "class_name": "io.example.domain.UserController",
           "method_name": "getUser",
-          "param_types": ["Long"],
+          "param_types": [
+            "Long"
+          ],
           "return_type": "User",
           "protocol": "REST",
           "endpoint": "GET /v1/users/{userId}"
@@ -19,7 +21,9 @@
           "id": "UserController.createUser",
           "class_name": "io.example.domain.UserController",
           "method_name": "createUser",
-          "param_types": ["User"],
+          "param_types": [
+            "User"
+          ],
           "return_type": "User",
           "protocol": "REST",
           "endpoint": "POST /v1/users"
@@ -28,7 +32,10 @@
           "id": "UserController.updateUser",
           "class_name": "io.example.domain.UserController",
           "method_name": "updateUser",
-          "param_types": ["Long", "User"],
+          "param_types": [
+            "Long",
+            "User"
+          ],
           "return_type": "User",
           "protocol": "REST",
           "endpoint": "PUT /v1/users/{userId}"
@@ -41,7 +48,9 @@
           "id": "FriendController.getFriend",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "getFriend",
-          "param_types": ["Long"],
+          "param_types": [
+            "Long"
+          ],
           "return_type": "Friend",
           "protocol": "REST",
           "endpoint": "GET /v1/friends/{id}"
@@ -50,7 +59,9 @@
           "id": "FriendController.getFriends",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "getFriends",
-          "param_types": ["Long"],
+          "param_types": [
+            "Long"
+          ],
           "return_type": "List<Friend>",
           "protocol": "REST",
           "endpoint": "GET /v1/users/{userId}/friends"
@@ -59,7 +70,10 @@
           "id": "FriendController.addFriend",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "addFriend",
-          "param_types": ["Long", "Long"],
+          "param_types": [
+            "Long",
+            "Long"
+          ],
           "return_type": "Friend",
           "protocol": "REST",
           "endpoint": "POST /v1/users/{userId}/commands/addFriend"
@@ -68,7 +82,10 @@
           "id": "FriendController.removeFriend",
           "class_name": "io.example.domain.friend.FriendController",
           "method_name": "removeFriend",
-          "param_types": ["Long", "Long"],
+          "param_types": [
+            "Long",
+            "Long"
+          ],
           "return_type": "void",
           "protocol": "REST",
           "endpoint": "POST /v1/users/{userId}/commands/removeFriend"
@@ -81,7 +98,10 @@
           "id": "UserController.getMutualFriends",
           "class_name": "io.example.domain.user.UserController",
           "method_name": "getMutualFriends",
-          "param_types": ["Long", "Long"],
+          "param_types": [
+            "Long",
+            "Long"
+          ],
           "return_type": "List<User>",
           "protocol": "REST",
           "endpoint": "GET /v1/users/{userId}/commands/findMutualFriends"
@@ -90,7 +110,9 @@
           "id": "UserController.recommendFriends",
           "class_name": "io.example.domain.user.UserController",
           "method_name": "recommendFriends",
-          "param_types": ["Long"],
+          "param_types": [
+            "Long"
+          ],
           "return_type": "List<RankedUser>",
           "protocol": "REST",
           "endpoint": "GET /v1/users/{userId}/commands/recommendFriends"
@@ -99,7 +121,9 @@
           "id": "UserProcessor.apply",
           "class_name": "io.example.domain.user.UserProcessor",
           "method_name": "apply",
-          "param_types": ["UserEvent"],
+          "param_types": [
+            "UserEvent"
+          ],
           "return_type": "void",
           "protocol": "Messaging",
           "endpoint": "kafka topic: user"
@@ -108,15 +132,14 @@
           "id": "FriendProcessor.apply",
           "class_name": "io.example.domain.friend.FriendProcessor",
           "method_name": "apply",
-          "param_types": ["FriendEvent"],
+          "param_types": [
+            "FriendEvent"
+          ],
           "return_type": "void",
           "protocol": "Messaging",
           "endpoint": "kafka topic: friend"
         }
       ]
-    },
-    "discovery-service": {
-      "exposed_interfaces": []
     },
     "edge-service": {
       "exposed_interfaces": []
@@ -172,6 +195,96 @@
       "dst_interface_id": "FriendProcessor.apply",
       "protocol": "Messaging",
       "evidence": "friend-service/src/main/java/io/example/domain/friend/FriendController.java:136 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | friend-service/src/main/resources/application.yml:9 `destination: friend` | recommendation-service/src/main/java/io/example/domain/friend/FriendProcessor.java:33 `@StreamListener(value = FriendSink.INPUT)`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:friend-service",
+      "dst_service": "friend-service",
+      "dst_class": "io.example.domain.friend.FriendController",
+      "dst_interface_id": "FriendController.getFriend",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:friend-service",
+      "dst_service": "friend-service",
+      "dst_class": "io.example.domain.friend.FriendController",
+      "dst_interface_id": "FriendController.getFriends",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:friend-service",
+      "dst_service": "friend-service",
+      "dst_class": "io.example.domain.friend.FriendController",
+      "dst_interface_id": "FriendController.addFriend",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:friend-service",
+      "dst_service": "friend-service",
+      "dst_class": "io.example.domain.friend.FriendController",
+      "dst_interface_id": "FriendController.removeFriend",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:user-service",
+      "dst_service": "user-service",
+      "dst_class": "io.example.domain.UserController",
+      "dst_interface_id": "UserController.getUser",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:user-service",
+      "dst_service": "user-service",
+      "dst_class": "io.example.domain.UserController",
+      "dst_interface_id": "UserController.createUser",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:user-service",
+      "dst_service": "user-service",
+      "dst_class": "io.example.domain.UserController",
+      "dst_interface_id": "UserController.updateUser",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:recommendation-service",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.user.UserController",
+      "dst_interface_id": "UserController.getMutualFriends",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:37 `id: recommendation-service` | edge-service/src/main/resources/application.yml:38 `uri: lb://recommendation-service` | edge-service/src/main/resources/application.yml:42 `pattern: \"/recommendation/**\"` | edge-service/src/main/resources/application.yml:46 `regexp: \"/recommendation/(?<remaining>.*)\"`"
+    },
+    {
+      "src_service": "edge-service",
+      "src_class": "io.example.EdgeServiceApplication",
+      "src_method": "route:recommendation-service",
+      "dst_service": "recommendation-service",
+      "dst_class": "io.example.domain.user.UserController",
+      "dst_interface_id": "UserController.recommendFriends",
+      "protocol": "GatewayRoute",
+      "evidence": "edge-service/src/main/resources/application.yml:37 `id: recommendation-service` | edge-service/src/main/resources/application.yml:38 `uri: lb://recommendation-service` | edge-service/src/main/resources/application.yml:42 `pattern: \"/recommendation/**\"` | edge-service/src/main/resources/application.yml:46 `regexp: \"/recommendation/(?<remaining>.*)\"`"
     }
   ]
 }

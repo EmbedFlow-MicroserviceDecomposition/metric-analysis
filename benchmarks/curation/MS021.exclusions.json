@@ -41,5 +41,19 @@
       "line": 84,
       "reason": "Dead call: multicasts GET <recommender>/rest/train/async, but TrainEndpoint has no 'async' path (only /train, /train/timestamp, /train/isready), so no interface exists to receive it (404 at runtime)."
     }
+  ],
+  "excluded_entry_paths": [
+    {
+      "path": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/",
+      "reason": "webui only serves browser pages (servlets rendering JSPs) and a /rest/ready/isready probe, so it has no backend API: exposed_interfaces is empty (GROUND_TRUTH_GUIDE.md Step 2B.2 + health-probe exclusion). It remains the caller of 62 calls."
+    },
+    {
+      "path": "utilities/tools.descartes.teastore.kieker.rabbitmq/",
+      "reason": "No longer a service (microservices.json non_services, guide Bucket D monitoring)."
+    },
+    {
+      "path": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/ReadyRest.java",
+      "reason": "Health/readiness probe /rest/ready/isready, excluded by GROUND_TRUTH_GUIDE.md Step 2B.1."
+    }
   ]
 }

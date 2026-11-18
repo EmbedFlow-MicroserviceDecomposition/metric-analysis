@@ -11,5 +11,17 @@
       "line": 103,
       "reason": "Create-React-App service worker fetching its own service-worker.js from the SPA's origin; not a call to another service."
     }
+  ],
+  "excluded_entry_paths": [
+    {
+      "path": "identity-server/",
+      "reason": "IdentityServer Quickstart MVC pages (login, consent, grants, device, diagnostics): browser UI only, no backend API, so exposed_interfaces is empty (GROUND_TRUTH_GUIDE.md Step 2B.2)."
+    }
+  ],
+  "excluded_outbound_paths": [
+    {
+      "path": "wallet-spa/",
+      "reason": "React SPA: its axios calls to accounts-api run in the browser, and GROUND_TRUTH_GUIDE.md Step 2C.2 says to ignore browser-side JavaScript calls. The 7 verified calls (runtime route check 7/7) are kept on record in MS078_excluded_browser_calls.json."
+    }
   ]
 }

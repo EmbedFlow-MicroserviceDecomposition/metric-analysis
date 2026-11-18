@@ -4,15 +4,6 @@
   "prompt_version": "v1.0",
   "status": "verified",
   "microservices": {
-    "config": {
-      "exposed_interfaces": []
-    },
-    "monitoring": {
-      "exposed_interfaces": []
-    },
-    "registry": {
-      "exposed_interfaces": []
-    },
     "gateway": {
       "exposed_interfaces": []
     },
@@ -31,7 +22,9 @@
           "id": "UserController.createUser",
           "class_name": "com.piggymetrics.auth.controller.UserController",
           "method_name": "createUser",
-          "param_types": ["User"],
+          "param_types": [
+            "User"
+          ],
           "return_type": "void",
           "protocol": "REST",
           "endpoint": "POST /uaa/users"
@@ -44,7 +37,9 @@
           "id": "AccountController.getAccountByName",
           "class_name": "com.piggymetrics.account.controller.AccountController",
           "method_name": "getAccountByName",
-          "param_types": ["String"],
+          "param_types": [
+            "String"
+          ],
           "return_type": "Account",
           "protocol": "REST",
           "endpoint": "GET /accounts/{name}"
@@ -62,7 +57,9 @@
           "id": "AccountController.saveCurrentAccount",
           "class_name": "com.piggymetrics.account.controller.AccountController",
           "method_name": "saveCurrentAccount",
-          "param_types": ["Account"],
+          "param_types": [
+            "Account"
+          ],
           "return_type": "void",
           "protocol": "REST",
           "endpoint": "PUT /accounts/current"
@@ -71,7 +68,9 @@
           "id": "AccountController.createNewAccount",
           "class_name": "com.piggymetrics.account.controller.AccountController",
           "method_name": "createNewAccount",
-          "param_types": ["User"],
+          "param_types": [
+            "User"
+          ],
           "return_type": "Account",
           "protocol": "REST",
           "endpoint": "POST /accounts/"
@@ -93,7 +92,9 @@
           "id": "StatisticsController.getStatisticsByAccountName",
           "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
           "method_name": "getStatisticsByAccountName",
-          "param_types": ["String"],
+          "param_types": [
+            "String"
+          ],
           "return_type": "List<DataPoint>",
           "protocol": "REST",
           "endpoint": "GET /statistics/{accountName}"
@@ -102,7 +103,10 @@
           "id": "StatisticsController.saveAccountStatistics",
           "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
           "method_name": "saveAccountStatistics",
-          "param_types": ["String", "Account"],
+          "param_types": [
+            "String",
+            "Account"
+          ],
           "return_type": "void",
           "protocol": "REST",
           "endpoint": "PUT /statistics/{accountName}"
@@ -124,15 +128,14 @@
           "id": "RecipientController.saveCurrentNotificationsSettings",
           "class_name": "com.piggymetrics.notification.controller.RecipientController",
           "method_name": "saveCurrentNotificationsSettings",
-          "param_types": ["Recipient"],
+          "param_types": [
+            "Recipient"
+          ],
           "return_type": "Object",
           "protocol": "REST",
           "endpoint": "PUT /notifications/recipients/current"
         }
       ]
-    },
-    "turbine-stream-service": {
-      "exposed_interfaces": []
     }
   },
   "inter_service_calls": [
@@ -165,6 +168,116 @@
       "dst_interface_id": "AccountController.getAccountByName",
       "protocol": "REST",
       "evidence": "notification-service/src/main/java/com/piggymetrics/notification/client/AccountServiceClient.java:9 `@FeignClient(name = \"account-service\")` | notification-service/src/main/java/com/piggymetrics/notification/client/AccountServiceClient.java:12 `@RequestMapping(method = RequestMethod.GET, value = \"/accounts/{accountName}\"` | config/src/main/resources/shared/account-service.yml:21 `context-path: /accounts` | notification-service/src/main/java/com/piggymetrics/notification/service/NotificationServiceImpl.java:40 `String attachment = client.getAccount(recipient.getAccountName());`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:auth-service",
+      "dst_service": "auth-service",
+      "dst_class": "com.piggymetrics.auth.controller.UserController",
+      "dst_interface_id": "UserController.getUser",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:20 `auth-service:` | config/src/main/resources/shared/gateway.yml:21 `path: /uaa/**` | config/src/main/resources/shared/gateway.yml:22 `url: http://auth-service:5000` | config/src/main/resources/shared/gateway.yml:23 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:auth-service",
+      "dst_service": "auth-service",
+      "dst_class": "com.piggymetrics.auth.controller.UserController",
+      "dst_interface_id": "UserController.createUser",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:20 `auth-service:` | config/src/main/resources/shared/gateway.yml:21 `path: /uaa/**` | config/src/main/resources/shared/gateway.yml:22 `url: http://auth-service:5000` | config/src/main/resources/shared/gateway.yml:23 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:account-service",
+      "dst_service": "account-service",
+      "dst_class": "com.piggymetrics.account.controller.AccountController",
+      "dst_interface_id": "AccountController.getAccountByName",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:26 `account-service:` | config/src/main/resources/shared/gateway.yml:27 `path: /accounts/**` | config/src/main/resources/shared/gateway.yml:28 `serviceId: account-service` | config/src/main/resources/shared/gateway.yml:29 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:account-service",
+      "dst_service": "account-service",
+      "dst_class": "com.piggymetrics.account.controller.AccountController",
+      "dst_interface_id": "AccountController.getCurrentAccount",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:26 `account-service:` | config/src/main/resources/shared/gateway.yml:27 `path: /accounts/**` | config/src/main/resources/shared/gateway.yml:28 `serviceId: account-service` | config/src/main/resources/shared/gateway.yml:29 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:account-service",
+      "dst_service": "account-service",
+      "dst_class": "com.piggymetrics.account.controller.AccountController",
+      "dst_interface_id": "AccountController.saveCurrentAccount",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:26 `account-service:` | config/src/main/resources/shared/gateway.yml:27 `path: /accounts/**` | config/src/main/resources/shared/gateway.yml:28 `serviceId: account-service` | config/src/main/resources/shared/gateway.yml:29 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:account-service",
+      "dst_service": "account-service",
+      "dst_class": "com.piggymetrics.account.controller.AccountController",
+      "dst_interface_id": "AccountController.createNewAccount",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:26 `account-service:` | config/src/main/resources/shared/gateway.yml:27 `path: /accounts/**` | config/src/main/resources/shared/gateway.yml:28 `serviceId: account-service` | config/src/main/resources/shared/gateway.yml:29 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:statistics-service",
+      "dst_service": "statistics-service",
+      "dst_class": "com.piggymetrics.statistics.controller.StatisticsController",
+      "dst_interface_id": "StatisticsController.getCurrentAccountStatistics",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:32 `statistics-service:` | config/src/main/resources/shared/gateway.yml:33 `path: /statistics/**` | config/src/main/resources/shared/gateway.yml:34 `serviceId: statistics-service` | config/src/main/resources/shared/gateway.yml:35 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:statistics-service",
+      "dst_service": "statistics-service",
+      "dst_class": "com.piggymetrics.statistics.controller.StatisticsController",
+      "dst_interface_id": "StatisticsController.getStatisticsByAccountName",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:32 `statistics-service:` | config/src/main/resources/shared/gateway.yml:33 `path: /statistics/**` | config/src/main/resources/shared/gateway.yml:34 `serviceId: statistics-service` | config/src/main/resources/shared/gateway.yml:35 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:statistics-service",
+      "dst_service": "statistics-service",
+      "dst_class": "com.piggymetrics.statistics.controller.StatisticsController",
+      "dst_interface_id": "StatisticsController.saveAccountStatistics",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:32 `statistics-service:` | config/src/main/resources/shared/gateway.yml:33 `path: /statistics/**` | config/src/main/resources/shared/gateway.yml:34 `serviceId: statistics-service` | config/src/main/resources/shared/gateway.yml:35 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:notification-service",
+      "dst_service": "notification-service",
+      "dst_class": "com.piggymetrics.notification.controller.RecipientController",
+      "dst_interface_id": "RecipientController.getCurrentNotificationsSettings",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:38 `notification-service:` | config/src/main/resources/shared/gateway.yml:39 `path: /notifications/**` | config/src/main/resources/shared/gateway.yml:40 `serviceId: notification-service` | config/src/main/resources/shared/gateway.yml:41 `stripPrefix: false`"
+    },
+    {
+      "src_service": "gateway",
+      "src_class": "com.piggymetrics.gateway.GatewayApplication",
+      "src_method": "route:notification-service",
+      "dst_service": "notification-service",
+      "dst_class": "com.piggymetrics.notification.controller.RecipientController",
+      "dst_interface_id": "RecipientController.saveCurrentNotificationsSettings",
+      "protocol": "GatewayRoute",
+      "evidence": "config/src/main/resources/shared/gateway.yml:38 `notification-service:` | config/src/main/resources/shared/gateway.yml:39 `path: /notifications/**` | config/src/main/resources/shared/gateway.yml:40 `serviceId: notification-service` | config/src/main/resources/shared/gateway.yml:41 `stripPrefix: false`"
     }
   ]
 }
