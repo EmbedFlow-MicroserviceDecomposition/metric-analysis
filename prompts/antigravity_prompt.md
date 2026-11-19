@@ -38,7 +38,7 @@ For each `(service_id, rel_dir)` in `{{MANIFEST_PATH}}["{{SYSTEM_ID}}"]["service
    - **Asynchronous Message / Event Consumers**:
      - Methods handling cross-service events/commands (`@KafkaListener`, `@RabbitListener`, `@StreamListener`, Eventuate Tram command/event handlers, `IIntegrationEventHandler.Handle`, Celery `@shared_task`, RabbitMQ/NATS/AMQP consumers).
 3. **Exclude Internal Classes & Plumbing**:
-   - Do NOT include internal JPA/ORM entities, DTOs, repositories/DAOs, configuration classes, `main` bootstrap methods, `/health` probes, or internal helper/utility methods that are not service entrypoints.
+   - Do NOT include internal JPA/ORM entities, DTOs, repositories/DAOs, configuration classes, `main` bootstrap methods, `/health` probes, debug status servlets (`IndexServlet`), framework exception-handler error views (`CustomErrorController` / `UseExceptionHandler`), or internal helper/utility methods that are not service entrypoints.
    - If a microservice is a static frontend or worker with no inbound backend API operations exposed to other services, its `exposed_interfaces` array should be `[]`.
 4. **Type Normalization Rules for `param_types` and `return_type`**:
    - **Unwrap transport/async wrappers**:
@@ -55,8 +55,8 @@ Search across the service directories listed in `{{MANIFEST_PATH}}["{{SYSTEM_ID}
 1. **HTTP / REST Clients**:
    - `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `Retrofit`, `OkHttpClient`, `HttpClient` (C#/Java), `axios`, `fetch`, `requests`, `httpx`, `http.Get`/`http.Post`.
    - Resolve service discovery hostnames (e.g. `http://customers-service/owners/{ownerId}`, `http://vets-service/vets`) or configuration URL properties (`application.yml`, `bootstrap.yml`, `appsettings.json`, `docker-compose.yml`, `.env`) to the target `dst_service` and the target controller method (`dst_class`, `dst_interface_id`).
-2. **API Gateway Programmatic Calls & Route Aggregators**:
-   - If an API Gateway class programmatically calls downstream services or defines declarative `RouteLocator` routes, record each call edge from the gateway caller class to the downstream service's exposed interface.
+2. **API Gateway Programmatic Calls**:
+   - Record **only programmatic inter-service calls** in coded BFF/composition gateways (e.g., `CustomersServiceClient` in `api-gateway` calling `customers-service`) and explicit per-endpoint routes. Do **not** explode declarative wildcard reverse-proxy rules (`/**` in Zuul / Spring Cloud Gateway YAML) into per-endpoint calls.
 3. **gRPC Stubs / RPC Clients**:
    - Match gRPC client stub calls (`*BlockingStub`, `*FutureStub`, `New*Client`) in `src_class` to the implementing gRPC server class (`dst_class`) and method (`dst_interface_id`) in `dst_service`.
 4. **Asynchronous Messaging (Publish $\to$ Subscribe)**:

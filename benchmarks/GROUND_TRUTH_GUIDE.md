@@ -10,7 +10,7 @@ Before extracting interfaces or call edges, verify that the `"services"` object 
 
 ### What to KEEP
 - Deployable backend microservices (`orders`, `catalogue`, `cartservice`, `ftgo-order-service`, etc.).
-- API Gateways / Edge / BFF / SSR Web services that route or aggregate calls (`api-gateway`, `gateway`, `frontend`, `WebApp`).
+- Coded BFF / API-composition gateways that implement application orchestration or aggregation logic in code (`spring-petclinic-api-gateway`, `ftgo-api-gateway`, `coolstore-gw`, `frontend`, `WebApp`).
 
 ### What to REMOVE from `microservices.json`
 1. **Uncoded Backing Data Stores & DB Scripts** (Bucket A):
@@ -20,8 +20,9 @@ Before extracting interfaces or call edges, verify that the `"services"` object 
 3. **Shared Library / DTO / API-Spec Submodules & Internal Architecture Layers** (Bucket C):
    - Shared common libraries (`common`, `ftgo-common`, `EventBus`, `Shared`) or `*-api` DTO-only jars.
    - Internal DDD layer projects belonging to a single deployable service (unless merged, do not count them as separate microservices).
-4. **1-Class Off-the-Shelf Infrastructure Plumbing Servers** (Bucket D):
-   - Empty wrapper services with 1 Spring Boot `@Enable*` main class and 0 domain endpoints (`config-server`, `discovery-server` / `eureka` / `registry`, `admin-server`, `zipkin-service`, `monitoring`, `turbine`).
+4. **Off-the-Shelf Infrastructure Plumbing & Pure Proxy Servers** (Bucket D):
+   - 1-class Spring Boot `@Enable*` wrapper servers with 0 domain endpoints (`config-server`, `discovery-server` / `eureka` / `registry`, `admin-server`, `zipkin-service`, `monitoring`, `turbine`).
+   - Pure reverse-proxy / YAML-only routing gateways with 1–2 boilerplate classes and zero domain/aggregation logic (`nginx`, Zuul / Spring Cloud Gateway proxy wrappers like `MS011/gateway`, `MS020/gateway`, `MS030/gateway-service`, `MS031/gateway-service`, `MS032/edge-service`).
 
 > **Why this matters**: All 5 evaluation metrics (`NED`, `CHD`, `CHM`, `IFN`, `SM`) divide by $K$ (the service count). Leaving databases, test folders, DTO jars, or 1-class plumbing servers in `microservices.json` distorts $K$, penalizes `NED`, inflates `CHD`/`CHM`, and dilutes `IFN`/`SM`.
 
@@ -41,10 +42,11 @@ An initial scaffold for each system already exists at `benchmarks/ground_truth/<
 ### B. `exposed_interfaces` Rules (Used by `CHD` & `CHM`)
 For each microservice `<service_id>`, extract **only operations exposed across the service boundary** to external callers:
 1. **Include**:
-   - **REST / HTTP handlers**: `@RestController`/`@Controller` endpoints, JAX-RS `@Path`, ASP.NET `[ApiController]`/Minimal API `MapGet`/`MapPost`, Go router handlers, Python FastAPI/Flask/Django routed views, Express/NestJS route handlers, AWS Lambda request handlers. *(Exclude commented-out routes, `/health` / `/_healthz` / `/metrics` probes, and static asset handlers.)*
+   - **REST / HTTP handlers**: `@RestController`/`@Controller` endpoints, JAX-RS `@Path`, ASP.NET `[ApiController]`/Minimal API `MapGet`/`MapPost`, Go router handlers, Python FastAPI/Flask/Django routed views, Express/NestJS route handlers, AWS Lambda request handlers. *(Exclude commented-out routes and static asset handlers.)*
    - **gRPC / RPC operations**: Methods implementing `.proto` service contracts (`*ImplBase`, `*Servicer`, `Unimplemented*Server`, etc.).
    - **Async Message / Command Consumers**: Cross-service listeners (`@KafkaListener`, `@RabbitListener`, Eventuate Tram command/domain-event handlers, `IIntegrationEventHandler.Handle`, Celery `@shared_task`).
 2. **Exclude**:
+   - Implicit, health, debug status, and framework error-handler/meta endpoints (`/health`, `/_healthz`, `/metrics`, debug `IndexServlet` status pages, ASP.NET `UseExceptionHandler` error views like `CustomErrorController`).
    - Internal domain entities, DTOs, repositories/DAOs, configuration/DI wiring, internal private/helper methods, getters/setters, and `main()` entrypoints.
    - Services that only expose outbound UI/browser pages with no backend API (`"exposed_interfaces": []`).
 3. **Identifier & Type Normalization**:
@@ -58,13 +60,14 @@ For each microservice `<service_id>`, extract **only operations exposed across t
 Record every directed call crossing a microservice boundary (**`src_service != dst_service`**):
 1. **Supported Mechanisms**:
    - **REST / HTTP**: `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`, `http.Get`/`Post`.
-   - **API Gateway Routing**: Gateway programmatic clients (`REST`) or Spring Cloud Gateway / Express proxy route definitions (`GatewayRoute`) forwarding to a downstream service endpoint.
+   - **API Gateway Programmatic Calls**: Only programmatic inter-service calls in coded BFF/composition gateways (e.g., `CustomersServiceClient`, `OrderServiceProxy`). Do **not** explode declarative wildcard reverse-proxy rules (`/**` in Zuul / Spring Cloud Gateway YAML) into per-endpoint calls.
    - **gRPC / RPC**: Generated gRPC stub / client invocations mapped to the target service's implementing server method.
    - **Asynchronous Messaging**: Published domain events / commands / Celery `.delay()` calls mapped to every cross-service listener handling that event/command/task.
 2. **Exclusions**:
    - Ignore unimplemented stub methods (e.g., throwing `UnsupportedOperationException`) unless real transport code backs them.
    - Ignore self-test scripts or standalone sample clients inside the same service (`src_service == dst_service`).
    - Ignore browser-side JavaScript `fetch()` calls originating from static frontend assets rather than server code.
+   - Ignore infrastructure plumbing calls such as OAuth2 token introspection/validation middleware and background configuration reloaders.
 3. **Referential Integrity & Evidence**:
    - `"dst_interface_id"` MUST exactly match an `"id"` inside `microservices[dst_service].exposed_interfaces`.
    - `"evidence"` MUST cite `"<relative_file>:<line> <concise_code_snippet>"`.
