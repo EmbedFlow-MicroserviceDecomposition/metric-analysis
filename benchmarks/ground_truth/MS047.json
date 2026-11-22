@@ -4,51 +4,6 @@
   "prompt_version": "v1.0",
   "status": "verified",
   "microservices": {
-    "mongodb": {
-      "exposed_interfaces": []
-    },
-    "catalogue": {
-      "exposed_interfaces": [
-        {
-          "id": "server.get_product_sku",
-          "class_name": "server.js",
-          "method_name": "get_product_sku",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": "GET /product/:sku"
-        }
-      ]
-    },
-    "user": {
-      "exposed_interfaces": [
-        {
-          "id": "server.get_check_id",
-          "class_name": "server.js",
-          "method_name": "get_check_id",
-          "param_types": [
-            "string"
-          ],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": "GET /check/:id"
-        },
-        {
-          "id": "server.post_order_id",
-          "class_name": "server.js",
-          "method_name": "post_order_id",
-          "param_types": [
-            "string",
-            "object"
-          ],
-          "return_type": "string",
-          "protocol": "REST",
-          "endpoint": "POST /order/:id"
-        }
-      ]
-    },
     "cart": {
       "exposed_interfaces": [
         {
@@ -76,16 +31,376 @@
         }
       ]
     },
-    "shipping": {
-      "exposed_interfaces": []
+    "catalogue": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_categories",
+          "class_name": "server",
+          "method_name": "get_categories",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_health",
+          "class_name": "server",
+          "method_name": "get_health",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_product_sku",
+          "class_name": "server",
+          "method_name": "get_product_sku",
+          "param_types": [
+            "sku"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_products",
+          "class_name": "server",
+          "method_name": "get_products",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_products_cat",
+          "class_name": "server",
+          "method_name": "get_products_cat",
+          "param_types": [
+            "cat"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_search_text",
+          "class_name": "server",
+          "method_name": "get_search_text",
+          "param_types": [
+            "text"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.mongoConnect",
+          "class_name": "server",
+          "method_name": "mongoConnect",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.mongoLoop",
+          "class_name": "server",
+          "method_name": "mongoLoop",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
     },
-    "ratings": {
+    "dispatch": {
       "exposed_interfaces": []
     },
     "payment": {
-      "exposed_interfaces": []
+      "exposed_interfaces": [
+        {
+          "id": "payment.health",
+          "class_name": "payment",
+          "method_name": "health",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "payment.metrics",
+          "class_name": "payment",
+          "method_name": "metrics",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "payment.pay",
+          "class_name": "payment",
+          "method_name": "pay",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
     },
-    "dispatch": {
+    "ratings": {
+      "exposed_interfaces": [
+        {
+          "id": "HealthController.HealthController",
+          "class_name": "HealthController",
+          "method_name": "HealthController",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RatingsApiController.get",
+          "class_name": "RatingsApiController",
+          "method_name": "get",
+          "param_types": [
+            "Request",
+            "string"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "RatingsApiController.put",
+          "class_name": "RatingsApiController",
+          "method_name": "put",
+          "param_types": [
+            "Request",
+            "string",
+            "int"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "shipping": {
+      "exposed_interfaces": [
+        {
+          "id": "Controller.caclc",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "caclc",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Ship",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.cities",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "cities",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.codes",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "codes",
+          "param_types": [],
+          "return_type": "List<Code>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.confirm",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "confirm",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.count",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "count",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.free",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "free",
+          "param_types": [],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.health",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "health",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.match",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "match",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "Controller.memory",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "memory",
+          "param_types": [],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "user": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_check_id",
+          "class_name": "server",
+          "method_name": "get_check_id",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_health",
+          "class_name": "server",
+          "method_name": "get_health",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_history_id",
+          "class_name": "server",
+          "method_name": "get_history_id",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_uniqueid",
+          "class_name": "server",
+          "method_name": "get_uniqueid",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_users",
+          "class_name": "server",
+          "method_name": "get_users",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.mongoConnect",
+          "class_name": "server",
+          "method_name": "mongoConnect",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.mongoLoop",
+          "class_name": "server",
+          "method_name": "mongoLoop",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.post_login",
+          "class_name": "server",
+          "method_name": "post_login",
+          "param_types": [
+            "post"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.post_order_id",
+          "class_name": "server",
+          "method_name": "post_order_id",
+          "param_types": [
+            "id"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.post_register",
+          "class_name": "server",
+          "method_name": "post_register",
+          "param_types": [
+            "post"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "web": {
       "exposed_interfaces": [
         {
           "id": "main.main",

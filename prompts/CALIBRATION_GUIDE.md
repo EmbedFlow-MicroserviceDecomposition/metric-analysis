@@ -1,9 +1,11 @@
 # Calibration & Subagent Orchestration Guide (`fyp-cdq`)
 
-This guide is designed for **both human researchers and autonomous orchestrator agents** running the multi-tool prompt calibration workflow across:
+This guide is designed for **both human researchers and autonomous orchestrator agents** running the multi-tool prompt calibration workflow (**Phase 2**) across:
 1. **`antigravity-cli`** (Gemini Flash 3.8) — Prompt: `prompts/antigravity_prompt.md`
 2. **`claude-code`** (Claude Sonnet 5.5) — Prompt: `prompts/claude_code_prompt.md`
 3. **`codex`** (Codex Sol 6.1) — Prompt: `prompts/codex_prompt.md`
+
+*(For human curation of the 20 Ground-Truth benchmarks in Phase 1, see `benchmarks/GROUND_TRUTH_GUIDE.md`.)*
 
 ---
 
@@ -11,11 +13,11 @@ This guide is designed for **both human researchers and autonomous orchestrator 
 
 Our goal is to extract two structural artifacts from standalone microservice codebases that static parsers cannot reliably resolve across network/process boundaries:
 1. **Exposed Interfaces (`microservices[service_id].exposed_interfaces`)**: Used to calculate **CHD** and **CHM**.
-2. **Inter-Service Call Edges (`inter_service_calls`)**: Used to calculate **IFN** (unique `dst_interface_id` per target service) and **SM** (merged with static intra-service call edges $\mu_k$).
+2. **Inter-Service Call Edges (`inter_service_calls`)**: Used to calculate **IFN** (unique `dst_interface_id` per target service) and **SM** (merged with static intra-service call edges $\mu_k$, scoped by `service_id`).
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────┐
-│ 1. Curate Ground Truths for 20 Stratified Systems                       │
+│ 1. Verified Ground Truths for 20 Stratified Systems                     │
 │    benchmarks/ground_truth/MSxxx.json                                   │
 └───────────────────────────────────┬─────────────────────────────────────┘
                                     ▼
@@ -23,7 +25,7 @@ Our goal is to extract two structural artifacts from standalone microservice cod
 │ 2. Run Extractor in Isolated Context (Fresh Chat OR Isolated Subagent)  │
 │    Input ONLY:                                                          │
 │      • prompts/<tool>_prompt.md                                         │
-│      • outputs/<MS_ID>/output.json (canonical service & class names)    │
+│      • codebases/microservices/microservices.json (entry for <MS_ID>)   │
 │      • codebases/microservices/<MS_ID>_*/                               │
 │    Output:                                                              │
 │      • benchmarks/calibration_runs/<tool>/<version>/<MS_ID>.json        │
@@ -58,13 +60,14 @@ When an **Orchestrator Agent** spawns an **Extractor Subagent** for system `<MS_
    - **ALLOWED to read**:
      - `prompts/<tool>_prompt.md`
      - `prompts/schema.json`
-     - `outputs/<MS_ID>/output.json`
+     - `codebases/microservices/microservices.json` (canonical `service_id -> path` manifest)
      - `codebases/microservices/<MS_ID>_*/`
    - **FORBIDDEN to read**:
      - `benchmarks/ground_truth/` (Ground-truth answers!)
+     - `benchmarks/GROUND_TRUTH_GUIDE.md`
      - `codebases/monoliths/` (Monolith codebases!)
      - `benchmarks/calibration_runs/` (Previous calibration runs or validation reports!)
-     - `outputs/<MS_ID>/*_score.json`
+     - `outputs/`
 3. **Orchestrator-Only Validation**:
    - Once the Extractor Subagents finish writing `benchmarks/calibration_runs/<tool>/<version>/<MS_ID>.json`, the **Orchestrator Agent** runs `uv run python scripts/validate_extraction.py` to compute Precision, Recall, F1, and downstream metric drift ($\Delta\text{CHD}, \Delta\text{CHM}, \Delta\text{IFN}, \Delta\text{SM}$).
    - When hardening `prompts/<tool>_prompt.md`, the Orchestrator must add **generalizable architectural/language rules** (e.g., *"Unwrap Spring `ResponseEntity<T>` to `T`"*, *"Resolve `@FeignClient(name = ...)` to the matching service directory"*), **NEVER** system-specific hardcoded answers (e.g., do not write *"In MS001, OwnerResource calls Visits"*).
@@ -78,13 +81,13 @@ When an **Orchestrator Agent** spawns an **Extractor Subagent** for system `<MS_
   Invoke a fresh `self` subagent per system with the prompt template in `prompts/antigravity_prompt.md`, substituting:
   - `{{SYSTEM_ID}}` $\to$ e.g. `MS001`
   - `{{CODEBASE_PATH}}` $\to$ e.g. `codebases/microservices/MS001_spring-petclinic-microservices`
-  - `{{PARTITION_PATH}}` $\to$ e.g. `outputs/MS001/output.json`
+  - `{{MANIFEST_PATH}}` $\to$ `codebases/microservices/microservices.json`
   - `{{OUTPUT_PATH}}` $\to$ e.g. `benchmarks/calibration_runs/antigravity_cli/v1/MS001.json`
 
 ### Option B: `claude-code` (Claude Sonnet 5.5)
 - **Via Fresh CLI Session per System**:
   ```bash
-  claude -p "Read prompts/claude_code_prompt.md and execute the extraction for SYSTEM_ID=MS001, CODEBASE_PATH=codebases/microservices/MS001_spring-petclinic-microservices, PARTITION_PATH=outputs/MS001/output.json, writing the result to benchmarks/calibration_runs/claude_code/v1/MS001.json"
+  claude -p "Read prompts/claude_code_prompt.md and execute the extraction for SYSTEM_ID=MS001, CODEBASE_PATH=codebases/microservices/MS001_spring-petclinic-microservices, MANIFEST_PATH=codebases/microservices/microservices.json, writing the result to benchmarks/calibration_runs/claude_code/v1/MS001.json"
   ```
 - **Via Subagents inside Claude Code**:
   Use the `Task` tool to launch one isolated subagent per `MSxxx` system with the parameters above.
@@ -92,7 +95,7 @@ When an **Orchestrator Agent** spawns an **Extractor Subagent** for system `<MS_
 ### Option C: `codex` (Codex Sol 6.1)
 - **Via Fresh CLI Session per System**:
   ```bash
-  codex exec "Read prompts/codex_prompt.md and execute the extraction for SYSTEM_ID=MS001, CODEBASE_PATH=codebases/microservices/MS001_spring-petclinic-microservices, PARTITION_PATH=outputs/MS001/output.json, writing the result to benchmarks/calibration_runs/codex/v1/MS001.json"
+  codex exec "Read prompts/codex_prompt.md and execute the extraction for SYSTEM_ID=MS001, CODEBASE_PATH=codebases/microservices/MS001_spring-petclinic-microservices, MANIFEST_PATH=codebases/microservices/microservices.json, writing the result to benchmarks/calibration_runs/codex/v1/MS001.json"
   ```
 
 ---
@@ -114,10 +117,10 @@ uv run python scripts/validate_extraction.py \
 ```
 
 ### Target Validity Thresholds Before Full-Corpus Rollout
-A tool + prompt pair is ready for full-corpus extraction (~98 systems) when across the 20 verified ground-truth systems:
-1. **Schema & Partition Validity**: `100%` of generated JSON files pass `validate_agent_extraction_schema()` with zero unknown services or hallucinated class names.
+A tool + prompt pair is ready for full-corpus extraction across all systems when across the 20 verified ground-truth systems:
+1. **Schema & Manifest Validity**: `100%` of generated JSON files pass `validate_agent_extraction_schema()` against `microservices.json` with zero missing/unknown services and 100% resolved `dst_interface_id` references.
 2. **Exposed Interface Identification**: Macro F1 $\ge 0.85$ on `(service, class_name, method_name)`.
-3. **Inter-Service Call Identification**: Macro F1 $\ge 0.85$ on `(src_service, dst_service, dst_interface_id)` and `(src_class, dst_class)`.
+3. **Inter-Service Call Identification**: Macro F1 $\ge 0.85$ on `(src_service, dst_service, dst_interface_id)` and `(src_service, src_class, dst_service, dst_class)`.
 4. **Downstream Metric Drift**: Mean Absolute Error (MAE) $\le 0.05$ on `CHD`, `CHM`, `SM` and $\le 0.5$ interfaces on `IFN`.
 
 ---

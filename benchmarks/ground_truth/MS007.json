@@ -4,104 +4,6 @@
   "prompt_version": "v1.0",
   "status": "pending_manual_review",
   "microservices": {
-    "review-service": {
-      "exposed_interfaces": [
-        {
-          "id": "InfraEndpoint.health",
-          "class_name": "com.redhat.coolstore.rest.InfraEndpoint",
-          "method_name": "health",
-          "param_types": [],
-          "return_type": "HealthStatus",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "ReviewEndpoint.getReviews",
-          "class_name": "com.redhat.coolstore.rest.ReviewEndpoint",
-          "method_name": "getReviews",
-          "param_types": [
-            "String"
-          ],
-          "return_type": "List<Review>",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "pricing-service": {
-      "exposed_interfaces": []
-    },
-    "coolstore-ui": {
-      "exposed_interfaces": [
-        {
-          "id": "controllers.performAction",
-          "class_name": "controllers",
-          "method_name": "performAction",
-          "param_types": [
-            "action",
-            "item"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "controllers.reset",
-          "class_name": "controllers",
-          "method_name": "reset",
-          "param_types": [],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.get_coolstore_json",
-          "class_name": "server",
-          "method_name": "get_coolstore_json",
-          "param_types": [
-            "get"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "server.get_keycloak_json",
-          "class_name": "server",
-          "method_name": "get_keycloak_json",
-          "param_types": [
-            "get"
-          ],
-          "return_type": "object",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
-    "catalog-service": {
-      "exposed_interfaces": [
-        {
-          "id": "CatalogEndpoint.add",
-          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
-          "method_name": "add",
-          "param_types": [
-            "Product"
-          ],
-          "return_type": "Response",
-          "protocol": "REST",
-          "endpoint": ""
-        },
-        {
-          "id": "CatalogEndpoint.listAll",
-          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
-          "method_name": "listAll",
-          "param_types": [],
-          "return_type": "List<Product>",
-          "protocol": "REST",
-          "endpoint": ""
-        }
-      ]
-    },
     "cart-service": {
       "exposed_interfaces": [
         {
@@ -174,6 +76,108 @@
           "endpoint": ""
         }
       ]
+    },
+    "catalog-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CatalogEndpoint.add",
+          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
+          "method_name": "add",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "CatalogEndpoint.listAll",
+          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "coolstore-gw": {
+      "exposed_interfaces": [
+        {
+          "id": "CORSServlet.doService",
+          "class_name": "com.redhat.coolstore.api_gateway.CORSServlet",
+          "method_name": "doService",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "coolstore-ui": {
+      "exposed_interfaces": [
+        {
+          "id": "controllers.performAction",
+          "class_name": "controllers",
+          "method_name": "performAction",
+          "param_types": [
+            "action",
+            "item"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "controllers.reset",
+          "class_name": "controllers",
+          "method_name": "reset",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_coolstore_json",
+          "class_name": "server",
+          "method_name": "get_coolstore_json",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        },
+        {
+          "id": "server.get_keycloak_json",
+          "class_name": "server",
+          "method_name": "get_keycloak_json",
+          "param_types": [
+            "get"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "inventory-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AvailabilityEndpoint.getAvailability",
+          "class_name": "com.redhat.coolstore.rest.AvailabilityEndpoint",
+          "method_name": "getAvailability",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Inventory",
+          "protocol": "REST",
+          "endpoint": ""
+        }
+      ]
+    },
+    "pricing-service": {
+      "exposed_interfaces": []
     },
     "rating-service": {
       "exposed_interfaces": [
@@ -295,29 +299,25 @@
         }
       ]
     },
-    "coolstore-gw": {
+    "review-service": {
       "exposed_interfaces": [
         {
-          "id": "CORSServlet.doService",
-          "class_name": "com.redhat.coolstore.api_gateway.CORSServlet",
-          "method_name": "doService",
+          "id": "InfraEndpoint.health",
+          "class_name": "com.redhat.coolstore.rest.InfraEndpoint",
+          "method_name": "health",
           "param_types": [],
-          "return_type": "void",
+          "return_type": "HealthStatus",
           "protocol": "REST",
           "endpoint": ""
-        }
-      ]
-    },
-    "inventory-service": {
-      "exposed_interfaces": [
+        },
         {
-          "id": "AvailabilityEndpoint.getAvailability",
-          "class_name": "com.redhat.coolstore.rest.AvailabilityEndpoint",
-          "method_name": "getAvailability",
+          "id": "ReviewEndpoint.getReviews",
+          "class_name": "com.redhat.coolstore.rest.ReviewEndpoint",
+          "method_name": "getReviews",
           "param_types": [
             "String"
           ],
-          "return_type": "Inventory",
+          "return_type": "List<Review>",
           "protocol": "REST",
           "endpoint": ""
         }
