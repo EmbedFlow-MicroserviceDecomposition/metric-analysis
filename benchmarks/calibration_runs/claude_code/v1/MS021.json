@@ -1,0 +1,1536 @@
+{
+  "system_id": "MS021",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v1.0",
+  "microservices": {
+    "services/tools.descartes.teastore.image": {
+      "exposed_interfaces": [
+        {
+          "id": "ImageProviderEndpoint.getProductImages",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "getProductImages",
+          "param_types": [
+            "HashMap<Long,String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /image/getProductImages"
+        },
+        {
+          "id": "ImageProviderEndpoint.getWebUIImages",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "getWebUIImages",
+          "param_types": [
+            "HashMap<String,String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /image/getWebImages"
+        },
+        {
+          "id": "ImageProviderEndpoint.regenerateImages",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "regenerateImages",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /image/regenerateImages"
+        },
+        {
+          "id": "ImageProviderEndpoint.isFinished",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "isFinished",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /image/finished"
+        },
+        {
+          "id": "ImageProviderEndpoint.getState",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "getState",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /image/state"
+        },
+        {
+          "id": "ImageProviderEndpoint.setCacheSize",
+          "class_name": "tools.descartes.teastore.image.rest.ImageProviderEndpoint",
+          "method_name": "setCacheSize",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /image/setCacheSize"
+        }
+      ]
+    },
+    "services/tools.descartes.teastore.persistence": {
+      "exposed_interfaces": [
+        {
+          "id": "CategoryEndpoint.create",
+          "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
+          "method_name": "create",
+          "param_types": [
+            "Category"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /categories"
+        },
+        {
+          "id": "CategoryEndpoint.findById",
+          "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /categories/{id}"
+        },
+        {
+          "id": "CategoryEndpoint.listAll",
+          "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
+          "method_name": "listAll",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<Category>",
+          "protocol": "REST",
+          "endpoint": "GET /categories"
+        },
+        {
+          "id": "CategoryEndpoint.update",
+          "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "Category"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /categories/{id}"
+        },
+        {
+          "id": "CategoryEndpoint.deleteById",
+          "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
+          "method_name": "deleteById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /categories/{id}"
+        },
+        {
+          "id": "OrderEndpoint.create",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "create",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /orders"
+        },
+        {
+          "id": "OrderEndpoint.findById",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /orders/{id}"
+        },
+        {
+          "id": "OrderEndpoint.listAll",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "listAll",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "GET /orders"
+        },
+        {
+          "id": "OrderEndpoint.update",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /orders/{id}"
+        },
+        {
+          "id": "OrderEndpoint.deleteById",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "deleteById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /orders/{id}"
+        },
+        {
+          "id": "OrderItemEndpoint.create",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "create",
+          "param_types": [
+            "OrderItem"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /orderitems"
+        },
+        {
+          "id": "OrderItemEndpoint.findById",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /orderitems/{id}"
+        },
+        {
+          "id": "OrderItemEndpoint.listAll",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "listAll",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<OrderItem>",
+          "protocol": "REST",
+          "endpoint": "GET /orderitems"
+        },
+        {
+          "id": "OrderItemEndpoint.update",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "OrderItem"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /orderitems/{id}"
+        },
+        {
+          "id": "OrderItemEndpoint.deleteById",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "deleteById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /orderitems/{id}"
+        },
+        {
+          "id": "ProductEndpoint.create",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "create",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /products"
+        },
+        {
+          "id": "ProductEndpoint.findById",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /products/{id}"
+        },
+        {
+          "id": "ProductEndpoint.listAll",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "listAll",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products"
+        },
+        {
+          "id": "ProductEndpoint.update",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "Product"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /products/{id}"
+        },
+        {
+          "id": "ProductEndpoint.deleteById",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "deleteById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /products/{id}"
+        },
+        {
+          "id": "UserEndpoint.create",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "create",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /users"
+        },
+        {
+          "id": "UserEndpoint.findById(Long)",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /users/{id}"
+        },
+        {
+          "id": "UserEndpoint.listAll",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "listAll",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "UserEndpoint.update",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "User"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /users/{id}"
+        },
+        {
+          "id": "UserEndpoint.deleteById",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "deleteById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /users/{id}"
+        },
+        {
+          "id": "OrderEndpoint.listAllForUser",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderEndpoint",
+          "method_name": "listAllForUser",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "GET /orders/user/{user}"
+        },
+        {
+          "id": "OrderItemEndpoint.listAllForProduct",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "listAllForProduct",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<OrderItem>",
+          "protocol": "REST",
+          "endpoint": "GET /orderitems/product/{product}"
+        },
+        {
+          "id": "OrderItemEndpoint.listAllForOrder",
+          "class_name": "tools.descartes.teastore.persistence.rest.OrderItemEndpoint",
+          "method_name": "listAllForOrder",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<OrderItem>",
+          "protocol": "REST",
+          "endpoint": "GET /orderitems/order/{order}"
+        },
+        {
+          "id": "ProductEndpoint.listAllForCategory",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "listAllForCategory",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products/category/{category}"
+        },
+        {
+          "id": "ProductEndpoint.countForCategory",
+          "class_name": "tools.descartes.teastore.persistence.rest.ProductEndpoint",
+          "method_name": "countForCategory",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /products/count/{category}"
+        },
+        {
+          "id": "UserEndpoint.findById",
+          "class_name": "tools.descartes.teastore.persistence.rest.UserEndpoint",
+          "method_name": "findById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /users/name/{name}"
+        },
+        {
+          "id": "CacheManagerEndpoint.clearClassCache",
+          "class_name": "tools.descartes.teastore.persistence.rest.CacheManagerEndpoint",
+          "method_name": "clearClassCache",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /cache/class/{class}"
+        },
+        {
+          "id": "CacheManagerEndpoint.clearAllCaches",
+          "class_name": "tools.descartes.teastore.persistence.rest.CacheManagerEndpoint",
+          "method_name": "clearAllCaches",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /cache/cache"
+        },
+        {
+          "id": "CacheManagerEndpoint.clearEMF",
+          "class_name": "tools.descartes.teastore.persistence.rest.CacheManagerEndpoint",
+          "method_name": "clearEMF",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /cache/emf"
+        },
+        {
+          "id": "DatabaseGenerationEndpoint.generateDataBase",
+          "class_name": "tools.descartes.teastore.persistence.rest.DatabaseGenerationEndpoint",
+          "method_name": "generateDataBase",
+          "param_types": [
+            "Integer",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /generatedb"
+        },
+        {
+          "id": "DatabaseGenerationEndpoint.isFinshed",
+          "class_name": "tools.descartes.teastore.persistence.rest.DatabaseGenerationEndpoint",
+          "method_name": "isFinshed",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /generatedb/finished"
+        },
+        {
+          "id": "DatabaseGenerationEndpoint.setMaintenanceMode",
+          "class_name": "tools.descartes.teastore.persistence.rest.DatabaseGenerationEndpoint",
+          "method_name": "setMaintenanceMode",
+          "param_types": [
+            "Boolean"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /generatedb/maintenance"
+        },
+        {
+          "id": "DatabaseGenerationEndpoint.isMaintenance",
+          "class_name": "tools.descartes.teastore.persistence.rest.DatabaseGenerationEndpoint",
+          "method_name": "isMaintenance",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /generatedb/maintenance"
+        }
+      ]
+    },
+    "services/tools.descartes.teastore.recommender": {
+      "exposed_interfaces": [
+        {
+          "id": "RecommendEndpoint.recommend",
+          "class_name": "tools.descartes.teastore.recommender.rest.RecommendEndpoint",
+          "method_name": "recommend",
+          "param_types": [
+            "List<OrderItem>",
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /recommend"
+        },
+        {
+          "id": "RecommendSingleEndpoint.recommend",
+          "class_name": "tools.descartes.teastore.recommender.rest.RecommendSingleEndpoint",
+          "method_name": "recommend",
+          "param_types": [
+            "OrderItem",
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /recommendsingle"
+        },
+        {
+          "id": "TrainEndpoint.train",
+          "class_name": "tools.descartes.teastore.recommender.rest.TrainEndpoint",
+          "method_name": "train",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /train"
+        },
+        {
+          "id": "TrainEndpoint.getTimeStamp",
+          "class_name": "tools.descartes.teastore.recommender.rest.TrainEndpoint",
+          "method_name": "getTimeStamp",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /train/timestamp"
+        },
+        {
+          "id": "TrainEndpoint.isReady",
+          "class_name": "tools.descartes.teastore.recommender.rest.TrainEndpoint",
+          "method_name": "isReady",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /train/isready"
+        }
+      ]
+    },
+    "services/tools.descartes.teastore.registry": {
+      "exposed_interfaces": [
+        {
+          "id": "RegistryREST.register",
+          "class_name": "tools.descartes.teastore.registry.rest.RegistryREST",
+          "method_name": "register",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /services/{name}/{location}"
+        },
+        {
+          "id": "RegistryREST.unregister",
+          "class_name": "tools.descartes.teastore.registry.rest.RegistryREST",
+          "method_name": "unregister",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /services/{name}/{location}"
+        },
+        {
+          "id": "RegistryREST.getInstances",
+          "class_name": "tools.descartes.teastore.registry.rest.RegistryREST",
+          "method_name": "getInstances",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /services/{name}"
+        }
+      ]
+    },
+    "services/tools.descartes.teastore.auth": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthCartRest.addProductToCart",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthCartRest",
+          "method_name": "addProductToCart",
+          "param_types": [
+            "SessionBlob",
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /cart/add/{pid}"
+        },
+        {
+          "id": "AuthCartRest.removeProductFromCart",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthCartRest",
+          "method_name": "removeProductFromCart",
+          "param_types": [
+            "SessionBlob",
+            "Long"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /cart/remove/{pid}"
+        },
+        {
+          "id": "AuthCartRest.updateQuantity",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthCartRest",
+          "method_name": "updateQuantity",
+          "param_types": [
+            "SessionBlob",
+            "Long",
+            "int"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /cart/{pid}"
+        },
+        {
+          "id": "AuthUserActionsRest.placeOrder",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthUserActionsRest",
+          "method_name": "placeOrder",
+          "param_types": [
+            "SessionBlob",
+            "long",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /useractions/placeorder"
+        },
+        {
+          "id": "AuthUserActionsRest.login",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthUserActionsRest",
+          "method_name": "login",
+          "param_types": [
+            "SessionBlob",
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /useractions/login"
+        },
+        {
+          "id": "AuthUserActionsRest.logout",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthUserActionsRest",
+          "method_name": "logout",
+          "param_types": [
+            "SessionBlob"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /useractions/logout"
+        },
+        {
+          "id": "AuthUserActionsRest.isLoggedIn",
+          "class_name": "tools.descartes.teastore.auth.rest.AuthUserActionsRest",
+          "method_name": "isLoggedIn",
+          "param_types": [
+            "SessionBlob"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /useractions/isloggedin"
+        }
+      ]
+    },
+    "services/tools.descartes.teastore.webui": {
+      "exposed_interfaces": [
+        {
+          "id": "AboutUsServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.AboutUsServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /about"
+        },
+        {
+          "id": "CartActionServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.CartActionServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cartAction"
+        },
+        {
+          "id": "CartServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.CartServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart"
+        },
+        {
+          "id": "CategoryServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.CategoryServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /category"
+        },
+        {
+          "id": "CategoryServlet.handlePOSTRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.CategoryServlet",
+          "method_name": "handlePOSTRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /category"
+        },
+        {
+          "id": "DataBaseActionServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.DataBaseActionServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /dataBaseAction"
+        },
+        {
+          "id": "DataBaseServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.DataBaseServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /database"
+        },
+        {
+          "id": "LoginActionServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.LoginActionServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /loginAction"
+        },
+        {
+          "id": "LoginActionServlet.handlePOSTRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.LoginActionServlet",
+          "method_name": "handlePOSTRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /loginAction"
+        },
+        {
+          "id": "LoginServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.LoginServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "OrderServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.OrderServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /order"
+        },
+        {
+          "id": "OrderServlet.handlePOSTRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.OrderServlet",
+          "method_name": "handlePOSTRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order"
+        },
+        {
+          "id": "ProductServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.ProductServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /product"
+        },
+        {
+          "id": "ProfileServlet.handleGETRequest",
+          "class_name": "tools.descartes.teastore.webui.servlet.ProfileServlet",
+          "method_name": "handleGETRequest",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /profile"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "AboutUsServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/AboutUsServlet.java:64 LoadBalancedImageOperations.getWebImage(\"descartesLogo\", ImageSizePreset.LOGO.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "AboutUsServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/AboutUsServlet.java:68 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartActionServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthCartRest",
+      "dst_interface_id": "AuthCartRest.addProductToCart",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartActionServlet.java:60 SessionBlob blob = LoadBalancedStoreOperations.addProductToCart(getSessionBlob(request), productID);"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartActionServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthCartRest",
+      "dst_interface_id": "AuthCartRest.removeProductFromCart",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartActionServlet.java:66 SessionBlob blob = LoadBalancedStoreOperations.removeProductFromCart(getSessionBlob(request),"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartActionServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartActionServlet.java:77 if (LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request))) {"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartActionServlet",
+      "src_method": "confirmOrder",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.placeOrder",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartActionServlet.java:113 blob = LoadBalancedStoreOperations.placeOrder(getSessionBlob(request), infos[0] + \" \" + infos[1], infos[2],"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartActionServlet",
+      "src_method": "updateOrder",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthCartRest",
+      "dst_interface_id": "AuthCartRest.updateQuantity",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartActionServlet.java:155 blob = LoadBalancedStoreOperations.updateQuantity(blob, orderItem.getProductId(),"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.findById",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartServlet.java:74 Product product = LoadBalancedCRUDOperations.getEntity(Service.PERSISTENCE, \"products\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartServlet.java:80 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartServlet.java:83 \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartServlet.java:86 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CartServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getProductImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CartServlet.java:101 request.setAttribute(\"productImages\", LoadBalancedImageOperations.getProductPreviewImages(ads));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.findById",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:68 Category category = LoadBalancedCRUDOperations.getEntity(Service.PERSISTENCE, \"categories\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.countForCategory",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:71 int products = Integer.parseInt(ServiceLoadBalancer.loadBalanceRESTOperation("
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.listAllForCategory",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:94 \"products\", Product.class, \"category\", categoryID, (page - 1) * numberProducts,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getProductImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:97 LoadBalancedImageOperations.getProductPreviewImages(productlist));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:99 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:101 .getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "CategoryServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/CategoryServlet.java:108 LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "DataBaseActionServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "DatabaseGenerationEndpoint",
+      "dst_interface_id": "DatabaseGenerationEndpoint.generateDataBase",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/DataBaseActionServlet.java:67 Response resp = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE, \"generatedb\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "DataBaseActionServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.regenerateImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/DataBaseActionServlet.java:80 List<Integer> status = LoadBalancedImageOperations.regenerateImages();"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "DataBaseServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/DataBaseServlet.java:52 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ErrorServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ErrorServlet.java:61 LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ErrorServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ErrorServlet.java:63 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ErrorServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ErrorServlet.java:67 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "IndexServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/IndexServlet.java:56 LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "IndexServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/IndexServlet.java:60 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "IndexServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/IndexServlet.java:58 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "LoginActionServlet",
+      "src_method": "handlePOSTRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.login",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/LoginActionServlet.java:62 SessionBlob blob = LoadBalancedStoreOperations.login(getSessionBlob(request),"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "LoginActionServlet",
+      "src_method": "handlePOSTRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.logout",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/LoginActionServlet.java:80 SessionBlob blob = LoadBalancedStoreOperations.logout(getSessionBlob(request));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "LoginServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/LoginServlet.java:55 LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "LoginServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/LoginServlet.java:57 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "LoginServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/LoginServlet.java:59 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "OrderServlet",
+      "src_method": "handlePOSTRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/OrderServlet.java:69 LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "OrderServlet",
+      "src_method": "handlePOSTRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/OrderServlet.java:71 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "OrderServlet",
+      "src_method": "handlePOSTRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/OrderServlet.java:73 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request)));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:65 .getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:68 request.setAttribute(\"login\", LoadBalancedStoreOperations.isLoggedIn(blob));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.findById",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:69 Product p = LoadBalancedCRUDOperations.getEntity(Service.PERSISTENCE, \"products\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.recommender",
+      "dst_class": "RecommendEndpoint",
+      "dst_interface_id": "RecommendEndpoint.recommend",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:79 List<Long> productIds = LoadBalancedRecommenderOperations.getRecommendations(items,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getProductImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:92 request.setAttribute(\"productImages\", LoadBalancedImageOperations.getProductImages(ads,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProductServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProductServlet.java:96 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProfileServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.auth",
+      "dst_class": "AuthUserActionsRest",
+      "dst_interface_id": "AuthUserActionsRest.isLoggedIn",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProfileServlet.java:59 if (!LoadBalancedStoreOperations.isLoggedIn(getSessionBlob(request))) {"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProfileServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProfileServlet.java:64 LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProfileServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProfileServlet.java:66 .getEntities(Service.PERSISTENCE, \"categories\", Category.class, -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProfileServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "UserEndpoint",
+      "dst_interface_id": "UserEndpoint.findById(Long)",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProfileServlet.java:69 \"users\", User.class, getSessionBlob(request).getUID()));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "ProfileServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "OrderEndpoint",
+      "dst_interface_id": "OrderEndpoint.listAllForUser",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/ProfileServlet.java:71 \"orders\", Order.class, \"user\", getSessionBlob(request).getUID(), -1, -1));"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "StatusServlet",
+      "src_method": "handleGETRequest",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.getWebUIImages",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/StatusServlet.java:59 iconImage = LoadBalancedImageOperations.getWebImage(\"icon\", ImageSizePreset.ICON.getSize());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "StatusServlet",
+      "src_method": "isDatabaseFinished",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "DatabaseGenerationEndpoint",
+      "dst_interface_id": "DatabaseGenerationEndpoint.isFinshed",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/StatusServlet.java:95 String finished = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "StatusServlet",
+      "src_method": "isImageFinished",
+      "dst_service": "services/tools.descartes.teastore.image",
+      "dst_class": "ImageProviderEndpoint",
+      "dst_interface_id": "ImageProviderEndpoint.isFinished",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/StatusServlet.java:110 List<String> finishedMessages = ServiceLoadBalancer.multicastRESTOperation(Service.IMAGE,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "StatusServlet",
+      "src_method": "isRecommenderFinished",
+      "dst_service": "services/tools.descartes.teastore.recommender",
+      "dst_class": "TrainEndpoint",
+      "dst_interface_id": "TrainEndpoint.isReady",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/servlet/StatusServlet.java:129 List<String> finishedMessages = ServiceLoadBalancer.multicastRESTOperation(Service.RECOMMENDER,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthCartRest",
+      "src_method": "addProductToCart",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.findById",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/AuthCartRest.java:60 product = LoadBalancedCRUDOperations.getEntity(Service.PERSISTENCE, \"products\", Product.class,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthUserActionsRest",
+      "src_method": "placeOrder",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "OrderEndpoint",
+      "dst_interface_id": "OrderEndpoint.create",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/AuthUserActionsRest.java:96 orderId = LoadBalancedCRUDOperations.sendEntityForCreation(Service.PERSISTENCE, \"orders\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthUserActionsRest",
+      "src_method": "placeOrder",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "OrderItemEndpoint",
+      "dst_interface_id": "OrderItemEndpoint.create",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/AuthUserActionsRest.java:106 LoadBalancedCRUDOperations.sendEntityForCreation(Service.PERSISTENCE, \"orderitems\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthUserActionsRest",
+      "src_method": "login",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "UserEndpoint",
+      "dst_interface_id": "UserEndpoint.findById",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/AuthUserActionsRest.java:137 user = LoadBalancedCRUDOperations.getEntityWithProperties(Service.PERSISTENCE, \"users\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.image",
+      "src_class": "SetupController",
+      "src_method": "waitForPersistence",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "DatabaseGenerationEndpoint",
+      "dst_interface_id": "DatabaseGenerationEndpoint.isFinshed",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.image/src/main/java/tools/descartes/teastore/image/setup/SetupController.java:158 result = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE, \"generatedb\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.image",
+      "src_class": "SetupController",
+      "src_method": "fetchProductsForCategory",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "ProductEndpoint",
+      "dst_interface_id": "ProductEndpoint.listAllForCategory",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.image/src/main/java/tools/descartes/teastore/image/setup/SetupController.java:194 result = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE, \"products\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.image",
+      "src_class": "SetupController",
+      "src_method": "fetchCategories",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "CategoryEndpoint",
+      "dst_interface_id": "CategoryEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.image/src/main/java/tools/descartes/teastore/image/setup/SetupController.java:227 result = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE, \"categories\","
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.recommender",
+      "src_class": "TrainingSynchronizer",
+      "src_method": "waitForPersistence",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "DatabaseGenerationEndpoint",
+      "dst_interface_id": "DatabaseGenerationEndpoint.isFinshed",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/TrainingSynchronizer.java:138 result = ServiceLoadBalancer.loadBalanceRESTOperation(Service.PERSISTENCE, \"generatedb\", String.class,"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.recommender",
+      "src_class": "TrainingSynchronizer",
+      "src_method": "retrieveDataAndRetrain",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "OrderItemEndpoint",
+      "dst_interface_id": "OrderItemEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/TrainingSynchronizer.java:184 items = LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"orderitems\", OrderItem.class, -1, -1);"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.recommender",
+      "src_class": "TrainingSynchronizer",
+      "src_method": "retrieveDataAndRetrain",
+      "dst_service": "services/tools.descartes.teastore.persistence",
+      "dst_class": "OrderEndpoint",
+      "dst_interface_id": "OrderEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/TrainingSynchronizer.java:194 orders = LoadBalancedCRUDOperations.getEntities(Service.PERSISTENCE, \"orders\", Order.class, -1, -1);"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthStartup",
+      "src_method": "contextInitialized",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.register",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/startup/AuthStartup.java:68 RegistryClient.getClient().register(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.auth",
+      "src_class": "AuthStartup",
+      "src_method": "contextDestroyed",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.unregister",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/startup/AuthStartup.java:56 RegistryClient.getClient().unregister(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.image",
+      "src_class": "ImageProviderStartup",
+      "src_method": "contextInitialized",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.register",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.image/src/main/java/tools/descartes/teastore/image/setup/ImageProviderStartup.java:66 RegistryClient.getClient().register(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.image",
+      "src_class": "ImageProviderStartup",
+      "src_method": "contextDestroyed",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.unregister",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.image/src/main/java/tools/descartes/teastore/image/setup/ImageProviderStartup.java:49 RegistryClient.getClient().unregister(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.persistence",
+      "src_class": "InitialDataGenerationDaemon",
+      "src_method": "contextInitialized",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.register",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/daemons/InitialDataGenerationDaemon.java:76 RegistryClient.getClient().register(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.persistence",
+      "src_class": "InitialDataGenerationDaemon",
+      "src_method": "contextDestroyed",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.unregister",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/daemons/InitialDataGenerationDaemon.java:56 RegistryClient.getClient().unregister(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.recommender",
+      "src_class": "RecommenderStartup",
+      "src_method": "contextInitialized",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.register",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/RecommenderStartup.java:75 RegistryClient.getClient().register(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.recommender",
+      "src_class": "RecommenderStartup",
+      "src_method": "contextDestroyed",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.unregister",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/RecommenderStartup.java:61 RegistryClient.getClient().unregister(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "WebuiStartup",
+      "src_method": "contextInitialized",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.register",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/startup/WebuiStartup.java:56 RegistryClient.getClient().register(event.getServletContext().getContextPath());"
+    },
+    {
+      "src_service": "services/tools.descartes.teastore.webui",
+      "src_class": "WebuiStartup",
+      "src_method": "contextDestroyed",
+      "dst_service": "services/tools.descartes.teastore.registry",
+      "dst_class": "RegistryREST",
+      "dst_interface_id": "RegistryREST.unregister",
+      "protocol": "REST",
+      "evidence": "services/tools.descartes.teastore.webui/src/main/java/tools/descartes/teastore/webui/startup/WebuiStartup.java:45 RegistryClient.getClient().unregister(event.getServletContext().getContextPath());"
+    }
+  ]
+}

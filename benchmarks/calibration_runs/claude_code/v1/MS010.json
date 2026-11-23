@@ -1,0 +1,55 @@
+{
+  "system_id": "MS010",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v1.0",
+  "status": "candidate",
+  "microservices": {
+    "spring-petclinic-rest-owner": {
+      "exposed_interfaces": [
+        {
+          "id": "OwnerController.getOwnerVisits",
+          "class_name": "org.springframework.samples.petclinic.owner.OwnerController",
+          "method_name": "getOwnerVisits",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "List<Visit>",
+          "protocol": "REST",
+          "endpoint": "GET /owner/{ownerId}/getVisits"
+        }
+      ]
+    },
+    "spring-petclinic-rest-pet": {
+      "exposed_interfaces": []
+    },
+    "spring-petclinic-rest-system": {
+      "exposed_interfaces": [
+        {
+          "id": "ApplicationController.home",
+          "class_name": "org.springframework.samples.petclinic.system.ApplicationController",
+          "method_name": "home",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "ANY /"
+        },
+        {
+          "id": "CrashController.triggerException",
+          "class_name": "org.springframework.samples.petclinic.system.CrashController",
+          "method_name": "triggerException",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /oups"
+        }
+      ]
+    },
+    "spring-petclinic-rest-vet": {
+      "exposed_interfaces": []
+    },
+    "spring-petclinic-rest-visit": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

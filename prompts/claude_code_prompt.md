@@ -6,52 +6,79 @@
 - `MANIFEST_PATH`: `{{MANIFEST_PATH}}` (default: `codebases/microservices/microservices.json`)
 - `OUTPUT_PATH`: `{{OUTPUT_PATH}}`
 - `extractor_tool`: `"claude-code"`
-- `prompt_version`: `"v1.0"`
+- `prompt_version`: `"v3.0"`
+- `status`: `"pending_manual_review"`
 
 ---
 
 ## 1. Isolation & Ground-Truth Firewall
 - **Permitted paths**: `{{CODEBASE_PATH}}`, `{{MANIFEST_PATH}}` (for `{{SYSTEM_ID}}`), `prompts/schema.json`.
-- **Prohibited paths**: Do NOT read or search `benchmarks/ground_truth/`, `benchmarks/GROUND_TRUTH_GUIDE.md`, `codebases/monoliths/`, `benchmarks/calibration_runs/`, or `outputs/`.
-- **Canonical Service Constraint**: Every microservice key (`microservices` keys, `src_service`, `dst_service`) MUST match `microservices.json["{{SYSTEM_ID}}"]["services"]` 1-to-1. Never invent service IDs.
+- **Prohibited paths**: Do NOT read, list, or search `benchmarks/` (ground truth, guides, calibration runs), `codebases/monoliths/`, `outputs/`, or other systems' codebases.
+- **Canonical Service Constraint**: Every microservice key (`microservices` keys, `src_service`, `dst_service`) MUST match `microservices.json["{{SYSTEM_ID}}"]["services"]` 1-to-1. Never invent service IDs. Include every manifest service, using `"exposed_interfaces": []` when it exposes nothing.
 
 ---
 
 ## 2. Extraction Specification
 
 ### A. Exposed Interfaces (`microservices[service_id].exposed_interfaces`)
-For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["services"]`, inspect its source files inside `{{CODEBASE_PATH}}/<rel_dir>` and extract all operations exposed across the service boundary:
-1. **Include**:
-   - **REST Controllers / HTTP Handlers**: Spring `@RestController`/`@Controller` endpoint methods (`@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`, `@PatchMapping`, `@RequestMapping`), JAX-RS `@Path` resource methods (`@GET`, `@POST`, etc.), ASP.NET `[ApiController]` action methods & Minimal API routes, Go HTTP handler functions/methods, active Python FastAPI/Flask/Django view/route handlers, Node.js/NestJS/Express route & controller handlers.
-   - **gRPC / RPC Operations**: Methods implementing `.proto` service interfaces or RPC handlers.
-   - **Asynchronous Event / Command Listeners**: Methods consuming cross-service messages (`@KafkaListener`, `@RabbitListener`, Eventuate Tram command/event handlers, RabbitMQ `IIntegrationEventHandler`, Celery `@shared_task`, NATS/AMQP consumers).
-2. **Exclude**:
-   - Internal domain entities, DTOs/VOs, database repositories/DAOs, Spring `@Configuration`/`@SpringBootApplication` classes, `/health` probes, debug status servlets (`IndexServlet`), framework exception-handler error views (`UseExceptionHandler`), getters/setters, constructors, and private/internal helper methods.
-   - Pure static frontends or workers that declare no inbound backend API operations should have `"exposed_interfaces": []`.
-3. **Signature Normalization**:
-   - Unwrap generic transport/reactive/async containers in `return_type` and `param_types`:
-     - `ResponseEntity<T>`, `Optional<T>`, `Mono<T>`, `CompletableFuture<T>`, `Task<T>`, `ActionResult<T>`, `Task<ActionResult<T>>` $\to$ `T`.
-     - `Flux<T>`, `Collection<T>`, `IEnumerable<T>`, `Set<T>`, `T[]` $\to$ `List<T>`.
-     - Empty/void wrappers (`ResponseEntity<Void>`, `Mono<Void>`, `Task`, `IActionResult` without payload) $\to$ `"void"`.
-   - Strip framework context arguments from `param_types` (`HttpServletRequest`, `HttpServletResponse`, `BindingResult`, `Pageable`, `Principal`, `CancellationToken`, `ServerCallContext`, `context.Context`, `http.ResponseWriter`, `*http.Request`, `*gin.Context`).
-   - Keep simple domain type names (e.g., `"OwnerDetails"`, `"PetRequest"`, `"int"`, `"String"`, `"List<Visit>"`).
-   - Set `"class_name"` to the declared FQN / module/file identifier in source code, and `"id"` to `"<SimpleClassName>.<method_name>"` (unique within the service).
+For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["services"]`, inspect the source files inside `{{CODEBASE_PATH}}/<rel_dir>` and extract every operation that is **callable across the service boundary by another service or an external client**. Base each record on source evidence, never on names alone.
+
+#### A.1 Include
+- **REST / HTTP handlers**
+  - *Java*: Spring `@RestController` / `@Controller` methods (`@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`, `@PatchMapping`, `@RequestMapping`), JAX-RS `@Path` methods, **and Spring Data REST repository query methods** declared in interfaces annotated `@RepositoryRestResource` (they are served over HTTP with no controller; the endpoint is `/<path>/{id}` for `findById`, `/<path>/search/<method>` for custom finders, `/<path>` for `findAll`). Plain repositories/DAOs without that annotation are NOT exposed.
+  - *C#*: `[ApiController]` / `ControllerBase` action methods and Minimal API `Map*` handlers (route-registration helpers: use the helper's name as `method_name`).
+  - *Go*: HTTP handlers registered on a router/mux (`gin`, `echo`, `chi`, `mux`, `net/http`), including handlers of a BFF/frontend server that perform business actions.
+  - *Python*: every active (non-commented) routed view in `urls.py`/blueprints/decorators (`@app.route`, `@router.get`, `APIView`/`ViewSet`/function views), and Celery `@shared_task` / `@app.task` consumers.
+  - *PHP*: controller actions with `@Route` / `#[Route]`.
+  - *Node.js / TypeScript*: NestJS `@Controller` methods, Express/Fastify `app.<verb>` / `router.<verb>` handlers.
+- **gRPC / RPC**: every method a struct/class implements for a registered gRPC service (`*ImplBase`, `Unimplemented*Server`, `*Servicer`, `@GrpcMethod`, Go server structs registered with `Register*Server`). Include placeholder methods that satisfy the contract. For Go: a struct registered as the server for a service exposes **every RPC of that service, including methods promoted from embedded structs**; list promoted methods under the embedding struct, and also under the embedded struct if that struct is separately registered for its own service. For server-streaming RPCs, return `List<T>`.
+- **GraphQL (NestJS / similar)**: leaf `@Query`, `@Mutation` and `@ResolveField` resolver methods that do real work.
+- **Declared handlers count even when their body is a placeholder**: include a routed REST/gRPC/GraphQL handler that throws `NotImplemented`, returns `undefined`/`null`, or is an unused-but-registered stub. Include OAuth/Passport redirect and callback routes (`@Get` with an auth guard).
+- **Asynchronous consumers**: `@KafkaListener`, `@RabbitListener`, `@StreamListener`, Eventuate Tram command and domain-event handlers (**every handler registered through `CommandHandlersBuilder.onMessage` / `DomainEventHandlersBuilder.onEvent`, one record per registered handler method**), `IIntegrationEventHandler.Handle` / `HandleMessageAsync` (record the one public handler, not its private per-event overloads), Celery tasks, AMQP/NATS consumer loops (for a loop in Go `main()`, use `class_name` `"main"`, `method_name` `"main"`), and NestJS CQRS `@Saga()` / EventStore handlers that react to events **published by another service**. A handler bound to a named channel, queue or topic counts even if the only current sender is in the same service (for example a saga orchestrating its own service's command channel).
+
+#### A.2 Exclude
+- Entities, DTOs, plain repositories/DAOs, configuration, DI wiring, `main()` bootstrap of HTTP servers, worker lifecycle hooks (`StartAsync`/`StopAsync`), getters/setters, constructors, private helpers.
+- Outbound client stubs (`@FeignClient`, Refit interfaces, generated gRPC `*Client`/`*Stub`): they are callers, not exposed interfaces.
+- **Health, status, debug and plumbing endpoints**: `/health`, `/healthz`, `/_healthz`, `/ready`, `/readiness`, gRPC `Health.Check`/`Watch`, `/metrics`, `/debug/*`, `/memory`, `/free`, `/build`, `/oups`, `/robots.txt`, static-asset routes, scaffold `GET /` hello/banner handlers, debug status servlets, framework exception-handler / error views, and circuit-breaker fallback handlers (`/fallback`).
+- **Server-rendered MVC views**: controllers/servlets in view-based frameworks whose job is to return a page (ASP.NET MVC `View()`, Razor, JSP, Thymeleaf / `ModelAndView`, `HttpServlet` `handleGET`/`handlePOST` that forward to a page, identity-provider login/consent/logout UI flows). A service made only of these has `"exposed_interfaces": []`. This exclusion does **not** apply to handlers registered on a router in Go, Node.js or Python (including a BFF/storefront web server whose handlers render HTML templates): every such router-registered handler counts as exposed (except the meta endpoints above), including page handlers such as home, product, cart, logout, and assistant handlers. Skip such a handler only if it merely serves a static form and calls no other service and no data layer.
+- **Browser SPAs** (React/Vue/Angular bundles served by `webpack`, `react-scripts`, `nginx`, `express.static`, including a catch-all `GET /*` that returns `index.html`): `"exposed_interfaces": []`.
+- Empty namespace-grouping GraphQL resolvers that only `return {}`; handlers whose body is commented out or a no-op (`return null`); routes that are commented out; the unused duplicate when a real and a dummy/test implementation exist for one RPC (keep the real one).
+- Purely in-process framework events (Spring `@EventListener`/`ApplicationEvent`, a NestJS event bus used only inside the service) and internal job queues (Bull/BullMQ `@Process`) whose producer and consumer are in the same service. This does not cover handlers bound to a named message channel (see A.1).
+
+#### A.3 Signature Normalization
+- Unwrap transport/async wrappers in `return_type` and `param_types`, recursively: `ResponseEntity<T>`, `Optional<T>`, `Mono<T>`, `CompletableFuture<T>`, `Task<T>`, `ActionResult<T>`, `Task<ActionResult<T>>` → `T`. `Flux<T>`, `Collection<T>`, `IEnumerable<T>`, `Set<T>`, `T[]` → `List<T>`. Empty/void wrappers (`ResponseEntity<Void>`, `Mono<Void>`, `Task`, bare `IActionResult`) → `"void"`.
+- Remove framework context arguments from `param_types`: `HttpServletRequest`, `HttpServletResponse`, `BindingResult`, `Model`, `Pageable`, `Principal`, `CancellationToken`, `ServerCallContext`, `context.Context`, `http.ResponseWriter`, `*http.Request`, `*gin.Context`, Express `req`/`res`, Vert.x `RoutingContext`, parent/context decorators.
+- For messaging handlers, use the message payload type `T` (not `CommandMessage<T>` / `DomainEventEnvelope<T>`).
+- Use simple domain type names (`"Owner"`, `"int"`, `"String"`, `"List<Visit>"`). Keep a declared type as written when nothing more specific can be established (for example `Object`).
+
+#### A.4 Identifiers
+- `class_name`: the declared class, FQN, struct (`<pkg>.<Struct>` for Go) or, when the handler is a plain function, the module/file identifier (e.g. `views`, `tasks`, `server.js`). In plain Node.js (not NestJS) a handler that is a method of a helper class defined inside the route/server file still uses the module file (`server.js`, id `server.<method>`), not the helper class name.
+- `method_name`: the declared method or function name.
+- `id`: `"<SimpleClassName>.<method_name>"`, unique within the service. If two methods share a name (overloads, versions), add a short suffix describing the difference (for example `"VisitResource.readByPetId"`).
+- **Anonymous inline route callbacks** (Express `app.get('/cart/:id', (req, res) => ...)`): set `class_name` to the route file (`"server.js"`), `method_name` to lowercase snake_case `<verb>_<route_tokens>` (drop a leading generic `/api`, replace `/` and `:` with `_`; e.g. `GET /api/orders/:id` → `get_orders_id`, `POST /shipping/:id` → `post_shipping_id`), and `id` to `"server.<method_name>"`. Apply the same idea to other anonymous handlers: never invent camelCase names.
+- `endpoint`: `"<VERB> <full path>"` for HTTP (combine class-level and method-level paths; omit configuration context paths), the RPC `Service/method` for gRPC, the queue/topic/event type for messaging.
 
 ### B. Inter-Service Call Edges (`inter_service_calls`)
-Trace all cross-service calls across the directories in `microservices.json["{{SYSTEM_ID}}"]["services"]` where a class in `src_service` calls an exposed interface in `dst_service` (`src_service != dst_service`):
-1. **Synchronous HTTP / REST & Coded Gateway Calls**:
-   - Inspect `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`, `http.Client`, and programmatic gateway client / explicit per-endpoint `RouteLocator` calls (do **not** explode wildcard `/**` YAML reverse-proxy rules into per-endpoint calls).
-   - Cross-reference URL templates, service discovery names (e.g., `http://visits-service/...`), and config files (`application.yml`, `appsettings.json`, `docker-compose.yml`) to resolve `dst_service`, `dst_class`, and `dst_interface_id`.
-2. **gRPC / RPC**:
-   - Match gRPC client stub calls in `src_class` (`src_service`) to the target gRPC server implementation class `dst_class` and method `dst_interface_id` in `dst_service`.
-3. **Asynchronous Messaging**:
-   - Match message/event/command producers in `src_class` (`src_service`) to the subscribing handler class `dst_class` and method `dst_interface_id` in `dst_service`.
+Trace every call where code in `src_service` invokes an exposed interface in `dst_service` (`src_service != dst_service`).
+
+1. **Synchronous HTTP / REST**
+   - Inspect `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `HttpClient`, Refit, server-side `axios` / `fetch` / `requests` / `http.Get`/`Post`, and programmatic clients in coded BFF/composition gateways.
+   - Resolve service names, URLs and environment/config values (`application.yml`, `appsettings.json`, `docker-compose.yml`, `.env`) to the target service, then to the exact target handler (HTTP verb + path), including Spring Data REST repository methods.
+   - `src_class` is the class whose code performs the invocation, and `src_method` is that method. If the call goes through a **declarative client interface** with no invocation code of its own (`@FeignClient`, Refit), `src_class` is the class that calls the interface method (for example the controller or service) and `src_method` is the calling method, not the interface or its method. A concrete wrapper class that itself holds the HTTP-client code (`WebClient`, `RestTemplate`, `HttpClient`) is its own `src_class`. `dst_class` is the `class_name` of the target interface.
+2. **gRPC / RPC**: match each client-stub call to the server struct/class registered for **that stub's service type** and its method. A client of the full service resolves to the struct registered for the full service (which includes promoted methods); a read-only client type resolves to the read-only struct.
+3. **Asynchronous messaging**: match each publisher (`KafkaTemplate.send`, `RabbitTemplate.convertAndSend`, `DomainEventPublisher.publish`, `CommandProducer.send`, `EventBus.PublishAsync`, `eventBus.publish`, Celery `.delay()` / direct task invocation, AMQP publish) to every active cross-service consumer of that event/command/queue. Use one edge per distinct publisher method and consumer interface. Ignore events whose publisher or subscriber action is commented out.
+4. **Do NOT record**
+   - Declarative reverse-proxy / gateway route rules (`GatewayRoute`, Zuul / Spring Cloud Gateway YAML, fluent `.route(r -> r.path(...).uri(...))`, nginx `proxy_pass`) and wildcard (`/**`) routes. Use protocol `REST` only for real programmatic client calls.
+   - Calls made from browser-side code (SPA bundles, static frontend `fetch`/`axios`): such services have no outgoing calls.
+   - Infrastructure plumbing: service-registry registration/heartbeat/discovery (Eureka, `register`/`unregister`/`getInstances`), tracing/metrics exporters, OAuth2/OIDC token introspection or JWT middleware, authorization-guard / RBAC / policy calls to an authorization service (`hasRights`, `addPolicy`, `checkPermission`, whether made from a guard, middleware or a registration hook), configuration reloaders.
+   - Same-service calls, calls to external third-party APIs, unimplemented stubs, and calls whose target interface does not exist in the canonical services.
+5. **Evidence**: `"evidence"` MUST be `"<file path relative to CODEBASE_PATH>:<line> <short code snippet>"` citing the caller's line; add the target line after `->` if useful.
 
 ---
 
 ## 3. Output Verification & Save
-Save the JSON output to `{{OUTPUT_PATH}}` matching `prompts/schema.json`. Verify before finishing:
+Write the JSON to `{{OUTPUT_PATH}}` matching `prompts/schema.json` with `"system_id"`, `"extractor_tool": "claude-code"`, `"prompt_version": "v3.0"`, `"status": "pending_manual_review"`. Verify before finishing:
 1. All keys in `microservices` match `microservices.json["{{SYSTEM_ID}}"]["services"]` 1-to-1.
 2. Interface `"id"` values are unique within each microservice.
-3. Every `dst_interface_id` exists in `microservices[dst_service].exposed_interfaces`.
-4. `src_service != dst_service` for all entries in `inter_service_calls`.
+3. Every `dst_interface_id` exists in `microservices[dst_service].exposed_interfaces`, and `dst_class` equals that interface's `class_name`.
+4. `src_service != dst_service` for all `inter_service_calls`, and no duplicate calls (same `src_service`, `src_class`, `src_method`, `dst_service`, `dst_interface_id`).
