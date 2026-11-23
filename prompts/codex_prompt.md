@@ -27,7 +27,7 @@ For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["servic
   - gRPC / RPC service implementation methods.
   - Cross-service message/event/command listener methods (`@KafkaListener`, `@RabbitListener`, Eventuate Tram handlers, RabbitMQ integration event handlers, Celery `@shared_task`).
 - **Excluded Methods**:
-  - Entities, DTOs, repositories/DAOs, configuration classes, `/health` probes, `main()` methods, constructors, getters/setters, and internal private/helper methods.
+  - Entities, DTOs, repositories/DAOs, configuration classes, `/health` probes, debug status servlets (`IndexServlet`), framework exception-handler error views (`UseExceptionHandler`), `main()` methods, constructors, getters/setters, and internal private/helper methods.
 - **Type Formatting**:
   - Unwrap `ResponseEntity<T>`, `Optional<T>`, `Mono<T>`, `CompletableFuture<T>`, `Task<T>`, `ActionResult<T>` to `T`.
   - Normalize collection types (`Flux<T>`, `IEnumerable<T>`, `Set<T>`, `T[]`) to `List<T>`.
@@ -36,7 +36,7 @@ For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["servic
 
 ### Part 2: `inter_service_calls`
 Find all directed cross-service invocations (`src_service != dst_service`):
-- Trace HTTP client calls (`WebClient`, `RestTemplate`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`), gateway routes, gRPC client stub calls, and message/event producer calls from `src_class` (in `src_service`) to `dst_class` and `dst_interface_id` (in `dst_service`).
+- Trace HTTP client calls (`WebClient`, `RestTemplate`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`), programmatic gateway calls (not exploded wildcard `/**` YAML reverse-proxy rules), gRPC client stub calls, and message/event producer calls from `src_class` (in `src_service`) to `dst_class` and `dst_interface_id` (in `dst_service`).
 - Ensure every `"dst_interface_id"` matches an `"id"` declared in `microservices[dst_service].exposed_interfaces`.
 
 ---

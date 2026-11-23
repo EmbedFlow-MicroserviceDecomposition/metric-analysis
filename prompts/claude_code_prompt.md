@@ -26,7 +26,7 @@ For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["servic
    - **gRPC / RPC Operations**: Methods implementing `.proto` service interfaces or RPC handlers.
    - **Asynchronous Event / Command Listeners**: Methods consuming cross-service messages (`@KafkaListener`, `@RabbitListener`, Eventuate Tram command/event handlers, RabbitMQ `IIntegrationEventHandler`, Celery `@shared_task`, NATS/AMQP consumers).
 2. **Exclude**:
-   - Internal domain entities, DTOs/VOs, database repositories/DAOs, Spring `@Configuration`/`@SpringBootApplication` classes, `/health` probes, getters/setters, constructors, and private/internal helper methods.
+   - Internal domain entities, DTOs/VOs, database repositories/DAOs, Spring `@Configuration`/`@SpringBootApplication` classes, `/health` probes, debug status servlets (`IndexServlet`), framework exception-handler error views (`UseExceptionHandler`), getters/setters, constructors, and private/internal helper methods.
    - Pure static frontends or workers that declare no inbound backend API operations should have `"exposed_interfaces": []`.
 3. **Signature Normalization**:
    - Unwrap generic transport/reactive/async containers in `return_type` and `param_types`:
@@ -39,8 +39,8 @@ For each `(service_id, rel_dir)` in `microservices.json["{{SYSTEM_ID}}"]["servic
 
 ### B. Inter-Service Call Edges (`inter_service_calls`)
 Trace all cross-service calls across the directories in `microservices.json["{{SYSTEM_ID}}"]["services"]` where a class in `src_service` calls an exposed interface in `dst_service` (`src_service != dst_service`):
-1. **Synchronous HTTP / REST & Gateway Routes**:
-   - Inspect `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`, `http.Client`, and programmatic gateway `RouteLocator` configs.
+1. **Synchronous HTTP / REST & Coded Gateway Calls**:
+   - Inspect `WebClient`, `RestTemplate`, `RestClient`, `@FeignClient`, `@HttpExchange`, `HttpClient`, `axios`, `fetch`, `requests`, `http.Client`, and programmatic gateway client / explicit per-endpoint `RouteLocator` calls (do **not** explode wildcard `/**` YAML reverse-proxy rules into per-endpoint calls).
    - Cross-reference URL templates, service discovery names (e.g., `http://visits-service/...`), and config files (`application.yml`, `appsettings.json`, `docker-compose.yml`) to resolve `dst_service`, `dst_class`, and `dst_interface_id`.
 2. **gRPC / RPC**:
    - Match gRPC client stub calls in `src_class` (`src_service`) to the target gRPC server implementation class `dst_class` and method `dst_interface_id` in `dst_service`.
