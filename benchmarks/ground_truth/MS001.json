@@ -171,16 +171,7 @@
           ],
           "return_type": "OwnerDetails",
           "protocol": "REST",
-          "endpoint": "GET /owners/{ownerId}"
-        },
-        {
-          "id": "FallbackController.fallback",
-          "class_name": "org.springframework.samples.petclinic.api.boundary.web.FallbackController",
-          "method_name": "fallback",
-          "param_types": [],
-          "return_type": "String",
-          "protocol": "REST",
-          "endpoint": "POST /fallback"
+          "endpoint": "GET /api/gateway/owners/{ownerId}"
         }
       ]
     }

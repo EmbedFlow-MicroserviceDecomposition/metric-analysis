@@ -672,56 +672,6 @@
       "evidence": "OrderServiceProxy.java:25 client.get().uri(orderDestinations.getOrderServiceUrl() + \"/orders/{orderId}\", orderId)"
     },
     {
-      "src_service": "ftgo-api-gateway",
-      "src_class": "net.chrisrichardson.ftgo.apiagateway.orders.OrderConfiguration",
-      "src_method": "orderProxyRouting",
-      "dst_service": "ftgo-order-service",
-      "dst_class": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
-      "dst_interface_id": "OrderController.create",
-      "protocol": "GatewayRoute",
-      "evidence": "OrderConfiguration.java:26 .route(r -> r.path(\"/orders\").and().method(\"POST\").uri(orderDestinations.getOrderServiceUrl()))"
-    },
-    {
-      "src_service": "ftgo-api-gateway",
-      "src_class": "net.chrisrichardson.ftgo.apiagateway.orders.OrderConfiguration",
-      "src_method": "orderProxyRouting",
-      "dst_service": "ftgo-order-service",
-      "dst_class": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
-      "dst_interface_id": "OrderController.cancel",
-      "protocol": "GatewayRoute",
-      "evidence": "OrderConfiguration.java:28 .route(r -> r.path(\"/orders/**\").and().method(\"POST\").uri(orderDestinations.getOrderServiceUrl()))"
-    },
-    {
-      "src_service": "ftgo-api-gateway",
-      "src_class": "net.chrisrichardson.ftgo.apiagateway.orders.OrderConfiguration",
-      "src_method": "orderProxyRouting",
-      "dst_service": "ftgo-order-service",
-      "dst_class": "net.chrisrichardson.ftgo.orderservice.web.OrderController",
-      "dst_interface_id": "OrderController.revise",
-      "protocol": "GatewayRoute",
-      "evidence": "OrderConfiguration.java:28 .route(r -> r.path(\"/orders/**\").and().method(\"POST\").uri(orderDestinations.getOrderServiceUrl()))"
-    },
-    {
-      "src_service": "ftgo-api-gateway",
-      "src_class": "net.chrisrichardson.ftgo.apiagateway.orders.OrderConfiguration",
-      "src_method": "orderProxyRouting",
-      "dst_service": "ftgo-order-history-service",
-      "dst_class": "net.chrisrichardson.ftgo.cqrs.orderhistory.web.OrderHistoryController",
-      "dst_interface_id": "OrderHistoryController.getOrders",
-      "protocol": "GatewayRoute",
-      "evidence": "OrderConfiguration.java:30 .route(r -> r.path(\"/orders\").and().method(\"GET\").uri(orderDestinations.getOrderHistoryServiceUrl()))"
-    },
-    {
-      "src_service": "ftgo-api-gateway",
-      "src_class": "net.chrisrichardson.ftgo.apiagateway.consumers.ConsumerConfiguration",
-      "src_method": "consumerProxyRouting",
-      "dst_service": "ftgo-consumer-service",
-      "dst_class": "net.chrisrichardson.ftgo.consumerservice.web.ConsumerController",
-      "dst_interface_id": "ConsumerController.create",
-      "protocol": "GatewayRoute",
-      "evidence": "ConsumerConfiguration.java:17 .route(r -> r.path(\"/consumers\").and().method(\"POST\").uri(consumerDestinations.getConsumerServiceUrl()))"
-    },
-    {
       "src_service": "ftgo-order-service",
       "src_class": "net.chrisrichardson.ftgo.orderservice.sagas.createorder.CreateOrderSaga",
       "src_method": "CreateOrderSaga",
