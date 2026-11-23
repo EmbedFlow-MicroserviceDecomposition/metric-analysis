@@ -92,7 +92,6 @@
     "path": "MS011_monolith-vs-microservices",
     "language": "Java",
     "services": {
-      "gateway": "gateway",
       "city-service": "city-service",
       "route-service": "route-service"
     }
@@ -203,13 +202,13 @@
     "path": "MS020_piggymetrics",
     "language": "Java",
     "services": {
-      "gateway": "gateway",
       "auth-service": "auth-service",
       "account-service": "account-service",
       "statistics-service": "statistics-service",
       "notification-service": "notification-service"
     },
     "non_services": {
+      "gateway": "Zuul Pure YAML reverse-proxy gateway (1-2 boilerplate classes, no aggregation logic), removed per GROUND_TRUTH_GUIDE.md Step 1 Bucket D; its declarative /** routes are not counted as calls (Step 2C.1).",
       "config": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
       "registry": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
       "monitoring": "1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D).",
@@ -385,7 +384,6 @@
     "language": "Java",
     "services": {
       "account-service": "account-service",
-      "gateway-service": "gateway-service",
       "customer-service": "customer-service"
     }
   },
@@ -396,8 +394,7 @@
     "services": {
       "employee-service": "employee-service",
       "department-service": "department-service",
-      "organization-service": "organization-service",
-      "gateway-service": "gateway-service"
+      "organization-service": "organization-service"
     }
   },
   "MS032": {
@@ -407,10 +404,10 @@
     "services": {
       "user-service": "user-service",
       "friend-service": "friend-service",
-      "recommendation-service": "recommendation-service",
-      "edge-service": "edge-service"
+      "recommendation-service": "recommendation-service"
     },
     "non_services": {
+      "edge-service": "Spring Cloud Gateway Pure YAML reverse-proxy gateway (1-2 boilerplate classes, no aggregation logic), removed per GROUND_TRUTH_GUIDE.md Step 1 Bucket D; its declarative /** routes are not counted as calls (Step 2C.1).",
       "discovery-service": "Eureka server: 1-class off-the-shelf infrastructure server with no domain endpoints (GROUND_TRUTH_GUIDE.md Step 1, Bucket D)."
     }
   },

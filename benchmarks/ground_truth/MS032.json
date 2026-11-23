@@ -140,9 +140,6 @@
           "endpoint": "kafka topic: friend"
         }
       ]
-    },
-    "edge-service": {
-      "exposed_interfaces": []
     }
   },
   "inter_service_calls": [
@@ -195,96 +192,6 @@
       "dst_interface_id": "FriendProcessor.apply",
       "protocol": "Messaging",
       "evidence": "friend-service/src/main/java/io/example/domain/friend/FriendController.java:136 `messageBroker.output().send(MessageBuilder.withPayload(event).build(), 30000L);` | friend-service/src/main/resources/application.yml:9 `destination: friend` | recommendation-service/src/main/java/io/example/domain/friend/FriendProcessor.java:33 `@StreamListener(value = FriendSink.INPUT)`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:friend-service",
-      "dst_service": "friend-service",
-      "dst_class": "io.example.domain.friend.FriendController",
-      "dst_interface_id": "FriendController.getFriend",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:friend-service",
-      "dst_service": "friend-service",
-      "dst_class": "io.example.domain.friend.FriendController",
-      "dst_interface_id": "FriendController.getFriends",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:friend-service",
-      "dst_service": "friend-service",
-      "dst_class": "io.example.domain.friend.FriendController",
-      "dst_interface_id": "FriendController.addFriend",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:friend-service",
-      "dst_service": "friend-service",
-      "dst_class": "io.example.domain.friend.FriendController",
-      "dst_interface_id": "FriendController.removeFriend",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:15 `id: friend-service` | edge-service/src/main/resources/application.yml:16 `uri: lb://friend-service` | edge-service/src/main/resources/application.yml:20 `pattern: \"/friend/**\"` | edge-service/src/main/resources/application.yml:24 `regexp: \"/friend/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:user-service",
-      "dst_service": "user-service",
-      "dst_class": "io.example.domain.UserController",
-      "dst_interface_id": "UserController.getUser",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:user-service",
-      "dst_service": "user-service",
-      "dst_class": "io.example.domain.UserController",
-      "dst_interface_id": "UserController.createUser",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:user-service",
-      "dst_service": "user-service",
-      "dst_class": "io.example.domain.UserController",
-      "dst_interface_id": "UserController.updateUser",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:26 `id: user-service` | edge-service/src/main/resources/application.yml:27 `uri: lb://user-service` | edge-service/src/main/resources/application.yml:31 `pattern: \"/user/**\"` | edge-service/src/main/resources/application.yml:35 `regexp: \"/user/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:recommendation-service",
-      "dst_service": "recommendation-service",
-      "dst_class": "io.example.domain.user.UserController",
-      "dst_interface_id": "UserController.getMutualFriends",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:37 `id: recommendation-service` | edge-service/src/main/resources/application.yml:38 `uri: lb://recommendation-service` | edge-service/src/main/resources/application.yml:42 `pattern: \"/recommendation/**\"` | edge-service/src/main/resources/application.yml:46 `regexp: \"/recommendation/(?<remaining>.*)\"`"
-    },
-    {
-      "src_service": "edge-service",
-      "src_class": "io.example.EdgeServiceApplication",
-      "src_method": "route:recommendation-service",
-      "dst_service": "recommendation-service",
-      "dst_class": "io.example.domain.user.UserController",
-      "dst_interface_id": "UserController.recommendFriends",
-      "protocol": "GatewayRoute",
-      "evidence": "edge-service/src/main/resources/application.yml:37 `id: recommendation-service` | edge-service/src/main/resources/application.yml:38 `uri: lb://recommendation-service` | edge-service/src/main/resources/application.yml:42 `pattern: \"/recommendation/**\"` | edge-service/src/main/resources/application.yml:46 `regexp: \"/recommendation/(?<remaining>.*)\"`"
     }
   ]
 }
