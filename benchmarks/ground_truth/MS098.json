@@ -490,6 +490,17 @@
           "return_type": "ForgotPasswordResponse",
           "protocol": "gRPC",
           "endpoint": "AccountService/forgotPassword"
+        },
+        {
+          "id": "AccountSagas.stripeUserSaga",
+          "class_name": "src/accounts/sagas/account.sagas.ts",
+          "method_name": "stripeUserSaga",
+          "param_types": [
+            "StripeUserCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "eventstore/$ce-billing/StripeUserCreatedEvent"
         }
       ]
     },
@@ -630,7 +641,52 @@
       ]
     },
     "service-notification": {
-      "exposed_interfaces": []
+      "exposed_interfaces": [
+        {
+          "id": "AuthSagas.resetPassword",
+          "class_name": "src/email/sagas/auth.sagas.ts",
+          "method_name": "resetPassword",
+          "param_types": [
+            "ForgotPasswordSentEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "eventstore/$ce-account/ForgotPasswordSentEvent"
+        },
+        {
+          "id": "AuthSagas.userRegistered",
+          "class_name": "src/email/sagas/auth.sagas.ts",
+          "method_name": "userRegistered",
+          "param_types": [
+            "UserRegisteredEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "eventstore/$ce-account/UserRegisteredEvent"
+        },
+        {
+          "id": "AuthSagas.resendVerificationCode",
+          "class_name": "src/email/sagas/auth.sagas.ts",
+          "method_name": "resendVerificationCode",
+          "param_types": [
+            "VerificationEmailSentEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "eventstore/$ce-account/VerificationEmailSentEvent"
+        },
+        {
+          "id": "AuthSagas.emailVerified",
+          "class_name": "src/email/sagas/auth.sagas.ts",
+          "method_name": "emailVerified",
+          "param_types": [
+            "EmailVerifiedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "eventstore/$ce-account/EmailVerifiedEvent"
+        }
+      ]
     },
     "service-project": {
       "exposed_interfaces": [
@@ -1880,6 +1936,56 @@
       "dst_interface_id": "RolesController.addUserToRole",
       "protocol": "gRPC",
       "evidence": "apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts:128 .addUserToRole({"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "src/accounts/cqrs/commands/handlers/account/register-user.handler.ts",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "src/email/sagas/auth.sagas.ts",
+      "dst_interface_id": "AuthSagas.userRegistered",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts:181 this.eventBus.publish(new UserRegisteredEvent(newUser));"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "src/accounts/cqrs/commands/handlers/account/forgot-password.handler.ts",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "src/email/sagas/auth.sagas.ts",
+      "dst_interface_id": "AuthSagas.resetPassword",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/forgot-password.handler.ts:58 this.eventBus.publish(new ForgotPasswordSentEvent(user));"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "src/accounts/cqrs/commands/handlers/account/resend-verification-email.handler.ts",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "src/email/sagas/auth.sagas.ts",
+      "dst_interface_id": "AuthSagas.resendVerificationCode",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/resend-verification-email.handler.ts:88 this.eventBus.publish(new VerificationEmailSentEvent(updatedUser));"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "src/accounts/cqrs/commands/handlers/account/verify-email.handler.ts",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "src/email/sagas/auth.sagas.ts",
+      "dst_interface_id": "AuthSagas.emailVerified",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/verify-email.handler.ts:67 this.eventBus.publish(new EmailVerifiedEvent(updatedUser));"
+    },
+    {
+      "src_service": "service-billing",
+      "src_class": "src/billings/cqrs/command/handlers/customer/create-stripe-customer.handler.ts",
+      "src_method": "execute",
+      "dst_service": "service-account",
+      "dst_class": "src/accounts/sagas/account.sagas.ts",
+      "dst_interface_id": "AccountSagas.stripeUserSaga",
+      "protocol": "Messaging",
+      "evidence": "apps/service-billing/src/billings/cqrs/command/handlers/customer/create-stripe-customer.handler.ts:51 await this.eventBus.publish(new StripeUserCreatedEvent(customerMod));"
     }
   ]
 }
