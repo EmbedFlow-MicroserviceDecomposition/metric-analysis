@@ -16,6 +16,10 @@
     {
       "path": "identity-server/",
       "reason": "IdentityServer Quickstart MVC pages (login, consent, grants, device, diagnostics): browser UI only, no backend API, so exposed_interfaces is empty (GROUND_TRUTH_GUIDE.md Step 2B.2)."
+    },
+    {
+      "path": "accounts-api/src/WebApi/UseCases/V1/CustomError/CustomErrorController.cs",
+      "reason": "ASP.NET UseExceptionHandler error view. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 2B.2 (framework error-handler endpoints)."
     }
   ],
   "excluded_outbound_paths": [

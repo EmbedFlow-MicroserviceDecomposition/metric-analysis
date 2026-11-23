@@ -54,6 +54,18 @@
     {
       "path": "services/tools.descartes.teastore.auth/src/main/java/tools/descartes/teastore/auth/rest/ReadyRest.java",
       "reason": "Health/readiness probe /rest/ready/isready, excluded by GROUND_TRUTH_GUIDE.md Step 2B.1."
+    },
+    {
+      "path": "services/tools.descartes.teastore.persistence/src/main/java/tools/descartes/teastore/persistence/servlet/IndexServlet.java",
+      "reason": "Debug/status IndexServlet page. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 2B.2 (implicit/debug status pages)."
+    },
+    {
+      "path": "services/tools.descartes.teastore.recommender/src/main/java/tools/descartes/teastore/recommender/servlet/IndexServlet.java",
+      "reason": "Debug/status IndexServlet page. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 2B.2 (implicit/debug status pages)."
+    },
+    {
+      "path": "services/tools.descartes.teastore.registry/src/main/java/tools/descartes/teastore/registry/servlet/IndexServlet.java",
+      "reason": "Debug/status IndexServlet page. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 2B.2 (implicit/debug status pages)."
     }
   ]
 }

@@ -217,24 +217,6 @@
           "endpoint": "GET /tools.descartes.teastore.persistence/rest/users/name/{name}"
         },
         {
-          "id": "IndexServlet.doGet",
-          "class_name": "tools.descartes.teastore.persistence.servlet.IndexServlet",
-          "method_name": "doGet",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /tools.descartes.teastore.persistence/index"
-        },
-        {
-          "id": "IndexServlet.doPost",
-          "class_name": "tools.descartes.teastore.persistence.servlet.IndexServlet",
-          "method_name": "doPost",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /tools.descartes.teastore.persistence/index"
-        },
-        {
           "id": "CategoryEndpoint.create",
           "class_name": "tools.descartes.teastore.persistence.rest.CategoryEndpoint",
           "method_name": "create",
@@ -573,24 +555,6 @@
           "return_type": "boolean",
           "protocol": "REST",
           "endpoint": "GET /tools.descartes.teastore.recommender/rest/train/isready"
-        },
-        {
-          "id": "IndexServlet.doGet",
-          "class_name": "tools.descartes.teastore.recommender.servlet.IndexServlet",
-          "method_name": "doGet",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /tools.descartes.teastore.recommender/index"
-        },
-        {
-          "id": "IndexServlet.doPost",
-          "class_name": "tools.descartes.teastore.recommender.servlet.IndexServlet",
-          "method_name": "doPost",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /tools.descartes.teastore.recommender/index"
         }
       ]
     },
@@ -630,24 +594,6 @@
           "return_type": "List<String>",
           "protocol": "REST",
           "endpoint": "GET /tools.descartes.teastore.registry/rest/services/{name}"
-        },
-        {
-          "id": "IndexServlet.doGet",
-          "class_name": "tools.descartes.teastore.registry.servlet.IndexServlet",
-          "method_name": "doGet",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "GET /tools.descartes.teastore.registry/index"
-        },
-        {
-          "id": "IndexServlet.doPost",
-          "class_name": "tools.descartes.teastore.registry.servlet.IndexServlet",
-          "method_name": "doPost",
-          "param_types": [],
-          "return_type": "void",
-          "protocol": "REST",
-          "endpoint": "POST /tools.descartes.teastore.registry/index"
         }
       ]
     },

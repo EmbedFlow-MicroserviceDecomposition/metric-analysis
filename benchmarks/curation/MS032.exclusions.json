@@ -1,0 +1,9 @@
+{
+  "system_id": "MS032",
+  "excluded_outbound_paths": [
+    {
+      "path": "edge-service/",
+      "reason": "Declarative /** proxy routes of the pure YAML gateway (edge-service), not counted as calls. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 1 Bucket D / Step 2C.1."
+    }
+  ]
+}

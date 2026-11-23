@@ -21,5 +21,11 @@
       "line": 13,
       "reason": "Request mapping of the external exchange-rates Feign client, client-side declaration (D4)."
     }
+  ],
+  "excluded_outbound_paths": [
+    {
+      "path": "config/src/main/resources/shared/gateway.yml",
+      "reason": "Declarative /** proxy routes of the pure YAML gateway (gateway), not counted as calls. Removed per Yumeth's PR #2 review (2026-11-19) and GROUND_TRUTH_GUIDE.md Step 1 Bucket D / Step 2C.1."
+    }
   ]
 }
