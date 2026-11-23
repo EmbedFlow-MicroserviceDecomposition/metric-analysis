@@ -5,7 +5,19 @@
   "status": "verified",
   "microservices": {
     "spring-petclinic-rest-owner": {
-      "exposed_interfaces": []
+      "exposed_interfaces": [
+        {
+          "id": "OwnerController.getOwnerVisits",
+          "class_name": "org.springframework.samples.petclinic.owner.OwnerController",
+          "method_name": "getOwnerVisits",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "List<Visit>",
+          "protocol": "REST",
+          "endpoint": "GET /owner/{ownerId}/getVisits"
+        }
+      ]
     },
     "spring-petclinic-rest-pet": {
       "exposed_interfaces": [
@@ -36,12 +48,12 @@
     {
       "src_service": "spring-petclinic-rest-owner",
       "src_class": "org.springframework.samples.petclinic.owner.OwnerController",
-      "src_method": "getOwnerVisits",
+      "src_method": "getPetVisits",
       "dst_service": "spring-petclinic-rest-pet",
       "dst_class": "org.springframework.samples.petclinic.pet.PetRepository",
       "dst_interface_id": "PetRepository.findById",
       "protocol": "REST",
-      "evidence": "OwnerController.java:59: Pet pet = restTemplate.getForObject(\"http://\"+serviceEndpoint+\"/pet/\"+petId, Pet.class);"
+      "evidence": "spring-petclinic-rest-owner/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:59 Pet pet = restTemplate.getForObject(\"http://\"+serviceEndpoint+\"/pet/\"+petId, Pet.class);"
     }
   ]
 }

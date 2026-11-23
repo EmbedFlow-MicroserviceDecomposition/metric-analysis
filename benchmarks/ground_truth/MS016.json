@@ -131,6 +131,15 @@
     "WorkshopManagementAPI": {
       "exposed_interfaces": [
         {
+          "id": "RefDataController.GetCustomers",
+          "class_name": "RefDataController",
+          "method_name": "GetCustomers",
+          "param_types": [],
+          "return_type": "List<Customer>",
+          "protocol": "REST",
+          "endpoint": "GET /api/refdata/customers"
+        },
+        {
           "id": "RefDataController.GetCustomerByCustomerId",
           "class_name": "RefDataController",
           "method_name": "GetCustomerByCustomerId",
@@ -237,7 +246,7 @@
       "dst_class": "CustomersController",
       "dst_interface_id": "CustomersController.GetAllAsync",
       "protocol": "REST",
-      "evidence": "CustomerManagementController.cs:23: Customers = await _customerManagementAPI.GetCustomers()"
+      "evidence": "src/WebApp/Controllers/CustomerManagementController.cs:23 Customers = await _customerManagementAPI.GetCustomers()"
     },
     {
       "src_service": "WebApp",
@@ -247,7 +256,7 @@
       "dst_class": "CustomersController",
       "dst_interface_id": "CustomersController.GetByCustomerId",
       "protocol": "REST",
-      "evidence": "CustomerManagementController.cs:36: Customer = await _customerManagementAPI.GetCustomerById(id)"
+      "evidence": "src/WebApp/Controllers/CustomerManagementController.cs:36 Customer = await _customerManagementAPI.GetCustomerById(id)"
     },
     {
       "src_service": "WebApp",
@@ -257,7 +266,7 @@
       "dst_class": "CustomersController",
       "dst_interface_id": "CustomersController.RegisterAsync",
       "protocol": "REST",
-      "evidence": "CustomerManagementController.cs:60: await _customerManagementAPI.RegisterCustomer(cmd)"
+      "evidence": "src/WebApp/Controllers/CustomerManagementController.cs:60 await _customerManagementAPI.RegisterCustomer(cmd)"
     },
     {
       "src_service": "WebApp",
@@ -267,7 +276,7 @@
       "dst_class": "VehiclesController",
       "dst_interface_id": "VehiclesController.GetAllAsync",
       "protocol": "REST",
-      "evidence": "VehicleManagementController.cs:26: Vehicles = await _vehicleManagementAPI.GetVehicles()"
+      "evidence": "src/WebApp/Controllers/VehicleManagementController.cs:26 Vehicles = await _vehicleManagementAPI.GetVehicles()"
     },
     {
       "src_service": "WebApp",
@@ -277,7 +286,7 @@
       "dst_class": "VehiclesController",
       "dst_interface_id": "VehiclesController.GetByLicenseNumber",
       "protocol": "REST",
-      "evidence": "VehicleManagementController.cs:37: Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByLicenseNumber(licenseNumber)"
+      "evidence": "src/WebApp/Controllers/VehicleManagementController.cs:37 Vehicle vehicle = await _vehicleManagementAPI.GetVehicleByLicenseNumber(licenseNumber)"
     },
     {
       "src_service": "WebApp",
@@ -287,7 +296,7 @@
       "dst_class": "CustomersController",
       "dst_interface_id": "CustomersController.GetByCustomerId",
       "protocol": "REST",
-      "evidence": "VehicleManagementController.cs:38: Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.OwnerId)"
+      "evidence": "src/WebApp/Controllers/VehicleManagementController.cs:38 Customer customer = await _customerManagementAPI.GetCustomerById(vehicle.OwnerId)"
     },
     {
       "src_service": "WebApp",
@@ -297,7 +306,7 @@
       "dst_class": "CustomersController",
       "dst_interface_id": "CustomersController.GetAllAsync",
       "protocol": "REST",
-      "evidence": "VehicleManagementController.cs:55: var customers = await _customerManagementAPI.GetCustomers()"
+      "evidence": "src/WebApp/Controllers/VehicleManagementController.cs:55 var customers = await _customerManagementAPI.GetCustomers()"
     },
     {
       "src_service": "WebApp",
@@ -307,7 +316,7 @@
       "dst_class": "VehiclesController",
       "dst_interface_id": "VehiclesController.RegisterAsync",
       "protocol": "REST",
-      "evidence": "VehicleManagementController.cs:74: await _vehicleManagementAPI.RegisterVehicle(cmd)"
+      "evidence": "src/WebApp/Controllers/VehicleManagementController.cs:74 await _vehicleManagementAPI.RegisterVehicle(cmd)"
     },
     {
       "src_service": "WebApp",
@@ -317,7 +326,7 @@
       "dst_class": "WorkshopPlanningController",
       "dst_interface_id": "WorkshopPlanningController.GetByDate",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:34: WorkshopPlanning planning = await _workshopManagementAPI.GetWorkshopPlanning(dateStr)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:34 WorkshopPlanning planning = await _workshopManagementAPI.GetWorkshopPlanning(dateStr)"
     },
     {
       "src_service": "WebApp",
@@ -327,7 +336,7 @@
       "dst_class": "WorkshopPlanningController",
       "dst_interface_id": "WorkshopPlanningController.GetMaintenanceJobAsync",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:53: MaintenanceJob = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:53 MaintenanceJob = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)"
     },
     {
       "src_service": "WebApp",
@@ -337,7 +346,7 @@
       "dst_class": "WorkshopPlanningController",
       "dst_interface_id": "WorkshopPlanningController.GetMaintenanceJobAsync",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:84: MaintenanceJob job = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:84 MaintenanceJob job = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId)"
     },
     {
       "src_service": "WebApp",
@@ -347,7 +356,7 @@
       "dst_class": "RefDataController",
       "dst_interface_id": "RefDataController.GetVehicleByLicenseNumber",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:110: Vehicle vehicle = await _workshopManagementAPI.GetVehicleByLicenseNumber(inputModel.SelectedVehicleLicenseNumber)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:110 Vehicle vehicle = await _workshopManagementAPI.GetVehicleByLicenseNumber(inputModel.SelectedVehicleLicenseNumber)"
     },
     {
       "src_service": "WebApp",
@@ -357,7 +366,7 @@
       "dst_class": "RefDataController",
       "dst_interface_id": "RefDataController.GetCustomerByCustomerId",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:111: Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.OwnerId)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:111 Customer customer = await _workshopManagementAPI.GetCustomerById(vehicle.OwnerId)"
     },
     {
       "src_service": "WebApp",
@@ -367,7 +376,7 @@
       "dst_class": "WorkshopPlanningController",
       "dst_interface_id": "WorkshopPlanningController.PlanMaintenanceJobAsync",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:116: await _workshopManagementAPI.PlanMaintenanceJob(dateStr, planMaintenanceJobCommand)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:116 await _workshopManagementAPI.PlanMaintenanceJob(dateStr, planMaintenanceJobCommand)"
     },
     {
       "src_service": "WebApp",
@@ -377,7 +386,7 @@
       "dst_class": "WorkshopPlanningController",
       "dst_interface_id": "WorkshopPlanningController.FinishMaintenanceJobAsync",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:158: await _workshopManagementAPI.FinishMaintenanceJob(dateStr, inputModel.Id.ToString(\"D\"), cmd)"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:158 await _workshopManagementAPI.FinishMaintenanceJob(dateStr, inputModel.Id.ToString(\"D\"), cmd)"
     },
     {
       "src_service": "WebApp",
@@ -387,7 +396,7 @@
       "dst_class": "RefDataController",
       "dst_interface_id": "RefDataController.GetVehicles",
       "protocol": "REST",
-      "evidence": "WorkshopManagementController.cs:176: var vehicles = await _workshopManagementAPI.GetVehicles()"
+      "evidence": "src/WebApp/Controllers/WorkshopManagementController.cs:176 var vehicles = await _workshopManagementAPI.GetVehicles()"
     },
     {
       "src_service": "CustomerManagementAPI",
@@ -397,7 +406,7 @@
       "dst_class": "AuditLogWorker",
       "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "CustomersController.cs:47: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "CustomerManagementAPI",
@@ -407,7 +416,7 @@
       "dst_class": "InvoiceWorker",
       "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "CustomersController.cs:47: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "CustomerManagementAPI",
@@ -417,7 +426,7 @@
       "dst_class": "NotificationWorker",
       "dst_interface_id": "NotificationWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "CustomersController.cs:47: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "CustomerManagementAPI",
@@ -427,7 +436,7 @@
       "dst_class": "EventHandlerWorker",
       "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "CustomersController.cs:47: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "VehicleManagementAPI",
@@ -437,7 +446,7 @@
       "dst_class": "AuditLogWorker",
       "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "VehiclesController.cs:54: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/VehicleManagementAPI/Controllers/VehiclesController.cs:54 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "VehicleManagementAPI",
@@ -447,7 +456,7 @@
       "dst_class": "EventHandlerWorker",
       "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "VehiclesController.cs:54: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/VehicleManagementAPI/Controllers/VehiclesController.cs:54 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -457,7 +466,7 @@
       "dst_class": "AuditLogWorker",
       "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "PlanMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -467,7 +476,7 @@
       "dst_class": "InvoiceWorker",
       "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "PlanMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -477,7 +486,7 @@
       "dst_class": "NotificationWorker",
       "dst_interface_id": "NotificationWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "PlanMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -487,7 +496,7 @@
       "dst_class": "EventHandlerWorker",
       "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "PlanMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -497,7 +506,7 @@
       "dst_class": "AuditLogWorker",
       "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "FinishMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -507,7 +516,7 @@
       "dst_class": "InvoiceWorker",
       "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "FinishMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -517,7 +526,7 @@
       "dst_class": "NotificationWorker",
       "dst_interface_id": "NotificationWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "FinishMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "WorkshopManagementAPI",
@@ -527,7 +536,7 @@
       "dst_class": "EventHandlerWorker",
       "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "FinishMaintenanceJobCommandHandler.cs:35: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "TimeService",
@@ -537,7 +546,7 @@
       "dst_class": "AuditLogWorker",
       "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "TimeWorker.cs:39: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "TimeService",
@@ -547,7 +556,7 @@
       "dst_class": "InvoiceWorker",
       "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "TimeWorker.cs:39: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     },
     {
       "src_service": "TimeService",
@@ -557,7 +566,7 @@
       "dst_class": "NotificationWorker",
       "dst_interface_id": "NotificationWorker.HandleMessageAsync",
       "protocol": "Messaging",
-      "evidence": "TimeWorker.cs:39: await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\")"
     }
   ]
 }
