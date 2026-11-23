@@ -1,0 +1,60 @@
+{
+  "system_id": "MS017",
+  "extractor_tool": "antigravity-cli",
+  "prompt_version": "v1.0",
+  "status": "verified",
+  "microservices": {
+    "orders": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getOrders",
+          "class_name": "server",
+          "method_name": "getOrders",
+          "param_types": [],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "GET /api/orders"
+        },
+        {
+          "id": "server.getOrderById",
+          "class_name": "server",
+          "method_name": "getOrderById",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "GET /api/orders/:id"
+        }
+      ]
+    },
+    "products": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getProducts",
+          "class_name": "server",
+          "method_name": "getProducts",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "server.getProductById",
+          "class_name": "server",
+          "method_name": "getProductById",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/:id"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}
