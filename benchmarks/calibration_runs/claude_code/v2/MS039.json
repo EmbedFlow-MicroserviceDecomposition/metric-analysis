@@ -1,0 +1,492 @@
+{
+  "system_id": "MS039",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v2.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cartservice": {
+      "exposed_interfaces": [
+        {
+          "id": "CartService.AddItem",
+          "class_name": "CartService",
+          "method_name": "AddItem",
+          "param_types": [
+            "AddItemRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "CartService/AddItem"
+        },
+        {
+          "id": "CartService.GetCart",
+          "class_name": "CartService",
+          "method_name": "GetCart",
+          "param_types": [
+            "GetCartRequest"
+          ],
+          "return_type": "Cart",
+          "protocol": "gRPC",
+          "endpoint": "CartService/GetCart"
+        },
+        {
+          "id": "CartService.EmptyCart",
+          "class_name": "CartService",
+          "method_name": "EmptyCart",
+          "param_types": [
+            "EmptyCartRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "CartService/EmptyCart"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "frontendServer.addToCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "addToCartHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart"
+        },
+        {
+          "id": "frontendServer.emptyCartHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "emptyCartHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/empty"
+        },
+        {
+          "id": "frontendServer.setCurrencyHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "setCurrencyHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /setCurrency"
+        },
+        {
+          "id": "frontendServer.placeOrderHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "placeOrderHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/checkout"
+        },
+        {
+          "id": "frontendServer.getProductByID",
+          "class_name": "main.frontendServer",
+          "method_name": "getProductByID",
+          "param_types": [],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /product-meta/{ids}"
+        },
+        {
+          "id": "frontendServer.chatBotHandler",
+          "class_name": "main.frontendServer",
+          "method_name": "chatBotHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /bot"
+        }
+      ]
+    },
+    "shoppingassistantservice": {
+      "exposed_interfaces": [
+        {
+          "id": "shoppingassistantservice.talkToGemini",
+          "class_name": "shoppingassistantservice",
+          "method_name": "talkToGemini",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
+    },
+    "emailservice": {
+      "exposed_interfaces": [
+        {
+          "id": "EmailService.SendOrderConfirmation",
+          "class_name": "EmailService",
+          "method_name": "SendOrderConfirmation",
+          "param_types": [
+            "SendOrderConfirmationRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "EmailService/SendOrderConfirmation"
+        }
+      ]
+    },
+    "recommendationservice": {
+      "exposed_interfaces": [
+        {
+          "id": "RecommendationService.ListRecommendations",
+          "class_name": "RecommendationService",
+          "method_name": "ListRecommendations",
+          "param_types": [
+            "ListRecommendationsRequest"
+          ],
+          "return_type": "ListRecommendationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RecommendationService/ListRecommendations"
+        }
+      ]
+    },
+    "checkoutservice": {
+      "exposed_interfaces": [
+        {
+          "id": "checkoutService.PlaceOrder",
+          "class_name": "main.checkoutService",
+          "method_name": "PlaceOrder",
+          "param_types": [
+            "PlaceOrderRequest"
+          ],
+          "return_type": "PlaceOrderResponse",
+          "protocol": "gRPC",
+          "endpoint": "CheckoutService/PlaceOrder"
+        }
+      ]
+    },
+    "productcatalogservice": {
+      "exposed_interfaces": [
+        {
+          "id": "productCatalog.ListProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "ListProducts",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/ListProducts"
+        },
+        {
+          "id": "productCatalog.GetProduct",
+          "class_name": "main.productCatalog",
+          "method_name": "GetProduct",
+          "param_types": [
+            "GetProductRequest"
+          ],
+          "return_type": "Product",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/GetProduct"
+        },
+        {
+          "id": "productCatalog.SearchProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "SearchProducts",
+          "param_types": [
+            "SearchProductsRequest"
+          ],
+          "return_type": "SearchProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/SearchProducts"
+        }
+      ]
+    },
+    "currencyservice": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getSupportedCurrencies",
+          "class_name": "server.js",
+          "method_name": "getSupportedCurrencies",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "GetSupportedCurrenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "CurrencyService/GetSupportedCurrencies"
+        },
+        {
+          "id": "server.convert",
+          "class_name": "server.js",
+          "method_name": "convert",
+          "param_types": [
+            "CurrencyConversionRequest"
+          ],
+          "return_type": "Money",
+          "protocol": "gRPC",
+          "endpoint": "CurrencyService/Convert"
+        }
+      ]
+    },
+    "shippingservice": {
+      "exposed_interfaces": [
+        {
+          "id": "server.GetQuote",
+          "class_name": "main.server",
+          "method_name": "GetQuote",
+          "param_types": [
+            "GetQuoteRequest"
+          ],
+          "return_type": "GetQuoteResponse",
+          "protocol": "gRPC",
+          "endpoint": "ShippingService/GetQuote"
+        },
+        {
+          "id": "server.ShipOrder",
+          "class_name": "main.server",
+          "method_name": "ShipOrder",
+          "param_types": [
+            "ShipOrderRequest"
+          ],
+          "return_type": "ShipOrderResponse",
+          "protocol": "gRPC",
+          "endpoint": "ShippingService/ShipOrder"
+        }
+      ]
+    },
+    "paymentservice": {
+      "exposed_interfaces": [
+        {
+          "id": "HipsterShopServer.ChargeServiceHandler",
+          "class_name": "HipsterShopServer",
+          "method_name": "ChargeServiceHandler",
+          "param_types": [
+            "ChargeRequest"
+          ],
+          "return_type": "ChargeResponse",
+          "protocol": "gRPC",
+          "endpoint": "PaymentService/Charge"
+        }
+      ]
+    },
+    "adservice": {
+      "exposed_interfaces": [
+        {
+          "id": "AdServiceImpl.getAds",
+          "class_name": "hipstershop.AdService.AdServiceImpl",
+          "method_name": "getAds",
+          "param_types": [
+            "AdRequest"
+          ],
+          "return_type": "AdResponse",
+          "protocol": "gRPC",
+          "endpoint": "AdService/GetAds"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getCurrencies",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.getSupportedCurrencies",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:31 pb.NewCurrencyServiceClient(...).GetSupportedCurrencies"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getProducts",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:46 ListProducts(ctx, &pb.Empty{})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getProduct",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:52 GetProduct(ctx, &pb.GetProductRequest{Id: id})"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getCart",
+      "dst_service": "cartservice",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:58 NewCartServiceClient(...).GetCart"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "emptyCart",
+      "dst_service": "cartservice",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:63 NewCartServiceClient(...).EmptyCart"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "insertCart",
+      "dst_service": "cartservice",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.AddItem",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:68 NewCartServiceClient(...).AddItem"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "convertCurrency",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.convert",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:81 NewCurrencyServiceClient(...).Convert"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getShippingQuote",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.GetQuote",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:88 NewShippingServiceClient(...).GetQuote"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getRecommendations",
+      "dst_service": "recommendationservice",
+      "dst_class": "RecommendationService",
+      "dst_interface_id": "RecommendationService.ListRecommendations",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:100 ListRecommendations(ctx,"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "getAd",
+      "dst_service": "adservice",
+      "dst_class": "hipstershop.AdService.AdServiceImpl",
+      "dst_interface_id": "AdServiceImpl.getAds",
+      "protocol": "gRPC",
+      "evidence": "rpc.go:123 NewAdServiceClient(...).GetAds"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "placeOrderHandler",
+      "dst_service": "checkoutservice",
+      "dst_class": "main.checkoutService",
+      "dst_interface_id": "checkoutService.PlaceOrder",
+      "protocol": "gRPC",
+      "evidence": "handlers.go:354 pb.NewCheckoutServiceClient(fe.checkoutSvcConn).PlaceOrder"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "main.frontendServer",
+      "src_method": "chatBotHandler",
+      "dst_service": "shoppingassistantservice",
+      "dst_class": "shoppingassistantservice",
+      "dst_interface_id": "shoppingassistantservice.talkToGemini",
+      "protocol": "REST",
+      "evidence": "handlers.go:472 http.DefaultClient.Do(req) -> POST http://shoppingAssistantSvcAddr"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "quoteShipping",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.GetQuote",
+      "protocol": "gRPC",
+      "evidence": "main.go:314 NewShippingServiceClient(cs.shippingSvcConn).GetQuote"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "getUserCart",
+      "dst_service": "cartservice",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "main.go:325 NewCartServiceClient(cs.cartSvcConn).GetCart"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "emptyUserCart",
+      "dst_service": "cartservice",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "main.go:333 NewCartServiceClient(cs.cartSvcConn).EmptyCart"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "prepOrderItems",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "main.go:344 cl.GetProduct(ctx, &pb.GetProductRequest{...})"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "convertCurrency",
+      "dst_service": "currencyservice",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.convert",
+      "protocol": "gRPC",
+      "evidence": "main.go:360 NewCurrencyServiceClient(cs.currencySvcConn).Convert"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "chargeCard",
+      "dst_service": "paymentservice",
+      "dst_class": "HipsterShopServer",
+      "dst_interface_id": "HipsterShopServer.ChargeServiceHandler",
+      "protocol": "gRPC",
+      "evidence": "main.go:370 NewPaymentServiceClient(cs.paymentSvcConn).Charge"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "sendOrderConfirmation",
+      "dst_service": "emailservice",
+      "dst_class": "EmailService",
+      "dst_interface_id": "EmailService.SendOrderConfirmation",
+      "protocol": "gRPC",
+      "evidence": "main.go:380 NewEmailServiceClient(cs.emailSvcConn).SendOrderConfirmation"
+    },
+    {
+      "src_service": "checkoutservice",
+      "src_class": "main.checkoutService",
+      "src_method": "shipOrder",
+      "dst_service": "shippingservice",
+      "dst_class": "main.server",
+      "dst_interface_id": "server.ShipOrder",
+      "protocol": "gRPC",
+      "evidence": "main.go:387 NewShippingServiceClient(cs.shippingSvcConn).ShipOrder"
+    },
+    {
+      "src_service": "recommendationservice",
+      "src_class": "RecommendationService",
+      "src_method": "ListRecommendations",
+      "dst_service": "productcatalogservice",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "recommendation_server.py:73 product_catalog_stub.ListProducts(demo_pb2.Empty())"
+    }
+  ]
+}

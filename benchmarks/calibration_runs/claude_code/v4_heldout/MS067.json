@@ -1,0 +1,391 @@
+{
+  "system_id": "MS067",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "data": {
+      "exposed_interfaces": [
+        {
+          "id": "json_api.add",
+          "class_name": "json_api.php",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=add"
+        },
+        {
+          "id": "json_api.get",
+          "class_name": "json_api.php",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /json_api.php?query=get"
+        },
+        {
+          "id": "json_api.search",
+          "class_name": "json_api.php",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=search"
+        },
+        {
+          "id": "json_api.delete",
+          "class_name": "json_api.php",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=delete"
+        },
+        {
+          "id": "json_api.edit",
+          "class_name": "json_api.php",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=edit"
+        },
+        {
+          "id": "autodiscover.autodiscover",
+          "class_name": "autodiscover.php",
+          "method_name": "autodiscover",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /Autodiscover/Autodiscover.xml"
+        },
+        {
+          "id": "autodiscover-json.autodiscover_json",
+          "class_name": "autodiscover-json.php",
+          "method_name": "autodiscover_json",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /Autodiscover/Autodiscover.json"
+        },
+        {
+          "id": "autoconfig.autoconfig",
+          "class_name": "autoconfig.php",
+          "method_name": "autoconfig",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /mail/config-v1.1.xml"
+        },
+        {
+          "id": "mobileconfig.mobileconfig",
+          "class_name": "mobileconfig.php",
+          "method_name": "mobileconfig",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /mobileconfig.php"
+        },
+        {
+          "id": "mta-sts.mta_sts",
+          "class_name": "mta-sts.php",
+          "method_name": "mta_sts",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /.well-known/mta-sts.txt"
+        },
+        {
+          "id": "f2b-banlist.f2b_banlist",
+          "class_name": "f2b-banlist.php",
+          "method_name": "f2b_banlist",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /f2b-banlist.php"
+        },
+        {
+          "id": "sogo-auth.sogo_auth",
+          "class_name": "sogo-auth.php",
+          "method_name": "sogo_auth",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /sogo-auth"
+        },
+        {
+          "id": "token.token",
+          "class_name": "token.php",
+          "method_name": "token",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /oauth/token"
+        },
+        {
+          "id": "profile.profile",
+          "class_name": "profile.php",
+          "method_name": "profile",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /oauth/profile"
+        },
+        {
+          "id": "authorize.authorize",
+          "class_name": "authorize.php",
+          "method_name": "authorize",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /oauth/authorize"
+        },
+        {
+          "id": "container_ctrl.container_ctrl",
+          "class_name": "container_ctrl.php",
+          "method_name": "container_ctrl",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/container_ctrl.php"
+        },
+        {
+          "id": "destroy_tfa_auth.destroy_tfa_auth",
+          "class_name": "destroy_tfa_auth.php",
+          "method_name": "destroy_tfa_auth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/destroy_tfa_auth.php"
+        },
+        {
+          "id": "dns_diagnostics.dns_diagnostics",
+          "class_name": "dns_diagnostics.php",
+          "method_name": "dns_diagnostics",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/dns_diagnostics.php"
+        },
+        {
+          "id": "qitem_details.qitem_details",
+          "class_name": "qitem_details.php",
+          "method_name": "qitem_details",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/qitem_details.php"
+        },
+        {
+          "id": "qr_gen.qr_gen",
+          "class_name": "qr_gen.php",
+          "method_name": "qr_gen",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/qr_gen.php"
+        },
+        {
+          "id": "show_rspamd_global_filters.show_rspamd_global_filters",
+          "class_name": "show_rspamd_global_filters.php",
+          "method_name": "show_rspamd_global_filters",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/show_rspamd_global_filters.php"
+        },
+        {
+          "id": "sieve_validation.sieve_validation",
+          "class_name": "sieve_validation.php",
+          "method_name": "sieve_validation",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/sieve_validation.php"
+        },
+        {
+          "id": "syncjob_logs.syncjob_logs",
+          "class_name": "syncjob_logs.php",
+          "method_name": "syncjob_logs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/syncjob_logs.php"
+        },
+        {
+          "id": "transport_check.transport_check",
+          "class_name": "transport_check.php",
+          "method_name": "transport_check",
+          "param_types": [
+            "int",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/transport_check.php"
+        },
+        {
+          "id": "update_check.update_check",
+          "class_name": "update_check.php",
+          "method_name": "update_check",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/update_check.php"
+        },
+        {
+          "id": "main.get_host_update_stats",
+          "class_name": "main",
+          "method_name": "get_host_update_stats",
+          "param_types": [],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /host/stats"
+        },
+        {
+          "id": "main.get_container",
+          "class_name": "main",
+          "method_name": "get_container",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /containers/{container_id}/json"
+        },
+        {
+          "id": "main.get_containers",
+          "class_name": "main",
+          "method_name": "get_containers",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /containers/json"
+        },
+        {
+          "id": "main.post_containers",
+          "class_name": "main",
+          "method_name": "post_containers",
+          "param_types": [
+            "str",
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/{post_action}"
+        },
+        {
+          "id": "main.post_container_update_stats",
+          "class_name": "main",
+          "method_name": "post_container_update_stats",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /container/{container_id}/stats/update"
+        },
+        {
+          "id": "main.handle_pubsub_messages",
+          "class_name": "main",
+          "method_name": "handle_pubsub_messages",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "MC_CHANNEL"
+        },
+        {
+          "id": "main.watch",
+          "class_name": "main",
+          "method_name": "watch",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "F2B_CHANNEL"
+        },
+        {
+          "id": "AIO.eof_received",
+          "class_name": "AIO",
+          "method_name": "eof_received",
+          "param_types": [
+            "bytes"
+          ],
+          "return_type": "bytes",
+          "protocol": "RPC",
+          "endpoint": "OLEFY/1.0 oletools"
+        }
+      ]
+    },
+    "helper-scripts": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "helper-scripts",
+      "src_class": "view_autodiscover.sh",
+      "src_method": "main",
+      "dst_service": "data",
+      "dst_class": "autodiscover.php",
+      "dst_interface_id": "autodiscover.autodiscover",
+      "protocol": "REST",
+      "evidence": "helper-scripts/dev_tests/view_autodiscover.sh:97 RESPONSE=$(curl -k -s -X POST \"$AUTODISCOVER_URL\" -> data/web/autodiscover.php:1"
+    }
+  ]
+}

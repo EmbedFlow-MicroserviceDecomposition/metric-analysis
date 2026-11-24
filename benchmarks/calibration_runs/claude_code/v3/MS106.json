@@ -1,0 +1,439 @@
+{
+  "system_id": "MS106",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v3.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "awsmail": {
+      "exposed_interfaces": [
+        {
+          "id": "AwsMailView.post",
+          "class_name": "AwsMailView",
+          "method_name": "post",
+          "param_types": [
+            "MailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/awsmail/"
+        },
+        {
+          "id": "AwsMailAttachmentView.post",
+          "class_name": "AwsMailAttachmentView",
+          "method_name": "post",
+          "param_types": [
+            "MailAttachmentSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/awsmail-attachment/"
+        },
+        {
+          "id": "tasks.send_aws_mail",
+          "class_name": "tasks",
+          "method_name": "send_aws_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "awsmail.tasks.send_aws_mail"
+        },
+        {
+          "id": "tasks.send_aws_mail_attachment",
+          "class_name": "tasks",
+          "method_name": "send_aws_mail_attachment",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str",
+            "File"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "awsmail.tasks.send_aws_mail_attachment"
+        }
+      ]
+    },
+    "registration": {
+      "exposed_interfaces": [
+        {
+          "id": "SendRegistrationMail.post",
+          "class_name": "SendRegistrationMail",
+          "method_name": "post",
+          "param_types": [
+            "RegistrationMailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/send_welcome/"
+        },
+        {
+          "id": "tasks.send_mail",
+          "class_name": "tasks",
+          "method_name": "send_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "Messaging",
+          "endpoint": "registration.tasks.send_mail"
+        }
+      ]
+    },
+    "send_certificate": {
+      "exposed_interfaces": [
+        {
+          "id": "SendCertificateLink.post",
+          "class_name": "SendCertificateLink",
+          "method_name": "post",
+          "param_types": [
+            "SendCertificateSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/send_certificate/"
+        },
+        {
+          "id": "tasks.send_mail",
+          "class_name": "tasks",
+          "method_name": "send_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "Messaging",
+          "endpoint": "send_certificate.tasks.send_mail"
+        }
+      ]
+    },
+    "info": {
+      "exposed_interfaces": [
+        {
+          "id": "InfoView.get",
+          "class_name": "InfoView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /v1/info/"
+        },
+        {
+          "id": "InfoView.post",
+          "class_name": "InfoView",
+          "method_name": "post",
+          "param_types": [
+            "InfoSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/info/"
+        }
+      ]
+    },
+    "confirmation": {
+      "exposed_interfaces": [
+        {
+          "id": "SendConfirmationLink.post",
+          "class_name": "SendConfirmationLink",
+          "method_name": "post",
+          "param_types": [
+            "ConfirmationMailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/send_confirmation/"
+        },
+        {
+          "id": "tasks.send_mail",
+          "class_name": "tasks",
+          "method_name": "send_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "Messaging",
+          "endpoint": "confirmation.tasks.send_mail"
+        }
+      ]
+    },
+    "scheduler": {
+      "exposed_interfaces": [
+        {
+          "id": "SendSchduledEmail.post",
+          "class_name": "SendSchduledEmail",
+          "method_name": "post",
+          "param_types": [
+            "EmailSchedulingSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/send_scheduledemail/"
+        }
+      ]
+    },
+    "invitation": {
+      "exposed_interfaces": [
+        {
+          "id": "SendInvitationLink.post",
+          "class_name": "SendInvitationLink",
+          "method_name": "post",
+          "param_types": [
+            "InvitationMailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/send_invitation/"
+        },
+        {
+          "id": "tasks.send_mail",
+          "class_name": "tasks",
+          "method_name": "send_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "Messaging",
+          "endpoint": "invitation.tasks.send_mail"
+        }
+      ]
+    },
+    "greetings_mail": {
+      "exposed_interfaces": []
+    },
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "SendMail.post",
+          "class_name": "SendMail",
+          "method_name": "post",
+          "param_types": [
+            "MailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/sendmail/"
+        },
+        {
+          "id": "SendMailWithTemplate.post",
+          "class_name": "SendMailWithTemplate",
+          "method_name": "post",
+          "param_types": [
+            "TemplateMailSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/sendmailwithtemplate/"
+        }
+      ]
+    },
+    "newsletter": {
+      "exposed_interfaces": [
+        {
+          "id": "tasks.send_mail",
+          "class_name": "tasks",
+          "method_name": "send_mail",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "Messaging",
+          "endpoint": "newsletter.tasks.send_mail"
+        }
+      ]
+    },
+    "settings": {
+      "exposed_interfaces": [
+        {
+          "id": "SettingsView.get",
+          "class_name": "SettingsView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /v1/settings/"
+        },
+        {
+          "id": "SettingsConfig.post",
+          "class_name": "SettingsConfig",
+          "method_name": "post",
+          "param_types": [
+            "SettingsSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/settings_config/"
+        },
+        {
+          "id": "SettingsConfigDetail.get",
+          "class_name": "SettingsConfigDetail",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /v1/settings_config/{sender}/"
+        },
+        {
+          "id": "SettingsConfigDetail.put",
+          "class_name": "SettingsConfigDetail",
+          "method_name": "put",
+          "param_types": [
+            "str",
+            "SettingsSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/settings_config/{sender}/"
+        },
+        {
+          "id": "SettingsConfigDetail.delete",
+          "class_name": "SettingsConfigDetail",
+          "method_name": "delete",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/settings_config/{sender}/"
+        }
+      ]
+    },
+    "newsletter_with_frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "views.profile_list",
+          "class_name": "views",
+          "method_name": "profile_list",
+          "param_types": [],
+          "return_type": "List<UserProfileSerializers>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/profiles/"
+        },
+        {
+          "id": "views.get_user_profile",
+          "class_name": "views",
+          "method_name": "get_user_profile",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "UserProfileSerializers",
+          "protocol": "REST",
+          "endpoint": "GET /v1/profile/{pk}/"
+        },
+        {
+          "id": "views.get_user_profile_put",
+          "class_name": "views",
+          "method_name": "get_user_profile",
+          "param_types": [
+            "int",
+            "EditSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/profile/{pk}/"
+        },
+        {
+          "id": "views.get_user_profile_delete",
+          "class_name": "views",
+          "method_name": "get_user_profile",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/profile/{pk}/"
+        },
+        {
+          "id": "views.editor",
+          "class_name": "views",
+          "method_name": "editor",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "HttpResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/editor/{pk}/"
+        }
+      ]
+    },
+    "bounce_notification": {
+      "exposed_interfaces": [
+        {
+          "id": "BounceNotification.post",
+          "class_name": "BounceNotification",
+          "method_name": "post",
+          "param_types": [
+            "BounceSerializer"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /v1/bounce_notifications/"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "confirmation",
+      "src_class": "SendConfirmationLink",
+      "src_method": "post",
+      "dst_service": "awsmail",
+      "dst_class": "tasks",
+      "dst_interface_id": "tasks.send_aws_mail",
+      "protocol": "Messaging",
+      "evidence": "confirmation/views.py:59 send_aws_mail(...) -> awsmail/tasks.py:9 @shared_task send_aws_mail"
+    },
+    {
+      "src_service": "invitation",
+      "src_class": "SendInvitationLink",
+      "src_method": "post",
+      "dst_service": "awsmail",
+      "dst_class": "tasks",
+      "dst_interface_id": "tasks.send_aws_mail",
+      "protocol": "Messaging",
+      "evidence": "invitation/views.py:46 send_aws_mail(...) -> awsmail/tasks.py:9 @shared_task send_aws_mail"
+    },
+    {
+      "src_service": "registration",
+      "src_class": "SendRegistrationMail",
+      "src_method": "post",
+      "dst_service": "awsmail",
+      "dst_class": "tasks",
+      "dst_interface_id": "tasks.send_aws_mail",
+      "protocol": "Messaging",
+      "evidence": "registration/views.py:49 send_aws_mail(...) -> awsmail/tasks.py:9 @shared_task send_aws_mail"
+    },
+    {
+      "src_service": "send_certificate",
+      "src_class": "SendCertificateLink",
+      "src_method": "post",
+      "dst_service": "awsmail",
+      "dst_class": "tasks",
+      "dst_interface_id": "tasks.send_aws_mail",
+      "protocol": "Messaging",
+      "evidence": "send_certificate/views.py:52 send_aws_mail(...) -> awsmail/tasks.py:9 @shared_task send_aws_mail"
+    }
+  ]
+}

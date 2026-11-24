@@ -1,0 +1,4163 @@
+{
+  "system_id": "MS019",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "ts-verification-code-service": {
+      "exposed_interfaces": [
+        {
+          "id": "VerifyCodeController.imageCode",
+          "class_name": "VerifyCodeController",
+          "method_name": "imageCode",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/verifycode/generate"
+        },
+        {
+          "id": "VerifyCodeController.verifyCode",
+          "class_name": "VerifyCodeController",
+          "method_name": "verifyCode",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/verifycode/verify/{verifyCode}"
+        }
+      ]
+    },
+    "ts-contacts-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ContactsController.getAllContacts",
+          "class_name": "ContactsController",
+          "method_name": "getAllContacts",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/contactservice/contacts"
+        },
+        {
+          "id": "ContactsController.createNewContacts",
+          "class_name": "ContactsController",
+          "method_name": "createNewContacts",
+          "param_types": [
+            "Contacts"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/contactservice/contacts"
+        },
+        {
+          "id": "ContactsController.createNewContactsAdmin",
+          "class_name": "ContactsController",
+          "method_name": "createNewContactsAdmin",
+          "param_types": [
+            "Contacts"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/contactservice/contacts/admin"
+        },
+        {
+          "id": "ContactsController.deleteContacts",
+          "class_name": "ContactsController",
+          "method_name": "deleteContacts",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/contactservice/contacts/{contactsId}"
+        },
+        {
+          "id": "ContactsController.modifyContacts",
+          "class_name": "ContactsController",
+          "method_name": "modifyContacts",
+          "param_types": [
+            "Contacts"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/contactservice/contacts"
+        },
+        {
+          "id": "ContactsController.findContactsByAccountId",
+          "class_name": "ContactsController",
+          "method_name": "findContactsByAccountId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/contactservice/contacts/account/{accountId}"
+        },
+        {
+          "id": "ContactsController.getContactsByContactsId",
+          "class_name": "ContactsController",
+          "method_name": "getContactsByContactsId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/contactservice/contacts/{id}"
+        }
+      ]
+    },
+    "ts-order-service": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderController.getTicketListByDateAndTripId",
+          "class_name": "OrderController",
+          "method_name": "getTicketListByDateAndTripId",
+          "param_types": [
+            "Seat"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderservice/order/tickets"
+        },
+        {
+          "id": "OrderController.createNewOrder",
+          "class_name": "OrderController",
+          "method_name": "createNewOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderservice/order"
+        },
+        {
+          "id": "OrderController.addcreateNewOrder",
+          "class_name": "OrderController",
+          "method_name": "addcreateNewOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderservice/order/admin"
+        },
+        {
+          "id": "OrderController.queryOrders",
+          "class_name": "OrderController",
+          "method_name": "queryOrders",
+          "param_types": [
+            "OrderInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderservice/order/query"
+        },
+        {
+          "id": "OrderController.queryOrdersForRefresh",
+          "class_name": "OrderController",
+          "method_name": "queryOrdersForRefresh",
+          "param_types": [
+            "OrderInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderservice/order/refresh"
+        },
+        {
+          "id": "OrderController.calculateSoldTicket",
+          "class_name": "OrderController",
+          "method_name": "calculateSoldTicket",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/{travelDate}/{trainNumber}"
+        },
+        {
+          "id": "OrderController.getOrderPrice",
+          "class_name": "OrderController",
+          "method_name": "getOrderPrice",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/price/{orderId}"
+        },
+        {
+          "id": "OrderController.payOrder",
+          "class_name": "OrderController",
+          "method_name": "payOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/orderPay/{orderId}"
+        },
+        {
+          "id": "OrderController.getOrderById",
+          "class_name": "OrderController",
+          "method_name": "getOrderById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/{orderId}"
+        },
+        {
+          "id": "OrderController.modifyOrder",
+          "class_name": "OrderController",
+          "method_name": "modifyOrder",
+          "param_types": [
+            "String",
+            "int"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/status/{orderId}/{status}"
+        },
+        {
+          "id": "OrderController.securityInfoCheck",
+          "class_name": "OrderController",
+          "method_name": "securityInfoCheck",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order/security/{checkDate}/{accountId}"
+        },
+        {
+          "id": "OrderController.saveOrderInfo",
+          "class_name": "OrderController",
+          "method_name": "saveOrderInfo",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/orderservice/order"
+        },
+        {
+          "id": "OrderController.updateOrder",
+          "class_name": "OrderController",
+          "method_name": "updateOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/orderservice/order/admin"
+        },
+        {
+          "id": "OrderController.deleteOrder",
+          "class_name": "OrderController",
+          "method_name": "deleteOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/orderservice/order/{orderId}"
+        },
+        {
+          "id": "OrderController.findAllOrder",
+          "class_name": "OrderController",
+          "method_name": "findAllOrder",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderservice/order"
+        }
+      ]
+    },
+    "ts-order-other-service": {
+      "exposed_interfaces": [
+        {
+          "id": "OrderOtherController.getTicketListByDateAndTripId",
+          "class_name": "OrderOtherController",
+          "method_name": "getTicketListByDateAndTripId",
+          "param_types": [
+            "Seat"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderOtherService/orderOther/tickets"
+        },
+        {
+          "id": "OrderOtherController.createNewOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "createNewOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderOtherService/orderOther"
+        },
+        {
+          "id": "OrderOtherController.addcreateNewOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "addcreateNewOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderOtherService/orderOther/admin"
+        },
+        {
+          "id": "OrderOtherController.queryOrders",
+          "class_name": "OrderOtherController",
+          "method_name": "queryOrders",
+          "param_types": [
+            "QueryInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderOtherService/orderOther/query"
+        },
+        {
+          "id": "OrderOtherController.queryOrdersForRefresh",
+          "class_name": "OrderOtherController",
+          "method_name": "queryOrdersForRefresh",
+          "param_types": [
+            "QueryInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/orderOtherService/orderOther/refresh"
+        },
+        {
+          "id": "OrderOtherController.calculateSoldTicket",
+          "class_name": "OrderOtherController",
+          "method_name": "calculateSoldTicket",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/{travelDate}/{trainNumber}"
+        },
+        {
+          "id": "OrderOtherController.getOrderPrice",
+          "class_name": "OrderOtherController",
+          "method_name": "getOrderPrice",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/price/{orderId}"
+        },
+        {
+          "id": "OrderOtherController.payOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "payOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/orderPay/{orderId}"
+        },
+        {
+          "id": "OrderOtherController.getOrderById",
+          "class_name": "OrderOtherController",
+          "method_name": "getOrderById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/{orderId}"
+        },
+        {
+          "id": "OrderOtherController.modifyOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "modifyOrder",
+          "param_types": [
+            "String",
+            "int"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/status/{orderId}/{status}"
+        },
+        {
+          "id": "OrderOtherController.securityInfoCheck",
+          "class_name": "OrderOtherController",
+          "method_name": "securityInfoCheck",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}"
+        },
+        {
+          "id": "OrderOtherController.saveOrderInfo",
+          "class_name": "OrderOtherController",
+          "method_name": "saveOrderInfo",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/orderOtherService/orderOther"
+        },
+        {
+          "id": "OrderOtherController.updateOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "updateOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/orderOtherService/orderOther/admin"
+        },
+        {
+          "id": "OrderOtherController.deleteOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "deleteOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/orderOtherService/orderOther/{orderId}"
+        },
+        {
+          "id": "OrderOtherController.findAllOrder",
+          "class_name": "OrderOtherController",
+          "method_name": "findAllOrder",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/orderOtherService/orderOther"
+        }
+      ]
+    },
+    "ts-config-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ConfigController.queryAll",
+          "class_name": "ConfigController",
+          "method_name": "queryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/configservice/configs"
+        },
+        {
+          "id": "ConfigController.createConfig",
+          "class_name": "ConfigController",
+          "method_name": "createConfig",
+          "param_types": [
+            "Config"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/configservice/configs"
+        },
+        {
+          "id": "ConfigController.updateConfig",
+          "class_name": "ConfigController",
+          "method_name": "updateConfig",
+          "param_types": [
+            "Config"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/configservice/configs"
+        },
+        {
+          "id": "ConfigController.deleteConfig",
+          "class_name": "ConfigController",
+          "method_name": "deleteConfig",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/configservice/configs/{configName}"
+        },
+        {
+          "id": "ConfigController.retrieve",
+          "class_name": "ConfigController",
+          "method_name": "retrieve",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/configservice/configs/{configName}"
+        }
+      ]
+    },
+    "ts-station-service": {
+      "exposed_interfaces": [
+        {
+          "id": "StationController.query",
+          "class_name": "StationController",
+          "method_name": "query",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationservice/stations"
+        },
+        {
+          "id": "StationController.create",
+          "class_name": "StationController",
+          "method_name": "create",
+          "param_types": [
+            "Station"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/stationservice/stations"
+        },
+        {
+          "id": "StationController.update",
+          "class_name": "StationController",
+          "method_name": "update",
+          "param_types": [
+            "Station"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/stationservice/stations"
+        },
+        {
+          "id": "StationController.delete",
+          "class_name": "StationController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/stationservice/stations/{stationsId}"
+        },
+        {
+          "id": "StationController.queryForStationId",
+          "class_name": "StationController",
+          "method_name": "queryForStationId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationservice/stations/id/{stationNameForId}"
+        },
+        {
+          "id": "StationController.queryForIdBatch",
+          "class_name": "StationController",
+          "method_name": "queryForIdBatch",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/stationservice/stations/idlist"
+        },
+        {
+          "id": "StationController.queryById",
+          "class_name": "StationController",
+          "method_name": "queryById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationservice/stations/name/{stationIdForName}"
+        },
+        {
+          "id": "StationController.queryForNameBatch",
+          "class_name": "StationController",
+          "method_name": "queryForNameBatch",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/stationservice/stations/namelist"
+        }
+      ]
+    },
+    "ts-train-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TrainController.create",
+          "class_name": "TrainController",
+          "method_name": "create",
+          "param_types": [
+            "TrainType"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/trainservice/trains"
+        },
+        {
+          "id": "TrainController.retrieve",
+          "class_name": "TrainController",
+          "method_name": "retrieve",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trainservice/trains/{id}"
+        },
+        {
+          "id": "TrainController.retrieveByName",
+          "class_name": "TrainController",
+          "method_name": "retrieveByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trainservice/trains/byName/{name}"
+        },
+        {
+          "id": "TrainController.retrieveByNameBatch",
+          "class_name": "TrainController",
+          "method_name": "retrieveByName",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/trainservice/trains/byNames"
+        },
+        {
+          "id": "TrainController.update",
+          "class_name": "TrainController",
+          "method_name": "update",
+          "param_types": [
+            "TrainType"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/trainservice/trains"
+        },
+        {
+          "id": "TrainController.delete",
+          "class_name": "TrainController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/trainservice/trains/{id}"
+        },
+        {
+          "id": "TrainController.query",
+          "class_name": "TrainController",
+          "method_name": "query",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trainservice/trains"
+        }
+      ]
+    },
+    "ts-travel-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TravelController.getTrainTypeByTripId",
+          "class_name": "TravelController",
+          "method_name": "getTrainTypeByTripId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travelservice/train_types/{tripId}"
+        },
+        {
+          "id": "TravelController.getRouteByTripId",
+          "class_name": "TravelController",
+          "method_name": "getRouteByTripId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travelservice/routes/{tripId}"
+        },
+        {
+          "id": "TravelController.getTripsByRouteId",
+          "class_name": "TravelController",
+          "method_name": "getTripsByRouteId",
+          "param_types": [
+            "ArrayList<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelservice/trips/routes"
+        },
+        {
+          "id": "TravelController.createTrip",
+          "class_name": "TravelController",
+          "method_name": "createTrip",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelservice/trips"
+        },
+        {
+          "id": "TravelController.retrieve",
+          "class_name": "TravelController",
+          "method_name": "retrieve",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travelservice/trips/{tripId}"
+        },
+        {
+          "id": "TravelController.updateTrip",
+          "class_name": "TravelController",
+          "method_name": "updateTrip",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/travelservice/trips"
+        },
+        {
+          "id": "TravelController.deleteTrip",
+          "class_name": "TravelController",
+          "method_name": "deleteTrip",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/travelservice/trips/{tripId}"
+        },
+        {
+          "id": "TravelController.queryInfo",
+          "class_name": "TravelController",
+          "method_name": "queryInfo",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelservice/trips/left"
+        },
+        {
+          "id": "TravelController.queryInfoInparallel",
+          "class_name": "TravelController",
+          "method_name": "queryInfoInparallel",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelservice/trips/left_parallel"
+        },
+        {
+          "id": "TravelController.getTripAllDetailInfo",
+          "class_name": "TravelController",
+          "method_name": "getTripAllDetailInfo",
+          "param_types": [
+            "TripAllDetailInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelservice/trip_detail"
+        },
+        {
+          "id": "TravelController.queryAll",
+          "class_name": "TravelController",
+          "method_name": "queryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travelservice/trips"
+        },
+        {
+          "id": "TravelController.adminQueryAll",
+          "class_name": "TravelController",
+          "method_name": "adminQueryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travelservice/admin_trip"
+        }
+      ]
+    },
+    "ts-travel2-service": {
+      "exposed_interfaces": [
+        {
+          "id": "Travel2Controller.getTrainTypeByTripId",
+          "class_name": "Travel2Controller",
+          "method_name": "getTrainTypeByTripId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travel2service/train_types/{tripId}"
+        },
+        {
+          "id": "Travel2Controller.getRouteByTripId",
+          "class_name": "Travel2Controller",
+          "method_name": "getRouteByTripId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travel2service/routes/{tripId}"
+        },
+        {
+          "id": "Travel2Controller.getTripsByRouteId",
+          "class_name": "Travel2Controller",
+          "method_name": "getTripsByRouteId",
+          "param_types": [
+            "ArrayList<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travel2service/trips/routes"
+        },
+        {
+          "id": "Travel2Controller.createTrip",
+          "class_name": "Travel2Controller",
+          "method_name": "createTrip",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travel2service/trips"
+        },
+        {
+          "id": "Travel2Controller.retrieve",
+          "class_name": "Travel2Controller",
+          "method_name": "retrieve",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travel2service/trips/{tripId}"
+        },
+        {
+          "id": "Travel2Controller.updateTrip",
+          "class_name": "Travel2Controller",
+          "method_name": "updateTrip",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/travel2service/trips"
+        },
+        {
+          "id": "Travel2Controller.deleteTrip",
+          "class_name": "Travel2Controller",
+          "method_name": "deleteTrip",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/travel2service/trips/{tripId}"
+        },
+        {
+          "id": "Travel2Controller.queryInfo",
+          "class_name": "Travel2Controller",
+          "method_name": "queryInfo",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travel2service/trips/left"
+        },
+        {
+          "id": "Travel2Controller.getTripAllDetailInfo",
+          "class_name": "Travel2Controller",
+          "method_name": "getTripAllDetailInfo",
+          "param_types": [
+            "TripAllDetailInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travel2service/trip_detail"
+        },
+        {
+          "id": "Travel2Controller.queryAll",
+          "class_name": "Travel2Controller",
+          "method_name": "queryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travel2service/trips"
+        },
+        {
+          "id": "Travel2Controller.adminQueryAll",
+          "class_name": "Travel2Controller",
+          "method_name": "adminQueryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/travel2service/admin_trip"
+        }
+      ]
+    },
+    "ts-preserve-service": {
+      "exposed_interfaces": [
+        {
+          "id": "PreserveController.preserve",
+          "class_name": "PreserveController",
+          "method_name": "preserve",
+          "param_types": [
+            "OrderTicketsInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/preserveservice/preserve"
+        }
+      ]
+    },
+    "ts-preserve-other-service": {
+      "exposed_interfaces": [
+        {
+          "id": "PreserveOtherController.preserve",
+          "class_name": "PreserveOtherController",
+          "method_name": "preserve",
+          "param_types": [
+            "OrderTicketsInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/preserveotherservice/preserveOther"
+        }
+      ]
+    },
+    "ts-basic-service": {
+      "exposed_interfaces": [
+        {
+          "id": "BasicController.queryForTravel",
+          "class_name": "BasicController",
+          "method_name": "queryForTravel",
+          "param_types": [
+            "Travel"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/basicservice/basic/travel"
+        },
+        {
+          "id": "BasicController.queryForTravels",
+          "class_name": "BasicController",
+          "method_name": "queryForTravels",
+          "param_types": [
+            "List<Travel>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/basicservice/basic/travels"
+        },
+        {
+          "id": "BasicController.queryForStationId",
+          "class_name": "BasicController",
+          "method_name": "queryForStationId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/basicservice/basic/{stationName}"
+        }
+      ]
+    },
+    "ts-price-service": {
+      "exposed_interfaces": [
+        {
+          "id": "PriceController.query",
+          "class_name": "PriceController",
+          "method_name": "query",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/priceservice/prices/{routeId}/{trainType}"
+        },
+        {
+          "id": "PriceController.queryBatch",
+          "class_name": "PriceController",
+          "method_name": "query",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/priceservice/prices/byRouteIdsAndTrainTypes"
+        },
+        {
+          "id": "PriceController.queryAll",
+          "class_name": "PriceController",
+          "method_name": "queryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/priceservice/prices"
+        },
+        {
+          "id": "PriceController.create",
+          "class_name": "PriceController",
+          "method_name": "create",
+          "param_types": [
+            "PriceConfig"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/priceservice/prices"
+        },
+        {
+          "id": "PriceController.delete",
+          "class_name": "PriceController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/priceservice/prices/{pricesId}"
+        },
+        {
+          "id": "PriceController.update",
+          "class_name": "PriceController",
+          "method_name": "update",
+          "param_types": [
+            "PriceConfig"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/priceservice/prices"
+        }
+      ]
+    },
+    "ts-notification-service": {
+      "exposed_interfaces": [
+        {
+          "id": "NotificationController.test_send",
+          "class_name": "NotificationController",
+          "method_name": "test_send",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/notifyservice/test_send_mq"
+        },
+        {
+          "id": "NotificationController.test_send_mail",
+          "class_name": "NotificationController",
+          "method_name": "test_send_mail",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/notifyservice/test_send_mail"
+        },
+        {
+          "id": "NotificationController.preserve_success",
+          "class_name": "NotificationController",
+          "method_name": "preserve_success",
+          "param_types": [
+            "NotifyInfo"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/notifyservice/notification/preserve_success"
+        },
+        {
+          "id": "NotificationController.order_create_success",
+          "class_name": "NotificationController",
+          "method_name": "order_create_success",
+          "param_types": [
+            "NotifyInfo"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/notifyservice/notification/order_create_success"
+        },
+        {
+          "id": "NotificationController.order_changed_success",
+          "class_name": "NotificationController",
+          "method_name": "order_changed_success",
+          "param_types": [
+            "NotifyInfo"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/notifyservice/notification/order_changed_success"
+        },
+        {
+          "id": "NotificationController.order_cancel_success",
+          "class_name": "NotificationController",
+          "method_name": "order_cancel_success",
+          "param_types": [
+            "NotifyInfo"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/notifyservice/notification/order_cancel_success"
+        },
+        {
+          "id": "RabbitReceive.process",
+          "class_name": "RabbitReceive",
+          "method_name": "process",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "email"
+        }
+      ]
+    },
+    "ts-security-service": {
+      "exposed_interfaces": [
+        {
+          "id": "SecurityController.findAllSecurityConfig",
+          "class_name": "SecurityController",
+          "method_name": "findAllSecurityConfig",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/securityservice/securityConfigs"
+        },
+        {
+          "id": "SecurityController.create",
+          "class_name": "SecurityController",
+          "method_name": "create",
+          "param_types": [
+            "SecurityConfig"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/securityservice/securityConfigs"
+        },
+        {
+          "id": "SecurityController.update",
+          "class_name": "SecurityController",
+          "method_name": "update",
+          "param_types": [
+            "SecurityConfig"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/securityservice/securityConfigs"
+        },
+        {
+          "id": "SecurityController.delete",
+          "class_name": "SecurityController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/securityservice/securityConfigs/{id}"
+        },
+        {
+          "id": "SecurityController.check",
+          "class_name": "SecurityController",
+          "method_name": "check",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/securityservice/securityConfigs/{accountId}"
+        }
+      ]
+    },
+    "ts-inside-payment-service": {
+      "exposed_interfaces": [
+        {
+          "id": "InsidePaymentController.pay",
+          "class_name": "InsidePaymentController",
+          "method_name": "pay",
+          "param_types": [
+            "PaymentInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/inside_pay_service/inside_payment"
+        },
+        {
+          "id": "InsidePaymentController.createAccount",
+          "class_name": "InsidePaymentController",
+          "method_name": "createAccount",
+          "param_types": [
+            "AccountInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/inside_pay_service/inside_payment/account"
+        },
+        {
+          "id": "InsidePaymentController.addMoney",
+          "class_name": "InsidePaymentController",
+          "method_name": "addMoney",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/inside_pay_service/inside_payment/{userId}/{money}"
+        },
+        {
+          "id": "InsidePaymentController.queryPayment",
+          "class_name": "InsidePaymentController",
+          "method_name": "queryPayment",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/inside_pay_service/inside_payment/payment"
+        },
+        {
+          "id": "InsidePaymentController.queryAccount",
+          "class_name": "InsidePaymentController",
+          "method_name": "queryAccount",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/inside_pay_service/inside_payment/account"
+        },
+        {
+          "id": "InsidePaymentController.drawBack",
+          "class_name": "InsidePaymentController",
+          "method_name": "drawBack",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/inside_pay_service/inside_payment/drawback/{userId}/{money}"
+        },
+        {
+          "id": "InsidePaymentController.payDifference",
+          "class_name": "InsidePaymentController",
+          "method_name": "payDifference",
+          "param_types": [
+            "PaymentInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/inside_pay_service/inside_payment/difference"
+        },
+        {
+          "id": "InsidePaymentController.queryAddMoney",
+          "class_name": "InsidePaymentController",
+          "method_name": "queryAddMoney",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/inside_pay_service/inside_payment/money"
+        }
+      ]
+    },
+    "ts-execute-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ExecuteControlller.executeTicket",
+          "class_name": "ExecuteControlller",
+          "method_name": "executeTicket",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/executeservice/execute/execute/{orderId}"
+        },
+        {
+          "id": "ExecuteControlller.collectTicket",
+          "class_name": "ExecuteControlller",
+          "method_name": "collectTicket",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/executeservice/execute/collected/{orderId}"
+        }
+      ]
+    },
+    "ts-payment-service": {
+      "exposed_interfaces": [
+        {
+          "id": "PaymentController.pay",
+          "class_name": "PaymentController",
+          "method_name": "pay",
+          "param_types": [
+            "Payment"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/paymentservice/payment"
+        },
+        {
+          "id": "PaymentController.addMoney",
+          "class_name": "PaymentController",
+          "method_name": "addMoney",
+          "param_types": [
+            "Payment"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/paymentservice/payment/money"
+        },
+        {
+          "id": "PaymentController.query",
+          "class_name": "PaymentController",
+          "method_name": "query",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/paymentservice/payment"
+        }
+      ]
+    },
+    "ts-rebook-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RebookController.payDifference",
+          "class_name": "RebookController",
+          "method_name": "payDifference",
+          "param_types": [
+            "RebookInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/rebookservice/rebook/difference"
+        },
+        {
+          "id": "RebookController.rebook",
+          "class_name": "RebookController",
+          "method_name": "rebook",
+          "param_types": [
+            "RebookInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/rebookservice/rebook"
+        }
+      ]
+    },
+    "ts-cancel-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CancelController.calculate",
+          "class_name": "CancelController",
+          "method_name": "calculate",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/cancelservice/cancel/refound/{orderId}"
+        },
+        {
+          "id": "CancelController.cancelTicket",
+          "class_name": "CancelController",
+          "method_name": "cancelTicket",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/cancelservice/cancel/{orderId}/{loginId}"
+        }
+      ]
+    },
+    "ts-route-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RouteController.createAndModifyRoute",
+          "class_name": "RouteController",
+          "method_name": "createAndModifyRoute",
+          "param_types": [
+            "RouteInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/routeservice/routes"
+        },
+        {
+          "id": "RouteController.deleteRoute",
+          "class_name": "RouteController",
+          "method_name": "deleteRoute",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/routeservice/routes/{routeId}"
+        },
+        {
+          "id": "RouteController.queryById",
+          "class_name": "RouteController",
+          "method_name": "queryById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/routeservice/routes/{routeId}"
+        },
+        {
+          "id": "RouteController.queryByIds",
+          "class_name": "RouteController",
+          "method_name": "queryByIds",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/routeservice/routes/byIds"
+        },
+        {
+          "id": "RouteController.queryAll",
+          "class_name": "RouteController",
+          "method_name": "queryAll",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/routeservice/routes"
+        },
+        {
+          "id": "RouteController.queryByStartAndTerminal",
+          "class_name": "RouteController",
+          "method_name": "queryByStartAndTerminal",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/routeservice/routes/{start}/{end}"
+        }
+      ]
+    },
+    "ts-assurance-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AssuranceController.getAllAssurances",
+          "class_name": "AssuranceController",
+          "method_name": "getAllAssurances",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/assuranceservice/assurances"
+        },
+        {
+          "id": "AssuranceController.getAllAssuranceType",
+          "class_name": "AssuranceController",
+          "method_name": "getAllAssuranceType",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/assuranceservice/assurances/types"
+        },
+        {
+          "id": "AssuranceController.deleteAssurance",
+          "class_name": "AssuranceController",
+          "method_name": "deleteAssurance",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/assuranceservice/assurances/assuranceid/{assuranceId}"
+        },
+        {
+          "id": "AssuranceController.deleteAssuranceByOrderId",
+          "class_name": "AssuranceController",
+          "method_name": "deleteAssuranceByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/assuranceservice/assurances/orderid/{orderId}"
+        },
+        {
+          "id": "AssuranceController.modifyAssurance",
+          "class_name": "AssuranceController",
+          "method_name": "modifyAssurance",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/assuranceservice/assurances/{assuranceId}/{orderId}/{typeIndex}"
+        },
+        {
+          "id": "AssuranceController.createNewAssurance",
+          "class_name": "AssuranceController",
+          "method_name": "createNewAssurance",
+          "param_types": [
+            "int",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/assuranceservice/assurances/{typeIndex}/{orderId}"
+        },
+        {
+          "id": "AssuranceController.getAssuranceById",
+          "class_name": "AssuranceController",
+          "method_name": "getAssuranceById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/assuranceservice/assurances/assuranceid/{assuranceId}"
+        },
+        {
+          "id": "AssuranceController.findAssuranceByOrderId",
+          "class_name": "AssuranceController",
+          "method_name": "findAssuranceByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/assuranceservice/assurance/orderid/{orderId}"
+        }
+      ]
+    },
+    "ts-seat-service": {
+      "exposed_interfaces": [
+        {
+          "id": "SeatController.create",
+          "class_name": "SeatController",
+          "method_name": "create",
+          "param_types": [
+            "Seat"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/seatservice/seats"
+        },
+        {
+          "id": "SeatController.getLeftTicketOfInterval",
+          "class_name": "SeatController",
+          "method_name": "getLeftTicketOfInterval",
+          "param_types": [
+            "Seat"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/seatservice/seats/left_tickets"
+        }
+      ]
+    },
+    "ts-travel-plan-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TravelPlanController.getTransferResult",
+          "class_name": "TravelPlanController",
+          "method_name": "getTransferResult",
+          "param_types": [
+            "TransferTravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelplanservice/travelPlan/transferResult"
+        },
+        {
+          "id": "TravelPlanController.getByCheapest",
+          "class_name": "TravelPlanController",
+          "method_name": "getByCheapest",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelplanservice/travelPlan/cheapest"
+        },
+        {
+          "id": "TravelPlanController.getByQuickest",
+          "class_name": "TravelPlanController",
+          "method_name": "getByQuickest",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelplanservice/travelPlan/quickest"
+        },
+        {
+          "id": "TravelPlanController.getByMinStation",
+          "class_name": "TravelPlanController",
+          "method_name": "getByMinStation",
+          "param_types": [
+            "TripInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/travelplanservice/travelPlan/minStation"
+        }
+      ]
+    },
+    "ts-route-plan-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RoutePlanController.getCheapestRoutes",
+          "class_name": "RoutePlanController",
+          "method_name": "getCheapestRoutes",
+          "param_types": [
+            "RoutePlanInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/routeplanservice/routePlan/cheapestRoute"
+        },
+        {
+          "id": "RoutePlanController.getQuickestRoutes",
+          "class_name": "RoutePlanController",
+          "method_name": "getQuickestRoutes",
+          "param_types": [
+            "RoutePlanInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/routeplanservice/routePlan/quickestRoute"
+        },
+        {
+          "id": "RoutePlanController.getMinStopStations",
+          "class_name": "RoutePlanController",
+          "method_name": "getMinStopStations",
+          "param_types": [
+            "RoutePlanInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/routeplanservice/routePlan/minStopStations"
+        }
+      ]
+    },
+    "ts-food-service": {
+      "exposed_interfaces": [
+        {
+          "id": "FoodController.test_send_delivery",
+          "class_name": "FoodController",
+          "method_name": "test_send_delivery",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/foodservice/test_send_delivery"
+        },
+        {
+          "id": "FoodController.findAllFoodOrder",
+          "class_name": "FoodController",
+          "method_name": "findAllFoodOrder",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/foodservice/orders"
+        },
+        {
+          "id": "FoodController.createFoodOrder",
+          "class_name": "FoodController",
+          "method_name": "createFoodOrder",
+          "param_types": [
+            "FoodOrder"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/foodservice/orders"
+        },
+        {
+          "id": "FoodController.createFoodBatches",
+          "class_name": "FoodController",
+          "method_name": "createFoodBatches",
+          "param_types": [
+            "List<FoodOrder>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/foodservice/createOrderBatch"
+        },
+        {
+          "id": "FoodController.updateFoodOrder",
+          "class_name": "FoodController",
+          "method_name": "updateFoodOrder",
+          "param_types": [
+            "FoodOrder"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/foodservice/orders"
+        },
+        {
+          "id": "FoodController.deleteFoodOrder",
+          "class_name": "FoodController",
+          "method_name": "deleteFoodOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/foodservice/orders/{orderId}"
+        },
+        {
+          "id": "FoodController.findFoodOrderByOrderId",
+          "class_name": "FoodController",
+          "method_name": "findFoodOrderByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/foodservice/orders/{orderId}"
+        },
+        {
+          "id": "FoodController.getAllFood",
+          "class_name": "FoodController",
+          "method_name": "getAllFood",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+        }
+      ]
+    },
+    "ts-station-food-service": {
+      "exposed_interfaces": [
+        {
+          "id": "StationFoodController.getAllFoodStores",
+          "class_name": "StationFoodController",
+          "method_name": "getAllFoodStores",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationfoodservice/stationfoodstores"
+        },
+        {
+          "id": "StationFoodController.getFoodStoresOfStation",
+          "class_name": "StationFoodController",
+          "method_name": "getFoodStoresOfStation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationfoodservice/stationfoodstores/{stationId}"
+        },
+        {
+          "id": "StationFoodController.getFoodStoresByStationNames",
+          "class_name": "StationFoodController",
+          "method_name": "getFoodStoresByStationNames",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/stationfoodservice/stationfoodstores"
+        },
+        {
+          "id": "StationFoodController.getFoodListByStationFoodStoreId",
+          "class_name": "StationFoodController",
+          "method_name": "getFoodListByStationFoodStoreId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stationfoodservice/stationfoodstores/bystoreid/{stationFoodStoreId}"
+        }
+      ]
+    },
+    "ts-consign-price-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ConsignPriceController.getPriceByWeightAndRegion",
+          "class_name": "ConsignPriceController",
+          "method_name": "getPriceByWeightAndRegion",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignpriceservice/consignprice/{weight}/{isWithinRegion}"
+        },
+        {
+          "id": "ConsignPriceController.getPriceInfo",
+          "class_name": "ConsignPriceController",
+          "method_name": "getPriceInfo",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignpriceservice/consignprice/price"
+        },
+        {
+          "id": "ConsignPriceController.getPriceConfig",
+          "class_name": "ConsignPriceController",
+          "method_name": "getPriceConfig",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignpriceservice/consignprice/config"
+        },
+        {
+          "id": "ConsignPriceController.modifyPriceConfig",
+          "class_name": "ConsignPriceController",
+          "method_name": "modifyPriceConfig",
+          "param_types": [
+            "ConsignPrice"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/consignpriceservice/consignprice"
+        }
+      ]
+    },
+    "ts-consign-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ConsignController.insertConsign",
+          "class_name": "ConsignController",
+          "method_name": "insertConsign",
+          "param_types": [
+            "Consign"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/consignservice/consigns"
+        },
+        {
+          "id": "ConsignController.updateConsign",
+          "class_name": "ConsignController",
+          "method_name": "updateConsign",
+          "param_types": [
+            "Consign"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/consignservice/consigns"
+        },
+        {
+          "id": "ConsignController.findByAccountId",
+          "class_name": "ConsignController",
+          "method_name": "findByAccountId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignservice/consigns/account/{id}"
+        },
+        {
+          "id": "ConsignController.findByOrderId",
+          "class_name": "ConsignController",
+          "method_name": "findByOrderId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignservice/consigns/order/{id}"
+        },
+        {
+          "id": "ConsignController.findByConsignee",
+          "class_name": "ConsignController",
+          "method_name": "findByConsignee",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/consignservice/consigns/{consignee}"
+        }
+      ]
+    },
+    "ts-admin-order-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminOrderController.getAllOrders",
+          "class_name": "AdminOrderController",
+          "method_name": "getAllOrders",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminorderservice/adminorder"
+        },
+        {
+          "id": "AdminOrderController.addOrder",
+          "class_name": "AdminOrderController",
+          "method_name": "addOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminorderservice/adminorder"
+        },
+        {
+          "id": "AdminOrderController.updateOrder",
+          "class_name": "AdminOrderController",
+          "method_name": "updateOrder",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminorderservice/adminorder"
+        },
+        {
+          "id": "AdminOrderController.deleteOrder",
+          "class_name": "AdminOrderController",
+          "method_name": "deleteOrder",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminorderservice/adminorder/{orderId}/{trainNumber}"
+        }
+      ]
+    },
+    "ts-admin-basic-info-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminBasicInfoController.getAllContacts",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "getAllContacts",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminbasicservice/adminbasic/contacts"
+        },
+        {
+          "id": "AdminBasicInfoController.deleteContacts",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "deleteContacts",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminbasicservice/adminbasic/contacts/{contactsId}"
+        },
+        {
+          "id": "AdminBasicInfoController.modifyContacts",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "modifyContacts",
+          "param_types": [
+            "Contacts"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminbasicservice/adminbasic/contacts"
+        },
+        {
+          "id": "AdminBasicInfoController.addContacts",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "addContacts",
+          "param_types": [
+            "Contacts"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminbasicservice/adminbasic/contacts"
+        },
+        {
+          "id": "AdminBasicInfoController.getAllStations",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "getAllStations",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminbasicservice/adminbasic/stations"
+        },
+        {
+          "id": "AdminBasicInfoController.deleteStation",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "deleteStation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminbasicservice/adminbasic/stations/{id}"
+        },
+        {
+          "id": "AdminBasicInfoController.modifyStation",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "modifyStation",
+          "param_types": [
+            "Station"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminbasicservice/adminbasic/stations"
+        },
+        {
+          "id": "AdminBasicInfoController.addStation",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "addStation",
+          "param_types": [
+            "Station"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminbasicservice/adminbasic/stations"
+        },
+        {
+          "id": "AdminBasicInfoController.getAllTrains",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "getAllTrains",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminbasicservice/adminbasic/trains"
+        },
+        {
+          "id": "AdminBasicInfoController.deleteTrain",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "deleteTrain",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminbasicservice/adminbasic/trains/{id}"
+        },
+        {
+          "id": "AdminBasicInfoController.modifyTrain",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "modifyTrain",
+          "param_types": [
+            "TrainType"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminbasicservice/adminbasic/trains"
+        },
+        {
+          "id": "AdminBasicInfoController.addTrain",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "addTrain",
+          "param_types": [
+            "TrainType"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminbasicservice/adminbasic/trains"
+        },
+        {
+          "id": "AdminBasicInfoController.getAllConfigs",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "getAllConfigs",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminbasicservice/adminbasic/configs"
+        },
+        {
+          "id": "AdminBasicInfoController.deleteConfig",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "deleteConfig",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminbasicservice/adminbasic/configs/{name}"
+        },
+        {
+          "id": "AdminBasicInfoController.modifyConfig",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "modifyConfig",
+          "param_types": [
+            "Config"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminbasicservice/adminbasic/configs"
+        },
+        {
+          "id": "AdminBasicInfoController.addConfig",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "addConfig",
+          "param_types": [
+            "Config"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminbasicservice/adminbasic/configs"
+        },
+        {
+          "id": "AdminBasicInfoController.getAllPrices",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "getAllPrices",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminbasicservice/adminbasic/prices"
+        },
+        {
+          "id": "AdminBasicInfoController.deletePrice",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "deletePrice",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminbasicservice/adminbasic/prices/{pricesId}"
+        },
+        {
+          "id": "AdminBasicInfoController.modifyPrice",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "modifyPrice",
+          "param_types": [
+            "PriceInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminbasicservice/adminbasic/prices"
+        },
+        {
+          "id": "AdminBasicInfoController.addPrice",
+          "class_name": "AdminBasicInfoController",
+          "method_name": "addPrice",
+          "param_types": [
+            "PriceInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminbasicservice/adminbasic/prices"
+        }
+      ]
+    },
+    "ts-admin-route-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminRouteController.getAllRoutes",
+          "class_name": "AdminRouteController",
+          "method_name": "getAllRoutes",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminrouteservice/adminroute"
+        },
+        {
+          "id": "AdminRouteController.addRoute",
+          "class_name": "AdminRouteController",
+          "method_name": "addRoute",
+          "param_types": [
+            "RouteInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminrouteservice/adminroute"
+        },
+        {
+          "id": "AdminRouteController.deleteRoute",
+          "class_name": "AdminRouteController",
+          "method_name": "deleteRoute",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminrouteservice/adminroute/{routeId}"
+        }
+      ]
+    },
+    "ts-admin-travel-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminTravelController.getAllTravels",
+          "class_name": "AdminTravelController",
+          "method_name": "getAllTravels",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/admintravelservice/admintravel"
+        },
+        {
+          "id": "AdminTravelController.addTravel",
+          "class_name": "AdminTravelController",
+          "method_name": "addTravel",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/admintravelservice/admintravel"
+        },
+        {
+          "id": "AdminTravelController.updateTravel",
+          "class_name": "AdminTravelController",
+          "method_name": "updateTravel",
+          "param_types": [
+            "TravelInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/admintravelservice/admintravel"
+        },
+        {
+          "id": "AdminTravelController.deleteTravel",
+          "class_name": "AdminTravelController",
+          "method_name": "deleteTravel",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/admintravelservice/admintravel/{tripId}"
+        }
+      ]
+    },
+    "ts-admin-user-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminUserController.getAllUsers",
+          "class_name": "AdminUserController",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/adminuserservice/users"
+        },
+        {
+          "id": "AdminUserController.updateUser",
+          "class_name": "AdminUserController",
+          "method_name": "updateUser",
+          "param_types": [
+            "UserDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/adminuserservice/users"
+        },
+        {
+          "id": "AdminUserController.addUser",
+          "class_name": "AdminUserController",
+          "method_name": "addUser",
+          "param_types": [
+            "UserDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/adminuserservice/users"
+        },
+        {
+          "id": "AdminUserController.deleteUser",
+          "class_name": "AdminUserController",
+          "method_name": "deleteUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/adminuserservice/users/{userId}"
+        }
+      ]
+    },
+    "ts-auth-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthController.createDefaultUser",
+          "class_name": "AuthController",
+          "method_name": "createDefaultUser",
+          "param_types": [
+            "AuthDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/auth"
+        },
+        {
+          "id": "UserController.getToken",
+          "class_name": "UserController",
+          "method_name": "getToken",
+          "param_types": [
+            "BasicAuthDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/users/login"
+        },
+        {
+          "id": "UserController.getAllUser",
+          "class_name": "UserController",
+          "method_name": "getAllUser",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/users"
+        },
+        {
+          "id": "UserController.deleteUserById",
+          "class_name": "UserController",
+          "method_name": "deleteUserById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/users/{userId}"
+        }
+      ]
+    },
+    "ts-user-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.getAllUser",
+          "class_name": "UserController",
+          "method_name": "getAllUser",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/userservice/users"
+        },
+        {
+          "id": "UserController.getUserByUserName",
+          "class_name": "UserController",
+          "method_name": "getUserByUserName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/userservice/users/{userName}"
+        },
+        {
+          "id": "UserController.getUserByUserId",
+          "class_name": "UserController",
+          "method_name": "getUserByUserId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/userservice/users/id/{userId}"
+        },
+        {
+          "id": "UserController.registerUser",
+          "class_name": "UserController",
+          "method_name": "registerUser",
+          "param_types": [
+            "UserDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/userservice/users/register"
+        },
+        {
+          "id": "UserController.deleteUserById",
+          "class_name": "UserController",
+          "method_name": "deleteUserById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/userservice/users/{userId}"
+        },
+        {
+          "id": "UserController.updateUser",
+          "class_name": "UserController",
+          "method_name": "updateUser",
+          "param_types": [
+            "UserDto"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/userservice/users"
+        }
+      ]
+    },
+    "ts-delivery-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RabbitReceive.process",
+          "class_name": "RabbitReceive",
+          "method_name": "process",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "food_delivery"
+        }
+      ]
+    },
+    "ts-train-food-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TrainFoodController.getAllTrainFood",
+          "class_name": "TrainFoodController",
+          "method_name": "getAllTrainFood",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trainfoodservice/trainfoods"
+        },
+        {
+          "id": "TrainFoodController.getTrainFoodOfTrip",
+          "class_name": "TrainFoodController",
+          "method_name": "getTrainFoodOfTrip",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trainfoodservice/trainfoods/{tripId}"
+        }
+      ]
+    },
+    "ts-gateway-service": {
+      "exposed_interfaces": []
+    },
+    "ts-food-delivery-service": {
+      "exposed_interfaces": [
+        {
+          "id": "FoodDeliveryController.createFoodDeliveryOrder",
+          "class_name": "FoodDeliveryController",
+          "method_name": "createFoodDeliveryOrder",
+          "param_types": [
+            "FoodDeliveryOrder"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/fooddeliveryservice/orders"
+        },
+        {
+          "id": "FoodDeliveryController.deleteFoodDeliveryOrder",
+          "class_name": "FoodDeliveryController",
+          "method_name": "deleteFoodDeliveryOrder",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/fooddeliveryservice/orders/d/{orderId}"
+        },
+        {
+          "id": "FoodDeliveryController.getFoodDeliveryOrderById",
+          "class_name": "FoodDeliveryController",
+          "method_name": "getFoodDeliveryOrderById",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/fooddeliveryservice/orders/{orderId}"
+        },
+        {
+          "id": "FoodDeliveryController.getAllFoodDeliveryOrders",
+          "class_name": "FoodDeliveryController",
+          "method_name": "getAllFoodDeliveryOrders",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/fooddeliveryservice/orders/all"
+        },
+        {
+          "id": "FoodDeliveryController.getFoodDeliveryOrderByStoreId",
+          "class_name": "FoodDeliveryController",
+          "method_name": "getFoodDeliveryOrderByStoreId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/fooddeliveryservice/orders/store/{storeId}"
+        },
+        {
+          "id": "FoodDeliveryController.updateTripId",
+          "class_name": "FoodDeliveryController",
+          "method_name": "updateTripId",
+          "param_types": [
+            "TripOrderInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/fooddeliveryservice/orders/tripid"
+        },
+        {
+          "id": "FoodDeliveryController.updateSeatNo",
+          "class_name": "FoodDeliveryController",
+          "method_name": "updateSeatNo",
+          "param_types": [
+            "SeatInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/fooddeliveryservice/orders/seatno"
+        },
+        {
+          "id": "FoodDeliveryController.updateDeliveryTime",
+          "class_name": "FoodDeliveryController",
+          "method_name": "updateDeliveryTime",
+          "param_types": [
+            "DeliveryInfo"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/fooddeliveryservice/orders/dtime"
+        }
+      ]
+    },
+    "ts-wait-order-service": {
+      "exposed_interfaces": [
+        {
+          "id": "WaitListOrderController.createNewOrder",
+          "class_name": "WaitListOrderController",
+          "method_name": "createNewOrder",
+          "param_types": [
+            "WaitListOrderVO"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/waitorderservice/order"
+        },
+        {
+          "id": "WaitListOrderController.getAllOrders",
+          "class_name": "WaitListOrderController",
+          "method_name": "getAllOrders",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/waitorderservice/orders"
+        },
+        {
+          "id": "WaitListOrderController.getWaitListOrders",
+          "class_name": "WaitListOrderController",
+          "method_name": "getWaitListOrders",
+          "param_types": [],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/waitorderservice/waitlistorders"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "ts-order-service",
+      "src_class": "OrderServiceImpl",
+      "src_method": "queryForStationId",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForNameBatch",
+      "protocol": "REST",
+      "evidence": "ts-order-service/src/main/java/order/service/OrderServiceImpl.java:213 station_service_url + \"/api/v1/stationservice/stations/namelist\","
+    },
+    {
+      "src_service": "ts-order-other-service",
+      "src_class": "OrderOtherServiceImpl",
+      "src_method": "queryForStationId",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForNameBatch",
+      "protocol": "REST",
+      "evidence": "ts-order-other-service/src/main/java/other/service/OrderOtherServiceImpl.java:228 station_service_url + \"/api/v1/stationservice/stations/namelist\","
+    },
+    {
+      "src_service": "ts-travel-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTicketsByBatch",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravels",
+      "protocol": "REST",
+      "evidence": "ts-travel-service/src/main/java/travel/service/TravelServiceImpl.java:348 basic_service_url + \"/api/v1/basicservice/basic/travels\","
+    },
+    {
+      "src_service": "ts-travel-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTickets",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravel",
+      "protocol": "REST",
+      "evidence": "ts-travel-service/src/main/java/travel/service/TravelServiceImpl.java:397 basic_service_url + \"/api/v1/basicservice/basic/travel\","
+    },
+    {
+      "src_service": "ts-travel-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-travel-service/src/main/java/travel/service/TravelServiceImpl.java:508 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-travel-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-travel-service/src/main/java/travel/service/TravelServiceImpl.java:522 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-travel-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getRestTicketNumber",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.getLeftTicketOfInterval",
+      "protocol": "REST",
+      "evidence": "ts-travel-service/src/main/java/travel/service/TravelServiceImpl.java:553 seat_service_url + \"/api/v1/seatservice/seats/left_tickets\","
+    },
+    {
+      "src_service": "ts-travel2-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTicketsByBatch",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravels",
+      "protocol": "REST",
+      "evidence": "ts-travel2-service/src/main/java/travel2/service/TravelServiceImpl.java:265 basic_service_url + \"/api/v1/basicservice/basic/travels\","
+    },
+    {
+      "src_service": "ts-travel2-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTickets",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravel",
+      "protocol": "REST",
+      "evidence": "ts-travel2-service/src/main/java/travel2/service/TravelServiceImpl.java:313 basic_service_url + \"/api/v1/basicservice/basic/travel\","
+    },
+    {
+      "src_service": "ts-travel2-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-travel2-service/src/main/java/travel2/service/TravelServiceImpl.java:419 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-travel2-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-travel2-service/src/main/java/travel2/service/TravelServiceImpl.java:433 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-travel2-service",
+      "src_class": "TravelServiceImpl",
+      "src_method": "getRestTicketNumber",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.getLeftTicketOfInterval",
+      "protocol": "REST",
+      "evidence": "ts-travel2-service/src/main/java/travel2/service/TravelServiceImpl.java:464 seat_service_url + \"/api/v1/seatservice/seats/left_tickets\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "preserve",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravel",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:130 basic_service_url + \"/api/v1/basicservice/basic/travel\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "dipatchSeat",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.create",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:279 seat_service_url + \"/api/v1/seatservice/seats\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "getAccount",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.getUserByUserId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:307 user_service_url + \"/api/v1/userservice/users/id/\" + accountId,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "addAssuranceForOrder",
+      "dst_service": "ts-assurance-service",
+      "dst_class": "AssuranceController",
+      "dst_interface_id": "AssuranceController.createNewAssurance",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:321 assurance_service_url + \"/api/v1/assuranceservice/assurances/\" + assuranceType + \"/\" + orderId,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "queryForStationId",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForStationId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:336 station_service_url + \"/api/v1/stationservice/stations/id/\" + stationName,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "checkSecurity",
+      "dst_service": "ts-security-service",
+      "dst_class": "SecurityController",
+      "dst_interface_id": "SecurityController.check",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:351 security_service_url + \"/api/v1/securityservice/securityConfigs/\" + accountId,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "getTripAllDetailInformation",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:366 travel_service_url + \"/api/v1/travelservice/trip_detail\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "getContactsById",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.getContactsByContactsId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:382 contacts_service_url + \"/api/v1/contactservice/contacts/\" + contactsId,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "createOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.createNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:397 order_service_url + \"/api/v1/orderservice/order\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "createFoodOrder",
+      "dst_service": "ts-food-service",
+      "dst_class": "FoodController",
+      "dst_interface_id": "FoodController.createFoodOrder",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:412 food_service_url + \"/api/v1/foodservice/orders\","
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "createConsign",
+      "dst_service": "ts-consign-service",
+      "dst_class": "ConsignController",
+      "dst_interface_id": "ConsignController.insertConsign",
+      "protocol": "REST",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:426 consign_service_url + \"/api/v1/consignservice/consigns\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "preserve",
+      "dst_service": "ts-basic-service",
+      "dst_class": "BasicController",
+      "dst_interface_id": "BasicController.queryForTravel",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:133 basic_service_url + \"/api/v1/basicservice/basic/travel\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "dipatchSeat",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.create",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:278 seat_service_url + \"/api/v1/seatservice/seats\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "getAccount",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.getUserByUserId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:306 user_service_url + \"/api/v1/userservice/users/id/\" + accountId,"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "addAssuranceForOrder",
+      "dst_service": "ts-assurance-service",
+      "dst_class": "AssuranceController",
+      "dst_interface_id": "AssuranceController.createNewAssurance",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:322 assurance_service_url + \"/api/v1/assuranceservice/assurances/\" + assuranceType + \"/\" + orderId,"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "queryForStationId",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForStationId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:339 station_service_url + \"/api/v1/stationservice/stations/id/\" + stationName,"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "checkSecurity",
+      "dst_service": "ts-security-service",
+      "dst_class": "SecurityController",
+      "dst_interface_id": "SecurityController.check",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:353 security_service_url + \"/api/v1/securityservice/securityConfigs/\" + accountId,"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "getTripAllDetailInformation",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:368 travel2_service_url + \"/api/v1/travel2service/trip_detail\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "getContactsById",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.getContactsByContactsId",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:383 contacts_service_url + \"/api/v1/contactservice/contacts/\" + contactsId,"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "createOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.createNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:398 order_other_service_url + \"/api/v1/orderOtherService/orderOther\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "createFoodOrder",
+      "dst_service": "ts-food-service",
+      "dst_class": "FoodController",
+      "dst_interface_id": "FoodController.createFoodOrder",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:414 food_service_url + \"/api/v1/foodservice/orders\","
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "createConsign",
+      "dst_service": "ts-consign-service",
+      "dst_class": "ConsignController",
+      "dst_interface_id": "ConsignController.insertConsign",
+      "protocol": "REST",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:428 consign_service_url + \"/api/v1/consignservice/consigns\","
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "queryForStationId",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForStationId",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:329 station_service_url + \"/api/v1/stationservice/stations/id/\" + stationName,"
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "checkStationsExists",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForIdBatch",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:346 station_service_url + \"/api/v1/stationservice/stations/idlist\","
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "checkStationExists",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForStationId",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:363 station_service_url + \"/api/v1/stationservice/stations/id/\" + stationName,"
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "queryTrainTypeByNames",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByNameBatch",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:377 train_service_url + \"/api/v1/trainservice/trains/byNames\","
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "queryTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:394 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "getRoutesByRouteIds",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryByIds",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:408 route_service_url + \"/api/v1/routeservice/routes/byIds/\","
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:428 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "queryPriceConfigByRouteIdAndTrainType",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.query",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:447 price_service_url + \"/api/v1/priceservice/prices/\" + routeId + \"/\" + trainType,"
+    },
+    {
+      "src_service": "ts-basic-service",
+      "src_class": "BasicServiceImpl",
+      "src_method": "queryPriceConfigByRouteIdsAndTrainTypes",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.queryBatch",
+      "protocol": "REST",
+      "evidence": "ts-basic-service/src/main/java/fdse/microservice/service/BasicServiceImpl.java:462 price_service_url + \"/api/v1/priceservice/prices/byRouteIdsAndTrainTypes\","
+    },
+    {
+      "src_service": "ts-security-service",
+      "src_class": "SecurityServiceImpl",
+      "src_method": "getSecurityOrderInfoFromOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.securityInfoCheck",
+      "protocol": "REST",
+      "evidence": "ts-security-service/src/main/java/security/service/SecurityServiceImpl.java:134 order_service_url + \"/api/v1/orderservice/order/security/\" + checkDate + \"/\" + accountId,"
+    },
+    {
+      "src_service": "ts-security-service",
+      "src_class": "SecurityServiceImpl",
+      "src_method": "getSecurityOrderOtherInfoFromOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.securityInfoCheck",
+      "protocol": "REST",
+      "evidence": "ts-security-service/src/main/java/security/service/SecurityServiceImpl.java:149 order_other_service_url + \"/api/v1/orderOtherService/orderOther/security/\" + checkDate + \"/\" + accountId,"
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "pay",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:54 requestOrderURL =  order_service_url + \"/api/v1/orderservice/order/\" + info.getOrderId();"
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "pay",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:56 requestOrderURL = order_other_service_url + \"/api/v1/orderOtherService/orderOther/\" + info.getOrderId();"
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "pay",
+      "dst_service": "ts-payment-service",
+      "dst_class": "PaymentController",
+      "dst_interface_id": "PaymentController.pay",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:111 payment_service_url + \"/api/v1/paymentservice/payment\","
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "payDifference",
+      "dst_service": "ts-payment-service",
+      "dst_class": "PaymentController",
+      "dst_interface_id": "PaymentController.pay",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:298 payment_service_url + \"/api/v1/paymentservice/payment\","
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "setOrderStatus",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.modifyOrder",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:340 order_service_url + \"/api/v1/orderservice/order/status/\" + orderId + \"/\" + orderStatus,"
+    },
+    {
+      "src_service": "ts-inside-payment-service",
+      "src_class": "InsidePaymentServiceImpl",
+      "src_method": "setOrderStatus",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.modifyOrder",
+      "protocol": "REST",
+      "evidence": "ts-inside-payment-service/src/main/java/inside_payment/service/InsidePaymentServiceImpl.java:350 order_other_service_url + \"/api/v1/orderOtherService/orderOther/status/\" + orderId + \"/\" + orderStatus,"
+    },
+    {
+      "src_service": "ts-execute-service",
+      "src_class": "ExecuteServiceImpl",
+      "src_method": "executeOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.modifyOrder",
+      "protocol": "REST",
+      "evidence": "ts-execute-service/src/main/java/execute/serivce/ExecuteServiceImpl.java:142 order_service_url + \"/api/v1/orderservice/order/status/\" + orderId + \"/\" + status,"
+    },
+    {
+      "src_service": "ts-execute-service",
+      "src_class": "ExecuteServiceImpl",
+      "src_method": "executeOrderOther",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.modifyOrder",
+      "protocol": "REST",
+      "evidence": "ts-execute-service/src/main/java/execute/serivce/ExecuteServiceImpl.java:156 order_other_service_url + \"/api/v1/orderOtherService/orderOther/status/\" + orderId + \"/\" + status,"
+    },
+    {
+      "src_service": "ts-execute-service",
+      "src_class": "ExecuteServiceImpl",
+      "src_method": "getOrderByIdFromOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-execute-service/src/main/java/execute/serivce/ExecuteServiceImpl.java:169 order_service_url + \"/api/v1/orderservice/order/\" + orderId,"
+    },
+    {
+      "src_service": "ts-execute-service",
+      "src_class": "ExecuteServiceImpl",
+      "src_method": "getOrderByIdFromOrderOther",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-execute-service/src/main/java/execute/serivce/ExecuteServiceImpl.java:183 order_other_service_url + \"/api/v1/orderOtherService/orderOther/\" + orderId,"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "dipatchSeat",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.create",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:252 seat_service_url + \"/api/v1/seatservice/seats\","
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "getTripAllDetailInformation",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:301 requestUrl = travel_service_url + \"/api/v1/travelservice/trip_detail\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "getTripAllDetailInformation",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:304 requestUrl = travel2_service_url + \"/api/v1/travel2service/trip_detail\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "createOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.createNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:325 requestUrl = order_service_url + \"/api/v1/orderservice/order\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "createOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.createNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:328 requestUrl = order_other_service_url + \"/api/v1/orderOtherService/orderOther\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "updateOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.saveOrderInfo",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:345 requestOrderUtl = order_service_url + \"/api/v1/orderservice/order\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "updateOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.saveOrderInfo",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:347 requestOrderUtl = order_other_service_url + \"/api/v1/orderOtherService/orderOther\";"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "getOrderByRebookInfo",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:387 requestUrl = order_service_url + \"/api/v1/orderservice/order/\" + info.getOrderId();"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "getOrderByRebookInfo",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:389 requestUrl = order_other_service_url + \"/api/v1/orderOtherService/orderOther/\" + info.getOrderId();"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "queryTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:408 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:421 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "payDifferentMoney",
+      "dst_service": "ts-inside-payment-service",
+      "dst_class": "InsidePaymentController",
+      "dst_interface_id": "InsidePaymentController.payDifference",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:446 inside_payment_service_url + \"/api/v1/inside_pay_service/inside_payment/difference\","
+    },
+    {
+      "src_service": "ts-rebook-service",
+      "src_class": "RebookServiceImpl",
+      "src_method": "drawBackMoney",
+      "dst_service": "ts-inside-payment-service",
+      "dst_class": "InsidePaymentController",
+      "dst_interface_id": "InsidePaymentController.drawBack",
+      "protocol": "REST",
+      "evidence": "ts-rebook-service/src/main/java/rebook/service/RebookServiceImpl.java:460 inside_payment_service_url + \"/api/v1/inside_pay_service/inside_payment/drawback/\" + userId + \"/\" + money,"
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "sendEmail",
+      "dst_service": "ts-notification-service",
+      "dst_class": "NotificationController",
+      "dst_interface_id": "NotificationController.order_cancel_success",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:149 notification_service_url + \"/api/v1/notifyservice/notification/order_cancel_success\","
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "cancelFromOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.saveOrderInfo",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:246 order_service_url + \"/api/v1/orderservice/order\","
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "cancelFromOtherOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.saveOrderInfo",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:270 order_other_service_url + \"/api/v1/orderOtherService/orderOther\","
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "drawbackMoney",
+      "dst_service": "ts-inside-payment-service",
+      "dst_class": "InsidePaymentController",
+      "dst_interface_id": "InsidePaymentController.drawBack",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:285 inside_payment_service_url + \"/api/v1/inside_pay_service/inside_payment/drawback/\" + userId + \"/\" + money,"
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "getAccount",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.getUserByUserId",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:300 user_service_url + \"/api/v1/userservice/users/id/\" + orderId,"
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "getOrderByIdFromOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:314 order_service_url + \"/api/v1/orderservice/order/\" + orderId,"
+    },
+    {
+      "src_service": "ts-cancel-service",
+      "src_class": "CancelServiceImpl",
+      "src_method": "getOrderByIdFromOrderOther",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getOrderById",
+      "protocol": "REST",
+      "evidence": "ts-cancel-service/src/main/java/cancel/service/CancelServiceImpl.java:328 order_other_service_url + \"/api/v1/orderOtherService/orderOther/\" + orderId,"
+    },
+    {
+      "src_service": "ts-seat-service",
+      "src_class": "SeatServiceImpl",
+      "src_method": "distributeSeat",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getTicketListByDateAndTripId",
+      "protocol": "REST",
+      "evidence": "ts-seat-service/src/main/java/seat/service/SeatServiceImpl.java:61 order_service_url + \"/api/v1/orderservice/order/tickets\","
+    },
+    {
+      "src_service": "ts-seat-service",
+      "src_class": "SeatServiceImpl",
+      "src_method": "distributeSeat",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getTicketListByDateAndTripId",
+      "protocol": "REST",
+      "evidence": "ts-seat-service/src/main/java/seat/service/SeatServiceImpl.java:74 order_other_service_url + \"/api/v1/orderOtherService/orderOther/tickets\","
+    },
+    {
+      "src_service": "ts-seat-service",
+      "src_class": "SeatServiceImpl",
+      "src_method": "getLeftTicketOfInterval",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.getTicketListByDateAndTripId",
+      "protocol": "REST",
+      "evidence": "ts-seat-service/src/main/java/seat/service/SeatServiceImpl.java:145 order_service_url + \"/api/v1/orderservice/order/tickets\","
+    },
+    {
+      "src_service": "ts-seat-service",
+      "src_class": "SeatServiceImpl",
+      "src_method": "getLeftTicketOfInterval",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.getTicketListByDateAndTripId",
+      "protocol": "REST",
+      "evidence": "ts-seat-service/src/main/java/seat/service/SeatServiceImpl.java:161 order_other_service_url + \"/api/v1/orderOtherService/orderOther/tickets\","
+    },
+    {
+      "src_service": "ts-seat-service",
+      "src_class": "SeatServiceImpl",
+      "src_method": "getDirectProportion",
+      "dst_service": "ts-config-service",
+      "dst_class": "ConfigController",
+      "dst_interface_id": "ConfigController.retrieve",
+      "protocol": "REST",
+      "evidence": "ts-seat-service/src/main/java/seat/service/SeatServiceImpl.java:210 ResponseEntity<Response<Config>> re = restTemplate.exchange("
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "getRestTicketNumber",
+      "dst_service": "ts-seat-service",
+      "dst_class": "SeatController",
+      "dst_interface_id": "SeatController.getLeftTicketOfInterval",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:245 seat_service_url + \"/api/v1/seatservice/seats/left_tickets\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "getRoutePlanResultCheapest",
+      "dst_service": "ts-route-plan-service",
+      "dst_class": "RoutePlanController",
+      "dst_interface_id": "RoutePlanController.getCheapestRoutes",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:258 route_plan_service_url + \"/api/v1/routeplanservice/routePlan/cheapestRoute\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "getRoutePlanResultQuickest",
+      "dst_service": "ts-route-plan-service",
+      "dst_class": "RoutePlanController",
+      "dst_interface_id": "RoutePlanController.getQuickestRoutes",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:270 route_plan_service_url + \"/api/v1/routeplanservice/routePlan/quickestRoute\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "getRoutePlanResultMinStation",
+      "dst_service": "ts-route-plan-service",
+      "dst_class": "RoutePlanController",
+      "dst_interface_id": "RoutePlanController.getMinStopStations",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:283 route_plan_service_url + \"/api/v1/routeplanservice/routePlan/minStopStations\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "tripsFromHighSpeed",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.queryInfo",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:295 travel_service_url + \"/api/v1/travelservice/trips/left\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "tripsFromNormal",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.queryInfo",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:308 travel2_service_url + \"/api/v1/travel2service/trips/left\","
+    },
+    {
+      "src_service": "ts-travel-plan-service",
+      "src_class": "TravelPlanServiceImpl",
+      "src_method": "queryTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-travel-plan-service/src/main/java/travelplan/service/TravelPlanServiceImpl.java:321 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "searchMinStopStations",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryByStartAndTerminal",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:170 route_service_url + \"/api/v1/routeservice/routes/\" + info.getStartStation() + \"/\" + info.getEndStation(),"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "searchMinStopStations",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getTripsByRouteId",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:206 travel_service_url + \"/api/v1/travelservice/trips/routes\","
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "searchMinStopStations",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.getTripsByRouteId",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:216 travel2_service_url + \"/api/v1/travel2service/trips/routes\","
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "searchMinStopStations",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:249 requestUrl = travel_service_url + \"/api/v1/travelservice/trip_detail\";"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "searchMinStopStations",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.getTripAllDetailInfo",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:251 requestUrl = travel2_service_url + \"/api/v1/travel2service/trip_detail\";"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:290 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "getTripFromHighSpeedTravelServive",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.queryInfo",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:311 travel_service_url + \"/api/v1/travelservice/trips/left\","
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "getTripFromNormalTrainTravelService",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.queryInfo",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:326 travel2_service_url + \"/api/v1/travel2service/trips/left\","
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "getStationList",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getRouteByTripId",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:342 path = travel_service_url + \"/api/v1/travelservice/routes/\" + tripId;"
+    },
+    {
+      "src_service": "ts-route-plan-service",
+      "src_class": "RoutePlanServiceImpl",
+      "src_method": "getStationList",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.getRouteByTripId",
+      "protocol": "REST",
+      "evidence": "ts-route-plan-service/src/main/java/plan/service/RoutePlanServiceImpl.java:344 path = travel2_service_url + \"/api/v1/travel2service/routes/\" + tripId;"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodServiceImpl",
+      "src_method": "getAllFood",
+      "dst_service": "ts-train-food-service",
+      "dst_class": "TrainFoodController",
+      "dst_interface_id": "TrainFoodController.getTrainFoodOfTrip",
+      "protocol": "REST",
+      "evidence": "ts-food-service/src/main/java/foodsearch/service/FoodServiceImpl.java:230 train_food_service_url + \"/api/v1/trainfoodservice/trainfoods/\" + tripId,"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodServiceImpl",
+      "src_method": "getAllFood",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.getRouteByTripId",
+      "protocol": "REST",
+      "evidence": "ts-food-service/src/main/java/foodsearch/service/FoodServiceImpl.java:252 travel_service_url + \"/api/v1/travelservice/routes/\" + tripId,"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodServiceImpl",
+      "src_method": "getAllFood",
+      "dst_service": "ts-station-food-service",
+      "dst_class": "StationFoodController",
+      "dst_interface_id": "StationFoodController.getFoodStoresByStationNames",
+      "protocol": "REST",
+      "evidence": "ts-food-service/src/main/java/foodsearch/service/FoodServiceImpl.java:287 station_food_service_url + \"/api/v1/stationfoodservice/stationfoodstores\","
+    },
+    {
+      "src_service": "ts-consign-service",
+      "src_class": "ConsignServiceImpl",
+      "src_method": "insertConsignRecord",
+      "dst_service": "ts-consign-price-service",
+      "dst_class": "ConsignPriceController",
+      "dst_interface_id": "ConsignPriceController.getPriceByWeightAndRegion",
+      "protocol": "REST",
+      "evidence": "ts-consign-service/src/main/java/consign/service/ConsignServiceImpl.java:68 consign_price_service_url + \"/api/v1/consignpriceservice/consignprice/\" + consignRequest.getWeight() + \"/\" + consignRequest.isWithin(),"
+    },
+    {
+      "src_service": "ts-consign-service",
+      "src_class": "ConsignServiceImpl",
+      "src_method": "updateConsignRecord",
+      "dst_service": "ts-consign-price-service",
+      "dst_class": "ConsignPriceController",
+      "dst_interface_id": "ConsignPriceController.getPriceByWeightAndRegion",
+      "protocol": "REST",
+      "evidence": "ts-consign-service/src/main/java/consign/service/ConsignServiceImpl.java:101 consign_price_service_url + \"/api/v1/consignpriceservice/consignprice/\" + consignRequest.getWeight() + \"/\" + consignRequest.isWithin(),"
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "getAllOrders",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.findAllOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:49 order_service_url + \"/api/v1/orderservice/order\","
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "getAllOrders",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.findAllOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:67 order_other_service_url + \"/api/v1/orderOtherService/orderOther\","
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "deleteOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.deleteOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:94 order_service_url + \"/api/v1/orderservice/order/\" + orderId,"
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "deleteOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.deleteOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:105 order_other_service_url + \"/api/v1/orderOtherService/orderOther/\" + orderId,"
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "updateOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.updateOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:127 order_service_url + \"/api/v1/orderservice/order/admin\","
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "updateOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.updateOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:138 order_other_service_url + \"/api/v1/orderOtherService/orderOther/admin\","
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "addOrder",
+      "dst_service": "ts-order-service",
+      "dst_class": "OrderController",
+      "dst_interface_id": "OrderController.addcreateNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:158 order_service_url + \"/api/v1/orderservice/order/admin\","
+    },
+    {
+      "src_service": "ts-admin-order-service",
+      "src_class": "AdminOrderServiceImpl",
+      "src_method": "addOrder",
+      "dst_service": "ts-order-other-service",
+      "dst_class": "OrderOtherController",
+      "dst_interface_id": "OrderOtherController.addcreateNewOrder",
+      "protocol": "REST",
+      "evidence": "ts-admin-order-service/src/main/java/adminorder/service/AdminOrderServiceImpl.java:169 order_other_service_url + \"/api/v1/orderOtherService/orderOther/admin\","
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "getAllContacts",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.getAllContacts",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:45 contacts_service_url + \"/api/v1/contactservice/contacts\","
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "deleteContact",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.deleteContacts",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:60 contacts_service_url + \"/api/v1/contactservice/contacts/\" + contactsId,"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "modifyContact",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.modifyContacts",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:75 contacts_service_url + \"/api/v1/contactservice/contacts\","
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "addContact",
+      "dst_service": "ts-contacts-service",
+      "dst_class": "ContactsController",
+      "dst_interface_id": "ContactsController.createNewContactsAdmin",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:91 contacts_service_url + \"/api/v1/contactservice/contacts/admin\","
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "getAllStations",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.query",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:104 String stations = station_service_url + \"/api/v1/stationservice/stations\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "addStation",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.create",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:121 String stations = station_service_url + \"/api/v1/stationservice/stations\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "deleteStation",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.delete",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:136 String path = station_service_url + \"/api/v1/stationservice/stations/\" + id;"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "modifyStation",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.update",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:151 String stations = station_service_url + \"/api/v1/stationservice/stations\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "getAllTrains",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.query",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:167 String trains = train_service_url + \"/api/v1/trainservice/trains\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "addTrain",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.create",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:183 String trains = train_service_url + \"/api/v1/trainservice/trains\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "deleteTrain",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.delete",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:200 train_service_url + \"/api/v1/trainservice/trains/\" + id,"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "modifyTrain",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.update",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:213 String trains = train_service_url + \"/api/v1/trainservice/trains\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "getAllConfigs",
+      "dst_service": "ts-config-service",
+      "dst_class": "ConfigController",
+      "dst_interface_id": "ConfigController.queryAll",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:227 String configs = config_service_url + \"/api/v1/configservice/configs\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "addConfig",
+      "dst_service": "ts-config-service",
+      "dst_class": "ConfigController",
+      "dst_interface_id": "ConfigController.createConfig",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:241 String configs = config_service_url + \"/api/v1/configservice/configs\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "deleteConfig",
+      "dst_service": "ts-config-service",
+      "dst_class": "ConfigController",
+      "dst_interface_id": "ConfigController.deleteConfig",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:255 config_service_url + \"/api/v1/configservice/configs/\" + name,"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "modifyConfig",
+      "dst_service": "ts-config-service",
+      "dst_class": "ConfigController",
+      "dst_interface_id": "ConfigController.updateConfig",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:266 String configs = config_service_url + \"/api/v1/configservice/configs\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "getAllPrices",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.queryAll",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:279 String prices = price_service_url + \"/api/v1/priceservice/prices\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "addPrice",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.create",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:292 String prices = price_service_url + \"/api/v1/priceservice/prices\";"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "deletePrice",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.delete",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:306 String path = price_service_url + \"/api/v1/priceservice/prices/\" + pricesId;"
+    },
+    {
+      "src_service": "ts-admin-basic-info-service",
+      "src_class": "AdminBasicInfoServiceImpl",
+      "src_method": "modifyPrice",
+      "dst_service": "ts-price-service",
+      "dst_class": "PriceController",
+      "dst_interface_id": "PriceController.update",
+      "protocol": "REST",
+      "evidence": "ts-admin-basic-info-service/src/main/java/adminbasic/service/AdminBasicInfoServiceImpl.java:320 String prices = price_service_url + \"/api/v1/priceservice/prices\";"
+    },
+    {
+      "src_service": "ts-admin-route-service",
+      "src_class": "AdminRouteServiceImpl",
+      "src_method": "getAllRoutes",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryAll",
+      "protocol": "REST",
+      "evidence": "ts-admin-route-service/src/main/java/adminroute/service/AdminRouteServiceImpl.java:41 route_service_url + \"/api/v1/routeservice/routes\","
+    },
+    {
+      "src_service": "ts-admin-route-service",
+      "src_class": "AdminRouteServiceImpl",
+      "src_method": "createAndModifyRoute",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.createAndModifyRoute",
+      "protocol": "REST",
+      "evidence": "ts-admin-route-service/src/main/java/adminroute/service/AdminRouteServiceImpl.java:71 route_service_url + \"/api/v1/routeservice/routes\","
+    },
+    {
+      "src_service": "ts-admin-route-service",
+      "src_class": "AdminRouteServiceImpl",
+      "src_method": "deleteRoute",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.deleteRoute",
+      "protocol": "REST",
+      "evidence": "ts-admin-route-service/src/main/java/adminroute/service/AdminRouteServiceImpl.java:88 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-admin-route-service",
+      "src_class": "AdminRouteServiceImpl",
+      "src_method": "checkStationsExists",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForIdBatch",
+      "protocol": "REST",
+      "evidence": "ts-admin-route-service/src/main/java/adminroute/service/AdminRouteServiceImpl.java:104 station_service_url + \"/api/v1/stationservice/stations/idlist\","
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "getAllTravels",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.adminQueryAll",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:50 travel_service_url + \"/api/v1/travelservice/admin_trip\","
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "getAllTravels",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.adminQueryAll",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:68 travel2_service_url + \"/api/v1/travel2service/admin_trip\","
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "addTravel",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.createTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:102 requestUrl = travel_service_url + \"/api/v1/travelservice/trips\";"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "addTravel",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.createTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:104 requestUrl = travel2_service_url + \"/api/v1/travel2service/trips\";"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "updateTravel",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.updateTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:137 requestUrl = travel_service_url + \"/api/v1/travelservice/trips\";"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "updateTravel",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.updateTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:139 requestUrl = travel2_service_url + \"/api/v1/travel2service/trips\";"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "deleteTravel",
+      "dst_service": "ts-travel-service",
+      "dst_class": "TravelController",
+      "dst_interface_id": "TravelController.deleteTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:166 requestUtl = travel_service_url + \"/api/v1/travelservice/trips/\" + tripId;"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "deleteTravel",
+      "dst_service": "ts-travel2-service",
+      "dst_class": "Travel2Controller",
+      "dst_interface_id": "Travel2Controller.deleteTrip",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:168 requestUtl = travel2_service_url + \"/api/v1/travel2service/trips/\" + tripId;"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "checkStationsExists",
+      "dst_service": "ts-station-service",
+      "dst_class": "StationController",
+      "dst_interface_id": "StationController.queryForIdBatch",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:234 station_service_url + \"/api/v1/stationservice/stations/idlist\","
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "queryTrainTypeByName",
+      "dst_service": "ts-train-service",
+      "dst_class": "TrainController",
+      "dst_interface_id": "TrainController.retrieveByName",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:261 train_service_url + \"/api/v1/trainservice/trains/byName/\" + trainTypeName,"
+    },
+    {
+      "src_service": "ts-admin-travel-service",
+      "src_class": "AdminTravelServiceImpl",
+      "src_method": "getRouteByRouteId",
+      "dst_service": "ts-route-service",
+      "dst_class": "RouteController",
+      "dst_interface_id": "RouteController.queryById",
+      "protocol": "REST",
+      "evidence": "ts-admin-travel-service/src/main/java/admintravel/service/AdminTravelServiceImpl.java:275 route_service_url + \"/api/v1/routeservice/routes/\" + routeId,"
+    },
+    {
+      "src_service": "ts-admin-user-service",
+      "src_class": "AdminUserServiceImpl",
+      "src_method": "getAllUsers",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.getAllUser",
+      "protocol": "REST",
+      "evidence": "ts-admin-user-service/src/main/java/adminuser/service/AdminUserServiceImpl.java:44 String USER_SERVICE_IP_URI = user_service_url + \"/api/v1/userservice/users\";"
+    },
+    {
+      "src_service": "ts-admin-user-service",
+      "src_class": "AdminUserServiceImpl",
+      "src_method": "deleteUser",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.deleteUserById",
+      "protocol": "REST",
+      "evidence": "ts-admin-user-service/src/main/java/adminuser/service/AdminUserServiceImpl.java:70 ResponseEntity<Response> re = restTemplate.exchange("
+    },
+    {
+      "src_service": "ts-admin-user-service",
+      "src_class": "AdminUserServiceImpl",
+      "src_method": "updateUser",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.updateUser",
+      "protocol": "REST",
+      "evidence": "ts-admin-user-service/src/main/java/adminuser/service/AdminUserServiceImpl.java:93 String USER_SERVICE_IP_URI = user_service_url + \"/api/v1/userservice/users\";"
+    },
+    {
+      "src_service": "ts-admin-user-service",
+      "src_class": "AdminUserServiceImpl",
+      "src_method": "addUser",
+      "dst_service": "ts-user-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.registerUser",
+      "protocol": "REST",
+      "evidence": "ts-admin-user-service/src/main/java/adminuser/service/AdminUserServiceImpl.java:115 ResponseEntity<Response<User>> re = restTemplate.exchange("
+    },
+    {
+      "src_service": "ts-auth-service",
+      "src_class": "TokenServiceImpl",
+      "src_method": "getToken",
+      "dst_service": "ts-verification-code-service",
+      "dst_class": "VerifyCodeController",
+      "dst_interface_id": "VerifyCodeController.verifyCode",
+      "protocol": "REST",
+      "evidence": "ts-auth-service/src/main/java/auth/service/impl/TokenServiceImpl.java:68 verification_code_service_url + \"/api/v1/verifycode/verify/\" + verifyCode,"
+    },
+    {
+      "src_service": "ts-user-service",
+      "src_class": "UserServiceImpl",
+      "src_method": "createDefaultAuthUser",
+      "dst_service": "ts-auth-service",
+      "dst_class": "AuthController",
+      "dst_interface_id": "AuthController.createDefaultUser",
+      "protocol": "REST",
+      "evidence": "ts-user-service/src/main/java/user/service/impl/UserServiceImpl.java:94 ResponseEntity<Response<AuthDto>> res  = restTemplate.exchange(auth_service_url + \"/api/v1/auth\","
+    },
+    {
+      "src_service": "ts-user-service",
+      "src_class": "UserServiceImpl",
+      "src_method": "deleteUserAuth",
+      "dst_service": "ts-auth-service",
+      "dst_class": "UserController",
+      "dst_interface_id": "UserController.deleteUserById",
+      "protocol": "REST",
+      "evidence": "ts-user-service/src/main/java/user/service/impl/UserServiceImpl.java:183 restTemplate.exchange(AUTH_SERVICE_URI + \"/users/\" + userId,"
+    },
+    {
+      "src_service": "ts-food-delivery-service",
+      "src_class": "FoodDeliveryServiceImpl",
+      "src_method": "createFoodDeliveryOrder",
+      "dst_service": "ts-station-food-service",
+      "dst_class": "StationFoodController",
+      "dst_interface_id": "StationFoodController.getFoodListByStationFoodStoreId",
+      "protocol": "REST",
+      "evidence": "ts-food-delivery-service/src/main/java/food_delivery/service/FoodDeliveryServiceImpl.java:50 staion_food_service_url + \"/api/v1/stationfoodservice/stationfoodstores/bystoreid/\" + stationFoodStoreId,"
+    },
+    {
+      "src_service": "ts-preserve-service",
+      "src_class": "PreserveServiceImpl",
+      "src_method": "sendEmail",
+      "dst_service": "ts-notification-service",
+      "dst_class": "RabbitReceive",
+      "dst_interface_id": "RabbitReceive.process",
+      "protocol": "Messaging",
+      "evidence": "ts-preserve-service/src/main/java/preserve/service/PreserveServiceImpl.java:291 sendService.send(infoJson);"
+    },
+    {
+      "src_service": "ts-preserve-other-service",
+      "src_class": "PreserveOtherServiceImpl",
+      "src_method": "sendEmail",
+      "dst_service": "ts-notification-service",
+      "dst_class": "RabbitReceive",
+      "dst_interface_id": "RabbitReceive.process",
+      "protocol": "Messaging",
+      "evidence": "ts-preserve-other-service/src/main/java/preserveOther/service/PreserveOtherServiceImpl.java:290 sendService.send(infoJson);"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodServiceImpl",
+      "src_method": "createFoodOrdersInBatch",
+      "dst_service": "ts-delivery-service",
+      "dst_class": "RabbitReceive",
+      "dst_interface_id": "RabbitReceive.process",
+      "protocol": "Messaging",
+      "evidence": "ts-food-service/src/main/java/foodsearch/service/FoodServiceImpl.java:104 sender.send(deliveryJson);"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodServiceImpl",
+      "src_method": "createFoodOrder",
+      "dst_service": "ts-delivery-service",
+      "dst_class": "RabbitReceive",
+      "dst_interface_id": "RabbitReceive.process",
+      "protocol": "Messaging",
+      "evidence": "ts-food-service/src/main/java/foodsearch/service/FoodServiceImpl.java:143 sender.send(deliveryJson);"
+    },
+    {
+      "src_service": "ts-food-service",
+      "src_class": "FoodController",
+      "src_method": "test_send_delivery",
+      "dst_service": "ts-delivery-service",
+      "dst_class": "RabbitReceive",
+      "dst_interface_id": "RabbitReceive.process",
+      "protocol": "Messaging",
+      "evidence": "ts-food-service/src/main/java/foodsearch/controller/FoodController.java:46 sender.send(deliveryJson);"
+    }
+  ]
+}

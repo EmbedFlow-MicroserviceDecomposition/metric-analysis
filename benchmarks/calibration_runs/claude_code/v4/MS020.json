@@ -1,0 +1,170 @@
+{
+  "system_id": "MS020",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "auth-service": {
+      "exposed_interfaces": [
+        {
+          "id": "UserController.getUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "getUser",
+          "param_types": [],
+          "return_type": "Principal",
+          "protocol": "REST",
+          "endpoint": "GET /users/current"
+        },
+        {
+          "id": "UserController.createUser",
+          "class_name": "com.piggymetrics.auth.controller.UserController",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /users"
+        }
+      ]
+    },
+    "account-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountController.getAccountByName",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getAccountByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /{name}"
+        },
+        {
+          "id": "AccountController.getCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "getCurrentAccount",
+          "param_types": [],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /current"
+        },
+        {
+          "id": "AccountController.saveCurrentAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "saveCurrentAccount",
+          "param_types": [
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /current"
+        },
+        {
+          "id": "AccountController.createNewAccount",
+          "class_name": "com.piggymetrics.account.controller.AccountController",
+          "method_name": "createNewAccount",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
+    },
+    "statistics-service": {
+      "exposed_interfaces": [
+        {
+          "id": "StatisticsController.getCurrentAccountStatistics",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "getCurrentAccountStatistics",
+          "param_types": [],
+          "return_type": "List<DataPoint>",
+          "protocol": "REST",
+          "endpoint": "GET /current"
+        },
+        {
+          "id": "StatisticsController.getStatisticsByAccountName",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "getStatisticsByAccountName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<DataPoint>",
+          "protocol": "REST",
+          "endpoint": "GET /{accountName}"
+        },
+        {
+          "id": "StatisticsController.saveAccountStatistics",
+          "class_name": "com.piggymetrics.statistics.controller.StatisticsController",
+          "method_name": "saveAccountStatistics",
+          "param_types": [
+            "String",
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{accountName}"
+        }
+      ]
+    },
+    "notification-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RecipientController.getCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "getCurrentNotificationsSettings",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /recipients/current"
+        },
+        {
+          "id": "RecipientController.saveCurrentNotificationsSettings",
+          "class_name": "com.piggymetrics.notification.controller.RecipientController",
+          "method_name": "saveCurrentNotificationsSettings",
+          "param_types": [
+            "Recipient"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "PUT /recipients/current"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "account-service",
+      "src_class": "AccountServiceImpl",
+      "src_method": "create",
+      "dst_service": "auth-service",
+      "dst_class": "com.piggymetrics.auth.controller.UserController",
+      "dst_interface_id": "UserController.createUser",
+      "protocol": "REST",
+      "evidence": "account-service/src/main/java/com/piggymetrics/account/service/AccountServiceImpl.java:51 authClient.createUser(user);"
+    },
+    {
+      "src_service": "account-service",
+      "src_class": "AccountServiceImpl",
+      "src_method": "saveChanges",
+      "dst_service": "statistics-service",
+      "dst_class": "com.piggymetrics.statistics.controller.StatisticsController",
+      "dst_interface_id": "StatisticsController.saveAccountStatistics",
+      "protocol": "REST",
+      "evidence": "account-service/src/main/java/com/piggymetrics/account/service/AccountServiceImpl.java:90 statisticsClient.updateStatistics(name, account);"
+    },
+    {
+      "src_service": "notification-service",
+      "src_class": "NotificationServiceImpl",
+      "src_method": "sendBackupNotifications",
+      "dst_service": "account-service",
+      "dst_class": "com.piggymetrics.account.controller.AccountController",
+      "dst_interface_id": "AccountController.getAccountByName",
+      "protocol": "REST",
+      "evidence": "notification-service/src/main/java/com/piggymetrics/notification/service/NotificationServiceImpl.java:40 client.getAccount(recipient.getAccountName());"
+    }
+  ]
+}

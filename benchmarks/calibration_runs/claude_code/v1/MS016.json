@@ -1,0 +1,551 @@
+{
+  "system_id": "MS016",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v1.0",
+  "microservices": {
+    "AuditlogService": {
+      "exposed_interfaces": [
+        {
+          "id": "AuditLogWorker.HandleMessageAsync",
+          "class_name": "Pitstop.AuditlogService.AuditLogWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "Messaging",
+          "endpoint": "Pitstop/Auditlog"
+        }
+      ]
+    },
+    "CustomerManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "CustomersController.GetAllAsync",
+          "class_name": "Pitstop.Application.CustomerManagementAPI.Controllers.CustomersController",
+          "method_name": "GetAllAsync",
+          "param_types": [],
+          "return_type": "List<Customer>",
+          "protocol": "REST",
+          "endpoint": "GET /api/Customers"
+        },
+        {
+          "id": "CustomersController.GetByCustomerId",
+          "class_name": "Pitstop.Application.CustomerManagementAPI.Controllers.CustomersController",
+          "method_name": "GetByCustomerId",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": "GET /api/Customers/{customerId}"
+        },
+        {
+          "id": "CustomersController.RegisterAsync",
+          "class_name": "Pitstop.Application.CustomerManagementAPI.Controllers.CustomersController",
+          "method_name": "RegisterAsync",
+          "param_types": [
+            "RegisterCustomer"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": "POST /api/Customers"
+        }
+      ]
+    },
+    "InvoiceService": {
+      "exposed_interfaces": [
+        {
+          "id": "InvoiceWorker.HandleMessageAsync",
+          "class_name": "Pitstop.InvoiceService.InvoiceWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "Messaging",
+          "endpoint": "Pitstop/Invoicing"
+        }
+      ]
+    },
+    "NotificationService": {
+      "exposed_interfaces": [
+        {
+          "id": "NotificationWorker.HandleMessageAsync",
+          "class_name": "Pitstop.NotificationService.NotificationWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "Messaging",
+          "endpoint": "Pitstop/Notifications"
+        }
+      ]
+    },
+    "TimeService": {
+      "exposed_interfaces": []
+    },
+    "VehicleManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "VehiclesController.GetAllAsync",
+          "class_name": "Pitstop.VehicleManagement.Controllers.VehiclesController",
+          "method_name": "GetAllAsync",
+          "param_types": [],
+          "return_type": "List<Vehicle>",
+          "protocol": "REST",
+          "endpoint": "GET /api/Vehicles"
+        },
+        {
+          "id": "VehiclesController.GetByLicenseNumber",
+          "class_name": "Pitstop.VehicleManagement.Controllers.VehiclesController",
+          "method_name": "GetByLicenseNumber",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Vehicle",
+          "protocol": "REST",
+          "endpoint": "GET /api/Vehicles/{licenseNumber}"
+        },
+        {
+          "id": "VehiclesController.RegisterAsync",
+          "class_name": "Pitstop.VehicleManagement.Controllers.VehiclesController",
+          "method_name": "RegisterAsync",
+          "param_types": [
+            "RegisterVehicle"
+          ],
+          "return_type": "Vehicle",
+          "protocol": "REST",
+          "endpoint": "POST /api/Vehicles"
+        }
+      ]
+    },
+    "WebApp": {
+      "exposed_interfaces": []
+    },
+    "WorkshopManagementAPI": {
+      "exposed_interfaces": [
+        {
+          "id": "RefDataController.GetCustomers",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.RefDataController",
+          "method_name": "GetCustomers",
+          "param_types": [],
+          "return_type": "List<Customer>",
+          "protocol": "REST",
+          "endpoint": "GET /api/RefData/customers"
+        },
+        {
+          "id": "RefDataController.GetCustomerByCustomerId",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.RefDataController",
+          "method_name": "GetCustomerByCustomerId",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Customer",
+          "protocol": "REST",
+          "endpoint": "GET /api/RefData/customers/{customerId}"
+        },
+        {
+          "id": "RefDataController.GetVehicles",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.RefDataController",
+          "method_name": "GetVehicles",
+          "param_types": [],
+          "return_type": "List<Vehicle>",
+          "protocol": "REST",
+          "endpoint": "GET /api/RefData/vehicles"
+        },
+        {
+          "id": "RefDataController.GetVehicleByLicenseNumber",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.RefDataController",
+          "method_name": "GetVehicleByLicenseNumber",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Vehicle",
+          "protocol": "REST",
+          "endpoint": "GET /api/RefData/vehicles/{licenseNumber}"
+        },
+        {
+          "id": "WorkshopPlanningController.GetByDate",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.WorkshopPlanningController",
+          "method_name": "GetByDate",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "WorkshopPlanningDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/WorkshopPlanning/{planningDate}"
+        },
+        {
+          "id": "WorkshopPlanningController.GetMaintenanceJobAsync",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.WorkshopPlanningController",
+          "method_name": "GetMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "Guid"
+          ],
+          "return_type": "MaintenanceJobDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/WorkshopPlanning/{planningDate}/jobs/{jobId}"
+        },
+        {
+          "id": "WorkshopPlanningController.PlanMaintenanceJobAsync",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.WorkshopPlanningController",
+          "method_name": "PlanMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "PlanMaintenanceJob"
+          ],
+          "return_type": "WorkshopPlanningDTO",
+          "protocol": "REST",
+          "endpoint": "POST /api/WorkshopPlanning/{planningDate}/jobs"
+        },
+        {
+          "id": "WorkshopPlanningController.FinishMaintenanceJobAsync",
+          "class_name": "Pitstop.WorkshopManagementAPI.Controllers.WorkshopPlanningController",
+          "method_name": "FinishMaintenanceJobAsync",
+          "param_types": [
+            "DateTime",
+            "Guid",
+            "FinishMaintenanceJob"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/WorkshopPlanning/{planningDate}/jobs/{jobId}/finish"
+        }
+      ]
+    },
+    "WorkshopManagementEventHandler": {
+      "exposed_interfaces": [
+        {
+          "id": "EventHandlerWorker.HandleMessageAsync",
+          "class_name": "Pitstop.WorkshopManagementEventHandler.EventHandlerWorker",
+          "method_name": "HandleMessageAsync",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "Messaging",
+          "endpoint": "Pitstop/WorkshopManagement"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "WebApp",
+      "src_class": "CustomerManagementAPI",
+      "src_method": "GetCustomers",
+      "dst_service": "CustomerManagementAPI",
+      "dst_class": "CustomersController",
+      "dst_interface_id": "CustomersController.GetAllAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/CustomerManagementAPI.cs:21 return await _restClient.GetCustomers(); // [Get(\"/customers\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "CustomerManagementAPI",
+      "src_method": "GetCustomerById",
+      "dst_service": "CustomerManagementAPI",
+      "dst_class": "CustomersController",
+      "dst_interface_id": "CustomersController.GetByCustomerId",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/CustomerManagementAPI.cs:28 return await _restClient.GetCustomerById(customerId); // [Get(\"/customers/{id}\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "CustomerManagementAPI",
+      "src_method": "RegisterCustomer",
+      "dst_service": "CustomerManagementAPI",
+      "dst_class": "CustomersController",
+      "dst_interface_id": "CustomersController.RegisterAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/CustomerManagementAPI.cs:45 await _restClient.RegisterCustomer(command); // [Post(\"/customers\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "VehicleManagementAPI",
+      "src_method": "GetVehicles",
+      "dst_service": "VehicleManagementAPI",
+      "dst_class": "VehiclesController",
+      "dst_interface_id": "VehiclesController.GetAllAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/VehicleManagementAPI.cs:21 return await _restClient.GetVehicles(); // [Get(\"/vehicles\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "VehicleManagementAPI",
+      "src_method": "GetVehicleByLicenseNumber",
+      "dst_service": "VehicleManagementAPI",
+      "dst_class": "VehiclesController",
+      "dst_interface_id": "VehiclesController.GetByLicenseNumber",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/VehicleManagementAPI.cs:27 return await _restClient.GetVehicleByLicenseNumber(licenseNumber); // [Get(\"/vehicles/{id}\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "VehicleManagementAPI",
+      "src_method": "RegisterVehicle",
+      "dst_service": "VehicleManagementAPI",
+      "dst_class": "VehiclesController",
+      "dst_interface_id": "VehiclesController.RegisterAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/VehicleManagementAPI.cs:44 await _restClient.RegisterVehicle(command); // [Post(\"/vehicles\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetWorkshopPlanning",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "WorkshopPlanningController",
+      "dst_interface_id": "WorkshopPlanningController.GetByDate",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:23 _restClient.GetWorkshopPlanning(...) // [Get(\"/workshopplanning/{planningDate}\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetMaintenanceJob",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "WorkshopPlanningController",
+      "dst_interface_id": "WorkshopPlanningController.GetMaintenanceJobAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:42 _restClient.GetMaintenanceJob(...) // [Get(\"/workshopplanning/{planningDate}/jobs/{jobId}\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "PlanMaintenanceJob",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "WorkshopPlanningController",
+      "dst_interface_id": "WorkshopPlanningController.PlanMaintenanceJobAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:64 _restClient.PlanMaintenanceJob(...) // [Post(\"/workshopplanning/{planningDate}/jobs\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "FinishMaintenanceJob",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "WorkshopPlanningController",
+      "dst_interface_id": "WorkshopPlanningController.FinishMaintenanceJobAsync",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:69 _restClient.FinishMaintenanceJob(...) // [Put(\"/workshopplanning/{planningDate}/jobs/{jobId}/finish\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetCustomers",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "RefDataController",
+      "dst_interface_id": "RefDataController.GetCustomers",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:74 _restClient.GetCustomers(...) // [Get(\"/refdata/customers\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetCustomerById",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "RefDataController",
+      "dst_interface_id": "RefDataController.GetCustomerByCustomerId",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:81 _restClient.GetCustomerById(...) // [Get(\"/refdata/customers/{id}\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetVehicles",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "RefDataController",
+      "dst_interface_id": "RefDataController.GetVehicles",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:98 _restClient.GetVehicles(...) // [Get(\"/refdata/vehicles\")]"
+    },
+    {
+      "src_service": "WebApp",
+      "src_class": "WorkshopManagementAPI",
+      "src_method": "GetVehicleByLicenseNumber",
+      "dst_service": "WorkshopManagementAPI",
+      "dst_class": "RefDataController",
+      "dst_interface_id": "RefDataController.GetVehicleByLicenseNumber",
+      "protocol": "REST",
+      "evidence": "src/WebApp/RESTClients/WorkshopManagementAPI.cs:105 _restClient.GetVehicleByLicenseNumber(...) // [Get(\"/refdata/vehicles/{id}\")]"
+    },
+    {
+      "src_service": "CustomerManagementAPI",
+      "src_class": "CustomersController",
+      "src_method": "RegisterAsync",
+      "dst_service": "AuditlogService",
+      "dst_class": "AuditLogWorker",
+      "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // CustomerRegistered"
+    },
+    {
+      "src_service": "CustomerManagementAPI",
+      "src_class": "CustomersController",
+      "src_method": "RegisterAsync",
+      "dst_service": "InvoiceService",
+      "dst_class": "InvoiceWorker",
+      "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // CustomerRegistered"
+    },
+    {
+      "src_service": "CustomerManagementAPI",
+      "src_class": "CustomersController",
+      "src_method": "RegisterAsync",
+      "dst_service": "NotificationService",
+      "dst_class": "NotificationWorker",
+      "dst_interface_id": "NotificationWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // CustomerRegistered"
+    },
+    {
+      "src_service": "CustomerManagementAPI",
+      "src_class": "CustomersController",
+      "src_method": "RegisterAsync",
+      "dst_service": "WorkshopManagementEventHandler",
+      "dst_class": "EventHandlerWorker",
+      "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/CustomerManagementAPI/Controllers/CustomersController.cs:47 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // CustomerRegistered"
+    },
+    {
+      "src_service": "VehicleManagementAPI",
+      "src_class": "VehiclesController",
+      "src_method": "RegisterAsync",
+      "dst_service": "AuditlogService",
+      "dst_class": "AuditLogWorker",
+      "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/VehicleManagementAPI/Controllers/VehiclesController.cs:54 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // VehicleRegistered"
+    },
+    {
+      "src_service": "VehicleManagementAPI",
+      "src_class": "VehiclesController",
+      "src_method": "RegisterAsync",
+      "dst_service": "WorkshopManagementEventHandler",
+      "dst_class": "EventHandlerWorker",
+      "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/VehicleManagementAPI/Controllers/VehiclesController.cs:54 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // VehicleRegistered"
+    },
+    {
+      "src_service": "TimeService",
+      "src_class": "TimeWorker",
+      "src_method": "Worker",
+      "dst_service": "AuditlogService",
+      "dst_class": "AuditLogWorker",
+      "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // DayHasPassed"
+    },
+    {
+      "src_service": "TimeService",
+      "src_class": "TimeWorker",
+      "src_method": "Worker",
+      "dst_service": "InvoiceService",
+      "dst_class": "InvoiceWorker",
+      "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // DayHasPassed"
+    },
+    {
+      "src_service": "TimeService",
+      "src_class": "TimeWorker",
+      "src_method": "Worker",
+      "dst_service": "NotificationService",
+      "dst_class": "NotificationWorker",
+      "dst_interface_id": "NotificationWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/TimeService/TimeWorker.cs:39 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // DayHasPassed"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "PlanMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "AuditlogService",
+      "dst_class": "AuditLogWorker",
+      "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobPlanned"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "PlanMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "InvoiceService",
+      "dst_class": "InvoiceWorker",
+      "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobPlanned"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "PlanMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "NotificationService",
+      "dst_class": "NotificationWorker",
+      "dst_interface_id": "NotificationWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobPlanned"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "PlanMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "WorkshopManagementEventHandler",
+      "dst_class": "EventHandlerWorker",
+      "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/PlanMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobPlanned"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "FinishMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "AuditlogService",
+      "dst_class": "AuditLogWorker",
+      "dst_interface_id": "AuditLogWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobFinished"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "FinishMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "InvoiceService",
+      "dst_class": "InvoiceWorker",
+      "dst_interface_id": "InvoiceWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobFinished"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "FinishMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "NotificationService",
+      "dst_class": "NotificationWorker",
+      "dst_interface_id": "NotificationWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobFinished"
+    },
+    {
+      "src_service": "WorkshopManagementAPI",
+      "src_class": "FinishMaintenanceJobCommandHandler",
+      "src_method": "HandleCommandAsync",
+      "dst_service": "WorkshopManagementEventHandler",
+      "dst_class": "EventHandlerWorker",
+      "dst_interface_id": "EventHandlerWorker.HandleMessageAsync",
+      "protocol": "Messaging",
+      "evidence": "src/WorkshopManagementAPI/CommandHandlers/FinishMaintenanceJobCommandHandler.cs:35 await _messagePublisher.PublishMessageAsync(e.MessageType, e, \"\"); // MaintenanceJobFinished"
+    }
+  ]
+}
