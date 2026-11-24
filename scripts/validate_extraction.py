@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -14,6 +15,36 @@ from fyp_cdq.metrics.ifn import IFNMetric
 from fyp_cdq.metrics.sm import SMMetric
 from fyp_cdq.models import AgentExtraction
 from fyp_cdq.pipeline import resolve_system_codebase
+
+
+def _normalize_class_name(class_name: str, iface_id: str = "") -> str:
+    """Normalizes cross-language class/module identifiers to simple lowercase tokens for fair matching."""
+    if iface_id and "." in iface_id:
+        prefix = iface_id.rsplit(".", 1)[0].strip()
+        if prefix and not prefix.startswith(("V1", "V2")):
+            leaf = prefix.split(".")[-1]
+            if leaf not in {"server", "views", "tasks", "main", "controller"}:
+                return leaf.lower()
+    raw = (class_name or "").replace("\\", "/").strip()
+    if raw.endswith((".ts", ".js", ".py", ".go", ".java", ".cs", ".php")):
+        stem = raw.rsplit("/", 1)[-1].rsplit(".", 1)[0]
+        parts = re.split(r"[-_.]", stem)
+        if len(parts) > 1 and raw.endswith(".ts"):
+            return "".join(p.capitalize() for p in parts).lower()
+        return stem.lower()
+    return raw.replace("/", ".").split(".")[-1].lower()
+
+
+def _build_iface_lookup(ext: AgentExtraction) -> Dict[Tuple[str, str], Tuple[str, str]]:
+    """Maps (service_id, interface_id) to (normalized_class, lowercase_method)."""
+    lookup: Dict[Tuple[str, str], Tuple[str, str]] = {}
+    for cid, ifaces in ext.microservices.items():
+        for iface in ifaces:
+            lookup[(cid, iface.id)] = (
+                _normalize_class_name(iface.class_name, iface.id),
+                iface.method_name.lower(),
+            )
+    return lookup
 
 
 def _prf1(gt_set: Set, pred_set: Set) -> Tuple[float, float, float, Set, Set]:
@@ -45,27 +76,27 @@ def evaluate_single_system(
     gt_ext = AgentExtraction.from_json(gt_file)
     pred_ext = AgentExtraction.from_dict(raw_pred)
 
-    # 1. Interface sets: (service, simple_or_fqn_class, method_name)
+    # 1. Interface sets: (service, normalized_simple_class, method_name)
     gt_ifaces = {
-        (cid, iface.class_name, iface.method_name)
+        (cid, _normalize_class_name(iface.class_name, iface.id), iface.method_name)
         for cid, ifaces in gt_ext.microservices.items()
         for iface in ifaces
     }
     pred_ifaces = {
-        (cid, iface.class_name, iface.method_name)
+        (cid, _normalize_class_name(iface.class_name, iface.id), iface.method_name)
         for cid, ifaces in pred_ext.microservices.items()
         for iface in ifaces
     }
     if_p, if_r, if_f1, if_fp, if_fn = _prf1(gt_ifaces, pred_ifaces)
 
-    # 2. Interface with signatures: (service, class_name, method_name, tuple(param_types), return_type)
+    # 2. Interface with signatures: (service, normalized_class_name, method_name, tuple(param_types), return_type)
     gt_sigs = {
-        (cid, iface.class_name, iface.method_name, tuple(iface.param_types), iface.return_type)
+        (cid, _normalize_class_name(iface.class_name, iface.id), iface.method_name, tuple(iface.param_types), iface.return_type)
         for cid, ifaces in gt_ext.microservices.items()
         for iface in ifaces
     }
     pred_sigs = {
-        (cid, iface.class_name, iface.method_name, tuple(iface.param_types), iface.return_type)
+        (cid, _normalize_class_name(iface.class_name, iface.id), iface.method_name, tuple(iface.param_types), iface.return_type)
         for cid, ifaces in pred_ext.microservices.items()
         for iface in ifaces
     }
@@ -77,27 +108,58 @@ def evaluate_single_system(
     pred_svc_edges = {(c.src_service, c.dst_service) for c in pred_ext.inter_service_calls if c.src_service != c.dst_service}
     se_p, se_r, se_f1, _, _ = _prf1(gt_svc_edges, pred_svc_edges)
 
-    # 3b. Service-scoped class-level directed edges (for SM): (src_service, src_class, dst_service, dst_class)
+    gt_lookup = _build_iface_lookup(gt_ext)
+    pred_lookup = _build_iface_lookup(pred_ext)
+
+    # 3b. Service-scoped normalized class-level directed edges (for SM): (src_service, src_class, dst_service, dst_class)
     gt_cls_edges = {
-        (c.src_service, c.src_class, c.dst_service, c.dst_class)
+        (
+            c.src_service,
+            _normalize_class_name(c.src_class),
+            c.dst_service,
+            _normalize_class_name(c.dst_class, c.dst_interface_id),
+        )
         for c in gt_ext.inter_service_calls
         if c.src_service != c.dst_service
     }
     pred_cls_edges = {
-        (c.src_service, c.src_class, c.dst_service, c.dst_class)
+        (
+            c.src_service,
+            _normalize_class_name(c.src_class),
+            c.dst_service,
+            _normalize_class_name(c.dst_class, c.dst_interface_id),
+        )
         for c in pred_ext.inter_service_calls
         if c.src_service != c.dst_service
     }
     ce_p, ce_r, ce_f1, ce_fp, ce_fn = _prf1(gt_cls_edges, pred_cls_edges)
 
-    # 3c. Target interface invocations (for IFN): (src_service, dst_service, dst_interface_id)
+    # 3c. Target interface invocations (for IFN): (src_service, dst_service, normalized_dst_iface)
     gt_iface_calls = {
-        (c.src_service, c.dst_service, c.dst_interface_id)
+        (
+            c.src_service,
+            c.dst_service,
+            ".".join(
+                gt_lookup.get(
+                    (c.dst_service, c.dst_interface_id),
+                    (_normalize_class_name(c.dst_class, c.dst_interface_id), c.dst_interface_id.rsplit(".", 1)[-1].lower()),
+                )
+            ),
+        )
         for c in gt_ext.inter_service_calls
         if c.src_service != c.dst_service
     }
     pred_iface_calls = {
-        (c.src_service, c.dst_service, c.dst_interface_id)
+        (
+            c.src_service,
+            c.dst_service,
+            ".".join(
+                pred_lookup.get(
+                    (c.dst_service, c.dst_interface_id),
+                    (_normalize_class_name(c.dst_class, c.dst_interface_id), c.dst_interface_id.rsplit(".", 1)[-1].lower()),
+                )
+            ),
+        )
         for c in pred_ext.inter_service_calls
         if c.src_service != c.dst_service
     }
