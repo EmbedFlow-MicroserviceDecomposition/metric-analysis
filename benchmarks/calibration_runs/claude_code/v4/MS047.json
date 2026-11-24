@@ -1,0 +1,416 @@
+{
+  "system_id": "MS047",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "catalogue": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_products",
+          "class_name": "server.js",
+          "method_name": "get_products",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products"
+        },
+        {
+          "id": "server.get_product_sku",
+          "class_name": "server.js",
+          "method_name": "get_product_sku",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /product/:sku"
+        },
+        {
+          "id": "server.get_products_cat",
+          "class_name": "server.js",
+          "method_name": "get_products_cat",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products/:cat"
+        },
+        {
+          "id": "server.get_categories",
+          "class_name": "server.js",
+          "method_name": "get_categories",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /categories"
+        },
+        {
+          "id": "server.get_search_text",
+          "class_name": "server.js",
+          "method_name": "get_search_text",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /search/:text"
+        }
+      ]
+    },
+    "user": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_uniqueid",
+          "class_name": "server.js",
+          "method_name": "get_uniqueid",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /uniqueid"
+        },
+        {
+          "id": "server.get_check_id",
+          "class_name": "server.js",
+          "method_name": "get_check_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /check/:id"
+        },
+        {
+          "id": "server.get_users",
+          "class_name": "server.js",
+          "method_name": "get_users",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "server.post_login",
+          "class_name": "server.js",
+          "method_name": "post_login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /login"
+        },
+        {
+          "id": "server.post_register",
+          "class_name": "server.js",
+          "method_name": "post_register",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /register"
+        },
+        {
+          "id": "server.post_order_id",
+          "class_name": "server.js",
+          "method_name": "post_order_id",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /order/:id"
+        },
+        {
+          "id": "server.get_history_id",
+          "class_name": "server.js",
+          "method_name": "get_history_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /history/:id"
+        }
+      ]
+    },
+    "cart": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_cart_id",
+          "class_name": "server.js",
+          "method_name": "get_cart_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /cart/:id"
+        },
+        {
+          "id": "server.delete_cart_id",
+          "class_name": "server.js",
+          "method_name": "delete_cart_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /cart/:id"
+        },
+        {
+          "id": "server.get_rename_from_to",
+          "class_name": "server.js",
+          "method_name": "get_rename_from_to",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rename/:from/:to"
+        },
+        {
+          "id": "server.get_add_id_sku_qty",
+          "class_name": "server.js",
+          "method_name": "get_add_id_sku_qty",
+          "param_types": [
+            "string",
+            "string",
+            "number"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /add/:id/:sku/:qty"
+        },
+        {
+          "id": "server.get_update_id_sku_qty",
+          "class_name": "server.js",
+          "method_name": "get_update_id_sku_qty",
+          "param_types": [
+            "string",
+            "string",
+            "number"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /update/:id/:sku/:qty"
+        },
+        {
+          "id": "server.post_shipping_id",
+          "class_name": "server.js",
+          "method_name": "post_shipping_id",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /shipping/:id"
+        }
+      ]
+    },
+    "shipping": {
+      "exposed_interfaces": [
+        {
+          "id": "Controller.count",
+          "class_name": "Controller",
+          "method_name": "count",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /count"
+        },
+        {
+          "id": "Controller.codes",
+          "class_name": "Controller",
+          "method_name": "codes",
+          "param_types": [],
+          "return_type": "List<Code>",
+          "protocol": "REST",
+          "endpoint": "GET /codes"
+        },
+        {
+          "id": "Controller.cities",
+          "class_name": "Controller",
+          "method_name": "cities",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": "GET /cities/{code}"
+        },
+        {
+          "id": "Controller.match",
+          "class_name": "Controller",
+          "method_name": "match",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": "GET /match/{code}/{text}"
+        },
+        {
+          "id": "Controller.caclc",
+          "class_name": "Controller",
+          "method_name": "caclc",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Ship",
+          "protocol": "REST",
+          "endpoint": "GET /calc/{id}"
+        },
+        {
+          "id": "Controller.confirm",
+          "class_name": "Controller",
+          "method_name": "confirm",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /confirm/{id}"
+        }
+      ]
+    },
+    "ratings": {
+      "exposed_interfaces": [
+        {
+          "id": "RatingsApiController.put",
+          "class_name": "RatingsApiController",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/rate/{sku}/{score}"
+        },
+        {
+          "id": "RatingsApiController.get",
+          "class_name": "RatingsApiController",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/fetch/{sku}"
+        }
+      ]
+    },
+    "payment": {
+      "exposed_interfaces": [
+        {
+          "id": "payment.pay",
+          "class_name": "payment",
+          "method_name": "pay",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /pay/<id>"
+        }
+      ]
+    },
+    "dispatch": {
+      "exposed_interfaces": [
+        {
+          "id": "main.main",
+          "class_name": "main",
+          "method_name": "main",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "orders"
+        }
+      ]
+    },
+    "web": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "cart",
+      "src_class": "server.js",
+      "src_method": "getProduct",
+      "dst_service": "catalogue",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.get_product_sku",
+      "protocol": "REST",
+      "evidence": "cart/server.js:362 request('http://' + catalogueHost"
+    },
+    {
+      "src_service": "shipping",
+      "src_class": "CartHelper",
+      "src_method": "addToCart",
+      "dst_service": "cart",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.post_shipping_id",
+      "protocol": "REST",
+      "evidence": "shipping/src/main/java/com/instana/robotshop/shipping/CartHelper.java:44 httpClient.execute(postRequest)"
+    },
+    {
+      "src_service": "ratings",
+      "src_class": "CatalogueService",
+      "src_method": "checkSKU",
+      "dst_service": "catalogue",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.get_product_sku",
+      "protocol": "REST",
+      "evidence": "ratings/html/src/Service/CatalogueService.php:35 curl_exec($curl)"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "user",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.get_check_id",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:64 requests.get('http://{user}:8080/check/{id}'"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "user",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.post_order_id",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:106 requests.post('http://{user}:8080/order/{id}'"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "cart",
+      "dst_class": "server.js",
+      "dst_interface_id": "server.delete_cart_id",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:116 requests.delete('http://{cart}:8080/cart/{id}'"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "Publisher",
+      "src_method": "_publish",
+      "dst_service": "dispatch",
+      "dst_class": "main",
+      "dst_interface_id": "main.main",
+      "protocol": "Messaging",
+      "evidence": "payment/rabbitmq.py:29 self._channel.basic_publish("
+    }
+  ]
+}

@@ -1,0 +1,2867 @@
+{
+  "system_id": "MS075",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "explorer": {
+      "exposed_interfaces": []
+    },
+    "ethereum_jsonrpc": {
+      "exposed_interfaces": []
+    },
+    "block_scout_web": {
+      "exposed_interfaces": [
+        {
+          "id": "ImportController.import_token_info",
+          "class_name": "BlockScoutWeb.API.V2.ImportController",
+          "method_name": "import_token_info",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/import/token-info"
+        },
+        {
+          "id": "ImportController.delete_token_info",
+          "class_name": "BlockScoutWeb.API.V2.ImportController",
+          "method_name": "delete_token_info",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/import/token-info"
+        },
+        {
+          "id": "ImportController.try_to_search_contract",
+          "class_name": "BlockScoutWeb.API.V2.ImportController",
+          "method_name": "try_to_search_contract",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/import/smart-contracts/:address_hash_param"
+        },
+        {
+          "id": "ImportController.import_audit_report",
+          "class_name": "BlockScoutWeb.API.V2.ImportController",
+          "method_name": "import_audit_report",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/import/smart-contracts/:address_hash_param/audit-reports"
+        },
+        {
+          "id": "SearchController.search",
+          "class_name": "BlockScoutWeb.API.V2.SearchController",
+          "method_name": "search",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/search"
+        },
+        {
+          "id": "SearchController.check_redirect",
+          "class_name": "BlockScoutWeb.API.V2.SearchController",
+          "method_name": "check_redirect",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/search/check-redirect"
+        },
+        {
+          "id": "SearchController.quick_search",
+          "class_name": "BlockScoutWeb.API.V2.SearchController",
+          "method_name": "quick_search",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/search/quick"
+        },
+        {
+          "id": "ConfigController.backend",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "backend",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/backend"
+        },
+        {
+          "id": "ConfigController.csv_export",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "csv_export",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/csv-export"
+        },
+        {
+          "id": "ConfigController.indexer",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "indexer",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/indexer"
+        },
+        {
+          "id": "ConfigController.public_metrics",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "public_metrics",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/public-metrics"
+        },
+        {
+          "id": "ConfigController.languages_list",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "languages_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/smart-contracts/languages"
+        },
+        {
+          "id": "ConfigController.db_background_migrations",
+          "class_name": "BlockScoutWeb.API.V2.ConfigController",
+          "method_name": "db_background_migrations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/config/db-background-migrations"
+        },
+        {
+          "id": "CsvExportController.get_csv_export",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "get_csv_export",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/csv-exports/:uuid_param"
+        },
+        {
+          "id": "TransactionController.transactions",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions"
+        },
+        {
+          "id": "TransactionController.watchlist_transactions",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "watchlist_transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/watchlist"
+        },
+        {
+          "id": "TransactionController.stats",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "stats",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/stats"
+        },
+        {
+          "id": "TransactionController.transaction",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "transaction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param"
+        },
+        {
+          "id": "TransactionController.token_transfers",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "token_transfers",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/token-transfers"
+        },
+        {
+          "id": "TransactionController.internal_transactions",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "internal_transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/internal-transactions"
+        },
+        {
+          "id": "TransactionController.logs",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "logs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/logs"
+        },
+        {
+          "id": "TransactionController.fhe_operations",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "fhe_operations",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/fhe-operations"
+        },
+        {
+          "id": "TransactionController.raw_trace",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "raw_trace",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/raw-trace"
+        },
+        {
+          "id": "TransactionController.state_changes",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "state_changes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/state-changes"
+        },
+        {
+          "id": "TransactionController.summary",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "summary",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/summary"
+        },
+        {
+          "id": "TransactionController.preview",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "preview",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/preview"
+        },
+        {
+          "id": "TransactionController.external_transactions",
+          "class_name": "BlockScoutWeb.API.V2.TransactionController",
+          "method_name": "external_transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/transactions/:transaction_hash_param/external-transactions"
+        },
+        {
+          "id": "TokenTransferController.token_transfers",
+          "class_name": "BlockScoutWeb.API.V2.TokenTransferController",
+          "method_name": "token_transfers",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/token-transfers"
+        },
+        {
+          "id": "InternalTransactionController.internal_transactions",
+          "class_name": "BlockScoutWeb.API.V2.InternalTransactionController",
+          "method_name": "internal_transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/internal-transactions"
+        },
+        {
+          "id": "BlockController.blocks",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "blocks",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks"
+        },
+        {
+          "id": "BlockController.block",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "block",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks/:block_hash_or_number_param"
+        },
+        {
+          "id": "BlockController.transactions",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks/:block_hash_or_number_param/transactions"
+        },
+        {
+          "id": "BlockController.internal_transactions",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "internal_transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks/:block_hash_or_number_param/internal-transactions"
+        },
+        {
+          "id": "BlockController.withdrawals",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "withdrawals",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks/:block_hash_or_number_param/withdrawals"
+        },
+        {
+          "id": "BlockController.block_countdown",
+          "class_name": "BlockScoutWeb.API.V2.BlockController",
+          "method_name": "block_countdown",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/blocks/:block_number_param/countdown"
+        },
+        {
+          "id": "AddressController.addresses_list",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "addresses_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses"
+        },
+        {
+          "id": "AddressController.address",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "address",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param"
+        },
+        {
+          "id": "AddressController.tabs_counters",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "tabs_counters",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/tabs-counters"
+        },
+        {
+          "id": "AddressController.counters",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "counters",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/counters"
+        },
+        {
+          "id": "AddressController.token_balances",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "token_balances",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/token-balances"
+        },
+        {
+          "id": "AddressController.tokens",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "tokens",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/tokens"
+        },
+        {
+          "id": "AddressController.transactions",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/transactions"
+        },
+        {
+          "id": "AddressController.token_transfers",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "token_transfers",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/token-transfers"
+        },
+        {
+          "id": "AddressController.internal_transactions",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "internal_transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/internal-transactions"
+        },
+        {
+          "id": "AddressController.logs",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "logs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/logs"
+        },
+        {
+          "id": "AddressController.blocks_validated",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "blocks_validated",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/blocks-validated"
+        },
+        {
+          "id": "AddressController.coin_balance_history",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "coin_balance_history",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/coin-balance-history"
+        },
+        {
+          "id": "AddressController.coin_balance_history_by_day",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "coin_balance_history_by_day",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/coin-balance-history-by-day"
+        },
+        {
+          "id": "AddressController.withdrawals",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "withdrawals",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/withdrawals"
+        },
+        {
+          "id": "AddressController.nft_list",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "nft_list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/nft"
+        },
+        {
+          "id": "AddressController.nft_collections",
+          "class_name": "BlockScoutWeb.API.V2.AddressController",
+          "method_name": "nft_collections",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/nft/collections"
+        },
+        {
+          "id": "MainPageController.blocks",
+          "class_name": "BlockScoutWeb.API.V2.MainPageController",
+          "method_name": "blocks",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/main-page/blocks"
+        },
+        {
+          "id": "MainPageController.transactions",
+          "class_name": "BlockScoutWeb.API.V2.MainPageController",
+          "method_name": "transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/main-page/transactions"
+        },
+        {
+          "id": "MainPageController.watchlist_transactions",
+          "class_name": "BlockScoutWeb.API.V2.MainPageController",
+          "method_name": "watchlist_transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/main-page/transactions/watchlist"
+        },
+        {
+          "id": "MainPageController.indexing_status",
+          "class_name": "BlockScoutWeb.API.V2.MainPageController",
+          "method_name": "indexing_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/main-page/indexing-status"
+        },
+        {
+          "id": "StatsController.stats",
+          "class_name": "BlockScoutWeb.API.V2.StatsController",
+          "method_name": "stats",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/stats"
+        },
+        {
+          "id": "StatsController.hot_smart_contracts",
+          "class_name": "BlockScoutWeb.API.V2.StatsController",
+          "method_name": "hot_smart_contracts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/stats/hot-smart-contracts"
+        },
+        {
+          "id": "StatsController.transactions_chart",
+          "class_name": "BlockScoutWeb.API.V2.StatsController",
+          "method_name": "transactions_chart",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/stats/charts/transactions"
+        },
+        {
+          "id": "StatsController.market_chart",
+          "class_name": "BlockScoutWeb.API.V2.StatsController",
+          "method_name": "market_chart",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/stats/charts/market"
+        },
+        {
+          "id": "StatsController.secondary_coin_market_chart",
+          "class_name": "BlockScoutWeb.API.V2.StatsController",
+          "method_name": "secondary_coin_market_chart",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/stats/charts/secondary-coin-market"
+        },
+        {
+          "id": "ShibariumController.deposits",
+          "class_name": "BlockScoutWeb.API.V2.ShibariumController",
+          "method_name": "deposits",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/shibarium/deposits"
+        },
+        {
+          "id": "ShibariumController.deposits_count",
+          "class_name": "BlockScoutWeb.API.V2.ShibariumController",
+          "method_name": "deposits_count",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/shibarium/deposits/count"
+        },
+        {
+          "id": "ShibariumController.withdrawals",
+          "class_name": "BlockScoutWeb.API.V2.ShibariumController",
+          "method_name": "withdrawals",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/shibarium/withdrawals"
+        },
+        {
+          "id": "ShibariumController.withdrawals_count",
+          "class_name": "BlockScoutWeb.API.V2.ShibariumController",
+          "method_name": "withdrawals_count",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/shibarium/withdrawals/count"
+        },
+        {
+          "id": "WithdrawalController.withdrawals_list",
+          "class_name": "BlockScoutWeb.API.V2.WithdrawalController",
+          "method_name": "withdrawals_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/withdrawals"
+        },
+        {
+          "id": "WithdrawalController.withdrawals_counters",
+          "class_name": "BlockScoutWeb.API.V2.WithdrawalController",
+          "method_name": "withdrawals_counters",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/withdrawals/counters"
+        },
+        {
+          "id": "UniversalProxyController.index",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.UniversalProxyController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/:platform_id"
+        },
+        {
+          "id": "NovesFiController.transaction",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.NovesFiController",
+          "method_name": "transaction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/noves-fi/transactions/:transaction_hash_param"
+        },
+        {
+          "id": "NovesFiController.address_transactions",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.NovesFiController",
+          "method_name": "address_transactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/noves-fi/addresses/:address_hash_param/transactions"
+        },
+        {
+          "id": "NovesFiController.describe_transactions",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.NovesFiController",
+          "method_name": "describe_transactions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/noves-fi/transaction-descriptions"
+        },
+        {
+          "id": "XnameController.address",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.XnameController",
+          "method_name": "address",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/xname/addresses/:address_hash_param"
+        },
+        {
+          "id": "SolidityScanController.solidityscan_report",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.SolidityScanController",
+          "method_name": "solidityscan_report",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/3rdparty/solidityscan/smart-contracts/:address_hash/report"
+        },
+        {
+          "id": "AccountAbstractionController.operation",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "operation",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/operations/:operation_hash_param"
+        },
+        {
+          "id": "AccountAbstractionController.summary",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "summary",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/operations/:operation_hash_param/summary"
+        },
+        {
+          "id": "AccountAbstractionController.bundler",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "bundler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/bundlers/:address_hash_param"
+        },
+        {
+          "id": "AccountAbstractionController.bundlers",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "bundlers",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/bundlers"
+        },
+        {
+          "id": "AccountAbstractionController.factory",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "factory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/factories/:address_hash_param"
+        },
+        {
+          "id": "AccountAbstractionController.factories",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "factories",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/factories"
+        },
+        {
+          "id": "AccountAbstractionController.paymaster",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "paymaster",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/paymasters/:address_hash_param"
+        },
+        {
+          "id": "AccountAbstractionController.paymasters",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "paymasters",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/paymasters"
+        },
+        {
+          "id": "AccountAbstractionController.account",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "account",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/accounts/:address_hash_param"
+        },
+        {
+          "id": "AccountAbstractionController.accounts",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "accounts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/accounts"
+        },
+        {
+          "id": "AccountAbstractionController.bundles",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "bundles",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/bundles"
+        },
+        {
+          "id": "AccountAbstractionController.operations",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "operations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/operations"
+        },
+        {
+          "id": "AccountAbstractionController.status",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.AccountAbstractionController",
+          "method_name": "status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/account-abstraction/status"
+        },
+        {
+          "id": "MetadataController.addresses",
+          "class_name": "BlockScoutWeb.API.V2.Proxy.MetadataController",
+          "method_name": "addresses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/proxy/metadata/addresses"
+        },
+        {
+          "id": "ValidatorController.stability_validators_list",
+          "class_name": "BlockScoutWeb.API.V2.ValidatorController",
+          "method_name": "stability_validators_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/validators/stability"
+        },
+        {
+          "id": "ValidatorController.stability_validators_counters",
+          "class_name": "BlockScoutWeb.API.V2.ValidatorController",
+          "method_name": "stability_validators_counters",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/validators/stability/counters"
+        },
+        {
+          "id": "ValidatorController.blackfort_validators_list",
+          "class_name": "BlockScoutWeb.API.V2.ValidatorController",
+          "method_name": "blackfort_validators_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/validators/blackfort"
+        },
+        {
+          "id": "ValidatorController.blackfort_validators_counters",
+          "class_name": "BlockScoutWeb.API.V2.ValidatorController",
+          "method_name": "blackfort_validators_counters",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/validators/blackfort/counters"
+        },
+        {
+          "id": "AdvancedFilterController.list",
+          "class_name": "BlockScoutWeb.API.V2.AdvancedFilterController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/advanced-filters"
+        },
+        {
+          "id": "AdvancedFilterController.list_methods",
+          "class_name": "BlockScoutWeb.API.V2.AdvancedFilterController",
+          "method_name": "list_methods",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/advanced-filters/methods"
+        },
+        {
+          "id": "CsvExportController.transactions_csv",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "transactions_csv",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/transactions/csv"
+        },
+        {
+          "id": "CsvExportController.token_transfers_csv",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "token_transfers_csv",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/token-transfers/csv"
+        },
+        {
+          "id": "CsvExportController.internal_transactions_csv",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "internal_transactions_csv",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/internal-transactions/csv"
+        },
+        {
+          "id": "CsvExportController.logs_csv",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "logs_csv",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/addresses/:address_hash_param/logs/csv"
+        },
+        {
+          "id": "AdvancedFilterController.list_csv",
+          "class_name": "BlockScoutWeb.API.V2.AdvancedFilterController",
+          "method_name": "list_csv",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/advanced-filters/csv"
+        },
+        {
+          "id": "BlockController.get_block_number_by_time",
+          "class_name": "BlockScoutWeb.API.Legacy.BlockController",
+          "method_name": "get_block_number_by_time",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/legacy/block/get-block-number-by-time"
+        },
+        {
+          "id": "EthController.eth_call",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_call",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-call"
+        },
+        {
+          "id": "EthController.eth_get_balance",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_get_balance",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-get-balance"
+        },
+        {
+          "id": "EthController.eth_get_storage_at",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_get_storage_at",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-get-storage-at"
+        },
+        {
+          "id": "EthController.eth_send_raw_transaction",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_send_raw_transaction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-send-raw-transaction"
+        },
+        {
+          "id": "EthController.eth_block_number",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_block_number",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-block-number"
+        },
+        {
+          "id": "EthController.eth_get_logs",
+          "class_name": "BlockScoutWeb.API.Legacy.EthController",
+          "method_name": "eth_get_logs",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/legacy/eth/eth-get-logs"
+        },
+        {
+          "id": "SearchController.search_v1_compatibility",
+          "class_name": "BlockScoutWeb.API.V2.SearchController",
+          "method_name": "search_v1_compatibility",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/search"
+        },
+        {
+          "id": "GasPriceOracleController.gas_price_oracle",
+          "class_name": "BlockScoutWeb.API.V1.GasPriceOracleController",
+          "method_name": "gas_price_oracle",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/gas-price-oracle"
+        },
+        {
+          "id": "SupplyController.supply",
+          "class_name": "BlockScoutWeb.API.V1.SupplyController",
+          "method_name": "supply",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/supply"
+        },
+        {
+          "id": "VerifiedSmartContractController.create",
+          "class_name": "BlockScoutWeb.API.V1.VerifiedSmartContractController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/verified_smart_contracts"
+        },
+        {
+          "id": "EthController.eth_request",
+          "class_name": "BlockScoutWeb.API.EthRPC.EthController",
+          "method_name": "eth_request",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/eth-rpc"
+        },
+        {
+          "id": "AuthController.profile",
+          "class_name": "BlockScoutWeb.Account.AuthController",
+          "method_name": "profile",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/auth/profile"
+        },
+        {
+          "id": "AuthController.logout",
+          "class_name": "BlockScoutWeb.Account.AuthController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/auth/logout"
+        },
+        {
+          "id": "AuthController.request",
+          "class_name": "BlockScoutWeb.Account.AuthController",
+          "method_name": "request",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/auth/:provider"
+        },
+        {
+          "id": "AuthController.callback",
+          "class_name": "BlockScoutWeb.Account.AuthController",
+          "method_name": "callback",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/auth/:provider/callback"
+        },
+        {
+          "id": "TagAddressController.index",
+          "class_name": "BlockScoutWeb.Account.TagAddressController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/tag_address"
+        },
+        {
+          "id": "TagAddressController.new",
+          "class_name": "BlockScoutWeb.Account.TagAddressController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/tag_address/new"
+        },
+        {
+          "id": "TagAddressController.create",
+          "class_name": "BlockScoutWeb.Account.TagAddressController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/tag_address"
+        },
+        {
+          "id": "TagAddressController.delete",
+          "class_name": "BlockScoutWeb.Account.TagAddressController",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/tag_address/:id"
+        },
+        {
+          "id": "TagTransactionController.index",
+          "class_name": "BlockScoutWeb.Account.TagTransactionController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/tag_transaction"
+        },
+        {
+          "id": "TagTransactionController.new",
+          "class_name": "BlockScoutWeb.Account.TagTransactionController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/tag_transaction/new"
+        },
+        {
+          "id": "TagTransactionController.create",
+          "class_name": "BlockScoutWeb.Account.TagTransactionController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/tag_transaction"
+        },
+        {
+          "id": "TagTransactionController.delete",
+          "class_name": "BlockScoutWeb.Account.TagTransactionController",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/tag_transaction/:id"
+        },
+        {
+          "id": "WatchlistController.show",
+          "class_name": "BlockScoutWeb.Account.WatchlistController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/watchlist"
+        },
+        {
+          "id": "WatchlistAddressController.new",
+          "class_name": "BlockScoutWeb.Account.WatchlistAddressController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/watchlist_address/new"
+        },
+        {
+          "id": "WatchlistAddressController.create",
+          "class_name": "BlockScoutWeb.Account.WatchlistAddressController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/watchlist_address"
+        },
+        {
+          "id": "WatchlistAddressController.edit",
+          "class_name": "BlockScoutWeb.Account.WatchlistAddressController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/watchlist_address/:id/edit"
+        },
+        {
+          "id": "WatchlistAddressController.update",
+          "class_name": "BlockScoutWeb.Account.WatchlistAddressController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/watchlist_address/:id"
+        },
+        {
+          "id": "WatchlistAddressController.delete",
+          "class_name": "BlockScoutWeb.Account.WatchlistAddressController",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/watchlist_address/:id"
+        },
+        {
+          "id": "ApiKeyController.new",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/api_key/new"
+        },
+        {
+          "id": "ApiKeyController.create",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/api_key"
+        },
+        {
+          "id": "ApiKeyController.edit",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/api_key/:id/edit"
+        },
+        {
+          "id": "ApiKeyController.update",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/api_key/:id"
+        },
+        {
+          "id": "ApiKeyController.delete",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/api_key/:id"
+        },
+        {
+          "id": "ApiKeyController.index",
+          "class_name": "BlockScoutWeb.Account.ApiKeyController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/api_key"
+        },
+        {
+          "id": "CustomABIController.new",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/custom_abi/new"
+        },
+        {
+          "id": "CustomABIController.create",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/custom_abi"
+        },
+        {
+          "id": "CustomABIController.edit",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/custom_abi/:id/edit"
+        },
+        {
+          "id": "CustomABIController.update",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/custom_abi/:id"
+        },
+        {
+          "id": "CustomABIController.delete",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/custom_abi/:id"
+        },
+        {
+          "id": "CustomABIController.index",
+          "class_name": "BlockScoutWeb.Account.CustomABIController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/custom_abi"
+        },
+        {
+          "id": "AuthenticateController.authenticate_get",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "authenticate_get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/authenticate"
+        },
+        {
+          "id": "AuthenticateController.authenticate_post",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "authenticate_post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/authenticate"
+        },
+        {
+          "id": "UserController.get_csrf",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "get_csrf",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/get_csrf"
+        },
+        {
+          "id": "AddressController.link_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.AddressController",
+          "method_name": "link_address",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/address/link"
+        },
+        {
+          "id": "EmailController.resend_email",
+          "class_name": "BlockScoutWeb.Account.API.V2.EmailController",
+          "method_name": "resend_email",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/email/resend"
+        },
+        {
+          "id": "EmailController.link_email",
+          "class_name": "BlockScoutWeb.Account.API.V2.EmailController",
+          "method_name": "link_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/email/link"
+        },
+        {
+          "id": "UserController.info",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "info",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/info"
+        },
+        {
+          "id": "UserController.watchlist",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "watchlist",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/watchlist"
+        },
+        {
+          "id": "UserController.delete_watchlist",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "delete_watchlist",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/v2/user/watchlist/:id"
+        },
+        {
+          "id": "UserController.create_watchlist",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "create_watchlist",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/user/watchlist"
+        },
+        {
+          "id": "UserController.update_watchlist",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "update_watchlist",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/v2/user/watchlist/:id"
+        },
+        {
+          "id": "UserController.api_keys",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "api_keys",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/api_keys"
+        },
+        {
+          "id": "UserController.delete_api_key",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "delete_api_key",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/v2/user/api_keys/:api_key"
+        },
+        {
+          "id": "UserController.create_api_key",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "create_api_key",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/user/api_keys"
+        },
+        {
+          "id": "UserController.update_api_key",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "update_api_key",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/v2/user/api_keys/:api_key"
+        },
+        {
+          "id": "UserController.custom_abis",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "custom_abis",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/custom_abis"
+        },
+        {
+          "id": "UserController.delete_custom_abi",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "delete_custom_abi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/v2/user/custom_abis/:id"
+        },
+        {
+          "id": "UserController.create_custom_abi",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "create_custom_abi",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/user/custom_abis"
+        },
+        {
+          "id": "UserController.update_custom_abi",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "update_custom_abi",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/v2/user/custom_abis/:id"
+        },
+        {
+          "id": "UserController.tags_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "tags_address",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/tags/address/"
+        },
+        {
+          "id": "UserController.delete_tag_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "delete_tag_address",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/v2/user/tags/address/:id"
+        },
+        {
+          "id": "UserController.create_tag_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "create_tag_address",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/user/tags/address/"
+        },
+        {
+          "id": "UserController.update_tag_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "update_tag_address",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/v2/user/tags/address/:id"
+        },
+        {
+          "id": "UserController.tags_transaction",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "tags_transaction",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/user/tags/transaction/"
+        },
+        {
+          "id": "UserController.delete_tag_transaction",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "delete_tag_transaction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/account/v2/user/tags/transaction/:id"
+        },
+        {
+          "id": "UserController.create_tag_transaction",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "create_tag_transaction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/user/tags/transaction/"
+        },
+        {
+          "id": "UserController.update_tag_transaction",
+          "class_name": "BlockScoutWeb.Account.API.V2.UserController",
+          "method_name": "update_tag_transaction",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/account/v2/user/tags/transaction/:id"
+        },
+        {
+          "id": "TagsController.tags_address",
+          "class_name": "BlockScoutWeb.Account.API.V2.TagsController",
+          "method_name": "tags_address",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/tags/address/:address_hash"
+        },
+        {
+          "id": "TagsController.tags_transaction",
+          "class_name": "BlockScoutWeb.Account.API.V2.TagsController",
+          "method_name": "tags_transaction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/tags/transaction/:transaction_hash"
+        },
+        {
+          "id": "AuthenticateController.authenticate_via_wallet",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "authenticate_via_wallet",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/authenticate_via_wallet"
+        },
+        {
+          "id": "AuthenticateController.authenticate_via_dynamic",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "authenticate_via_dynamic",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/authenticate_via_dynamic"
+        },
+        {
+          "id": "AuthenticateController.send_otp",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "send_otp",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/send_otp"
+        },
+        {
+          "id": "AuthenticateController.confirm_otp",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "confirm_otp",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/account/v2/confirm_otp"
+        },
+        {
+          "id": "AuthenticateController.siwe_message",
+          "class_name": "BlockScoutWeb.Account.API.V2.AuthenticateController",
+          "method_name": "siwe_message",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/account/v2/siwe_message"
+        },
+        {
+          "id": "SmartContractController.smart_contracts_list",
+          "class_name": "BlockScoutWeb.API.V2.SmartContractController",
+          "method_name": "smart_contracts_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/smart-contracts"
+        },
+        {
+          "id": "SmartContractController.smart_contracts_counters",
+          "class_name": "BlockScoutWeb.API.V2.SmartContractController",
+          "method_name": "smart_contracts_counters",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/smart-contracts/counters"
+        },
+        {
+          "id": "SmartContractController.smart_contract",
+          "class_name": "BlockScoutWeb.API.V2.SmartContractController",
+          "method_name": "smart_contract",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/smart-contracts/:address_hash_param"
+        },
+        {
+          "id": "SmartContractController.audit_reports_list",
+          "class_name": "BlockScoutWeb.API.V2.SmartContractController",
+          "method_name": "audit_reports_list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/smart-contracts/:address_hash_param/audit-reports"
+        },
+        {
+          "id": "VerificationController.config",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "config",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/smart-contracts/verification/config"
+        },
+        {
+          "id": "SmartContractController.audit_report_submission",
+          "class_name": "BlockScoutWeb.API.V2.SmartContractController",
+          "method_name": "audit_report_submission",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash_param/audit-reports"
+        },
+        {
+          "id": "VerificationController.verification_via_standard_input",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_standard_input",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/standard-input"
+        },
+        {
+          "id": "VerificationController.verification_via_flattened_code",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_flattened_code",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/flattened-code"
+        },
+        {
+          "id": "VerificationController.verification_via_sourcify",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_sourcify",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/sourcify"
+        },
+        {
+          "id": "VerificationController.verification_via_multi_part",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_multi_part",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/multi-part"
+        },
+        {
+          "id": "VerificationController.verification_via_vyper_code",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_vyper_code",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/vyper-code"
+        },
+        {
+          "id": "VerificationController.verification_via_vyper_multipart",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_vyper_multipart",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/vyper-multi-part"
+        },
+        {
+          "id": "VerificationController.verification_via_vyper_standard_input",
+          "class_name": "BlockScoutWeb.API.V2.VerificationController",
+          "method_name": "verification_via_vyper_standard_input",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/smart-contracts/:address_hash/verification/via/vyper-standard-input"
+        },
+        {
+          "id": "TokenController.refetch_metadata",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "refetch_metadata",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/tokens/:address_hash_param/instances/:token_id_param/refetch-metadata"
+        },
+        {
+          "id": "TokenController.trigger_nft_collection_metadata_refetch",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "trigger_nft_collection_metadata_refetch",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/tokens/:address_hash_param/instances/refetch-metadata"
+        },
+        {
+          "id": "TokenController.tokens_batch",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "tokens_batch",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/tokens/batch"
+        },
+        {
+          "id": "TokenController.tokens_list",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "tokens_list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens"
+        },
+        {
+          "id": "TokenController.token",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "token",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param"
+        },
+        {
+          "id": "TokenController.counters",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "counters",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/counters"
+        },
+        {
+          "id": "TokenController.transfers",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "transfers",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/transfers"
+        },
+        {
+          "id": "TokenController.holders",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "holders",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/holders"
+        },
+        {
+          "id": "TokenController.ui_multiplier_changes",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "ui_multiplier_changes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/ui-multiplier-changes"
+        },
+        {
+          "id": "TokenController.instances",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "instances",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances"
+        },
+        {
+          "id": "TokenController.instance",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "instance",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances/:token_id_param"
+        },
+        {
+          "id": "TokenController.media_type",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "media_type",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances/:token_id_param/media-type"
+        },
+        {
+          "id": "TokenController.transfers_by_instance",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "transfers_by_instance",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances/:token_id_param/transfers"
+        },
+        {
+          "id": "TokenController.holders_by_instance",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "holders_by_instance",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances/:token_id_param/holders"
+        },
+        {
+          "id": "TokenController.transfers_count_by_instance",
+          "class_name": "BlockScoutWeb.API.V2.TokenController",
+          "method_name": "transfers_count_by_instance",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/instances/:token_id_param/transfers-count"
+        },
+        {
+          "id": "CsvExportController.export_token_holders",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "export_token_holders",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/holders/csv"
+        },
+        {
+          "id": "CsvExportController.export_token_transfers",
+          "class_name": "BlockScoutWeb.API.V2.CsvExportController",
+          "method_name": "export_token_transfers",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tokens/:address_hash_param/transfers/csv"
+        },
+        {
+          "id": "UtilsController.decode_calldata",
+          "class_name": "BlockScoutWeb.API.V2.UtilsController",
+          "method_name": "decode_calldata",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/utils/decode-calldata"
+        },
+        {
+          "id": "AddressBadgeController.assign_badge_to_address",
+          "class_name": "BlockScoutWeb.API.V2.AddressBadgeController",
+          "method_name": "assign_badge_to_address",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/scam-badge-addresses"
+        },
+        {
+          "id": "AddressBadgeController.unassign_badge_from_address",
+          "class_name": "BlockScoutWeb.API.V2.AddressBadgeController",
+          "method_name": "unassign_badge_from_address",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/scam-badge-addresses"
+        },
+        {
+          "id": "AddressBadgeController.show_badge_addresses",
+          "class_name": "BlockScoutWeb.API.V2.AddressBadgeController",
+          "method_name": "show_badge_addresses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/scam-badge-addresses"
+        },
+        {
+          "id": "APIKeyController.get_key",
+          "class_name": "BlockScoutWeb.API.V2.APIKeyController",
+          "method_name": "get_key",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/key"
+        },
+        {
+          "id": "APIDocsController.index",
+          "class_name": "BlockScoutWeb.APIDocsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api-docs"
+        },
+        {
+          "id": "APIDocsController.eth_rpc",
+          "class_name": "BlockScoutWeb.APIDocsController",
+          "method_name": "eth_rpc",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /eth-rpc-api-docs"
+        },
+        {
+          "id": "RobotsController.sitemap",
+          "class_name": "BlockScoutWeb.RobotsController",
+          "method_name": "sitemap",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /sitemap.xml"
+        },
+        {
+          "id": "SchemaController.index",
+          "class_name": "BlockScoutWeb.GraphQL.SchemaController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /schema.graphql"
+        },
+        {
+          "id": "AddressContractVerificationController.create",
+          "class_name": "BlockScoutWeb.AddressContractVerificationController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /verify_smart_contract/contract_verifications"
+        },
+        {
+          "id": "AddressController.listaccounts",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "listaccounts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=listaccounts"
+        },
+        {
+          "id": "AddressController.eth_get_balance",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "eth_get_balance",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=eth_get_balance"
+        },
+        {
+          "id": "AddressController.balance",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "balance",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=balance"
+        },
+        {
+          "id": "AddressController.balancemulti",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "balancemulti",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=balancemulti"
+        },
+        {
+          "id": "AddressController.pendingtxlist",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "pendingtxlist",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=pendingtxlist"
+        },
+        {
+          "id": "AddressController.txlist",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "txlist",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=txlist"
+        },
+        {
+          "id": "AddressController.txlistinternal",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "txlistinternal",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=txlistinternal"
+        },
+        {
+          "id": "AddressController.tokentx",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "tokentx",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=tokentx"
+        },
+        {
+          "id": "AddressController.tokennfttx",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "tokennfttx",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=tokennfttx"
+        },
+        {
+          "id": "AddressController.token1155tx",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "token1155tx",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=token1155tx"
+        },
+        {
+          "id": "AddressController.token404tx",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "token404tx",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=token404tx"
+        },
+        {
+          "id": "AddressController.token7984tx",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "token7984tx",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=token7984tx"
+        },
+        {
+          "id": "AddressController.tokenbalance",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "tokenbalance",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=tokenbalance"
+        },
+        {
+          "id": "AddressController.tokenlist",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "tokenlist",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=tokenlist"
+        },
+        {
+          "id": "AddressController.getminedblocks",
+          "class_name": "BlockScoutWeb.API.RPC.AddressController",
+          "method_name": "getminedblocks",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=account&action=getminedblocks"
+        },
+        {
+          "id": "BlockController.getblockreward",
+          "class_name": "BlockScoutWeb.API.RPC.BlockController",
+          "method_name": "getblockreward",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=block&action=getblockreward"
+        },
+        {
+          "id": "BlockController.getblockcountdown",
+          "class_name": "BlockScoutWeb.API.RPC.BlockController",
+          "method_name": "getblockcountdown",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=block&action=getblockcountdown"
+        },
+        {
+          "id": "BlockController.getblocknobytime",
+          "class_name": "BlockScoutWeb.API.RPC.BlockController",
+          "method_name": "getblocknobytime",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=block&action=getblocknobytime"
+        },
+        {
+          "id": "BlockController.eth_block_number",
+          "class_name": "BlockScoutWeb.API.RPC.BlockController",
+          "method_name": "eth_block_number",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=block&action=eth_block_number"
+        },
+        {
+          "id": "ContractController.getcontractcreation",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "getcontractcreation",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=getcontractcreation"
+        },
+        {
+          "id": "ContractController.verify",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "verify",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api?module=contract&action=verify"
+        },
+        {
+          "id": "ContractController.verify_via_sourcify",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "verify_via_sourcify",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=verify_via_sourcify"
+        },
+        {
+          "id": "ContractController.verifysourcecode",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "verifysourcecode",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=verifysourcecode"
+        },
+        {
+          "id": "ContractController.checkverifystatus",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "checkverifystatus",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=checkverifystatus"
+        },
+        {
+          "id": "ContractController.verifyproxycontract",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "verifyproxycontract",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=verifyproxycontract"
+        },
+        {
+          "id": "ContractController.checkproxyverification",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "checkproxyverification",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=checkproxyverification"
+        },
+        {
+          "id": "ContractController.verify_vyper_contract",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "verify_vyper_contract",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=verify_vyper_contract"
+        },
+        {
+          "id": "ContractController.listcontracts",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "listcontracts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=listcontracts"
+        },
+        {
+          "id": "ContractController.getabi",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "getabi",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=getabi"
+        },
+        {
+          "id": "ContractController.getsourcecode",
+          "class_name": "BlockScoutWeb.API.RPC.ContractController",
+          "method_name": "getsourcecode",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=contract&action=getsourcecode"
+        },
+        {
+          "id": "LogsController.getlogs",
+          "class_name": "BlockScoutWeb.API.RPC.LogsController",
+          "method_name": "getlogs",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=logs&action=getlogs"
+        },
+        {
+          "id": "StatsController.tokensupply",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "tokensupply",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=tokensupply"
+        },
+        {
+          "id": "StatsController.ethsupplyexchange",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "ethsupplyexchange",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=ethsupplyexchange"
+        },
+        {
+          "id": "StatsController.ethsupply",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "ethsupply",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=ethsupply"
+        },
+        {
+          "id": "StatsController.coinsupply",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "coinsupply",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=coinsupply"
+        },
+        {
+          "id": "StatsController.ethprice",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "ethprice",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=ethprice"
+        },
+        {
+          "id": "StatsController.coinprice",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "coinprice",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=coinprice"
+        },
+        {
+          "id": "StatsController.totalfees",
+          "class_name": "BlockScoutWeb.API.RPC.StatsController",
+          "method_name": "totalfees",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=stats&action=totalfees"
+        },
+        {
+          "id": "TokenController.gettoken",
+          "class_name": "BlockScoutWeb.API.RPC.TokenController",
+          "method_name": "gettoken",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=token&action=gettoken"
+        },
+        {
+          "id": "TokenController.gettokenholders",
+          "class_name": "BlockScoutWeb.API.RPC.TokenController",
+          "method_name": "gettokenholders",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=token&action=gettokenholders"
+        },
+        {
+          "id": "TokenController.tokenholderlist",
+          "class_name": "BlockScoutWeb.API.RPC.TokenController",
+          "method_name": "tokenholderlist",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=token&action=tokenholderlist"
+        },
+        {
+          "id": "TokenController.tokenholdercount",
+          "class_name": "BlockScoutWeb.API.RPC.TokenController",
+          "method_name": "tokenholdercount",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=token&action=tokenholdercount"
+        },
+        {
+          "id": "TokenController.tokeninfo",
+          "class_name": "BlockScoutWeb.API.RPC.TokenController",
+          "method_name": "tokeninfo",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=token&action=tokeninfo"
+        },
+        {
+          "id": "TransactionController.gettxinfo",
+          "class_name": "BlockScoutWeb.API.RPC.TransactionController",
+          "method_name": "gettxinfo",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=transaction&action=gettxinfo"
+        },
+        {
+          "id": "TransactionController.gettxreceiptstatus",
+          "class_name": "BlockScoutWeb.API.RPC.TransactionController",
+          "method_name": "gettxreceiptstatus",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=transaction&action=gettxreceiptstatus"
+        },
+        {
+          "id": "TransactionController.getstatus",
+          "class_name": "BlockScoutWeb.API.RPC.TransactionController",
+          "method_name": "getstatus",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api?module=transaction&action=getstatus"
+        },
+        {
+          "id": "Address.get_by",
+          "class_name": "BlockScoutWeb.GraphQL.Resolvers.Address",
+          "method_name": "get_by",
+          "param_types": [
+            "AddressHash"
+          ],
+          "return_type": "Address",
+          "protocol": "GraphQL",
+          "endpoint": "Query.address"
+        },
+        {
+          "id": "Address.get_by_addresses",
+          "class_name": "BlockScoutWeb.GraphQL.Resolvers.Address",
+          "method_name": "get_by",
+          "param_types": [
+            "List<AddressHash>"
+          ],
+          "return_type": "List<Address>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.addresses"
+        },
+        {
+          "id": "Block.get_by",
+          "class_name": "BlockScoutWeb.GraphQL.Resolvers.Block",
+          "method_name": "get_by",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Block",
+          "protocol": "GraphQL",
+          "endpoint": "Query.block"
+        },
+        {
+          "id": "TokenTransfer.get_by",
+          "class_name": "BlockScoutWeb.GraphQL.Resolvers.TokenTransfer",
+          "method_name": "get_by",
+          "param_types": [
+            "AddressHash",
+            "Int"
+          ],
+          "return_type": "List<TokenTransfer>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.token_transfers"
+        },
+        {
+          "id": "Transaction.get_by",
+          "class_name": "BlockScoutWeb.GraphQL.Resolvers.Transaction",
+          "method_name": "get_by",
+          "param_types": [
+            "FullHash"
+          ],
+          "return_type": "Transaction",
+          "protocol": "GraphQL",
+          "endpoint": "Query.transaction"
+        },
+        {
+          "id": "Schema.token_transfers_subscription",
+          "class_name": "BlockScoutWeb.GraphQL.Schema",
+          "method_name": "token_transfers",
+          "param_types": [
+            "AddressHash"
+          ],
+          "return_type": "List<TokenTransfer>",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.token_transfers"
+        },
+        {
+          "id": "AddressChannel.join_old",
+          "class_name": "BlockScoutWeb.AddressChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "addresses_old:*"
+        },
+        {
+          "id": "BlockChannel.join_old",
+          "class_name": "BlockScoutWeb.BlockChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "blocks_old:*"
+        },
+        {
+          "id": "ExchangeRateChannel.join_old",
+          "class_name": "BlockScoutWeb.ExchangeRateChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "exchange_rate_old:*"
+        },
+        {
+          "id": "RewardChannel.join_old",
+          "class_name": "BlockScoutWeb.RewardChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "rewards_old:*"
+        },
+        {
+          "id": "TransactionChannel.join_old",
+          "class_name": "BlockScoutWeb.TransactionChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "transactions_old:*"
+        },
+        {
+          "id": "TokenChannel.join_old",
+          "class_name": "BlockScoutWeb.TokenChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "tokens_old:*"
+        },
+        {
+          "id": "TokenInstanceChannel.join",
+          "class_name": "BlockScoutWeb.TokenInstanceChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "token_instances:*"
+        },
+        {
+          "id": "AddressChannel.join",
+          "class_name": "BlockScoutWeb.V2.AddressChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "addresses:*"
+        },
+        {
+          "id": "BlockChannel.join",
+          "class_name": "BlockScoutWeb.V2.BlockChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "blocks:*"
+        },
+        {
+          "id": "ExchangeRateChannel.join",
+          "class_name": "BlockScoutWeb.V2.ExchangeRateChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "exchange_rate:*"
+        },
+        {
+          "id": "RewardChannel.join",
+          "class_name": "BlockScoutWeb.V2.RewardChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "rewards:*"
+        },
+        {
+          "id": "TransactionChannel.join",
+          "class_name": "BlockScoutWeb.V2.TransactionChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "transactions:*"
+        },
+        {
+          "id": "TokenChannel.join",
+          "class_name": "BlockScoutWeb.V2.TokenChannel",
+          "method_name": "join",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "tokens:*"
+        },
+        {
+          "id": "AddressChannel.handle_in_get_balance",
+          "class_name": "BlockScoutWeb.AddressChannel",
+          "method_name": "handle_in",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "addresses_old:*#get_balance"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

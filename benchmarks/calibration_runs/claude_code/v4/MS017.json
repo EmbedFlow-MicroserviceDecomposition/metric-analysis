@@ -1,0 +1,60 @@
+{
+  "system_id": "MS017",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "orders": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_orders",
+          "class_name": "server.js",
+          "method_name": "get_orders",
+          "param_types": [],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "GET /api/orders"
+        },
+        {
+          "id": "server.get_orders_id",
+          "class_name": "server.js",
+          "method_name": "get_orders_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "GET /api/orders/:id"
+        }
+      ]
+    },
+    "products": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_products",
+          "class_name": "server.js",
+          "method_name": "get_products",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "server.get_products_id",
+          "class_name": "server.js",
+          "method_name": "get_products_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/:id"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}
