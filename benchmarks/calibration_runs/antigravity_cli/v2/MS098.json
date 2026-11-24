@@ -1,0 +1,2001 @@
+{
+  "system_id": "MS098",
+  "extractor_tool": "antigravity-cli",
+  "prompt_version": "v2.0",
+  "status": "verified",
+  "microservices": {
+    "service-webhook": {
+      "exposed_interfaces": [
+        {
+          "id": "WebhookController.createWebhook",
+          "class_name": "WebhookController",
+          "method_name": "createWebhook",
+          "param_types": [
+            "CreateWebhookRequest"
+          ],
+          "return_type": "CreateWebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "WebhookService/CreateWebhook"
+        },
+        {
+          "id": "WebhookController.deleteWebhook",
+          "class_name": "WebhookController",
+          "method_name": "deleteWebhook",
+          "param_types": [
+            "DeleteWebhookRequest"
+          ],
+          "return_type": "DeleteWebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "WebhookService/DeleteWebhook"
+        },
+        {
+          "id": "WebhookController.findWebhook",
+          "class_name": "WebhookController",
+          "method_name": "findWebhook",
+          "param_types": [
+            "FindWebhookRequest"
+          ],
+          "return_type": "FindWebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "WebhookService/FindWebhook"
+        },
+        {
+          "id": "WebhookController.readWebhook",
+          "class_name": "WebhookController",
+          "method_name": "readWebhook",
+          "param_types": [
+            "ReadWebhookRequest"
+          ],
+          "return_type": "ReadWebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "WebhookService/ReadWebhook"
+        },
+        {
+          "id": "WebhookController.updateWebhook",
+          "class_name": "WebhookController",
+          "method_name": "updateWebhook",
+          "param_types": [
+            "UpdateWebhookRequest"
+          ],
+          "return_type": "UpdateWebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "WebhookService/UpdateWebhook"
+        }
+      ]
+    },
+    "service-access": {
+      "exposed_interfaces": [
+        {
+          "id": "AccessTokenController.createAccess",
+          "class_name": "AccessTokenController",
+          "method_name": "createAccess",
+          "param_types": [
+            "CreateAccessRequest"
+          ],
+          "return_type": "CreateAccessResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccessService/CreateAccess"
+        },
+        {
+          "id": "AccessTokenController.deleteAccess",
+          "class_name": "AccessTokenController",
+          "method_name": "deleteAccess",
+          "param_types": [
+            "DeleteAccessRequest"
+          ],
+          "return_type": "DeleteAccessResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccessService/DeleteAccess"
+        },
+        {
+          "id": "AccessTokenController.findAccess",
+          "class_name": "AccessTokenController",
+          "method_name": "findAccess",
+          "param_types": [
+            "FindAccessRequest"
+          ],
+          "return_type": "FindAccessResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccessService/FindAccess"
+        },
+        {
+          "id": "AccessTokenController.hasRights",
+          "class_name": "AccessTokenController",
+          "method_name": "hasRights",
+          "param_types": [
+            "HasRightsRequest"
+          ],
+          "return_type": "HasRightsResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccessService/HasRights"
+        },
+        {
+          "id": "AccessTokenController.readAccess",
+          "class_name": "AccessTokenController",
+          "method_name": "readAccess",
+          "param_types": [
+            "ReadAccessRequest"
+          ],
+          "return_type": "ReadAccessResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccessService/ReadAccess"
+        }
+      ]
+    },
+    "service-billing": {
+      "exposed_interfaces": [
+        {
+          "id": "BillingsController.cancelSubscription",
+          "class_name": "BillingsController",
+          "method_name": "cancelSubscription",
+          "param_types": [
+            "CancelSubscriptionRequest"
+          ],
+          "return_type": "CancelSubscriptionResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/CancelSubscription"
+        },
+        {
+          "id": "BillingsController.changeSubscription",
+          "class_name": "BillingsController",
+          "method_name": "changeSubscription",
+          "param_types": [
+            "ChangeSubscriptionRequest"
+          ],
+          "return_type": "ChangeSubscriptionResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ChangeSubscription"
+        },
+        {
+          "id": "BillingsController.createCard",
+          "class_name": "BillingsController",
+          "method_name": "createCard",
+          "param_types": [
+            "CreateCardRequest"
+          ],
+          "return_type": "CreateCardResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/CreateCard"
+        },
+        {
+          "id": "BillingsController.createCustomer",
+          "class_name": "BillingsController",
+          "method_name": "createCustomer",
+          "param_types": [
+            "CreateCustomerRequest"
+          ],
+          "return_type": "CreateCustomerResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/CreateCustomer"
+        },
+        {
+          "id": "BillingsController.createPlan",
+          "class_name": "BillingsController",
+          "method_name": "createPlan",
+          "param_types": [
+            "CreatePlanRequest"
+          ],
+          "return_type": "CreatePlanResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/CreatePlan"
+        },
+        {
+          "id": "BillingsController.createSubscription",
+          "class_name": "BillingsController",
+          "method_name": "createSubscription",
+          "param_types": [
+            "CreateSubscriptionRequest"
+          ],
+          "return_type": "CreateSubscriptionResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/CreateSubscription"
+        },
+        {
+          "id": "BillingsController.deleteCard",
+          "class_name": "BillingsController",
+          "method_name": "deleteCard",
+          "param_types": [
+            "DeleteCardRequest"
+          ],
+          "return_type": "DeleteCardResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/DeleteCard"
+        },
+        {
+          "id": "BillingsController.deleteCustomer",
+          "class_name": "BillingsController",
+          "method_name": "deleteCustomer",
+          "param_types": [
+            "DeleteCustomerRequest"
+          ],
+          "return_type": "DeleteCustomerResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/DeleteCustomer"
+        },
+        {
+          "id": "BillingsController.findCards",
+          "class_name": "BillingsController",
+          "method_name": "findCards",
+          "param_types": [
+            "FindCardsRequest"
+          ],
+          "return_type": "FindCardsResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/FindCards"
+        },
+        {
+          "id": "BillingsController.findInvoices",
+          "class_name": "BillingsController",
+          "method_name": "findInvoices",
+          "param_types": [
+            "FindInvoicesRequest"
+          ],
+          "return_type": "FindInvoicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/FindInvoices"
+        },
+        {
+          "id": "BillingsController.findPlans",
+          "class_name": "BillingsController",
+          "method_name": "findPlans",
+          "param_types": [
+            "FindPlansRequest"
+          ],
+          "return_type": "FindPlansResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/FindPlans"
+        },
+        {
+          "id": "BillingsController.findStripePlans",
+          "class_name": "BillingsController",
+          "method_name": "findStripePlans",
+          "param_types": [
+            "FindStripePlansRequest"
+          ],
+          "return_type": "FindStripePlansResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/FindStripePlans"
+        },
+        {
+          "id": "BillingsController.findSubscriptions",
+          "class_name": "BillingsController",
+          "method_name": "findSubscriptions",
+          "param_types": [
+            "FindSubscriptionsRequest"
+          ],
+          "return_type": "FindSubscriptionsResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/FindSubscriptions"
+        },
+        {
+          "id": "BillingsController.readCard",
+          "class_name": "BillingsController",
+          "method_name": "readCard",
+          "param_types": [
+            "ReadCardRequest"
+          ],
+          "return_type": "ReadCardResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadCard"
+        },
+        {
+          "id": "BillingsController.readCustomer",
+          "class_name": "BillingsController",
+          "method_name": "readCustomer",
+          "param_types": [
+            "ReadCustomerRequest"
+          ],
+          "return_type": "ReadCustomerResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadCustomer"
+        },
+        {
+          "id": "BillingsController.readInvoice",
+          "class_name": "BillingsController",
+          "method_name": "readInvoice",
+          "param_types": [
+            "ReadInvoiceRequest"
+          ],
+          "return_type": "ReadInvoiceResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadInvoice"
+        },
+        {
+          "id": "BillingsController.readPlan",
+          "class_name": "BillingsController",
+          "method_name": "readPlan",
+          "param_types": [
+            "ReadPlanRequest"
+          ],
+          "return_type": "ReadPlanResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadPlan"
+        },
+        {
+          "id": "BillingsController.readStripePlan",
+          "class_name": "BillingsController",
+          "method_name": "readStripePlan",
+          "param_types": [
+            "ReadStripePlanRequest"
+          ],
+          "return_type": "ReadStripePlanResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadStripePlan"
+        },
+        {
+          "id": "BillingsController.readSubscription",
+          "class_name": "BillingsController",
+          "method_name": "readSubscription",
+          "param_types": [
+            "ReadSubscriptionRequest"
+          ],
+          "return_type": "ReadSubscriptionResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/ReadSubscription"
+        },
+        {
+          "id": "BillingsController.setDefaultCard",
+          "class_name": "BillingsController",
+          "method_name": "setDefaultCard",
+          "param_types": [
+            "SetDefaultCardRequest"
+          ],
+          "return_type": "SetDefaultCardResponse",
+          "protocol": "gRPC",
+          "endpoint": "BillingService/SetDefaultCard"
+        }
+      ]
+    },
+    "service-account": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountsController.create",
+          "class_name": "AccountsController",
+          "method_name": "create",
+          "param_types": [
+            "CreateRequest"
+          ],
+          "return_type": "CreateResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Create"
+        },
+        {
+          "id": "AccountsController.delete",
+          "class_name": "AccountsController",
+          "method_name": "delete",
+          "param_types": [
+            "DeleteRequest"
+          ],
+          "return_type": "DeleteResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Delete"
+        },
+        {
+          "id": "AccountsController.login",
+          "class_name": "AccountsController",
+          "method_name": "login",
+          "param_types": [
+            "LoginRequest"
+          ],
+          "return_type": "LoginResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Login"
+        },
+        {
+          "id": "AccountsController.logout",
+          "class_name": "AccountsController",
+          "method_name": "logout",
+          "param_types": [
+            "LogoutRequest"
+          ],
+          "return_type": "LogoutResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Logout"
+        },
+        {
+          "id": "AccountsController.read",
+          "class_name": "AccountsController",
+          "method_name": "read",
+          "param_types": [
+            "ReadRequest"
+          ],
+          "return_type": "ReadResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Read"
+        },
+        {
+          "id": "AccountsController.readSession",
+          "class_name": "AccountsController",
+          "method_name": "readSession",
+          "param_types": [
+            "ReadSessionRequest"
+          ],
+          "return_type": "ReadSessionResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/ReadSession"
+        },
+        {
+          "id": "AccountsController.search",
+          "class_name": "AccountsController",
+          "method_name": "search",
+          "param_types": [
+            "SearchRequest"
+          ],
+          "return_type": "SearchResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Search"
+        },
+        {
+          "id": "AccountsController.resendVerificationCode",
+          "class_name": "AccountsController",
+          "method_name": "resendVerificationCode",
+          "param_types": [
+            "ResendVerificationCodeRequest"
+          ],
+          "return_type": "ResendVerificationCodeResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/ResendVerificationCode"
+        },
+        {
+          "id": "AccountsController.update",
+          "class_name": "AccountsController",
+          "method_name": "update",
+          "param_types": [
+            "UpdateRequest"
+          ],
+          "return_type": "UpdateResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/Update"
+        },
+        {
+          "id": "AccountsController.updatePassword",
+          "class_name": "AccountsController",
+          "method_name": "updatePassword",
+          "param_types": [
+            "UpdatePasswordRequest"
+          ],
+          "return_type": "UpdatePasswordResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/UpdatePassword"
+        },
+        {
+          "id": "AccountsController.verifyAccount",
+          "class_name": "AccountsController",
+          "method_name": "verifyAccount",
+          "param_types": [
+            "VerifyAccountRequest"
+          ],
+          "return_type": "VerifyAccountResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/VerifyAccount"
+        },
+        {
+          "id": "AccountsController.verifyActivationLink",
+          "class_name": "AccountsController",
+          "method_name": "verifyActivationLink",
+          "param_types": [
+            "VerifyActivationLinkRequest"
+          ],
+          "return_type": "VerifyActivationLinkResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/VerifyActivationLink"
+        },
+        {
+          "id": "AccountsController.forgotPassword",
+          "class_name": "AccountsController",
+          "method_name": "forgotPassword",
+          "param_types": [
+            "ForgotPasswordRequest"
+          ],
+          "return_type": "ForgotPasswordResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/ForgotPassword"
+        },
+        {
+          "id": "AccountSagas.stripeUserSaga",
+          "class_name": "AccountSagas",
+          "method_name": "stripeUserSaga",
+          "param_types": [
+            "StripeUserCreatedEvent"
+          ],
+          "return_type": "ICommand",
+          "protocol": "Messaging",
+          "endpoint": "$ce-billing/StripeUserCreatedEvent"
+        }
+      ]
+    },
+    "service-tenant": {
+      "exposed_interfaces": [
+        {
+          "id": "TenantsController.createTenant",
+          "class_name": "TenantsController",
+          "method_name": "createTenant",
+          "param_types": [
+            "CreateTenantRequest"
+          ],
+          "return_type": "CreateTenantResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/CreateTenant"
+        },
+        {
+          "id": "TenantsController.deleteTenant",
+          "class_name": "TenantsController",
+          "method_name": "deleteTenant",
+          "param_types": [
+            "DeleteTenantRequest"
+          ],
+          "return_type": "DeleteTenantResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/DeleteTenant"
+        },
+        {
+          "id": "TenantsController.findTenant",
+          "class_name": "TenantsController",
+          "method_name": "findTenant",
+          "param_types": [
+            "FindTenantRequest"
+          ],
+          "return_type": "FindTenantResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/FindTenant"
+        },
+        {
+          "id": "TenantsController.readTenant",
+          "class_name": "TenantsController",
+          "method_name": "readTenant",
+          "param_types": [
+            "ReadTenantRequest"
+          ],
+          "return_type": "ReadTenantResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/ReadTenant"
+        },
+        {
+          "id": "TenantsController.tenantAvailable",
+          "class_name": "TenantsController",
+          "method_name": "tenantAvailable",
+          "param_types": [
+            "TenantAvailableRequest"
+          ],
+          "return_type": "TenantAvailableResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/TenantAvailable"
+        },
+        {
+          "id": "TenantsController.updateTenant",
+          "class_name": "TenantsController",
+          "method_name": "updateTenant",
+          "param_types": [
+            "UpdateTenantRequest"
+          ],
+          "return_type": "UpdateTenantResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/UpdateTenant"
+        },
+        {
+          "id": "MembersController.acceptMemberInvitation",
+          "class_name": "MembersController",
+          "method_name": "acceptMemberInvitation",
+          "param_types": [
+            "AcceptMemberInvitationRequest"
+          ],
+          "return_type": "AcceptMemberInvitationResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/AcceptMemberInvitation"
+        },
+        {
+          "id": "MembersController.deleteMember",
+          "class_name": "MembersController",
+          "method_name": "deleteMember",
+          "param_types": [
+            "DeleteMemberRequest"
+          ],
+          "return_type": "DeleteMemberResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/DeleteMember"
+        },
+        {
+          "id": "MembersController.findMembers",
+          "class_name": "MembersController",
+          "method_name": "findMembers",
+          "param_types": [
+            "FindMemberRequest"
+          ],
+          "return_type": "FindMemberResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/FindMembers"
+        },
+        {
+          "id": "MembersController.inviteMember",
+          "class_name": "MembersController",
+          "method_name": "inviteMember",
+          "param_types": [
+            "InviteMemberRequest"
+          ],
+          "return_type": "InviteMemberResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/InviteMember"
+        },
+        {
+          "id": "MembersController.readMember",
+          "class_name": "MembersController",
+          "method_name": "readMember",
+          "param_types": [
+            "ReadMemberRequest"
+          ],
+          "return_type": "ReadMemberResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/ReadMember"
+        },
+        {
+          "id": "MembersController.updateMember",
+          "class_name": "MembersController",
+          "method_name": "updateMember",
+          "param_types": [
+            "UpdateMemberRequest"
+          ],
+          "return_type": "UpdateMemberResponse",
+          "protocol": "gRPC",
+          "endpoint": "TenantService/UpdateMember"
+        }
+      ]
+    },
+    "service-notification": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthSagas.resetPassword",
+          "class_name": "AuthSagas",
+          "method_name": "resetPassword",
+          "param_types": [
+            "ForgotPasswordSentEvent"
+          ],
+          "return_type": "ICommand",
+          "protocol": "Messaging",
+          "endpoint": "$ce-account/ForgotPasswordSentEvent"
+        },
+        {
+          "id": "AuthSagas.userRegistered",
+          "class_name": "AuthSagas",
+          "method_name": "userRegistered",
+          "param_types": [
+            "UserRegisteredEvent"
+          ],
+          "return_type": "ICommand",
+          "protocol": "Messaging",
+          "endpoint": "$ce-account/UserRegisteredEvent"
+        },
+        {
+          "id": "AuthSagas.resendVerificationCode",
+          "class_name": "AuthSagas",
+          "method_name": "resendVerificationCode",
+          "param_types": [
+            "VerificationEmailSentEvent"
+          ],
+          "return_type": "ICommand",
+          "protocol": "Messaging",
+          "endpoint": "$ce-account/VerificationEmailSentEvent"
+        },
+        {
+          "id": "AuthSagas.emailVerified",
+          "class_name": "AuthSagas",
+          "method_name": "emailVerified",
+          "param_types": [
+            "EmailVerifiedEvent"
+          ],
+          "return_type": "ICommand",
+          "protocol": "Messaging",
+          "endpoint": "$ce-account/EmailVerifiedEvent"
+        }
+      ]
+    },
+    "service-project": {
+      "exposed_interfaces": [
+        {
+          "id": "ProjectsController.createProject",
+          "class_name": "ProjectsController",
+          "method_name": "createProject",
+          "param_types": [
+            "CreateProjectRequest"
+          ],
+          "return_type": "CreateProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/CreateProject"
+        },
+        {
+          "id": "ProjectsController.deleteProject",
+          "class_name": "ProjectsController",
+          "method_name": "deleteProject",
+          "param_types": [
+            "DeleteProjectRequest"
+          ],
+          "return_type": "DeleteProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/DeleteProject"
+        },
+        {
+          "id": "ProjectsController.findProjects",
+          "class_name": "ProjectsController",
+          "method_name": "findProjects",
+          "param_types": [
+            "FindProjectsRequest"
+          ],
+          "return_type": "FindProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/FindProjects"
+        },
+        {
+          "id": "ProjectsController.readProject",
+          "class_name": "ProjectsController",
+          "method_name": "readProject",
+          "param_types": [
+            "ReadProjectRequest"
+          ],
+          "return_type": "ReadProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/ReadProject"
+        },
+        {
+          "id": "ProjectsController.updateProject",
+          "class_name": "ProjectsController",
+          "method_name": "updateProject",
+          "param_types": [
+            "UpdateProjectRequest"
+          ],
+          "return_type": "UpdateProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/UpdateProject"
+        }
+      ]
+    },
+    "api-admin": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountsController.facebookAuth",
+          "class_name": "AccountsController",
+          "method_name": "facebookAuth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /account/facebook"
+        },
+        {
+          "id": "AccountsController.googleAuth",
+          "class_name": "AccountsController",
+          "method_name": "googleAuth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /account/google"
+        },
+        {
+          "id": "AccountsController.githubAuth",
+          "class_name": "AccountsController",
+          "method_name": "githubAuth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /account/github"
+        },
+        {
+          "id": "AccessTokenResolver.accessTokens",
+          "class_name": "AccessTokenResolver",
+          "method_name": "accessTokens",
+          "param_types": [
+            "AccessTokenFilterArgs"
+          ],
+          "return_type": "List<AccessToken>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.accessTokens"
+        },
+        {
+          "id": "AccessTokenResolver.accessToken",
+          "class_name": "AccessTokenResolver",
+          "method_name": "accessToken",
+          "param_types": [
+            "ReadAccessTokenInput"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "GraphQL",
+          "endpoint": "Query.accessToken"
+        },
+        {
+          "id": "AccessTokenMutationResolver.delete",
+          "class_name": "AccessTokenMutationResolver",
+          "method_name": "delete",
+          "param_types": [
+            "DeleteAccessTokenInput"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "GraphQL",
+          "endpoint": "AccessTokenMutations.delete"
+        },
+        {
+          "id": "AccessTokenMutationResolver.create",
+          "class_name": "AccessTokenMutationResolver",
+          "method_name": "create",
+          "param_types": [
+            "CreateAccessTokenInput"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "GraphQL",
+          "endpoint": "AccessTokenMutations.create"
+        },
+        {
+          "id": "AccountsMutationResolver.login",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "login",
+          "param_types": [
+            "LoginInput"
+          ],
+          "return_type": "Account",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.login"
+        },
+        {
+          "id": "AccountsMutationResolver.register",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "register",
+          "param_types": [
+            "RegisterInput"
+          ],
+          "return_type": "AccountRegisterResponse",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.register"
+        },
+        {
+          "id": "AccountsMutationResolver.sendResetPasswordEmail",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "sendResetPasswordEmail",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "BooleanPayload",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.sendResetPasswordEmail"
+        },
+        {
+          "id": "AccountsMutationResolver.sendVerificationEmail",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "sendVerificationEmail",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "BooleanPayload",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.sendVerificationEmail"
+        },
+        {
+          "id": "AccountsMutationResolver.changePassword",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "changePassword",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "BooleanPayload",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.changePassword"
+        },
+        {
+          "id": "AccountsMutationResolver.refreshTokens",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "refreshTokens",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Account",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.refreshTokens"
+        },
+        {
+          "id": "AccountsMutationResolver.verifyAccount",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "verifyAccount",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "BooleanPayload",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.verifyAccount"
+        },
+        {
+          "id": "AccountsMutationResolver.verifyExpireToken",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "verifyExpireToken",
+          "param_types": [
+            "number",
+            "string"
+          ],
+          "return_type": "ExpirableTokens",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.verifyExpireToken"
+        },
+        {
+          "id": "AccountsMutationResolver.verifyActivationLink",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "verifyActivationLink",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VerificationLinkInfo",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.verifyActivationLink"
+        },
+        {
+          "id": "AccountsMutationResolver.logout",
+          "class_name": "AccountsMutationResolver",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "BooleanPayload",
+          "protocol": "GraphQL",
+          "endpoint": "AccountMutations.logout"
+        },
+        {
+          "id": "BillingsResolver.invoice",
+          "class_name": "BillingsResolver",
+          "method_name": "invoice",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Invoice",
+          "protocol": "GraphQL",
+          "endpoint": "Billing.invoice"
+        },
+        {
+          "id": "BillingsResolver.invoices",
+          "class_name": "BillingsResolver",
+          "method_name": "invoices",
+          "param_types": [],
+          "return_type": "List<Invoice>",
+          "protocol": "GraphQL",
+          "endpoint": "Billing.invoices"
+        },
+        {
+          "id": "BillingsResolver.subscription",
+          "class_name": "BillingsResolver",
+          "method_name": "subscription",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "TenantSubscription",
+          "protocol": "GraphQL",
+          "endpoint": "Billing.subscription"
+        },
+        {
+          "id": "BillingsResolver.subscriptions",
+          "class_name": "BillingsResolver",
+          "method_name": "subscriptions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<TenantSubscription>",
+          "protocol": "GraphQL",
+          "endpoint": "Billing.subscriptions"
+        },
+        {
+          "id": "BillingsMutationResolver.changeSubscription",
+          "class_name": "BillingsMutationResolver",
+          "method_name": "changeSubscription",
+          "param_types": [
+            "ChangeSubscriptionInput"
+          ],
+          "return_type": "TenantSubscription",
+          "protocol": "GraphQL",
+          "endpoint": "BillingMutations.changeSubscription"
+        },
+        {
+          "id": "BillingsMutationResolver.cancelSubscription",
+          "class_name": "BillingsMutationResolver",
+          "method_name": "cancelSubscription",
+          "param_types": [],
+          "return_type": "TenantSubscription",
+          "protocol": "GraphQL",
+          "endpoint": "BillingMutations.cancelSubscription"
+        },
+        {
+          "id": "CardsResolver.card",
+          "class_name": "CardsResolver",
+          "method_name": "card",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Card",
+          "protocol": "GraphQL",
+          "endpoint": "Query.card"
+        },
+        {
+          "id": "CardsResolver.cards",
+          "class_name": "CardsResolver",
+          "method_name": "cards",
+          "param_types": [],
+          "return_type": "List<Card>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.cards"
+        },
+        {
+          "id": "CardsMutationResolver.create",
+          "class_name": "CardsMutationResolver",
+          "method_name": "create",
+          "param_types": [
+            "CreateCardInput"
+          ],
+          "return_type": "Card",
+          "protocol": "GraphQL",
+          "endpoint": "CardMutations.create"
+        },
+        {
+          "id": "CardsMutationResolver.delete",
+          "class_name": "CardsMutationResolver",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Card",
+          "protocol": "GraphQL",
+          "endpoint": "CardMutations.delete"
+        },
+        {
+          "id": "CardsMutationResolver.setDefault",
+          "class_name": "CardsMutationResolver",
+          "method_name": "setDefault",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Card",
+          "protocol": "GraphQL",
+          "endpoint": "CardMutations.setDefault"
+        },
+        {
+          "id": "PlansResolver.plan",
+          "class_name": "PlansResolver",
+          "method_name": "plan",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Plan",
+          "protocol": "GraphQL",
+          "endpoint": "Query.plan"
+        },
+        {
+          "id": "PlansResolver.plans",
+          "class_name": "PlansResolver",
+          "method_name": "plans",
+          "param_types": [],
+          "return_type": "List<Plan>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.plans"
+        },
+        {
+          "id": "PlansResolver.prices",
+          "class_name": "PlansResolver",
+          "method_name": "prices",
+          "param_types": [
+            "Plan"
+          ],
+          "return_type": "List<StripePlan>",
+          "protocol": "GraphQL",
+          "endpoint": "Plan.prices"
+        },
+        {
+          "id": "RolesResolver.roles",
+          "class_name": "RolesResolver",
+          "method_name": "roles",
+          "param_types": [],
+          "return_type": "List<Role>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.roles"
+        },
+        {
+          "id": "RolesResolver.role",
+          "class_name": "RolesResolver",
+          "method_name": "role",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Role",
+          "protocol": "GraphQL",
+          "endpoint": "Query.role"
+        },
+        {
+          "id": "TenantMembersResolver.member",
+          "class_name": "TenantMembersResolver",
+          "method_name": "member",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "TenantMemberEmbed",
+          "protocol": "GraphQL",
+          "endpoint": "Query.member"
+        },
+        {
+          "id": "TenantMembersResolver.members",
+          "class_name": "TenantMembersResolver",
+          "method_name": "members",
+          "param_types": [
+            "MemberFilterArgs"
+          ],
+          "return_type": "List<TenantMemberEmbed>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.members"
+        },
+        {
+          "id": "TenantMembersResolver.fullName",
+          "class_name": "TenantMembersResolver",
+          "method_name": "fullName",
+          "param_types": [
+            "Member"
+          ],
+          "return_type": "string",
+          "protocol": "GraphQL",
+          "endpoint": "Member.displayName"
+        },
+        {
+          "id": "TenantMembersMutationResolver.invite",
+          "class_name": "TenantMembersMutationResolver",
+          "method_name": "invite",
+          "param_types": [
+            "InviteMemberInput"
+          ],
+          "return_type": "Member",
+          "protocol": "GraphQL",
+          "endpoint": "MemberMutations.invite"
+        },
+        {
+          "id": "TenantMembersMutationResolver.update",
+          "class_name": "TenantMembersMutationResolver",
+          "method_name": "update",
+          "param_types": [
+            "UpdateMemberInput"
+          ],
+          "return_type": "Member",
+          "protocol": "GraphQL",
+          "endpoint": "MemberMutations.update"
+        },
+        {
+          "id": "TenantMembersMutationResolver.delete",
+          "class_name": "TenantMembersMutationResolver",
+          "method_name": "delete",
+          "param_types": [
+            "DeleteMemberInput"
+          ],
+          "return_type": "Member",
+          "protocol": "GraphQL",
+          "endpoint": "MemberMutations.delete"
+        },
+        {
+          "id": "TenantsResolver.tenantAvailable",
+          "class_name": "TenantsResolver",
+          "method_name": "tenantAvailable",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "GraphQL",
+          "endpoint": "Query.tenantAvailable"
+        },
+        {
+          "id": "TenantsResolver.tenant",
+          "class_name": "TenantsResolver",
+          "method_name": "tenant",
+          "param_types": [
+            "TenantFilterInput"
+          ],
+          "return_type": "Tenant",
+          "protocol": "GraphQL",
+          "endpoint": "Query.tenant"
+        },
+        {
+          "id": "TenantsResolver.tenants",
+          "class_name": "TenantsResolver",
+          "method_name": "tenants",
+          "param_types": [
+            "TenantFilterArgs"
+          ],
+          "return_type": "List<Tenant>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.tenants"
+        },
+        {
+          "id": "TenantsResolver.owner",
+          "class_name": "TenantsResolver",
+          "method_name": "owner",
+          "param_types": [
+            "Tenant"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Tenant.owner"
+        },
+        {
+          "id": "TenantsMutationResolver.create",
+          "class_name": "TenantsMutationResolver",
+          "method_name": "create",
+          "param_types": [
+            "CreateTenantInput"
+          ],
+          "return_type": "Tenant",
+          "protocol": "GraphQL",
+          "endpoint": "TenantMutations.create"
+        },
+        {
+          "id": "TenantsMutationResolver.update",
+          "class_name": "TenantsMutationResolver",
+          "method_name": "update",
+          "param_types": [
+            "UpdateTenantInput"
+          ],
+          "return_type": "Tenant",
+          "protocol": "GraphQL",
+          "endpoint": "TenantMutations.update"
+        },
+        {
+          "id": "TenantsMutationResolver.delete",
+          "class_name": "TenantsMutationResolver",
+          "method_name": "delete",
+          "param_types": [
+            "DeleteTenantInput"
+          ],
+          "return_type": "Tenant",
+          "protocol": "GraphQL",
+          "endpoint": "TenantMutations.delete"
+        },
+        {
+          "id": "UsersResolver.profile",
+          "class_name": "UsersResolver",
+          "method_name": "profile",
+          "param_types": [],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.profile"
+        },
+        {
+          "id": "UsersResolver.primaryEmail",
+          "class_name": "UsersResolver",
+          "method_name": "primaryEmail",
+          "param_types": [
+            "UserEntity"
+          ],
+          "return_type": "string",
+          "protocol": "GraphQL",
+          "endpoint": "User.primaryEmail"
+        },
+        {
+          "id": "UsersResolver.roles",
+          "class_name": "UsersResolver",
+          "method_name": "roles",
+          "param_types": [
+            "UserEntity"
+          ],
+          "return_type": "List<string>",
+          "protocol": "GraphQL",
+          "endpoint": "User.roles"
+        },
+        {
+          "id": "UsersMutationResolver.update",
+          "class_name": "UsersMutationResolver",
+          "method_name": "update",
+          "param_types": [
+            "UpdateUserInput"
+          ],
+          "return_type": "string",
+          "protocol": "GraphQL",
+          "endpoint": "ProfileMutations.update"
+        },
+        {
+          "id": "WebhooksResolver.webhook",
+          "class_name": "WebhooksResolver",
+          "method_name": "webhook",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Webhook",
+          "protocol": "GraphQL",
+          "endpoint": "Query.webhook"
+        },
+        {
+          "id": "WebhooksResolver.webhooks",
+          "class_name": "WebhooksResolver",
+          "method_name": "webhooks",
+          "param_types": [
+            "WebhookFilterArgs"
+          ],
+          "return_type": "List<Webhook>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.webhooks"
+        },
+        {
+          "id": "WebhooksMutationResolver.create",
+          "class_name": "WebhooksMutationResolver",
+          "method_name": "create",
+          "param_types": [
+            "CreateWebhookInput"
+          ],
+          "return_type": "Webhook",
+          "protocol": "GraphQL",
+          "endpoint": "WebhookMutations.create"
+        },
+        {
+          "id": "WebhooksMutationResolver.update",
+          "class_name": "WebhooksMutationResolver",
+          "method_name": "update",
+          "param_types": [
+            "UpdateWebhookInput"
+          ],
+          "return_type": "Webhook",
+          "protocol": "GraphQL",
+          "endpoint": "WebhookMutations.update"
+        },
+        {
+          "id": "WebhooksMutationResolver.remove",
+          "class_name": "WebhooksMutationResolver",
+          "method_name": "remove",
+          "param_types": [
+            "DeleteWebhookInput"
+          ],
+          "return_type": "Webhook",
+          "protocol": "GraphQL",
+          "endpoint": "WebhookMutations.delete"
+        }
+      ]
+    },
+    "service-role": {
+      "exposed_interfaces": [
+        {
+          "id": "RolesController.hasRights",
+          "class_name": "RolesController",
+          "method_name": "hasRights",
+          "param_types": [
+            "HasRightsRequest"
+          ],
+          "return_type": "HasRightsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/HasRights"
+        },
+        {
+          "id": "RolesController.readUserRoles",
+          "class_name": "RolesController",
+          "method_name": "readUserRoles",
+          "param_types": [
+            "ReadUserRolesRequest"
+          ],
+          "return_type": "ReadUserRolesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/ReadUserRoles"
+        },
+        {
+          "id": "RolesController.addUserToRole",
+          "class_name": "RolesController",
+          "method_name": "addUserToRole",
+          "param_types": [
+            "AddUserToRoleRequest"
+          ],
+          "return_type": "AddUserToRoleResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/AddUserToRole"
+        },
+        {
+          "id": "RolesController.addTenantRoles",
+          "class_name": "RolesController",
+          "method_name": "addTenantRoles",
+          "param_types": [
+            "AddTenantRolesRequest"
+          ],
+          "return_type": "AddTenantRolesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/AddTenantRoles"
+        },
+        {
+          "id": "RolesController.createRole",
+          "class_name": "RolesController",
+          "method_name": "createRole",
+          "param_types": [
+            "CreateRoleRequest"
+          ],
+          "return_type": "CreateRoleResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/CreateRole"
+        },
+        {
+          "id": "RolesController.readRole",
+          "class_name": "RolesController",
+          "method_name": "readRole",
+          "param_types": [
+            "ReadRoleRequest"
+          ],
+          "return_type": "ReadRoleResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/ReadRole"
+        },
+        {
+          "id": "RolesController.removeUserFromRole",
+          "class_name": "RolesController",
+          "method_name": "removeUserFromRole",
+          "param_types": [
+            "RemoveUserFromRoleRequest"
+          ],
+          "return_type": "RemoveUserFromRoleResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/RemoveUserFromRole"
+        },
+        {
+          "id": "RolesController.addPolicy",
+          "class_name": "RolesController",
+          "method_name": "addPolicy",
+          "param_types": [
+            "AddPolicyRequest"
+          ],
+          "return_type": "AddPolicyResponse",
+          "protocol": "gRPC",
+          "endpoint": "RoleService/AddPolicy"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "api-admin",
+      "src_class": "AccessTokenResolver",
+      "src_method": "accessTokens",
+      "dst_service": "service-access",
+      "dst_class": "AccessTokenController",
+      "dst_interface_id": "AccessTokenController.findAccess",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/access-token/access-token.resolver.ts:38 ctx?.rpc?.accessToken?.svc.findAccess(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccessTokenResolver",
+      "src_method": "accessToken",
+      "dst_service": "service-access",
+      "dst_class": "AccessTokenController",
+      "dst_interface_id": "AccessTokenController.readAccess",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/access-token/access-token.resolver.ts:62 ctx?.rpc?.accessToken?.svc.readAccess(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccessTokenMutationResolver",
+      "src_method": "delete",
+      "dst_service": "service-access",
+      "dst_class": "AccessTokenController",
+      "dst_interface_id": "AccessTokenController.deleteAccess",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/access-token/access-token-mutation.resolver.ts:30 ctx?.rpc?.accessToken?.svc.deleteAccess(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccessTokenMutationResolver",
+      "src_method": "create",
+      "dst_service": "service-access",
+      "dst_class": "AccessTokenController",
+      "dst_interface_id": "AccessTokenController.createAccess",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/access-token/access-token-mutation.resolver.ts:54 ctx?.rpc?.accessToken?.svc.createAccess(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsMutationResolver",
+      "src_method": "register",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.create",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts-mutation.resolver.ts:96 ctx?.rpc?.account?.svc.create(CreateRequest.fromJSON(payload))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsMutationResolver",
+      "src_method": "sendResetPasswordEmail",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.forgotPassword",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts-mutation.resolver.ts:104 ctx?.rpc?.account?.svc.forgotPassword({ email })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsMutationResolver",
+      "src_method": "sendVerificationEmail",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.resendVerificationCode",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts-mutation.resolver.ts:114 ctx?.rpc?.account?.svc.resendVerificationCode({ email })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsMutationResolver",
+      "src_method": "verifyAccount",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.verifyAccount",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts-mutation.resolver.ts:142 ctx?.rpc?.account?.svc.verifyAccount({ pincode, email })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsMutationResolver",
+      "src_method": "verifyActivationLink",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.verifyActivationLink",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts-mutation.resolver.ts:163 ctx?.rpc?.account?.svc.verifyActivationLink({ token })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsService",
+      "src_method": "loginCmd",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.login",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts.service.ts:25 this.accountRpcClient.svc.login(input, null)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "AccountsService",
+      "src_method": "createUser",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.create",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/accounts/accounts.service.ts:48 this.accountRpcClient.svc.create(input, null)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsResolver",
+      "src_method": "invoice",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.readInvoice",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings.resolver.ts:34 ctx?.rpc?.billing?.svc.readInvoice({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsResolver",
+      "src_method": "invoices",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.findInvoices",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings.resolver.ts:49 ctx?.rpc?.billing?.svc.findInvoices({}, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsResolver",
+      "src_method": "subscription",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.readSubscription",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings.resolver.ts:73 ctx?.rpc?.billing?.svc.readSubscription({ id, tenantId }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsResolver",
+      "src_method": "subscriptions",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.findSubscriptions",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings.resolver.ts:91 ctx?.rpc?.billing?.svc.findSubscriptions({ tenantId }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsMutationResolver",
+      "src_method": "changeSubscription",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.changeSubscription",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings-mutation.resolver.ts:31 ctx?.rpc?.billing?.svc.changeSubscription(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "BillingsMutationResolver",
+      "src_method": "cancelSubscription",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.cancelSubscription",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/billings/billings-mutation.resolver.ts:59 ctx?.rpc?.billing?.svc.cancelSubscription(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "CardsResolver",
+      "src_method": "card",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.readCard",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/cards/cards.resolver.ts:33 ctx?.rpc?.billing?.svc.readCard({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "CardsResolver",
+      "src_method": "cards",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.findCards",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/cards/cards.resolver.ts:48 ctx?.rpc?.billing?.svc.findCards({}, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "CardsMutationResolver",
+      "src_method": "create",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.createCard",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/cards/cards.resolver.ts:83 ctx?.rpc?.billing?.svc.createCard(CreateCardRequest.fromJSON({ ...input }), setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "CardsMutationResolver",
+      "src_method": "delete",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.deleteCard",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/cards/cards.resolver.ts:106 ctx?.rpc?.billing?.svc.deleteCard({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "CardsMutationResolver",
+      "src_method": "setDefault",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.setDefaultCard",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/cards/cards.resolver.ts:122 ctx?.rpc?.billing?.svc.setDefaultCard({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "PlansResolver",
+      "src_method": "plan",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.readPlan",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/plans/plans.resolver.ts:24 ctx?.rpc?.billing?.svc.readPlan({ id })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "PlansResolver",
+      "src_method": "plans",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.findPlans",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/plans/plans.resolver.ts:30 ctx?.rpc?.billing?.svc.findPlans({})"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "PlansResolver",
+      "src_method": "prices",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.findStripePlans",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/plans/plans.resolver.ts:39 ctx?.rpc?.billing?.svc.findStripePlans({ productId: parent.normalizedName })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersResolver",
+      "src_method": "member",
+      "dst_service": "service-tenant",
+      "dst_class": "MembersController",
+      "dst_interface_id": "MembersController.readMember",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members.resolver.ts:39 ctx?.rpc?.tenant.svc.readMember({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersResolver",
+      "src_method": "members",
+      "dst_service": "service-tenant",
+      "dst_class": "MembersController",
+      "dst_interface_id": "MembersController.findMembers",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members.resolver.ts:59 ctx?.rpc?.tenant.svc.findMembers(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersResolver",
+      "src_method": "fullName",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.read",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members.resolver.ts:86 ctx?.rpc?.account.svc.read({ query: JSON.stringify(filter) }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersMutationResolver",
+      "src_method": "invite",
+      "dst_service": "service-tenant",
+      "dst_class": "MembersController",
+      "dst_interface_id": "MembersController.inviteMember",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts:32 ctx?.rpc?.tenant.svc.inviteMember(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersMutationResolver",
+      "src_method": "update",
+      "dst_service": "service-tenant",
+      "dst_class": "MembersController",
+      "dst_interface_id": "MembersController.updateMember",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts:58 ctx?.rpc?.tenant.svc.updateMember(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantMembersMutationResolver",
+      "src_method": "delete",
+      "dst_service": "service-tenant",
+      "dst_class": "MembersController",
+      "dst_interface_id": "MembersController.deleteMember",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenant-members/tenant-members-mutation.resolver.ts:84 ctx?.rpc?.tenant.svc.deleteMember({ id: input.id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsResolver",
+      "src_method": "tenantAvailable",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.tenantAvailable",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants.resolver.ts:41 ctx?.rpc?.tenant.svc.tenantAvailable({ identifier }, null)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsResolver",
+      "src_method": "tenant",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.readTenant",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants.resolver.ts:64 ctx?.rpc?.tenant.svc.readTenant({ filter: JSON.stringify(filter) }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsResolver",
+      "src_method": "tenants",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.findTenant",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants.resolver.ts:84 ctx?.rpc?.tenant.svc.findTenant({ filter }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsResolver",
+      "src_method": "owner",
+      "dst_service": "service-account",
+      "dst_class": "AccountsController",
+      "dst_interface_id": "AccountsController.read",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants.resolver.ts:102 ctx?.rpc?.account.svc.read({ query: JSON.stringify(filter) }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsMutationResolver",
+      "src_method": "create",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.createTenant",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants-mutation.resolver.ts:36 ctx?.rpc?.tenant.svc.createTenant(CreateTenantRequest.fromJSON(input), setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsMutationResolver",
+      "src_method": "update",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.updateTenant",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants-mutation.resolver.ts:55 ctx?.rpc?.tenant.svc.updateTenant(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "TenantsMutationResolver",
+      "src_method": "delete",
+      "dst_service": "service-tenant",
+      "dst_class": "TenantsController",
+      "dst_interface_id": "TenantsController.deleteTenant",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/tenants/tenants-mutation.resolver.ts:80 ctx?.rpc?.tenant.svc.deleteTenant({ id: input.id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "UsersResolver",
+      "src_method": "roles",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.readUserRoles",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/users/users.resolver.ts:45 ctx?.rpc?.role.svc.readUserRoles({ userId: parent.id.toString(), tenant: '*' })"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "WebhooksResolver",
+      "src_method": "webhook",
+      "dst_service": "service-webhook",
+      "dst_class": "WebhookController",
+      "dst_interface_id": "WebhookController.readWebhook",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/webhooks/webhooks.resolver.ts:14 ctx?.rpc?.webhook?.svc?.readWebhook({ id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "WebhooksResolver",
+      "src_method": "webhooks",
+      "dst_service": "service-webhook",
+      "dst_class": "WebhookController",
+      "dst_interface_id": "WebhookController.findWebhook",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/webhooks/webhooks.resolver.ts:31 ctx?.rpc?.webhook?.svc?.findWebhook(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "WebhooksMutationResolver",
+      "src_method": "create",
+      "dst_service": "service-webhook",
+      "dst_class": "WebhookController",
+      "dst_interface_id": "WebhookController.createWebhook",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts:62 ctx?.rpc?.webhook?.svc?.createWebhook(CreateWebhookRequest.fromJSON(cont), setRpcContext(ctx))"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "WebhooksMutationResolver",
+      "src_method": "update",
+      "dst_service": "service-webhook",
+      "dst_class": "WebhookController",
+      "dst_interface_id": "WebhookController.updateWebhook",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts:81 ctx?.rpc?.webhook?.svc?.updateWebhook(...)"
+    },
+    {
+      "src_service": "api-admin",
+      "src_class": "WebhooksMutationResolver",
+      "src_method": "remove",
+      "dst_service": "service-webhook",
+      "dst_class": "WebhookController",
+      "dst_interface_id": "WebhookController.deleteWebhook",
+      "protocol": "gRPC",
+      "evidence": "apps/api-admin/src/webhooks/webhooks-mutation.resolver.ts:106 ctx?.rpc?.webhook?.svc?.deleteWebhook({ id: input.id }, setRpcContext(ctx))"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "RegisterUserHandler",
+      "src_method": "execute",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.addUserToRole",
+      "protocol": "gRPC",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts:145 this.roleClient.svc.addUserToRole(...)"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "RegisterUserHandler",
+      "src_method": "execute",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.createCustomer",
+      "protocol": "gRPC",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts:153 this.billingClient.svc.createCustomer(...)"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "RegisterUserHandler",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "AuthSagas",
+      "dst_interface_id": "AuthSagas.userRegistered",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/register-user.handler.ts:181 this.eventBus.publish(new UserRegisteredEvent(newUser))"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "ResendVerificationEmailHandler",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "AuthSagas",
+      "dst_interface_id": "AuthSagas.resendVerificationCode",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/resend-verification-email.handler.ts:88 this.eventBus.publish(new VerificationEmailSentEvent(updatedUser))"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "ForgotPasswordHandler",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "AuthSagas",
+      "dst_interface_id": "AuthSagas.resetPassword",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/forgot-password.handler.ts:58 this.eventBus.publish(new ForgotPasswordSentEvent(user))"
+    },
+    {
+      "src_service": "service-account",
+      "src_class": "VerifyEmailHandler",
+      "src_method": "execute",
+      "dst_service": "service-notification",
+      "dst_class": "AuthSagas",
+      "dst_interface_id": "AuthSagas.emailVerified",
+      "protocol": "Messaging",
+      "evidence": "apps/service-account/src/accounts/cqrs/commands/handlers/account/verify-email.handler.ts:67 this.eventBus.publish(new EmailVerifiedEvent(updatedUser))"
+    },
+    {
+      "src_service": "service-billing",
+      "src_class": "CreateStripeCustomerHandler",
+      "src_method": "execute",
+      "dst_service": "service-account",
+      "dst_class": "AccountSagas",
+      "dst_interface_id": "AccountSagas.stripeUserSaga",
+      "protocol": "Messaging",
+      "evidence": "apps/service-billing/src/billings/cqrs/command/handlers/customer/create-stripe-customer.handler.ts:51 await this.eventBus.publish(new StripeUserCreatedEvent(customerMod))"
+    },
+    {
+      "src_service": "service-tenant",
+      "src_class": "CreateTenantHandler",
+      "src_method": "execute",
+      "dst_service": "service-billing",
+      "dst_class": "BillingsController",
+      "dst_interface_id": "BillingsController.createSubscription",
+      "protocol": "gRPC",
+      "evidence": "apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts:105 this.billingService.svc.createSubscription(...)"
+    },
+    {
+      "src_service": "service-tenant",
+      "src_class": "CreateTenantHandler",
+      "src_method": "execute",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.addUserToRole",
+      "protocol": "gRPC",
+      "evidence": "apps/service-tenant/src/tenants/cqrs/command/handlers/tenant/create-tenant.handler.ts:127 this.roleService.svc.addUserToRole(...)"
+    },
+    {
+      "src_service": "service-tenant",
+      "src_class": "InviteMemberHandler",
+      "src_method": "execute",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.addUserToRole",
+      "protocol": "gRPC",
+      "evidence": "apps/service-tenant/src/members/cqrs/command/handlers/member/invite-member.handler.ts:111 await this.roleService.svc.addUserToRole(...)"
+    },
+    {
+      "src_service": "service-tenant",
+      "src_class": "RemoveMemberHandler",
+      "src_method": "execute",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.removeUserFromRole",
+      "protocol": "gRPC",
+      "evidence": "apps/service-tenant/src/members/cqrs/command/handlers/member/remove-member.handler.ts:93 await this.roleService.svc.removeUserFromRole({ tenantId, userId: member.userId.toString() })"
+    },
+    {
+      "src_service": "service-tenant",
+      "src_class": "AcceptInvitationHandler",
+      "src_method": "execute",
+      "dst_service": "service-role",
+      "dst_class": "RolesController",
+      "dst_interface_id": "RolesController.addUserToRole",
+      "protocol": "gRPC",
+      "evidence": "apps/service-tenant/src/members/cqrs/command/handlers/member/accept-invitation.handler.ts:67 await this.roleService.svc.addUserToRole(...)"
+    }
+  ]
+}

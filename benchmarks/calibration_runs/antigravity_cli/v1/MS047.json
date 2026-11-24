@@ -1,0 +1,419 @@
+{
+  "system_id": "MS047",
+  "extractor_tool": "antigravity-cli",
+  "prompt_version": "v1.0",
+  "status": "verified",
+  "microservices": {
+    "catalogue": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getProducts",
+          "class_name": "server",
+          "method_name": "getProducts",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products"
+        },
+        {
+          "id": "server.getProduct",
+          "class_name": "server",
+          "method_name": "getProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /product/:sku"
+        },
+        {
+          "id": "server.getProductsByCategory",
+          "class_name": "server",
+          "method_name": "getProductsByCategory",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /products/:cat"
+        },
+        {
+          "id": "server.getCategories",
+          "class_name": "server",
+          "method_name": "getCategories",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /categories"
+        },
+        {
+          "id": "server.search",
+          "class_name": "server",
+          "method_name": "search",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /search/:text"
+        }
+      ]
+    },
+    "user": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getUniqueId",
+          "class_name": "server",
+          "method_name": "getUniqueId",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /uniqueid"
+        },
+        {
+          "id": "server.checkUser",
+          "class_name": "server",
+          "method_name": "checkUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /check/:id"
+        },
+        {
+          "id": "server.getUsers",
+          "class_name": "server",
+          "method_name": "getUsers",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "server.login",
+          "class_name": "server",
+          "method_name": "login",
+          "param_types": [
+            "LoginRequest"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /login"
+        },
+        {
+          "id": "server.register",
+          "class_name": "server",
+          "method_name": "register",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /register"
+        },
+        {
+          "id": "server.addOrder",
+          "class_name": "server",
+          "method_name": "addOrder",
+          "param_types": [
+            "String",
+            "Order"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /order/:id"
+        },
+        {
+          "id": "server.getHistory",
+          "class_name": "server",
+          "method_name": "getHistory",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OrderHistory",
+          "protocol": "REST",
+          "endpoint": "GET /history/:id"
+        }
+      ]
+    },
+    "cart": {
+      "exposed_interfaces": [
+        {
+          "id": "server.getCart",
+          "class_name": "server",
+          "method_name": "getCart",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "GET /cart/:id"
+        },
+        {
+          "id": "server.deleteCart",
+          "class_name": "server",
+          "method_name": "deleteCart",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /cart/:id"
+        },
+        {
+          "id": "server.renameCart",
+          "class_name": "server",
+          "method_name": "renameCart",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "GET /rename/:from/:to"
+        },
+        {
+          "id": "server.addToCart",
+          "class_name": "server",
+          "method_name": "addToCart",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "GET /add/:id/:sku/:qty"
+        },
+        {
+          "id": "server.updateCart",
+          "class_name": "server",
+          "method_name": "updateCart",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "GET /update/:id/:sku/:qty"
+        },
+        {
+          "id": "server.addShipping",
+          "class_name": "server",
+          "method_name": "addShipping",
+          "param_types": [
+            "String",
+            "Shipping"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "POST /shipping/:id"
+        }
+      ]
+    },
+    "shipping": {
+      "exposed_interfaces": [
+        {
+          "id": "Controller.count",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "count",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /count"
+        },
+        {
+          "id": "Controller.codes",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "codes",
+          "param_types": [],
+          "return_type": "List<Code>",
+          "protocol": "REST",
+          "endpoint": "GET /codes"
+        },
+        {
+          "id": "Controller.cities",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "cities",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": "GET /cities/{code}"
+        },
+        {
+          "id": "Controller.match",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "match",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<City>",
+          "protocol": "REST",
+          "endpoint": "GET /match/{code}/{text}"
+        },
+        {
+          "id": "Controller.caclc",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "caclc",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Ship",
+          "protocol": "REST",
+          "endpoint": "GET /calc/{id}"
+        },
+        {
+          "id": "Controller.confirm",
+          "class_name": "com.instana.robotshop.shipping.Controller",
+          "method_name": "confirm",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /confirm/{id}"
+        }
+      ]
+    },
+    "ratings": {
+      "exposed_interfaces": [
+        {
+          "id": "RatingsApiController.put",
+          "class_name": "Instana\\RobotShop\\Ratings\\Controller\\RatingsApiController",
+          "method_name": "put",
+          "param_types": [
+            "String",
+            "int"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/rate/{sku}/{score}"
+        },
+        {
+          "id": "RatingsApiController.get",
+          "class_name": "Instana\\RobotShop\\Ratings\\Controller\\RatingsApiController",
+          "method_name": "get",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Rating",
+          "protocol": "REST",
+          "endpoint": "GET /api/fetch/{sku}"
+        }
+      ]
+    },
+    "payment": {
+      "exposed_interfaces": [
+        {
+          "id": "payment.pay",
+          "class_name": "payment",
+          "method_name": "pay",
+          "param_types": [
+            "String",
+            "Cart"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /pay/<id>"
+        }
+      ]
+    },
+    "dispatch": {
+      "exposed_interfaces": [
+        {
+          "id": "main.createSpan",
+          "class_name": "main",
+          "method_name": "createSpan",
+          "param_types": [
+            "map[string]interface{}",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "robot-shop/orders"
+        }
+      ]
+    },
+    "web": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "cart",
+      "src_class": "server",
+      "src_method": "getProduct",
+      "dst_service": "catalogue",
+      "dst_class": "server",
+      "dst_interface_id": "server.getProduct",
+      "protocol": "REST",
+      "evidence": "cart/server.js:362 request('http://' + catalogueHost + ':8080/product/' + sku, ...)"
+    },
+    {
+      "src_service": "shipping",
+      "src_class": "com.instana.robotshop.shipping.CartHelper",
+      "src_method": "addToCart",
+      "dst_service": "cart",
+      "dst_class": "server",
+      "dst_interface_id": "server.addShipping",
+      "protocol": "REST",
+      "evidence": "shipping/src/main/java/com/instana/robotshop/shipping/CartHelper.java:40 HttpPost postRequest = new HttpPost(baseUrl + id); (CART_ENDPOINT=cart:8080, path /shipping/)"
+    },
+    {
+      "src_service": "ratings",
+      "src_class": "Instana\\RobotShop\\Ratings\\Service\\CatalogueService",
+      "src_method": "checkSKU",
+      "dst_service": "catalogue",
+      "dst_class": "server",
+      "dst_interface_id": "server.getProduct",
+      "protocol": "REST",
+      "evidence": "ratings/html/src/Service/CatalogueService.php:27-35 $url = sprintf('%s/product/%s', $this->catalogueUrl, $sku); $data = curl_exec($curl);"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "user",
+      "dst_class": "server",
+      "dst_interface_id": "server.checkUser",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:64 req = requests.get('http://{user}:8080/check/{id}'.format(user=USER, id=id))"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "user",
+      "dst_class": "server",
+      "dst_interface_id": "server.addOrder",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:106 req = requests.post('http://{user}:8080/order/{id}'.format(user=USER, id=id), ...)"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "payment",
+      "src_method": "pay",
+      "dst_service": "cart",
+      "dst_class": "server",
+      "dst_interface_id": "server.deleteCart",
+      "protocol": "REST",
+      "evidence": "payment/payment.py:116 req = requests.delete('http://{cart}:8080/cart/{id}'.format(cart=CART, id=id))"
+    },
+    {
+      "src_service": "payment",
+      "src_class": "rabbitmq.Publisher",
+      "src_method": "publish",
+      "dst_service": "dispatch",
+      "dst_class": "main",
+      "dst_interface_id": "main.createSpan",
+      "protocol": "Messaging",
+      "evidence": "payment/rabbitmq.py:29-44 self._channel.basic_publish(exchange=self.EXCHANGE, routing_key=self.ROUTING_KEY, ...) (exchange='robot-shop', routing_key='orders')"
+    }
+  ]
+}

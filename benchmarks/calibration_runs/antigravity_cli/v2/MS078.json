@@ -1,0 +1,113 @@
+{
+  "system_id": "MS078",
+  "extractor_tool": "antigravity-cli",
+  "prompt_version": "v2.0",
+  "status": "verified",
+  "microservices": {
+    "identity-server": {
+      "exposed_interfaces": []
+    },
+    "wallet-spa": {
+      "exposed_interfaces": []
+    },
+    "accounts-api": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountsController.Close",
+          "class_name": "WebApi.UseCases.V1.Accounts.CloseAccount.AccountsController",
+          "method_name": "Close",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "CloseAccountResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/Accounts/{accountId}"
+        },
+        {
+          "id": "AccountsController.GetAccount",
+          "class_name": "WebApi.UseCases.V1.Accounts.GetAccount.AccountsController",
+          "method_name": "Get",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "GetAccountResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/Accounts/{accountId}"
+        },
+        {
+          "id": "AccountsController.GetAccounts",
+          "class_name": "WebApi.UseCases.V1.Accounts.GetAccounts.AccountsController",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "GetAccountsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/Accounts"
+        },
+        {
+          "id": "AccountsController.Post",
+          "class_name": "WebApi.UseCases.V1.Accounts.OpenAccount.AccountsController",
+          "method_name": "Post",
+          "param_types": [
+            "decimal",
+            "string"
+          ],
+          "return_type": "OpenAccountResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/Accounts"
+        },
+        {
+          "id": "TransactionsController.Deposit",
+          "class_name": "WebApi.UseCases.V1.Transactions.Deposit.TransactionsController",
+          "method_name": "Deposit",
+          "param_types": [
+            "Guid",
+            "decimal",
+            "string"
+          ],
+          "return_type": "DepositResponse",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/Transactions/{accountId}/Deposit"
+        },
+        {
+          "id": "TransactionsController.Transfer",
+          "class_name": "WebApi.UseCases.V1.Transactions.Transfer.TransactionsController",
+          "method_name": "Transfer",
+          "param_types": [
+            "Guid",
+            "Guid",
+            "decimal",
+            "string"
+          ],
+          "return_type": "TransferResponse",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/Transactions/{accountId}/{destinationAccountId}"
+        },
+        {
+          "id": "TransactionsController.Withdraw",
+          "class_name": "WebApi.UseCases.V1.Transactions.Withdraw.TransactionsController",
+          "method_name": "Withdraw",
+          "param_types": [
+            "Guid",
+            "decimal",
+            "string"
+          ],
+          "return_type": "WithdrawResponse",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/Transactions/{accountId}/Withdraw"
+        },
+        {
+          "id": "AccountsController.GetAccountV2",
+          "class_name": "WebApi.UseCases.V2.Accounts.GetAccount.AccountsController",
+          "method_name": "Get",
+          "param_types": [
+            "GetAccountDetailsRequestV2"
+          ],
+          "return_type": "byte[]",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/Accounts/{AccountId}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}
