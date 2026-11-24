@@ -1,0 +1,737 @@
+{
+  "system_id": "MS049",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cmd": {
+      "exposed_interfaces": [
+        {
+          "id": "server.post_-_reload",
+          "class_name": "rule.go",
+          "method_name": "post_-_reload",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /-/reload"
+        }
+      ]
+    },
+    "internal": {
+      "exposed_interfaces": [
+        {
+          "id": "Handler.ServeHTTP",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /"
+        }
+      ]
+    },
+    "pkg": {
+      "exposed_interfaces": [
+        {
+          "id": "QueryAPI.query",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "query",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/query"
+        },
+        {
+          "id": "QueryAPI.queryPost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "query",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/query"
+        },
+        {
+          "id": "QueryAPI.queryExplain",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryExplain",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/query_explain"
+        },
+        {
+          "id": "QueryAPI.queryExplainPost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryExplain",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/query_explain"
+        },
+        {
+          "id": "QueryAPI.queryRange",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryRange",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/query_range"
+        },
+        {
+          "id": "QueryAPI.queryRangePost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryRange",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/query_range"
+        },
+        {
+          "id": "QueryAPI.queryRangeExplain",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryRangeExplain",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/query_range_explain"
+        },
+        {
+          "id": "QueryAPI.queryRangeExplainPost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "queryRangeExplain",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/query_range_explain"
+        },
+        {
+          "id": "QueryAPI.series",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "series",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/series"
+        },
+        {
+          "id": "QueryAPI.seriesPost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "series",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/series"
+        },
+        {
+          "id": "QueryAPI.labelNames",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "labelNames",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/labels"
+        },
+        {
+          "id": "QueryAPI.labelNamesPost",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "labelNames",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/labels"
+        },
+        {
+          "id": "QueryAPI.labelValues",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "labelValues",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/label/{name}/values"
+        },
+        {
+          "id": "QueryAPI.stores",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "stores",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/stores"
+        },
+        {
+          "id": "QueryAPI.tsdbStatus",
+          "class_name": "api.query.QueryAPI",
+          "method_name": "tsdbStatus",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/status/tsdb"
+        },
+        {
+          "id": "v1.NewAlertsHandler",
+          "class_name": "api.query.v1",
+          "method_name": "NewAlertsHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/alerts"
+        },
+        {
+          "id": "v1.NewRulesHandler",
+          "class_name": "api.query.v1",
+          "method_name": "NewRulesHandler",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/rules"
+        },
+        {
+          "id": "v1.NewTargetsHandler",
+          "class_name": "api.query.v1",
+          "method_name": "NewTargetsHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/targets"
+        },
+        {
+          "id": "v1.NewMetricMetadataHandler",
+          "class_name": "api.query.v1",
+          "method_name": "NewMetricMetadataHandler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/metadata"
+        },
+        {
+          "id": "v1.NewExemplarsHandler",
+          "class_name": "api.query.v1",
+          "method_name": "NewExemplarsHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/query_exemplars"
+        },
+        {
+          "id": "v1.NewExemplarsHandlerPost",
+          "class_name": "api.query.v1",
+          "method_name": "NewExemplarsHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/query_exemplars"
+        },
+        {
+          "id": "BlocksAPI.blocks",
+          "class_name": "api.blocks.BlocksAPI",
+          "method_name": "blocks",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/blocks"
+        },
+        {
+          "id": "BlocksAPI.markBlock",
+          "class_name": "api.blocks.BlocksAPI",
+          "method_name": "markBlock",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/blocks/mark"
+        },
+        {
+          "id": "RuleAPI.RegisterAlerts",
+          "class_name": "api.rule.RuleAPI",
+          "method_name": "Register",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/alerts"
+        },
+        {
+          "id": "RuleAPI.RegisterRules",
+          "class_name": "api.rule.RuleAPI",
+          "method_name": "Register",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/rules"
+        },
+        {
+          "id": "StatusAPI.httpServeStats",
+          "class_name": "api.status.StatusAPI",
+          "method_name": "httpServeStats",
+          "param_types": [],
+          "return_type": "List<TSDBStatus>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/status/tsdb"
+        },
+        {
+          "id": "BaseAPI.flags",
+          "class_name": "api.BaseAPI",
+          "method_name": "flags",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/status/flags"
+        },
+        {
+          "id": "BaseAPI.serveRuntimeInfo",
+          "class_name": "api.BaseAPI",
+          "method_name": "serveRuntimeInfo",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/status/runtimeinfo"
+        },
+        {
+          "id": "Handler.receiveHTTP",
+          "class_name": "receive.Handler",
+          "method_name": "receiveHTTP",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/receive"
+        },
+        {
+          "id": "Handler.receiveOTLPHTTP",
+          "class_name": "receive.Handler",
+          "method_name": "receiveOTLPHTTP",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/otlp"
+        },
+        {
+          "id": "CapNProtoHandler.Write",
+          "class_name": "receive.CapNProtoHandler",
+          "method_name": "Write",
+          "param_types": [
+            "Writer_write"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "Writer/write"
+        },
+        {
+          "id": "ProxyStore.Series",
+          "class_name": "store.ProxyStore",
+          "method_name": "Series",
+          "param_types": [
+            "SeriesRequest"
+          ],
+          "return_type": "List<SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/Series"
+        },
+        {
+          "id": "ProxyStore.LabelNames",
+          "class_name": "store.ProxyStore",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelNames"
+        },
+        {
+          "id": "ProxyStore.LabelValues",
+          "class_name": "store.ProxyStore",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelValues"
+        },
+        {
+          "id": "BucketStore.Series",
+          "class_name": "store.BucketStore",
+          "method_name": "Series",
+          "param_types": [
+            "SeriesRequest"
+          ],
+          "return_type": "List<SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/Series"
+        },
+        {
+          "id": "BucketStore.LabelNames",
+          "class_name": "store.BucketStore",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelNames"
+        },
+        {
+          "id": "BucketStore.LabelValues",
+          "class_name": "store.BucketStore",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelValues"
+        },
+        {
+          "id": "TSDBStore.Series",
+          "class_name": "store.TSDBStore",
+          "method_name": "Series",
+          "param_types": [
+            "SeriesRequest"
+          ],
+          "return_type": "List<SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/Series"
+        },
+        {
+          "id": "TSDBStore.LabelNames",
+          "class_name": "store.TSDBStore",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelNames"
+        },
+        {
+          "id": "TSDBStore.LabelValues",
+          "class_name": "store.TSDBStore",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelValues"
+        },
+        {
+          "id": "PrometheusStore.Series",
+          "class_name": "store.PrometheusStore",
+          "method_name": "Series",
+          "param_types": [
+            "SeriesRequest"
+          ],
+          "return_type": "List<SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/Series"
+        },
+        {
+          "id": "PrometheusStore.LabelNames",
+          "class_name": "store.PrometheusStore",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelNames"
+        },
+        {
+          "id": "PrometheusStore.LabelValues",
+          "class_name": "store.PrometheusStore",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelValues"
+        },
+        {
+          "id": "ReadWriteTSDBStore.Series",
+          "class_name": "store.ReadWriteTSDBStore",
+          "method_name": "Series",
+          "param_types": [
+            "SeriesRequest"
+          ],
+          "return_type": "List<SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/Series"
+        },
+        {
+          "id": "ReadWriteTSDBStore.LabelNames",
+          "class_name": "store.ReadWriteTSDBStore",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelNames"
+        },
+        {
+          "id": "ReadWriteTSDBStore.LabelValues",
+          "class_name": "store.ReadWriteTSDBStore",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Store/LabelValues"
+        },
+        {
+          "id": "ReadWriteTSDBStore.RemoteWrite",
+          "class_name": "store.ReadWriteTSDBStore",
+          "method_name": "RemoteWrite",
+          "param_types": [
+            "WriteRequest"
+          ],
+          "return_type": "WriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.WriteableStore/RemoteWrite"
+        },
+        {
+          "id": "GRPCAPI.Query",
+          "class_name": "api.query.GRPCAPI",
+          "method_name": "Query",
+          "param_types": [
+            "QueryRequest"
+          ],
+          "return_type": "List<QueryResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Query/Query"
+        },
+        {
+          "id": "GRPCAPI.QueryRange",
+          "class_name": "api.query.GRPCAPI",
+          "method_name": "QueryRange",
+          "param_types": [
+            "QueryRangeRequest"
+          ],
+          "return_type": "List<QueryRangeResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Query/QueryRange"
+        },
+        {
+          "id": "Proxy.Rules",
+          "class_name": "rules.Proxy",
+          "method_name": "Rules",
+          "param_types": [
+            "RulesRequest"
+          ],
+          "return_type": "List<RulesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Rules/Rules"
+        },
+        {
+          "id": "Manager.Rules",
+          "class_name": "rules.Manager",
+          "method_name": "Rules",
+          "param_types": [
+            "RulesRequest"
+          ],
+          "return_type": "List<RulesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Rules/Rules"
+        },
+        {
+          "id": "Prometheus.Rules",
+          "class_name": "rules.Prometheus",
+          "method_name": "Rules",
+          "param_types": [
+            "RulesRequest"
+          ],
+          "return_type": "List<RulesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Rules/Rules"
+        },
+        {
+          "id": "Proxy.Targets",
+          "class_name": "targets.Proxy",
+          "method_name": "Targets",
+          "param_types": [
+            "TargetsRequest"
+          ],
+          "return_type": "List<TargetsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Targets/Targets"
+        },
+        {
+          "id": "Prometheus.Targets",
+          "class_name": "targets.Prometheus",
+          "method_name": "Targets",
+          "param_types": [
+            "TargetsRequest"
+          ],
+          "return_type": "List<TargetsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Targets/Targets"
+        },
+        {
+          "id": "Proxy.MetricMetadata",
+          "class_name": "metadata.Proxy",
+          "method_name": "MetricMetadata",
+          "param_types": [
+            "MetricMetadataRequest"
+          ],
+          "return_type": "List<MetricMetadataResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Metadata/MetricMetadata"
+        },
+        {
+          "id": "Prometheus.MetricMetadata",
+          "class_name": "metadata.Prometheus",
+          "method_name": "MetricMetadata",
+          "param_types": [
+            "MetricMetadataRequest"
+          ],
+          "return_type": "List<MetricMetadataResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Metadata/MetricMetadata"
+        },
+        {
+          "id": "Proxy.Exemplars",
+          "class_name": "exemplars.Proxy",
+          "method_name": "Exemplars",
+          "param_types": [
+            "ExemplarsRequest"
+          ],
+          "return_type": "List<ExemplarsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Exemplars/Exemplars"
+        },
+        {
+          "id": "MultiTSDB.Exemplars",
+          "class_name": "exemplars.MultiTSDB",
+          "method_name": "Exemplars",
+          "param_types": [
+            "ExemplarsRequest"
+          ],
+          "return_type": "List<ExemplarsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Exemplars/Exemplars"
+        },
+        {
+          "id": "Prometheus.Exemplars",
+          "class_name": "exemplars.Prometheus",
+          "method_name": "Exemplars",
+          "param_types": [
+            "ExemplarsRequest"
+          ],
+          "return_type": "List<ExemplarsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Exemplars/Exemplars"
+        },
+        {
+          "id": "InfoServer.Info",
+          "class_name": "info.InfoServer",
+          "method_name": "Info",
+          "param_types": [
+            "InfoRequest"
+          ],
+          "return_type": "InfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "thanos.info.Info/Info"
+        },
+        {
+          "id": "Proxy.TSDBStatistics",
+          "class_name": "status.Proxy",
+          "method_name": "TSDBStatistics",
+          "param_types": [
+            "TSDBStatisticsRequest"
+          ],
+          "return_type": "List<TSDBStatisticsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Status/TSDBStatistics"
+        },
+        {
+          "id": "Server.TSDBStatistics",
+          "class_name": "status.Server",
+          "method_name": "TSDBStatistics",
+          "param_types": [
+            "TSDBStatisticsRequest"
+          ],
+          "return_type": "List<TSDBStatisticsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "thanos.Status/TSDBStatistics"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "cmd",
+      "src_class": "rule.go",
+      "src_method": "queryFuncCreator",
+      "dst_service": "pkg",
+      "dst_class": "api.query.QueryAPI",
+      "dst_interface_id": "QueryAPI.query",
+      "protocol": "REST",
+      "evidence": "cmd/thanos/rule.go:995 promClient.PromqlQueryInstant("
+    }
+  ]
+}

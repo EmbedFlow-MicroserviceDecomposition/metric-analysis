@@ -1,0 +1,2268 @@
+{
+  "system_id": "MS073",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "frontend": {
+      "exposed_interfaces": []
+    },
+    "backend": {
+      "exposed_interfaces": [
+        {
+          "id": "annotations_resources.get_annotations",
+          "class_name": "backend.api.annotations.resources",
+          "method_name": "get_annotations",
+          "param_types": [
+            "int",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/annotations/{annotation_type}/"
+        },
+        {
+          "id": "annotations_resources.get_annotationsAnnotations",
+          "class_name": "backend.api.annotations.resources",
+          "method_name": "get_annotations",
+          "param_types": [
+            "int",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/annotations/"
+        },
+        {
+          "id": "annotations_resources.post_annotations",
+          "class_name": "backend.api.annotations.resources",
+          "method_name": "post_annotations",
+          "param_types": [
+            "int",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/annotations/{annotation_type}/"
+        },
+        {
+          "id": "campaigns_resources.retrieve_campaign",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "retrieve_campaign",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CampaignDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "campaigns_resources.update_campaign",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "update_campaign",
+          "param_types": [
+            "CampaignDTO",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "campaigns_resources.delete_campaign",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "delete_campaign",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "campaigns_resources.list_campaigns",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "list_campaigns",
+          "param_types": [],
+          "return_type": "CampaignListDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/campaigns/"
+        },
+        {
+          "id": "campaigns_resources.create_campaign",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "create_campaign",
+          "param_types": [
+            "NewCampaignDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/campaigns/"
+        },
+        {
+          "id": "campaigns_resources.message_campaign_contributors",
+          "class_name": "backend.api.campaigns.resources",
+          "method_name": "message_campaign_contributors",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/campaigns/{campaign_id}/actions/message-contributors/"
+        },
+        {
+          "id": "comments_resources.post_comment",
+          "class_name": "backend.api.comments.resources",
+          "method_name": "post_comment",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/comments/"
+        },
+        {
+          "id": "comments_resources.get_comments",
+          "class_name": "backend.api.comments.resources",
+          "method_name": "get_comments",
+          "param_types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/comments/"
+        },
+        {
+          "id": "comments_resources.delete_comment",
+          "class_name": "backend.api.comments.resources",
+          "method_name": "delete_comment",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{project_id}/comments/{comment_id}/"
+        },
+        {
+          "id": "comments_resources.post_task_comment",
+          "class_name": "backend.api.comments.resources",
+          "method_name": "post_task_comment",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/comments/tasks/{task_id}/"
+        },
+        {
+          "id": "comments_resources.get_task_comments",
+          "class_name": "backend.api.comments.resources",
+          "method_name": "get_task_comments",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/comments/tasks/{task_id}/"
+        },
+        {
+          "id": "countries_resources.get_all_countries",
+          "class_name": "backend.api.countries.resources",
+          "method_name": "get_all_countries",
+          "param_types": [],
+          "return_type": "TagsDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/countries/"
+        },
+        {
+          "id": "interests_resources.post_interest",
+          "class_name": "backend.api.interests.resources",
+          "method_name": "post_interest",
+          "param_types": [
+            "InterestDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/interests/"
+        },
+        {
+          "id": "interests_resources.get_interests",
+          "class_name": "backend.api.interests.resources",
+          "method_name": "get_interests",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/interests/"
+        },
+        {
+          "id": "interests_resources.retrieve_interest",
+          "class_name": "backend.api.interests.resources",
+          "method_name": "retrieve_interest",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/interests/{interest_id}/"
+        },
+        {
+          "id": "interests_resources.patch_interest",
+          "class_name": "backend.api.interests.resources",
+          "method_name": "patch_interest",
+          "param_types": [
+            "int",
+            "InterestDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/interests/{interest_id}/"
+        },
+        {
+          "id": "interests_resources.delete_interest",
+          "class_name": "backend.api.interests.resources",
+          "method_name": "delete_interest",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/interests/{interest_id}/"
+        },
+        {
+          "id": "issues_resources.get_issue",
+          "class_name": "backend.api.issues.resources",
+          "method_name": "get_issue",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tasks/issues/categories/{category_id}/"
+        },
+        {
+          "id": "issues_resources.patch_issue",
+          "class_name": "backend.api.issues.resources",
+          "method_name": "patch_issue",
+          "param_types": [
+            "int",
+            "MappingIssueCategoryDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/tasks/issues/categories/{category_id}/"
+        },
+        {
+          "id": "issues_resources.delete_issue",
+          "class_name": "backend.api.issues.resources",
+          "method_name": "delete_issue",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/tasks/issues/categories/{category_id}/"
+        },
+        {
+          "id": "issues_resources.get_issues_categories",
+          "class_name": "backend.api.issues.resources",
+          "method_name": "get_issues_categories",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tasks/issues/categories/"
+        },
+        {
+          "id": "issues_resources.post_issues_categories",
+          "class_name": "backend.api.issues.resources",
+          "method_name": "post_issues_categories",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "MappingIssueCategoryDTO",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/tasks/issues/categories/"
+        },
+        {
+          "id": "licenses_actions.accept_license",
+          "class_name": "backend.api.licenses.actions",
+          "method_name": "accept_license",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/licenses/{license_id}/actions/accept-for-me/"
+        },
+        {
+          "id": "licenses_resources.post_license",
+          "class_name": "backend.api.licenses.resources",
+          "method_name": "post_license",
+          "param_types": [
+            "LicenseDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/licenses/"
+        },
+        {
+          "id": "licenses_resources.retrieve_license",
+          "class_name": "backend.api.licenses.resources",
+          "method_name": "retrieve_license",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/licenses/{license_id}/"
+        },
+        {
+          "id": "licenses_resources.patch_license",
+          "class_name": "backend.api.licenses.resources",
+          "method_name": "patch_license",
+          "param_types": [
+            "LicenseDTO",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/licenses/{license_id}/"
+        },
+        {
+          "id": "licenses_resources.delete_license",
+          "class_name": "backend.api.licenses.resources",
+          "method_name": "delete_license",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/licenses/{license_id}/"
+        },
+        {
+          "id": "licenses_resources.get_licenses",
+          "class_name": "backend.api.licenses.resources",
+          "method_name": "get_licenses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/licenses/"
+        },
+        {
+          "id": "mapping_badges_resources.get_mapping_badges",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "get_mapping_badges",
+          "param_types": [],
+          "return_type": "MappingBadgeListDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/badges/"
+        },
+        {
+          "id": "mapping_badges_resources.create_mapping_badge",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "create_mapping_badge",
+          "param_types": [
+            "MappingBadgeCreateDTO"
+          ],
+          "return_type": "MappingBadgeDTO",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/badges/"
+        },
+        {
+          "id": "mapping_badges_resources.get_mapping_badge",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "get_mapping_badge",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "MappingBadgeDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/badges/{badge_id}/"
+        },
+        {
+          "id": "mapping_badges_resources.update_mapping_badge",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "update_mapping_badge",
+          "param_types": [
+            "MappingBadgeUpdateDTO",
+            "int"
+          ],
+          "return_type": "MappingBadgeDTO",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/badges/{badge_id}/"
+        },
+        {
+          "id": "mapping_badges_resources.delete_mapping_badge",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "delete_mapping_badge",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/badges/{badge_id}/"
+        },
+        {
+          "id": "mapping_badges_resources.get_for_user",
+          "class_name": "backend.api.mapping_badges.resources",
+          "method_name": "get_for_user",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "MappingBadgePublicListDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/badges/user/{user_id}/"
+        },
+        {
+          "id": "mapping_levels_resources.get_mapping_levels",
+          "class_name": "backend.api.mapping_levels.resources",
+          "method_name": "get_mapping_levels",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/levels/"
+        },
+        {
+          "id": "mapping_levels_resources.create_mapping_level",
+          "class_name": "backend.api.mapping_levels.resources",
+          "method_name": "create_mapping_level",
+          "param_types": [
+            "MappingLevelCreateDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/levels/"
+        },
+        {
+          "id": "mapping_levels_resources.get_mapping_level",
+          "class_name": "backend.api.mapping_levels.resources",
+          "method_name": "get_mapping_level",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/levels/{level_id}/"
+        },
+        {
+          "id": "mapping_levels_resources.update_mapping_level",
+          "class_name": "backend.api.mapping_levels.resources",
+          "method_name": "update_mapping_level",
+          "param_types": [
+            "MappingLevelUpdateDTO",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/levels/{level_id}/"
+        },
+        {
+          "id": "mapping_levels_resources.delete_mapping_level",
+          "class_name": "backend.api.mapping_levels.resources",
+          "method_name": "delete_mapping_level",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/levels/{level_id}/"
+        },
+        {
+          "id": "notifications_actions.delete_multiple_notifications",
+          "class_name": "backend.api.notifications.actions",
+          "method_name": "delete_multiple_notifications",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/notifications/delete-multiple/"
+        },
+        {
+          "id": "notifications_actions.delete_all_notifications",
+          "class_name": "backend.api.notifications.actions",
+          "method_name": "delete_all_notifications",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/notifications/delete-all/"
+        },
+        {
+          "id": "notifications_actions.mark_all_as_read",
+          "class_name": "backend.api.notifications.actions",
+          "method_name": "mark_all_as_read",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/notifications/mark-as-read-all/"
+        },
+        {
+          "id": "notifications_actions.mark_multiple_as_read",
+          "class_name": "backend.api.notifications.actions",
+          "method_name": "mark_multiple_as_read",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/notifications/mark-as-read-multiple/"
+        },
+        {
+          "id": "notifications_resources.retrieve_notification",
+          "class_name": "backend.api.notifications.resources",
+          "method_name": "retrieve_notification",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "MessageDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/notifications/{message_id}/"
+        },
+        {
+          "id": "notifications_resources.delete_notification",
+          "class_name": "backend.api.notifications.resources",
+          "method_name": "delete_notification",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/notifications/{message_id}/"
+        },
+        {
+          "id": "notifications_resources.get_notifications",
+          "class_name": "backend.api.notifications.resources",
+          "method_name": "get_notifications",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "int",
+            "str",
+            "str",
+            "str",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/notifications/"
+        },
+        {
+          "id": "notifications_resources.get_unreads",
+          "class_name": "backend.api.notifications.resources",
+          "method_name": "get_unreads",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/notifications/queries/own/count-unread/"
+        },
+        {
+          "id": "notifications_resources.post_unreads",
+          "class_name": "backend.api.notifications.resources",
+          "method_name": "post_unreads",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/notifications/queries/own/post-unread/"
+        },
+        {
+          "id": "organisations_campaigns.post_organisation_campaign",
+          "class_name": "backend.api.organisations.campaigns",
+          "method_name": "post_organisation_campaign",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/organisations/{organisation_id}/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "organisations_campaigns.get_organisation_campaigns",
+          "class_name": "backend.api.organisations.campaigns",
+          "method_name": "get_organisation_campaigns",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CampaignListDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/organisations/{organisation_id}/campaigns/"
+        },
+        {
+          "id": "organisations_campaigns.delete_organisation_campaign",
+          "class_name": "backend.api.organisations.campaigns",
+          "method_name": "delete_organisation_campaign",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/organisations/{organisation_id}/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "organisations_resources.retrieve_organisation",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "retrieve_organisation",
+          "param_types": [
+            "int",
+            "bool"
+          ],
+          "return_type": "OrganisationDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/organisations/{organisation_id:int}/"
+        },
+        {
+          "id": "organisations_resources.retrieve_organisation_by_slug",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "retrieve_organisation_by_slug",
+          "param_types": [
+            "str",
+            "bool"
+          ],
+          "return_type": "OrganisationDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/organisations/{slug:str}/"
+        },
+        {
+          "id": "organisations_resources.create_organisation",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "create_organisation",
+          "param_types": [
+            "NewOrganisationDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/organisations/"
+        },
+        {
+          "id": "organisations_resources.delete_organisation",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "delete_organisation",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/organisations/{organisation_id}/"
+        },
+        {
+          "id": "organisations_resources.update_organisation",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "update_organisation",
+          "param_types": [
+            "UpdateOrganisationDTO",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/organisations/{organisation_id}/"
+        },
+        {
+          "id": "organisations_resources.get_organisation_with_statistics",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "get_organisation_with_statistics",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "OrganizationStatsDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/organisations/{organisation_id}/statistics/"
+        },
+        {
+          "id": "organisations_resources.list_organisation",
+          "class_name": "backend.api.organisations.resources",
+          "method_name": "list_organisation",
+          "param_types": [
+            "bool",
+            "bool",
+            "int"
+          ],
+          "return_type": "ListOrganisationsDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/organisations/"
+        },
+        {
+          "id": "partners_resources.retrieve_partner",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "retrieve_partner",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/partners/{partner_id:int}/"
+        },
+        {
+          "id": "partners_resources.delete_partner",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "delete_partner",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/partners/{partner_id}/"
+        },
+        {
+          "id": "partners_resources.update_partner",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "update_partner",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v2/partners/{partner_id}/"
+        },
+        {
+          "id": "partners_resources.list_partners",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "list_partners",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/partners/"
+        },
+        {
+          "id": "partners_resources.create_partner",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "create_partner",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/partners/"
+        },
+        {
+          "id": "partners_resources.get_partner",
+          "class_name": "backend.api.partners.resources",
+          "method_name": "get_partner",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/partners/{permalink:str}/"
+        },
+        {
+          "id": "partners_statistics.get_filtered_statistics",
+          "class_name": "backend.api.partners.statistics",
+          "method_name": "get_filtered_statistics",
+          "param_types": [
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/partners/{permalink:str}/filtered-statistics/"
+        },
+        {
+          "id": "partners_statistics.get_general_statistics",
+          "class_name": "backend.api.partners.statistics",
+          "method_name": "get_general_statistics",
+          "param_types": [
+            "str",
+            "int",
+            "int",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/partners/{permalink:str}/general-statistics/"
+        },
+        {
+          "id": "projects_actions.transfer_ownership",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "transfer_ownership",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/actions/transfer-ownership/"
+        },
+        {
+          "id": "projects_actions.message_contributors",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "message_contributors",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/actions/message-contributors/"
+        },
+        {
+          "id": "projects_actions.feature",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "feature",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/actions/feature/"
+        },
+        {
+          "id": "projects_actions.remove_feature",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "remove_feature",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/actions/remove-feature/"
+        },
+        {
+          "id": "projects_actions.set_interests",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "set_interests",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/actions/set-interests/"
+        },
+        {
+          "id": "projects_actions.intersecting_tiles",
+          "class_name": "backend.api.projects.actions",
+          "method_name": "intersecting_tiles",
+          "param_types": [
+            "GridDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/actions/intersecting-tiles/"
+        },
+        {
+          "id": "projects_activities.get_activities",
+          "class_name": "backend.api.projects.activities",
+          "method_name": "get_activities",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/activities/"
+        },
+        {
+          "id": "projects_activities.get_latest_activities",
+          "class_name": "backend.api.projects.activities",
+          "method_name": "get_latest_activities",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/activities/latest/"
+        },
+        {
+          "id": "projects_campaigns.create_project_campaign",
+          "class_name": "backend.api.projects.campaigns",
+          "method_name": "create_project_campaign",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "projects_campaigns.get_project_campaigns",
+          "class_name": "backend.api.projects.campaigns",
+          "method_name": "get_project_campaigns",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/campaigns/"
+        },
+        {
+          "id": "projects_campaigns.delete_project_campaign",
+          "class_name": "backend.api.projects.campaigns",
+          "method_name": "delete_project_campaign",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{project_id}/campaigns/{campaign_id}/"
+        },
+        {
+          "id": "projects_contributions.get_project_contributions",
+          "class_name": "backend.api.projects.contributions",
+          "method_name": "get_project_contributions",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/contributions/"
+        },
+        {
+          "id": "projects_contributions.get_contributions_by_day",
+          "class_name": "backend.api.projects.contributions",
+          "method_name": "get_contributions_by_day",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/contributions/queries/day/"
+        },
+        {
+          "id": "projects_favorites.get_favorite",
+          "class_name": "backend.api.projects.favorites",
+          "method_name": "get_favorite",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/favorite/"
+        },
+        {
+          "id": "projects_favorites.make_favorite",
+          "class_name": "backend.api.projects.favorites",
+          "method_name": "make_favorite",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/favorite/"
+        },
+        {
+          "id": "projects_favorites.remove_favorite",
+          "class_name": "backend.api.projects.favorites",
+          "method_name": "remove_favorite",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{project_id}/favorite/"
+        },
+        {
+          "id": "projects_osm_features.get_osm_features_for_task",
+          "class_name": "backend.api.projects.osm_features",
+          "method_name": "get_osm_features_for_task",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/{task_id}/osm-features/"
+        },
+        {
+          "id": "projects_partnerships.retrieve_partnership",
+          "class_name": "backend.api.projects.partnerships",
+          "method_name": "retrieve_partnership",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/partnerships/{partnership_id}/"
+        },
+        {
+          "id": "projects_partnerships.create_partnership",
+          "class_name": "backend.api.projects.partnerships",
+          "method_name": "create_partnership",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/partnerships/"
+        },
+        {
+          "id": "projects_partnerships.patch_partnership",
+          "class_name": "backend.api.projects.partnerships",
+          "method_name": "patch_partnership",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/projects/partnerships/{partnership_id}/"
+        },
+        {
+          "id": "projects_partnerships.delete_partnership",
+          "class_name": "backend.api.projects.partnerships",
+          "method_name": "delete_partnership",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/partnerships/{partnership_id}/"
+        },
+        {
+          "id": "projects_partnerships.get_partners",
+          "class_name": "backend.api.projects.partnerships",
+          "method_name": "get_partners",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/partners/"
+        },
+        {
+          "id": "projects_resources.get_project",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_project",
+          "param_types": [
+            "int",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/"
+        },
+        {
+          "id": "projects_resources.create_project",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "create_project",
+          "param_types": [
+            "DraftProjectDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/"
+        },
+        {
+          "id": "projects_resources.patch_project",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "patch_project",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/projects/{project_id}/"
+        },
+        {
+          "id": "projects_resources.delete_project",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "delete_project",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{project_id}/"
+        },
+        {
+          "id": "projects_resources.get_projects",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_projects",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "int",
+            "str",
+            "int",
+            "str",
+            "str",
+            "str",
+            "str",
+            "int",
+            "str",
+            "bool",
+            "str",
+            "str",
+            "str",
+            "str",
+            "int",
+            "str",
+            "str",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "str",
+            "bool",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/"
+        },
+        {
+          "id": "projects_resources.get_by_bbox",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_by_bbox",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/bbox/"
+        },
+        {
+          "id": "projects_resources.get_my_projects",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_my_projects",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/myself/owner/"
+        },
+        {
+          "id": "projects_resources.get_mapped_projects",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_mapped_projects",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/{username}/touched/"
+        },
+        {
+          "id": "projects_resources.get_project_summary",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_project_summary",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/queries/summary/"
+        },
+        {
+          "id": "projects_resources.get_no_geometries",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_no_geometries",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/queries/nogeometries/"
+        },
+        {
+          "id": "projects_resources.get_notasks",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_notasks",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/queries/notasks/"
+        },
+        {
+          "id": "projects_resources.get_aoi",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_aoi",
+          "param_types": [
+            "int",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/queries/aoi/"
+        },
+        {
+          "id": "projects_resources.get_priority_areas",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_priority_areas",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/queries/priority-areas/"
+        },
+        {
+          "id": "projects_resources.get_featured",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_featured",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/featured/"
+        },
+        {
+          "id": "projects_resources.get_similar_projects",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_similar_projects",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/{project_id}/similar-projects/"
+        },
+        {
+          "id": "projects_resources.get_active",
+          "class_name": "backend.api.projects.resources",
+          "method_name": "get_active",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/active/"
+        },
+        {
+          "id": "projects_statistics.get_popular",
+          "class_name": "backend.api.projects.statistics",
+          "method_name": "get_popular",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/queries/popular/"
+        },
+        {
+          "id": "projects_statistics.get_project_stats",
+          "class_name": "backend.api.projects.statistics",
+          "method_name": "get_project_stats",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/statistics/"
+        },
+        {
+          "id": "projects_statistics.get_project_user_stats",
+          "class_name": "backend.api.projects.statistics",
+          "method_name": "get_project_user_stats",
+          "param_types": [
+            "int",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/statistics/queries/{username}/"
+        },
+        {
+          "id": "projects_statistics.get_project_invalidated_counts",
+          "class_name": "backend.api.projects.statistics",
+          "method_name": "get_project_invalidated_counts",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/invalidated/"
+        },
+        {
+          "id": "projects_teams.get_project_teams",
+          "class_name": "backend.api.projects.teams",
+          "method_name": "get_project_teams",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/teams/"
+        },
+        {
+          "id": "projects_teams.assign_team",
+          "class_name": "backend.api.projects.teams",
+          "method_name": "assign_team",
+          "param_types": [
+            "int",
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/teams/{team_id}/"
+        },
+        {
+          "id": "projects_teams.patch_project_team",
+          "class_name": "backend.api.projects.teams",
+          "method_name": "patch_project_team",
+          "param_types": [
+            "int",
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/projects/{team_id}/projects/{project_id}/"
+        },
+        {
+          "id": "projects_teams.remove_team",
+          "class_name": "backend.api.projects.teams",
+          "method_name": "remove_team",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{team_id}/projects/{project_id}/"
+        },
+        {
+          "id": "system_applications.get_application_keys",
+          "class_name": "backend.api.system.applications",
+          "method_name": "get_application_keys",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/authentication/applications/"
+        },
+        {
+          "id": "system_applications.post_application_key",
+          "class_name": "backend.api.system.applications",
+          "method_name": "post_application_key",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/system/authentication/applications/"
+        },
+        {
+          "id": "system_applications.patch_application_key",
+          "class_name": "backend.api.system.applications",
+          "method_name": "patch_application_key",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/system/authentication/applications/{application_key}/"
+        },
+        {
+          "id": "system_applications.delete_application_key",
+          "class_name": "backend.api.system.applications",
+          "method_name": "delete_application_key",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/system/authentication/applications/{application_key}/"
+        },
+        {
+          "id": "system_authentication.login",
+          "class_name": "backend.api.system.authentication",
+          "method_name": "login",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/authentication/login/"
+        },
+        {
+          "id": "system_authentication.callback",
+          "class_name": "backend.api.system.authentication",
+          "method_name": "callback",
+          "param_types": [
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/authentication/callback/"
+        },
+        {
+          "id": "system_authentication.authenticate_email",
+          "class_name": "backend.api.system.authentication",
+          "method_name": "authenticate_email",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/authentication/email/"
+        },
+        {
+          "id": "system_banner.get_banner",
+          "class_name": "backend.api.system.banner",
+          "method_name": "get_banner",
+          "param_types": [],
+          "return_type": "BannerDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/banner/"
+        },
+        {
+          "id": "system_banner.patch_banner",
+          "class_name": "backend.api.system.banner",
+          "method_name": "patch_banner",
+          "param_types": [
+            "BannerDTO"
+          ],
+          "return_type": "BannerDTO",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/system/banner/"
+        },
+        {
+          "id": "system_general.get_docs",
+          "class_name": "backend.api.system.general",
+          "method_name": "get_docs",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/docs/json/"
+        },
+        {
+          "id": "system_general.get",
+          "class_name": "backend.api.system.general",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/languages/"
+        },
+        {
+          "id": "system_general.heartbeat",
+          "class_name": "backend.api.system.general",
+          "method_name": "heartbeat",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/heartbeat/"
+        },
+        {
+          "id": "system_general.contact_admin",
+          "class_name": "backend.api.system.general",
+          "method_name": "contact_admin",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/system/contact-admin/"
+        },
+        {
+          "id": "system_general.release",
+          "class_name": "backend.api.system.general",
+          "method_name": "release",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/system/release/"
+        },
+        {
+          "id": "system_image_upload.post_image",
+          "class_name": "backend.api.system.image_upload",
+          "method_name": "post_image",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/system/image-upload/"
+        },
+        {
+          "id": "system_statistics.get_statistics",
+          "class_name": "backend.api.system.statistics",
+          "method_name": "get_statistics",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/statistics/"
+        },
+        {
+          "id": "system_statistics.get_ohsome_statistics",
+          "class_name": "backend.api.system.statistics",
+          "method_name": "get_ohsome_statistics",
+          "param_types": [
+            "str",
+            "List<str>",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/statistics/ohsome/"
+        },
+        {
+          "id": "system_statistics.get_ohsome_metadata",
+          "class_name": "backend.api.system.statistics",
+          "method_name": "get_ohsome_metadata",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/statistics/ohsome/metadata/"
+        },
+        {
+          "id": "system_statistics.get_ohsome_hashtag_statistics",
+          "class_name": "backend.api.system.statistics",
+          "method_name": "get_ohsome_hashtag_statistics",
+          "param_types": [
+            "str",
+            "List<str>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/system/statistics/ohsome/hashtags/"
+        },
+        {
+          "id": "tasks_actions.lock_for_mapping",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "lock_for_mapping",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/lock-for-mapping/{task_id}/"
+        },
+        {
+          "id": "tasks_actions.stop_mapping",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "stop_mapping",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/stop-mapping/{task_id}/"
+        },
+        {
+          "id": "tasks_actions.unlock_after_mapping",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "unlock_after_mapping",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/unlock-after-mapping/{task_id}/"
+        },
+        {
+          "id": "tasks_actions.undo_last_action",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "undo_last_action",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/undo-last-action/{task_id}/"
+        },
+        {
+          "id": "tasks_actions.lock_for_validation",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "lock_for_validation",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/lock-for-validation/"
+        },
+        {
+          "id": "tasks_actions.stop_validation",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "stop_validation",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/stop-validation/"
+        },
+        {
+          "id": "tasks_actions.unlock_after_validation",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "unlock_after_validation",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/unlock-after-validation/"
+        },
+        {
+          "id": "tasks_actions.map_all",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "map_all",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/map-all/"
+        },
+        {
+          "id": "tasks_actions.post",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "post",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/validate-all/"
+        },
+        {
+          "id": "tasks_actions.invalidate_all",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "invalidate_all",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/invalidate-all/"
+        },
+        {
+          "id": "tasks_actions.reset_all_bad_imagery",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "reset_all_bad_imagery",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/reset-all-badimagery/"
+        },
+        {
+          "id": "tasks_actions.reset_all",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "reset_all",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/reset-all/"
+        },
+        {
+          "id": "tasks_actions.split_task",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "split_task",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/split/{task_id}/"
+        },
+        {
+          "id": "tasks_actions.extend_duration",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "extend_duration",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/extend/"
+        },
+        {
+          "id": "tasks_actions.reset_by_user",
+          "class_name": "backend.api.tasks.actions",
+          "method_name": "reset_by_user",
+          "param_types": [
+            "int",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/projects/{project_id}/tasks/actions/reset-by-user/"
+        },
+        {
+          "id": "tasks_resources.retrieve_task",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "retrieve_task",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/{task_id}/"
+        },
+        {
+          "id": "tasks_resources.get_project_tasks",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "get_project_tasks",
+          "param_types": [
+            "int",
+            "str",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/"
+        },
+        {
+          "id": "tasks_resources.delete",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "delete",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/projects/{project_id}/tasks/"
+        },
+        {
+          "id": "tasks_resources.get_tasks_xml",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "get_tasks_xml",
+          "param_types": [
+            "int",
+            "str",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/queries/xml/"
+        },
+        {
+          "id": "tasks_resources.get_tasks_gpx",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "get_tasks_gpx",
+          "param_types": [
+            "int",
+            "str",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/queries/gpx/"
+        },
+        {
+          "id": "tasks_resources.tasks_aoi",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "tasks_aoi",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v2/projects/{project_id}/tasks/queries/aoi/"
+        },
+        {
+          "id": "tasks_resources.get_mapped_tasks",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "get_mapped_tasks",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{project_id}/tasks/queries/mapped/"
+        },
+        {
+          "id": "tasks_resources.get_invalidated_tasks",
+          "class_name": "backend.api.tasks.resources",
+          "method_name": "get_invalidated_tasks",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/projects/{username}/tasks/queries/own/invalidated/"
+        },
+        {
+          "id": "tasks_statistics.get_task_stats",
+          "class_name": "backend.api.tasks.statistics",
+          "method_name": "get_task_stats",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/tasks/statistics/"
+        },
+        {
+          "id": "teams_actions.join_team",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "join_team",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/teams/{team_id}/actions/join/"
+        },
+        {
+          "id": "teams_actions.action_team_invite",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "action_team_invite",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/teams/{team_id}/actions/join/"
+        },
+        {
+          "id": "teams_actions.add_team_member",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "add_team_member",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/teams/{team_id}/actions/add/"
+        },
+        {
+          "id": "teams_actions.leave_team",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "leave_team",
+          "param_types": [
+            "int",
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/teams/{team_id}/actions/leave/"
+        },
+        {
+          "id": "teams_actions.message_team",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "message_team",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/teams/{team_id}/actions/message-members/"
+        },
+        {
+          "id": "teams_actions.remove_team_from_project",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "remove_team_from_project",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/teams/projects/{project_id}/teams/{team_id}/"
+        },
+        {
+          "id": "teams_actions.remove_team_from_all_projects",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "remove_team_from_all_projects",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/teams/projects/teams/{team_id}/unlink"
+        },
+        {
+          "id": "teams_actions.remove_teams_from_projects",
+          "class_name": "backend.api.teams.actions",
+          "method_name": "remove_teams_from_projects",
+          "param_types": [
+            "ProjectTeamPairDTOList"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/teams/projects/unlink"
+        },
+        {
+          "id": "teams_resources.update_team",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "update_team",
+          "param_types": [
+            "int",
+            "UpdateTeamDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/teams/{team_id}/"
+        },
+        {
+          "id": "teams_resources.retrieve_team",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "retrieve_team",
+          "param_types": [
+            "int",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/teams/{team_id:int}/"
+        },
+        {
+          "id": "teams_resources.delete",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "delete",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/teams/{team_id}/"
+        },
+        {
+          "id": "teams_resources.list_teams",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "list_teams",
+          "param_types": [
+            "str",
+            "int",
+            "int",
+            "int",
+            "str",
+            "int",
+            "bool",
+            "bool",
+            "bool",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/teams/"
+        },
+        {
+          "id": "teams_resources.create_team",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "create_team",
+          "param_types": [
+            "NewTeamDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/teams/"
+        },
+        {
+          "id": "teams_resources.get_join_requests",
+          "class_name": "backend.api.teams.resources",
+          "method_name": "get_join_requests",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/teams/join_requests/"
+        },
+        {
+          "id": "users_actions.update_user",
+          "class_name": "backend.api.users.actions",
+          "method_name": "update_user",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/me/actions/set-user/"
+        },
+        {
+          "id": "users_actions.set_mapping_level",
+          "class_name": "backend.api.users.actions",
+          "method_name": "set_mapping_level",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/{username}/actions/set-level/{level}/"
+        },
+        {
+          "id": "users_actions.set_user_role",
+          "class_name": "backend.api.users.actions",
+          "method_name": "set_user_role",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/{username}/actions/set-role/{role}/"
+        },
+        {
+          "id": "users_actions.update_stats",
+          "class_name": "backend.api.users.actions",
+          "method_name": "update_stats",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/{username}/actions/update-stats"
+        },
+        {
+          "id": "users_actions.approve_level",
+          "class_name": "backend.api.users.actions",
+          "method_name": "approve_level",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/{username}/actions/approve-level"
+        },
+        {
+          "id": "users_actions.set_user_is_expert",
+          "class_name": "backend.api.users.actions",
+          "method_name": "set_user_is_expert",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/{user_name}/actions/set-expert-mode/{is_expert}/"
+        },
+        {
+          "id": "users_actions.send_verification_email",
+          "class_name": "backend.api.users.actions",
+          "method_name": "send_verification_email",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v2/users/me/actions/verify-email/"
+        },
+        {
+          "id": "users_actions.register_user_with_email",
+          "class_name": "backend.api.users.actions",
+          "method_name": "register_user_with_email",
+          "param_types": [
+            "UserRegisterEmailDTO"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/users/actions/register/"
+        },
+        {
+          "id": "users_actions.set_user_interests",
+          "class_name": "backend.api.users.actions",
+          "method_name": "set_user_interests",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v2/users/me/actions/set-interests/"
+        },
+        {
+          "id": "users_openstreetmap.get_osm_details",
+          "class_name": "backend.api.users.openstreetmap",
+          "method_name": "get_osm_details",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{username}/openstreetmap/"
+        },
+        {
+          "id": "users_resources.get_user",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_user",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{user_id}/"
+        },
+        {
+          "id": "users_resources.delete_user",
+          "class_name": "backend.api.users.resources",
+          "method_name": "delete_user",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v2/users/{user_id}/"
+        },
+        {
+          "id": "users_resources.list_users",
+          "class_name": "backend.api.users.resources",
+          "method_name": "list_users",
+          "param_types": [
+            "int",
+            "bool",
+            "str",
+            "str",
+            "int",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/"
+        },
+        {
+          "id": "users_resources.get_user_favorite_projects",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_user_favorite_projects",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/queries/favorites/"
+        },
+        {
+          "id": "users_resources.get_osm_user_info",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_osm_user_info",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/queries/{username}/"
+        },
+        {
+          "id": "users_resources.get_paginated_osm_user_info",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_paginated_osm_user_info",
+          "param_types": [
+            "str",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/queries/filter/{username}/"
+        },
+        {
+          "id": "users_resources.get_task_locked_by_user",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_task_locked_by_user",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/queries/tasks/locked/"
+        },
+        {
+          "id": "users_resources.get_task_details_locked_by_user",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_task_details_locked_by_user",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/queries/tasks/locked/details/"
+        },
+        {
+          "id": "users_resources.get_user_interests",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_user_interests",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{username}/queries/interests/"
+        },
+        {
+          "id": "users_resources.get_recommended_projects",
+          "class_name": "backend.api.users.resources",
+          "method_name": "get_recommended_projects",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{username}/recommended-projects/"
+        },
+        {
+          "id": "users_statistics.get_user_stats",
+          "class_name": "backend.api.users.statistics",
+          "method_name": "get_user_stats",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{username}/statistics/"
+        },
+        {
+          "id": "users_statistics.get_user_interests_statistics",
+          "class_name": "backend.api.users.statistics",
+          "method_name": "get_user_interests_statistics",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{user_id}/statistics/interests/"
+        },
+        {
+          "id": "users_statistics.get_period_user_stats",
+          "class_name": "backend.api.users.statistics",
+          "method_name": "get_period_user_stats",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/statistics/"
+        },
+        {
+          "id": "users_statistics.get_ohsome_stats",
+          "class_name": "backend.api.users.statistics",
+          "method_name": "get_ohsome_stats",
+          "param_types": [
+            "int",
+            "str",
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/statistics/ohsome/"
+        },
+        {
+          "id": "users_statistics.get_next_level",
+          "class_name": "backend.api.users.statistics",
+          "method_name": "get_next_level",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "UserNextLevelDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/statistics/nextlevel/"
+        },
+        {
+          "id": "users_tasks.get_user_tasks",
+          "class_name": "backend.api.users.tasks",
+          "method_name": "get_user_tasks",
+          "param_types": [
+            "int",
+            "str",
+            "str",
+            "int",
+            "str",
+            "str",
+            "str",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v2/users/{user_id}/tasks/"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

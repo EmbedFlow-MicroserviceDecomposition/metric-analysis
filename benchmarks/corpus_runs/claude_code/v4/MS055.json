@@ -1,0 +1,5110 @@
+{
+  "system_id": "MS055",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "saleor": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountQueries.resolve_address_validation_rules",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_address_validation_rules",
+          "param_types": [
+            "CountryCodeEnum",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "AddressValidationData",
+          "protocol": "GraphQL",
+          "endpoint": "Query.addressValidationRules"
+        },
+        {
+          "id": "AccountQueries.resolve_address",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_address",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Address",
+          "protocol": "GraphQL",
+          "endpoint": "Query.address"
+        },
+        {
+          "id": "AccountQueries.resolve_customers",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_customers",
+          "param_types": [
+            "CustomerFilterInput",
+            "CustomerWhereInput",
+            "UserSortingInput",
+            "String"
+          ],
+          "return_type": "UserCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.customers"
+        },
+        {
+          "id": "AccountQueries.resolve_customer_type",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_customer_type",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "CustomerType",
+          "protocol": "GraphQL",
+          "endpoint": "Query.customerType"
+        },
+        {
+          "id": "AccountQueries.resolve_customer_types",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_customer_types",
+          "param_types": [
+            "CustomerTypeWhereInput",
+            "String",
+            "CustomerTypeSortingInput"
+          ],
+          "return_type": "CustomerTypeCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.customerTypes"
+        },
+        {
+          "id": "AccountQueries.resolve_permission_groups",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_permission_groups",
+          "param_types": [
+            "PermissionGroupFilterInput",
+            "PermissionGroupSortingInput"
+          ],
+          "return_type": "GroupCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.permissionGroups"
+        },
+        {
+          "id": "AccountQueries.resolve_permission_group",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_permission_group",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Group",
+          "protocol": "GraphQL",
+          "endpoint": "Query.permissionGroup"
+        },
+        {
+          "id": "AccountQueries.resolve_me",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_me",
+          "param_types": [],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.me"
+        },
+        {
+          "id": "AccountQueries.resolve_staff_users",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_staff_users",
+          "param_types": [
+            "StaffUserInput",
+            "UserSortingInput"
+          ],
+          "return_type": "UserCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.staffUsers"
+        },
+        {
+          "id": "AccountQueries.resolve_user",
+          "class_name": "AccountQueries",
+          "method_name": "resolve_user",
+          "param_types": [
+            "ID",
+            "String",
+            "String"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.user"
+        },
+        {
+          "id": "AppQueries.resolve_apps_installations",
+          "class_name": "AppQueries",
+          "method_name": "resolve_apps_installations",
+          "param_types": [],
+          "return_type": "List<AppInstallation>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.appsInstallations"
+        },
+        {
+          "id": "AppQueries.resolve_apps",
+          "class_name": "AppQueries",
+          "method_name": "resolve_apps",
+          "param_types": [
+            "AppFilterInput",
+            "AppSortingInput"
+          ],
+          "return_type": "AppCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.apps"
+        },
+        {
+          "id": "AppQueries.resolve_app",
+          "class_name": "AppQueries",
+          "method_name": "resolve_app",
+          "param_types": [
+            "ID",
+            "object"
+          ],
+          "return_type": "App",
+          "protocol": "GraphQL",
+          "endpoint": "Query.app"
+        },
+        {
+          "id": "AppQueries.resolve_app_extensions",
+          "class_name": "AppQueries",
+          "method_name": "resolve_app_extensions",
+          "param_types": [
+            "AppExtensionFilterInput"
+          ],
+          "return_type": "AppExtensionCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.appExtensions"
+        },
+        {
+          "id": "AppQueries.resolve_app_extension",
+          "class_name": "AppQueries",
+          "method_name": "resolve_app_extension",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppExtension",
+          "protocol": "GraphQL",
+          "endpoint": "Query.appExtension"
+        },
+        {
+          "id": "AttributeQueries.resolve_attributes",
+          "class_name": "AttributeQueries",
+          "method_name": "resolve_attributes",
+          "param_types": [
+            "AttributeFilterInput",
+            "AttributeWhereInput",
+            "String",
+            "AttributeSortingInput",
+            "String"
+          ],
+          "return_type": "AttributeCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.attributes"
+        },
+        {
+          "id": "AttributeQueries.resolve_attribute",
+          "class_name": "AttributeQueries",
+          "method_name": "resolve_attribute",
+          "param_types": [
+            "ID",
+            "String",
+            "String"
+          ],
+          "return_type": "Attribute",
+          "protocol": "GraphQL",
+          "endpoint": "Query.attribute"
+        },
+        {
+          "id": "ChannelQueries.resolve_channel",
+          "class_name": "ChannelQueries",
+          "method_name": "resolve_channel",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "Channel",
+          "protocol": "GraphQL",
+          "endpoint": "Query.channel"
+        },
+        {
+          "id": "ChannelQueries.resolve_channels",
+          "class_name": "ChannelQueries",
+          "method_name": "resolve_channels",
+          "param_types": [],
+          "return_type": "List<Channel>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.channels"
+        },
+        {
+          "id": "CheckoutQueries.resolve_checkout",
+          "class_name": "CheckoutQueries",
+          "method_name": "resolve_checkout",
+          "param_types": [
+            "ID",
+            "UUID"
+          ],
+          "return_type": "Checkout",
+          "protocol": "GraphQL",
+          "endpoint": "Query.checkout"
+        },
+        {
+          "id": "CheckoutQueries.resolve_checkouts",
+          "class_name": "CheckoutQueries",
+          "method_name": "resolve_checkouts",
+          "param_types": [
+            "CheckoutSortingInput",
+            "CheckoutFilterInput",
+            "String"
+          ],
+          "return_type": "CheckoutCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.checkouts"
+        },
+        {
+          "id": "CheckoutQueries.resolve_checkout_lines",
+          "class_name": "CheckoutQueries",
+          "method_name": "resolve_checkout_lines",
+          "param_types": [],
+          "return_type": "CheckoutLineCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.checkoutLines"
+        },
+        {
+          "id": "CoreQueries.resolve_tax_types",
+          "class_name": "CoreQueries",
+          "method_name": "resolve_tax_types",
+          "param_types": [],
+          "return_type": "List<TaxType>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxTypes"
+        },
+        {
+          "id": "CsvQueries.resolve_export_file",
+          "class_name": "CsvQueries",
+          "method_name": "resolve_export_file",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ExportFile",
+          "protocol": "GraphQL",
+          "endpoint": "Query.exportFile"
+        },
+        {
+          "id": "CsvQueries.resolve_export_files",
+          "class_name": "CsvQueries",
+          "method_name": "resolve_export_files",
+          "param_types": [
+            "ExportFileFilterInput",
+            "ExportFileSortingInput"
+          ],
+          "return_type": "ExportFileCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.exportFiles"
+        },
+        {
+          "id": "DiscountQueries.resolve_sale",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_sale",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "Sale",
+          "protocol": "GraphQL",
+          "endpoint": "Query.sale"
+        },
+        {
+          "id": "DiscountQueries.resolve_sales",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_sales",
+          "param_types": [
+            "SaleFilterInput",
+            "SaleSortingInput",
+            "String",
+            "String"
+          ],
+          "return_type": "SaleCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.sales"
+        },
+        {
+          "id": "DiscountQueries.resolve_voucher",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_voucher",
+          "param_types": [
+            "ID",
+            "String",
+            "String"
+          ],
+          "return_type": "Voucher",
+          "protocol": "GraphQL",
+          "endpoint": "Query.voucher"
+        },
+        {
+          "id": "DiscountQueries.resolve_vouchers",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_vouchers",
+          "param_types": [
+            "VoucherFilterInput",
+            "VoucherSortingInput",
+            "String",
+            "String"
+          ],
+          "return_type": "VoucherCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.vouchers"
+        },
+        {
+          "id": "DiscountQueries.resolve_promotion",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_promotion",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "Promotion",
+          "protocol": "GraphQL",
+          "endpoint": "Query.promotion"
+        },
+        {
+          "id": "DiscountQueries.resolve_promotions",
+          "class_name": "DiscountQueries",
+          "method_name": "resolve_promotions",
+          "param_types": [
+            "PromotionWhereInput",
+            "PromotionSortingInput"
+          ],
+          "return_type": "PromotionCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.promotions"
+        },
+        {
+          "id": "PluginsQueries.resolve_plugin",
+          "class_name": "PluginsQueries",
+          "method_name": "resolve_plugin",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Plugin",
+          "protocol": "GraphQL",
+          "endpoint": "Query.plugin"
+        },
+        {
+          "id": "PluginsQueries.resolve_plugins",
+          "class_name": "PluginsQueries",
+          "method_name": "resolve_plugins",
+          "param_types": [
+            "PluginFilterInput",
+            "PluginSortingInput"
+          ],
+          "return_type": "PluginCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.plugins"
+        },
+        {
+          "id": "GiftCardQueries.resolve_gift_card",
+          "class_name": "GiftCardQueries",
+          "method_name": "resolve_gift_card",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "GiftCard",
+          "protocol": "GraphQL",
+          "endpoint": "Query.giftCard"
+        },
+        {
+          "id": "GiftCardQueries.resolve_gift_cards",
+          "class_name": "GiftCardQueries",
+          "method_name": "resolve_gift_cards",
+          "param_types": [
+            "GiftCardSortingInput",
+            "GiftCardFilterInput",
+            "String"
+          ],
+          "return_type": "GiftCardCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.giftCards"
+        },
+        {
+          "id": "GiftCardQueries.resolve_gift_card_currencies",
+          "class_name": "GiftCardQueries",
+          "method_name": "resolve_gift_card_currencies",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.giftCardCurrencies"
+        },
+        {
+          "id": "GiftCardQueries.resolve_gift_card_tags",
+          "class_name": "GiftCardQueries",
+          "method_name": "resolve_gift_card_tags",
+          "param_types": [
+            "GiftCardTagFilterInput"
+          ],
+          "return_type": "GiftCardTagCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.giftCardTags"
+        },
+        {
+          "id": "MenuQueries.resolve_menu",
+          "class_name": "MenuQueries",
+          "method_name": "resolve_menu",
+          "param_types": [
+            "String",
+            "ID",
+            "String",
+            "String"
+          ],
+          "return_type": "Menu",
+          "protocol": "GraphQL",
+          "endpoint": "Query.menu"
+        },
+        {
+          "id": "MenuQueries.resolve_menus",
+          "class_name": "MenuQueries",
+          "method_name": "resolve_menus",
+          "param_types": [
+            "String",
+            "MenuSortingInput",
+            "MenuFilterInput"
+          ],
+          "return_type": "MenuCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.menus"
+        },
+        {
+          "id": "MenuQueries.resolve_menu_item",
+          "class_name": "MenuQueries",
+          "method_name": "resolve_menu_item",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "MenuItem",
+          "protocol": "GraphQL",
+          "endpoint": "Query.menuItem"
+        },
+        {
+          "id": "MenuQueries.resolve_menu_items",
+          "class_name": "MenuQueries",
+          "method_name": "resolve_menu_items",
+          "param_types": [
+            "String",
+            "MenuItemSortingInput",
+            "MenuItemFilterInput"
+          ],
+          "return_type": "MenuItemCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.menuItems"
+        },
+        {
+          "id": "OrderQueries.resolve_homepage_events",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_homepage_events",
+          "param_types": [],
+          "return_type": "OrderEventCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.homepageEvents"
+        },
+        {
+          "id": "OrderQueries.resolve_order",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_order",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "Order",
+          "protocol": "GraphQL",
+          "endpoint": "Query.order"
+        },
+        {
+          "id": "OrderQueries.resolve_orders",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_orders",
+          "param_types": [
+            "OrderSortingInput",
+            "OrderFilterInput",
+            "OrderWhereInput",
+            "String",
+            "String"
+          ],
+          "return_type": "OrderCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.orders"
+        },
+        {
+          "id": "OrderQueries.resolve_draft_orders",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_draft_orders",
+          "param_types": [
+            "OrderSortingInput",
+            "OrderDraftFilterInput",
+            "DraftOrderWhereInput",
+            "String"
+          ],
+          "return_type": "OrderCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.draftOrders"
+        },
+        {
+          "id": "OrderQueries.resolve_orders_total",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_orders_total",
+          "param_types": [
+            "ReportingPeriod",
+            "String"
+          ],
+          "return_type": "TaxedMoney",
+          "protocol": "GraphQL",
+          "endpoint": "Query.ordersTotal"
+        },
+        {
+          "id": "OrderQueries.resolve_order_by_token",
+          "class_name": "OrderQueries",
+          "method_name": "resolve_order_by_token",
+          "param_types": [
+            "UUID"
+          ],
+          "return_type": "Order",
+          "protocol": "GraphQL",
+          "endpoint": "Query.orderByToken"
+        },
+        {
+          "id": "PageQueries.resolve_page",
+          "class_name": "PageQueries",
+          "method_name": "resolve_page",
+          "param_types": [
+            "ID",
+            "String",
+            "LanguageCodeEnum",
+            "String"
+          ],
+          "return_type": "Page",
+          "protocol": "GraphQL",
+          "endpoint": "Query.page"
+        },
+        {
+          "id": "PageQueries.resolve_pages",
+          "class_name": "PageQueries",
+          "method_name": "resolve_pages",
+          "param_types": [
+            "PageSortingInput",
+            "PageFilterInput",
+            "String",
+            "PageWhereInput",
+            "String"
+          ],
+          "return_type": "PageCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.pages"
+        },
+        {
+          "id": "PageQueries.resolve_page_type",
+          "class_name": "PageQueries",
+          "method_name": "resolve_page_type",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PageType",
+          "protocol": "GraphQL",
+          "endpoint": "Query.pageType"
+        },
+        {
+          "id": "PageQueries.resolve_page_types",
+          "class_name": "PageQueries",
+          "method_name": "resolve_page_types",
+          "param_types": [
+            "PageTypeSortingInput",
+            "PageTypeFilterInput"
+          ],
+          "return_type": "PageTypeCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.pageTypes"
+        },
+        {
+          "id": "PaymentQueries.resolve_payment",
+          "class_name": "PaymentQueries",
+          "method_name": "resolve_payment",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Payment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.payment"
+        },
+        {
+          "id": "PaymentQueries.resolve_payments",
+          "class_name": "PaymentQueries",
+          "method_name": "resolve_payments",
+          "param_types": [
+            "PaymentFilterInput"
+          ],
+          "return_type": "PaymentCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.payments"
+        },
+        {
+          "id": "PaymentQueries.resolve_transaction",
+          "class_name": "PaymentQueries",
+          "method_name": "resolve_transaction",
+          "param_types": [
+            "ID",
+            "UUID"
+          ],
+          "return_type": "TransactionItem",
+          "protocol": "GraphQL",
+          "endpoint": "Query.transaction"
+        },
+        {
+          "id": "PaymentQueries.resolve_transactions",
+          "class_name": "PaymentQueries",
+          "method_name": "resolve_transactions",
+          "param_types": [
+            "TransactionWhereInput",
+            "TransactionSortingInput"
+          ],
+          "return_type": "TransactionCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.transactions"
+        },
+        {
+          "id": "ProductQueries.resolve_categories",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_categories",
+          "param_types": [
+            "CategoryFilterInput",
+            "CategoryWhereInput",
+            "CategorySortingInput",
+            "Int"
+          ],
+          "return_type": "CategoryCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.categories"
+        },
+        {
+          "id": "ProductQueries.resolve_category",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_category",
+          "param_types": [
+            "ID",
+            "String",
+            "LanguageCodeEnum",
+            "String"
+          ],
+          "return_type": "Category",
+          "protocol": "GraphQL",
+          "endpoint": "Query.category"
+        },
+        {
+          "id": "ProductQueries.resolve_collection",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_collection",
+          "param_types": [
+            "ID",
+            "String",
+            "LanguageCodeEnum",
+            "String",
+            "String"
+          ],
+          "return_type": "Collection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.collection"
+        },
+        {
+          "id": "ProductQueries.resolve_collections",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_collections",
+          "param_types": [
+            "CollectionFilterInput",
+            "CollectionWhereInput",
+            "CollectionSortingInput",
+            "String"
+          ],
+          "return_type": "CollectionCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.collections"
+        },
+        {
+          "id": "ProductQueries.resolve_product",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_product",
+          "param_types": [
+            "ID",
+            "String",
+            "LanguageCodeEnum",
+            "String",
+            "String"
+          ],
+          "return_type": "Product",
+          "protocol": "GraphQL",
+          "endpoint": "Query.product"
+        },
+        {
+          "id": "ProductQueries.resolve_products",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_products",
+          "param_types": [
+            "ProductFilterInput",
+            "ProductWhereInput",
+            "ProductOrder",
+            "String",
+            "String"
+          ],
+          "return_type": "ProductCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.products"
+        },
+        {
+          "id": "ProductQueries.resolve_product_type",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_product_type",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ProductType",
+          "protocol": "GraphQL",
+          "endpoint": "Query.productType"
+        },
+        {
+          "id": "ProductQueries.resolve_product_types",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_product_types",
+          "param_types": [
+            "ProductTypeFilterInput",
+            "ProductTypeSortingInput"
+          ],
+          "return_type": "ProductTypeCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.productTypes"
+        },
+        {
+          "id": "ProductQueries.resolve_product_variant",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_product_variant",
+          "param_types": [
+            "ID",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "ProductVariant",
+          "protocol": "GraphQL",
+          "endpoint": "Query.productVariant"
+        },
+        {
+          "id": "ProductQueries.resolve_product_variants",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_product_variants",
+          "param_types": [
+            "List<ID>",
+            "String",
+            "ProductVariantFilterInput",
+            "ProductVariantWhereInput",
+            "String",
+            "ProductVariantSortingInput"
+          ],
+          "return_type": "ProductVariantCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.productVariants"
+        },
+        {
+          "id": "ProductQueries.resolve_report_product_sales",
+          "class_name": "ProductQueries",
+          "method_name": "resolve_report_product_sales",
+          "param_types": [
+            "ReportingPeriod",
+            "String"
+          ],
+          "return_type": "ProductVariantCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.reportProductSales"
+        },
+        {
+          "id": "ShippingQueries.resolve_shipping_zone",
+          "class_name": "ShippingQueries",
+          "method_name": "resolve_shipping_zone",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "ShippingZone",
+          "protocol": "GraphQL",
+          "endpoint": "Query.shippingZone"
+        },
+        {
+          "id": "ShippingQueries.resolve_shipping_zones",
+          "class_name": "ShippingQueries",
+          "method_name": "resolve_shipping_zones",
+          "param_types": [
+            "ShippingZoneFilterInput",
+            "String"
+          ],
+          "return_type": "ShippingZoneCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.shippingZones"
+        },
+        {
+          "id": "ShopQueries.resolve_shop",
+          "class_name": "ShopQueries",
+          "method_name": "resolve_shop",
+          "param_types": [],
+          "return_type": "Shop",
+          "protocol": "GraphQL",
+          "endpoint": "Query.shop"
+        },
+        {
+          "id": "ShopQueries.resolve_gift_card_settings",
+          "class_name": "ShopQueries",
+          "method_name": "resolve_gift_card_settings",
+          "param_types": [],
+          "return_type": "GiftCardSettings",
+          "protocol": "GraphQL",
+          "endpoint": "Query.giftCardSettings"
+        },
+        {
+          "id": "ShopQueries.resolve_refund_settings",
+          "class_name": "ShopQueries",
+          "method_name": "resolve_refund_settings",
+          "param_types": [],
+          "return_type": "RefundSettings",
+          "protocol": "GraphQL",
+          "endpoint": "Query.refundSettings"
+        },
+        {
+          "id": "ShopQueries.resolve_return_settings",
+          "class_name": "ShopQueries",
+          "method_name": "resolve_return_settings",
+          "param_types": [],
+          "return_type": "ReturnSettings",
+          "protocol": "GraphQL",
+          "endpoint": "Query.returnSettings"
+        },
+        {
+          "id": "StockQueries.resolve_stock",
+          "class_name": "StockQueries",
+          "method_name": "resolve_stock",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Stock",
+          "protocol": "GraphQL",
+          "endpoint": "Query.stock"
+        },
+        {
+          "id": "StockQueries.resolve_stocks",
+          "class_name": "StockQueries",
+          "method_name": "resolve_stocks",
+          "param_types": [
+            "StockFilterInput"
+          ],
+          "return_type": "StockCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.stocks"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_configuration",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_configuration",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "TaxConfiguration",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxConfiguration"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_configurations",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_configurations",
+          "param_types": [
+            "TaxConfigurationFilterInput"
+          ],
+          "return_type": "TaxConfigurationCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxConfigurations"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_class",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_class",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "TaxClass",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxClass"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_classes",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_classes",
+          "param_types": [
+            "TaxClassSortingInput",
+            "TaxClassFilterInput"
+          ],
+          "return_type": "TaxClassCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxClasses"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_country_configuration",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_country_configuration",
+          "param_types": [
+            "CountryCodeEnum"
+          ],
+          "return_type": "TaxCountryConfiguration",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxCountryConfiguration"
+        },
+        {
+          "id": "TaxQueries.resolve_tax_country_configurations",
+          "class_name": "TaxQueries",
+          "method_name": "resolve_tax_country_configurations",
+          "param_types": [],
+          "return_type": "List<TaxCountryConfiguration>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taxCountryConfigurations"
+        },
+        {
+          "id": "TranslationQueries.resolve_translations",
+          "class_name": "TranslationQueries",
+          "method_name": "resolve_translations",
+          "param_types": [
+            "TranslatableKinds"
+          ],
+          "return_type": "TranslatableItemConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.translations"
+        },
+        {
+          "id": "TranslationQueries.resolve_translation",
+          "class_name": "TranslationQueries",
+          "method_name": "resolve_translation",
+          "param_types": [
+            "ID",
+            "TranslatableKinds"
+          ],
+          "return_type": "TranslatableItem",
+          "protocol": "GraphQL",
+          "endpoint": "Query.translation"
+        },
+        {
+          "id": "WarehouseQueries.resolve_warehouse",
+          "class_name": "WarehouseQueries",
+          "method_name": "resolve_warehouse",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "Warehouse",
+          "protocol": "GraphQL",
+          "endpoint": "Query.warehouse"
+        },
+        {
+          "id": "WarehouseQueries.resolve_warehouses",
+          "class_name": "WarehouseQueries",
+          "method_name": "resolve_warehouses",
+          "param_types": [
+            "WarehouseFilterInput",
+            "WarehouseSortingInput"
+          ],
+          "return_type": "WarehouseCountableConnection",
+          "protocol": "GraphQL",
+          "endpoint": "Query.warehouses"
+        },
+        {
+          "id": "WebhookQueries.resolve_webhook",
+          "class_name": "WebhookQueries",
+          "method_name": "resolve_webhook",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "Webhook",
+          "protocol": "GraphQL",
+          "endpoint": "Query.webhook"
+        },
+        {
+          "id": "WebhookQueries.resolve_webhook_events",
+          "class_name": "WebhookQueries",
+          "method_name": "resolve_webhook_events",
+          "param_types": [],
+          "return_type": "List<WebhookEvent>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.webhookEvents"
+        },
+        {
+          "id": "WebhookQueries.resolve_webhook_sample_payload",
+          "class_name": "WebhookQueries",
+          "method_name": "resolve_webhook_sample_payload",
+          "param_types": [
+            "WebhookSampleEventTypeEnum"
+          ],
+          "return_type": "JSONString",
+          "protocol": "GraphQL",
+          "endpoint": "Query.webhookSamplePayload"
+        },
+        {
+          "id": "CreateToken.perform_mutation",
+          "class_name": "CreateToken",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "CreateToken",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.tokenCreate"
+        },
+        {
+          "id": "RefreshToken.perform_mutation",
+          "class_name": "RefreshToken",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "RefreshToken",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.tokenRefresh"
+        },
+        {
+          "id": "VerifyToken.perform_mutation",
+          "class_name": "VerifyToken",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "VerifyToken",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.tokenVerify"
+        },
+        {
+          "id": "DeactivateAllUserTokens.perform_mutation",
+          "class_name": "DeactivateAllUserTokens",
+          "method_name": "perform_mutation",
+          "param_types": [],
+          "return_type": "DeactivateAllUserTokens",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.tokensDeactivateAll"
+        },
+        {
+          "id": "ExternalAuthenticationUrl.perform_mutation",
+          "class_name": "ExternalAuthenticationUrl",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "JSONString"
+          ],
+          "return_type": "ExternalAuthenticationUrl",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalAuthenticationUrl"
+        },
+        {
+          "id": "ExternalObtainAccessTokens.perform_mutation",
+          "class_name": "ExternalObtainAccessTokens",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "JSONString"
+          ],
+          "return_type": "ExternalObtainAccessTokens",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalObtainAccessTokens"
+        },
+        {
+          "id": "ExternalRefresh.perform_mutation",
+          "class_name": "ExternalRefresh",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "JSONString"
+          ],
+          "return_type": "ExternalRefresh",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalRefresh"
+        },
+        {
+          "id": "ExternalLogout.perform_mutation",
+          "class_name": "ExternalLogout",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "JSONString"
+          ],
+          "return_type": "ExternalLogout",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalLogout"
+        },
+        {
+          "id": "ExternalVerify.perform_mutation",
+          "class_name": "ExternalVerify",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "JSONString"
+          ],
+          "return_type": "ExternalVerify",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalVerify"
+        },
+        {
+          "id": "RequestPasswordReset.perform_mutation",
+          "class_name": "RequestPasswordReset",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "RequestPasswordReset",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.requestPasswordReset"
+        },
+        {
+          "id": "SendConfirmationEmail.perform_mutation",
+          "class_name": "SendConfirmationEmail",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "SendConfirmationEmail",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.sendConfirmationEmail"
+        },
+        {
+          "id": "ConfirmAccount.perform_mutation",
+          "class_name": "ConfirmAccount",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "ConfirmAccount",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.confirmAccount"
+        },
+        {
+          "id": "SetPassword.mutate",
+          "class_name": "SetPassword",
+          "method_name": "mutate",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "SetPassword",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.setPassword"
+        },
+        {
+          "id": "PasswordChange.perform_mutation",
+          "class_name": "PasswordChange",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "PasswordChange",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.passwordChange"
+        },
+        {
+          "id": "RequestEmailChange.perform_mutation",
+          "class_name": "RequestEmailChange",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "RequestEmailChange",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.requestEmailChange"
+        },
+        {
+          "id": "ConfirmEmailChange.perform_mutation",
+          "class_name": "ConfirmEmailChange",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "ConfirmEmailChange",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.confirmEmailChange"
+        },
+        {
+          "id": "AccountAddressCreate.perform_mutation",
+          "class_name": "AccountAddressCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AddressInput",
+            "AddressTypeEnum",
+            "ID"
+          ],
+          "return_type": "AccountAddressCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountAddressCreate"
+        },
+        {
+          "id": "AccountAddressUpdate.perform_mutation",
+          "class_name": "AccountAddressUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AddressInput"
+          ],
+          "return_type": "AccountAddressUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountAddressUpdate"
+        },
+        {
+          "id": "AccountAddressDelete.perform_mutation",
+          "class_name": "AccountAddressDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AccountAddressDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountAddressDelete"
+        },
+        {
+          "id": "AccountSetDefaultAddress.perform_mutation",
+          "class_name": "AccountSetDefaultAddress",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AddressTypeEnum"
+          ],
+          "return_type": "AccountSetDefaultAddress",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountSetDefaultAddress"
+        },
+        {
+          "id": "AccountRegister.perform_mutation",
+          "class_name": "AccountRegister",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AccountRegisterInput"
+          ],
+          "return_type": "AccountRegister",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountRegister"
+        },
+        {
+          "id": "AccountUpdate.perform_mutation",
+          "class_name": "AccountUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AccountInput",
+            "ID"
+          ],
+          "return_type": "AccountUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountUpdate"
+        },
+        {
+          "id": "AccountRequestDeletion.perform_mutation",
+          "class_name": "AccountRequestDeletion",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "AccountRequestDeletion",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountRequestDeletion"
+        },
+        {
+          "id": "AccountDelete.perform_mutation",
+          "class_name": "AccountDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AccountDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.accountDelete"
+        },
+        {
+          "id": "AddressCreate.perform_mutation",
+          "class_name": "AddressCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AddressInput"
+          ],
+          "return_type": "AddressCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addressCreate"
+        },
+        {
+          "id": "AddressUpdate.perform_mutation",
+          "class_name": "AddressUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AddressInput"
+          ],
+          "return_type": "AddressUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addressUpdate"
+        },
+        {
+          "id": "AddressDelete.perform_mutation",
+          "class_name": "AddressDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AddressDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addressDelete"
+        },
+        {
+          "id": "AddressSetDefault.perform_mutation",
+          "class_name": "AddressSetDefault",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "AddressTypeEnum"
+          ],
+          "return_type": "AddressSetDefault",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addressSetDefault"
+        },
+        {
+          "id": "CustomerCreate.perform_mutation",
+          "class_name": "CustomerCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "UserCreateInput"
+          ],
+          "return_type": "CustomerCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerCreate"
+        },
+        {
+          "id": "CustomerUpdate.perform_mutation",
+          "class_name": "CustomerUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "CustomerInput"
+          ],
+          "return_type": "CustomerUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerUpdate"
+        },
+        {
+          "id": "CustomerDelete.perform_mutation",
+          "class_name": "CustomerDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "CustomerDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerDelete"
+        },
+        {
+          "id": "CustomerBulkDelete.perform_mutation",
+          "class_name": "CustomerBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "CustomerBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerBulkDelete"
+        },
+        {
+          "id": "CustomerBulkUpdate.perform_mutation",
+          "class_name": "CustomerBulkUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<CustomerBulkUpdateInput>",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "CustomerBulkUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerBulkUpdate"
+        },
+        {
+          "id": "CustomerTypeCreate.perform_mutation",
+          "class_name": "CustomerTypeCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CustomerTypeCreateInput"
+          ],
+          "return_type": "CustomerTypeCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeCreate"
+        },
+        {
+          "id": "CustomerTypeUpdate.perform_mutation",
+          "class_name": "CustomerTypeUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CustomerTypeUpdateInput"
+          ],
+          "return_type": "CustomerTypeUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeUpdate"
+        },
+        {
+          "id": "CustomerTypeDelete.perform_mutation",
+          "class_name": "CustomerTypeDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "CustomerTypeDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeDelete"
+        },
+        {
+          "id": "CustomerTypeAssignAttributes.perform_mutation",
+          "class_name": "CustomerTypeAssignAttributes",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "CustomerTypeAssignAttributes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeAssignAttributes"
+        },
+        {
+          "id": "CustomerTypeUnassignAttributes.perform_mutation",
+          "class_name": "CustomerTypeUnassignAttributes",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "CustomerTypeUnassignAttributes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeUnassignAttributes"
+        },
+        {
+          "id": "CustomerTypeReorderAttributes.perform_mutation",
+          "class_name": "CustomerTypeReorderAttributes",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "CustomerTypeReorderAttributes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.customerTypeReorderAttributes"
+        },
+        {
+          "id": "StaffCreate.perform_mutation",
+          "class_name": "StaffCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "StaffCreateInput"
+          ],
+          "return_type": "StaffCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffCreate"
+        },
+        {
+          "id": "StaffUpdate.perform_mutation",
+          "class_name": "StaffUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "StaffUpdateInput"
+          ],
+          "return_type": "StaffUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffUpdate"
+        },
+        {
+          "id": "StaffDelete.perform_mutation",
+          "class_name": "StaffDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "StaffDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffDelete"
+        },
+        {
+          "id": "StaffBulkDelete.perform_mutation",
+          "class_name": "StaffBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "StaffBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffBulkDelete"
+        },
+        {
+          "id": "UserAvatarUpdate.perform_mutation",
+          "class_name": "UserAvatarUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "Upload"
+          ],
+          "return_type": "UserAvatarUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.userAvatarUpdate"
+        },
+        {
+          "id": "UserAvatarDelete.perform_mutation",
+          "class_name": "UserAvatarDelete",
+          "method_name": "perform_mutation",
+          "param_types": [],
+          "return_type": "UserAvatarDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.userAvatarDelete"
+        },
+        {
+          "id": "UserBulkSetActive.perform_mutation",
+          "class_name": "UserBulkSetActive",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>",
+            "Boolean"
+          ],
+          "return_type": "UserBulkSetActive",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.userBulkSetActive"
+        },
+        {
+          "id": "PermissionGroupCreate.perform_mutation",
+          "class_name": "PermissionGroupCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PermissionGroupCreateInput"
+          ],
+          "return_type": "PermissionGroupCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.permissionGroupCreate"
+        },
+        {
+          "id": "PermissionGroupUpdate.perform_mutation",
+          "class_name": "PermissionGroupUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PermissionGroupUpdateInput"
+          ],
+          "return_type": "PermissionGroupUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.permissionGroupUpdate"
+        },
+        {
+          "id": "PermissionGroupDelete.perform_mutation",
+          "class_name": "PermissionGroupDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PermissionGroupDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.permissionGroupDelete"
+        },
+        {
+          "id": "AppCreate.perform_mutation",
+          "class_name": "AppCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppInput"
+          ],
+          "return_type": "AppCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appCreate"
+        },
+        {
+          "id": "AppUpdate.perform_mutation",
+          "class_name": "AppUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AppInput"
+          ],
+          "return_type": "AppUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appUpdate"
+        },
+        {
+          "id": "AppDelete.perform_mutation",
+          "class_name": "AppDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appDelete"
+        },
+        {
+          "id": "AppTokenCreate.perform_mutation",
+          "class_name": "AppTokenCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppTokenInput"
+          ],
+          "return_type": "AppTokenCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appTokenCreate"
+        },
+        {
+          "id": "AppTokenDelete.perform_mutation",
+          "class_name": "AppTokenDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppTokenDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appTokenDelete"
+        },
+        {
+          "id": "AppTokenVerify.perform_mutation",
+          "class_name": "AppTokenVerify",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AppTokenVerify",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appTokenVerify"
+        },
+        {
+          "id": "AppInstall.perform_mutation",
+          "class_name": "AppInstall",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppInstallInput"
+          ],
+          "return_type": "AppInstall",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appInstall"
+        },
+        {
+          "id": "AppRetryInstall.perform_mutation",
+          "class_name": "AppRetryInstall",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "Boolean"
+          ],
+          "return_type": "AppRetryInstall",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appRetryInstall"
+        },
+        {
+          "id": "AppDeleteFailedInstallation.perform_mutation",
+          "class_name": "AppDeleteFailedInstallation",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppDeleteFailedInstallation",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appDeleteFailedInstallation"
+        },
+        {
+          "id": "AppFetchManifest.perform_mutation",
+          "class_name": "AppFetchManifest",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AppFetchManifest",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appFetchManifest"
+        },
+        {
+          "id": "AppActivate.perform_mutation",
+          "class_name": "AppActivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppActivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appActivate"
+        },
+        {
+          "id": "AppDeactivate.perform_mutation",
+          "class_name": "AppDeactivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppDeactivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appDeactivate"
+        },
+        {
+          "id": "AppProblemCreate.perform_mutation",
+          "class_name": "AppProblemCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppProblemCreateInput"
+          ],
+          "return_type": "AppProblemCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appProblemCreate"
+        },
+        {
+          "id": "AppProblemDismiss.perform_mutation",
+          "class_name": "AppProblemDismiss",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppProblemDismissInput"
+          ],
+          "return_type": "AppProblemDismiss",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appProblemDismiss"
+        },
+        {
+          "id": "AppSelfUpdate.perform_mutation",
+          "class_name": "AppSelfUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AppSelfUpdateInput"
+          ],
+          "return_type": "AppSelfUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appSelfUpdate"
+        },
+        {
+          "id": "AppReenableSyncWebhooks.perform_mutation",
+          "class_name": "AppReenableSyncWebhooks",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "AppReenableSyncWebhooks",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.appReenableSyncWebhooks"
+        },
+        {
+          "id": "AttributeCreate.perform_mutation",
+          "class_name": "AttributeCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AttributeCreateInput"
+          ],
+          "return_type": "AttributeCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeCreate"
+        },
+        {
+          "id": "AttributeDelete.perform_mutation",
+          "class_name": "AttributeDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "AttributeDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeDelete"
+        },
+        {
+          "id": "AttributeUpdate.perform_mutation",
+          "class_name": "AttributeUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "AttributeUpdateInput"
+          ],
+          "return_type": "AttributeUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeUpdate"
+        },
+        {
+          "id": "AttributeBulkCreate.perform_mutation",
+          "class_name": "AttributeBulkCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<AttributeCreateInput>",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "AttributeBulkCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeBulkCreate"
+        },
+        {
+          "id": "AttributeBulkUpdate.perform_mutation",
+          "class_name": "AttributeBulkUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<AttributeBulkUpdateInput>",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "AttributeBulkUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeBulkUpdate"
+        },
+        {
+          "id": "AttributeTranslate.perform_mutation",
+          "class_name": "AttributeTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "NameTranslationInput"
+          ],
+          "return_type": "AttributeTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeTranslate"
+        },
+        {
+          "id": "AttributeBulkTranslate.perform_mutation",
+          "class_name": "AttributeBulkTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<AttributeBulkTranslateInput>"
+          ],
+          "return_type": "AttributeBulkTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeBulkTranslate"
+        },
+        {
+          "id": "AttributeBulkDelete.perform_mutation",
+          "class_name": "AttributeBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "AttributeBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeBulkDelete"
+        },
+        {
+          "id": "AttributeValueBulkDelete.perform_mutation",
+          "class_name": "AttributeValueBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "AttributeValueBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueBulkDelete"
+        },
+        {
+          "id": "AttributeValueCreate.perform_mutation",
+          "class_name": "AttributeValueCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "AttributeValueCreateInput"
+          ],
+          "return_type": "AttributeValueCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueCreate"
+        },
+        {
+          "id": "AttributeValueDelete.perform_mutation",
+          "class_name": "AttributeValueDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "AttributeValueDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueDelete"
+        },
+        {
+          "id": "AttributeValueUpdate.perform_mutation",
+          "class_name": "AttributeValueUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "AttributeValueUpdateInput"
+          ],
+          "return_type": "AttributeValueUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueUpdate"
+        },
+        {
+          "id": "AttributeValueBulkTranslate.perform_mutation",
+          "class_name": "AttributeValueBulkTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<AttributeValueBulkTranslateInput>"
+          ],
+          "return_type": "AttributeValueBulkTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueBulkTranslate"
+        },
+        {
+          "id": "AttributeValueTranslate.perform_mutation",
+          "class_name": "AttributeValueTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "AttributeValueTranslationInput"
+          ],
+          "return_type": "AttributeValueTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeValueTranslate"
+        },
+        {
+          "id": "AttributeReorderValues.perform_mutation",
+          "class_name": "AttributeReorderValues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "AttributeReorderValues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.attributeReorderValues"
+        },
+        {
+          "id": "ChannelCreate.perform_mutation",
+          "class_name": "ChannelCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ChannelCreateInput"
+          ],
+          "return_type": "ChannelCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelCreate"
+        },
+        {
+          "id": "ChannelUpdate.perform_mutation",
+          "class_name": "ChannelUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ChannelUpdateInput"
+          ],
+          "return_type": "ChannelUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelUpdate"
+        },
+        {
+          "id": "ChannelDelete.perform_mutation",
+          "class_name": "ChannelDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ChannelDeleteInput"
+          ],
+          "return_type": "ChannelDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelDelete"
+        },
+        {
+          "id": "ChannelActivate.perform_mutation",
+          "class_name": "ChannelActivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ChannelActivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelActivate"
+        },
+        {
+          "id": "ChannelDeactivate.perform_mutation",
+          "class_name": "ChannelDeactivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ChannelDeactivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelDeactivate"
+        },
+        {
+          "id": "ChannelReorderWarehouses.perform_mutation",
+          "class_name": "ChannelReorderWarehouses",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "ChannelReorderWarehouses",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.channelReorderWarehouses"
+        },
+        {
+          "id": "CheckoutAddPromoCode.perform_mutation",
+          "class_name": "CheckoutAddPromoCode",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "UUID",
+            "String"
+          ],
+          "return_type": "CheckoutAddPromoCode",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutAddPromoCode"
+        },
+        {
+          "id": "CheckoutBillingAddressUpdate.perform_mutation",
+          "class_name": "CheckoutBillingAddressUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "AddressInput",
+            "Boolean",
+            "CheckoutAddressValidationRules"
+          ],
+          "return_type": "CheckoutBillingAddressUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutBillingAddressUpdate"
+        },
+        {
+          "id": "CheckoutComplete.perform_mutation",
+          "class_name": "CheckoutComplete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "Boolean",
+            "String",
+            "JSONString",
+            "List<MetadataInput>"
+          ],
+          "return_type": "CheckoutComplete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutComplete"
+        },
+        {
+          "id": "CheckoutCreate.perform_mutation",
+          "class_name": "CheckoutCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CheckoutCreateInput"
+          ],
+          "return_type": "CheckoutCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutCreate"
+        },
+        {
+          "id": "CheckoutCreateFromOrder.perform_mutation",
+          "class_name": "CheckoutCreateFromOrder",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "CheckoutCreateFromOrder",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutCreateFromOrder"
+        },
+        {
+          "id": "CheckoutCustomerAttach.perform_mutation",
+          "class_name": "CheckoutCustomerAttach",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "ID"
+          ],
+          "return_type": "CheckoutCustomerAttach",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutCustomerAttach"
+        },
+        {
+          "id": "CheckoutCustomerDetach.perform_mutation",
+          "class_name": "CheckoutCustomerDetach",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID"
+          ],
+          "return_type": "CheckoutCustomerDetach",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutCustomerDetach"
+        },
+        {
+          "id": "CheckoutCustomerNoteUpdate.perform_mutation",
+          "class_name": "CheckoutCustomerNoteUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "CheckoutCustomerNoteUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutCustomerNoteUpdate"
+        },
+        {
+          "id": "CheckoutDelete.perform_mutation",
+          "class_name": "CheckoutDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "CheckoutDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutDelete"
+        },
+        {
+          "id": "CheckoutEmailUpdate.perform_mutation",
+          "class_name": "CheckoutEmailUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "String"
+          ],
+          "return_type": "CheckoutEmailUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutEmailUpdate"
+        },
+        {
+          "id": "CheckoutLinesDelete.perform_mutation",
+          "class_name": "CheckoutLinesDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "List<ID>"
+          ],
+          "return_type": "CheckoutLinesDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutLinesDelete"
+        },
+        {
+          "id": "CheckoutLinesAdd.perform_mutation",
+          "class_name": "CheckoutLinesAdd",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "List<CheckoutLineInput>"
+          ],
+          "return_type": "CheckoutLinesAdd",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutLinesAdd"
+        },
+        {
+          "id": "CheckoutLinesUpdate.perform_mutation",
+          "class_name": "CheckoutLinesUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "List<CheckoutLineUpdateInput>"
+          ],
+          "return_type": "CheckoutLinesUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutLinesUpdate"
+        },
+        {
+          "id": "CheckoutRemovePromoCode.perform_mutation",
+          "class_name": "CheckoutRemovePromoCode",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "String",
+            "ID"
+          ],
+          "return_type": "CheckoutRemovePromoCode",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutRemovePromoCode"
+        },
+        {
+          "id": "CheckoutPaymentCreate.perform_mutation",
+          "class_name": "CheckoutPaymentCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "PaymentInput"
+          ],
+          "return_type": "CheckoutPaymentCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutPaymentCreate"
+        },
+        {
+          "id": "CheckoutShippingAddressUpdate.perform_mutation",
+          "class_name": "CheckoutShippingAddressUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "AddressInput",
+            "Boolean",
+            "CheckoutAddressValidationRules"
+          ],
+          "return_type": "CheckoutShippingAddressUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutShippingAddressUpdate"
+        },
+        {
+          "id": "CheckoutShippingMethodUpdate.perform_mutation",
+          "class_name": "CheckoutShippingMethodUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "ID"
+          ],
+          "return_type": "CheckoutShippingMethodUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutShippingMethodUpdate"
+        },
+        {
+          "id": "CheckoutDeliveryMethodUpdate.perform_mutation",
+          "class_name": "CheckoutDeliveryMethodUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID"
+          ],
+          "return_type": "CheckoutDeliveryMethodUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutDeliveryMethodUpdate"
+        },
+        {
+          "id": "CheckoutLanguageCodeUpdate.perform_mutation",
+          "class_name": "CheckoutLanguageCodeUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID",
+            "LanguageCodeEnum"
+          ],
+          "return_type": "CheckoutLanguageCodeUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.checkoutLanguageCodeUpdate"
+        },
+        {
+          "id": "OrderCreateFromCheckout.perform_mutation",
+          "class_name": "OrderCreateFromCheckout",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "Boolean",
+            "List<MetadataInput>",
+            "List<MetadataInput>"
+          ],
+          "return_type": "OrderCreateFromCheckout",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderCreateFromCheckout"
+        },
+        {
+          "id": "FileUpload.perform_mutation",
+          "class_name": "FileUpload",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "Upload"
+          ],
+          "return_type": "FileUpload",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.fileUpload"
+        },
+        {
+          "id": "ExportProducts.perform_mutation",
+          "class_name": "ExportProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ExportProductsInput"
+          ],
+          "return_type": "ExportProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.exportProducts"
+        },
+        {
+          "id": "PromotionCreate.perform_mutation",
+          "class_name": "PromotionCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PromotionCreateInput"
+          ],
+          "return_type": "PromotionCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionCreate"
+        },
+        {
+          "id": "PromotionUpdate.perform_mutation",
+          "class_name": "PromotionUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "PromotionUpdateInput"
+          ],
+          "return_type": "PromotionUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionUpdate"
+        },
+        {
+          "id": "PromotionDelete.perform_mutation",
+          "class_name": "PromotionDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "PromotionDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionDelete"
+        },
+        {
+          "id": "PromotionRuleCreate.perform_mutation",
+          "class_name": "PromotionRuleCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PromotionRuleCreateInput"
+          ],
+          "return_type": "PromotionRuleCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionRuleCreate"
+        },
+        {
+          "id": "PromotionRuleUpdate.perform_mutation",
+          "class_name": "PromotionRuleUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PromotionRuleUpdateInput"
+          ],
+          "return_type": "PromotionRuleUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionRuleUpdate"
+        },
+        {
+          "id": "PromotionRuleDelete.perform_mutation",
+          "class_name": "PromotionRuleDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PromotionRuleDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionRuleDelete"
+        },
+        {
+          "id": "PromotionTranslate.perform_mutation",
+          "class_name": "PromotionTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "PromotionTranslationInput"
+          ],
+          "return_type": "PromotionTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionTranslate"
+        },
+        {
+          "id": "PromotionRuleTranslate.perform_mutation",
+          "class_name": "PromotionRuleTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "PromotionRuleTranslationInput"
+          ],
+          "return_type": "PromotionRuleTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionRuleTranslate"
+        },
+        {
+          "id": "PromotionBulkDelete.perform_mutation",
+          "class_name": "PromotionBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "PromotionBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.promotionBulkDelete"
+        },
+        {
+          "id": "SaleCreate.perform_mutation",
+          "class_name": "SaleCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "SaleInput"
+          ],
+          "return_type": "SaleCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleCreate"
+        },
+        {
+          "id": "SaleDelete.perform_mutation",
+          "class_name": "SaleDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "SaleDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleDelete"
+        },
+        {
+          "id": "SaleBulkDelete.perform_mutation",
+          "class_name": "SaleBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "SaleBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleBulkDelete"
+        },
+        {
+          "id": "SaleUpdate.perform_mutation",
+          "class_name": "SaleUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "SaleInput"
+          ],
+          "return_type": "SaleUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleUpdate"
+        },
+        {
+          "id": "SaleAddCatalogues.perform_mutation",
+          "class_name": "SaleAddCatalogues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CatalogueInput"
+          ],
+          "return_type": "SaleAddCatalogues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleCataloguesAdd"
+        },
+        {
+          "id": "SaleRemoveCatalogues.perform_mutation",
+          "class_name": "SaleRemoveCatalogues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CatalogueInput"
+          ],
+          "return_type": "SaleRemoveCatalogues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleCataloguesRemove"
+        },
+        {
+          "id": "SaleTranslate.perform_mutation",
+          "class_name": "SaleTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "NameTranslationInput"
+          ],
+          "return_type": "SaleTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleTranslate"
+        },
+        {
+          "id": "SaleChannelListingUpdate.perform_mutation",
+          "class_name": "SaleChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "SaleChannelListingInput"
+          ],
+          "return_type": "SaleChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.saleChannelListingUpdate"
+        },
+        {
+          "id": "VoucherCreate.perform_mutation",
+          "class_name": "VoucherCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "VoucherInput"
+          ],
+          "return_type": "VoucherCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherCreate"
+        },
+        {
+          "id": "VoucherDelete.perform_mutation",
+          "class_name": "VoucherDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "VoucherDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherDelete"
+        },
+        {
+          "id": "VoucherBulkDelete.perform_mutation",
+          "class_name": "VoucherBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "VoucherBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherBulkDelete"
+        },
+        {
+          "id": "VoucherUpdate.perform_mutation",
+          "class_name": "VoucherUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "VoucherInput"
+          ],
+          "return_type": "VoucherUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherUpdate"
+        },
+        {
+          "id": "VoucherAddCatalogues.perform_mutation",
+          "class_name": "VoucherAddCatalogues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CatalogueInput"
+          ],
+          "return_type": "VoucherAddCatalogues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherCataloguesAdd"
+        },
+        {
+          "id": "VoucherRemoveCatalogues.perform_mutation",
+          "class_name": "VoucherRemoveCatalogues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CatalogueInput"
+          ],
+          "return_type": "VoucherRemoveCatalogues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherCataloguesRemove"
+        },
+        {
+          "id": "VoucherTranslate.perform_mutation",
+          "class_name": "VoucherTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "NameTranslationInput"
+          ],
+          "return_type": "VoucherTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherTranslate"
+        },
+        {
+          "id": "VoucherChannelListingUpdate.perform_mutation",
+          "class_name": "VoucherChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "VoucherChannelListingInput"
+          ],
+          "return_type": "VoucherChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherChannelListingUpdate"
+        },
+        {
+          "id": "VoucherCodeBulkDelete.perform_mutation",
+          "class_name": "VoucherCodeBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "VoucherCodeBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.voucherCodeBulkDelete"
+        },
+        {
+          "id": "ExternalNotificationTrigger.perform_mutation",
+          "class_name": "ExternalNotificationTrigger",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ExternalNotificationTriggerInput",
+            "String",
+            "String"
+          ],
+          "return_type": "ExternalNotificationTrigger",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.externalNotificationTrigger"
+        },
+        {
+          "id": "PluginUpdate.perform_mutation",
+          "class_name": "PluginUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "PluginUpdateInput"
+          ],
+          "return_type": "PluginUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pluginUpdate"
+        },
+        {
+          "id": "GiftCardActivate.perform_mutation",
+          "class_name": "GiftCardActivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "GiftCardActivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardActivate"
+        },
+        {
+          "id": "GiftCardAssignUser.perform_mutation",
+          "class_name": "GiftCardAssignUser",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID"
+          ],
+          "return_type": "GiftCardAssignUser",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardAssignUser"
+        },
+        {
+          "id": "GiftCardUnassignUser.perform_mutation",
+          "class_name": "GiftCardUnassignUser",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "GiftCardUnassignUser",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardUnassignUser"
+        },
+        {
+          "id": "GiftCardBalanceAdjust.perform_mutation",
+          "class_name": "GiftCardBalanceAdjust",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "DecimalScalar"
+          ],
+          "return_type": "GiftCardBalanceAdjust",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardBalanceAdjust"
+        },
+        {
+          "id": "GiftCardCreate.perform_mutation",
+          "class_name": "GiftCardCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "GiftCardCreateInput"
+          ],
+          "return_type": "GiftCardCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardCreate"
+        },
+        {
+          "id": "GiftCardDelete.perform_mutation",
+          "class_name": "GiftCardDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "GiftCardDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardDelete"
+        },
+        {
+          "id": "GiftCardDeactivate.perform_mutation",
+          "class_name": "GiftCardDeactivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "GiftCardDeactivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardDeactivate"
+        },
+        {
+          "id": "GiftCardUpdate.perform_mutation",
+          "class_name": "GiftCardUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "GiftCardUpdateInput"
+          ],
+          "return_type": "GiftCardUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardUpdate"
+        },
+        {
+          "id": "GiftCardResend.perform_mutation",
+          "class_name": "GiftCardResend",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "GiftCardResendInput"
+          ],
+          "return_type": "GiftCardResend",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardResend"
+        },
+        {
+          "id": "GiftCardAddNote.perform_mutation",
+          "class_name": "GiftCardAddNote",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "GiftCardAddNoteInput"
+          ],
+          "return_type": "GiftCardAddNote",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardAddNote"
+        },
+        {
+          "id": "GiftCardBulkCreate.perform_mutation",
+          "class_name": "GiftCardBulkCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "GiftCardBulkCreateInput"
+          ],
+          "return_type": "GiftCardBulkCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardBulkCreate"
+        },
+        {
+          "id": "GiftCardBulkDelete.perform_mutation",
+          "class_name": "GiftCardBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "GiftCardBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardBulkDelete"
+        },
+        {
+          "id": "GiftCardBulkActivate.perform_mutation",
+          "class_name": "GiftCardBulkActivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "GiftCardBulkActivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardBulkActivate"
+        },
+        {
+          "id": "GiftCardBulkDeactivate.perform_mutation",
+          "class_name": "GiftCardBulkDeactivate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "GiftCardBulkDeactivate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardBulkDeactivate"
+        },
+        {
+          "id": "InvoiceRequest.perform_mutation",
+          "class_name": "InvoiceRequest",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "InvoiceRequest",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceRequest"
+        },
+        {
+          "id": "InvoiceRequestDelete.perform_mutation",
+          "class_name": "InvoiceRequestDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "InvoiceRequestDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceRequestDelete"
+        },
+        {
+          "id": "InvoiceCreate.perform_mutation",
+          "class_name": "InvoiceCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "InvoiceCreateInput"
+          ],
+          "return_type": "InvoiceCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceCreate"
+        },
+        {
+          "id": "InvoiceDelete.perform_mutation",
+          "class_name": "InvoiceDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "InvoiceDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceDelete"
+        },
+        {
+          "id": "InvoiceUpdate.perform_mutation",
+          "class_name": "InvoiceUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UpdateInvoiceInput"
+          ],
+          "return_type": "InvoiceUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceUpdate"
+        },
+        {
+          "id": "InvoiceSendNotification.perform_mutation",
+          "class_name": "InvoiceSendNotification",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "InvoiceSendNotification",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invoiceSendNotification"
+        },
+        {
+          "id": "AssignNavigation.perform_mutation",
+          "class_name": "AssignNavigation",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "NavigationType"
+          ],
+          "return_type": "AssignNavigation",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.assignNavigation"
+        },
+        {
+          "id": "MenuCreate.perform_mutation",
+          "class_name": "MenuCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "MenuCreateInput"
+          ],
+          "return_type": "MenuCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuCreate"
+        },
+        {
+          "id": "MenuDelete.perform_mutation",
+          "class_name": "MenuDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "MenuDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuDelete"
+        },
+        {
+          "id": "MenuBulkDelete.perform_mutation",
+          "class_name": "MenuBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "MenuBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuBulkDelete"
+        },
+        {
+          "id": "MenuUpdate.perform_mutation",
+          "class_name": "MenuUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "MenuInput"
+          ],
+          "return_type": "MenuUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuUpdate"
+        },
+        {
+          "id": "MenuItemCreate.perform_mutation",
+          "class_name": "MenuItemCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "MenuItemCreateInput"
+          ],
+          "return_type": "MenuItemCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemCreate"
+        },
+        {
+          "id": "MenuItemDelete.perform_mutation",
+          "class_name": "MenuItemDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "MenuItemDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemDelete"
+        },
+        {
+          "id": "MenuItemBulkDelete.perform_mutation",
+          "class_name": "MenuItemBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "MenuItemBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemBulkDelete"
+        },
+        {
+          "id": "MenuItemUpdate.perform_mutation",
+          "class_name": "MenuItemUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "MenuItemInput"
+          ],
+          "return_type": "MenuItemUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemUpdate"
+        },
+        {
+          "id": "MenuItemTranslate.perform_mutation",
+          "class_name": "MenuItemTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "NameTranslationInput"
+          ],
+          "return_type": "MenuItemTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemTranslate"
+        },
+        {
+          "id": "MenuItemMove.perform_mutation",
+          "class_name": "MenuItemMove",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<MenuItemMoveInput>"
+          ],
+          "return_type": "MenuItemMove",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.menuItemMove"
+        },
+        {
+          "id": "DeleteMetadata.perform_mutation",
+          "class_name": "DeleteMetadata",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<String>"
+          ],
+          "return_type": "DeleteMetadata",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteMetadata"
+        },
+        {
+          "id": "DeletePrivateMetadata.perform_mutation",
+          "class_name": "DeletePrivateMetadata",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<String>"
+          ],
+          "return_type": "DeletePrivateMetadata",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deletePrivateMetadata"
+        },
+        {
+          "id": "UpdateMetadata.perform_mutation",
+          "class_name": "UpdateMetadata",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<MetadataInput>"
+          ],
+          "return_type": "UpdateMetadata",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateMetadata"
+        },
+        {
+          "id": "UpdatePrivateMetadata.perform_mutation",
+          "class_name": "UpdatePrivateMetadata",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<MetadataInput>"
+          ],
+          "return_type": "UpdatePrivateMetadata",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updatePrivateMetadata"
+        },
+        {
+          "id": "DraftOrderComplete.perform_mutation",
+          "class_name": "DraftOrderComplete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "DraftOrderComplete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderComplete"
+        },
+        {
+          "id": "DraftOrderCreate.perform_mutation",
+          "class_name": "DraftOrderCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "DraftOrderCreateInput"
+          ],
+          "return_type": "DraftOrderCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderCreate"
+        },
+        {
+          "id": "DraftOrderDelete.perform_mutation",
+          "class_name": "DraftOrderDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "DraftOrderDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderDelete"
+        },
+        {
+          "id": "DraftOrderBulkDelete.perform_mutation",
+          "class_name": "DraftOrderBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "DraftOrderBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderBulkDelete"
+        },
+        {
+          "id": "DraftOrderLinesBulkDelete.perform_mutation",
+          "class_name": "DraftOrderLinesBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "DraftOrderLinesBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderLinesBulkDelete"
+        },
+        {
+          "id": "DraftOrderUpdate.perform_mutation",
+          "class_name": "DraftOrderUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "DraftOrderInput"
+          ],
+          "return_type": "DraftOrderUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.draftOrderUpdate"
+        },
+        {
+          "id": "OrderCancel.perform_mutation",
+          "class_name": "OrderCancel",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderCancel",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderCancel"
+        },
+        {
+          "id": "OrderCapture.perform_mutation",
+          "class_name": "OrderCapture",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal"
+          ],
+          "return_type": "OrderCapture",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderCapture"
+        },
+        {
+          "id": "OrderConfirm.perform_mutation",
+          "class_name": "OrderConfirm",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderConfirm",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderConfirm"
+        },
+        {
+          "id": "OrderFulfill.perform_mutation",
+          "class_name": "OrderFulfill",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderFulfillInput"
+          ],
+          "return_type": "OrderFulfill",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfill"
+        },
+        {
+          "id": "FulfillmentCancel.perform_mutation",
+          "class_name": "FulfillmentCancel",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "FulfillmentCancelInput"
+          ],
+          "return_type": "FulfillmentCancel",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfillmentCancel"
+        },
+        {
+          "id": "FulfillmentApprove.perform_mutation",
+          "class_name": "FulfillmentApprove",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "FulfillmentApprove",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfillmentApprove"
+        },
+        {
+          "id": "FulfillmentUpdateTracking.perform_mutation",
+          "class_name": "FulfillmentUpdateTracking",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "FulfillmentUpdateTrackingInput"
+          ],
+          "return_type": "FulfillmentUpdateTracking",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfillmentUpdateTracking"
+        },
+        {
+          "id": "FulfillmentRefundProducts.perform_mutation",
+          "class_name": "FulfillmentRefundProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderRefundProductsInput"
+          ],
+          "return_type": "FulfillmentRefundProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfillmentRefundProducts"
+        },
+        {
+          "id": "FulfillmentReturnProducts.perform_mutation",
+          "class_name": "FulfillmentReturnProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderReturnProductsInput"
+          ],
+          "return_type": "FulfillmentReturnProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderFulfillmentReturnProducts"
+        },
+        {
+          "id": "OrderGrantRefundCreate.perform_mutation",
+          "class_name": "OrderGrantRefundCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderGrantRefundCreateInput"
+          ],
+          "return_type": "OrderGrantRefundCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderGrantRefundCreate"
+        },
+        {
+          "id": "OrderGrantRefundUpdate.perform_mutation",
+          "class_name": "OrderGrantRefundUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderGrantRefundUpdateInput"
+          ],
+          "return_type": "OrderGrantRefundUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderGrantRefundUpdate"
+        },
+        {
+          "id": "OrderLinesCreate.perform_mutation",
+          "class_name": "OrderLinesCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<OrderLineCreateInput>"
+          ],
+          "return_type": "OrderLinesCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderLinesCreate"
+        },
+        {
+          "id": "OrderLineDelete.perform_mutation",
+          "class_name": "OrderLineDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderLineDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderLineDelete"
+        },
+        {
+          "id": "OrderLineUpdate.perform_mutation",
+          "class_name": "OrderLineUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderLineInput"
+          ],
+          "return_type": "OrderLineUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderLineUpdate"
+        },
+        {
+          "id": "OrderDiscountAdd.perform_mutation",
+          "class_name": "OrderDiscountAdd",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderDiscountCommonInput"
+          ],
+          "return_type": "OrderDiscountAdd",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderDiscountAdd"
+        },
+        {
+          "id": "OrderDiscountUpdate.perform_mutation",
+          "class_name": "OrderDiscountUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderDiscountCommonInput"
+          ],
+          "return_type": "OrderDiscountUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderDiscountUpdate"
+        },
+        {
+          "id": "OrderDiscountDelete.perform_mutation",
+          "class_name": "OrderDiscountDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderDiscountDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderDiscountDelete"
+        },
+        {
+          "id": "OrderLineDiscountUpdate.perform_mutation",
+          "class_name": "OrderLineDiscountUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderDiscountCommonInput"
+          ],
+          "return_type": "OrderLineDiscountUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderLineDiscountUpdate"
+        },
+        {
+          "id": "OrderLineDiscountRemove.perform_mutation",
+          "class_name": "OrderLineDiscountRemove",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderLineDiscountRemove",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderLineDiscountRemove"
+        },
+        {
+          "id": "OrderNoteAdd.perform_mutation",
+          "class_name": "OrderNoteAdd",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderNoteAdd",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderNoteAdd"
+        },
+        {
+          "id": "OrderNoteUpdate.perform_mutation",
+          "class_name": "OrderNoteUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderNoteUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderNoteUpdate"
+        },
+        {
+          "id": "OrderMarkAsPaid.perform_mutation",
+          "class_name": "OrderMarkAsPaid",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "OrderMarkAsPaid",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderMarkAsPaid"
+        },
+        {
+          "id": "OrderRefund.perform_mutation",
+          "class_name": "OrderRefund",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal"
+          ],
+          "return_type": "OrderRefund",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderRefund"
+        },
+        {
+          "id": "OrderUpdate.perform_mutation",
+          "class_name": "OrderUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "OrderUpdateInput"
+          ],
+          "return_type": "OrderUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderUpdate"
+        },
+        {
+          "id": "OrderUpdateShipping.perform_mutation",
+          "class_name": "OrderUpdateShipping",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "OrderUpdateShippingInput"
+          ],
+          "return_type": "OrderUpdateShipping",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderUpdateShipping"
+        },
+        {
+          "id": "OrderVoid.perform_mutation",
+          "class_name": "OrderVoid",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "OrderVoid",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderVoid"
+        },
+        {
+          "id": "OrderBulkCancel.perform_mutation",
+          "class_name": "OrderBulkCancel",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "OrderBulkCancel",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderBulkCancel"
+        },
+        {
+          "id": "OrderBulkCreate.perform_mutation",
+          "class_name": "OrderBulkCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<OrderBulkCreateInput>",
+            "ErrorPolicyEnum",
+            "StockUpdatePolicyEnum"
+          ],
+          "return_type": "OrderBulkCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.orderBulkCreate"
+        },
+        {
+          "id": "PageCreate.perform_mutation",
+          "class_name": "PageCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PageCreateInput"
+          ],
+          "return_type": "PageCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageCreate"
+        },
+        {
+          "id": "PageDelete.perform_mutation",
+          "class_name": "PageDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PageDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageDelete"
+        },
+        {
+          "id": "PageBulkDelete.perform_mutation",
+          "class_name": "PageBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "PageBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageBulkDelete"
+        },
+        {
+          "id": "PageBulkPublish.perform_mutation",
+          "class_name": "PageBulkPublish",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>",
+            "Boolean"
+          ],
+          "return_type": "PageBulkPublish",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageBulkPublish"
+        },
+        {
+          "id": "PageUpdate.perform_mutation",
+          "class_name": "PageUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PageInput"
+          ],
+          "return_type": "PageUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageUpdate"
+        },
+        {
+          "id": "PageTranslate.perform_mutation",
+          "class_name": "PageTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "PageTranslationInput"
+          ],
+          "return_type": "PageTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTranslate"
+        },
+        {
+          "id": "PageTypeCreate.perform_mutation",
+          "class_name": "PageTypeCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PageTypeCreateInput"
+          ],
+          "return_type": "PageTypeCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTypeCreate"
+        },
+        {
+          "id": "PageTypeUpdate.perform_mutation",
+          "class_name": "PageTypeUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PageTypeUpdateInput"
+          ],
+          "return_type": "PageTypeUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTypeUpdate"
+        },
+        {
+          "id": "PageTypeDelete.perform_mutation",
+          "class_name": "PageTypeDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PageTypeDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTypeDelete"
+        },
+        {
+          "id": "PageTypeBulkDelete.perform_mutation",
+          "class_name": "PageTypeBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "PageTypeBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTypeBulkDelete"
+        },
+        {
+          "id": "PageAttributeAssign.perform_mutation",
+          "class_name": "PageAttributeAssign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "PageAttributeAssign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageAttributeAssign"
+        },
+        {
+          "id": "PageAttributeUnassign.perform_mutation",
+          "class_name": "PageAttributeUnassign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "PageAttributeUnassign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageAttributeUnassign"
+        },
+        {
+          "id": "PageTypeReorderAttributes.perform_mutation",
+          "class_name": "PageTypeReorderAttributes",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "PageTypeReorderAttributes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageTypeReorderAttributes"
+        },
+        {
+          "id": "PageReorderAttributeValues.perform_mutation",
+          "class_name": "PageReorderAttributeValues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "PageReorderAttributeValues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.pageReorderAttributeValues"
+        },
+        {
+          "id": "PaymentCapture.perform_mutation",
+          "class_name": "PaymentCapture",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal"
+          ],
+          "return_type": "PaymentCapture",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentCapture"
+        },
+        {
+          "id": "PaymentRefund.perform_mutation",
+          "class_name": "PaymentRefund",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal"
+          ],
+          "return_type": "PaymentRefund",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentRefund"
+        },
+        {
+          "id": "PaymentVoid.perform_mutation",
+          "class_name": "PaymentVoid",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "PaymentVoid",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentVoid"
+        },
+        {
+          "id": "PaymentInitialize.perform_mutation",
+          "class_name": "PaymentInitialize",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "JSONString"
+          ],
+          "return_type": "PaymentInitialize",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentInitialize"
+        },
+        {
+          "id": "PaymentCheckBalance.perform_mutation",
+          "class_name": "PaymentCheckBalance",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "PaymentCheckBalanceInput"
+          ],
+          "return_type": "PaymentCheckBalance",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentCheckBalance"
+        },
+        {
+          "id": "TransactionCreate.perform_mutation",
+          "class_name": "TransactionCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "TransactionCreateInput",
+            "TransactionEventInput"
+          ],
+          "return_type": "TransactionCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionCreate"
+        },
+        {
+          "id": "TransactionUpdate.perform_mutation",
+          "class_name": "TransactionUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "TransactionUpdateInput",
+            "TransactionEventInput"
+          ],
+          "return_type": "TransactionUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionUpdate"
+        },
+        {
+          "id": "TransactionRequestAction.perform_mutation",
+          "class_name": "TransactionRequestAction",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "TransactionActionEnum",
+            "PositiveDecimal",
+            "String",
+            "ID"
+          ],
+          "return_type": "TransactionRequestAction",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionRequestAction"
+        },
+        {
+          "id": "TransactionRequestRefundForGrantedRefund.perform_mutation",
+          "class_name": "TransactionRequestRefundForGrantedRefund",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "ID"
+          ],
+          "return_type": "TransactionRequestRefundForGrantedRefund",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionRequestRefundForGrantedRefund"
+        },
+        {
+          "id": "TransactionEventReport.perform_mutation",
+          "class_name": "TransactionEventReport",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "String",
+            "TransactionEventTypeEnum",
+            "PositiveDecimal",
+            "DateTime",
+            "String",
+            "String",
+            "List<TransactionActionEnum>",
+            "List<MetadataInput>",
+            "List<MetadataInput>",
+            "PaymentMethodDetailsInput"
+          ],
+          "return_type": "TransactionEventReport",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionEventReport"
+        },
+        {
+          "id": "PaymentGatewayInitialize.perform_mutation",
+          "class_name": "PaymentGatewayInitialize",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal",
+            "List<PaymentGatewayToInitialize>"
+          ],
+          "return_type": "PaymentGatewayInitialize",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentGatewayInitialize"
+        },
+        {
+          "id": "TransactionInitialize.perform_mutation",
+          "class_name": "TransactionInitialize",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "PositiveDecimal",
+            "String",
+            "TransactionFlowStrategyEnum",
+            "String",
+            "PaymentGatewayToInitialize"
+          ],
+          "return_type": "TransactionInitialize",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionInitialize"
+        },
+        {
+          "id": "TransactionProcess.perform_mutation",
+          "class_name": "TransactionProcess",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "UUID",
+            "JSON",
+            "String"
+          ],
+          "return_type": "TransactionProcess",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.transactionProcess"
+        },
+        {
+          "id": "StoredPaymentMethodRequestDelete.perform_mutation",
+          "class_name": "StoredPaymentMethodRequestDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "StoredPaymentMethodRequestDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.storedPaymentMethodRequestDelete"
+        },
+        {
+          "id": "PaymentGatewayInitializeTokenization.perform_mutation",
+          "class_name": "PaymentGatewayInitializeTokenization",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "JSON"
+          ],
+          "return_type": "PaymentGatewayInitializeTokenization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentGatewayInitializeTokenization"
+        },
+        {
+          "id": "PaymentMethodInitializeTokenization.perform_mutation",
+          "class_name": "PaymentMethodInitializeTokenization",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "TokenizedPaymentFlowEnum",
+            "JSON"
+          ],
+          "return_type": "PaymentMethodInitializeTokenization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentMethodInitializeTokenization"
+        },
+        {
+          "id": "PaymentMethodProcessTokenization.perform_mutation",
+          "class_name": "PaymentMethodProcessTokenization",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "String",
+            "JSON"
+          ],
+          "return_type": "PaymentMethodProcessTokenization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.paymentMethodProcessTokenization"
+        },
+        {
+          "id": "ProductAttributeAssign.perform_mutation",
+          "class_name": "ProductAttributeAssign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ProductAttributeAssignInput>"
+          ],
+          "return_type": "ProductAttributeAssign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productAttributeAssign"
+        },
+        {
+          "id": "ProductAttributeAssignmentUpdate.perform_mutation",
+          "class_name": "ProductAttributeAssignmentUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ProductAttributeAssignmentUpdateInput>"
+          ],
+          "return_type": "ProductAttributeAssignmentUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productAttributeAssignmentUpdate"
+        },
+        {
+          "id": "ProductAttributeUnassign.perform_mutation",
+          "class_name": "ProductAttributeUnassign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "ProductAttributeUnassign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productAttributeUnassign"
+        },
+        {
+          "id": "CategoryCreate.perform_mutation",
+          "class_name": "CategoryCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CategoryInput",
+            "ID"
+          ],
+          "return_type": "CategoryCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.categoryCreate"
+        },
+        {
+          "id": "CategoryDelete.perform_mutation",
+          "class_name": "CategoryDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "CategoryDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.categoryDelete"
+        },
+        {
+          "id": "CategoryBulkDelete.perform_mutation",
+          "class_name": "CategoryBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "CategoryBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.categoryBulkDelete"
+        },
+        {
+          "id": "CategoryUpdate.perform_mutation",
+          "class_name": "CategoryUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "CategoryInput"
+          ],
+          "return_type": "CategoryUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.categoryUpdate"
+        },
+        {
+          "id": "CategoryTranslate.perform_mutation",
+          "class_name": "CategoryTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "TranslationInput"
+          ],
+          "return_type": "CategoryTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.categoryTranslate"
+        },
+        {
+          "id": "CollectionAddProducts.perform_mutation",
+          "class_name": "CollectionAddProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "CollectionAddProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionAddProducts"
+        },
+        {
+          "id": "CollectionCreate.perform_mutation",
+          "class_name": "CollectionCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CollectionCreateInput"
+          ],
+          "return_type": "CollectionCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionCreate"
+        },
+        {
+          "id": "CollectionDelete.perform_mutation",
+          "class_name": "CollectionDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "CollectionDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionDelete"
+        },
+        {
+          "id": "CollectionReorderProducts.perform_mutation",
+          "class_name": "CollectionReorderProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<MoveProductInput>"
+          ],
+          "return_type": "CollectionReorderProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionReorderProducts"
+        },
+        {
+          "id": "CollectionBulkDelete.perform_mutation",
+          "class_name": "CollectionBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "CollectionBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionBulkDelete"
+        },
+        {
+          "id": "CollectionRemoveProducts.perform_mutation",
+          "class_name": "CollectionRemoveProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "CollectionRemoveProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionRemoveProducts"
+        },
+        {
+          "id": "CollectionUpdate.perform_mutation",
+          "class_name": "CollectionUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "CollectionInput"
+          ],
+          "return_type": "CollectionUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionUpdate"
+        },
+        {
+          "id": "CollectionTranslate.perform_mutation",
+          "class_name": "CollectionTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "TranslationInput"
+          ],
+          "return_type": "CollectionTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionTranslate"
+        },
+        {
+          "id": "CollectionChannelListingUpdate.perform_mutation",
+          "class_name": "CollectionChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "CollectionChannelListingUpdateInput"
+          ],
+          "return_type": "CollectionChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.collectionChannelListingUpdate"
+        },
+        {
+          "id": "ProductCreate.perform_mutation",
+          "class_name": "ProductCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ProductCreateInput"
+          ],
+          "return_type": "ProductCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productCreate"
+        },
+        {
+          "id": "ProductDelete.perform_mutation",
+          "class_name": "ProductDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "ProductDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productDelete"
+        },
+        {
+          "id": "ProductBulkCreate.perform_mutation",
+          "class_name": "ProductBulkCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ProductBulkCreateInput>",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "ProductBulkCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productBulkCreate"
+        },
+        {
+          "id": "ProductBulkDelete.perform_mutation",
+          "class_name": "ProductBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "ProductBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productBulkDelete"
+        },
+        {
+          "id": "ProductUpdate.perform_mutation",
+          "class_name": "ProductUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "ProductInput"
+          ],
+          "return_type": "ProductUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productUpdate"
+        },
+        {
+          "id": "ProductBulkTranslate.perform_mutation",
+          "class_name": "ProductBulkTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ProductBulkTranslateInput>"
+          ],
+          "return_type": "ProductBulkTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productBulkTranslate"
+        },
+        {
+          "id": "ProductTranslate.perform_mutation",
+          "class_name": "ProductTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "TranslationInput"
+          ],
+          "return_type": "ProductTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTranslate"
+        },
+        {
+          "id": "ProductChannelListingUpdate.perform_mutation",
+          "class_name": "ProductChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ProductChannelListingUpdateInput"
+          ],
+          "return_type": "ProductChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productChannelListingUpdate"
+        },
+        {
+          "id": "ProductMediaCreate.perform_mutation",
+          "class_name": "ProductMediaCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ProductMediaCreateInput"
+          ],
+          "return_type": "ProductMediaCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaCreate"
+        },
+        {
+          "id": "ProductVariantReorder.perform_mutation",
+          "class_name": "ProductVariantReorder",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "ProductVariantReorder",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantReorder"
+        },
+        {
+          "id": "ProductMediaDelete.perform_mutation",
+          "class_name": "ProductMediaDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ProductMediaDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaDelete"
+        },
+        {
+          "id": "ProductMediaBulkDelete.perform_mutation",
+          "class_name": "ProductMediaBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "ProductMediaBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaBulkDelete"
+        },
+        {
+          "id": "ProductMediaReorder.perform_mutation",
+          "class_name": "ProductMediaReorder",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "ProductMediaReorder",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaReorder"
+        },
+        {
+          "id": "ProductMediaTranslate.perform_mutation",
+          "class_name": "ProductMediaTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "ProductMediaTranslationInput"
+          ],
+          "return_type": "ProductMediaTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaTranslate"
+        },
+        {
+          "id": "ProductMediaUpdate.perform_mutation",
+          "class_name": "ProductMediaUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ProductMediaUpdateInput"
+          ],
+          "return_type": "ProductMediaUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productMediaUpdate"
+        },
+        {
+          "id": "ProductTypeCreate.perform_mutation",
+          "class_name": "ProductTypeCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ProductTypeInput"
+          ],
+          "return_type": "ProductTypeCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTypeCreate"
+        },
+        {
+          "id": "ProductTypeDelete.perform_mutation",
+          "class_name": "ProductTypeDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ProductTypeDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTypeDelete"
+        },
+        {
+          "id": "ProductTypeBulkDelete.perform_mutation",
+          "class_name": "ProductTypeBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "ProductTypeBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTypeBulkDelete"
+        },
+        {
+          "id": "ProductTypeUpdate.perform_mutation",
+          "class_name": "ProductTypeUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ProductTypeInput"
+          ],
+          "return_type": "ProductTypeUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTypeUpdate"
+        },
+        {
+          "id": "ProductTypeReorderAttributes.perform_mutation",
+          "class_name": "ProductTypeReorderAttributes",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ProductAttributeType",
+            "List<ReorderInput>"
+          ],
+          "return_type": "ProductTypeReorderAttributes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productTypeReorderAttributes"
+        },
+        {
+          "id": "ProductReorderAttributeValues.perform_mutation",
+          "class_name": "ProductReorderAttributeValues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "ProductReorderAttributeValues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productReorderAttributeValues"
+        },
+        {
+          "id": "ProductVariantCreate.perform_mutation",
+          "class_name": "ProductVariantCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ProductVariantCreateInput"
+          ],
+          "return_type": "ProductVariantCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantCreate"
+        },
+        {
+          "id": "ProductVariantDelete.perform_mutation",
+          "class_name": "ProductVariantDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "String"
+          ],
+          "return_type": "ProductVariantDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantDelete"
+        },
+        {
+          "id": "ProductVariantBulkCreate.perform_mutation",
+          "class_name": "ProductVariantBulkCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ProductVariantBulkCreateInput>",
+            "ID",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "ProductVariantBulkCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantBulkCreate"
+        },
+        {
+          "id": "ProductVariantBulkUpdate.perform_mutation",
+          "class_name": "ProductVariantBulkUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ProductVariantBulkUpdateInput>",
+            "ID",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "ProductVariantBulkUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantBulkUpdate"
+        },
+        {
+          "id": "ProductVariantBulkDelete.perform_mutation",
+          "class_name": "ProductVariantBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>",
+            "List<String>"
+          ],
+          "return_type": "ProductVariantBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantBulkDelete"
+        },
+        {
+          "id": "ProductVariantStocksCreate.perform_mutation",
+          "class_name": "ProductVariantStocksCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<StockInput>"
+          ],
+          "return_type": "ProductVariantStocksCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantStocksCreate"
+        },
+        {
+          "id": "ProductVariantStocksDelete.perform_mutation",
+          "class_name": "ProductVariantStocksDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "List<ID>"
+          ],
+          "return_type": "ProductVariantStocksDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantStocksDelete"
+        },
+        {
+          "id": "ProductVariantStocksUpdate.perform_mutation",
+          "class_name": "ProductVariantStocksUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "List<StockInput>"
+          ],
+          "return_type": "ProductVariantStocksUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantStocksUpdate"
+        },
+        {
+          "id": "ProductVariantUpdate.perform_mutation",
+          "class_name": "ProductVariantUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "String",
+            "ProductVariantInput"
+          ],
+          "return_type": "ProductVariantUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantUpdate"
+        },
+        {
+          "id": "ProductVariantSetDefault.perform_mutation",
+          "class_name": "ProductVariantSetDefault",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID"
+          ],
+          "return_type": "ProductVariantSetDefault",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantSetDefault"
+        },
+        {
+          "id": "ProductVariantTranslate.perform_mutation",
+          "class_name": "ProductVariantTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "NameTranslationInput"
+          ],
+          "return_type": "ProductVariantTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantTranslate"
+        },
+        {
+          "id": "ProductVariantBulkTranslate.perform_mutation",
+          "class_name": "ProductVariantBulkTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ProductVariantBulkTranslateInput>"
+          ],
+          "return_type": "ProductVariantBulkTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantBulkTranslate"
+        },
+        {
+          "id": "ProductVariantChannelListingUpdate.perform_mutation",
+          "class_name": "ProductVariantChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "List<ProductVariantChannelListingAddInput>"
+          ],
+          "return_type": "ProductVariantChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantChannelListingUpdate"
+        },
+        {
+          "id": "ProductVariantChannelListingAvailabilityUpdate.perform_mutation",
+          "class_name": "ProductVariantChannelListingAvailabilityUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "List<ProductVariantChannelListingAvailabilityInput>"
+          ],
+          "return_type": "ProductVariantChannelListingAvailabilityUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantChannelListingAvailabilityUpdate"
+        },
+        {
+          "id": "ProductVariantReorderAttributeValues.perform_mutation",
+          "class_name": "ProductVariantReorderAttributeValues",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID",
+            "List<ReorderInput>"
+          ],
+          "return_type": "ProductVariantReorderAttributeValues",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.productVariantReorderAttributeValues"
+        },
+        {
+          "id": "VariantMediaAssign.perform_mutation",
+          "class_name": "VariantMediaAssign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID"
+          ],
+          "return_type": "VariantMediaAssign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.variantMediaAssign"
+        },
+        {
+          "id": "VariantMediaUnassign.perform_mutation",
+          "class_name": "VariantMediaUnassign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID"
+          ],
+          "return_type": "VariantMediaUnassign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.variantMediaUnassign"
+        },
+        {
+          "id": "DeliveryOptionsCalculate.perform_mutation",
+          "class_name": "DeliveryOptionsCalculate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "DeliveryOptionsCalculate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deliveryOptionsCalculate"
+        },
+        {
+          "id": "ShippingMethodChannelListingUpdate.perform_mutation",
+          "class_name": "ShippingMethodChannelListingUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ShippingMethodChannelListingInput"
+          ],
+          "return_type": "ShippingMethodChannelListingUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingMethodChannelListingUpdate"
+        },
+        {
+          "id": "ShippingPriceCreate.perform_mutation",
+          "class_name": "ShippingPriceCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ShippingPriceInput"
+          ],
+          "return_type": "ShippingPriceCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceCreate"
+        },
+        {
+          "id": "ShippingPriceDelete.perform_mutation",
+          "class_name": "ShippingPriceDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ShippingPriceDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceDelete"
+        },
+        {
+          "id": "ShippingPriceBulkDelete.perform_mutation",
+          "class_name": "ShippingPriceBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "ShippingPriceBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceBulkDelete"
+        },
+        {
+          "id": "ShippingPriceUpdate.perform_mutation",
+          "class_name": "ShippingPriceUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ShippingPriceInput"
+          ],
+          "return_type": "ShippingPriceUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceUpdate"
+        },
+        {
+          "id": "ShippingPriceTranslate.perform_mutation",
+          "class_name": "ShippingPriceTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "LanguageCodeEnum",
+            "ShippingPriceTranslationInput"
+          ],
+          "return_type": "ShippingPriceTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceTranslate"
+        },
+        {
+          "id": "ShippingPriceExcludeProducts.perform_mutation",
+          "class_name": "ShippingPriceExcludeProducts",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ShippingPriceExcludeProductsInput"
+          ],
+          "return_type": "ShippingPriceExcludeProducts",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceExcludeProducts"
+        },
+        {
+          "id": "ShippingPriceRemoveProductFromExclude.perform_mutation",
+          "class_name": "ShippingPriceRemoveProductFromExclude",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "ShippingPriceRemoveProductFromExclude",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingPriceRemoveProductFromExclude"
+        },
+        {
+          "id": "ShippingZoneCreate.perform_mutation",
+          "class_name": "ShippingZoneCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ShippingZoneCreateInput"
+          ],
+          "return_type": "ShippingZoneCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingZoneCreate"
+        },
+        {
+          "id": "ShippingZoneDelete.perform_mutation",
+          "class_name": "ShippingZoneDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "ShippingZoneDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingZoneDelete"
+        },
+        {
+          "id": "ShippingZoneBulkDelete.perform_mutation",
+          "class_name": "ShippingZoneBulkDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<ID>"
+          ],
+          "return_type": "ShippingZoneBulkDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingZoneBulkDelete"
+        },
+        {
+          "id": "ShippingZoneUpdate.perform_mutation",
+          "class_name": "ShippingZoneUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ShippingZoneUpdateInput"
+          ],
+          "return_type": "ShippingZoneUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shippingZoneUpdate"
+        },
+        {
+          "id": "StaffNotificationRecipientCreate.perform_mutation",
+          "class_name": "StaffNotificationRecipientCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "StaffNotificationRecipientInput"
+          ],
+          "return_type": "StaffNotificationRecipientCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffNotificationRecipientCreate"
+        },
+        {
+          "id": "StaffNotificationRecipientUpdate.perform_mutation",
+          "class_name": "StaffNotificationRecipientUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "StaffNotificationRecipientInput"
+          ],
+          "return_type": "StaffNotificationRecipientUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffNotificationRecipientUpdate"
+        },
+        {
+          "id": "StaffNotificationRecipientDelete.perform_mutation",
+          "class_name": "StaffNotificationRecipientDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "StaffNotificationRecipientDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.staffNotificationRecipientDelete"
+        },
+        {
+          "id": "ShopSettingsUpdate.perform_mutation",
+          "class_name": "ShopSettingsUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ShopSettingsInput"
+          ],
+          "return_type": "ShopSettingsUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shopSettingsUpdate"
+        },
+        {
+          "id": "ShopSettingsTranslate.perform_mutation",
+          "class_name": "ShopSettingsTranslate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "LanguageCodeEnum",
+            "ShopSettingsTranslationInput"
+          ],
+          "return_type": "ShopSettingsTranslate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shopSettingsTranslate"
+        },
+        {
+          "id": "ShopAddressUpdate.perform_mutation",
+          "class_name": "ShopAddressUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "AddressInput"
+          ],
+          "return_type": "ShopAddressUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.shopAddressUpdate"
+        },
+        {
+          "id": "GiftCardSettingsUpdate.perform_mutation",
+          "class_name": "GiftCardSettingsUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "GiftCardSettingsUpdateInput"
+          ],
+          "return_type": "GiftCardSettingsUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.giftCardSettingsUpdate"
+        },
+        {
+          "id": "RefundSettingsUpdate.perform_mutation",
+          "class_name": "RefundSettingsUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "RefundSettingsUpdateInput"
+          ],
+          "return_type": "RefundSettingsUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.refundSettingsUpdate"
+        },
+        {
+          "id": "RefundReasonReferenceTypeClear.perform_mutation",
+          "class_name": "RefundReasonReferenceTypeClear",
+          "method_name": "perform_mutation",
+          "param_types": [],
+          "return_type": "RefundReasonReferenceTypeClear",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.refundReasonReferenceClear"
+        },
+        {
+          "id": "ReturnSettingsUpdate.perform_mutation",
+          "class_name": "ReturnSettingsUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ReturnSettingsUpdateInput"
+          ],
+          "return_type": "ReturnSettingsUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.returnSettingsUpdate"
+        },
+        {
+          "id": "ReturnReasonReferenceTypeClear.perform_mutation",
+          "class_name": "ReturnReasonReferenceTypeClear",
+          "method_name": "perform_mutation",
+          "param_types": [],
+          "return_type": "ReturnReasonReferenceTypeClear",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.returnReasonReferenceClear"
+        },
+        {
+          "id": "StockBulkUpdate.perform_mutation",
+          "class_name": "StockBulkUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "List<StockBulkUpdateInput>",
+            "ErrorPolicyEnum"
+          ],
+          "return_type": "StockBulkUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.stockBulkUpdate"
+        },
+        {
+          "id": "TaxClassCreate.perform_mutation",
+          "class_name": "TaxClassCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "TaxClassCreateInput"
+          ],
+          "return_type": "TaxClassCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxClassCreate"
+        },
+        {
+          "id": "TaxClassDelete.perform_mutation",
+          "class_name": "TaxClassDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "TaxClassDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxClassDelete"
+        },
+        {
+          "id": "TaxClassUpdate.perform_mutation",
+          "class_name": "TaxClassUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "TaxClassUpdateInput"
+          ],
+          "return_type": "TaxClassUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxClassUpdate"
+        },
+        {
+          "id": "TaxConfigurationUpdate.perform_mutation",
+          "class_name": "TaxConfigurationUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "TaxConfigurationUpdateInput"
+          ],
+          "return_type": "TaxConfigurationUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxConfigurationUpdate"
+        },
+        {
+          "id": "TaxCountryConfigurationUpdate.perform_mutation",
+          "class_name": "TaxCountryConfigurationUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CountryCodeEnum",
+            "List<TaxClassRateInput>"
+          ],
+          "return_type": "TaxCountryConfigurationUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxCountryConfigurationUpdate"
+        },
+        {
+          "id": "TaxCountryConfigurationDelete.perform_mutation",
+          "class_name": "TaxCountryConfigurationDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "CountryCodeEnum"
+          ],
+          "return_type": "TaxCountryConfigurationDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxCountryConfigurationDelete"
+        },
+        {
+          "id": "TaxExemptionManage.perform_mutation",
+          "class_name": "TaxExemptionManage",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "Boolean"
+          ],
+          "return_type": "TaxExemptionManage",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taxExemptionManage"
+        },
+        {
+          "id": "WarehouseCreate.perform_mutation",
+          "class_name": "WarehouseCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "WarehouseCreateInput"
+          ],
+          "return_type": "WarehouseCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.createWarehouse"
+        },
+        {
+          "id": "WarehouseUpdate.perform_mutation",
+          "class_name": "WarehouseUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "WarehouseUpdateInput",
+            "String"
+          ],
+          "return_type": "WarehouseUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateWarehouse"
+        },
+        {
+          "id": "WarehouseDelete.perform_mutation",
+          "class_name": "WarehouseDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "WarehouseDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteWarehouse"
+        },
+        {
+          "id": "WarehouseShippingZoneAssign.perform_mutation",
+          "class_name": "WarehouseShippingZoneAssign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "WarehouseShippingZoneAssign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.assignWarehouseShippingZone"
+        },
+        {
+          "id": "WarehouseShippingZoneUnassign.perform_mutation",
+          "class_name": "WarehouseShippingZoneUnassign",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "List<ID>"
+          ],
+          "return_type": "WarehouseShippingZoneUnassign",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.unassignWarehouseShippingZone"
+        },
+        {
+          "id": "WebhookCreate.perform_mutation",
+          "class_name": "WebhookCreate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "WebhookCreateInput"
+          ],
+          "return_type": "WebhookCreate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.webhookCreate"
+        },
+        {
+          "id": "WebhookDelete.perform_mutation",
+          "class_name": "WebhookDelete",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String"
+          ],
+          "return_type": "WebhookDelete",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.webhookDelete"
+        },
+        {
+          "id": "WebhookUpdate.perform_mutation",
+          "class_name": "WebhookUpdate",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "String",
+            "WebhookUpdateInput"
+          ],
+          "return_type": "WebhookUpdate",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.webhookUpdate"
+        },
+        {
+          "id": "EventDeliveryRetry.perform_mutation",
+          "class_name": "EventDeliveryRetry",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID"
+          ],
+          "return_type": "EventDeliveryRetry",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.eventDeliveryRetry"
+        },
+        {
+          "id": "WebhookDryRun.perform_mutation",
+          "class_name": "WebhookDryRun",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "String",
+            "ID"
+          ],
+          "return_type": "WebhookDryRun",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.webhookDryRun"
+        },
+        {
+          "id": "WebhookTrigger.perform_mutation",
+          "class_name": "WebhookTrigger",
+          "method_name": "perform_mutation",
+          "param_types": [
+            "ID",
+            "ID"
+          ],
+          "return_type": "WebhookTrigger",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.webhookTrigger"
+        },
+        {
+          "id": "GraphQLView.dispatch",
+          "class_name": "GraphQLView",
+          "method_name": "dispatch",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /graphql/"
+        },
+        {
+          "id": "views.handle_plugin_per_channel_webhook",
+          "class_name": "plugins.views",
+          "method_name": "handle_plugin_per_channel_webhook",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /plugins/channel/{channel_slug}/{plugin_id}/"
+        },
+        {
+          "id": "views.handle_global_plugin_webhook",
+          "class_name": "plugins.views",
+          "method_name": "handle_global_plugin_webhook",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /plugins/global/{plugin_id}/"
+        },
+        {
+          "id": "views.handle_plugin_webhook",
+          "class_name": "plugins.views",
+          "method_name": "handle_plugin_webhook",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /plugins/{plugin_id}/"
+        },
+        {
+          "id": "views.handle_thumbnail",
+          "class_name": "thumbnail.views",
+          "method_name": "handle_thumbnail",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /thumbnail/{instance_id}/{size}/{format}"
+        },
+        {
+          "id": "views.handle_original_image",
+          "class_name": "thumbnail.views",
+          "method_name": "handle_original_image",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /image/{instance_id}/"
+        },
+        {
+          "id": "views.jwks",
+          "class_name": "core.views",
+          "method_name": "jwks",
+          "param_types": [],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /.well-known/jwks.json"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

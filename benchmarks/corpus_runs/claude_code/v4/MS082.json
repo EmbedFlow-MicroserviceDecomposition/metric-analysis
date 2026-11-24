@@ -1,0 +1,2676 @@
+{
+  "system_id": "MS082",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "secrets": {
+      "exposed_interfaces": [
+        {
+          "id": "api.put_secret_name",
+          "class_name": "api.js",
+          "method_name": "put_secret_name",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /secret/{*name}"
+        },
+        {
+          "id": "api.delete_secret_name",
+          "class_name": "api.js",
+          "method_name": "delete_secret_name",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /secret/{*name}"
+        },
+        {
+          "id": "api.get_secret_name",
+          "class_name": "api.js",
+          "method_name": "get_secret_name",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /secret/{*name}"
+        },
+        {
+          "id": "api.get_secrets",
+          "class_name": "api.js",
+          "method_name": "get_secrets",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /secrets"
+        }
+      ]
+    },
+    "web-server": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_task_group_taskgroupid_profile",
+          "class_name": "api.js",
+          "method_name": "get_task_group_taskgroupid_profile",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /task-group/:taskGroupId/profile"
+        },
+        {
+          "id": "api.get_task_taskid_profile",
+          "class_name": "api.js",
+          "method_name": "get_task_taskid_profile",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/profile"
+        },
+        {
+          "id": "createApp.post_login_logout",
+          "class_name": "createApp.js",
+          "method_name": "post_login_logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /login/logout"
+        },
+        {
+          "id": "createApp.get_login_is_logged_in",
+          "class_name": "createApp.js",
+          "method_name": "get_login_is_logged_in",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /login/is-logged-in"
+        },
+        {
+          "id": "createApp.post_login_credentials",
+          "class_name": "createApp.js",
+          "method_name": "post_login_credentials",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /login/credentials"
+        },
+        {
+          "id": "oauth2.authorization",
+          "class_name": "oauth2.js",
+          "method_name": "authorization",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login/oauth/authorize"
+        },
+        {
+          "id": "oauth2.decision",
+          "class_name": "oauth2.js",
+          "method_name": "decision",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /login/oauth/authorize/decision"
+        },
+        {
+          "id": "oauth2.token",
+          "class_name": "oauth2.js",
+          "method_name": "token",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /login/oauth/token"
+        },
+        {
+          "id": "oauth2.getCredentials",
+          "class_name": "oauth2.js",
+          "method_name": "getCredentials",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /login/oauth/credentials"
+        },
+        {
+          "id": "github.get_login_github",
+          "class_name": "github.js",
+          "method_name": "get_login_github",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login/github"
+        },
+        {
+          "id": "github.get_login_github_callback",
+          "class_name": "github.js",
+          "method_name": "get_login_github_callback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login/github/callback"
+        },
+        {
+          "id": "mozilla-auth0.get_login_mozilla_auth0",
+          "class_name": "mozilla-auth0.js",
+          "method_name": "get_login_mozilla_auth0",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login/mozilla-auth0"
+        },
+        {
+          "id": "mozilla-auth0.get_login_mozilla_auth0_callback",
+          "class_name": "mozilla-auth0.js",
+          "method_name": "get_login_mozilla_auth0_callback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login/mozilla-auth0/callback"
+        }
+      ]
+    },
+    "object": {
+      "exposed_interfaces": [
+        {
+          "id": "api.put_upload_name",
+          "class_name": "api.js",
+          "method_name": "put_upload_name",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /upload/:name"
+        },
+        {
+          "id": "api.post_finish_upload_name",
+          "class_name": "api.js",
+          "method_name": "post_finish_upload_name",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /finish-upload/:name"
+        },
+        {
+          "id": "api.put_start_download_name",
+          "class_name": "api.js",
+          "method_name": "put_start_download_name",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /start-download/{*name}"
+        },
+        {
+          "id": "api.get_metadata_name",
+          "class_name": "api.js",
+          "method_name": "get_metadata_name",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /metadata/{*name}"
+        },
+        {
+          "id": "api.get_download_name",
+          "class_name": "api.js",
+          "method_name": "get_download_name",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /download/{*name}"
+        }
+      ]
+    },
+    "github": {
+      "exposed_interfaces": [
+        {
+          "id": "api.post_github",
+          "class_name": "api.js",
+          "method_name": "post_github",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /github"
+        },
+        {
+          "id": "api.get_builds",
+          "class_name": "api.js",
+          "method_name": "get_builds",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /builds"
+        },
+        {
+          "id": "api.post_builds_owner_repo_cancel",
+          "class_name": "api.js",
+          "method_name": "post_builds_owner_repo_cancel",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /builds/:owner/:repo/cancel"
+        },
+        {
+          "id": "api.get_repository_owner_repo_branch_badge_svg",
+          "class_name": "api.js",
+          "method_name": "get_repository_owner_repo_branch_badge_svg",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /repository/:owner/:repo/:branch/badge.svg"
+        },
+        {
+          "id": "api.get_repository_owner_repo",
+          "class_name": "api.js",
+          "method_name": "get_repository_owner_repo",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /repository/:owner/:repo"
+        },
+        {
+          "id": "api.get_repository_owner_repo_branch_latest",
+          "class_name": "api.js",
+          "method_name": "get_repository_owner_repo_branch_latest",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /repository/:owner/:repo/:branch/latest"
+        },
+        {
+          "id": "api.post_repository_owner_repo_statuses_sha",
+          "class_name": "api.js",
+          "method_name": "post_repository_owner_repo_statuses_sha",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /repository/:owner/:repo/statuses/:sha"
+        },
+        {
+          "id": "api.post_repository_owner_repo_issues_number_comments",
+          "class_name": "api.js",
+          "method_name": "post_repository_owner_repo_issues_number_comments",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /repository/:owner/:repo/issues/:number/comments"
+        },
+        {
+          "id": "api.post_taskcluster_yml",
+          "class_name": "api.js",
+          "method_name": "post_taskcluster_yml",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /taskcluster-yml"
+        },
+        {
+          "id": "job.jobHandler",
+          "class_name": "job",
+          "method_name": "jobHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-github/v1/pull-request|push|release"
+        },
+        {
+          "id": "rerun.rerunHandler",
+          "class_name": "rerun",
+          "method_name": "rerunHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-github/v1/rerun"
+        },
+        {
+          "id": "status.statusHandler",
+          "class_name": "status",
+          "method_name": "statusHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-queue/v1/task-defined|exchange/taskcluster-queue/v1/task-failed|exchange/taskcluster-queue/v1/task-exception|exchange/taskcluster-queue/v1/task-completed|exchange/taskcluster-queue/v1/task-running"
+        },
+        {
+          "id": "deprecatedStatus.deprecatedStatusHandler",
+          "class_name": "deprecatedStatus",
+          "method_name": "deprecatedStatusHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-queue/v1/task-pending|exchange/taskcluster-queue/v1/task-running|exchange/taskcluster-queue/v1/task-failed|exchange/taskcluster-queue/v1/task-exception|exchange/taskcluster-queue/v1/task-group-resolved"
+        },
+        {
+          "id": "taskGroupCreation.taskGroupCreationHandler",
+          "class_name": "taskGroupCreation",
+          "method_name": "taskGroupCreationHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-github/v1/task-group-creation-requested"
+        },
+        {
+          "id": "taskclusterYml.taskclusterYmlHandler",
+          "class_name": "taskclusterYml",
+          "method_name": "taskclusterYmlHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-github/v1/push"
+        }
+      ]
+    },
+    "auth": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_clients",
+          "class_name": "api.js",
+          "method_name": "get_clients",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /clients/"
+        },
+        {
+          "id": "api.get_clients_clientid",
+          "class_name": "api.js",
+          "method_name": "get_clients_clientid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /clients/:clientId"
+        },
+        {
+          "id": "api.put_clients_clientid",
+          "class_name": "api.js",
+          "method_name": "put_clients_clientid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /clients/:clientId"
+        },
+        {
+          "id": "api.get_audit_entitytype_entityid",
+          "class_name": "api.js",
+          "method_name": "get_audit_entitytype_entityid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /audit/:entityType/:entityId"
+        },
+        {
+          "id": "api.get_clients_clientid_audit",
+          "class_name": "api.js",
+          "method_name": "get_clients_clientid_audit",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /clients/:clientId/audit"
+        },
+        {
+          "id": "api.post_clients_clientid_reset",
+          "class_name": "api.js",
+          "method_name": "post_clients_clientid_reset",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/:clientId/reset"
+        },
+        {
+          "id": "api.post_clients_clientid",
+          "class_name": "api.js",
+          "method_name": "post_clients_clientid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/:clientId"
+        },
+        {
+          "id": "api.post_clients_clientid_enable",
+          "class_name": "api.js",
+          "method_name": "post_clients_clientid_enable",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/:clientId/enable"
+        },
+        {
+          "id": "api.post_clients_clientid_disable",
+          "class_name": "api.js",
+          "method_name": "post_clients_clientid_disable",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/:clientId/disable"
+        },
+        {
+          "id": "api.delete_clients_clientid",
+          "class_name": "api.js",
+          "method_name": "delete_clients_clientid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /clients/:clientId"
+        },
+        {
+          "id": "api.get_roles",
+          "class_name": "api.js",
+          "method_name": "get_roles",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /roles/"
+        },
+        {
+          "id": "api.get_roles2",
+          "class_name": "api.js",
+          "method_name": "get_roles2",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /roles2/"
+        },
+        {
+          "id": "api.get_roleids",
+          "class_name": "api.js",
+          "method_name": "get_roleids",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /roleids/"
+        },
+        {
+          "id": "api.get_roles_roleid",
+          "class_name": "api.js",
+          "method_name": "get_roles_roleid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /roles/:roleId"
+        },
+        {
+          "id": "api.put_roles_roleid",
+          "class_name": "api.js",
+          "method_name": "put_roles_roleid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /roles/:roleId"
+        },
+        {
+          "id": "api.post_roles_roleid",
+          "class_name": "api.js",
+          "method_name": "post_roles_roleid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /roles/:roleId"
+        },
+        {
+          "id": "api.delete_roles_roleid",
+          "class_name": "api.js",
+          "method_name": "delete_roles_roleid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /roles/:roleId"
+        },
+        {
+          "id": "api.post_scopes_expand",
+          "class_name": "api.js",
+          "method_name": "post_scopes_expand",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /scopes/expand"
+        },
+        {
+          "id": "api.get_scopes_current",
+          "class_name": "api.js",
+          "method_name": "get_scopes_current",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/current"
+        },
+        {
+          "id": "api.post_authenticate_hawk",
+          "class_name": "api.js",
+          "method_name": "post_authenticate_hawk",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /authenticate-hawk"
+        },
+        {
+          "id": "api.post_test_authenticate",
+          "class_name": "api.js",
+          "method_name": "post_test_authenticate",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /test-authenticate"
+        },
+        {
+          "id": "api.get_test_authenticate_get",
+          "class_name": "api.js",
+          "method_name": "get_test_authenticate_get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /test-authenticate-get/"
+        },
+        {
+          "id": "aws.get_aws_s3_level_bucket_prefix",
+          "class_name": "aws.js",
+          "method_name": "get_aws_s3_level_bucket_prefix",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /aws/s3/:level/:bucket/{*prefix}"
+        },
+        {
+          "id": "gcp.get_gcp_credentials_projectid_serviceaccount",
+          "class_name": "gcp.js",
+          "method_name": "get_gcp_credentials_projectid_serviceaccount",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /gcp/credentials/:projectId/:serviceAccount"
+        },
+        {
+          "id": "github.post_github_appname_owner_repo_token",
+          "class_name": "github.js",
+          "method_name": "post_github_appname_owner_repo_token",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /github/:appName/:owner/repo-token"
+        },
+        {
+          "id": "sentry.get_sentry_project_dsn",
+          "class_name": "sentry.js",
+          "method_name": "get_sentry_project_dsn",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /sentry/:project/dsn"
+        },
+        {
+          "id": "websocktunnel.get_websocktunnel_wstaudience_wstclient",
+          "class_name": "websocktunnel.js",
+          "method_name": "get_websocktunnel_wstaudience_wstclient",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /websocktunnel/:wstAudience/:wstClient"
+        }
+      ]
+    },
+    "purge-cache": {
+      "exposed_interfaces": [
+        {
+          "id": "api.post_purge_cache_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "post_purge_cache_workerpoolid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /purge-cache/{*workerPoolId}"
+        },
+        {
+          "id": "api.get_purge_cache_list",
+          "class_name": "api.js",
+          "method_name": "get_purge_cache_list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /purge-cache/list"
+        },
+        {
+          "id": "api.get_purge_cache_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "get_purge_cache_workerpoolid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /purge-cache/{*workerPoolId}"
+        }
+      ]
+    },
+    "worker-manager": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_providers",
+          "class_name": "api.js",
+          "method_name": "get_providers",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /providers"
+        },
+        {
+          "id": "api.put_worker_pool_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "put_worker_pool_workerpoolid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /worker-pool/{*workerPoolId}"
+        },
+        {
+          "id": "api.post_worker_pool_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "post_worker_pool_workerpoolid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /worker-pool/{*workerPoolId}"
+        },
+        {
+          "id": "api.delete_worker_pool_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "delete_worker_pool_workerpoolid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /worker-pool/{*workerPoolId}"
+        },
+        {
+          "id": "api.get_worker_pool_workerpoolid_launch_configs",
+          "class_name": "api.js",
+          "method_name": "get_worker_pool_workerpoolid_launch_configs",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pool/:workerPoolId/launch-configs"
+        },
+        {
+          "id": "api.get_worker_pool_workerpoolid_stats",
+          "class_name": "api.js",
+          "method_name": "get_worker_pool_workerpoolid_stats",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pool/{*workerPoolId}/stats"
+        },
+        {
+          "id": "api.get_worker_pool_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "get_worker_pool_workerpoolid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pool/{*workerPoolId}"
+        },
+        {
+          "id": "api.get_worker_pools",
+          "class_name": "api.js",
+          "method_name": "get_worker_pools",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pools"
+        },
+        {
+          "id": "api.get_worker_pools_stats",
+          "class_name": "api.js",
+          "method_name": "get_worker_pools_stats",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pools/stats"
+        },
+        {
+          "id": "api.post_worker_pool_errors_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "post_worker_pool_errors_workerpoolid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /worker-pool-errors/{*workerPoolId}"
+        },
+        {
+          "id": "api.get_worker_pool_errors_stats",
+          "class_name": "api.js",
+          "method_name": "get_worker_pool_errors_stats",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pool-errors/stats"
+        },
+        {
+          "id": "api.get_worker_pool_errors_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "get_worker_pool_errors_workerpoolid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /worker-pool-errors/{*workerPoolId}"
+        },
+        {
+          "id": "api.get_workers_workerpoolid_workergroup",
+          "class_name": "api.js",
+          "method_name": "get_workers_workerpoolid_workergroup",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /workers/:workerPoolId/:workerGroup"
+        },
+        {
+          "id": "api.get_workers_workerpoolid_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "get_workers_workerpoolid_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /workers/:workerPoolId/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.put_workers_workerpoolid_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "put_workers_workerpoolid_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /workers/:workerPoolId/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.post_workers_workerpoolid_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "post_workers_workerpoolid_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /workers/:workerPoolId/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.delete_workers_workerpoolid_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "delete_workers_workerpoolid_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /workers/:workerPoolId/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.get_workers_workerpoolid_workergroup_workerid_should_terminate",
+          "class_name": "api.js",
+          "method_name": "get_workers_workerpoolid_workergroup_workerid_should_terminate",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /workers/:workerPoolId/:workerGroup/:workerId/should-terminate"
+        },
+        {
+          "id": "api.get_workers_workerpoolid",
+          "class_name": "api.js",
+          "method_name": "get_workers_workerpoolid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /workers/{*workerPoolId}"
+        },
+        {
+          "id": "api.post_worker_register",
+          "class_name": "api.js",
+          "method_name": "post_worker_register",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /worker/register"
+        },
+        {
+          "id": "api.post_worker_reregister",
+          "class_name": "api.js",
+          "method_name": "post_worker_reregister",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /worker/reregister"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types_workertype_workers",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types_workertype_workers",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types/:workerType/workers"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types/:workerType/workers/:workerGroup/:workerId"
+        }
+      ]
+    },
+    "queue": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_task_taskid",
+          "class_name": "api.js",
+          "method_name": "get_task_taskid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId"
+        },
+        {
+          "id": "api.post_tasks",
+          "class_name": "api.js",
+          "method_name": "post_tasks",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /tasks"
+        },
+        {
+          "id": "api.post_tasks_status",
+          "class_name": "api.js",
+          "method_name": "post_tasks_status",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /tasks/status"
+        },
+        {
+          "id": "api.get_task_taskid_status",
+          "class_name": "api.js",
+          "method_name": "get_task_taskid_status",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/status"
+        },
+        {
+          "id": "api.get_task_group_taskgroupid_list",
+          "class_name": "api.js",
+          "method_name": "get_task_group_taskgroupid_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-group/:taskGroupId/list"
+        },
+        {
+          "id": "api.post_task_group_taskgroupid_cancel",
+          "class_name": "api.js",
+          "method_name": "post_task_group_taskgroupid_cancel",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task-group/:taskGroupId/cancel"
+        },
+        {
+          "id": "api.get_task_group_taskgroupid",
+          "class_name": "api.js",
+          "method_name": "get_task_group_taskgroupid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-group/:taskGroupId"
+        },
+        {
+          "id": "api.post_task_group_taskgroupid_seal",
+          "class_name": "api.js",
+          "method_name": "post_task_group_taskgroupid_seal",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task-group/:taskGroupId/seal"
+        },
+        {
+          "id": "api.get_task_taskid_dependents",
+          "class_name": "api.js",
+          "method_name": "get_task_taskid_dependents",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/dependents"
+        },
+        {
+          "id": "api.put_task_taskid",
+          "class_name": "api.js",
+          "method_name": "put_task_taskid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /task/:taskId"
+        },
+        {
+          "id": "api.post_task_taskid_schedule",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_schedule",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/schedule"
+        },
+        {
+          "id": "api.post_task_taskid_rerun",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_rerun",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/rerun"
+        },
+        {
+          "id": "api.post_task_taskid_cancel",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_cancel",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/cancel"
+        },
+        {
+          "id": "api.post_task_taskid_priority",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_priority",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/priority"
+        },
+        {
+          "id": "api.post_task_group_taskgroupid_priority",
+          "class_name": "api.js",
+          "method_name": "post_task_group_taskgroupid_priority",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task-group/:taskGroupId/priority"
+        },
+        {
+          "id": "api.post_claim_work_taskqueueid",
+          "class_name": "api.js",
+          "method_name": "post_claim_work_taskqueueid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /claim-work/{*taskQueueId}"
+        },
+        {
+          "id": "api.post_task_taskid_runs_runid_claim",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_runs_runid_claim",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/claim"
+        },
+        {
+          "id": "api.post_task_taskid_runs_runid_reclaim",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_runs_runid_reclaim",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/reclaim"
+        },
+        {
+          "id": "api.post_task_taskid_runs_runid_completed",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_runs_runid_completed",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/completed"
+        },
+        {
+          "id": "api.post_task_taskid_runs_runid_failed",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_runs_runid_failed",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/failed"
+        },
+        {
+          "id": "api.post_task_taskid_runs_runid_exception",
+          "class_name": "api.js",
+          "method_name": "post_task_taskid_runs_runid_exception",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/exception"
+        },
+        {
+          "id": "api.get_provisioners",
+          "class_name": "api.js",
+          "method_name": "get_provisioners",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId"
+        },
+        {
+          "id": "api.get_pending_taskqueueid",
+          "class_name": "api.js",
+          "method_name": "get_pending_taskqueueid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /pending/{*taskQueueId}"
+        },
+        {
+          "id": "api.post_task_queues_counts",
+          "class_name": "api.js",
+          "method_name": "post_task_queues_counts",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task-queues/counts"
+        },
+        {
+          "id": "api.get_task_queues_taskqueueid_counts",
+          "class_name": "api.js",
+          "method_name": "get_task_queues_taskqueueid_counts",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-queues/{*taskQueueId}/counts"
+        },
+        {
+          "id": "api.get_task_queues_taskqueueid_pending",
+          "class_name": "api.js",
+          "method_name": "get_task_queues_taskqueueid_pending",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-queues/{*taskQueueId}/pending"
+        },
+        {
+          "id": "api.get_task_queues_taskqueueid_claimed",
+          "class_name": "api.js",
+          "method_name": "get_task_queues_taskqueueid_claimed",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-queues/{*taskQueueId}/claimed"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types_workertype",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types_workertype",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types/:workerType"
+        },
+        {
+          "id": "api.get_task_queues",
+          "class_name": "api.js",
+          "method_name": "get_task_queues",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-queues"
+        },
+        {
+          "id": "api.get_task_queues_taskqueueid",
+          "class_name": "api.js",
+          "method_name": "get_task_queues_taskqueueid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task-queues/:taskQueueId"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types_workertype_workers",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types_workertype_workers",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types/:workerType/workers"
+        },
+        {
+          "id": "api.get_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "get_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /provisioners/:provisionerId/worker-types/:workerType/workers/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.put_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "put_provisioners_provisionerid_worker_types_workertype_workers_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /provisioners/:provisionerId/worker-types/:workerType/workers/:workerGroup/:workerId"
+        },
+        {
+          "id": "api.put_provisioners_provisionerid_worker_types_workertype_workergroup_workerid",
+          "class_name": "api.js",
+          "method_name": "put_provisioners_provisionerid_worker_types_workertype_workergroup_workerid",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /provisioners/:provisionerId/worker-types/:workerType/:workerGroup/:workerId"
+        },
+        {
+          "id": "artifacts.post_task_taskid_runs_runid_artifacts_name",
+          "class_name": "artifacts.js",
+          "method_name": "post_task_taskid_runs_runid_artifacts_name",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /task/:taskId/runs/:runId/artifacts/{*name}"
+        },
+        {
+          "id": "artifacts.put_task_taskid_runs_runid_artifacts_name",
+          "class_name": "artifacts.js",
+          "method_name": "put_task_taskid_runs_runid_artifacts_name",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /task/:taskId/runs/:runId/artifacts/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_runs_runid_artifacts_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_runs_runid_artifacts_name",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/runs/:runId/artifacts/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_artifacts_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_artifacts_name",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/artifacts/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_runs_runid_artifacts",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_runs_runid_artifacts",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/runs/:runId/artifacts"
+        },
+        {
+          "id": "artifacts.get_task_taskid_artifacts",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_artifacts",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/artifacts"
+        },
+        {
+          "id": "artifacts.get_task_taskid_runs_runid_artifact_info_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_runs_runid_artifact_info_name",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/runs/:runId/artifact-info/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_artifact_info_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_artifact_info_name",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/artifact-info/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_runs_runid_artifact_content_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_runs_runid_artifact_content_name",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/runs/:runId/artifact-content/{*name}"
+        },
+        {
+          "id": "artifacts.get_task_taskid_artifact_content_name",
+          "class_name": "artifacts.js",
+          "method_name": "get_task_taskid_artifact_content_name",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:taskId/artifact-content/{*name}"
+        },
+        {
+          "id": "WorkerRemovedResolver.handleWorkerRemoved",
+          "class_name": "WorkerRemovedResolver",
+          "method_name": "handleWorkerRemoved",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-worker-manager/v1/worker-stopped|worker-removed"
+        }
+      ]
+    },
+    "notify": {
+      "exposed_interfaces": [
+        {
+          "id": "api.post_email",
+          "class_name": "api.js",
+          "method_name": "post_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /email"
+        },
+        {
+          "id": "api.post_pulse",
+          "class_name": "api.js",
+          "method_name": "post_pulse",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /pulse"
+        },
+        {
+          "id": "api.post_matrix",
+          "class_name": "api.js",
+          "method_name": "post_matrix",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /matrix"
+        },
+        {
+          "id": "api.post_slack",
+          "class_name": "api.js",
+          "method_name": "post_slack",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /slack"
+        },
+        {
+          "id": "api.post_denylist_add",
+          "class_name": "api.js",
+          "method_name": "post_denylist_add",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /denylist/add"
+        },
+        {
+          "id": "api.delete_denylist_delete",
+          "class_name": "api.js",
+          "method_name": "delete_denylist_delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /denylist/delete"
+        },
+        {
+          "id": "api.get_denylist_list",
+          "class_name": "api.js",
+          "method_name": "get_denylist_list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /denylist/list"
+        },
+        {
+          "id": "Handler.onMessage",
+          "class_name": "Handler",
+          "method_name": "onMessage",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-queue/v1/task-defined|exchange/taskcluster-queue/v1/task-pending|exchange/taskcluster-queue/v1/task-running|exchange/taskcluster-queue/v1/task-completed|exchange/taskcluster-queue/v1/task-failed|exchange/taskcluster-queue/v1/task-exception"
+        }
+      ]
+    },
+    "index": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_task_indexpath",
+          "class_name": "api.js",
+          "method_name": "get_task_indexpath",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /task/:indexPath"
+        },
+        {
+          "id": "api.post_tasks_indexes",
+          "class_name": "api.js",
+          "method_name": "post_tasks_indexes",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /tasks/indexes"
+        },
+        {
+          "id": "api.get_namespaces_namespace",
+          "class_name": "api.js",
+          "method_name": "get_namespaces_namespace",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /namespaces{/:namespace}"
+        },
+        {
+          "id": "api.post_namespaces_namespace",
+          "class_name": "api.js",
+          "method_name": "post_namespaces_namespace",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /namespaces{/:namespace}"
+        },
+        {
+          "id": "api.get_tasks_namespace",
+          "class_name": "api.js",
+          "method_name": "get_tasks_namespace",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /tasks{/:namespace}"
+        },
+        {
+          "id": "api.post_tasks_namespace",
+          "class_name": "api.js",
+          "method_name": "post_tasks_namespace",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /tasks{/:namespace}"
+        },
+        {
+          "id": "api.put_task_namespace",
+          "class_name": "api.js",
+          "method_name": "put_task_namespace",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /task/:namespace"
+        },
+        {
+          "id": "api.delete_task_namespace",
+          "class_name": "api.js",
+          "method_name": "delete_task_namespace",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /task/:namespace"
+        },
+        {
+          "id": "api.get_task_indexpath_artifacts_name",
+          "class_name": "api.js",
+          "method_name": "get_task_indexpath_artifacts_name",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /task/:indexPath/artifacts/{*name}"
+        },
+        {
+          "id": "Handlers.messageHandler",
+          "class_name": "Handlers",
+          "method_name": "messageHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-queue/v1/task-completed"
+        }
+      ]
+    },
+    "hooks": {
+      "exposed_interfaces": [
+        {
+          "id": "api.get_hooks",
+          "class_name": "api.js",
+          "method_name": "get_hooks",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks"
+        },
+        {
+          "id": "api.get_hooks_hookgroupid",
+          "class_name": "api.js",
+          "method_name": "get_hooks_hookgroupid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks/:hookGroupId"
+        },
+        {
+          "id": "api.get_hooks_hookgroupid_hookid",
+          "class_name": "api.js",
+          "method_name": "get_hooks_hookgroupid_hookid",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks/:hookGroupId/:hookId"
+        },
+        {
+          "id": "api.get_hooks_hookgroupid_hookid_status",
+          "class_name": "api.js",
+          "method_name": "get_hooks_hookgroupid_hookid_status",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks/:hookGroupId/:hookId/status"
+        },
+        {
+          "id": "api.put_hooks_hookgroupid_hookid",
+          "class_name": "api.js",
+          "method_name": "put_hooks_hookgroupid_hookid",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /hooks/:hookGroupId/:hookId"
+        },
+        {
+          "id": "api.post_hooks_hookgroupid_hookid",
+          "class_name": "api.js",
+          "method_name": "post_hooks_hookgroupid_hookid",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /hooks/:hookGroupId/:hookId"
+        },
+        {
+          "id": "api.delete_hooks_hookgroupid_hookid",
+          "class_name": "api.js",
+          "method_name": "delete_hooks_hookgroupid_hookid",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /hooks/:hookGroupId/:hookId"
+        },
+        {
+          "id": "api.post_hooks_hookgroupid_hookid_trigger",
+          "class_name": "api.js",
+          "method_name": "post_hooks_hookgroupid_hookid_trigger",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /hooks/:hookGroupId/:hookId/trigger"
+        },
+        {
+          "id": "api.get_hooks_hookgroupid_hookid_token",
+          "class_name": "api.js",
+          "method_name": "get_hooks_hookgroupid_hookid_token",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks/:hookGroupId/:hookId/token"
+        },
+        {
+          "id": "api.post_hooks_hookgroupid_hookid_token",
+          "class_name": "api.js",
+          "method_name": "post_hooks_hookgroupid_hookid_token",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /hooks/:hookGroupId/:hookId/token"
+        },
+        {
+          "id": "api.post_hooks_hookgroupid_hookid_trigger_token",
+          "class_name": "api.js",
+          "method_name": "post_hooks_hookgroupid_hookid_trigger_token",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /hooks/:hookGroupId/:hookId/trigger/:token"
+        },
+        {
+          "id": "api.get_hooks_hookgroupid_hookid_last_fires",
+          "class_name": "api.js",
+          "method_name": "get_hooks_hookgroupid_hookid_last_fires",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /hooks/:hookGroupId/:hookId/last-fires"
+        },
+        {
+          "id": "HookListeners.reconcileConsumers",
+          "class_name": "HookListeners",
+          "method_name": "reconcileConsumers",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "exchange/taskcluster-hooks/v1/hook-created|hook-updated|hook-deleted"
+        }
+      ]
+    },
+    "built-in-workers": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "built-in-workers",
+      "src_class": "TaskQueue",
+      "src_method": "claimTask",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_claim_work_taskqueueid",
+      "protocol": "REST",
+      "evidence": "services/built-in-workers/src/TaskQueue.js:18 const result = await this.queue.claimWork(`built-in/${this.builtinType}`, {"
+    },
+    {
+      "src_service": "built-in-workers",
+      "src_class": "TaskQueue",
+      "src_method": "claimTask",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_taskid_runs_runid_completed",
+      "protocol": "REST",
+      "evidence": "services/built-in-workers/src/TaskQueue.js:35 return await queue.reportCompleted(status.taskId, runId);"
+    },
+    {
+      "src_service": "built-in-workers",
+      "src_class": "TaskQueue",
+      "src_method": "claimTask",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_taskid_runs_runid_failed",
+      "protocol": "REST",
+      "evidence": "services/built-in-workers/src/TaskQueue.js:37 return await queue.reportFailed(status.taskId, runId);"
+    },
+    {
+      "src_service": "built-in-workers",
+      "src_class": "TaskQueue",
+      "src_method": "claimTask",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_taskid_runs_runid_exception",
+      "protocol": "REST",
+      "evidence": "services/built-in-workers/src/TaskQueue.js:44 return await queue.reportException(status.taskId, runId, payload);"
+    },
+    {
+      "src_service": "github",
+      "src_class": "api.js",
+      "src_method": "post_builds_owner_repo_cancel",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_group_taskgroupid_seal",
+      "protocol": "REST",
+      "evidence": "services/github/src/api.js:563 await Promise.all(taskGroupIds.map(taskGroupId => limitedQueueClient.sealTaskGroup(taskGroupId)));"
+    },
+    {
+      "src_service": "github",
+      "src_class": "api.js",
+      "src_method": "post_builds_owner_repo_cancel",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_group_taskgroupid_cancel",
+      "protocol": "REST",
+      "evidence": "services/github/src/api.js:564 await Promise.all(taskGroupIds.map(taskGroupId => limitedQueueClient.cancelTaskGroup(taskGroupId)));"
+    },
+    {
+      "src_service": "github",
+      "src_class": "deprecatedStatus",
+      "src_method": "deprecatedStatusHandler",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_group_taskgroupid_list",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/deprecatedStatus.js:43 const group = await this.queueClient.listTaskGroup(message.payload.taskGroupId, params);"
+    },
+    {
+      "src_service": "github",
+      "src_class": "status",
+      "src_method": "statusHandler",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/status.js:133 const taskDefinition = await this.queueClient.task(taskId);"
+    },
+    {
+      "src_service": "github",
+      "src_class": "status",
+      "src_method": "statusHandler",
+      "dst_service": "queue",
+      "dst_class": "artifacts.js",
+      "dst_interface_id": "artifacts.get_task_taskid_runs_runid_artifacts",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/status.js:228 const artifactList = await this.queueClient.listArtifacts(taskId, runId, { limit: 50 });"
+    },
+    {
+      "src_service": "github",
+      "src_class": "Handlers",
+      "src_method": "createTasks",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.put_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/index.js:267 await limitedQueueClient.createTask(t.taskId, t.task);"
+    },
+    {
+      "src_service": "github",
+      "src_class": "Handlers",
+      "src_method": "triggerHook",
+      "dst_service": "hooks",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_hooks_hookgroupid_hookid_trigger",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/index.js:332 const result = await limitedHooksClient.triggerHook(hookGroup, hookId, payload);"
+    },
+    {
+      "src_service": "github",
+      "src_class": "Handlers",
+      "src_method": "cancelSupersededTaskGroups",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_group_taskgroupid_seal",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/index.js:407 await Promise.all(taskGroupIds.map(taskGroupId => limitedQueueClient.sealTaskGroup(taskGroupId)));"
+    },
+    {
+      "src_service": "github",
+      "src_class": "Handlers",
+      "src_method": "cancelSupersededTaskGroups",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_group_taskgroupid_cancel",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/index.js:408 await Promise.all(taskGroupIds.map(taskGroupId => limitedQueueClient.cancelTaskGroup(taskGroupId)));"
+    },
+    {
+      "src_service": "github",
+      "src_class": "rerun",
+      "src_method": "rerunHandler",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_task_taskid_rerun",
+      "protocol": "REST",
+      "evidence": "services/github/src/handlers/rerun.js:43 const taskStatus = await limitedQueueClient.rerunTask(taskId);"
+    },
+    {
+      "src_service": "hooks",
+      "src_class": "Scheduler",
+      "src_method": "sendFailureEmail",
+      "dst_service": "notify",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_email",
+      "protocol": "REST",
+      "evidence": "services/hooks/src/scheduler.js:168 await this.notify.email(email);"
+    },
+    {
+      "src_service": "hooks",
+      "src_class": "TaskCreator",
+      "src_method": "fire",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.put_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/hooks/src/taskcreator.js:126 const response = await queue.createTask(options.taskId, task);"
+    },
+    {
+      "src_service": "index",
+      "src_class": "api.js",
+      "src_method": "put_task_namespace",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/index/src/api.js:311 const referencedTask = await this.queue.task(input.taskId).catch(err => {"
+    },
+    {
+      "src_service": "index",
+      "src_class": "api.js",
+      "src_method": "get_task_indexpath_artifacts_name",
+      "dst_service": "queue",
+      "dst_class": "artifacts.js",
+      "dst_interface_id": "artifacts.get_task_taskid_artifact_content_name",
+      "protocol": "REST",
+      "evidence": "services/index/src/api.js:427 const artifact = await this.queue.latestArtifact(task.taskId, artifactName);"
+    },
+    {
+      "src_service": "index",
+      "src_class": "Handlers",
+      "src_method": "completed",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/index/src/handlers.js:86 return this.queue.task(message.payload.status.taskId).then(task => {"
+    },
+    {
+      "src_service": "notify",
+      "src_class": "Handler",
+      "src_method": "onMessage",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/notify/src/handler.js:93 const task = await this.queue.task(taskId);"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "artifacts.js",
+      "src_method": "post_task_taskid_runs_runid_artifacts_name",
+      "dst_service": "object",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.put_upload_name",
+      "protocol": "REST",
+      "evidence": "services/queue/src/artifacts.js:281 await objectService.createUpload(objectName, {"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "artifacts.js",
+      "src_method": "put_task_taskid_runs_runid_artifacts_name",
+      "dst_service": "object",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_metadata_name",
+      "protocol": "REST",
+      "evidence": "services/queue/src/artifacts.js:528 await this.objectService.object(artifactToObjectName(taskId, runId, name));"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "artifacts.js",
+      "src_method": "replyWithArtifactDownload",
+      "dst_service": "object",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.put_start_download_name",
+      "protocol": "REST",
+      "evidence": "services/queue/src/artifacts.js:580 dlRes = await objectService.startDownload(name, {"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "api.js",
+      "src_method": "get_task_group_taskgroupid_profile",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_group_taskgroupid_list",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/api.js:54 result = await queue.listTaskGroup(taskGroupId, opts);"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "api.js",
+      "src_method": "get_task_taskid_profile",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/api.js:118 [task, { status }] = await Promise.all([queue.task(taskId), queue.status(taskId)]);"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "api.js",
+      "src_method": "get_task_taskid_profile",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_taskid_status",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/api.js:118 [task, { status }] = await Promise.all([queue.task(taskId), queue.status(taskId)]);"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "scanner.js",
+      "src_method": "scan",
+      "dst_service": "auth",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_clients",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/login/scanner.js:14 const clientResponse = await auth.listClients(query);"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "scanner.js",
+      "src_method": "scan",
+      "dst_service": "auth",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_clients_clientid_disable",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/login/scanner.js:50 await auth.disableClient(client.clientId);"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "oauth2.js",
+      "src_method": "getCredentials",
+      "dst_service": "auth",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.put_clients_clientid",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/servers/oauth2.js:442 auth.use({ authorizedScopes: currentUser.scopes() }).createClient(clientId, {"
+    },
+    {
+      "src_service": "worker-manager",
+      "src_class": "Estimator",
+      "src_method": "targetCapacity",
+      "dst_service": "queue",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.get_task_queues_taskqueueid_counts",
+      "protocol": "REST",
+      "evidence": "services/worker-manager/src/estimator.js:52 const { pendingTasks, claimedTasks } = await this.queue.taskQueueCounts(workerPoolId);"
+    },
+    {
+      "src_service": "worker-manager",
+      "src_class": "Provider",
+      "src_method": "reportError",
+      "dst_service": "notify",
+      "dst_class": "api.js",
+      "dst_interface_id": "api.post_email",
+      "protocol": "REST",
+      "evidence": "services/worker-manager/src/providers/provider.js:456 await this.notify.email({"
+    },
+    {
+      "src_service": "github",
+      "src_class": "utils.js",
+      "src_method": "downloadArtifact",
+      "dst_service": "queue",
+      "dst_class": "artifacts.js",
+      "dst_interface_id": "artifacts.get_task_taskid_runs_runid_artifact_content_name",
+      "protocol": "REST",
+      "evidence": "services/github/src/utils.js:18 return await downloadManagedArtifact({"
+    },
+    {
+      "src_service": "web-server",
+      "src_class": "taskLog.js",
+      "src_method": "openTaskLog",
+      "dst_service": "queue",
+      "dst_class": "artifacts.js",
+      "dst_interface_id": "artifacts.get_task_taskid_artifact_content_name",
+      "protocol": "REST",
+      "evidence": "services/web-server/src/utils/taskLog.js:41 const downloaded = downloadManagedArtifact({"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "cancelSingleTask",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:435 await ctx.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "cancelSingleTask",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:435 await ctx.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "cancelSingleTask",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:435 await ctx.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "put_task_taskid",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:991 await this.publisher.taskDefined({ status: initialStatus, task: taskPulseContents }, task.routes);"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "put_task_taskid",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:991 await this.publisher.taskDefined({ status: initialStatus, task: taskPulseContents }, task.routes);"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "put_task_taskid",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1011 await this.publisher.taskPending({ status, task: taskPulseContents, runId }, task.routes);"
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "post_task_taskid_rerun",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1199 await this.publisher.taskPending("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "post_task_taskid_rerun",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1199 await this.publisher.taskPending("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "resolveTask",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1814 await this.publisher.taskCompleted("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "resolveTask",
+      "dst_service": "index",
+      "dst_class": "Handlers",
+      "dst_interface_id": "Handlers.messageHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1814 await this.publisher.taskCompleted("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "resolveTask",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1814 await this.publisher.taskCompleted("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "resolveTask",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1827 await this.publisher.taskFailed("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "post_task_taskid_runs_runid_exception",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1990 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "post_task_taskid_runs_runid_exception",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1990 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "api.js",
+      "src_method": "post_task_taskid_runs_runid_exception",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/api.js:1990 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "ClaimResolver",
+      "src_method": "handleMessage",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/claimresolver.js:152 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "ClaimResolver",
+      "src_method": "handleMessage",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/claimresolver.js:152 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "ClaimResolver",
+      "src_method": "handleMessage",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/claimresolver.js:152 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DeadlineResolver",
+      "src_method": "handleMessage",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/deadlineresolver.js:150 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DeadlineResolver",
+      "src_method": "handleMessage",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/deadlineresolver.js:150 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DeadlineResolver",
+      "src_method": "handleMessage",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/deadlineresolver.js:150 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DependencyTracker",
+      "src_method": "updateTaskGroupActiveSet",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/dependencytracker.js:231 await this.publisher.taskGroupResolved("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DependencyTracker",
+      "src_method": "scheduleTask",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/dependencytracker.js:289 await this.publisher.taskPending("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "DependencyTracker",
+      "src_method": "scheduleTask",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/dependencytracker.js:289 await this.publisher.taskPending("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkClaimer",
+      "src_method": "claimTask",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workclaimer.js:154 await this._publisher.taskRunning("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkClaimer",
+      "src_method": "claimTask",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workclaimer.js:154 await this._publisher.taskRunning("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkClaimer",
+      "src_method": "claimTask",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workclaimer.js:154 await this._publisher.taskRunning("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkerRemovedResolver",
+      "src_method": "resolveTask",
+      "dst_service": "github",
+      "dst_class": "status",
+      "dst_interface_id": "status.statusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workerremovedresolver.js:106 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkerRemovedResolver",
+      "src_method": "resolveTask",
+      "dst_service": "github",
+      "dst_class": "deprecatedStatus",
+      "dst_interface_id": "deprecatedStatus.deprecatedStatusHandler",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workerremovedresolver.js:106 await this.publisher.taskException("
+    },
+    {
+      "src_service": "queue",
+      "src_class": "WorkerRemovedResolver",
+      "src_method": "resolveTask",
+      "dst_service": "notify",
+      "dst_class": "Handler",
+      "dst_interface_id": "Handler.onMessage",
+      "protocol": "Messaging",
+      "evidence": "services/queue/src/workerremovedresolver.js:106 await this.publisher.taskException("
+    }
+  ]
+}

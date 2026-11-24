@@ -1,0 +1,2435 @@
+{
+  "system_id": "MS100",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "lib": {
+      "exposed_interfaces": [
+        {
+          "id": "Attributes.getAccounts",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Attributes",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/attr/"
+        },
+        {
+          "id": "Attributes.postAccounts",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Attributes",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}/attr/{key}"
+        },
+        {
+          "id": "Attributes.deleteAccounts",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Attributes",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/{account}/attr/{key}"
+        },
+        {
+          "id": "Scopes.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Scopes",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/scopes/"
+        },
+        {
+          "id": "Scopes.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Scopes",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}/scopes/{scope}"
+        },
+        {
+          "id": "LocalAccountLimits.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.LocalAccountLimits",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/limits"
+        },
+        {
+          "id": "LocalAccountLimits.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.LocalAccountLimits",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}/limits/local/{rse}"
+        },
+        {
+          "id": "LocalAccountLimits.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.LocalAccountLimits",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/{account}/limits/local/{rse}"
+        },
+        {
+          "id": "GlobalAccountLimits.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.GlobalAccountLimits",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/limits/global"
+        },
+        {
+          "id": "GlobalAccountLimits.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.GlobalAccountLimits",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}/limits/global/{rse_expression}"
+        },
+        {
+          "id": "GlobalAccountLimits.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.GlobalAccountLimits",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/{account}/limits/global/{rse_expression}"
+        },
+        {
+          "id": "Identities.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Identities",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/identities"
+        },
+        {
+          "id": "Identities.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Identities",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}/identities"
+        },
+        {
+          "id": "Identities.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Identities",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/{account}/identities"
+        },
+        {
+          "id": "Rules.getAccounts",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Rules",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/rules"
+        },
+        {
+          "id": "UsageHistory.getAccounts",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.UsageHistory",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/usage/history/{rse}"
+        },
+        {
+          "id": "LocalUsage.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.LocalUsage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/usage"
+        },
+        {
+          "id": "GlobalUsage.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.GlobalUsage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}/usage/global"
+        },
+        {
+          "id": "AccountParameter.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.AccountParameter",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{account}"
+        },
+        {
+          "id": "AccountParameter.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.AccountParameter",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /accounts/{account}"
+        },
+        {
+          "id": "AccountParameter.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.AccountParameter",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/{account}"
+        },
+        {
+          "id": "AccountParameter.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.AccountParameter",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/{account}"
+        },
+        {
+          "id": "Account.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.accounts.Account",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /accounts"
+        },
+        {
+          "id": "Archive.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.archives.Archive",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /archives/{scope_name}/files"
+        },
+        {
+          "id": "UserPass.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.UserPass",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /auth/userpass"
+        },
+        {
+          "id": "UserPass.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.UserPass",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/userpass"
+        },
+        {
+          "id": "GSS.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.GSS",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/gss"
+        },
+        {
+          "id": "GSS.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.GSS",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/gss"
+        },
+        {
+          "id": "x509.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.x509",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /auth/x509"
+        },
+        {
+          "id": "x509.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.x509",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/x509"
+        },
+        {
+          "id": "SSH.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.SSH",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/ssh"
+        },
+        {
+          "id": "SSH.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.SSH",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/ssh"
+        },
+        {
+          "id": "SSHChallengeToken.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.SSHChallengeToken",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/ssh_challenge_token"
+        },
+        {
+          "id": "SSHChallengeToken.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.SSHChallengeToken",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/ssh_challenge_token"
+        },
+        {
+          "id": "Validate.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.Validate",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/validate"
+        },
+        {
+          "id": "Validate.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.Validate",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/validate"
+        },
+        {
+          "id": "OIDC.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.OIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc"
+        },
+        {
+          "id": "OIDC.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.OIDC",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/oidc"
+        },
+        {
+          "id": "CodeOIDC.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.CodeOIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_code"
+        },
+        {
+          "id": "CodeOIDC.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.CodeOIDC",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/oidc_code"
+        },
+        {
+          "id": "RedirectOIDC.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.RedirectOIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_redirect"
+        },
+        {
+          "id": "RedirectOIDC.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.RedirectOIDC",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/oidc_redirect"
+        },
+        {
+          "id": "RefreshOIDC.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.RefreshOIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_refresh"
+        },
+        {
+          "id": "RefreshOIDC.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.auth.RefreshOIDC",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /auth/oidc_refresh"
+        },
+        {
+          "id": "OptionSet.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.OptionSet",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /config/{section}/{option}/{value}"
+        },
+        {
+          "id": "OptionGetDel.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.OptionGetDel",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config/{section}/{option}"
+        },
+        {
+          "id": "OptionGetDel.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.OptionGetDel",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /config/{section}/{option}"
+        },
+        {
+          "id": "Section.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.Section",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config/{section}"
+        },
+        {
+          "id": "Section.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.Section",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /config/{section}"
+        },
+        {
+          "id": "Config.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.Config",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config"
+        },
+        {
+          "id": "Config.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.config.Config",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /config"
+        },
+        {
+          "id": "SignURL.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.credentials.SignURL",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /credentials/signur"
+        },
+        {
+          "id": "SignURL.options",
+          "class_name": "rucio.web.rest.flaskapi.v1.credentials.SignURL",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /credentials/signur"
+        },
+        {
+          "id": "DIDs.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.DIDs",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /dids/{scope_name}/status"
+        },
+        {
+          "id": "DIDs.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.DIDs",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}"
+        },
+        {
+          "id": "DIDs.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.DIDs",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/{scope_name}"
+        },
+        {
+          "id": "Meta.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Meta",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/meta"
+        },
+        {
+          "id": "Meta.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Meta",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/{scope_name}/meta"
+        },
+        {
+          "id": "Meta.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Meta",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/{scope_name}/meta"
+        },
+        {
+          "id": "BulkDIDsMeta.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.BulkDIDsMeta",
+          "method_name": "post",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /dids/bulkmeta"
+        },
+        {
+          "id": "Attachment.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Attachment",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/dids"
+        },
+        {
+          "id": "Attachment.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Attachment",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/{scope_name}/dids"
+        },
+        {
+          "id": "Attachment.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Attachment",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/{scope_name}/dids"
+        },
+        {
+          "id": "NewDIDs.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.NewDIDs",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/new"
+        },
+        {
+          "id": "BulkDIDS.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.BulkDIDS",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids"
+        },
+        {
+          "id": "AttachmentHistory.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.AttachmentHistory",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/dids/history"
+        },
+        {
+          "id": "Attachments.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Attachments",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/attachments"
+        },
+        {
+          "id": "Search.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Search",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope}/dids/search"
+        },
+        {
+          "id": "Scope.getDids",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Scope",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope}/"
+        },
+        {
+          "id": "GUIDLookup.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.GUIDLookup",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{guid}/guid"
+        },
+        {
+          "id": "Files.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Files",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/files"
+        },
+        {
+          "id": "BulkFiles.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.BulkFiles",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /dids/bulkfiles"
+        },
+        {
+          "id": "Rules.getDids",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Rules",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/rules"
+        },
+        {
+          "id": "Parents.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Parents",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/parents"
+        },
+        {
+          "id": "AssociatedRules.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.AssociatedRules",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/associated_rules"
+        },
+        {
+          "id": "Follow.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Follow",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/{scope_name}/follow"
+        },
+        {
+          "id": "Follow.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Follow",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /dids/{scope_name}/follow"
+        },
+        {
+          "id": "Follow.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Follow",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/{scope_name}/follow"
+        },
+        {
+          "id": "SampleLegacy.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.SampleLegacy",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/{input_scope}/{input_name}/{output_scope}/{output_name}/{nbfiles}/sample"
+        },
+        {
+          "id": "Sample.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Sample",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/sample"
+        },
+        {
+          "id": "Resurrect.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dids.Resurrect",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/resurrect"
+        },
+        {
+          "id": "AddFiles.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.dirac.AddFiles",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dirac/addfiles"
+        },
+        {
+          "id": "Export.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.export.Export",
+          "method_name": "get",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /export"
+        },
+        {
+          "id": "Heartbeat.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.heartbeats.Heartbeat",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /heartbeats"
+        },
+        {
+          "id": "Heartbeat.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.heartbeats.Heartbeat",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /heartbeats"
+        },
+        {
+          "id": "UserPass.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.identities.UserPass",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/{account}/userpass"
+        },
+        {
+          "id": "X509.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.identities.X509",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/{account}/x509"
+        },
+        {
+          "id": "GSS.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.identities.GSS",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/{account}/gss"
+        },
+        {
+          "id": "Accounts.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.identities.Accounts",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /identities/{identity_key}/{type}/accounts"
+        },
+        {
+          "id": "AccountsByIdentity.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.identities.AccountsByIdentity",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /identities/accounts"
+        },
+        {
+          "id": "Import.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.import.Import",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /import"
+        },
+        {
+          "id": "LifetimeException.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.lifetime_exceptions.LifetimeException",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exceptions/"
+        },
+        {
+          "id": "LifetimeException.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.lifetime_exceptions.LifetimeException",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /lifetime_exceptions/"
+        },
+        {
+          "id": "LifetimeExceptionId.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.lifetime_exceptions.LifetimeExceptionId",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exceptions/{exception_id}"
+        },
+        {
+          "id": "LifetimeExceptionId.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.lifetime_exceptions.LifetimeExceptionId",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /lifetime_exceptions/{exception_id}"
+        },
+        {
+          "id": "LockByRSE.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.locks.LockByRSE",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /locks/{rse}"
+        },
+        {
+          "id": "LocksByScopeName.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.locks.LocksByScopeName",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /locks/{scope_name}"
+        },
+        {
+          "id": "DatasetLocksForDids.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.locks.DatasetLocksForDids",
+          "method_name": "post",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /locks/bulk_locks_for_dids"
+        },
+        {
+          "id": "MetaConventions.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.meta_conventions.MetaConventions",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /meta_conventions/"
+        },
+        {
+          "id": "MetaConventions.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.meta_conventions.MetaConventions",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /meta_conventions/{key}"
+        },
+        {
+          "id": "Values.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.meta_conventions.Values",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /meta_conventions/{key}/"
+        },
+        {
+          "id": "Values.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.meta_conventions.Values",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /meta_conventions/{key}/"
+        },
+        {
+          "id": "XAODTrace.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.nongrid_traces.XAODTrace",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /nongrid_traces/"
+        },
+        {
+          "id": "OpenDataView.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata.OpenDataView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/dids"
+        },
+        {
+          "id": "OpenDataDIDsView.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata.OpenDataDIDsView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/dids/{scope}/{name}"
+        },
+        {
+          "id": "OpenDataDIDsView.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata.OpenDataDIDsView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /opendata/dids/{scope}/{name}"
+        },
+        {
+          "id": "OpenDataDIDsView.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata.OpenDataDIDsView",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "PUT /opendata/dids/{scope}/{name}"
+        },
+        {
+          "id": "OpenDataDIDsView.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata.OpenDataDIDsView",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "DELETE /opendata/dids/{scope}/{name}"
+        },
+        {
+          "id": "OpenDataPublicView.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata_public.OpenDataPublicView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/public/dids"
+        },
+        {
+          "id": "OpenDataPublicDIDsView.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.opendata_public.OpenDataPublicDIDsView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/public/dids/{scope}/{name}"
+        },
+        {
+          "id": "MetaLinkRedirector.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.redirect.MetaLinkRedirector",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /redirect/{scope_name}/metalink"
+        },
+        {
+          "id": "HeaderRedirector.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.redirect.HeaderRedirector",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /redirect/{scope_name}"
+        },
+        {
+          "id": "ListReplicas.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.ListReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/list"
+        },
+        {
+          "id": "Replicas.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.Replicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas"
+        },
+        {
+          "id": "Replicas.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.Replicas",
+          "method_name": "put",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /replicas"
+        },
+        {
+          "id": "Replicas.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.Replicas",
+          "method_name": "delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /replicas"
+        },
+        {
+          "id": "SuspiciousReplicas.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.SuspiciousReplicas",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/suspicious"
+        },
+        {
+          "id": "SuspiciousReplicas.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.SuspiciousReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/suspicious"
+        },
+        {
+          "id": "BadReplicasStates.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.BadReplicasStates",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/bad/states"
+        },
+        {
+          "id": "BadReplicasSummary.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.BadReplicasSummary",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/bad/summary"
+        },
+        {
+          "id": "BadPFNs.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.BadPFNs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad/pfns"
+        },
+        {
+          "id": "BadDIDs.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.BadDIDs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad/dids"
+        },
+        {
+          "id": "ReplicasRSE.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.ReplicasRSE",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/rse/{rse}"
+        },
+        {
+          "id": "BadReplicas.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.BadReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad"
+        },
+        {
+          "id": "QuarantineReplicas.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.QuarantineReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/quarantine"
+        },
+        {
+          "id": "ReplicasDIDs.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.ReplicasDIDs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/dids"
+        },
+        {
+          "id": "DatasetReplicas.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.DatasetReplicas",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/{scope_name}/datasets"
+        },
+        {
+          "id": "DatasetReplicasBulk.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.DatasetReplicasBulk",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/datasets_bulk"
+        },
+        {
+          "id": "Replicas.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.Replicas",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/{scope_name}"
+        },
+        {
+          "id": "Tombstone.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.Tombstone",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/tombstone"
+        },
+        {
+          "id": "DatasetReplicasVP.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.replicas.DatasetReplicasVP",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/{scope_name}/datasets_vp"
+        },
+        {
+          "id": "RequestGet.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.RequestGet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/{scope_name}/{rse}"
+        },
+        {
+          "id": "RequestHistoryGet.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.RequestHistoryGet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/history/{scope_name}/{rse}"
+        },
+        {
+          "id": "RequestList.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.RequestList",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /requests/list"
+        },
+        {
+          "id": "RequestHistoryList.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.RequestHistoryList",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /requests/history/list"
+        },
+        {
+          "id": "RequestMetricsGet.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.RequestMetricsGet",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/metrics"
+        },
+        {
+          "id": "TransferLimits.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.TransferLimits",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /requests/transfer_limits"
+        },
+        {
+          "id": "TransferLimits.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.TransferLimits",
+          "method_name": "put",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /requests/transfer_limits"
+        },
+        {
+          "id": "TransferLimits.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.requests.TransferLimits",
+          "method_name": "delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /requests/transfer_limits"
+        },
+        {
+          "id": "Attributes.postRses",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Attributes",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/{rse}/attr/{key}"
+        },
+        {
+          "id": "Attributes.deleteRses",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Attributes",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/{rse}/attr/{key}"
+        },
+        {
+          "id": "Attributes.getRses",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Attributes",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/attr/"
+        },
+        {
+          "id": "Distance.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Distance",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{source}/distances/{destination}"
+        },
+        {
+          "id": "Distance.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Distance",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/{source}/distances/{destination}"
+        },
+        {
+          "id": "Distance.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Distance",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/{source}/distances/{destination}"
+        },
+        {
+          "id": "Distance.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Distance",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/{source}/distances/{destination}"
+        },
+        {
+          "id": "Protocol.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Protocol",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/{rse}/protocols/{scheme}"
+        },
+        {
+          "id": "Protocol.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Protocol",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/{rse}/protocols/{scheme}"
+        },
+        {
+          "id": "Protocol.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Protocol",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/protocols/{scheme}"
+        },
+        {
+          "id": "Protocol.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Protocol",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/{rse}/protocols/{scheme}"
+        },
+        {
+          "id": "ProtocolList.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.ProtocolList",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/protocols"
+        },
+        {
+          "id": "LFNS2PFNS.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.LFNS2PFNS",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/lfns2pfns"
+        },
+        {
+          "id": "RSEAccountUsageLimit.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSEAccountUsageLimit",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/accounts/usage"
+        },
+        {
+          "id": "Usage.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Usage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/usage"
+        },
+        {
+          "id": "Usage.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Usage",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/{rse}/usage"
+        },
+        {
+          "id": "UsageHistory.getRses",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.UsageHistory",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/usage/history"
+        },
+        {
+          "id": "Limits.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Limits",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}/limits"
+        },
+        {
+          "id": "Limits.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Limits",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/{rse}/limits"
+        },
+        {
+          "id": "Limits.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.Limits",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/{rse}/limits"
+        },
+        {
+          "id": "RSE.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSE",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/{rse}"
+        },
+        {
+          "id": "RSE.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSE",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/{rse}"
+        },
+        {
+          "id": "RSE.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSE",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/{rse}"
+        },
+        {
+          "id": "RSE.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSE",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/{rse}"
+        },
+        {
+          "id": "RSEs.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rses.RSEs",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/"
+        },
+        {
+          "id": "Rule.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.Rule",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rules/{rule_id}"
+        },
+        {
+          "id": "Rule.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.Rule",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rules/{rule_id}"
+        },
+        {
+          "id": "Rule.delete",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.Rule",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rules/{rule_id}"
+        },
+        {
+          "id": "AllRule.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.AllRule",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/"
+        },
+        {
+          "id": "AllRule.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.AllRule",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/"
+        },
+        {
+          "id": "ReplicaLocks.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.ReplicaLocks",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/{rule_id}/locks"
+        },
+        {
+          "id": "ReduceRule.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.ReduceRule",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/{rule_id}/reduce"
+        },
+        {
+          "id": "MoveRule.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.MoveRule",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/{rule_id}/move"
+        },
+        {
+          "id": "RuleHistory.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.RuleHistory",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/{rule_id}/history"
+        },
+        {
+          "id": "RuleHistoryFull.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.RuleHistoryFull",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/{scope_name}/history"
+        },
+        {
+          "id": "RuleAnalysis.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.rules.RuleAnalysis",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/{rule_id}/analysis"
+        },
+        {
+          "id": "Scope.getScopes",
+          "class_name": "rucio.web.rest.flaskapi.v1.scopes.Scope",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/"
+        },
+        {
+          "id": "Scope.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.scopes.Scope",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /scopes/{account}/{scope}"
+        },
+        {
+          "id": "Scope.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.scopes.Scope",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "PUT /scopes/{account}/{scope}"
+        },
+        {
+          "id": "AccountScopeList.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.scopes.AccountScopeList",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/{account}/scopes"
+        },
+        {
+          "id": "ScopeOwnershipList.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.scopes.ScopeOwnershipList",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/owner/"
+        },
+        {
+          "id": "SubscriptionId.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.SubscriptionId",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/id/{subscription_id}"
+        },
+        {
+          "id": "States.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.States",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/{account}/rules/states"
+        },
+        {
+          "id": "Rules.getSubscriptions",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.Rules",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/{account}/{name}/rules"
+        },
+        {
+          "id": "Subscription.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.Subscription",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/"
+        },
+        {
+          "id": "Subscription.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.Subscription",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /subscriptions/{account}/{name}"
+        },
+        {
+          "id": "Subscription.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.Subscription",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /subscriptions/{account}/{name}"
+        },
+        {
+          "id": "SubscriptionName.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.subscriptions.SubscriptionName",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/name/{name}"
+        },
+        {
+          "id": "Trace.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.traces.Trace",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /traces/"
+        },
+        {
+          "id": "RecoverVO.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.vos.RecoverVO",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /vos/{vo}/recover"
+        },
+        {
+          "id": "VO.put",
+          "class_name": "rucio.web.rest.flaskapi.v1.vos.VO",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /vos/{vo}"
+        },
+        {
+          "id": "VO.post",
+          "class_name": "rucio.web.rest.flaskapi.v1.vos.VO",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /vos/{vo}"
+        },
+        {
+          "id": "VOs.get",
+          "class_name": "rucio.web.rest.flaskapi.v1.vos.VOs",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /vos/"
+        },
+        {
+          "id": "bp.auth",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "auth",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /auth"
+        },
+        {
+          "id": "bp.login",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "login",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "bp.loginPost",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /login"
+        },
+        {
+          "id": "bp.oidc",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "oidc",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /oidc"
+        },
+        {
+          "id": "bp.oidc_final",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "oidc_final",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /oidc_final"
+        },
+        {
+          "id": "bp.x509",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "x509",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /x509"
+        },
+        {
+          "id": "bp.view_makerIndex",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "bp.view_makerAccountRseUsage",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /account_rse_usage"
+        },
+        {
+          "id": "bp.view_makerAccount",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /account"
+        },
+        {
+          "id": "bp.view_makerBadReplicas",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /bad_replicas"
+        },
+        {
+          "id": "bp.view_makerBadReplicasSummary",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /bad_replicas/summary"
+        },
+        {
+          "id": "bp.view_makerDid",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /did"
+        },
+        {
+          "id": "bp.view_makerHeartbeats",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /heartbeats"
+        },
+        {
+          "id": "bp.view_makerLifetimeException",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exception"
+        },
+        {
+          "id": "bp.view_makerListLifetimeExceptions",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /list_lifetime_exceptions"
+        },
+        {
+          "id": "bp.view_makerAccounts",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /list_accounts"
+        },
+        {
+          "id": "bp.view_makerApproveRules",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/approve"
+        },
+        {
+          "id": "bp.view_makerRequestRule",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/request"
+        },
+        {
+          "id": "bp.view_makerRseAccountUsage",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/manage_quota"
+        },
+        {
+          "id": "bp.view_makerListRules",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2"
+        },
+        {
+          "id": "bp.view_makerRse",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rse"
+        },
+        {
+          "id": "bp.view_makerRseAddProtocol",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rse/protocol/add"
+        },
+        {
+          "id": "bp.view_makerRses",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rses"
+        },
+        {
+          "id": "bp.view_makerAddRse",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rses/add"
+        },
+        {
+          "id": "bp.view_makerRule",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rule"
+        },
+        {
+          "id": "bp.view_makerRules",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rules"
+        },
+        {
+          "id": "bp.view_makerSearch",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /search"
+        },
+        {
+          "id": "bp.view_makerSubscriptionrules",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/rules"
+        },
+        {
+          "id": "bp.view_makerSubscription",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscription"
+        },
+        {
+          "id": "bp.view_makerSubscriptions",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions"
+        },
+        {
+          "id": "bp.view_makerSubscriptionsEditor",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions_editor"
+        },
+        {
+          "id": "bp.view_makerSuspiciousReplicas",
+          "class_name": "rucio.web.ui.flask.bp",
+          "method_name": "view_maker",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /suspicious_replicas"
+        }
+      ]
+    },
+    "tools": {
+      "exposed_interfaces": []
+    },
+    "etc": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

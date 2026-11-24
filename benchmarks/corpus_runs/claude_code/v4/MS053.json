@@ -1,0 +1,290 @@
+{
+  "system_id": "MS053",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "main.functionProxy",
+          "class_name": "main",
+          "method_name": "functionProxy",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "ANY /function/{name}"
+        },
+        {
+          "id": "main.functionProxySlash",
+          "class_name": "main",
+          "method_name": "functionProxy",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "ANY /function/{name}/"
+        },
+        {
+          "id": "main.functionProxyParams",
+          "class_name": "main",
+          "method_name": "functionProxy",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "ANY /function/{name}/{params}"
+        },
+        {
+          "id": "main.InfoHandler",
+          "class_name": "main",
+          "method_name": "InfoHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/info"
+        },
+        {
+          "id": "main.TelemetryHandler",
+          "class_name": "main",
+          "method_name": "TelemetryHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/telemetry"
+        },
+        {
+          "id": "main.Alert",
+          "class_name": "main",
+          "method_name": "Alert",
+          "param_types": [
+            "PrometheusAlert"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /system/alert"
+        },
+        {
+          "id": "main.FunctionStatus",
+          "class_name": "main",
+          "method_name": "FunctionStatus",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/function/{name}"
+        },
+        {
+          "id": "main.ListFunctions",
+          "class_name": "main",
+          "method_name": "ListFunctions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/functions"
+        },
+        {
+          "id": "main.DeployFunction",
+          "class_name": "main",
+          "method_name": "DeployFunction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /system/functions"
+        },
+        {
+          "id": "main.DeleteFunction",
+          "class_name": "main",
+          "method_name": "DeleteFunction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /system/functions"
+        },
+        {
+          "id": "main.UpdateFunction",
+          "class_name": "main",
+          "method_name": "UpdateFunction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /system/functions"
+        },
+        {
+          "id": "main.ScaleFunction",
+          "class_name": "main",
+          "method_name": "ScaleFunction",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /system/scale-function/{name}"
+        },
+        {
+          "id": "main.SecretHandlerGet",
+          "class_name": "main",
+          "method_name": "SecretHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/secrets"
+        },
+        {
+          "id": "main.SecretHandlerPut",
+          "class_name": "main",
+          "method_name": "SecretHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /system/secrets"
+        },
+        {
+          "id": "main.SecretHandlerPost",
+          "class_name": "main",
+          "method_name": "SecretHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /system/secrets"
+        },
+        {
+          "id": "main.SecretHandlerDelete",
+          "class_name": "main",
+          "method_name": "SecretHandler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /system/secrets"
+        },
+        {
+          "id": "main.LogProxyHandler",
+          "class_name": "main",
+          "method_name": "LogProxyHandler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/logs"
+        },
+        {
+          "id": "main.NamespaceListerHandler",
+          "class_name": "main",
+          "method_name": "NamespaceListerHandler",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/namespaces"
+        },
+        {
+          "id": "main.NamespaceMutatorHandlerPost",
+          "class_name": "main",
+          "method_name": "NamespaceMutatorHandler",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /system/namespace/{namespace}"
+        },
+        {
+          "id": "main.NamespaceMutatorHandlerDelete",
+          "class_name": "main",
+          "method_name": "NamespaceMutatorHandler",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /system/namespace/{namespace}"
+        },
+        {
+          "id": "main.NamespaceMutatorHandlerPut",
+          "class_name": "main",
+          "method_name": "NamespaceMutatorHandler",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /system/namespace/{namespace}"
+        },
+        {
+          "id": "main.NamespaceMutatorHandlerGet",
+          "class_name": "main",
+          "method_name": "NamespaceMutatorHandler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /system/namespace/{namespace}"
+        },
+        {
+          "id": "main.QueuedProxySlash",
+          "class_name": "main",
+          "method_name": "QueuedProxy",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /async-function/{name}/"
+        },
+        {
+          "id": "main.QueuedProxy",
+          "class_name": "main",
+          "method_name": "QueuedProxy",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /async-function/{name}"
+        },
+        {
+          "id": "main.QueuedProxyParams",
+          "class_name": "main",
+          "method_name": "QueuedProxy",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /async-function/{name}/{params}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

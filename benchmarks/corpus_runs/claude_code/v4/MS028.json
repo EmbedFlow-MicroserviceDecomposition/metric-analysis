@@ -1,0 +1,2077 @@
+{
+  "system_id": "MS028",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "app": {
+      "exposed_interfaces": []
+    },
+    "config": {
+      "exposed_interfaces": []
+    },
+    "clique": {
+      "exposed_interfaces": []
+    },
+    "common": {
+      "exposed_interfaces": []
+    },
+    "ibft": {
+      "exposed_interfaces": [
+        {
+          "id": "IbftDiscardValidatorVote.response",
+          "class_name": "IbftDiscardValidatorVote",
+          "method_name": "response",
+          "param_types": [
+            "Address"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "ibft_discardValidatorVote"
+        },
+        {
+          "id": "IbftGetPendingVotes.response",
+          "class_name": "IbftGetPendingVotes",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Boolean>",
+          "protocol": "RPC",
+          "endpoint": "ibft_getPendingVotes"
+        },
+        {
+          "id": "IbftGetSignerMetrics.response",
+          "class_name": "IbftGetSignerMetrics",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "BlockParameter"
+          ],
+          "return_type": "List<SignerMetricResult>",
+          "protocol": "RPC",
+          "endpoint": "ibft_getSignerMetrics"
+        },
+        {
+          "id": "IbftGetValidatorsByBlockHash.response",
+          "class_name": "IbftGetValidatorsByBlockHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "ibft_getValidatorsByBlockHash"
+        },
+        {
+          "id": "IbftGetValidatorsByBlockNumber.response",
+          "class_name": "IbftGetValidatorsByBlockNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "ibft_getValidatorsByBlockNumber"
+        },
+        {
+          "id": "IbftProposeValidatorVote.response",
+          "class_name": "IbftProposeValidatorVote",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "Boolean"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "ibft_proposeValidatorVote"
+        }
+      ]
+    },
+    "ibftlegacy": {
+      "exposed_interfaces": []
+    },
+    "merge": {
+      "exposed_interfaces": []
+    },
+    "qbft": {
+      "exposed_interfaces": [
+        {
+          "id": "QbftDiscardValidatorVote.response",
+          "class_name": "QbftDiscardValidatorVote",
+          "method_name": "response",
+          "param_types": [
+            "Address"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "qbft_discardValidatorVote"
+        },
+        {
+          "id": "QbftGetPendingVotes.response",
+          "class_name": "QbftGetPendingVotes",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Boolean>",
+          "protocol": "RPC",
+          "endpoint": "qbft_getPendingVotes"
+        },
+        {
+          "id": "QbftGetRequestTimeoutSeconds.response",
+          "class_name": "QbftGetRequestTimeoutSeconds",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "long",
+          "protocol": "RPC",
+          "endpoint": "qbft_getRequestTimeoutSeconds"
+        },
+        {
+          "id": "QbftGetSignerMetrics.response",
+          "class_name": "QbftGetSignerMetrics",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "BlockParameter"
+          ],
+          "return_type": "List<SignerMetricResult>",
+          "protocol": "RPC",
+          "endpoint": "qbft_getSignerMetrics"
+        },
+        {
+          "id": "QbftGetValidatorsByBlockHash.response",
+          "class_name": "QbftGetValidatorsByBlockHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "qbft_getValidatorsByBlockHash"
+        },
+        {
+          "id": "QbftGetValidatorsByBlockNumber.response",
+          "class_name": "QbftGetValidatorsByBlockNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "qbft_getValidatorsByBlockNumber"
+        },
+        {
+          "id": "QbftProposeValidatorVote.response",
+          "class_name": "QbftProposeValidatorVote",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "Boolean"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "qbft_proposeValidatorVote"
+        }
+      ]
+    },
+    "qbft-core": {
+      "exposed_interfaces": []
+    },
+    "datatypes": {
+      "exposed_interfaces": []
+    },
+    "algorithms": {
+      "exposed_interfaces": []
+    },
+    "plugin-api": {
+      "exposed_interfaces": []
+    },
+    "services": {
+      "exposed_interfaces": []
+    },
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "GraphQLDataFetchers.getSendRawTransactionDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getSendRawTransactionDataFetcher",
+          "param_types": [
+            "Bytes"
+          ],
+          "return_type": "Bytes32",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.sendRawTransaction"
+        },
+        {
+          "id": "GraphQLDataFetchers.getAccountDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getAccountDataFetcher",
+          "param_types": [
+            "Address",
+            "Long"
+          ],
+          "return_type": "Account",
+          "protocol": "GraphQL",
+          "endpoint": "Query.account"
+        },
+        {
+          "id": "GraphQLDataFetchers.getBlockDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getBlockDataFetcher",
+          "param_types": [
+            "Long",
+            "Hash"
+          ],
+          "return_type": "Block",
+          "protocol": "GraphQL",
+          "endpoint": "Query.block"
+        },
+        {
+          "id": "GraphQLDataFetchers.getRangeBlockDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getRangeBlockDataFetcher",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "List<Block>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.blocks"
+        },
+        {
+          "id": "GraphQLDataFetchers.getChainIdDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getChainIdDataFetcher",
+          "param_types": [],
+          "return_type": "BigInt",
+          "protocol": "GraphQL",
+          "endpoint": "Query.chainID"
+        },
+        {
+          "id": "GraphQLDataFetchers.getGasPriceDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getGasPriceDataFetcher",
+          "param_types": [],
+          "return_type": "BigInt",
+          "protocol": "GraphQL",
+          "endpoint": "Query.gasPrice"
+        },
+        {
+          "id": "GraphQLDataFetchers.getLogsDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getLogsDataFetcher",
+          "param_types": [
+            "FilterCriteria"
+          ],
+          "return_type": "List<Log>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.logs"
+        },
+        {
+          "id": "GraphQLDataFetchers.getMaxPriorityFeePerGasDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getMaxPriorityFeePerGasDataFetcher",
+          "param_types": [],
+          "return_type": "BigInt",
+          "protocol": "GraphQL",
+          "endpoint": "Query.maxPriorityFeePerGas"
+        },
+        {
+          "id": "GraphQLDataFetchers.getPendingStateDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getPendingStateDataFetcher",
+          "param_types": [],
+          "return_type": "Pending",
+          "protocol": "GraphQL",
+          "endpoint": "Query.pending"
+        },
+        {
+          "id": "GraphQLDataFetchers.getProtocolVersionDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getProtocolVersionDataFetcher",
+          "param_types": [],
+          "return_type": "Int",
+          "protocol": "GraphQL",
+          "endpoint": "Query.protocolVersion"
+        },
+        {
+          "id": "GraphQLDataFetchers.getSyncingDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getSyncingDataFetcher",
+          "param_types": [],
+          "return_type": "SyncState",
+          "protocol": "GraphQL",
+          "endpoint": "Query.syncing"
+        },
+        {
+          "id": "GraphQLDataFetchers.getTransactionDataFetcher",
+          "class_name": "GraphQLDataFetchers",
+          "method_name": "getTransactionDataFetcher",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "Transaction",
+          "protocol": "GraphQL",
+          "endpoint": "Query.transaction"
+        },
+        {
+          "id": "DefaultAuthenticationService.handleLogin",
+          "class_name": "DefaultAuthenticationService",
+          "method_name": "handleLogin",
+          "param_types": [
+            "JsonObject"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /login"
+        },
+        {
+          "id": "AdminAddPeer.response",
+          "class_name": "AdminAddPeer",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "admin_addPeer"
+        },
+        {
+          "id": "AdminChangeLogLevel.response",
+          "class_name": "AdminChangeLogLevel",
+          "method_name": "response",
+          "param_types": [
+            "String",
+            "List<String>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "admin_changeLogLevel"
+        },
+        {
+          "id": "AdminGenerateLogBloomCache.response",
+          "class_name": "AdminGenerateLogBloomCache",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "admin_generateLogBloomCache"
+        },
+        {
+          "id": "AdminLogsRemoveCache.response",
+          "class_name": "AdminLogsRemoveCache",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "BlockParameter"
+          ],
+          "return_type": "Map<String,String>",
+          "protocol": "RPC",
+          "endpoint": "admin_logsRemoveCache"
+        },
+        {
+          "id": "AdminLogsRepairCache.response",
+          "class_name": "AdminLogsRepairCache",
+          "method_name": "response",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Map<String,String>",
+          "protocol": "RPC",
+          "endpoint": "admin_logsRepairCache"
+        },
+        {
+          "id": "AdminNodeInfo.response",
+          "class_name": "AdminNodeInfo",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "admin_nodeInfo"
+        },
+        {
+          "id": "AdminPeers.response",
+          "class_name": "AdminPeers",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<PeerResult>",
+          "protocol": "RPC",
+          "endpoint": "admin_peers"
+        },
+        {
+          "id": "AdminRemovePeer.response",
+          "class_name": "AdminRemovePeer",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "admin_removePeer"
+        },
+        {
+          "id": "DebugAccountAt.response",
+          "class_name": "DebugAccountAt",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash",
+            "Integer",
+            "Address"
+          ],
+          "return_type": "DebugAccountAtResult",
+          "protocol": "RPC",
+          "endpoint": "debug_accountAt"
+        },
+        {
+          "id": "DebugAccountRange.response",
+          "class_name": "DebugAccountRange",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash",
+            "String"
+          ],
+          "return_type": "DebugAccountRangeAtResult",
+          "protocol": "RPC",
+          "endpoint": "debug_accountRange"
+        },
+        {
+          "id": "DebugBatchSendRawTransaction.response",
+          "class_name": "DebugBatchSendRawTransaction",
+          "method_name": "response",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "List<ExecutionStatus>",
+          "protocol": "RPC",
+          "endpoint": "debug_batchSendRawTransaction"
+        },
+        {
+          "id": "DebugExecutionWitness.response",
+          "class_name": "DebugExecutionWitness",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "ExecutionWitnessResult",
+          "protocol": "RPC",
+          "endpoint": "debug_executionWitness"
+        },
+        {
+          "id": "DebugGetBadBlocks.response",
+          "class_name": "DebugGetBadBlocks",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<BadBlockResult>",
+          "protocol": "RPC",
+          "endpoint": "debug_getBadBlocks"
+        },
+        {
+          "id": "DebugGetModifiedAccountsByHash.response",
+          "class_name": "DebugGetModifiedAccountsByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "Hash"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_getModifiedAccountsByHash"
+        },
+        {
+          "id": "DebugGetModifiedAccountsByNumber.response",
+          "class_name": "DebugGetModifiedAccountsByNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "BlockParameter"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_getModifiedAccountsByNumber"
+        },
+        {
+          "id": "DebugGetRawBlock.response",
+          "class_name": "DebugGetRawBlock",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawBlock"
+        },
+        {
+          "id": "DebugGetRawBlockAccessList.response",
+          "class_name": "DebugGetRawBlockAccessList",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawBlockAccessList"
+        },
+        {
+          "id": "DebugGetRawExecutionRequests.response",
+          "class_name": "DebugGetRawExecutionRequests",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawExecutionRequests"
+        },
+        {
+          "id": "DebugGetRawHeader.response",
+          "class_name": "DebugGetRawHeader",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawHeader"
+        },
+        {
+          "id": "DebugGetRawReceipts.response",
+          "class_name": "DebugGetRawReceipts",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawReceipts"
+        },
+        {
+          "id": "DebugGetRawTransaction.response",
+          "class_name": "DebugGetRawTransaction",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "debug_getRawTransaction"
+        },
+        {
+          "id": "DebugMetrics.response",
+          "class_name": "DebugMetrics",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "debug_metrics"
+        },
+        {
+          "id": "DebugReplayBlock.response",
+          "class_name": "DebugReplayBlock",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_replayBlock"
+        },
+        {
+          "id": "DebugResyncWorldstate.response",
+          "class_name": "DebugResyncWorldstate",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "debug_resyncWorldState"
+        },
+        {
+          "id": "DebugSetHead.response",
+          "class_name": "DebugSetHead",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash",
+            "Boolean"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "debug_setHead"
+        },
+        {
+          "id": "DebugStandardTraceBadBlockToFile.response",
+          "class_name": "DebugStandardTraceBadBlockToFile",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "TransactionTraceParams"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_standardTraceBadBlockToFile"
+        },
+        {
+          "id": "DebugStandardTraceBlockToFile.response",
+          "class_name": "DebugStandardTraceBlockToFile",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "TransactionTraceParams"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "debug_standardTraceBlockToFile"
+        },
+        {
+          "id": "DebugStorageRangeAt.response",
+          "class_name": "DebugStorageRangeAt",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash",
+            "Integer",
+            "Address",
+            "String",
+            "Integer"
+          ],
+          "return_type": "DebugStorageRangeAtResult",
+          "protocol": "RPC",
+          "endpoint": "debug_storageRangeAt"
+        },
+        {
+          "id": "DebugTraceBlock.response",
+          "class_name": "DebugTraceBlock",
+          "method_name": "response",
+          "param_types": [
+            "String",
+            "TransactionTraceParams"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_traceBlock"
+        },
+        {
+          "id": "DebugTraceBlockByHash.response",
+          "class_name": "DebugTraceBlockByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "TransactionTraceParams"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_traceBlockByHash"
+        },
+        {
+          "id": "DebugTraceBlockByNumber.response",
+          "class_name": "DebugTraceBlockByNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "TransactionTraceParams"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_traceBlockByNumber"
+        },
+        {
+          "id": "DebugTraceCall.response",
+          "class_name": "DebugTraceCall",
+          "method_name": "response",
+          "param_types": [
+            "JsonCallParameter",
+            "BlockParameterOrBlockHash",
+            "TransactionTraceParams"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_traceCall"
+        },
+        {
+          "id": "DebugTraceTransaction.response",
+          "class_name": "DebugTraceTransaction",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "TransactionTraceParams"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "debug_traceTransaction"
+        },
+        {
+          "id": "EngineExchangeCapabilities.syncResponse",
+          "class_name": "EngineExchangeCapabilities",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "engine_exchangeCapabilities"
+        },
+        {
+          "id": "EngineExchangeTransitionConfigurationV1.syncResponse",
+          "class_name": "EngineExchangeTransitionConfigurationV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "TransitionConfigurationV1"
+          ],
+          "return_type": "EngineExchangeTransitionConfigurationResult",
+          "protocol": "RPC",
+          "endpoint": "engine_exchangeTransitionConfigurationV1"
+        },
+        {
+          "id": "EngineForkchoiceUpdatedV1.syncResponse",
+          "class_name": "EngineForkchoiceUpdatedV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ForkchoiceStateV1",
+            "EnginePayloadAttributesParameter"
+          ],
+          "return_type": "ForkchoiceUpdatedResultV1",
+          "protocol": "RPC",
+          "endpoint": "engine_forkchoiceUpdatedV1"
+        },
+        {
+          "id": "EngineForkchoiceUpdatedV2.syncResponse",
+          "class_name": "EngineForkchoiceUpdatedV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ForkchoiceStateV1",
+            "EnginePayloadAttributesParameter"
+          ],
+          "return_type": "ForkchoiceUpdatedResultV1",
+          "protocol": "RPC",
+          "endpoint": "engine_forkchoiceUpdatedV2"
+        },
+        {
+          "id": "EngineForkchoiceUpdatedV3.syncResponse",
+          "class_name": "EngineForkchoiceUpdatedV3",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ForkchoiceStateV1",
+            "EnginePayloadAttributesParameter"
+          ],
+          "return_type": "ForkchoiceUpdatedResultV1",
+          "protocol": "RPC",
+          "endpoint": "engine_forkchoiceUpdatedV3"
+        },
+        {
+          "id": "EngineForkchoiceUpdatedV4.syncResponse",
+          "class_name": "EngineForkchoiceUpdatedV4",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ForkchoiceStateV1",
+            "EnginePayloadAttributesParameter",
+            "Bytes"
+          ],
+          "return_type": "ForkchoiceUpdatedResultV1",
+          "protocol": "RPC",
+          "endpoint": "engine_forkchoiceUpdatedV4"
+        },
+        {
+          "id": "EngineGetBlobsV1.syncResponse",
+          "class_name": "EngineGetBlobsV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<VersionedHash>"
+          ],
+          "return_type": "List<BlobAndProofV1>",
+          "protocol": "RPC",
+          "endpoint": "engine_getBlobsV1"
+        },
+        {
+          "id": "EngineGetBlobsV2.syncResponse",
+          "class_name": "EngineGetBlobsV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<VersionedHash>"
+          ],
+          "return_type": "List<BlobAndProofV2>",
+          "protocol": "RPC",
+          "endpoint": "engine_getBlobsV2"
+        },
+        {
+          "id": "EngineGetBlobsV3.syncResponse",
+          "class_name": "EngineGetBlobsV3",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<VersionedHash>"
+          ],
+          "return_type": "List<BlobAndProofV2>",
+          "protocol": "RPC",
+          "endpoint": "engine_getBlobsV3"
+        },
+        {
+          "id": "EngineGetBlobsV4.syncResponse",
+          "class_name": "EngineGetBlobsV4",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<VersionedHash>",
+            "Bytes"
+          ],
+          "return_type": "List<BlobCellsAndProofsV1>",
+          "protocol": "RPC",
+          "endpoint": "engine_getBlobsV4"
+        },
+        {
+          "id": "EngineGetClientVersionV1.syncResponse",
+          "class_name": "EngineGetClientVersionV1",
+          "method_name": "syncResponse",
+          "param_types": [],
+          "return_type": "List<EngineGetClientVersionResultV1>",
+          "protocol": "RPC",
+          "endpoint": "engine_getClientVersionV1"
+        },
+        {
+          "id": "EngineGetPayloadBodiesByHashV1.syncResponse",
+          "class_name": "EngineGetPayloadBodiesByHashV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<Hash>"
+          ],
+          "return_type": "List<ExecutionPayloadBodiesV1>",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadBodiesByHashV1"
+        },
+        {
+          "id": "EngineGetPayloadBodiesByHashV2.syncResponse",
+          "class_name": "EngineGetPayloadBodiesByHashV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "List<Hash>"
+          ],
+          "return_type": "List<ExecutionPayloadBodiesV2>",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadBodiesByHashV2"
+        },
+        {
+          "id": "EngineGetPayloadBodiesByRangeV1.syncResponse",
+          "class_name": "EngineGetPayloadBodiesByRangeV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "UnsignedLongParameter",
+            "UnsignedLongParameter"
+          ],
+          "return_type": "List<ExecutionPayloadBodiesV1>",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadBodiesByRangeV1"
+        },
+        {
+          "id": "EngineGetPayloadBodiesByRangeV2.syncResponse",
+          "class_name": "EngineGetPayloadBodiesByRangeV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "UnsignedLongParameter",
+            "UnsignedLongParameter"
+          ],
+          "return_type": "List<ExecutionPayloadBodiesV2>",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadBodiesByRangeV2"
+        },
+        {
+          "id": "EngineGetPayloadV1.syncResponse",
+          "class_name": "EngineGetPayloadV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV1",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV1"
+        },
+        {
+          "id": "EngineGetPayloadV2.syncResponse",
+          "class_name": "EngineGetPayloadV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV2",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV2"
+        },
+        {
+          "id": "EngineGetPayloadV3.syncResponse",
+          "class_name": "EngineGetPayloadV3",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV3",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV3"
+        },
+        {
+          "id": "EngineGetPayloadV4.syncResponse",
+          "class_name": "EngineGetPayloadV4",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV4",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV4"
+        },
+        {
+          "id": "EngineGetPayloadV5.syncResponse",
+          "class_name": "EngineGetPayloadV5",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV5",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV5"
+        },
+        {
+          "id": "EngineGetPayloadV6.syncResponse",
+          "class_name": "EngineGetPayloadV6",
+          "method_name": "syncResponse",
+          "param_types": [
+            "PayloadIdentifier"
+          ],
+          "return_type": "EngineGetPayloadResultV6",
+          "protocol": "RPC",
+          "endpoint": "engine_getPayloadV6"
+        },
+        {
+          "id": "EngineNewPayloadV1.syncResponse",
+          "class_name": "EngineNewPayloadV1",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV1"
+          ],
+          "return_type": "PayloadStatusV1",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadV1"
+        },
+        {
+          "id": "EngineNewPayloadV2.syncResponse",
+          "class_name": "EngineNewPayloadV2",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV2"
+          ],
+          "return_type": "PayloadStatusV1",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadV2"
+        },
+        {
+          "id": "EngineNewPayloadV3.syncResponse",
+          "class_name": "EngineNewPayloadV3",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV3",
+            "List<String>",
+            "Bytes32"
+          ],
+          "return_type": "PayloadStatusV1",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadV3"
+        },
+        {
+          "id": "EngineNewPayloadV4.syncResponse",
+          "class_name": "EngineNewPayloadV4",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV3",
+            "List<String>",
+            "Bytes32",
+            "List<String>"
+          ],
+          "return_type": "PayloadStatusV1",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadV4"
+        },
+        {
+          "id": "EngineNewPayloadV5.syncResponse",
+          "class_name": "EngineNewPayloadV5",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV4",
+            "List<String>",
+            "Bytes32",
+            "List<String>"
+          ],
+          "return_type": "PayloadStatusV1",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadV5"
+        },
+        {
+          "id": "EngineNewPayloadWithWitnessV5.syncResponse",
+          "class_name": "EngineNewPayloadWithWitnessV5",
+          "method_name": "syncResponse",
+          "param_types": [
+            "ExecutionPayloadV4",
+            "List<String>",
+            "Bytes32",
+            "List<String>"
+          ],
+          "return_type": "EnginePayloadWithWitnessResult",
+          "protocol": "RPC",
+          "endpoint": "engine_newPayloadWithWitnessV5"
+        },
+        {
+          "id": "EthAccounts.response",
+          "class_name": "EthAccounts",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "eth_accounts"
+        },
+        {
+          "id": "EthBaseFee.response",
+          "class_name": "EthBaseFee",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_baseFee"
+        },
+        {
+          "id": "EthBlobBaseFee.response",
+          "class_name": "EthBlobBaseFee",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_blobBaseFee"
+        },
+        {
+          "id": "EthBlockNumber.response",
+          "class_name": "EthBlockNumber",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_blockNumber"
+        },
+        {
+          "id": "EthCall.response",
+          "class_name": "EthCall",
+          "method_name": "response",
+          "param_types": [
+            "JsonCallParameter",
+            "BlockParameterOrBlockHash",
+            "StateOverrideMap"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_call"
+        },
+        {
+          "id": "EthCapabilities.response",
+          "class_name": "EthCapabilities",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "ObjectNode",
+          "protocol": "RPC",
+          "endpoint": "eth_capabilities"
+        },
+        {
+          "id": "EthChainId.response",
+          "class_name": "EthChainId",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_chainId"
+        },
+        {
+          "id": "EthConfig.response",
+          "class_name": "EthConfig",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "ObjectNode",
+          "protocol": "RPC",
+          "endpoint": "eth_config"
+        },
+        {
+          "id": "EthCreateAccessList.response",
+          "class_name": "EthCreateAccessList",
+          "method_name": "response",
+          "param_types": [
+            "JsonCallParameter",
+            "BlockParameter",
+            "StateOverrideMap"
+          ],
+          "return_type": "CreateAccessListResult",
+          "protocol": "RPC",
+          "endpoint": "eth_createAccessList"
+        },
+        {
+          "id": "EthEstimateGas.response",
+          "class_name": "EthEstimateGas",
+          "method_name": "response",
+          "param_types": [
+            "JsonCallParameter",
+            "BlockParameter",
+            "StateOverrideMap"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_estimateGas"
+        },
+        {
+          "id": "EthFeeHistory.response",
+          "class_name": "EthFeeHistory",
+          "method_name": "response",
+          "param_types": [
+            "UnsignedIntParameter",
+            "BlockParameter",
+            "List<Double>"
+          ],
+          "return_type": "FeeHistory",
+          "protocol": "RPC",
+          "endpoint": "eth_feeHistory"
+        },
+        {
+          "id": "EthGasPrice.response",
+          "class_name": "EthGasPrice",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_gasPrice"
+        },
+        {
+          "id": "EthGetBalance.response",
+          "class_name": "EthGetBalance",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getBalance"
+        },
+        {
+          "id": "EthGetBlockAccessList.response",
+          "class_name": "EthGetBlockAccessList",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "BlockAccessListResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockAccessList"
+        },
+        {
+          "id": "EthGetBlockByHash.response",
+          "class_name": "EthGetBlockByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "Boolean"
+          ],
+          "return_type": "BlockResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockByHash"
+        },
+        {
+          "id": "EthGetBlockByNumber.response",
+          "class_name": "EthGetBlockByNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "Boolean"
+          ],
+          "return_type": "BlockResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockByNumber"
+        },
+        {
+          "id": "EthGetBlockReceipts.response",
+          "class_name": "EthGetBlockReceipts",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "BlockReceiptsResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockReceipts"
+        },
+        {
+          "id": "EthGetBlockTransactionCountByHash.response",
+          "class_name": "EthGetBlockTransactionCountByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockTransactionCountByHash"
+        },
+        {
+          "id": "EthGetBlockTransactionCountByNumber.response",
+          "class_name": "EthGetBlockTransactionCountByNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getBlockTransactionCountByNumber"
+        },
+        {
+          "id": "EthGetCode.response",
+          "class_name": "EthGetCode",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getCode"
+        },
+        {
+          "id": "EthGetFilterChanges.response",
+          "class_name": "EthGetFilterChanges",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "eth_getFilterChanges"
+        },
+        {
+          "id": "EthGetFilterLogs.response",
+          "class_name": "EthGetFilterLogs",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "LogsResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getFilterLogs"
+        },
+        {
+          "id": "EthGetHeaderByHash.response",
+          "class_name": "EthGetHeaderByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "BlockHeaderResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getHeaderByHash"
+        },
+        {
+          "id": "EthGetHeaderByNumber.response",
+          "class_name": "EthGetHeaderByNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "BlockHeaderResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getHeaderByNumber"
+        },
+        {
+          "id": "EthGetLogs.response",
+          "class_name": "EthGetLogs",
+          "method_name": "response",
+          "param_types": [
+            "FilterParameter"
+          ],
+          "return_type": "LogsResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getLogs"
+        },
+        {
+          "id": "EthGetProof.response",
+          "class_name": "EthGetProof",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "List<String>",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "GetProofResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getProof"
+        },
+        {
+          "id": "EthGetRawTransactionByHash.response",
+          "class_name": "EthGetRawTransactionByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getRawTransactionByHash"
+        },
+        {
+          "id": "EthGetStorageAt.response",
+          "class_name": "EthGetStorageAt",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "UInt256Parameter",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getStorageAt"
+        },
+        {
+          "id": "EthGetStorageValues.response",
+          "class_name": "EthGetStorageValues",
+          "method_name": "response",
+          "param_types": [
+            "StorageSlotsRequest"
+          ],
+          "return_type": "Map<String,List<String>>",
+          "protocol": "RPC",
+          "endpoint": "eth_getStorageValues"
+        },
+        {
+          "id": "EthGetTransactionByBlockHashAndIndex.response",
+          "class_name": "EthGetTransactionByBlockHashAndIndex",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "UnsignedIntParameter"
+          ],
+          "return_type": "TransactionResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionByBlockHashAndIndex"
+        },
+        {
+          "id": "EthGetTransactionByBlockNumberAndIndex.response",
+          "class_name": "EthGetTransactionByBlockNumberAndIndex",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "UnsignedIntParameter"
+          ],
+          "return_type": "TransactionResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionByBlockNumberAndIndex"
+        },
+        {
+          "id": "EthGetTransactionByHash.response",
+          "class_name": "EthGetTransactionByHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "TransactionResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionByHash"
+        },
+        {
+          "id": "EthGetTransactionBySenderAndNonce.response",
+          "class_name": "EthGetTransactionBySenderAndNonce",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "UnsignedLongParameter"
+          ],
+          "return_type": "TransactionResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionBySenderAndNonce"
+        },
+        {
+          "id": "EthGetTransactionCount.response",
+          "class_name": "EthGetTransactionCount",
+          "method_name": "response",
+          "param_types": [
+            "Address",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionCount"
+        },
+        {
+          "id": "EthGetTransactionReceipt.response",
+          "class_name": "EthGetTransactionReceipt",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "TransactionReceiptResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getTransactionReceipt"
+        },
+        {
+          "id": "EthGetUncleByBlockHashAndIndex.response",
+          "class_name": "EthGetUncleByBlockHashAndIndex",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "UnsignedIntParameter"
+          ],
+          "return_type": "BlockResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getUncleByBlockHashAndIndex"
+        },
+        {
+          "id": "EthGetUncleByBlockNumberAndIndex.response",
+          "class_name": "EthGetUncleByBlockNumberAndIndex",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "UnsignedIntParameter"
+          ],
+          "return_type": "BlockResult",
+          "protocol": "RPC",
+          "endpoint": "eth_getUncleByBlockNumberAndIndex"
+        },
+        {
+          "id": "EthGetUncleCountByBlockHash.response",
+          "class_name": "EthGetUncleCountByBlockHash",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getUncleCountByBlockHash"
+        },
+        {
+          "id": "EthGetUncleCountByBlockNumber.response",
+          "class_name": "EthGetUncleCountByBlockNumber",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_getUncleCountByBlockNumber"
+        },
+        {
+          "id": "EthMaxPriorityFeePerGas.response",
+          "class_name": "EthMaxPriorityFeePerGas",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_maxPriorityFeePerGas"
+        },
+        {
+          "id": "EthNewBlockFilter.response",
+          "class_name": "EthNewBlockFilter",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_newBlockFilter"
+        },
+        {
+          "id": "EthNewFilter.response",
+          "class_name": "EthNewFilter",
+          "method_name": "response",
+          "param_types": [
+            "FilterParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_newFilter"
+        },
+        {
+          "id": "EthNewPendingTransactionFilter.response",
+          "class_name": "EthNewPendingTransactionFilter",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_newPendingTransactionFilter"
+        },
+        {
+          "id": "EthProtocolVersion.response",
+          "class_name": "EthProtocolVersion",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_protocolVersion"
+        },
+        {
+          "id": "EthSendRawTransaction.response",
+          "class_name": "EthSendRawTransaction",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "eth_sendRawTransaction"
+        },
+        {
+          "id": "EthSendTransaction.response",
+          "class_name": "EthSendTransaction",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "eth_sendTransaction"
+        },
+        {
+          "id": "EthSimulateV1.response",
+          "class_name": "EthSimulateV1",
+          "method_name": "response",
+          "param_types": [
+            "SimulateV1Parameter",
+            "BlockParameterOrBlockHash"
+          ],
+          "return_type": "List<BlockStateCallResult>",
+          "protocol": "RPC",
+          "endpoint": "eth_simulateV1"
+        },
+        {
+          "id": "EthSyncing.response",
+          "class_name": "EthSyncing",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "eth_syncing"
+        },
+        {
+          "id": "EthUninstallFilter.response",
+          "class_name": "EthUninstallFilter",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "eth_uninstallFilter"
+        },
+        {
+          "id": "MinerChangeTargetGasLimit.response",
+          "class_name": "MinerChangeTargetGasLimit",
+          "method_name": "response",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "miner_changeTargetGasLimit"
+        },
+        {
+          "id": "MinerGetExtraData.response",
+          "class_name": "MinerGetExtraData",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "miner_getExtraData"
+        },
+        {
+          "id": "MinerGetMinGasPrice.response",
+          "class_name": "MinerGetMinGasPrice",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "miner_getMinGasPrice"
+        },
+        {
+          "id": "MinerGetMinPriorityFee.response",
+          "class_name": "MinerGetMinPriorityFee",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "miner_getMinPriorityFee"
+        },
+        {
+          "id": "MinerSetExtraData.response",
+          "class_name": "MinerSetExtraData",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "miner_setExtraData"
+        },
+        {
+          "id": "MinerSetMinGasPrice.response",
+          "class_name": "MinerSetMinGasPrice",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "miner_setMinGasPrice"
+        },
+        {
+          "id": "MinerSetMinPriorityFee.response",
+          "class_name": "MinerSetMinPriorityFee",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "miner_setMinPriorityFee"
+        },
+        {
+          "id": "NetEnode.response",
+          "class_name": "NetEnode",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "net_enode"
+        },
+        {
+          "id": "NetListening.response",
+          "class_name": "NetListening",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "RPC",
+          "endpoint": "net_listening"
+        },
+        {
+          "id": "NetPeerCount.response",
+          "class_name": "NetPeerCount",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "net_peerCount"
+        },
+        {
+          "id": "NetServices.response",
+          "class_name": "NetServices",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "net_services"
+        },
+        {
+          "id": "NetVersion.response",
+          "class_name": "NetVersion",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "net_version"
+        },
+        {
+          "id": "PermAddAccountsToAllowlist.response",
+          "class_name": "PermAddAccountsToAllowlist",
+          "method_name": "response",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "perm_addAccountsToAllowlist"
+        },
+        {
+          "id": "PermAddNodesToAllowlist.response",
+          "class_name": "PermAddNodesToAllowlist",
+          "method_name": "response",
+          "param_types": [
+            "StringListParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "perm_addNodesToAllowlist"
+        },
+        {
+          "id": "PermGetAccountsAllowlist.response",
+          "class_name": "PermGetAccountsAllowlist",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "perm_getAccountsAllowlist"
+        },
+        {
+          "id": "PermGetNodesAllowlist.response",
+          "class_name": "PermGetNodesAllowlist",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "RPC",
+          "endpoint": "perm_getNodesAllowlist"
+        },
+        {
+          "id": "PermReloadPermissionsFromFile.response",
+          "class_name": "PermReloadPermissionsFromFile",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "perm_reloadPermissionsFromFile"
+        },
+        {
+          "id": "PermRemoveAccountsFromAllowlist.response",
+          "class_name": "PermRemoveAccountsFromAllowlist",
+          "method_name": "response",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "perm_removeAccountsFromAllowlist"
+        },
+        {
+          "id": "PermRemoveNodesFromAllowlist.response",
+          "class_name": "PermRemoveNodesFromAllowlist",
+          "method_name": "response",
+          "param_types": [
+            "StringListParameter"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "perm_removeNodesFromAllowlist"
+        },
+        {
+          "id": "PluginsReloadConfiguration.response",
+          "class_name": "PluginsReloadConfiguration",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "plugins_reloadPluginConfig"
+        },
+        {
+          "id": "RpcModules.response",
+          "class_name": "RpcModules",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "RPC",
+          "endpoint": "rpc_modules"
+        },
+        {
+          "id": "TestingBuildBlockV1.response",
+          "class_name": "TestingBuildBlockV1",
+          "method_name": "response",
+          "param_types": [
+            "String",
+            "EnginePayloadAttributesParameter",
+            "List<String>",
+            "String"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "testing_buildBlockV1"
+        },
+        {
+          "id": "TestingCommitBlockV1.response",
+          "class_name": "TestingCommitBlockV1",
+          "method_name": "response",
+          "param_types": [
+            "EnginePayloadAttributesParameter",
+            "List<String>",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "testing_commitBlockV1"
+        },
+        {
+          "id": "TraceBlock.response",
+          "class_name": "TraceBlock",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_block"
+        },
+        {
+          "id": "TraceCall.response",
+          "class_name": "TraceCall",
+          "method_name": "response",
+          "param_types": [
+            "JsonCallParameter",
+            "TraceTypeParameter",
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_call"
+        },
+        {
+          "id": "TraceCallMany.response",
+          "class_name": "TraceCallMany",
+          "method_name": "response",
+          "param_types": [
+            "List<TraceCallManyParameter>",
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_callMany"
+        },
+        {
+          "id": "TraceFilter.response",
+          "class_name": "TraceFilter",
+          "method_name": "response",
+          "param_types": [
+            "FilterParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_filter"
+        },
+        {
+          "id": "TraceGet.response",
+          "class_name": "TraceGet",
+          "method_name": "response",
+          "param_types": [
+            "Hash",
+            "List<String>"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_get"
+        },
+        {
+          "id": "TraceRawTransaction.response",
+          "class_name": "TraceRawTransaction",
+          "method_name": "response",
+          "param_types": [
+            "String",
+            "TraceTypeParameter",
+            "BlockParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_rawTransaction"
+        },
+        {
+          "id": "TraceReplayBlockTransactions.response",
+          "class_name": "TraceReplayBlockTransactions",
+          "method_name": "response",
+          "param_types": [
+            "BlockParameter",
+            "TraceTypeParameter"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_replayBlockTransactions"
+        },
+        {
+          "id": "TraceTransaction.response",
+          "class_name": "TraceTransaction",
+          "method_name": "response",
+          "param_types": [
+            "Hash"
+          ],
+          "return_type": "Object",
+          "protocol": "RPC",
+          "endpoint": "trace_transaction"
+        },
+        {
+          "id": "TxPoolBesuPendingTransactions.response",
+          "class_name": "TxPoolBesuPendingTransactions",
+          "method_name": "response",
+          "param_types": [
+            "Integer",
+            "PendingTransactionsParams"
+          ],
+          "return_type": "List<TransactionPendingResult>",
+          "protocol": "RPC",
+          "endpoint": "txpool_besuPendingTransactions"
+        },
+        {
+          "id": "TxPoolBesuStatistics.response",
+          "class_name": "TxPoolBesuStatistics",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<PendingTransactionsStatisticsResult>",
+          "protocol": "RPC",
+          "endpoint": "txpool_besuStatistics"
+        },
+        {
+          "id": "TxPoolBesuTransactions.response",
+          "class_name": "TxPoolBesuTransactions",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "List<PendingTransactionsResult>",
+          "protocol": "RPC",
+          "endpoint": "txpool_besuTransactions"
+        },
+        {
+          "id": "TxPoolContent.response",
+          "class_name": "TxPoolContent",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "txpool_content"
+        },
+        {
+          "id": "TxPoolContentFrom.response",
+          "class_name": "TxPoolContentFrom",
+          "method_name": "response",
+          "param_types": [
+            "Address"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "txpool_contentFrom"
+        },
+        {
+          "id": "TxPoolInspect.response",
+          "class_name": "TxPoolInspect",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "RPC",
+          "endpoint": "txpool_inspect"
+        },
+        {
+          "id": "TxPoolStatus.response",
+          "class_name": "TxPoolStatus",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "TransactionPoolStatusResult",
+          "protocol": "RPC",
+          "endpoint": "txpool_status"
+        },
+        {
+          "id": "Web3ClientVersion.response",
+          "class_name": "Web3ClientVersion",
+          "method_name": "response",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "web3_clientVersion"
+        },
+        {
+          "id": "Web3Sha3.response",
+          "class_name": "Web3Sha3",
+          "method_name": "response",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "web3_sha3"
+        },
+        {
+          "id": "EthSubscribe.response",
+          "class_name": "EthSubscribe",
+          "method_name": "response",
+          "param_types": [
+            "SubscribeRequest"
+          ],
+          "return_type": "String",
+          "protocol": "WebSocket",
+          "endpoint": "eth_subscribe"
+        },
+        {
+          "id": "EthUnsubscribe.response",
+          "class_name": "EthUnsubscribe",
+          "method_name": "response",
+          "param_types": [
+            "UnsubscribeRequest"
+          ],
+          "return_type": "boolean",
+          "protocol": "WebSocket",
+          "endpoint": "eth_unsubscribe"
+        }
+      ]
+    },
+    "blockcreation": {
+      "exposed_interfaces": []
+    },
+    "core": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-chain": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-execution": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-validation": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-worldstate": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-worldstate-backend": {
+      "exposed_interfaces": []
+    },
+    "eth": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-sync": {
+      "exposed_interfaces": []
+    },
+    "plugin-api-txpool": {
+      "exposed_interfaces": []
+    },
+    "evmtool": {
+      "exposed_interfaces": [
+        {
+          "id": "T8nServerSubCommand.handle",
+          "class_name": "T8nServerSubCommand",
+          "method_name": "handle",
+          "param_types": [
+            "Buffer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
+    },
+    "mock-p2p": {
+      "exposed_interfaces": []
+    },
+    "p2p": {
+      "exposed_interfaces": []
+    },
+    "permissioning": {
+      "exposed_interfaces": []
+    },
+    "rlp": {
+      "exposed_interfaces": []
+    },
+    "ethstats": {
+      "exposed_interfaces": []
+    },
+    "trie": {
+      "exposed_interfaces": []
+    },
+    "evm": {
+      "exposed_interfaces": []
+    },
+    "rocksdb": {
+      "exposed_interfaces": []
+    },
+    "nat": {
+      "exposed_interfaces": []
+    },
+    "health": {
+      "exposed_interfaces": []
+    },
+    "kvstore": {
+      "exposed_interfaces": []
+    },
+    "pipeline": {
+      "exposed_interfaces": []
+    },
+    "tasks": {
+      "exposed_interfaces": []
+    },
+    "util": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

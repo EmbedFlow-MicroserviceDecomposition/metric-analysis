@@ -1,0 +1,77 @@
+{
+  "system_id": "MS112",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "rasa_sdk": {
+      "exposed_interfaces": [
+        {
+          "id": "endpoint.webhook",
+          "class_name": "endpoint",
+          "method_name": "webhook",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /webhook"
+        },
+        {
+          "id": "endpoint.actions",
+          "class_name": "endpoint",
+          "method_name": "actions",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /actions"
+        },
+        {
+          "id": "GRPCActionServerWebhook.Webhook",
+          "class_name": "rasa_sdk.grpc_server.GRPCActionServerWebhook",
+          "method_name": "Webhook",
+          "param_types": [
+            "WebhookRequest"
+          ],
+          "return_type": "WebhookResponse",
+          "protocol": "gRPC",
+          "endpoint": "ActionService/Webhook"
+        },
+        {
+          "id": "GRPCActionServerWebhook.WebhookStream",
+          "class_name": "rasa_sdk.grpc_server.GRPCActionServerWebhook",
+          "method_name": "WebhookStream",
+          "param_types": [
+            "WebhookRequest"
+          ],
+          "return_type": "List<WebhookStreamEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ActionService/WebhookStream"
+        },
+        {
+          "id": "GRPCActionServerWebhook.AckStreamChunks",
+          "class_name": "rasa_sdk.grpc_server.GRPCActionServerWebhook",
+          "method_name": "AckStreamChunks",
+          "param_types": [
+            "StreamChunkAck"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "ActionService/AckStreamChunks"
+        },
+        {
+          "id": "GRPCActionServerWebhook.Actions",
+          "class_name": "rasa_sdk.grpc_server.GRPCActionServerWebhook",
+          "method_name": "Actions",
+          "param_types": [
+            "ActionsRequest"
+          ],
+          "return_type": "ActionsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ActionService/Actions"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,129 @@
+{
+  "system_id": "MS009",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "MonoToMicroLegacy": {
+      "exposed_interfaces": [
+        {
+          "id": "BasketController.addUnicornToBasket",
+          "class_name": "com.monoToMicro.rest.controller.BasketController",
+          "method_name": "addUnicornToBasket",
+          "param_types": [
+            "UnicornBasket"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /unicorns/basket"
+        },
+        {
+          "id": "BasketController.removeFromBasket",
+          "class_name": "com.monoToMicro.rest.controller.BasketController",
+          "method_name": "removeFromBasket",
+          "param_types": [
+            "UnicornBasket"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /unicorns/basket"
+        },
+        {
+          "id": "BasketController.getUnicornBasket",
+          "class_name": "com.monoToMicro.rest.controller.BasketController",
+          "method_name": "getUnicornBasket",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UnicornBasket",
+          "protocol": "REST",
+          "endpoint": "GET /unicorns/basket/{userUuid}"
+        },
+        {
+          "id": "DataReplicationController.replicate",
+          "class_name": "com.monoToMicro.rest.controller.DataReplicationController",
+          "method_name": "replicate",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /data"
+        },
+        {
+          "id": "UnicornController.getUnicorns",
+          "class_name": "com.monoToMicro.rest.controller.UnicornController",
+          "method_name": "getUnicorns",
+          "param_types": [],
+          "return_type": "List<Unicorn>",
+          "protocol": "REST",
+          "endpoint": "GET /unicorns"
+        },
+        {
+          "id": "UserController.createUser",
+          "class_name": "com.monoToMicro.rest.controller.UserController",
+          "method_name": "createUser",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /user"
+        },
+        {
+          "id": "UserController.login",
+          "class_name": "com.monoToMicro.rest.controller.UserController",
+          "method_name": "login",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /user/login"
+        }
+      ]
+    },
+    "MonoToMicroLambda": {
+      "exposed_interfaces": [
+        {
+          "id": "CreateHandler.handleRequest",
+          "class_name": "com.monoToMicro.Lambda.CreateHandler",
+          "method_name": "handleRequest",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /user"
+        },
+        {
+          "id": "LoginHandler.handleRequest",
+          "class_name": "com.monoToMicro.Lambda.LoginHandler",
+          "method_name": "handleRequest",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /user/login"
+        },
+        {
+          "id": "SearchHandler.handleRequest",
+          "class_name": "com.monoToMicro.Lambda.SearchHandler",
+          "method_name": "handleRequest",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /user/{email}"
+        }
+      ]
+    },
+    "MonoToMicroUI": {
+      "exposed_interfaces": []
+    },
+    "MonoToMicroRefactorSpaces": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,599 @@
+{
+  "system_id": "MS048",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cmd": {
+      "exposed_interfaces": [
+        {
+          "id": "APIHandler.getTrace",
+          "class_name": "app.APIHandler",
+          "method_name": "getTrace",
+          "param_types": [
+            "string",
+            "time.Time",
+            "time.Time",
+            "bool"
+          ],
+          "return_type": "structuredResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/traces/{traceID}"
+        },
+        {
+          "id": "APIHandler.archiveTrace",
+          "class_name": "app.APIHandler",
+          "method_name": "archiveTrace",
+          "param_types": [
+            "string",
+            "time.Time",
+            "time.Time",
+            "bool"
+          ],
+          "return_type": "structuredResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/archive/{traceID}"
+        },
+        {
+          "id": "APIHandler.transformOTLP",
+          "class_name": "app.APIHandler",
+          "method_name": "transformOTLP",
+          "param_types": [
+            "[]byte"
+          ],
+          "return_type": "structuredResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/transform"
+        },
+        {
+          "id": "APIHandler.dependencies",
+          "class_name": "app.APIHandler",
+          "method_name": "dependencies",
+          "param_types": [
+            "time.Time",
+            "time.Duration",
+            "string"
+          ],
+          "return_type": "structuredResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/dependencies"
+        },
+        {
+          "id": "APIHandler.deepDependencies",
+          "class_name": "app.APIHandler",
+          "method_name": "deepDependencies",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "TDdgPayload",
+          "protocol": "REST",
+          "endpoint": "GET /api/deep-dependencies"
+        },
+        {
+          "id": "APIHandler.latencies",
+          "class_name": "app.APIHandler",
+          "method_name": "latencies",
+          "param_types": [
+            "float64",
+            "List<string>",
+            "bool",
+            "List<string>",
+            "time.Time",
+            "time.Duration",
+            "time.Duration",
+            "time.Duration"
+          ],
+          "return_type": "MetricFamily",
+          "protocol": "REST",
+          "endpoint": "GET /api/metrics/latencies"
+        },
+        {
+          "id": "APIHandler.calls",
+          "class_name": "app.APIHandler",
+          "method_name": "calls",
+          "param_types": [
+            "List<string>",
+            "bool",
+            "List<string>",
+            "time.Time",
+            "time.Duration",
+            "time.Duration",
+            "time.Duration"
+          ],
+          "return_type": "MetricFamily",
+          "protocol": "REST",
+          "endpoint": "GET /api/metrics/calls"
+        },
+        {
+          "id": "APIHandler.errors",
+          "class_name": "app.APIHandler",
+          "method_name": "errors",
+          "param_types": [
+            "List<string>",
+            "bool",
+            "List<string>",
+            "time.Time",
+            "time.Duration",
+            "time.Duration",
+            "time.Duration"
+          ],
+          "return_type": "MetricFamily",
+          "protocol": "REST",
+          "endpoint": "GET /api/metrics/errors"
+        },
+        {
+          "id": "APIHandler.getQualityMetrics",
+          "class_name": "app.APIHandler",
+          "method_name": "getQualityMetrics",
+          "param_types": [],
+          "return_type": "TQualityMetrics",
+          "protocol": "REST",
+          "endpoint": "GET /api/quality-metrics"
+        },
+        {
+          "id": "HTTPGateway.getTrace",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "getTrace",
+          "param_types": [
+            "string",
+            "time.Time",
+            "time.Time",
+            "bool"
+          ],
+          "return_type": "GRPCGatewayWrapper",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/traces/{traceID}"
+        },
+        {
+          "id": "HTTPGateway.findTraces",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "findTraces",
+          "param_types": [
+            "TraceQueryParams"
+          ],
+          "return_type": "GRPCGatewayWrapper",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/traces"
+        },
+        {
+          "id": "HTTPGateway.findTraceSummaries",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "findTraceSummaries",
+          "param_types": [
+            "TraceQueryParams"
+          ],
+          "return_type": "FindTraceSummariesResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/trace-summaries"
+        },
+        {
+          "id": "HTTPGateway.findSpans",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "findSpans",
+          "param_types": [
+            "SpanQueryParams"
+          ],
+          "return_type": "FindSpansResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/spans"
+        },
+        {
+          "id": "HTTPGateway.getServices",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "getServices",
+          "param_types": [],
+          "return_type": "GetServicesResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/services"
+        },
+        {
+          "id": "HTTPGateway.getOperations",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "getOperations",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "GetOperationsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/operations"
+        },
+        {
+          "id": "HTTPGateway.getCapabilities",
+          "class_name": "apiv3.HTTPGateway",
+          "method_name": "getCapabilities",
+          "param_types": [],
+          "return_type": "GetCapabilitiesResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v3/capabilities"
+        },
+        {
+          "id": "chatEndpoint.ServeHTTP",
+          "class_name": "jaegerai.chatEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "ChatRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/ai/chat"
+        },
+        {
+          "id": "turnScopedEndpoint.ServeHTTP",
+          "class_name": "jaegerai.turnScopedEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /api/ai/mcp/{mcpRouteID}/"
+        },
+        {
+          "id": "GRPCHandler.GetTrace",
+          "class_name": "app.GRPCHandler",
+          "method_name": "GetTrace",
+          "param_types": [
+            "GetTraceRequest"
+          ],
+          "return_type": "List<SpansResponseChunk>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/GetTrace"
+        },
+        {
+          "id": "GRPCHandler.ArchiveTrace",
+          "class_name": "app.GRPCHandler",
+          "method_name": "ArchiveTrace",
+          "param_types": [
+            "ArchiveTraceRequest"
+          ],
+          "return_type": "ArchiveTraceResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/ArchiveTrace"
+        },
+        {
+          "id": "GRPCHandler.FindTraces",
+          "class_name": "app.GRPCHandler",
+          "method_name": "FindTraces",
+          "param_types": [
+            "FindTracesRequest"
+          ],
+          "return_type": "List<SpansResponseChunk>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/FindTraces"
+        },
+        {
+          "id": "GRPCHandler.GetServices",
+          "class_name": "app.GRPCHandler",
+          "method_name": "GetServices",
+          "param_types": [
+            "GetServicesRequest"
+          ],
+          "return_type": "GetServicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/GetServices"
+        },
+        {
+          "id": "GRPCHandler.GetOperations",
+          "class_name": "app.GRPCHandler",
+          "method_name": "GetOperations",
+          "param_types": [
+            "GetOperationsRequest"
+          ],
+          "return_type": "GetOperationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/GetOperations"
+        },
+        {
+          "id": "GRPCHandler.GetDependencies",
+          "class_name": "app.GRPCHandler",
+          "method_name": "GetDependencies",
+          "param_types": [
+            "GetDependenciesRequest"
+          ],
+          "return_type": "GetDependenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.QueryService/GetDependencies"
+        },
+        {
+          "id": "Handler.GetTrace",
+          "class_name": "apiv3.Handler",
+          "method_name": "GetTrace",
+          "param_types": [
+            "GetTraceRequest"
+          ],
+          "return_type": "List<TracesData>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/GetTrace"
+        },
+        {
+          "id": "Handler.FindTraces",
+          "class_name": "apiv3.Handler",
+          "method_name": "FindTraces",
+          "param_types": [
+            "FindTracesRequest"
+          ],
+          "return_type": "List<TracesData>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/FindTraces"
+        },
+        {
+          "id": "Handler.FindSpans",
+          "class_name": "apiv3.Handler",
+          "method_name": "FindSpans",
+          "param_types": [
+            "FindSpansRequest"
+          ],
+          "return_type": "List<FindSpansResponse>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/FindSpans"
+        },
+        {
+          "id": "Handler.FindTraceSummaries",
+          "class_name": "apiv3.Handler",
+          "method_name": "FindTraceSummaries",
+          "param_types": [
+            "FindTraceSummariesRequest"
+          ],
+          "return_type": "List<FindTraceSummariesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/FindTraceSummaries"
+        },
+        {
+          "id": "Handler.GetServices",
+          "class_name": "apiv3.Handler",
+          "method_name": "GetServices",
+          "param_types": [
+            "GetServicesRequest"
+          ],
+          "return_type": "GetServicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/GetServices"
+        },
+        {
+          "id": "Handler.GetOperations",
+          "class_name": "apiv3.Handler",
+          "method_name": "GetOperations",
+          "param_types": [
+            "GetOperationsRequest"
+          ],
+          "return_type": "GetOperationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/GetOperations"
+        },
+        {
+          "id": "Handler.GetDependencies",
+          "class_name": "apiv3.Handler",
+          "method_name": "GetDependencies",
+          "param_types": [
+            "GetDependenciesRequest"
+          ],
+          "return_type": "DependenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.QueryService/GetDependencies"
+        },
+        {
+          "id": "CapabilitiesHandler.GetCapabilities",
+          "class_name": "apiv3.CapabilitiesHandler",
+          "method_name": "GetCapabilities",
+          "param_types": [
+            "GetCapabilitiesRequest"
+          ],
+          "return_type": "GetCapabilitiesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v3.Capabilities/GetCapabilities"
+        }
+      ]
+    },
+    "ports": {
+      "exposed_interfaces": []
+    },
+    "internal": {
+      "exposed_interfaces": [
+        {
+          "id": "Handler.serveSamplingHTTP",
+          "class_name": "http.Handler",
+          "method_name": "serveSamplingHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SamplingStrategyResponse",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "Handler.GetSamplingStrategy",
+          "class_name": "grpc.Handler",
+          "method_name": "GetSamplingStrategy",
+          "param_types": [
+            "SamplingStrategyParameters"
+          ],
+          "return_type": "SamplingStrategyResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.api_v2.SamplingManager/GetSamplingStrategy"
+        },
+        {
+          "id": "Handler.GetTraces",
+          "class_name": "grpc.Handler",
+          "method_name": "GetTraces",
+          "param_types": [
+            "GetTracesRequest"
+          ],
+          "return_type": "List<TracesData>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/GetTraces"
+        },
+        {
+          "id": "Handler.GetServices",
+          "class_name": "grpc.Handler",
+          "method_name": "GetServices",
+          "param_types": [
+            "GetServicesRequest"
+          ],
+          "return_type": "GetServicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/GetServices"
+        },
+        {
+          "id": "Handler.GetOperations",
+          "class_name": "grpc.Handler",
+          "method_name": "GetOperations",
+          "param_types": [
+            "GetOperationsRequest"
+          ],
+          "return_type": "GetOperationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/GetOperations"
+        },
+        {
+          "id": "Handler.FindTraces",
+          "class_name": "grpc.Handler",
+          "method_name": "FindTraces",
+          "param_types": [
+            "FindTracesRequest"
+          ],
+          "return_type": "List<TracesData>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/FindTraces"
+        },
+        {
+          "id": "Handler.FindSpans",
+          "class_name": "grpc.Handler",
+          "method_name": "FindSpans",
+          "param_types": [
+            "FindSpansRequest"
+          ],
+          "return_type": "List<FindSpansResponse>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/FindSpans"
+        },
+        {
+          "id": "Handler.FindTraceSummaries",
+          "class_name": "grpc.Handler",
+          "method_name": "FindTraceSummaries",
+          "param_types": [
+            "FindTraceSummariesRequest"
+          ],
+          "return_type": "List<FindTraceSummariesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/FindTraceSummaries"
+        },
+        {
+          "id": "Handler.FindTraceIDs",
+          "class_name": "grpc.Handler",
+          "method_name": "FindTraceIDs",
+          "param_types": [
+            "FindTraceIDsRequest"
+          ],
+          "return_type": "FindTraceIDsResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.TraceReader/FindTraceIDs"
+        },
+        {
+          "id": "Handler.GetDependencies",
+          "class_name": "grpc.Handler",
+          "method_name": "GetDependencies",
+          "param_types": [
+            "GetDependenciesRequest"
+          ],
+          "return_type": "GetDependenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.DependencyReader/GetDependencies"
+        },
+        {
+          "id": "Handler.GetCapabilities",
+          "class_name": "grpc.Handler",
+          "method_name": "GetCapabilities",
+          "param_types": [
+            "GetCapabilitiesRequest"
+          ],
+          "return_type": "GetCapabilitiesResponse",
+          "protocol": "gRPC",
+          "endpoint": "jaeger.storage.v2.Capabilities/GetCapabilities"
+        },
+        {
+          "id": "Handler.Export",
+          "class_name": "grpc.Handler",
+          "method_name": "Export",
+          "param_types": [
+            "ExportRequest"
+          ],
+          "return_type": "ExportResponse",
+          "protocol": "gRPC",
+          "endpoint": "opentelemetry.proto.collector.trace.v1.TraceService/Export"
+        }
+      ]
+    },
+    "monitoring": {
+      "exposed_interfaces": []
+    },
+    "sdk": {
+      "exposed_interfaces": []
+    },
+    "components": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "find_traces",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.FindTraces",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:93 self._stub.FindTraces("
+    },
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "find_trace_summaries",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.FindTraceSummaries",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:98 self._stub.FindTraceSummaries("
+    },
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "get_trace",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.GetTrace",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:120 self._stub.GetTrace("
+    },
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "get_services",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.GetServices",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:126 self._stub.GetServices("
+    },
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "get_operations",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.GetOperations",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:133 self._stub.GetOperations("
+    },
+    {
+      "src_service": "sdk",
+      "src_class": "QueryClient",
+      "src_method": "get_dependencies",
+      "dst_service": "cmd",
+      "dst_class": "apiv3.Handler",
+      "dst_interface_id": "Handler.GetDependencies",
+      "protocol": "gRPC",
+      "evidence": "sdk/python/src/jaeger_query/client.py:145 self._stub.GetDependencies("
+    }
+  ]
+}

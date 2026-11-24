@@ -1,0 +1,999 @@
+{
+  "system_id": "MS071",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cmd": {
+      "exposed_interfaces": []
+    },
+    "tools": {
+      "exposed_interfaces": [
+        {
+          "id": "ProxyEndpoint.ServeHTTP_query",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/query"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_query_range",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/query_range"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_query_exemplars",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/query_exemplars"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_labels",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/labels"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_label_name_values",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/label/{name}/values"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_series",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/series"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_metadata",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/metadata"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_rules",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/rules"
+        },
+        {
+          "id": "ProxyEndpoint.ServeHTTP_alerts",
+          "class_name": "querytee.ProxyEndpoint",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/alerts"
+        }
+      ]
+    },
+    "pkg": {
+      "exposed_interfaces": [
+        {
+          "id": "MultitenantAlertmanager.GetStatusHandler",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "GetStatusHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /multitenant_alertmanager/status"
+        },
+        {
+          "id": "MultitenantAlertmanager.ListAllConfigs",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "ListAllConfigs",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /multitenant_alertmanager/configs"
+        },
+        {
+          "id": "MultitenantAlertmanager.RingHandlerGet",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /multitenant_alertmanager/ring"
+        },
+        {
+          "id": "MultitenantAlertmanager.RingHandlerPost",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /multitenant_alertmanager/ring"
+        },
+        {
+          "id": "MultitenantAlertmanager.DeleteUserConfigTenant",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "DeleteUserConfig",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /multitenant_alertmanager/delete_tenant_config"
+        },
+        {
+          "id": "MultitenantAlertmanager.GetUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "GetUserConfig",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.SetUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "SetUserConfig",
+          "param_types": [
+            "UserConfig"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.DeleteUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "DeleteUserConfig",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "DELETE /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.HandleRequest",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "HandleRequest",
+          "param_types": [
+            "httpgrpc.HTTPRequest"
+          ],
+          "return_type": "httpgrpc.HTTPResponse",
+          "endpoint": "Alertmanager/HandleRequest"
+        },
+        {
+          "id": "MultitenantAlertmanager.UpdateState",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "UpdateState",
+          "param_types": [
+            "clusterpb.Part"
+          ],
+          "return_type": "alertmanagerpb.UpdateStateResponse",
+          "endpoint": "Alertmanager/UpdateState"
+        },
+        {
+          "id": "MultitenantAlertmanager.ReadState",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "ReadState",
+          "param_types": [
+            "alertmanagerpb.ReadStateRequest"
+          ],
+          "return_type": "alertmanagerpb.ReadStateResponse",
+          "endpoint": "Alertmanager/ReadState"
+        },
+        {
+          "id": "Distributor.PushRpc",
+          "class_name": "distributor.Distributor",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "cortexpb.WriteResponse",
+          "endpoint": "Distributor/Push"
+        },
+        {
+          "id": "push.Handler",
+          "class_name": "push",
+          "method_name": "Handler",
+          "param_types": [
+            "WriteRequest"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /api/v1/push"
+        },
+        {
+          "id": "push.OTLPHandler",
+          "class_name": "push",
+          "method_name": "OTLPHandler",
+          "param_types": [
+            "pmetricotlp.ExportRequest"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /api/v1/otlp/v1/metrics"
+        },
+        {
+          "id": "Distributor.ServeHTTPGet",
+          "class_name": "distributor.Distributor",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /distributor/ring"
+        },
+        {
+          "id": "Distributor.ServeHTTPPost",
+          "class_name": "distributor.Distributor",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /distributor/ring"
+        },
+        {
+          "id": "Distributor.AllUserStatsHandler",
+          "class_name": "distributor.Distributor",
+          "method_name": "AllUserStatsHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /distributor/all_user_stats"
+        },
+        {
+          "id": "HATracker.ServeHTTP",
+          "class_name": "ha.HATracker",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /distributor/ha_tracker"
+        },
+        {
+          "id": "Distributor.UserStatsHandler",
+          "class_name": "distributor.Distributor",
+          "method_name": "UserStatsHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /api/v1/user_stats"
+        },
+        {
+          "id": "OTLPGRPCServer.Export",
+          "class_name": "push.OTLPGRPCServer",
+          "method_name": "Export",
+          "param_types": [
+            "pmetricotlp.ExportRequest"
+          ],
+          "return_type": "pmetricotlp.ExportResponse",
+          "endpoint": "Export"
+        },
+        {
+          "id": "Ingester.FlushHandlerGet",
+          "class_name": "ingester.Ingester",
+          "method_name": "FlushHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/flush"
+        },
+        {
+          "id": "Ingester.FlushHandlerPost",
+          "class_name": "ingester.Ingester",
+          "method_name": "FlushHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ingester/flush"
+        },
+        {
+          "id": "Ingester.ShutdownHandlerGet",
+          "class_name": "ingester.Ingester",
+          "method_name": "ShutdownHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/shutdown"
+        },
+        {
+          "id": "Ingester.ShutdownHandlerPost",
+          "class_name": "ingester.Ingester",
+          "method_name": "ShutdownHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ingester/shutdown"
+        },
+        {
+          "id": "Ingester.RenewTokenHandlerGet",
+          "class_name": "ingester.Ingester",
+          "method_name": "RenewTokenHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/renewTokens"
+        },
+        {
+          "id": "Ingester.RenewTokenHandlerPost",
+          "class_name": "ingester.Ingester",
+          "method_name": "RenewTokenHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ingester/renewTokens"
+        },
+        {
+          "id": "Ingester.AllUserStatsHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "AllUserStatsHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/all_user_stats"
+        },
+        {
+          "id": "Ingester.ModeHandlerGet",
+          "class_name": "ingester.Ingester",
+          "method_name": "ModeHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/mode"
+        },
+        {
+          "id": "Ingester.ModeHandlerPost",
+          "class_name": "ingester.Ingester",
+          "method_name": "ModeHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ingester/mode"
+        },
+        {
+          "id": "Ingester.PushHttp",
+          "class_name": "ingester.Ingester",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /ingester/push"
+        },
+        {
+          "id": "Ingester.PushRpc",
+          "class_name": "ingester.Ingester",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "cortexpb.WriteResponse",
+          "endpoint": "Ingester/Push"
+        },
+        {
+          "id": "Ingester.PushStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "PushStream",
+          "param_types": [
+            "cortexpb.StreamWriteRequest"
+          ],
+          "return_type": "List<cortexpb.WriteResponse>",
+          "endpoint": "Ingester/PushStream"
+        },
+        {
+          "id": "Ingester.QueryStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "QueryStream",
+          "param_types": [
+            "QueryRequest"
+          ],
+          "return_type": "List<QueryStreamResponse>",
+          "endpoint": "Ingester/QueryStream"
+        },
+        {
+          "id": "Ingester.QueryExemplars",
+          "class_name": "ingester.Ingester",
+          "method_name": "QueryExemplars",
+          "param_types": [
+            "ExemplarQueryRequest"
+          ],
+          "return_type": "ExemplarQueryResponse",
+          "endpoint": "Ingester/QueryExemplars"
+        },
+        {
+          "id": "Ingester.LabelValues",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "endpoint": "Ingester/LabelValues"
+        },
+        {
+          "id": "Ingester.LabelValuesStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelValuesStream",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "List<LabelValuesStreamResponse>",
+          "endpoint": "Ingester/LabelValuesStream"
+        },
+        {
+          "id": "Ingester.LabelNames",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "endpoint": "Ingester/LabelNames"
+        },
+        {
+          "id": "Ingester.LabelNamesStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelNamesStream",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "List<LabelNamesStreamResponse>",
+          "endpoint": "Ingester/LabelNamesStream"
+        },
+        {
+          "id": "Ingester.UserStats",
+          "class_name": "ingester.Ingester",
+          "method_name": "UserStats",
+          "param_types": [
+            "UserStatsRequest"
+          ],
+          "return_type": "UserStatsResponse",
+          "endpoint": "Ingester/UserStats"
+        },
+        {
+          "id": "Ingester.AllUserStats",
+          "class_name": "ingester.Ingester",
+          "method_name": "AllUserStats",
+          "param_types": [
+            "UserStatsRequest"
+          ],
+          "return_type": "UsersStatsResponse",
+          "endpoint": "Ingester/AllUserStats"
+        },
+        {
+          "id": "Ingester.MetricsForLabelMatchers",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsForLabelMatchers",
+          "param_types": [
+            "MetricsForLabelMatchersRequest"
+          ],
+          "return_type": "MetricsForLabelMatchersResponse",
+          "endpoint": "Ingester/MetricsForLabelMatchers"
+        },
+        {
+          "id": "Ingester.MetricsForLabelMatchersStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsForLabelMatchersStream",
+          "param_types": [
+            "MetricsForLabelMatchersRequest"
+          ],
+          "return_type": "List<MetricsForLabelMatchersStreamResponse>",
+          "endpoint": "Ingester/MetricsForLabelMatchersStream"
+        },
+        {
+          "id": "Ingester.MetricsMetadata",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsMetadata",
+          "param_types": [
+            "MetricsMetadataRequest"
+          ],
+          "return_type": "MetricsMetadataResponse",
+          "endpoint": "Ingester/MetricsMetadata"
+        },
+        {
+          "id": "TenantDeletionAPI.DeleteTenant",
+          "class_name": "purger.TenantDeletionAPI",
+          "method_name": "DeleteTenant",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /purger/delete_tenant"
+        },
+        {
+          "id": "TenantDeletionAPI.DeleteTenantStatus",
+          "class_name": "purger.TenantDeletionAPI",
+          "method_name": "DeleteTenantStatus",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /purger/delete_tenant_status"
+        },
+        {
+          "id": "Ruler.ServeHTTPGet",
+          "class_name": "ruler.Ruler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ruler/ring"
+        },
+        {
+          "id": "Ruler.ServeHTTPPost",
+          "class_name": "ruler.Ruler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ruler/ring"
+        },
+        {
+          "id": "Ruler.DeleteTenantConfiguration",
+          "class_name": "ruler.Ruler",
+          "method_name": "DeleteTenantConfiguration",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ruler/delete_tenant_config"
+        },
+        {
+          "id": "Ruler.ListAllRules",
+          "class_name": "ruler.Ruler",
+          "method_name": "ListAllRules",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ruler/rule_groups"
+        },
+        {
+          "id": "Ruler.Rules",
+          "class_name": "ruler.Ruler",
+          "method_name": "Rules",
+          "param_types": [
+            "RulesRequest"
+          ],
+          "return_type": "RulesResponse",
+          "endpoint": "Ruler/Rules"
+        },
+        {
+          "id": "Ruler.LivenessCheck",
+          "class_name": "ruler.Ruler",
+          "method_name": "LivenessCheck",
+          "param_types": [
+            "LivenessCheckRequest"
+          ],
+          "return_type": "LivenessCheckResponse",
+          "endpoint": "Ruler/LivenessCheck"
+        },
+        {
+          "id": "API.PrometheusRules",
+          "class_name": "ruler.API",
+          "method_name": "PrometheusRules",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /prometheus/api/v1/rules"
+        },
+        {
+          "id": "API.PrometheusAlerts",
+          "class_name": "ruler.API",
+          "method_name": "PrometheusAlerts",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /prometheus/api/v1/alerts"
+        },
+        {
+          "id": "API.ListRules",
+          "class_name": "ruler.API",
+          "method_name": "ListRules",
+          "param_types": [],
+          "return_type": "Map<string,List<RuleGroup>>",
+          "endpoint": "GET /api/v1/rules"
+        },
+        {
+          "id": "API.ListRulesNamespace",
+          "class_name": "ruler.API",
+          "method_name": "ListRules",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Map<string,List<RuleGroup>>",
+          "endpoint": "GET /api/v1/rules/{namespace}"
+        },
+        {
+          "id": "API.GetRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "GetRuleGroup",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "RuleGroup",
+          "endpoint": "GET /api/v1/rules/{namespace}/{groupName}"
+        },
+        {
+          "id": "API.CreateRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "CreateRuleGroup",
+          "param_types": [
+            "string",
+            "RuleGroup"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /api/v1/rules/{namespace}"
+        },
+        {
+          "id": "API.DeleteRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "DeleteRuleGroup",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "endpoint": "DELETE /api/v1/rules/{namespace}/{groupName}"
+        },
+        {
+          "id": "API.DeleteNamespace",
+          "class_name": "ruler.API",
+          "method_name": "DeleteNamespace",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "endpoint": "DELETE /api/v1/rules/{namespace}"
+        },
+        {
+          "id": "API.GetOverrides",
+          "class_name": "overrides.API",
+          "method_name": "GetOverrides",
+          "param_types": [],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/user-overrides"
+        },
+        {
+          "id": "API.SetOverrides",
+          "class_name": "overrides.API",
+          "method_name": "SetOverrides",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "endpoint": "POST /api/v1/user-overrides"
+        },
+        {
+          "id": "API.DeleteOverrides",
+          "class_name": "overrides.API",
+          "method_name": "DeleteOverrides",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "DELETE /api/v1/user-overrides"
+        },
+        {
+          "id": "Ring.ServeHTTPGet",
+          "class_name": "ring.Ring",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /ingester/ring"
+        },
+        {
+          "id": "Ring.ServeHTTPPost",
+          "class_name": "ring.Ring",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /ingester/ring"
+        },
+        {
+          "id": "StoreGateway.RingHandlerGet",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /store-gateway/ring"
+        },
+        {
+          "id": "StoreGateway.RingHandlerPost",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /store-gateway/ring"
+        },
+        {
+          "id": "StoreGateway.Series",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "Series",
+          "param_types": [
+            "storepb.SeriesRequest"
+          ],
+          "return_type": "List<storepb.SeriesResponse>",
+          "endpoint": "StoreGateway/Series"
+        },
+        {
+          "id": "StoreGateway.LabelNames",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "LabelNames",
+          "param_types": [
+            "storepb.LabelNamesRequest"
+          ],
+          "return_type": "storepb.LabelNamesResponse",
+          "endpoint": "StoreGateway/LabelNames"
+        },
+        {
+          "id": "StoreGateway.LabelValues",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "LabelValues",
+          "param_types": [
+            "storepb.LabelValuesRequest"
+          ],
+          "return_type": "storepb.LabelValuesResponse",
+          "endpoint": "StoreGateway/LabelValues"
+        },
+        {
+          "id": "Compactor.RingHandlerGet",
+          "class_name": "compactor.Compactor",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /compactor/ring"
+        },
+        {
+          "id": "Compactor.RingHandlerPost",
+          "class_name": "compactor.Compactor",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /compactor/ring"
+        },
+        {
+          "id": "Converter.RingHandlerGet",
+          "class_name": "parquetconverter.Converter",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /parquet-converter/ring"
+        },
+        {
+          "id": "Converter.RingHandlerPost",
+          "class_name": "parquetconverter.Converter",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "POST /parquet-converter/ring"
+        },
+        {
+          "id": "api.get_query",
+          "class_name": "api",
+          "method_name": "get_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/query"
+        },
+        {
+          "id": "api.post_query",
+          "class_name": "api",
+          "method_name": "post_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "POST /api/v1/query"
+        },
+        {
+          "id": "api.get_query_range",
+          "class_name": "api",
+          "method_name": "get_query_range",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/query_range"
+        },
+        {
+          "id": "api.post_query_range",
+          "class_name": "api",
+          "method_name": "post_query_range",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "POST /api/v1/query_range"
+        },
+        {
+          "id": "api.get_query_exemplars",
+          "class_name": "api",
+          "method_name": "get_query_exemplars",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/query_exemplars"
+        },
+        {
+          "id": "api.post_query_exemplars",
+          "class_name": "api",
+          "method_name": "post_query_exemplars",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "POST /api/v1/query_exemplars"
+        },
+        {
+          "id": "api.get_format_query",
+          "class_name": "api",
+          "method_name": "get_format_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "endpoint": "GET /api/v1/format_query"
+        },
+        {
+          "id": "api.post_format_query",
+          "class_name": "api",
+          "method_name": "post_format_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "endpoint": "POST /api/v1/format_query"
+        },
+        {
+          "id": "api.get_parse_query",
+          "class_name": "api",
+          "method_name": "get_parse_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/parse_query"
+        },
+        {
+          "id": "api.post_parse_query",
+          "class_name": "api",
+          "method_name": "post_parse_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "endpoint": "POST /api/v1/parse_query"
+        },
+        {
+          "id": "api.get_labels",
+          "class_name": "api",
+          "method_name": "get_labels",
+          "param_types": [],
+          "return_type": "List<string>",
+          "endpoint": "GET /api/v1/labels"
+        },
+        {
+          "id": "api.post_labels",
+          "class_name": "api",
+          "method_name": "post_labels",
+          "param_types": [],
+          "return_type": "List<string>",
+          "endpoint": "POST /api/v1/labels"
+        },
+        {
+          "id": "api.get_series",
+          "class_name": "api",
+          "method_name": "get_series",
+          "param_types": [],
+          "return_type": "List<object>",
+          "endpoint": "GET /api/v1/series"
+        },
+        {
+          "id": "api.post_series",
+          "class_name": "api",
+          "method_name": "post_series",
+          "param_types": [],
+          "return_type": "List<object>",
+          "endpoint": "POST /api/v1/series"
+        },
+        {
+          "id": "api.delete_series",
+          "class_name": "api",
+          "method_name": "delete_series",
+          "param_types": [],
+          "return_type": "List<object>",
+          "endpoint": "DELETE /api/v1/series"
+        },
+        {
+          "id": "api.post_read",
+          "class_name": "api",
+          "method_name": "post_read",
+          "param_types": [
+            "ReadRequest"
+          ],
+          "return_type": "ReadResponse",
+          "endpoint": "POST /api/v1/read"
+        },
+        {
+          "id": "api.get_label_name_values",
+          "class_name": "api",
+          "method_name": "get_label_name_values",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<string>",
+          "endpoint": "GET /api/v1/label/{name}/values"
+        },
+        {
+          "id": "api.get_metadata",
+          "class_name": "api",
+          "method_name": "get_metadata",
+          "param_types": [],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/metadata"
+        },
+        {
+          "id": "api.get_buildinfo",
+          "class_name": "api",
+          "method_name": "get_buildinfo",
+          "param_types": [],
+          "return_type": "object",
+          "endpoint": "GET /api/v1/status/buildinfo"
+        },
+        {
+          "id": "Frontend.Process",
+          "class_name": "v1.Frontend",
+          "method_name": "Process",
+          "param_types": [
+            "frontendv1pb.ClientToFrontend"
+          ],
+          "return_type": "List<frontendv1pb.FrontendToClient>",
+          "endpoint": "Frontend/Process"
+        },
+        {
+          "id": "Frontend.NotifyClientShutdown",
+          "class_name": "v1.Frontend",
+          "method_name": "NotifyClientShutdown",
+          "param_types": [
+            "frontendv1pb.NotifyClientShutdownRequest"
+          ],
+          "return_type": "frontendv1pb.NotifyClientShutdownResponse",
+          "endpoint": "Frontend/NotifyClientShutdown"
+        },
+        {
+          "id": "Frontend.QueryResult",
+          "class_name": "v2.Frontend",
+          "method_name": "QueryResult",
+          "param_types": [
+            "frontendv2pb.QueryResultRequest"
+          ],
+          "return_type": "frontendv2pb.QueryResultResponse",
+          "endpoint": "FrontendForQuerier/QueryResult"
+        },
+        {
+          "id": "Scheduler.FrontendLoop",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "FrontendLoop",
+          "param_types": [
+            "schedulerpb.FrontendToScheduler"
+          ],
+          "return_type": "List<schedulerpb.SchedulerToFrontend>",
+          "endpoint": "SchedulerForFrontend/FrontendLoop"
+        },
+        {
+          "id": "Scheduler.QuerierLoop",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "QuerierLoop",
+          "param_types": [
+            "schedulerpb.QuerierToScheduler"
+          ],
+          "return_type": "List<schedulerpb.SchedulerToQuerier>",
+          "endpoint": "SchedulerForQuerier/QuerierLoop"
+        },
+        {
+          "id": "Scheduler.NotifyQuerierShutdown",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "NotifyQuerierShutdown",
+          "param_types": [
+            "schedulerpb.NotifyQuerierShutdownRequest"
+          ],
+          "return_type": "schedulerpb.NotifyQuerierShutdownResponse",
+          "endpoint": "SchedulerForQuerier/NotifyQuerierShutdown"
+        },
+        {
+          "id": "api.get_services",
+          "class_name": "api",
+          "method_name": "get_services",
+          "param_types": [],
+          "return_type": "object",
+          "endpoint": "GET /services"
+        },
+        {
+          "id": "KVInitService.ServeHTTP",
+          "class_name": "memberlist.KVInitService",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "endpoint": "GET /memberlist"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

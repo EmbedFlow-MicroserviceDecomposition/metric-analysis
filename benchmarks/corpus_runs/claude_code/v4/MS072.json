@@ -1,0 +1,3915 @@
+{
+  "system_id": "MS072",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "pdf-converter": {
+      "exposed_interfaces": [
+        {
+          "id": "PdfCtrl.syncJobStatus",
+          "class_name": "PdfCtrl",
+          "method_name": "syncJobStatus",
+          "param_types": [
+            "string",
+            "string",
+            "JobStatusSharedWithGrowi",
+            "number"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /pdf/sync-job"
+        }
+      ]
+    },
+    "app": {
+      "exposed_interfaces": [
+        {
+          "id": "suggest-path.suggestPathHandlersFactory",
+          "class_name": "suggest-path",
+          "method_name": "suggestPathHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/ai-tools/suggest-path"
+        },
+        {
+          "id": "audit-log-bulk-export.post_audit_log_bulk_export",
+          "class_name": "audit-log-bulk-export",
+          "method_name": "post_audit_log_bulk_export",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/audit-log-bulk-export"
+        },
+        {
+          "id": "external-user-group-relation.get_external_user_group_relations",
+          "class_name": "external-user-group-relation",
+          "method_name": "get_external_user_group_relations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-group-relations"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_ancestors",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_ancestors",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/ancestors"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_children",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_children",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/children"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_id",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/:id"
+        },
+        {
+          "id": "external-user-group.delete_external_user_groups_id",
+          "class_name": "external-user-group",
+          "method_name": "delete_external_user_groups_id",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/external-user-groups/:id"
+        },
+        {
+          "id": "external-user-group.put_external_user_groups_id",
+          "class_name": "external-user-group",
+          "method_name": "put_external_user_groups_id",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/external-user-groups/:id"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_id_external_user_group_relations",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_id_external_user_group_relations",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/:id/external-user-group-relations"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_ldap_sync_settings",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_ldap_sync_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/ldap/sync-settings"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_keycloak_sync_settings",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_keycloak_sync_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/keycloak/sync-settings"
+        },
+        {
+          "id": "external-user-group.put_external_user_groups_ldap_sync_settings",
+          "class_name": "external-user-group",
+          "method_name": "put_external_user_groups_ldap_sync_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/external-user-groups/ldap/sync-settings"
+        },
+        {
+          "id": "external-user-group.put_external_user_groups_keycloak_sync_settings",
+          "class_name": "external-user-group",
+          "method_name": "put_external_user_groups_keycloak_sync_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/external-user-groups/keycloak/sync-settings"
+        },
+        {
+          "id": "external-user-group.put_external_user_groups_ldap_sync",
+          "class_name": "external-user-group",
+          "method_name": "put_external_user_groups_ldap_sync",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/external-user-groups/ldap/sync"
+        },
+        {
+          "id": "external-user-group.put_external_user_groups_keycloak_sync",
+          "class_name": "external-user-group",
+          "method_name": "put_external_user_groups_keycloak_sync",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/external-user-groups/keycloak/sync"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_ldap_sync_status",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_ldap_sync_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/ldap/sync-status"
+        },
+        {
+          "id": "external-user-group.get_external_user_groups_keycloak_sync_status",
+          "class_name": "external-user-group",
+          "method_name": "get_external_user_groups_keycloak_sync_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/external-user-groups/keycloak/sync-status"
+        },
+        {
+          "id": "growi-plugin.get_plugins",
+          "class_name": "growi-plugin",
+          "method_name": "get_plugins",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/plugins"
+        },
+        {
+          "id": "growi-plugin.post_plugins",
+          "class_name": "growi-plugin",
+          "method_name": "post_plugins",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/plugins"
+        },
+        {
+          "id": "growi-plugin.put_plugins_id_activate",
+          "class_name": "growi-plugin",
+          "method_name": "put_plugins_id_activate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/plugins/:id/activate"
+        },
+        {
+          "id": "growi-plugin.put_plugins_id_deactivate",
+          "class_name": "growi-plugin",
+          "method_name": "put_plugins_id_deactivate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/plugins/:id/deactivate"
+        },
+        {
+          "id": "growi-plugin.delete_plugins_id_remove",
+          "class_name": "growi-plugin",
+          "method_name": "delete_plugins_id_remove",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/plugins/:id/remove"
+        },
+        {
+          "id": "vault-admin.get_vault_status",
+          "class_name": "vault-admin",
+          "method_name": "get_vault_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/vault/status"
+        },
+        {
+          "id": "vault-admin.get_vault_resilience_status",
+          "class_name": "vault-admin",
+          "method_name": "get_vault_resilience_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/vault/resilience-status"
+        },
+        {
+          "id": "vault-admin.post_vault_retry_abort",
+          "class_name": "vault-admin",
+          "method_name": "post_vault_retry_abort",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/vault/retry/abort"
+        },
+        {
+          "id": "vault-admin.post_vault_wipe",
+          "class_name": "vault-admin",
+          "method_name": "post_vault_wipe",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/vault/wipe"
+        },
+        {
+          "id": "vault-admin.post_vault_reconcile",
+          "class_name": "vault-admin",
+          "method_name": "post_vault_reconcile",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/vault/reconcile"
+        },
+        {
+          "id": "vault-admin.get_vault_reconcile_history",
+          "class_name": "vault-admin",
+          "method_name": "get_vault_reconcile_history",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/vault/reconcile-history"
+        },
+        {
+          "id": "vault-page.post_vault_page_reconcile",
+          "class_name": "vault-page",
+          "method_name": "post_vault_page_reconcile",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/vault/page/reconcile"
+        },
+        {
+          "id": "get-ai-settings.getAiSettingsFactory",
+          "class_name": "get-ai-settings",
+          "method_name": "getAiSettingsFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/ai-settings"
+        },
+        {
+          "id": "put-ai-settings.putAiSettingsFactory",
+          "class_name": "put-ai-settings",
+          "method_name": "putAiSettingsFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/ai-settings"
+        },
+        {
+          "id": "get-available-models.getAvailableModelsFactory",
+          "class_name": "get-available-models",
+          "method_name": "getAvailableModelsFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/ai-settings/available-models"
+        },
+        {
+          "id": "post-refresh-model-catalog.postRefreshModelCatalogFactory",
+          "class_name": "post-refresh-model-catalog",
+          "method_name": "postRefreshModelCatalogFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/ai-settings/refresh-model-catalog"
+        },
+        {
+          "id": "post-message.postMessageHandlersFactory",
+          "class_name": "post-message",
+          "method_name": "postMessageHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/mastra/message"
+        },
+        {
+          "id": "get-threads.getThreadsFactory",
+          "class_name": "get-threads",
+          "method_name": "getThreadsFactory",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/mastra/threads"
+        },
+        {
+          "id": "delete-thread.deleteThreadHandlersFactory",
+          "class_name": "delete-thread",
+          "method_name": "deleteThreadHandlersFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/mastra/thread/:threadId"
+        },
+        {
+          "id": "get-messages.getMessagesHandlersFactory",
+          "class_name": "get-messages",
+          "method_name": "getMessagesHandlersFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/mastra/messages/:threadId"
+        },
+        {
+          "id": "get-models.getModelsFactory",
+          "class_name": "get-models",
+          "method_name": "getModelsFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/mastra/models"
+        },
+        {
+          "id": "news.get_news_list",
+          "class_name": "news",
+          "method_name": "get_news_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/news/list"
+        },
+        {
+          "id": "news.get_news_unread_count",
+          "class_name": "news",
+          "method_name": "get_news_unread_count",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/news/unread-count"
+        },
+        {
+          "id": "news.post_news_mark_read",
+          "class_name": "news",
+          "method_name": "post_news_mark_read",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/news/mark-read"
+        },
+        {
+          "id": "news.post_news_mark_all_read",
+          "class_name": "news",
+          "method_name": "post_news_mark_all_read",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/news/mark-all-read"
+        },
+        {
+          "id": "news.get_news_admin_delivery_setting",
+          "class_name": "news",
+          "method_name": "get_news_admin_delivery_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/news/admin/delivery-setting"
+        },
+        {
+          "id": "news.post_news_admin_delivery_setting",
+          "class_name": "news",
+          "method_name": "post_news_admin_delivery_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/news/admin/delivery-setting"
+        },
+        {
+          "id": "page-bulk-export.post_page_bulk_export",
+          "class_name": "page-bulk-export",
+          "method_name": "post_page_bulk_export",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/page-bulk-export"
+        },
+        {
+          "id": "templates.get_templates",
+          "class_name": "templates",
+          "method_name": "get_templates",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/templates"
+        },
+        {
+          "id": "templates.get_templates_preset_templates_templateid_locale",
+          "class_name": "templates",
+          "method_name": "get_templates_preset_templates_templateid_locale",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/templates/preset-templates/:templateId/:locale"
+        },
+        {
+          "id": "templates.get_templates_plugin_templates_organizationid_reposid_templateid_locale",
+          "class_name": "templates",
+          "method_name": "get_templates_plugin_templates_organizationid_reposid_templateid_locale",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/templates/plugin-templates/:organizationId/:reposId/:templateId/:locale"
+        },
+        {
+          "id": "activity.get_activity",
+          "class_name": "activity",
+          "method_name": "get_activity",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/activity"
+        },
+        {
+          "id": "activity.post_activity_list",
+          "class_name": "activity",
+          "method_name": "post_activity_list",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/activity/list"
+        },
+        {
+          "id": "activity.get_activity_suggestions",
+          "class_name": "activity",
+          "method_name": "get_activity_suggestions",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/activity/suggestions"
+        },
+        {
+          "id": "admin-home.get_admin_home",
+          "class_name": "admin-home",
+          "method_name": "get_admin_home",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/admin-home"
+        },
+        {
+          "id": "file-upload-setting.put_app_settings_file_upload_setting",
+          "class_name": "file-upload-setting",
+          "method_name": "put_app_settings_file_upload_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/file-upload-setting"
+        },
+        {
+          "id": "app-settings.get_app_settings",
+          "class_name": "app-settings",
+          "method_name": "get_app_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/app-settings"
+        },
+        {
+          "id": "app-settings.put_app_settings_app_setting",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_app_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/app-setting"
+        },
+        {
+          "id": "app-settings.put_app_settings_site_url_setting",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_site_url_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/site-url-setting"
+        },
+        {
+          "id": "app-settings.put_app_settings_smtp_setting",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_smtp_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/smtp-setting"
+        },
+        {
+          "id": "app-settings.post_app_settings_smtp_test",
+          "class_name": "app-settings",
+          "method_name": "post_app_settings_smtp_test",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/app-settings/smtp-test"
+        },
+        {
+          "id": "app-settings.put_app_settings_ses_setting",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_ses_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/ses-setting"
+        },
+        {
+          "id": "app-settings.put_app_settings_oauth2_setting",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_oauth2_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/oauth2-setting"
+        },
+        {
+          "id": "app-settings.put_app_settings_page_bulk_export_settings",
+          "class_name": "app-settings",
+          "method_name": "put_app_settings_page_bulk_export_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/app-settings/page-bulk-export-settings"
+        },
+        {
+          "id": "app-settings.post_app_settings_repair_page_tree",
+          "class_name": "app-settings",
+          "method_name": "post_app_settings_repair_page_tree",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/app-settings/repair-page-tree"
+        },
+        {
+          "id": "app-settings.post_app_settings_v5_schema_migration",
+          "class_name": "app-settings",
+          "method_name": "post_app_settings_v5_schema_migration",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/app-settings/v5-schema-migration"
+        },
+        {
+          "id": "app-settings.post_app_settings_maintenance_mode",
+          "class_name": "app-settings",
+          "method_name": "post_app_settings_maintenance_mode",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/app-settings/maintenance-mode"
+        },
+        {
+          "id": "attachment.get_attachment_list",
+          "class_name": "attachment",
+          "method_name": "get_attachment_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/attachment/list"
+        },
+        {
+          "id": "attachment.get_attachment_limit",
+          "class_name": "attachment",
+          "method_name": "get_attachment_limit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/attachment/limit"
+        },
+        {
+          "id": "attachment.post_attachment",
+          "class_name": "attachment",
+          "method_name": "post_attachment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/attachment"
+        },
+        {
+          "id": "attachment.get_attachment_id",
+          "class_name": "attachment",
+          "method_name": "get_attachment_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/attachment/:id"
+        },
+        {
+          "id": "bookmark-folder.post_bookmark_folder",
+          "class_name": "bookmark-folder",
+          "method_name": "post_bookmark_folder",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/bookmark-folder"
+        },
+        {
+          "id": "bookmark-folder.get_bookmark_folder_list_userid",
+          "class_name": "bookmark-folder",
+          "method_name": "get_bookmark_folder_list_userid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/bookmark-folder/list/:userId"
+        },
+        {
+          "id": "bookmark-folder.delete_bookmark_folder_id",
+          "class_name": "bookmark-folder",
+          "method_name": "delete_bookmark_folder_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/bookmark-folder/:id"
+        },
+        {
+          "id": "bookmark-folder.put_bookmark_folder",
+          "class_name": "bookmark-folder",
+          "method_name": "put_bookmark_folder",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/bookmark-folder"
+        },
+        {
+          "id": "bookmark-folder.post_bookmark_folder_add_bookmark_to_folder",
+          "class_name": "bookmark-folder",
+          "method_name": "post_bookmark_folder_add_bookmark_to_folder",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/bookmark-folder/add-bookmark-to-folder"
+        },
+        {
+          "id": "bookmark-folder.put_bookmark_folder_update_bookmark",
+          "class_name": "bookmark-folder",
+          "method_name": "put_bookmark_folder_update_bookmark",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/bookmark-folder/update-bookmark"
+        },
+        {
+          "id": "bookmarks.get_bookmarks_info",
+          "class_name": "bookmarks",
+          "method_name": "get_bookmarks_info",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/bookmarks/info"
+        },
+        {
+          "id": "bookmarks.get_bookmarks_userid",
+          "class_name": "bookmarks",
+          "method_name": "get_bookmarks_userid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/bookmarks/:userId"
+        },
+        {
+          "id": "bookmarks.put_bookmarks",
+          "class_name": "bookmarks",
+          "method_name": "put_bookmarks",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/bookmarks"
+        },
+        {
+          "id": "content-disposition-settings.put_content_disposition_settings",
+          "class_name": "content-disposition-settings",
+          "method_name": "put_content_disposition_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/content-disposition-settings"
+        },
+        {
+          "id": "content-disposition-settings.get_content_disposition_settings",
+          "class_name": "content-disposition-settings",
+          "method_name": "get_content_disposition_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/content-disposition-settings"
+        },
+        {
+          "id": "customize-setting.get_customize_setting",
+          "class_name": "customize-setting",
+          "method_name": "get_customize_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/customize-setting"
+        },
+        {
+          "id": "customize-setting.get_customize_setting_layout",
+          "class_name": "customize-setting",
+          "method_name": "get_customize_setting_layout",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/customize-setting/layout"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_layout",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_layout",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/layout"
+        },
+        {
+          "id": "customize-setting.get_customize_setting_theme",
+          "class_name": "customize-setting",
+          "method_name": "get_customize_setting_theme",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/customize-setting/theme"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_theme",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_theme",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/theme"
+        },
+        {
+          "id": "customize-setting.get_customize_setting_sidebar",
+          "class_name": "customize-setting",
+          "method_name": "get_customize_setting_sidebar",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/customize-setting/sidebar"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_sidebar",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_sidebar",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/sidebar"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_function",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_function",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/function"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_presentation",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_presentation",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/presentation"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_highlight",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_highlight",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/highlight"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_customize_title",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_customize_title",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/customize-title"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_customize_noscript",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_customize_noscript",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/customize-noscript"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_customize_css",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_customize_css",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/customize-css"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_customize_script",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_customize_script",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/customize-script"
+        },
+        {
+          "id": "customize-setting.put_customize_setting_customize_logo",
+          "class_name": "customize-setting",
+          "method_name": "put_customize_setting_customize_logo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/customize-setting/customize-logo"
+        },
+        {
+          "id": "customize-setting.post_customize_setting_upload_brand_logo",
+          "class_name": "customize-setting",
+          "method_name": "post_customize_setting_upload_brand_logo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/customize-setting/upload-brand-logo"
+        },
+        {
+          "id": "customize-setting.delete_customize_setting_delete_brand_logo",
+          "class_name": "customize-setting",
+          "method_name": "delete_customize_setting_delete_brand_logo",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/customize-setting/delete-brand-logo"
+        },
+        {
+          "id": "export.get_export_status",
+          "class_name": "export",
+          "method_name": "get_export_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/export/status"
+        },
+        {
+          "id": "export.post_export",
+          "class_name": "export",
+          "method_name": "post_export",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/export"
+        },
+        {
+          "id": "export.delete_export_filename",
+          "class_name": "export",
+          "method_name": "delete_export_filename",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/export/:fileName"
+        },
+        {
+          "id": "forgot-password.post_forgot_password",
+          "class_name": "forgot-password",
+          "method_name": "post_forgot_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/forgot-password"
+        },
+        {
+          "id": "forgot-password.put_forgot_password",
+          "class_name": "forgot-password",
+          "method_name": "put_forgot_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/forgot-password"
+        },
+        {
+          "id": "g2g-transfer.get_g2g_transfer_files",
+          "class_name": "g2g-transfer",
+          "method_name": "get_g2g_transfer_files",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/g2g-transfer/files"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer_keep_alive",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer_keep_alive",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer/keep-alive"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer_attachment",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer_attachment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer/attachment"
+        },
+        {
+          "id": "g2g-transfer.get_g2g_transfer_growi_info",
+          "class_name": "g2g-transfer",
+          "method_name": "get_g2g_transfer_growi_info",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/g2g-transfer/growi-info"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer_generate_key",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer_generate_key",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer/generate-key"
+        },
+        {
+          "id": "g2g-transfer.get_g2g_transfer_transferable_collections",
+          "class_name": "g2g-transfer",
+          "method_name": "get_g2g_transfer_transferable_collections",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/g2g-transfer/transferable-collections"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer_preflight",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer_preflight",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer/preflight"
+        },
+        {
+          "id": "g2g-transfer.post_g2g_transfer_transfer",
+          "class_name": "g2g-transfer",
+          "method_name": "post_g2g_transfer_transfer",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/g2g-transfer/transfer"
+        },
+        {
+          "id": "import.get_import_status",
+          "class_name": "import",
+          "method_name": "get_import_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/import/status"
+        },
+        {
+          "id": "import.post_import",
+          "class_name": "import",
+          "method_name": "post_import",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/import"
+        },
+        {
+          "id": "import.post_import_upload",
+          "class_name": "import",
+          "method_name": "post_import_upload",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/import/upload"
+        },
+        {
+          "id": "import.delete_import_all",
+          "class_name": "import",
+          "method_name": "delete_import_all",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/import/all"
+        },
+        {
+          "id": "in-app-notification.get_in_app_notification_list",
+          "class_name": "in-app-notification",
+          "method_name": "get_in_app_notification_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/in-app-notification/list"
+        },
+        {
+          "id": "in-app-notification.get_in_app_notification_status",
+          "class_name": "in-app-notification",
+          "method_name": "get_in_app_notification_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/in-app-notification/status"
+        },
+        {
+          "id": "in-app-notification.post_in_app_notification_open",
+          "class_name": "in-app-notification",
+          "method_name": "post_in_app_notification_open",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/in-app-notification/open"
+        },
+        {
+          "id": "in-app-notification.put_in_app_notification_all_statuses_open",
+          "class_name": "in-app-notification",
+          "method_name": "put_in_app_notification_all_statuses_open",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/in-app-notification/all-statuses-open"
+        },
+        {
+          "id": "installer.post_installer",
+          "class_name": "installer",
+          "method_name": "post_installer",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/installer"
+        },
+        {
+          "id": "invited.post_invited",
+          "class_name": "invited",
+          "method_name": "post_invited",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/invited"
+        },
+        {
+          "id": "logout.post_logout",
+          "class_name": "logout",
+          "method_name": "post_logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/logout"
+        },
+        {
+          "id": "markdown-setting.get_markdown_setting",
+          "class_name": "markdown-setting",
+          "method_name": "get_markdown_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/markdown-setting"
+        },
+        {
+          "id": "markdown-setting.put_markdown_setting_linebreak",
+          "class_name": "markdown-setting",
+          "method_name": "put_markdown_setting_linebreak",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/markdown-setting/lineBreak"
+        },
+        {
+          "id": "markdown-setting.put_markdown_setting_indent",
+          "class_name": "markdown-setting",
+          "method_name": "put_markdown_setting_indent",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/markdown-setting/indent"
+        },
+        {
+          "id": "markdown-setting.put_markdown_setting_xss",
+          "class_name": "markdown-setting",
+          "method_name": "put_markdown_setting_xss",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/markdown-setting/xss"
+        },
+        {
+          "id": "mongo.get_mongo_collections",
+          "class_name": "mongo",
+          "method_name": "get_mongo_collections",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/mongo/collections"
+        },
+        {
+          "id": "notification-setting.get_notification_setting",
+          "class_name": "notification-setting",
+          "method_name": "get_notification_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/notification-setting"
+        },
+        {
+          "id": "notification-setting.post_notification_setting_user_notification",
+          "class_name": "notification-setting",
+          "method_name": "post_notification_setting_user_notification",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/notification-setting/user-notification"
+        },
+        {
+          "id": "notification-setting.delete_notification_setting_user_notification_id",
+          "class_name": "notification-setting",
+          "method_name": "delete_notification_setting_user_notification_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/notification-setting/user-notification/:id"
+        },
+        {
+          "id": "notification-setting.get_notification_setting_global_notification_id",
+          "class_name": "notification-setting",
+          "method_name": "get_notification_setting_global_notification_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/notification-setting/global-notification/:id"
+        },
+        {
+          "id": "notification-setting.post_notification_setting_global_notification",
+          "class_name": "notification-setting",
+          "method_name": "post_notification_setting_global_notification",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/notification-setting/global-notification"
+        },
+        {
+          "id": "notification-setting.put_notification_setting_global_notification_id",
+          "class_name": "notification-setting",
+          "method_name": "put_notification_setting_global_notification_id",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/notification-setting/global-notification/:id"
+        },
+        {
+          "id": "notification-setting.put_notification_setting_notify_for_page_grant",
+          "class_name": "notification-setting",
+          "method_name": "put_notification_setting_notify_for_page_grant",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/notification-setting/notify-for-page-grant"
+        },
+        {
+          "id": "notification-setting.put_notification_setting_global_notification_id_enabled",
+          "class_name": "notification-setting",
+          "method_name": "put_notification_setting_global_notification_id_enabled",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/notification-setting/global-notification/:id/enabled"
+        },
+        {
+          "id": "notification-setting.delete_notification_setting_global_notification_id",
+          "class_name": "notification-setting",
+          "method_name": "delete_notification_setting_global_notification_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/notification-setting/global-notification/:id"
+        },
+        {
+          "id": "page-listing.get_page_listing_root",
+          "class_name": "page-listing",
+          "method_name": "get_page_listing_root",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page-listing/root"
+        },
+        {
+          "id": "page-listing.get_page_listing_children",
+          "class_name": "page-listing",
+          "method_name": "get_page_listing_children",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page-listing/children"
+        },
+        {
+          "id": "page-listing.get_page_listing_info",
+          "class_name": "page-listing",
+          "method_name": "get_page_listing_info",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page-listing/info"
+        },
+        {
+          "id": "page-listing.get_page_listing_item",
+          "class_name": "page-listing",
+          "method_name": "get_page_listing_item",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page-listing/item"
+        },
+        {
+          "id": "page.get_page",
+          "class_name": "page",
+          "method_name": "get_page",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page"
+        },
+        {
+          "id": "get-page-paths-with-descendant-count.getPagePathsWithDescendantCountFactory",
+          "class_name": "get-page-paths-with-descendant-count",
+          "method_name": "getPagePathsWithDescendantCountFactory",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/page-paths-with-descendant-count"
+        },
+        {
+          "id": "check-page-existence.checkPageExistenceHandlersFactory",
+          "class_name": "check-page-existence",
+          "method_name": "checkPageExistenceHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/exist"
+        },
+        {
+          "id": "create-page.createPageHandlersFactory",
+          "class_name": "create-page",
+          "method_name": "createPageHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/page"
+        },
+        {
+          "id": "update-page.updatePageHandlersFactory",
+          "class_name": "update-page",
+          "method_name": "updatePageHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page"
+        },
+        {
+          "id": "page.put_page_likes",
+          "class_name": "page",
+          "method_name": "put_page_likes",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/likes"
+        },
+        {
+          "id": "get-page-by-share-link.getPageByShareLinkHandlerFactory",
+          "class_name": "get-page-by-share-link",
+          "method_name": "getPageByShareLinkHandlerFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/shared"
+        },
+        {
+          "id": "get-page-info.getPageInfoHandlerFactory",
+          "class_name": "get-page-info",
+          "method_name": "getPageInfoHandlerFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/info"
+        },
+        {
+          "id": "page.get_page_grant_data",
+          "class_name": "page",
+          "method_name": "get_page_grant_data",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/grant-data"
+        },
+        {
+          "id": "page.get_page_non_user_related_groups_granted",
+          "class_name": "page",
+          "method_name": "get_page_non_user_related_groups_granted",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/non-user-related-groups-granted"
+        },
+        {
+          "id": "page.get_page_applicable_grant",
+          "class_name": "page",
+          "method_name": "get_page_applicable_grant",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/applicable-grant"
+        },
+        {
+          "id": "page.put_page_pageid_grant",
+          "class_name": "page",
+          "method_name": "put_page_pageid_grant",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/:pageId/grant"
+        },
+        {
+          "id": "page.get_page_export_pageid",
+          "class_name": "page",
+          "method_name": "get_page_export_pageid",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/export/:pageId"
+        },
+        {
+          "id": "page.get_page_exist_paths",
+          "class_name": "page",
+          "method_name": "get_page_exist_paths",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/exist-paths"
+        },
+        {
+          "id": "page.put_page_subscribe",
+          "class_name": "page",
+          "method_name": "put_page_subscribe",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/subscribe"
+        },
+        {
+          "id": "page.put_page_pageid_content_width",
+          "class_name": "page",
+          "method_name": "put_page_pageid_content_width",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/:pageId/content-width"
+        },
+        {
+          "id": "publish-page.publishPageHandlersFactory",
+          "class_name": "publish-page",
+          "method_name": "publishPageHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/:pageId/publish"
+        },
+        {
+          "id": "unpublish-page.unpublishPageHandlersFactory",
+          "class_name": "unpublish-page",
+          "method_name": "unpublishPageHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/:pageId/unpublish"
+        },
+        {
+          "id": "get-yjs-data.getYjsDataHandlerFactory",
+          "class_name": "get-yjs-data",
+          "method_name": "getYjsDataHandlerFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/page/:pageId/yjs-data"
+        },
+        {
+          "id": "sync-latest-revision-body-to-yjs-draft.syncLatestRevisionBodyToYjsDraftHandlerFactory",
+          "class_name": "sync-latest-revision-body-to-yjs-draft",
+          "method_name": "syncLatestRevisionBodyToYjsDraftHandlerFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/page/:pageId/sync-latest-revision-body-to-yjs-draft"
+        },
+        {
+          "id": "pages.get_pages_recent",
+          "class_name": "pages",
+          "method_name": "get_pages_recent",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/pages/recent"
+        },
+        {
+          "id": "pages.put_pages_rename",
+          "class_name": "pages",
+          "method_name": "put_pages_rename",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/pages/rename"
+        },
+        {
+          "id": "pages.post_pages_resume_rename",
+          "class_name": "pages",
+          "method_name": "post_pages_resume_rename",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/pages/resume-rename"
+        },
+        {
+          "id": "pages.delete_pages_empty_trash",
+          "class_name": "pages",
+          "method_name": "delete_pages_empty_trash",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/pages/empty-trash"
+        },
+        {
+          "id": "pages.get_pages_list",
+          "class_name": "pages",
+          "method_name": "get_pages_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/pages/list"
+        },
+        {
+          "id": "pages.post_pages_duplicate",
+          "class_name": "pages",
+          "method_name": "post_pages_duplicate",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/pages/duplicate"
+        },
+        {
+          "id": "pages.get_pages_subordinated_list",
+          "class_name": "pages",
+          "method_name": "get_pages_subordinated_list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/pages/subordinated-list"
+        },
+        {
+          "id": "pages.post_pages_delete",
+          "class_name": "pages",
+          "method_name": "post_pages_delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/pages/delete"
+        },
+        {
+          "id": "pages.post_pages_convert_pages_by_path",
+          "class_name": "pages",
+          "method_name": "post_pages_convert_pages_by_path",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/pages/convert-pages-by-path"
+        },
+        {
+          "id": "pages.post_pages_legacy_pages_migration",
+          "class_name": "pages",
+          "method_name": "post_pages_legacy_pages_migration",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/pages/legacy-pages-migration"
+        },
+        {
+          "id": "pages.get_pages_v5_migration_status",
+          "class_name": "pages",
+          "method_name": "get_pages_v5_migration_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/pages/v5-migration-status"
+        },
+        {
+          "id": "personal-setting.get_personal_setting",
+          "class_name": "personal-setting",
+          "method_name": "get_personal_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting"
+        },
+        {
+          "id": "personal-setting.get_personal_setting_is_password_set",
+          "class_name": "personal-setting",
+          "method_name": "get_personal_setting_is_password_set",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting/is-password-set"
+        },
+        {
+          "id": "personal-setting.put_personal_setting",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_image_type",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_image_type",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/image-type"
+        },
+        {
+          "id": "personal-setting.get_personal_setting_external_accounts",
+          "class_name": "personal-setting",
+          "method_name": "get_personal_setting_external_accounts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting/external-accounts"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_password",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/password"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_api_token",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_api_token",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/api-token"
+        },
+        {
+          "id": "get-access-tokens.getAccessTokenHandlerFactory",
+          "class_name": "get-access-tokens",
+          "method_name": "getAccessTokenHandlerFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting/access-token"
+        },
+        {
+          "id": "generate-access-token.generateAccessTokenHandlerFactory",
+          "class_name": "generate-access-token",
+          "method_name": "generateAccessTokenHandlerFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/personal-setting/access-token"
+        },
+        {
+          "id": "delete-access-token.deleteAccessTokenHandlersFactory",
+          "class_name": "delete-access-token",
+          "method_name": "deleteAccessTokenHandlersFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/personal-setting/access-token"
+        },
+        {
+          "id": "delete-all-access-tokens.deleteAllAccessTokensHandlersFactory",
+          "class_name": "delete-all-access-tokens",
+          "method_name": "deleteAllAccessTokensHandlersFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/personal-setting/access-token/all"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_associate_ldap",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_associate_ldap",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/associate-ldap"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_disassociate_ldap",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_disassociate_ldap",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/disassociate-ldap"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_editor_settings",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_editor_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/editor-settings"
+        },
+        {
+          "id": "personal-setting.get_personal_setting_editor_settings",
+          "class_name": "personal-setting",
+          "method_name": "get_personal_setting_editor_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting/editor-settings"
+        },
+        {
+          "id": "personal-setting.put_personal_setting_in_app_notification_settings",
+          "class_name": "personal-setting",
+          "method_name": "put_personal_setting_in_app_notification_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/personal-setting/in-app-notification-settings"
+        },
+        {
+          "id": "personal-setting.get_personal_setting_in_app_notification_settings",
+          "class_name": "personal-setting",
+          "method_name": "get_personal_setting_in_app_notification_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/personal-setting/in-app-notification-settings"
+        },
+        {
+          "id": "revisions.get_revisions_list",
+          "class_name": "revisions",
+          "method_name": "get_revisions_list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/revisions/list"
+        },
+        {
+          "id": "revisions.get_revisions_id",
+          "class_name": "revisions",
+          "method_name": "get_revisions_id",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/revisions/:id"
+        },
+        {
+          "id": "search.get_search_indices",
+          "class_name": "search",
+          "method_name": "get_search_indices",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/search/indices"
+        },
+        {
+          "id": "search.post_search_connection",
+          "class_name": "search",
+          "method_name": "post_search_connection",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/search/connection"
+        },
+        {
+          "id": "search.put_search_indices",
+          "class_name": "search",
+          "method_name": "put_search_indices",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/search/indices"
+        },
+        {
+          "id": "search.get_search_auditlog_indices",
+          "class_name": "search",
+          "method_name": "get_search_auditlog_indices",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/search/auditlog-indices"
+        },
+        {
+          "id": "search.put_search_auditlog_indices",
+          "class_name": "search",
+          "method_name": "put_search_auditlog_indices",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/search/auditlog-indices"
+        },
+        {
+          "id": "security-settings.get_security_setting",
+          "class_name": "security-settings",
+          "method_name": "get_security_setting",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/security-setting"
+        },
+        {
+          "id": "security-settings.put_security_setting_authentication_enabled",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_authentication_enabled",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/authentication/enabled"
+        },
+        {
+          "id": "security-settings.get_security_setting_authentication",
+          "class_name": "security-settings",
+          "method_name": "get_security_setting_authentication",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/security-setting/authentication"
+        },
+        {
+          "id": "security-settings.put_security_setting_general_setting",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_general_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/general-setting"
+        },
+        {
+          "id": "security-settings.put_security_setting_share_link_setting",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_share_link_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/share-link-setting"
+        },
+        {
+          "id": "security-settings.get_security_setting_all_share_links",
+          "class_name": "security-settings",
+          "method_name": "get_security_setting_all_share_links",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/security-setting/all-share-links"
+        },
+        {
+          "id": "security-settings.delete_security_setting_all_share_links",
+          "class_name": "security-settings",
+          "method_name": "delete_security_setting_all_share_links",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/security-setting/all-share-links"
+        },
+        {
+          "id": "security-settings.put_security_setting_local_setting",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_local_setting",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/local-setting"
+        },
+        {
+          "id": "security-settings.put_security_setting_ldap",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_ldap",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/ldap"
+        },
+        {
+          "id": "saml.handleSamlUpdate",
+          "class_name": "saml",
+          "method_name": "handleSamlUpdate",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/saml"
+        },
+        {
+          "id": "security-settings.put_security_setting_oidc",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_oidc",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/oidc"
+        },
+        {
+          "id": "security-settings.put_security_setting_google_oauth",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_google_oauth",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/google-oauth"
+        },
+        {
+          "id": "security-settings.put_security_setting_github_oauth",
+          "class_name": "security-settings",
+          "method_name": "put_security_setting_github_oauth",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/security-setting/github-oauth"
+        },
+        {
+          "id": "share-links.get_share_links",
+          "class_name": "share-links",
+          "method_name": "get_share_links",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/share-links"
+        },
+        {
+          "id": "share-links.post_share_links",
+          "class_name": "share-links",
+          "method_name": "post_share_links",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/share-links"
+        },
+        {
+          "id": "share-links.delete_share_links",
+          "class_name": "share-links",
+          "method_name": "delete_share_links",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/share-links"
+        },
+        {
+          "id": "share-links.delete_share_links_all",
+          "class_name": "share-links",
+          "method_name": "delete_share_links_all",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/share-links/all"
+        },
+        {
+          "id": "share-links.delete_share_links_id",
+          "class_name": "share-links",
+          "method_name": "delete_share_links_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/share-links/:id"
+        },
+        {
+          "id": "slack-integration-legacy-settings.get_slack_integration_legacy_settings",
+          "class_name": "slack-integration-legacy-settings",
+          "method_name": "get_slack_integration_legacy_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/slack-integration-legacy-settings"
+        },
+        {
+          "id": "slack-integration-legacy-settings.put_slack_integration_legacy_settings",
+          "class_name": "slack-integration-legacy-settings",
+          "method_name": "put_slack_integration_legacy_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-legacy-settings"
+        },
+        {
+          "id": "slack-integration-settings.get_slack_integration_settings",
+          "class_name": "slack-integration-settings",
+          "method_name": "get_slack_integration_settings",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/slack-integration-settings"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_bot_type",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_bot_type",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/bot-type"
+        },
+        {
+          "id": "slack-integration-settings.delete_slack_integration_settings_bot_type",
+          "class_name": "slack-integration-settings",
+          "method_name": "delete_slack_integration_settings_bot_type",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/slack-integration-settings/bot-type"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_without_proxy_update_settings",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_without_proxy_update_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/without-proxy/update-settings"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_without_proxy_update_permissions",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_without_proxy_update_permissions",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/without-proxy/update-permissions"
+        },
+        {
+          "id": "slack-integration-settings.post_slack_integration_settings_slack_app_integrations",
+          "class_name": "slack-integration-settings",
+          "method_name": "post_slack_integration_settings_slack_app_integrations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration-settings/slack-app-integrations"
+        },
+        {
+          "id": "slack-integration-settings.delete_slack_integration_settings_slack_app_integrations_id",
+          "class_name": "slack-integration-settings",
+          "method_name": "delete_slack_integration_settings_slack_app_integrations_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/slack-integration-settings/slack-app-integrations/:id"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_proxy_uri",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_proxy_uri",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/proxy-uri"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_slack_app_integrations_id_make_primary",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_slack_app_integrations_id_make_primary",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/slack-app-integrations/:id/make-primary"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_slack_app_integrations_id_regenerate_tokens",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_slack_app_integrations_id_regenerate_tokens",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/slack-app-integrations/:id/regenerate-tokens"
+        },
+        {
+          "id": "slack-integration-settings.put_slack_integration_settings_slack_app_integrations_id_permissions",
+          "class_name": "slack-integration-settings",
+          "method_name": "put_slack_integration_settings_slack_app_integrations_id_permissions",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/slack-integration-settings/slack-app-integrations/:id/permissions"
+        },
+        {
+          "id": "slack-integration-settings.post_slack_integration_settings_slack_app_integrations_id_relation_test",
+          "class_name": "slack-integration-settings",
+          "method_name": "post_slack_integration_settings_slack_app_integrations_id_relation_test",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration-settings/slack-app-integrations/:id/relation-test"
+        },
+        {
+          "id": "slack-integration-settings.post_slack_integration_settings_without_proxy_test",
+          "class_name": "slack-integration-settings",
+          "method_name": "post_slack_integration_settings_without_proxy_test",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration-settings/without-proxy/test"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_commands",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_commands",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/commands"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_proxied_verify",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_proxied_verify",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/proxied/verify"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_proxied_commands",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_proxied_commands",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/proxied/commands"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_interactions",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_interactions",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/interactions"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_proxied_interactions",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_proxied_interactions",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/proxied/interactions"
+        },
+        {
+          "id": "slack-integration.get_slack_integration_supported_commands",
+          "class_name": "slack-integration",
+          "method_name": "get_slack_integration_supported_commands",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/slack-integration/supported-commands"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_events",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_events",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/events"
+        },
+        {
+          "id": "slack-integration.post_slack_integration_proxied_events",
+          "class_name": "slack-integration",
+          "method_name": "post_slack_integration_proxied_events",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/slack-integration/proxied/events"
+        },
+        {
+          "id": "staffs.get_staffs",
+          "class_name": "staffs",
+          "method_name": "get_staffs",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/staffs"
+        },
+        {
+          "id": "statistics.get_statistics_user",
+          "class_name": "statistics",
+          "method_name": "get_statistics_user",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/statistics/user"
+        },
+        {
+          "id": "user-activities.get_user_activities",
+          "class_name": "user-activities",
+          "method_name": "get_user_activities",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-activities"
+        },
+        {
+          "id": "user-group-relation.get_user_group_relations",
+          "class_name": "user-group-relation",
+          "method_name": "get_user_group_relations",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-group-relations"
+        },
+        {
+          "id": "user-group.get_user_groups",
+          "class_name": "user-group",
+          "method_name": "get_user_groups",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups"
+        },
+        {
+          "id": "user-group.get_user_groups_ancestors",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_ancestors",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/ancestors"
+        },
+        {
+          "id": "user-group.get_user_groups_children",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_children",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/children"
+        },
+        {
+          "id": "user-group.post_user_groups",
+          "class_name": "user-group",
+          "method_name": "post_user_groups",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/user-groups"
+        },
+        {
+          "id": "user-group.get_user_groups_selectable_parent_groups",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_selectable_parent_groups",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/selectable-parent-groups"
+        },
+        {
+          "id": "user-group.get_user_groups_selectable_child_groups",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_selectable_child_groups",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/selectable-child-groups"
+        },
+        {
+          "id": "user-group.get_user_groups_id",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/:id"
+        },
+        {
+          "id": "user-group.delete_user_groups_id",
+          "class_name": "user-group",
+          "method_name": "delete_user_groups_id",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/user-groups/:id"
+        },
+        {
+          "id": "user-group.put_user_groups_id",
+          "class_name": "user-group",
+          "method_name": "put_user_groups_id",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/user-groups/:id"
+        },
+        {
+          "id": "user-group.get_user_groups_id_users",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_id_users",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/:id/users"
+        },
+        {
+          "id": "user-group.get_user_groups_id_unrelated_users",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_id_unrelated_users",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/:id/unrelated-users"
+        },
+        {
+          "id": "user-group.post_user_groups_id_users_username",
+          "class_name": "user-group",
+          "method_name": "post_user_groups_id_users_username",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/user-groups/:id/users/:username"
+        },
+        {
+          "id": "user-group.delete_user_groups_id_users_username",
+          "class_name": "user-group",
+          "method_name": "delete_user_groups_id_users_username",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/user-groups/:id/users/:username"
+        },
+        {
+          "id": "user-group.get_user_groups_id_user_group_relations",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_id_user_group_relations",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/:id/user-group-relations"
+        },
+        {
+          "id": "user-group.get_user_groups_id_pages",
+          "class_name": "user-group",
+          "method_name": "get_user_groups_id_pages",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user-groups/:id/pages"
+        },
+        {
+          "id": "user-ui-settings.put_user_ui_settings",
+          "class_name": "user-ui-settings",
+          "method_name": "put_user_ui_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/user-ui-settings"
+        },
+        {
+          "id": "get-related-groups.getRelatedGroupsHandlerFactory",
+          "class_name": "get-related-groups",
+          "method_name": "getRelatedGroupsHandlerFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user/related-groups"
+        },
+        {
+          "id": "get-related-groups-members.getRelatedGroupsMembersHandlerFactory",
+          "class_name": "get-related-groups-members",
+          "method_name": "getRelatedGroupsMembersHandlerFactory",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user/related-groups/members"
+        },
+        {
+          "id": "get-contributions.getContributionsHandlerFactory",
+          "class_name": "get-contributions",
+          "method_name": "getContributionsHandlerFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/user/contributions"
+        },
+        {
+          "id": "users.get_users",
+          "class_name": "users",
+          "method_name": "get_users",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/users"
+        },
+        {
+          "id": "users.get_users_id_recent",
+          "class_name": "users",
+          "method_name": "get_users_id_recent",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/users/:id/recent"
+        },
+        {
+          "id": "users.post_users_invite",
+          "class_name": "users",
+          "method_name": "post_users_invite",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/users/invite"
+        },
+        {
+          "id": "users.put_users_id_grant_admin",
+          "class_name": "users",
+          "method_name": "put_users_id_grant_admin",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/grant-admin"
+        },
+        {
+          "id": "users.put_users_id_revoke_admin",
+          "class_name": "users",
+          "method_name": "put_users_id_revoke_admin",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/revoke-admin"
+        },
+        {
+          "id": "users.put_users_id_grant_read_only",
+          "class_name": "users",
+          "method_name": "put_users_id_grant_read_only",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/grant-read-only"
+        },
+        {
+          "id": "users.put_users_id_revoke_read_only",
+          "class_name": "users",
+          "method_name": "put_users_id_revoke_read_only",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/revoke-read-only"
+        },
+        {
+          "id": "users.put_users_id_activate",
+          "class_name": "users",
+          "method_name": "put_users_id_activate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/activate"
+        },
+        {
+          "id": "users.put_users_id_deactivate",
+          "class_name": "users",
+          "method_name": "put_users_id_deactivate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/:id/deactivate"
+        },
+        {
+          "id": "users.delete_users_id_remove",
+          "class_name": "users",
+          "method_name": "delete_users_id_remove",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/users/:id/remove"
+        },
+        {
+          "id": "users.get_users_external_accounts",
+          "class_name": "users",
+          "method_name": "get_users_external_accounts",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/users/external-accounts"
+        },
+        {
+          "id": "users.delete_users_external_accounts_id_remove",
+          "class_name": "users",
+          "method_name": "delete_users_external_accounts_id_remove",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/users/external-accounts/:id/remove"
+        },
+        {
+          "id": "users.put_users_update_imageurlcache",
+          "class_name": "users",
+          "method_name": "put_users_update_imageurlcache",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/update.imageUrlCache"
+        },
+        {
+          "id": "users.put_users_reset_password",
+          "class_name": "users",
+          "method_name": "put_users_reset_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/reset-password"
+        },
+        {
+          "id": "users.put_users_reset_password_email",
+          "class_name": "users",
+          "method_name": "put_users_reset_password_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/reset-password-email"
+        },
+        {
+          "id": "users.put_users_send_invitation_email",
+          "class_name": "users",
+          "method_name": "put_users_send_invitation_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/users/send-invitation-email"
+        },
+        {
+          "id": "users.get_users_list",
+          "class_name": "users",
+          "method_name": "get_users_list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/users/list"
+        },
+        {
+          "id": "users.get_users_usernames",
+          "class_name": "users",
+          "method_name": "get_users_usernames",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/users/usernames"
+        },
+        {
+          "id": "apiv3.post_login",
+          "class_name": "apiv3",
+          "method_name": "post_login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/login"
+        },
+        {
+          "id": "login.register",
+          "class_name": "login",
+          "method_name": "register",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/register"
+        },
+        {
+          "id": "user-activation.registerAction",
+          "class_name": "user-activation",
+          "method_name": "registerAction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/user-activation/register"
+        },
+        {
+          "id": "changes.changesRouteHandlersFactory",
+          "class_name": "changes",
+          "method_name": "changesRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/revisions/changes"
+        },
+        {
+          "id": "diff.diffRouteHandlersFactory",
+          "class_name": "diff",
+          "method_name": "diffRouteHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/revisions/diff"
+        },
+        {
+          "id": "create.createInlineCommentRouteHandlersFactory",
+          "class_name": "create",
+          "method_name": "createInlineCommentRouteHandlersFactory",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/inline-comments"
+        },
+        {
+          "id": "create-reply.createInlineCommentReplyRouteHandlersFactory",
+          "class_name": "create-reply",
+          "method_name": "createInlineCommentReplyRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/inline-comments/:id/replies"
+        },
+        {
+          "id": "resolve.resolveInlineCommentRouteHandlersFactory",
+          "class_name": "resolve",
+          "method_name": "resolveInlineCommentRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/inline-comments/:id/resolve"
+        },
+        {
+          "id": "update.updateInlineCommentRouteHandlersFactory",
+          "class_name": "update",
+          "method_name": "updateInlineCommentRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/inline-comments/:id"
+        },
+        {
+          "id": "update-reply.updateInlineCommentReplyRouteHandlersFactory",
+          "class_name": "update-reply",
+          "method_name": "updateInlineCommentReplyRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /_api/v3/inline-comments/replies/:id"
+        },
+        {
+          "id": "delete.deleteInlineCommentRouteHandlersFactory",
+          "class_name": "delete",
+          "method_name": "deleteInlineCommentRouteHandlersFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/inline-comments/:id"
+        },
+        {
+          "id": "delete-reply.deleteInlineCommentReplyRouteHandlersFactory",
+          "class_name": "delete-reply",
+          "method_name": "deleteInlineCommentReplyRouteHandlersFactory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /_api/v3/inline-comments/replies/:id"
+        },
+        {
+          "id": "list.listCommentsRouteHandlersFactory",
+          "class_name": "list",
+          "method_name": "listCommentsRouteHandlersFactory",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/comments"
+        },
+        {
+          "id": "user.checkUsername",
+          "class_name": "user",
+          "method_name": "checkUsername",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/v3/check-username"
+        },
+        {
+          "id": "user-activation.completeRegistrationAction",
+          "class_name": "user-activation",
+          "method_name": "completeRegistrationAction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/v3/complete-registration"
+        },
+        {
+          "id": "login-passport.loginWithGoogle",
+          "class_name": "login-passport",
+          "method_name": "loginWithGoogle",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/google"
+        },
+        {
+          "id": "login-passport.loginWithGitHub",
+          "class_name": "login-passport",
+          "method_name": "loginWithGitHub",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/github"
+        },
+        {
+          "id": "login-passport.loginWithOidc",
+          "class_name": "login-passport",
+          "method_name": "loginWithOidc",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/oidc"
+        },
+        {
+          "id": "login-passport.loginWithSaml",
+          "class_name": "login-passport",
+          "method_name": "loginWithSaml",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/saml"
+        },
+        {
+          "id": "login-passport.loginPassportGoogleCallback",
+          "class_name": "login-passport",
+          "method_name": "loginPassportGoogleCallback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/google/callback"
+        },
+        {
+          "id": "login-passport.loginPassportGitHubCallback",
+          "class_name": "login-passport",
+          "method_name": "loginPassportGitHubCallback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/github/callback"
+        },
+        {
+          "id": "login-passport.loginPassportOidcCallback",
+          "class_name": "login-passport",
+          "method_name": "loginPassportOidcCallback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /passport/oidc/callback"
+        },
+        {
+          "id": "login-passport.loginPassportSamlCallback",
+          "class_name": "login-passport",
+          "method_name": "loginPassportSamlCallback",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /passport/saml/callback"
+        },
+        {
+          "id": "login-passport.testLdapCredentials",
+          "class_name": "login-passport",
+          "method_name": "testLdapCredentials",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /_api/login/testLdap"
+        },
+        {
+          "id": "admin.download",
+          "class_name": "admin",
+          "method_name": "download",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /admin/export/:fileName"
+        },
+        {
+          "id": "search.search",
+          "class_name": "search",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/search"
+        },
+        {
+          "id": "page.getUpdatePost",
+          "class_name": "page",
+          "method_name": "getUpdatePost",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/pages.updatePost"
+        },
+        {
+          "id": "page.getPageTag",
+          "class_name": "page",
+          "method_name": "getPageTag",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/pages.getPageTag"
+        },
+        {
+          "id": "page.remove",
+          "class_name": "page",
+          "method_name": "remove",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/pages.remove"
+        },
+        {
+          "id": "page.revertRemove",
+          "class_name": "page",
+          "method_name": "revertRemove",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/pages.revertRemove"
+        },
+        {
+          "id": "page.unlink",
+          "class_name": "page",
+          "method_name": "unlink",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/pages.unlink"
+        },
+        {
+          "id": "tag.list",
+          "class_name": "tag",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/tags.list"
+        },
+        {
+          "id": "tag.search",
+          "class_name": "tag",
+          "method_name": "search",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/tags.search"
+        },
+        {
+          "id": "tag.update",
+          "class_name": "tag",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/tags.update"
+        },
+        {
+          "id": "comment.get",
+          "class_name": "comment",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /_api/comments.get"
+        },
+        {
+          "id": "comment.add",
+          "class_name": "comment",
+          "method_name": "add",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/comments.add"
+        },
+        {
+          "id": "comment.update",
+          "class_name": "comment",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/comments.update"
+        },
+        {
+          "id": "comment.remove",
+          "class_name": "comment",
+          "method_name": "remove",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/comments.remove"
+        },
+        {
+          "id": "api.uploadProfileImage",
+          "class_name": "api",
+          "method_name": "uploadProfileImage",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/attachments.uploadProfileImage"
+        },
+        {
+          "id": "api.remove",
+          "class_name": "api",
+          "method_name": "remove",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/attachments.remove"
+        },
+        {
+          "id": "api.removeProfileImage",
+          "class_name": "api",
+          "method_name": "removeProfileImage",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /_api/attachments.removeProfileImage"
+        },
+        {
+          "id": "ogp.renderOgp",
+          "class_name": "ogp",
+          "method_name": "renderOgp",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ogp/:pageId"
+        },
+        {
+          "id": "get.get_attachment_id",
+          "class_name": "get",
+          "method_name": "get_attachment_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /attachment/:id"
+        },
+        {
+          "id": "get-brand-logo.get_attachment_brand_logo",
+          "class_name": "get-brand-logo",
+          "method_name": "get_attachment_brand_logo",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /attachment/brand-logo"
+        },
+        {
+          "id": "download.get_download_id",
+          "class_name": "download",
+          "method_name": "get_download_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /download/:id"
+        },
+        {
+          "id": "vault-gateway.get_vault_git_info_refs",
+          "class_name": "vault-gateway",
+          "method_name": "get_vault_git_info_refs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /vault.git/info/refs"
+        },
+        {
+          "id": "vault-gateway.post_vault_git_git_upload_pack",
+          "class_name": "vault-gateway",
+          "method_name": "post_vault_git_git_upload_pack",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /vault.git/git-upload-pack"
+        },
+        {
+          "id": "page-markdown.respond",
+          "class_name": "page-markdown",
+          "method_name": "respond",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /*"
+        }
+      ]
+    },
+    "growi-vault-manager": {
+      "exposed_interfaces": [
+        {
+          "id": "ComposeViewController.composeView",
+          "class_name": "ComposeViewController",
+          "method_name": "composeView",
+          "param_types": [
+            "ComposeViewRequest"
+          ],
+          "return_type": "ComposeViewResponse",
+          "protocol": "REST",
+          "endpoint": "POST /internal/compose-view"
+        },
+        {
+          "id": "GitProxyController.advertiseRefs",
+          "class_name": "GitProxyController",
+          "method_name": "advertiseRefs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /internal/git/info/refs"
+        },
+        {
+          "id": "GitProxyController.uploadPack",
+          "class_name": "GitProxyController",
+          "method_name": "uploadPack",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /internal/git/git-upload-pack"
+        },
+        {
+          "id": "MaintenanceController.triggerGc",
+          "class_name": "MaintenanceController",
+          "method_name": "triggerGc",
+          "param_types": [],
+          "return_type": "GcResult",
+          "protocol": "REST",
+          "endpoint": "POST /internal/maintenance/trigger-gc"
+        },
+        {
+          "id": "StorageStatsController.getStorageStats",
+          "class_name": "StorageStatsController",
+          "method_name": "getStorageStats",
+          "param_types": [],
+          "return_type": "StorageStatsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /internal/storage-stats"
+        }
+      ]
+    },
+    "slackbot-proxy": {
+      "exposed_interfaces": [
+        {
+          "id": "SlackCtrl.handleCommand",
+          "class_name": "SlackCtrl",
+          "method_name": "handleCommand",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /slack/commands"
+        },
+        {
+          "id": "SlackCtrl.handleInteraction",
+          "class_name": "SlackCtrl",
+          "method_name": "handleInteraction",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /slack/interactions"
+        },
+        {
+          "id": "SlackCtrl.handleEvent",
+          "class_name": "SlackCtrl",
+          "method_name": "handleEvent",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /slack/events"
+        },
+        {
+          "id": "SlackCtrl.handleOauthRedirect",
+          "class_name": "SlackCtrl",
+          "method_name": "handleOauthRedirect",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /slack/oauth_redirect"
+        },
+        {
+          "id": "GrowiToSlackCtrl.getConnectionStatuses",
+          "class_name": "GrowiToSlackCtrl",
+          "method_name": "getConnectionStatuses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /g2s/connection-status"
+        },
+        {
+          "id": "GrowiToSlackCtrl.putSupportedCommands",
+          "class_name": "GrowiToSlackCtrl",
+          "method_name": "putSupportedCommands",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /g2s/supported-commands"
+        },
+        {
+          "id": "GrowiToSlackCtrl.postRelation",
+          "class_name": "GrowiToSlackCtrl",
+          "method_name": "postRelation",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /g2s/relation-test"
+        },
+        {
+          "id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+          "class_name": "GrowiToSlackCtrl",
+          "method_name": "respondUsingResponseUrl",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /g2s/respond"
+        },
+        {
+          "id": "GrowiToSlackCtrl.callSlackApi",
+          "class_name": "GrowiToSlackCtrl",
+          "method_name": "callSlackApi",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /g2s/:method"
+        },
+        {
+          "id": "TopCtrl.getTopPage",
+          "class_name": "TopCtrl",
+          "method_name": "getTopPage",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "PrivacyCtrl.getPrivacy",
+          "class_name": "PrivacyCtrl",
+          "method_name": "getPrivacy",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /privacy"
+        },
+        {
+          "id": "TermCtrl.getTerm",
+          "class_name": "TermCtrl",
+          "method_name": "getTerm",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /term"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "app",
+      "src_class": "VaultManagerClientImpl",
+      "src_method": "composeView",
+      "dst_service": "growi-vault-manager",
+      "dst_class": "ComposeViewController",
+      "dst_interface_id": "ComposeViewController.composeView",
+      "protocol": "REST",
+      "evidence": "apps/app/src/features/growi-vault/server/services/vault-manager-client.ts:95 const res = await fetch(url, {"
+    },
+    {
+      "src_service": "app",
+      "src_class": "VaultManagerClientImpl",
+      "src_method": "proxyGitRequest",
+      "dst_service": "growi-vault-manager",
+      "dst_class": "GitProxyController",
+      "dst_interface_id": "GitProxyController.advertiseRefs",
+      "protocol": "REST",
+      "evidence": "apps/app/src/features/growi-vault/server/services/vault-manager-client.ts:149 const res = await fetch(url, fetchOpts);"
+    },
+    {
+      "src_service": "app",
+      "src_class": "VaultManagerClientImpl",
+      "src_method": "proxyGitRequest",
+      "dst_service": "growi-vault-manager",
+      "dst_class": "GitProxyController",
+      "dst_interface_id": "GitProxyController.uploadPack",
+      "protocol": "REST",
+      "evidence": "apps/app/src/features/growi-vault/server/services/vault-manager-client.ts:149 const res = await fetch(url, fetchOpts);"
+    },
+    {
+      "src_service": "app",
+      "src_class": "VaultManagerClientImpl",
+      "src_method": "getStorageStats",
+      "dst_service": "growi-vault-manager",
+      "dst_class": "StorageStatsController",
+      "dst_interface_id": "StorageStatsController.getStorageStats",
+      "protocol": "REST",
+      "evidence": "apps/app/src/features/growi-vault/server/services/vault-manager-client.ts:186 const res = await fetch(url, {"
+    },
+    {
+      "src_service": "app",
+      "src_class": "request-pdf-converter",
+      "src_method": "requestPdfConverter",
+      "dst_service": "pdf-converter",
+      "dst_class": "PdfCtrl",
+      "dst_interface_id": "PdfCtrl.syncJobStatus",
+      "protocol": "REST",
+      "evidence": "apps/app/src/features/page-bulk-export/server/service/page-bulk-export-job-cron/request-pdf-converter.ts:63 const res = await pdfCtrlSyncJobStatus("
+    },
+    {
+      "src_service": "app",
+      "src_class": "slack-integration-settings",
+      "src_method": "getConnectionStatusesFromProxy",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.getConnectionStatuses",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/routes/apiv3/slack-integration-settings.js:119 const result = await axios.get("
+    },
+    {
+      "src_service": "app",
+      "src_class": "slack-integration-settings",
+      "src_method": "requestToProxyServer",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.putSupportedCommands",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/routes/apiv3/slack-integration-settings.js:139 const result = await axios[method](urljoin(proxyUri, endpoint), body, {"
+    },
+    {
+      "src_service": "app",
+      "src_class": "slack-integration-settings",
+      "src_method": "requestToProxyServer",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.postRelation",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/routes/apiv3/slack-integration-settings.js:139 const result = await axios[method](urljoin(proxyUri, endpoint), body, {"
+    },
+    {
+      "src_service": "app",
+      "src_class": "SlackIntegrationService",
+      "src_method": "postMessage",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.callSlackApi",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-integration.ts:252 await client.chat.postMessage(messageArgs);"
+    },
+    {
+      "src_service": "app",
+      "src_class": "slack-integration",
+      "src_method": "handleCommands",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/routes/apiv3/slack-integration.js:364 await respondUtil.respond({"
+    },
+    {
+      "src_service": "app",
+      "src_class": "help",
+      "src_method": "handleCommand",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-command-handler/help.js:27 await respondUtil.respond({"
+    },
+    {
+      "src_service": "app",
+      "src_class": "note",
+      "src_method": "handleCommand",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-command-handler/note.js:28 await respondUtil.respond({"
+    },
+    {
+      "src_service": "app",
+      "src_class": "keep",
+      "src_method": "handleCommand",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-command-handler/keep.js:29 await respondUtil.respond({"
+    },
+    {
+      "src_service": "app",
+      "src_class": "search",
+      "src_method": "handleCommand",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-command-handler/search.js:251 await respondUtil.respond(respondBody);"
+    },
+    {
+      "src_service": "app",
+      "src_class": "CreatePageService",
+      "src_method": "createPageInGrowi",
+      "dst_service": "slackbot-proxy",
+      "dst_class": "GrowiToSlackCtrl",
+      "dst_interface_id": "GrowiToSlackCtrl.respondUsingResponseUrl",
+      "protocol": "REST",
+      "evidence": "apps/app/src/server/service/slack-command-handler/create-page-service.js:48 await respondUtil.respond({"
+    },
+    {
+      "src_service": "slackbot-proxy",
+      "src_class": "SlackCtrl",
+      "src_method": "sendCommand",
+      "dst_service": "app",
+      "dst_class": "slack-integration",
+      "dst_interface_id": "slack-integration.post_slack_integration_proxied_commands",
+      "protocol": "REST",
+      "evidence": "apps/slackbot-proxy/src/controllers/slack.ts:140 return axios.post("
+    },
+    {
+      "src_service": "slackbot-proxy",
+      "src_class": "SlackCtrl",
+      "src_method": "handleInteraction",
+      "dst_service": "app",
+      "dst_class": "slack-integration",
+      "dst_interface_id": "slack-integration.post_slack_integration_proxied_interactions",
+      "protocol": "REST",
+      "evidence": "apps/slackbot-proxy/src/controllers/slack.ts:516 await axios.post("
+    },
+    {
+      "src_service": "slackbot-proxy",
+      "src_class": "GrowiToSlackCtrl",
+      "src_method": "urlVerificationRequestToGrowi",
+      "dst_service": "app",
+      "dst_class": "slack-integration",
+      "dst_interface_id": "slack-integration.post_slack_integration_proxied_verify",
+      "protocol": "REST",
+      "evidence": "apps/slackbot-proxy/src/controllers/growi-to-slack.ts:78 await axios.post("
+    },
+    {
+      "src_service": "slackbot-proxy",
+      "src_class": "LinkSharedService",
+      "src_method": "forwardToEachGrowiOrigin",
+      "dst_service": "app",
+      "dst_class": "slack-integration",
+      "dst_interface_id": "slack-integration.post_slack_integration_proxied_events",
+      "protocol": "REST",
+      "evidence": "apps/slackbot-proxy/src/services/LinkSharedService.ts:124 await axios.post(url.toString(), requestBody, {"
+    },
+    {
+      "src_service": "slackbot-proxy",
+      "src_class": "RelationsService",
+      "src_method": "getSupportedGrowiCommands",
+      "dst_service": "app",
+      "dst_class": "slack-integration",
+      "dst_interface_id": "slack-integration.get_slack_integration_supported_commands",
+      "protocol": "REST",
+      "evidence": "apps/slackbot-proxy/src/services/RelationsService.ts:48 return axios.get(url.toString(), {"
+    }
+  ]
+}
