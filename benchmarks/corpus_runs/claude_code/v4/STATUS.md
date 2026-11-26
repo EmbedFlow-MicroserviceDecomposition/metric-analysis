@@ -2,8 +2,8 @@
 
 Prompt: `prompts/claude_code_prompt.md` (v4.0). Extractor: Sonnet subagents, one fresh context per system, no ground-truth access.
 
-- **Extracted:** 61 systems (below)
-- **Pending:** 40 systems (codebase not downloaded: 38 repos failed to clone; MS024 partial checkout; MS083 has empty nested submodules)
+- **Extracted:** 78 systems (below)
+- **Pending:** 23 systems (codebase submodule folders still empty)
 - **No services in manifest (skipped):** 6 systems: MS002, MS058, MS065, MS099, MS108, MS111
 
 Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo's metrics, copy each file to `outputs/<MS_ID>/agent_extraction.json`.
@@ -13,25 +13,40 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 | System | Services | Interfaces | Calls | Note |
 | :--- | ---: | ---: | ---: | :--- |
 | MS001 | 5 | 14 | 6 |  |
+| MS003 | 1 | 0 | 0 | manifest's only service `build` is an nginx proxy; the Java code in `src/` is outside it |
 | MS004 | 9 | 56 | 28 |  |
+| MS007 | 8 | 20 | 11 |  |
+| MS008 | 1 | 8 | 0 |  |
 | MS009 | 4 | 10 | 0 |  |
 | MS010 | 5 | 7 | 1 |  |
 | MS011 | 2 | 2 | 0 |  |
 | MS015 | 11 | 52 | 50 |  |
 | MS016 | 9 | 18 | 33 |  |
 | MS017 | 3 | 4 | 0 |  |
+| MS018 | 2 | 3 | 0 |  |
 | MS019 | 41 | 225 | 158 |  |
 | MS020 | 4 | 11 | 3 |  |
 | MS021 | 6 | 58 | 62 |  |
+| MS022 | 6 | 246 | 7 |  |
 | MS023 | 6 | 83 | 10 |  |
+| MS024 | 2 | 0 | 0 | manifest lists a bootstrap module and a browser SPA; controllers are in sibling modules |
+| MS025 | 3 | 57 | 8 | 13 `@XxlJob` handlers counted as RPC interfaces (judgement call) |
 | MS026 | 13 | 762 | 709 |  |
+| MS027 | 1 | 0 | 0 | manifest's only service `common` is a utility library |
 | MS028 | 39 | 178 | 0 |  |
 | MS029 | 14 | 306 | 18 |  |
+| MS030 | 2 | 11 | 1 |  |
 | MS031 | 3 | 16 | 4 |  |
 | MS032 | 3 | 11 | 5 |  |
+| MS033 | 3 | 13 | 1 |  |
+| MS034 | 3 | 4 | 2 |  |
+| MS035 | 10 | 30 | 15 | possible double-counted edges (RabbitMQ bridge and `@EventHandler`) |
+| MS036 | 5 | 130 | 0 | possible undercount: a `@RepositoryRestResource` repository with no declared methods got no interfaces |
+| MS037 | 5 | 133 | 18 |  |
 | MS038 | 46 | 0 | 0 | stream-connector library: no routes, RPC servers or consumers (real zero) |
 | MS039 | 11 | 27 | 21 |  |
 | MS040 | 13 | 36 | 35 |  |
+| MS041 | 1 | 0 | 0 | only Dockerfiles and dashboard generator scripts (no application handlers) |
 | MS047 | 8 | 28 | 7 |  |
 | MS048 | 6 | 44 | 6 | MCP tools, OTLP proxy and one extension left out (judgment calls) |
 | MS049 | 3 | 64 | 1 |  |
@@ -59,8 +74,10 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 | MS079 | 7 | 30 | 0 |  |
 | MS080 | 2 | 0 | 0 | routes live in external superdesk-core, outside the manifest folders |
 | MS082 | 12 | 168 | 63 |  |
+| MS083 | 6 | 367 | 24 |  |
 | MS086 | 6 | 839 | 407 |  |
 | MS087 | 1 | 0 | 0 | only Hugo static assets |
+| MS088 | 2 | 412 | 0 | signatures are heuristic; 23 routed actions have no method |
 | MS089 | 2 | 0 | 0 | manifest lists a React SPA and static assets only; the Rails API is not a listed service |
 | MS092 | 2 | 0 | 0 | tracing library, not a service system |
 | MS093 | 1 | 0 | 0 | standalone Kafka demo scripts with CLI-supplied topics (known gap) |
@@ -76,4 +93,4 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 
 ## Pending
 
-MS003, MS007, MS008, MS018, MS022, MS024, MS025, MS027, MS030, MS033, MS034, MS035, MS036, MS037, MS041, MS042, MS043, MS044, MS045, MS046, MS056, MS057, MS060, MS061, MS062, MS077, MS081, MS083, MS084, MS085, MS088, MS090, MS091, MS095, MS096, MS097, MS103, MS104, MS105, MS109
+MS042, MS043, MS044, MS045, MS046, MS056, MS057, MS060, MS061, MS062, MS077, MS081, MS084, MS085, MS090, MS091, MS095, MS096, MS097, MS103, MS104, MS105, MS109

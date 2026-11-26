@@ -1,0 +1,166 @@
+{
+  "system_id": "MS033",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "todo-infra": {
+      "exposed_interfaces": []
+    },
+    "mail-service": {
+      "exposed_interfaces": [
+        {
+          "id": "EmailController.list",
+          "class_name": "EmailController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<Email>",
+          "protocol": "REST",
+          "endpoint": "GET /emails"
+        },
+        {
+          "id": "NotifyController.sendEmail",
+          "class_name": "NotifyController",
+          "method_name": "sendEmail",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /send/email"
+        },
+        {
+          "id": "EventInput.todoCreated",
+          "class_name": "EventInput",
+          "method_name": "todoCreated",
+          "param_types": [
+            "TodoCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "todo-mail"
+        }
+      ]
+    },
+    "remainder-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TodoController.all",
+          "class_name": "TodoController",
+          "method_name": "all",
+          "param_types": [],
+          "return_type": "List<ToDo>",
+          "protocol": "REST",
+          "endpoint": "GET /todos"
+        },
+        {
+          "id": "TodoController.getByUserEmail",
+          "class_name": "TodoController",
+          "method_name": "getByUserEmail",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<ToDo>",
+          "protocol": "REST",
+          "endpoint": "GET /todos/search"
+        },
+        {
+          "id": "TodoController.save",
+          "class_name": "TodoController",
+          "method_name": "save",
+          "param_types": [
+            "ToDo"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /todos"
+        },
+        {
+          "id": "TodoController.update",
+          "class_name": "TodoController",
+          "method_name": "update",
+          "param_types": [
+            "long",
+            "ToDo"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "PUT /todos/{id}"
+        },
+        {
+          "id": "TodoController.find",
+          "class_name": "TodoController",
+          "method_name": "find",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "GET /todos/{id}"
+        },
+        {
+          "id": "TodoController.delete",
+          "class_name": "TodoController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /todos/{id}"
+        },
+        {
+          "id": "TodoController.statusUpdate",
+          "class_name": "TodoController",
+          "method_name": "statusUpdate",
+          "param_types": [
+            "long",
+            "JsonNode"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "PUT /todos/{id}/status"
+        },
+        {
+          "id": "TodoChangesController.expose",
+          "class_name": "TodoChangesController",
+          "method_name": "expose",
+          "param_types": [],
+          "return_type": "List<TodoChangedEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /todo-changes"
+        },
+        {
+          "id": "TodoServiceStatisticsController.get",
+          "class_name": "TodoServiceStatisticsController",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "ObjectNode",
+          "protocol": "REST",
+          "endpoint": "GET /todo-statistics"
+        },
+        {
+          "id": "TodoSocketController.send",
+          "class_name": "TodoSocketController",
+          "method_name": "send",
+          "param_types": [
+            "SocketOutputMessage"
+          ],
+          "return_type": "SocketOutputMessage",
+          "protocol": "WebSocket",
+          "endpoint": "/app/socket-todos"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "remainder-service",
+      "src_class": "TodoServiceImpl",
+      "src_method": "save",
+      "dst_service": "mail-service",
+      "dst_class": "EventInput",
+      "dst_interface_id": "EventInput.todoCreated",
+      "protocol": "Messaging",
+      "evidence": "remainder-service/src/main/java/com/apssouza/services/TodoServiceImpl.java:49 this.publisher.stream(new TodoCreatedEvent(savedTodo)); -> mail-service/src/main/java/com/apssouza/mailservice/integration/reminder/EventInput.java:37"
+    }
+  ]
+}

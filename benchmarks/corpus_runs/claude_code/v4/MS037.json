@@ -1,0 +1,1673 @@
+{
+  "system_id": "MS037",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "abixen-platform-core": {
+      "exposed_interfaces": [
+        {
+          "id": "AclController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.AclController",
+          "method_name": "find",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "AclRolesPermissionsDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/acls"
+        },
+        {
+          "id": "AclController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.AclController",
+          "method_name": "update",
+          "param_types": [
+            "String",
+            "Long",
+            "AclRolesPermissionsDto"
+          ],
+          "return_type": "AclRolesPermissionsDto",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/acls"
+        },
+        {
+          "id": "PermissionController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.PermissionController",
+          "method_name": "findAll",
+          "param_types": [
+            "PermissionSearchForm"
+          ],
+          "return_type": "Page<PermissionDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/permissions"
+        },
+        {
+          "id": "ResourceController.getResources",
+          "class_name": "com.abixen.platform.core.interfaces.web.ResourceController",
+          "method_name": "getResources",
+          "param_types": [],
+          "return_type": "List<Resource>",
+          "protocol": "REST",
+          "endpoint": "GET /api/resources"
+        },
+        {
+          "id": "SecurityController.hasPermission",
+          "class_name": "com.abixen.platform.core.interfaces.web.SecurityController",
+          "method_name": "hasPermission",
+          "param_types": [
+            "String",
+            "Long",
+            "AclClassName",
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/securities/has-permission/{username}/{securableObjectId}/{aclClassName}/{permissionName}"
+        },
+        {
+          "id": "AdminLayoutController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "findAll",
+          "param_types": [
+            "LayoutSearchForm"
+          ],
+          "return_type": "Page<LayoutDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/layouts"
+        },
+        {
+          "id": "AdminLayoutController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "LayoutDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/layouts/{id}"
+        },
+        {
+          "id": "AdminLayoutController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "create",
+          "param_types": [
+            "LayoutForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<LayoutForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/layouts"
+        },
+        {
+          "id": "AdminLayoutController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "LayoutForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<LayoutForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/layouts/{id}"
+        },
+        {
+          "id": "AdminLayoutController.updateIcon",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "updateIcon",
+          "param_types": [
+            "Long",
+            "MultipartFile"
+          ],
+          "return_type": "LayoutDto",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/layouts/{id}/icon"
+        },
+        {
+          "id": "AdminLayoutController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminLayoutController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/control-panel/layouts/{id}"
+        },
+        {
+          "id": "AdminModuleTypeController.getModuleTypes",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+          "method_name": "getModuleTypes",
+          "param_types": [
+            "ModuleTypeSearchForm"
+          ],
+          "return_type": "Page<ModuleTypeDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/module-types"
+        },
+        {
+          "id": "AdminModuleTypeController.getModuleTypesAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+          "method_name": "getModuleTypes",
+          "param_types": [],
+          "return_type": "List<ModuleTypeDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/module-types/all"
+        },
+        {
+          "id": "AdminModuleTypeController.reload",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+          "method_name": "reload",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/module-types/{id}/reload"
+        },
+        {
+          "id": "AdminModuleTypeController.reloadAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+          "method_name": "reloadAll",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/module-types/reload-all"
+        },
+        {
+          "id": "AdminPageController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminPageController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PageDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/pages/{id}"
+        },
+        {
+          "id": "AdminPageController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminPageController",
+          "method_name": "findAll",
+          "param_types": [
+            "PageSearchForm"
+          ],
+          "return_type": "Page<PageDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/pages"
+        },
+        {
+          "id": "AdminPageController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminPageController",
+          "method_name": "create",
+          "param_types": [
+            "PageForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<PageForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/pages"
+        },
+        {
+          "id": "AdminPageController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminPageController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "PageForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<PageForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/pages/{id}"
+        },
+        {
+          "id": "AdminPageController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminPageController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/control-panel/pages/{id}"
+        },
+        {
+          "id": "AdminResourceController.getResources",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminResourceController",
+          "method_name": "getResources",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Page<ResourceDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/module-types/{moduleId}/resources"
+        },
+        {
+          "id": "AdminUserController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "findAll",
+          "param_types": [
+            "UserSearchForm"
+          ],
+          "return_type": "Page<UserDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/users"
+        },
+        {
+          "id": "AdminUserController.updateRoles",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "updateRoles",
+          "param_types": [
+            "Long",
+            "UserRolesForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserRolesForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/users/{id}/roles"
+        },
+        {
+          "id": "AdminUserController.findByUsername",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "find",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/users/custom/username/{username}/"
+        },
+        {
+          "id": "AdminUserController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/users/{id}"
+        },
+        {
+          "id": "AdminUserController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "create",
+          "param_types": [
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/users"
+        },
+        {
+          "id": "AdminUserController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/control-panel/users/{id}"
+        },
+        {
+          "id": "AdminUserController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/users/{id}"
+        },
+        {
+          "id": "AdminUserController.getAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "getAvatar",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/users/{id}/avatar/{hash}"
+        },
+        {
+          "id": "AdminUserController.updateAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "updateAvatar",
+          "param_types": [
+            "Long",
+            "MultipartFile"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/users/{id}/avatar"
+        },
+        {
+          "id": "AdminUserController.findRoles",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "findRoles",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserRolesForm",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/users/{id}/roles"
+        },
+        {
+          "id": "AdminUserController.changePassword",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "changePassword",
+          "param_types": [
+            "Long",
+            "UserChangePasswordForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserChangePasswordForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/users/{id}/password"
+        },
+        {
+          "id": "AdminUserController.updateSelectedLanguage",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+          "method_name": "updateSelectedLanguage",
+          "param_types": [
+            "UserLanguage"
+          ],
+          "return_type": "UserLanguage",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/users/selected-language/{selectedLanguage}"
+        },
+        {
+          "id": "ModuleController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.ModuleController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "ModuleDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/modules/{id}"
+        },
+        {
+          "id": "ModuleController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.ModuleController",
+          "method_name": "findAll",
+          "param_types": [
+            "ModuleSearchForm"
+          ],
+          "return_type": "Page<ModuleDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/modules"
+        },
+        {
+          "id": "ModuleController.updateM",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.ModuleController",
+          "method_name": "updateM",
+          "param_types": [
+            "Long",
+            "ModuleForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<ModuleForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/modules/{id}"
+        },
+        {
+          "id": "RoleController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "findAll",
+          "param_types": [
+            "RoleSearchForm"
+          ],
+          "return_type": "Page<RoleDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/roles"
+        },
+        {
+          "id": "RoleController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "RoleDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/roles/{id}"
+        },
+        {
+          "id": "RoleController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "create",
+          "param_types": [
+            "RoleForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<RoleForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/control-panel/roles"
+        },
+        {
+          "id": "RoleController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "RoleForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<RoleForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/roles/{id}"
+        },
+        {
+          "id": "RoleController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/control-panel/roles/{id}"
+        },
+        {
+          "id": "RoleController.findPermissions",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "findPermissions",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "RolePermissionsForm",
+          "protocol": "REST",
+          "endpoint": "GET /api/control-panel/roles/{id}/permissions"
+        },
+        {
+          "id": "RoleController.updatePermissions",
+          "class_name": "com.abixen.platform.core.interfaces.web.admin.RoleController",
+          "method_name": "updatePermissions",
+          "param_types": [
+            "Long",
+            "RolePermissionsForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<RolePermissionsForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/control-panel/roles/{id}/permissions"
+        },
+        {
+          "id": "ApplicationLayoutController.findAllDashboardLayouts",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationLayoutController",
+          "method_name": "findAllDashboardLayouts",
+          "param_types": [],
+          "return_type": "List<LayoutDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/layouts"
+        },
+        {
+          "id": "ApplicationModuleTypeController.getModuleTypes",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationModuleTypeController",
+          "method_name": "getModuleTypes",
+          "param_types": [],
+          "return_type": "List<ModuleTypeDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/module-types"
+        },
+        {
+          "id": "ApplicationPageController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationPageController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<PageDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/pages"
+        },
+        {
+          "id": "ApplicationPageController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationPageController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/application/pages/{id}"
+        },
+        {
+          "id": "ApplicationUserActivationController.activate",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserActivationController",
+          "method_name": "activate",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/user-activation/activate/{userHashKey}/"
+        },
+        {
+          "id": "ApplicationUserController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/users/{id}"
+        },
+        {
+          "id": "ApplicationUserController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "create",
+          "param_types": [
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/application/users"
+        },
+        {
+          "id": "ApplicationUserController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/application/users/{id}"
+        },
+        {
+          "id": "ApplicationUserController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/application/users/{id}"
+        },
+        {
+          "id": "ApplicationUserController.getAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "getAvatar",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/users/{id}/avatar/{hash}"
+        },
+        {
+          "id": "ApplicationUserController.updateAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "updateAvatar",
+          "param_types": [
+            "Long",
+            "MultipartFile"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "POST /api/application/users/{id}/avatar"
+        },
+        {
+          "id": "ApplicationUserController.findRoles",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "findRoles",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserRolesForm",
+          "protocol": "REST",
+          "endpoint": "GET /api/application/users/{id}/roles"
+        },
+        {
+          "id": "ApplicationUserController.changePassword",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "changePassword",
+          "param_types": [
+            "Long",
+            "UserChangePasswordForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserChangePasswordForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/application/users/{id}/password"
+        },
+        {
+          "id": "ApplicationUserController.updateSelectedLanguage",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.ApplicationUserController",
+          "method_name": "updateSelectedLanguage",
+          "param_types": [
+            "UserLanguage"
+          ],
+          "return_type": "UserLanguage",
+          "protocol": "REST",
+          "endpoint": "PUT /api/application/users/selected-language/{selectedLanguage}"
+        },
+        {
+          "id": "CommentController.findAll",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentController",
+          "method_name": "findAll",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<ModuleCommentDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/comments"
+        },
+        {
+          "id": "CommentController.createComment",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentController",
+          "method_name": "createComment",
+          "param_types": [
+            "CommentForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<CommentForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/comments"
+        },
+        {
+          "id": "CommentController.updateComment",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentController",
+          "method_name": "updateComment",
+          "param_types": [
+            "CommentForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<CommentForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/comments/{id}"
+        },
+        {
+          "id": "CommentController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/comments/{id}"
+        },
+        {
+          "id": "CommentVoteController.createCommentVote",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentVoteController",
+          "method_name": "createCommentVote",
+          "param_types": [
+            "CommentVoteForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<CommentVoteForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/comment-votes"
+        },
+        {
+          "id": "CommentVoteController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.CommentVoteController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/comment-votes/{id}"
+        },
+        {
+          "id": "DashboardController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.DashboardController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "DashboardDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/page-configurations/{id}"
+        },
+        {
+          "id": "DashboardController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.DashboardController",
+          "method_name": "create",
+          "param_types": [
+            "DashboardForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DashboardForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/page-configurations"
+        },
+        {
+          "id": "DashboardController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.DashboardController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "DashboardForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DashboardForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/page-configurations/{id}"
+        },
+        {
+          "id": "DashboardController.configure",
+          "class_name": "com.abixen.platform.core.interfaces.web.application.DashboardController",
+          "method_name": "configure",
+          "param_types": [
+            "Long",
+            "DashboardForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DashboardForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/page-configurations/{id}/configure"
+        },
+        {
+          "id": "EnumController.getRoles",
+          "class_name": "com.abixen.platform.core.interfaces.web.common.EnumController",
+          "method_name": "getRoles",
+          "param_types": [],
+          "return_type": "List<RoleType>",
+          "protocol": "REST",
+          "endpoint": "GET /api/dictionary/enum/roleType"
+        },
+        {
+          "id": "ImageLibraryController.getImage",
+          "class_name": "com.abixen.platform.core.interfaces.web.common.ImageLibraryController",
+          "method_name": "getImage",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/images/layout/{fileName}/"
+        },
+        {
+          "id": "IntranetUserController.find",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "find",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "GET /api-intranet/users/{id}"
+        },
+        {
+          "id": "IntranetUserController.create",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "create",
+          "param_types": [
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api-intranet/users"
+        },
+        {
+          "id": "IntranetUserController.delete",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api-intranet/users/{id}"
+        },
+        {
+          "id": "IntranetUserController.update",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UserForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api-intranet/users/{id}"
+        },
+        {
+          "id": "IntranetUserController.getAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "getAvatar",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api-intranet/users/{id}/avatar/{hash}"
+        },
+        {
+          "id": "IntranetUserController.updateAvatar",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "updateAvatar",
+          "param_types": [
+            "Long",
+            "MultipartFile"
+          ],
+          "return_type": "UserDto",
+          "protocol": "REST",
+          "endpoint": "POST /api-intranet/users/{id}/avatar"
+        },
+        {
+          "id": "IntranetUserController.findRoles",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "findRoles",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UserRolesForm",
+          "protocol": "REST",
+          "endpoint": "GET /api-intranet/users/{id}/roles"
+        },
+        {
+          "id": "IntranetUserController.changePassword",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "changePassword",
+          "param_types": [
+            "Long",
+            "UserChangePasswordForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<UserChangePasswordForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api-intranet/users/{id}/password"
+        },
+        {
+          "id": "IntranetUserController.updateSelectedLanguage",
+          "class_name": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+          "method_name": "updateSelectedLanguage",
+          "param_types": [
+            "UserLanguage"
+          ],
+          "return_type": "UserLanguage",
+          "protocol": "REST",
+          "endpoint": "PUT /api-intranet/users/selected-language/{selectedLanguage}"
+        }
+      ]
+    },
+    "abixen-platform-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "SecurityController.user",
+          "class_name": "com.abixen.platform.gateway.controller.SecurityController",
+          "method_name": "user",
+          "param_types": [],
+          "return_type": "PlatformWebUser",
+          "protocol": "REST",
+          "endpoint": "GET /user"
+        }
+      ]
+    },
+    "abixen-platform-business-intelligence-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ConfigurationController.getModulesConfigurationProperties",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.client.ConfigurationController",
+          "method_name": "getModulesConfigurationProperties",
+          "param_types": [],
+          "return_type": "BusinessIntelligenceServiceConfigurationProperties",
+          "protocol": "REST",
+          "endpoint": "GET /api/configuration"
+        },
+        {
+          "id": "ChartDataController.findDataForChart",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartDataController",
+          "method_name": "findDataForChart",
+          "param_types": [
+            "String",
+            "ChartConfigurationForm"
+          ],
+          "return_type": "List<Map<String,DataValueDto>>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/application/multi-visualisation/data/{seriesName}"
+        },
+        {
+          "id": "ChartDataController.findDataForChartAll",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartDataController",
+          "method_name": "findDataForChart",
+          "param_types": [
+            "ChartConfigurationForm"
+          ],
+          "return_type": "List<Map<String,DataValueDto>>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/application/multi-visualisation/data"
+        },
+        {
+          "id": "ChartInitController.init",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartInitController",
+          "method_name": "init",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PlatformWebUser",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/application/multi-visualisation/{id}"
+        },
+        {
+          "id": "ChartModuleConfigurationController.findChartConfigurationForm",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartModuleConfigurationController",
+          "method_name": "findChartConfigurationForm",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "ChartConfigurationForm",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/application/multi-visualisation/configuration/{moduleId}"
+        },
+        {
+          "id": "ChartModuleConfigurationController.createChartConfiguration",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartModuleConfigurationController",
+          "method_name": "createChartConfiguration",
+          "param_types": [
+            "ChartConfigurationForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<ChartConfigurationForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/application/multi-visualisation/configuration"
+        },
+        {
+          "id": "ChartModuleConfigurationController.updateChartConfiguration",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.ChartModuleConfigurationController",
+          "method_name": "updateChartConfiguration",
+          "param_types": [
+            "Long",
+            "ChartConfigurationForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<ChartConfigurationForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/business-intelligence/application/multi-visualisation/configuration/{id}"
+        },
+        {
+          "id": "DataFileController.findAllDataFile",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "findAllDataFile",
+          "param_types": [],
+          "return_type": "Page<DataFileDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data"
+        },
+        {
+          "id": "DataFileController.findDataFile",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "findDataFile",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "DataFileDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data/{id}"
+        },
+        {
+          "id": "DataFileController.createDataFile",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "createDataFile",
+          "param_types": [
+            "DataFileForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DataFileForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data"
+        },
+        {
+          "id": "DataFileController.updateDataFile",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "updateDataFile",
+          "param_types": [
+            "Long",
+            "DataFileForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DataFileForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data/{id}"
+        },
+        {
+          "id": "DataFileController.findTableColumns",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "findTableColumns",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<DataSourceColumnDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data/{id}/columns"
+        },
+        {
+          "id": "DataFileController.uploadAndParseFile",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "uploadAndParseFile",
+          "param_types": [
+            "Boolean",
+            "MultipartFile"
+          ],
+          "return_type": "FileParserMessage<DataFileColumnDto>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data/parse/{readFirstColumnAsColumnName}"
+        },
+        {
+          "id": "DataFileController.deleteFileData",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataFileController",
+          "method_name": "deleteFileData",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/business-intelligence/control-panel/multi-visualisation/file-data/{id}"
+        },
+        {
+          "id": "DataSourceController.findAllDataSources",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "findAllDataSources",
+          "param_types": [
+            "DataSourceType"
+          ],
+          "return_type": "Page<DataSourceDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources"
+        },
+        {
+          "id": "DataSourceController.findDataSource",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "findDataSource",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "DataSourceDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources/{id}"
+        },
+        {
+          "id": "DataSourceController.createDataSource",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "createDataSource",
+          "param_types": [
+            "DataSourceForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DataSourceForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources"
+        },
+        {
+          "id": "DataSourceController.updateDataSource",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "updateDataSource",
+          "param_types": [
+            "Long",
+            "DataSourceForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DataSourceForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources/{id}"
+        },
+        {
+          "id": "DataSourceController.findPreviewData",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "findPreviewData",
+          "param_types": [
+            "DataSourceForm"
+          ],
+          "return_type": "List<Map<String,DataValueDto>>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources/preview"
+        },
+        {
+          "id": "DataSourceController.deleteDataSource",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DataSourceController",
+          "method_name": "deleteDataSource",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/business-intelligence/control-panel/multi-visualisation/data-sources/{id}"
+        },
+        {
+          "id": "DatabaseConnectionController.findAllDatabaseConnections",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "findAllDatabaseConnections",
+          "param_types": [],
+          "return_type": "Page<DatabaseConnectionDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections"
+        },
+        {
+          "id": "DatabaseConnectionController.findDatabaseConnection",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "findDatabaseConnection",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "DatabaseConnectionDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/{id}"
+        },
+        {
+          "id": "DatabaseConnectionController.createDatabaseConnection",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "createDatabaseConnection",
+          "param_types": [
+            "DatabaseConnectionForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DatabaseConnectionForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections"
+        },
+        {
+          "id": "DatabaseConnectionController.updateDatabaseConnection",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "updateDatabaseConnection",
+          "param_types": [
+            "Long",
+            "DatabaseConnectionForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DatabaseConnectionForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/{id}"
+        },
+        {
+          "id": "DatabaseConnectionController.deleteDatabaseConnection",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "deleteDatabaseConnection",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/{id}"
+        },
+        {
+          "id": "DatabaseConnectionController.testDatabaseConnection",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "testDatabaseConnection",
+          "param_types": [
+            "DatabaseConnectionForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<DatabaseConnectionForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/test"
+        },
+        {
+          "id": "DatabaseConnectionController.findTables",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "findTables",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/{id}/tables"
+        },
+        {
+          "id": "DatabaseConnectionController.findTableColumns",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.web.DatabaseConnectionController",
+          "method_name": "findTableColumns",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "List<DataSourceColumnDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/business-intelligence/control-panel/multi-visualisation/database-connections/{id}/tables/{tableName}/columns"
+        },
+        {
+          "id": "DeleteModuleConsumer.consume",
+          "class_name": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.amqp.DeleteModuleConsumer",
+          "method_name": "consume",
+          "param_types": [
+            "DeleteModuleCommand"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "module.core.dx"
+        }
+      ]
+    },
+    "abixen-platform-web-client": {
+      "exposed_interfaces": []
+    },
+    "abixen-platform-web-content-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ApplicationWebContentController.findWebContent",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ApplicationWebContentController",
+          "method_name": "findWebContent",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "WebContentDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/application/web-contents/{id}"
+        },
+        {
+          "id": "ApplicationWebContentController.findWebContents",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ApplicationWebContentController",
+          "method_name": "findWebContents",
+          "param_types": [],
+          "return_type": "Page<WebContentDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/application/web-contents"
+        },
+        {
+          "id": "ConfigurationController.getWebContentServiceConfigurationProperties",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ConfigurationController",
+          "method_name": "getWebContentServiceConfigurationProperties",
+          "param_types": [],
+          "return_type": "WebContentServiceConfigurationProperties",
+          "protocol": "REST",
+          "endpoint": "GET /api/configuration"
+        },
+        {
+          "id": "ControlPanelWebContentController.findWebContent",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ControlPanelWebContentController",
+          "method_name": "findWebContent",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "WebContentDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/web-contents/{id}"
+        },
+        {
+          "id": "ControlPanelWebContentController.createWebContent",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ControlPanelWebContentController",
+          "method_name": "createWebContent",
+          "param_types": [
+            "WebContentForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<WebContentForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/web-content/control-panel/web-contents"
+        },
+        {
+          "id": "ControlPanelWebContentController.updateWebContent",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ControlPanelWebContentController",
+          "method_name": "updateWebContent",
+          "param_types": [
+            "Long",
+            "WebContentForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<WebContentForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/web-content/control-panel/web-contents/{id}"
+        },
+        {
+          "id": "ControlPanelWebContentController.deleteWebContent",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ControlPanelWebContentController",
+          "method_name": "deleteWebContent",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/web-content/control-panel/web-contents/{id}"
+        },
+        {
+          "id": "ControlPanelWebContentController.findWebContents",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.ControlPanelWebContentController",
+          "method_name": "findWebContents",
+          "param_types": [],
+          "return_type": "Page<WebContentDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/web-contents"
+        },
+        {
+          "id": "StructureController.createStructure",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "createStructure",
+          "param_types": [
+            "StructureForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<StructureForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/web-content/control-panel/structures"
+        },
+        {
+          "id": "StructureController.updateStructure",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "updateStructure",
+          "param_types": [
+            "Long",
+            "StructureForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<StructureForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/web-content/control-panel/structures/{id}"
+        },
+        {
+          "id": "StructureController.deleteStructure",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "deleteStructure",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/web-content/control-panel/structures/{id}"
+        },
+        {
+          "id": "StructureController.getStructure",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "getStructure",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "StructureDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/structures/{id}"
+        },
+        {
+          "id": "StructureController.getStructures",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "getStructures",
+          "param_types": [],
+          "return_type": "Page<StructureDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/structures"
+        },
+        {
+          "id": "StructureController.getAllStructures",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.StructureController",
+          "method_name": "getAllStructures",
+          "param_types": [],
+          "return_type": "List<StructureDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/structures/all"
+        },
+        {
+          "id": "TemplateController.createTemplate",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "createTemplate",
+          "param_types": [
+            "TemplateForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<TemplateForm>",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/web-content/control-panel/templates"
+        },
+        {
+          "id": "TemplateController.updateTemplate",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "updateTemplate",
+          "param_types": [
+            "Long",
+            "TemplateForm"
+          ],
+          "return_type": "FormValidationResultRepresentation<TemplateForm>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/web-content/control-panel/templates/{id}"
+        },
+        {
+          "id": "TemplateController.deleteTemplate",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "deleteTemplate",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/service/abixen/web-content/control-panel/templates/{id}"
+        },
+        {
+          "id": "TemplateController.getTemplate",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "getTemplate",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "TemplateDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/templates/{id}"
+        },
+        {
+          "id": "TemplateController.getTemplateVariables",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "getTemplateVariables",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/templates/{id}/variables"
+        },
+        {
+          "id": "TemplateController.getTemplates",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "getTemplates",
+          "param_types": [],
+          "return_type": "Page<TemplateDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/templates"
+        },
+        {
+          "id": "TemplateController.getTemplatesAll",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.TemplateController",
+          "method_name": "getTemplates",
+          "param_types": [],
+          "return_type": "List<TemplateDto>",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/control-panel/templates/all"
+        },
+        {
+          "id": "WebContentModuleConfigurationController.findWebContentModuleConfig",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.WebContentModuleConfigurationController",
+          "method_name": "findWebContentModuleConfig",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "WebContentModuleConfigurationDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/service/abixen/web-content/application/web-content-module-config/{moduleId}"
+        },
+        {
+          "id": "WebContentModuleConfigurationController.createWebContentModuleConfig",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.WebContentModuleConfigurationController",
+          "method_name": "createWebContentModuleConfig",
+          "param_types": [
+            "WebContentModuleConfigForm"
+          ],
+          "return_type": "WebContentModuleConfigurationDto",
+          "protocol": "REST",
+          "endpoint": "POST /api/service/abixen/web-content/application/web-content-module-config"
+        },
+        {
+          "id": "WebContentModuleConfigurationController.updateWebContentModuleConfig",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.web.WebContentModuleConfigurationController",
+          "method_name": "updateWebContentModuleConfig",
+          "param_types": [
+            "WebContentModuleConfigForm"
+          ],
+          "return_type": "WebContentModuleConfigurationDto",
+          "protocol": "REST",
+          "endpoint": "PUT /api/service/abixen/web-content/application/web-content-module-config/{moduleId}"
+        },
+        {
+          "id": "DeleteModuleConsumer.consume",
+          "class_name": "com.abixen.platform.service.webcontent.interfaces.amqp.DeleteModuleConsumer",
+          "method_name": "consume",
+          "param_types": [
+            "DeleteModuleCommand"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "module.core.dx"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "abixen-platform-gateway",
+      "src_class": "com.abixen.platform.gateway.integration.UserIntegrationClient",
+      "src_method": "getUserByUsername",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.admin.AdminUserController",
+      "dst_interface_id": "AdminUserController.findByUsername",
+      "protocol": "REST",
+      "evidence": "abixen-platform-gateway/src/main/java/com/abixen/platform/gateway/integration/UserIntegrationClient.java:37 .uri(\"http://abixen-platform-core/api/control-panel/users/custom/username/{username}/\", username)"
+    },
+    {
+      "src_service": "abixen-platform-web-client",
+      "src_class": "com.abixen.platform.client.web.controller.AdminViewController",
+      "src_method": "renderAdminPage",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+      "dst_interface_id": "AdminModuleTypeController.getModuleTypesAll",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-client/src/main/java/com/abixen/platform/client/web/controller/AdminViewController.java:45 moduleTypeHystrixClient.getAllModuleTypes()"
+    },
+    {
+      "src_service": "abixen-platform-web-client",
+      "src_class": "com.abixen.platform.client.web.controller.ApplicationViewController",
+      "src_method": "renderApplicationPage",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.admin.AdminModuleTypeController",
+      "dst_interface_id": "AdminModuleTypeController.getModuleTypesAll",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-client/src/main/java/com/abixen/platform/client/web/controller/ApplicationViewController.java:44 moduleTypeHystrixClient.getAllModuleTypes()"
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.application.service.ModuleTypeService",
+      "src_method": "reload",
+      "dst_service": "abixen-platform-business-intelligence-service",
+      "dst_class": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.client.ConfigurationController",
+      "dst_interface_id": "ConfigurationController.getModulesConfigurationProperties",
+      "protocol": "REST",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/application/service/ModuleTypeService.java:116 getModulesConfigurationProperties(moduleType.getServiceId())"
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.application.service.ModuleTypeService",
+      "src_method": "reload",
+      "dst_service": "abixen-platform-web-content-service",
+      "dst_class": "com.abixen.platform.service.webcontent.interfaces.web.ConfigurationController",
+      "dst_interface_id": "ConfigurationController.getWebContentServiceConfigurationProperties",
+      "protocol": "REST",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/application/service/ModuleTypeService.java:116 getModulesConfigurationProperties(moduleType.getServiceId())"
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.application.service.ModuleTypeService",
+      "src_method": "reloadAll",
+      "dst_service": "abixen-platform-business-intelligence-service",
+      "dst_class": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.client.ConfigurationController",
+      "dst_interface_id": "ConfigurationController.getModulesConfigurationProperties",
+      "protocol": "REST",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/application/service/ModuleTypeService.java:135 getModulesConfigurationProperties(service.getServiceId())"
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.application.service.ModuleTypeService",
+      "src_method": "reloadAll",
+      "dst_service": "abixen-platform-web-content-service",
+      "dst_class": "com.abixen.platform.service.webcontent.interfaces.web.ConfigurationController",
+      "dst_interface_id": "ConfigurationController.getWebContentServiceConfigurationProperties",
+      "protocol": "REST",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/application/service/ModuleTypeService.java:135 getModulesConfigurationProperties(service.getServiceId())"
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.interfaces.amqp.AmqpDeleteModuleService",
+      "src_method": "delete",
+      "dst_service": "abixen-platform-business-intelligence-service",
+      "dst_class": "com.abixen.platform.service.businessintelligence.multivisualisation.interfaces.amqp.DeleteModuleConsumer",
+      "dst_interface_id": "DeleteModuleConsumer.consume",
+      "protocol": "Messaging",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/interfaces/amqp/AmqpDeleteModuleService.java:43 deleteModuleSource.output().send("
+    },
+    {
+      "src_service": "abixen-platform-core",
+      "src_class": "com.abixen.platform.core.interfaces.amqp.AmqpDeleteModuleService",
+      "src_method": "delete",
+      "dst_service": "abixen-platform-web-content-service",
+      "dst_class": "com.abixen.platform.service.webcontent.interfaces.amqp.DeleteModuleConsumer",
+      "dst_interface_id": "DeleteModuleConsumer.consume",
+      "protocol": "Messaging",
+      "evidence": "abixen-platform-core/src/main/java/com/abixen/platform/core/interfaces/amqp/AmqpDeleteModuleService.java:43 deleteModuleSource.output().send("
+    },
+    {
+      "src_service": "abixen-platform-business-intelligence-service",
+      "src_class": "com.abixen.platform.service.businessintelligence.multivisualisation.application.converter.DataFileToDataFileDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-business-intelligence-service/src/main/java/com/abixen/platform/service/businessintelligence/multivisualisation/application/converter/DataFileToDataFileDtoConverter.java:52 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-business-intelligence-service",
+      "src_class": "com.abixen.platform.service.businessintelligence.multivisualisation.application.converter.DatabaseConnectionToDatabaseConnectionDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-business-intelligence-service/src/main/java/com/abixen/platform/service/businessintelligence/multivisualisation/application/converter/DatabaseConnectionToDatabaseConnectionDtoConverter.java:55 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-business-intelligence-service",
+      "src_class": "com.abixen.platform.service.businessintelligence.multivisualisation.application.converter.DatabaseDataSourceToDatabaseDataSourceDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-business-intelligence-service/src/main/java/com/abixen/platform/service/businessintelligence/multivisualisation/application/converter/DatabaseDataSourceToDatabaseDataSourceDtoConverter.java:64 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-business-intelligence-service",
+      "src_class": "com.abixen.platform.service.businessintelligence.multivisualisation.application.converter.FileDataSourceToFileDataSourceDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-business-intelligence-service/src/main/java/com/abixen/platform/service/businessintelligence/multivisualisation/application/converter/FileDataSourceToFileDataSourceDtoConverter.java:61 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-web-content-service",
+      "src_class": "com.abixen.platform.service.webcontent.application.converter.StructureToStructureDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-content-service/src/main/java/com/abixen/platform/service/webcontent/application/converter/StructureToStructureDtoConverter.java:48 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-web-content-service",
+      "src_class": "com.abixen.platform.service.webcontent.application.converter.TemplateToTemplateDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-content-service/src/main/java/com/abixen/platform/service/webcontent/application/converter/TemplateToTemplateDtoConverter.java:42 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-web-content-service",
+      "src_class": "com.abixen.platform.service.webcontent.application.converter.WebContentModuleConfigurationToWebContentModuleConfigurationDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-content-service/src/main/java/com/abixen/platform/service/webcontent/application/converter/WebContentModuleConfigurationToWebContentModuleConfigurationDtoConverter.java:47 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-web-content-service",
+      "src_class": "com.abixen.platform.service.webcontent.application.converter.WebContentToWebContentDtoConverter",
+      "src_method": "convert",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-content-service/src/main/java/com/abixen/platform/service/webcontent/application/converter/WebContentToWebContentDtoConverter.java:71 auditingModelToSimpleAuditingDtoConverter.convert("
+    },
+    {
+      "src_service": "abixen-platform-web-content-service",
+      "src_class": "com.abixen.platform.service.webcontent.application.service.WebContentAssemblingService",
+      "src_method": "assembleAdvanceWebContent",
+      "dst_service": "abixen-platform-core",
+      "dst_class": "com.abixen.platform.core.interfaces.web.intranet.IntranetUserController",
+      "dst_interface_id": "IntranetUserController.find",
+      "protocol": "REST",
+      "evidence": "abixen-platform-web-content-service/src/main/java/com/abixen/platform/service/webcontent/application/service/WebContentAssemblingService.java:94 auditingModelToSimpleAuditingDtoConverter.convert("
+    }
+  ]
+}

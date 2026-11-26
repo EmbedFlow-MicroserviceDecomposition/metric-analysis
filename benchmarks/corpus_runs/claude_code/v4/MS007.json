@@ -1,0 +1,376 @@
+{
+  "system_id": "MS007",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "review-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ReviewEndpoint.getReviews",
+          "class_name": "com.redhat.coolstore.rest.ReviewEndpoint",
+          "method_name": "getReviews",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Review>",
+          "protocol": "REST",
+          "endpoint": "GET /api/review/{itemId}"
+        }
+      ]
+    },
+    "pricing-service": {
+      "exposed_interfaces": []
+    },
+    "coolstore-ui": {
+      "exposed_interfaces": []
+    },
+    "catalog-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CatalogEndpoint.listAll",
+          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "CatalogEndpoint.add",
+          "class_name": "com.redhat.coolstore.rest.CatalogEndpoint",
+          "method_name": "add",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/products"
+        }
+      ]
+    },
+    "cart-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CartEndpoint.getCart",
+          "class_name": "com.redhat.coolstore.rest.CartEndpoint",
+          "method_name": "getCart",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "GET /api/cart/{cartId}"
+        },
+        {
+          "id": "CartEndpoint.add",
+          "class_name": "com.redhat.coolstore.rest.CartEndpoint",
+          "method_name": "add",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/{cartId}/{itemId}/{quantity}"
+        },
+        {
+          "id": "CartEndpoint.set",
+          "class_name": "com.redhat.coolstore.rest.CartEndpoint",
+          "method_name": "set",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/{cartId}/{tmpId}"
+        },
+        {
+          "id": "CartEndpoint.delete",
+          "class_name": "com.redhat.coolstore.rest.CartEndpoint",
+          "method_name": "delete",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/cart/{cartId}/{itemId}/{quantity}"
+        },
+        {
+          "id": "CartEndpoint.checkout",
+          "class_name": "com.redhat.coolstore.rest.CartEndpoint",
+          "method_name": "checkout",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/checkout/{cartId}"
+        }
+      ]
+    },
+    "rating-service": {
+      "exposed_interfaces": [
+        {
+          "id": "ApiVerticle.getRatings",
+          "class_name": "com.redhat.coolstore.rating.api.ApiVerticle",
+          "method_name": "getRatings",
+          "param_types": [],
+          "return_type": "List<Rating>",
+          "protocol": "REST",
+          "endpoint": "GET /api/ratings"
+        },
+        {
+          "id": "ApiVerticle.getRating",
+          "class_name": "com.redhat.coolstore.rating.api.ApiVerticle",
+          "method_name": "getRating",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Rating",
+          "protocol": "REST",
+          "endpoint": "GET /api/rating/{itemId}"
+        },
+        {
+          "id": "ApiVerticle.addRating",
+          "class_name": "com.redhat.coolstore.rating.api.ApiVerticle",
+          "method_name": "addRating",
+          "param_types": [
+            "String",
+            "double"
+          ],
+          "return_type": "Rating",
+          "protocol": "REST",
+          "endpoint": "POST /api/rating/{itemId}/{rating}"
+        }
+      ]
+    },
+    "coolstore-gw": {
+      "exposed_interfaces": [
+        {
+          "id": "CartGateway.post_cart_checkout_cartid",
+          "class_name": "com.redhat.coolstore.api_gateway.CartGateway",
+          "method_name": "post_cart_checkout_cartid",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/checkout/{cartId}"
+        },
+        {
+          "id": "CartGateway.get_cart_cartid",
+          "class_name": "com.redhat.coolstore.api_gateway.CartGateway",
+          "method_name": "get_cart_cartid",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "GET /api/cart/{cartId}"
+        },
+        {
+          "id": "CartGateway.delete_cart_cartid_itemid_quantity",
+          "class_name": "com.redhat.coolstore.api_gateway.CartGateway",
+          "method_name": "delete_cart_cartid_itemid_quantity",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/cart/{cartId}/{itemId}/{quantity}"
+        },
+        {
+          "id": "CartGateway.post_cart_cartid_itemid_quantity",
+          "class_name": "com.redhat.coolstore.api_gateway.CartGateway",
+          "method_name": "post_cart_cartid_itemid_quantity",
+          "param_types": [
+            "String",
+            "String",
+            "int"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/{cartId}/{itemId}/{quantity}"
+        },
+        {
+          "id": "CartGateway.post_cart_cartid_tmpid",
+          "class_name": "com.redhat.coolstore.api_gateway.CartGateway",
+          "method_name": "post_cart_cartid_tmpid",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart/{cartId}/{tmpId}"
+        },
+        {
+          "id": "ProductGateway.get_products",
+          "class_name": "com.redhat.coolstore.api_gateway.ProductGateway",
+          "method_name": "get_products",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "RatingGateway.post_rating_itemid_rating",
+          "class_name": "com.redhat.coolstore.api_gateway.RatingGateway",
+          "method_name": "post_rating_itemid_rating",
+          "param_types": [
+            "String",
+            "int"
+          ],
+          "return_type": "Rating",
+          "protocol": "REST",
+          "endpoint": "POST /api/rating/{itemId}/{rating}"
+        },
+        {
+          "id": "ReviewGateway.get_review_itemid",
+          "class_name": "com.redhat.coolstore.api_gateway.ReviewGateway",
+          "method_name": "get_review_itemid",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Review>",
+          "protocol": "REST",
+          "endpoint": "GET /api/review/{itemId}"
+        }
+      ]
+    },
+    "inventory-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AvailabilityEndpoint.getAvailability",
+          "class_name": "com.redhat.coolstore.rest.AvailabilityEndpoint",
+          "method_name": "getAvailability",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Inventory",
+          "protocol": "REST",
+          "endpoint": "GET /api/availability/{itemId}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.CartGateway",
+      "src_method": "configure",
+      "dst_service": "cart-service",
+      "dst_class": "com.redhat.coolstore.rest.CartEndpoint",
+      "dst_interface_id": "CartEndpoint.checkout",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/CartGateway.java:107 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:CART_ENDPOINT:cart:8080}}/api/cart/checkout/${header.cartId}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.CartGateway",
+      "src_method": "configure",
+      "dst_service": "cart-service",
+      "dst_class": "com.redhat.coolstore.rest.CartEndpoint",
+      "dst_interface_id": "CartEndpoint.getCart",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/CartGateway.java:131 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:CART_ENDPOINT:cart:8080}}/api/cart/${header.cartId}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.CartGateway",
+      "src_method": "configure",
+      "dst_service": "cart-service",
+      "dst_class": "com.redhat.coolstore.rest.CartEndpoint",
+      "dst_interface_id": "CartEndpoint.delete",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/CartGateway.java:157 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:CART_ENDPOINT:cart:8080}}/api/cart/${header.cartId}/${header.itemId}/${header.quantity}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.CartGateway",
+      "src_method": "configure",
+      "dst_service": "cart-service",
+      "dst_class": "com.redhat.coolstore.rest.CartEndpoint",
+      "dst_interface_id": "CartEndpoint.add",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/CartGateway.java:183 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:CART_ENDPOINT:cart:8080}}/api/cart/${header.cartId}/${header.itemId}/${header.quantity}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.CartGateway",
+      "src_method": "configure",
+      "dst_service": "cart-service",
+      "dst_class": "com.redhat.coolstore.rest.CartEndpoint",
+      "dst_interface_id": "CartEndpoint.set",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/CartGateway.java:208 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:CART_ENDPOINT:cart:8080}}/api/cart/${header.cartId}/${header.tmpId}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.ProductGateway",
+      "src_method": "configure",
+      "dst_service": "catalog-service",
+      "dst_class": "com.redhat.coolstore.rest.CatalogEndpoint",
+      "dst_interface_id": "CatalogEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/ProductGateway.java:88 .recipientList(simple(\"http4://{{env:CATALOG_ENDPOINT:catalog:8080}}/api/products\")).end()"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.ProductGateway",
+      "src_method": "configure",
+      "dst_service": "inventory-service",
+      "dst_class": "com.redhat.coolstore.rest.AvailabilityEndpoint",
+      "dst_interface_id": "AvailabilityEndpoint.getAvailability",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/ProductGateway.java:125 .recipientList(simple(\"http4://{{env:INVENTORY_ENDPOINT:inventory:8080}}/api/availability/${header.itemId}\")).end()"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.ProductGateway",
+      "src_method": "configure",
+      "dst_service": "rating-service",
+      "dst_class": "com.redhat.coolstore.rating.api.ApiVerticle",
+      "dst_interface_id": "ApiVerticle.getRating",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/ProductGateway.java:148 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:RATING_ENDPOINT:rating:8080}}/api/rating/${header.itemId}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.RatingGateway",
+      "src_method": "configure",
+      "dst_service": "rating-service",
+      "dst_class": "com.redhat.coolstore.rating.api.ApiVerticle",
+      "dst_interface_id": "ApiVerticle.addRating",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/RatingGateway.java:91 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:RATING_ENDPOINT:rating:8080}}/api/rating/${header.itemId}/${header.rating}\"))"
+    },
+    {
+      "src_service": "coolstore-gw",
+      "src_class": "com.redhat.coolstore.api_gateway.ReviewGateway",
+      "src_method": "configure",
+      "dst_service": "review-service",
+      "dst_class": "com.redhat.coolstore.rest.ReviewEndpoint",
+      "dst_interface_id": "ReviewEndpoint.getReviews",
+      "protocol": "REST",
+      "evidence": "coolstore-gw/src/main/java/com/redhat/coolstore/api_gateway/ReviewGateway.java:94 .setHeader(Exchange.HTTP_URI, simple(\"http://{{env:REVIEW_ENDPOINT:review:8080}}/api/review/${header.itemId}\"))"
+    },
+    {
+      "src_service": "cart-service",
+      "src_class": "com.redhat.coolstore.service.ShoppingCartServiceImpl",
+      "src_method": "getProduct",
+      "dst_service": "catalog-service",
+      "dst_class": "com.redhat.coolstore.rest.CatalogEndpoint",
+      "dst_interface_id": "CatalogEndpoint.listAll",
+      "protocol": "REST",
+      "evidence": "cart-service/src/main/java/com/redhat/coolstore/service/ShoppingCartServiceImpl.java:125 List<Product> products = catalogServie.products();"
+    }
+  ]
+}

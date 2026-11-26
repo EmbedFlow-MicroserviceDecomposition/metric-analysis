@@ -1,0 +1,4696 @@
+{
+  "system_id": "MS083",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "index": {
+      "exposed_interfaces": [
+        {
+          "id": "main.get_composite_info",
+          "class_name": "main",
+          "method_name": "get_composite_info",
+          "param_types": [],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /composite/info"
+        },
+        {
+          "id": "main.get_composite_health",
+          "class_name": "main",
+          "method_name": "get_composite_health",
+          "param_types": [],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /composite/health"
+        },
+        {
+          "id": "main.get_root",
+          "class_name": "main",
+          "method_name": "get_root",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "main.get_ui",
+          "class_name": "main",
+          "method_name": "get_ui",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ui"
+        }
+      ]
+    },
+    "ui": {
+      "exposed_interfaces": []
+    },
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthConfigurationEndpoint.createAuthIntegration",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "createAuthIntegration",
+          "param_types": [
+            "UpdateAuthRQ",
+            "AuthIntegrationType"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "POST /settings/auth/{authType}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.updateAuthIntegration",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "updateAuthIntegration",
+          "param_types": [
+            "UpdateAuthRQ",
+            "AuthIntegrationType",
+            "Long"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "PUT /settings/auth/{authType}/{integrationId}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.getSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "getSettings",
+          "param_types": [
+            "AuthIntegrationType"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "GET /settings/auth/{authType}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.deleteSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "deleteSettings",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /settings/auth/{integrationId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.updateOAuthSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "updateOAuthSettings",
+          "param_types": [
+            "String",
+            "OAuthRegistrationResource"
+          ],
+          "return_type": "OAuthRegistrationResource",
+          "protocol": "REST",
+          "endpoint": "POST /settings/oauth/{authId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.deleteOAuthSetting",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "deleteOAuthSetting",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /settings/oauth/{authId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.getOAuthSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "getOAuthSettings",
+          "param_types": [],
+          "return_type": "Map<String,OAuthRegistrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /settings/oauth"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.getOAuthSettingsGet",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "getOAuthSettings",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OAuthRegistrationResource",
+          "protocol": "REST",
+          "endpoint": "GET /settings/oauth/{authId}"
+        },
+        {
+          "id": "SsoEndpoint.user",
+          "class_name": "com.epam.reportportal.auth.endpoint.SsoEndpoint",
+          "method_name": "user",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /sso/me"
+        },
+        {
+          "id": "GithubEndpoint.synchronize",
+          "class_name": "com.epam.reportportal.auth.integration.github.GithubEndpoint",
+          "method_name": "synchronize",
+          "param_types": [],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /sso/me/github/synchronize"
+        },
+        {
+          "id": "ProductVersionController.getById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.ProductVersionController",
+          "method_name": "getById",
+          "param_types": [
+            "String",
+            "long"
+          ],
+          "return_type": "TmsProductVersionRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/productversion/{productVersionId}"
+        },
+        {
+          "id": "ProductVersionController.createVersion",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.ProductVersionController",
+          "method_name": "createVersion",
+          "param_types": [
+            "String",
+            "ProductVersionRQ"
+          ],
+          "return_type": "TmsProductVersionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/productversion"
+        },
+        {
+          "id": "ProductVersionController.updateVersion",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.ProductVersionController",
+          "method_name": "updateVersion",
+          "param_types": [
+            "String",
+            "long",
+            "ProductVersionRQ"
+          ],
+          "return_type": "TmsProductVersionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/tms/productversion/{productVersionId}"
+        },
+        {
+          "id": "ProductVersionController.deleteVersion",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.ProductVersionController",
+          "method_name": "deleteVersion",
+          "param_types": [
+            "String",
+            "long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/productversion/{productVersionId}"
+        },
+        {
+          "id": "TestCaseController.getTestCaseById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "getTestCaseById",
+          "param_types": [
+            "String",
+            "long"
+          ],
+          "return_type": "TmsTestCaseRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-case/{testCaseId}"
+        },
+        {
+          "id": "TestCaseController.getTestCasesByCriteria",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "getTestCasesByCriteria",
+          "param_types": [
+            "String",
+            "OffsetRequest",
+            "Filter"
+          ],
+          "return_type": "Page<TmsTestCaseRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-case"
+        },
+        {
+          "id": "TestCaseController.createTestCase",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "createTestCase",
+          "param_types": [
+            "String",
+            "TmsTestCaseRQ"
+          ],
+          "return_type": "TmsTestCaseRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-case"
+        },
+        {
+          "id": "TestCaseController.updateTestCase",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "updateTestCase",
+          "param_types": [
+            "String",
+            "long",
+            "TmsTestCaseRQ"
+          ],
+          "return_type": "TmsTestCaseRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/tms/test-case/{testCaseId}"
+        },
+        {
+          "id": "TestCaseController.patchTestCase",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "patchTestCase",
+          "param_types": [
+            "String",
+            "long",
+            "TmsTestCaseRQ"
+          ],
+          "return_type": "TmsTestCaseRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/test-case/{testCaseId}"
+        },
+        {
+          "id": "TestCaseController.deleteTestCase",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "deleteTestCase",
+          "param_types": [
+            "String",
+            "long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/test-case/{testCaseId}"
+        },
+        {
+          "id": "TestCaseController.deleteTestCases",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "deleteTestCases",
+          "param_types": [
+            "String",
+            "BatchDeleteTestCasesRQ"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/test-case/batch"
+        },
+        {
+          "id": "TestCaseController.batchPatchTestCases",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "batchPatchTestCases",
+          "param_types": [
+            "String",
+            "BatchPatchTestCasesRQ"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/test-case/batch"
+        },
+        {
+          "id": "TestCaseController.importTestCases",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "importTestCases",
+          "param_types": [
+            "String",
+            "MultipartFile",
+            "Long",
+            "String"
+          ],
+          "return_type": "List<TmsTestCaseRS>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-case/import"
+        },
+        {
+          "id": "TestCaseController.exportTestCases",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "exportTestCases",
+          "param_types": [
+            "String",
+            "List<Long>",
+            "String",
+            "boolean"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-case/export"
+        },
+        {
+          "id": "TestCaseController.deleteTagsFromTestCase",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "deleteTagsFromTestCase",
+          "param_types": [
+            "String",
+            "long",
+            "DeleteTagsRQ"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/test-case/{testCaseId}/tags"
+        },
+        {
+          "id": "TestCaseController.patchTestCaseAttributes",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "patchTestCaseAttributes",
+          "param_types": [
+            "String",
+            "BatchPatchTestCaseAttributesRQ"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/test-case/attributes/batch"
+        },
+        {
+          "id": "TestCaseController.duplicateTestCases",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TestCaseController",
+          "method_name": "duplicateTestCases",
+          "param_types": [
+            "String",
+            "BatchDuplicateTestCasesRQ"
+          ],
+          "return_type": "List<TmsTestCaseRS>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-case/batch/duplicate"
+        },
+        {
+          "id": "TmsAttachmentController.uploadAttachment",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttachmentController",
+          "method_name": "uploadAttachment",
+          "param_types": [
+            "String",
+            "MultipartFile"
+          ],
+          "return_type": "UploadAttachmentRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/attachment/upload"
+        },
+        {
+          "id": "TmsAttachmentController.downloadAttachment",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttachmentController",
+          "method_name": "downloadAttachment",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "InputStreamResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/attachment/{attachmentId}"
+        },
+        {
+          "id": "TmsAttachmentController.deleteAttachment",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttachmentController",
+          "method_name": "deleteAttachment",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/attachment/{attachmentId}"
+        },
+        {
+          "id": "TmsAttributeController.createAttribute",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttributeController",
+          "method_name": "createAttribute",
+          "param_types": [
+            "TmsAttributeRQ"
+          ],
+          "return_type": "TmsAttributeRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/tms/attribute"
+        },
+        {
+          "id": "TmsAttributeController.patchAttribute",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttributeController",
+          "method_name": "patchAttribute",
+          "param_types": [
+            "Long",
+            "TmsAttributeRQ"
+          ],
+          "return_type": "TmsAttributeRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/tms/attribute/{attributeId}"
+        },
+        {
+          "id": "TmsAttributeController.getAllAttributes",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttributeController",
+          "method_name": "getAllAttributes",
+          "param_types": [
+            "OffsetRequest",
+            "Filter"
+          ],
+          "return_type": "Page<TmsAttributeRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/tms/attribute"
+        },
+        {
+          "id": "TmsAttributeController.getAttributeById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsAttributeController",
+          "method_name": "getAttributeById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "TmsAttributeRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/tms/attribute/{attributeId}"
+        },
+        {
+          "id": "TmsDatasetController.create",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "create",
+          "param_types": [
+            "String",
+            "TmsDatasetRQ"
+          ],
+          "return_type": "TmsDatasetRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/dataset"
+        },
+        {
+          "id": "TmsDatasetController.uploadFromFile",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "uploadFromFile",
+          "param_types": [
+            "String",
+            "MultipartFile"
+          ],
+          "return_type": "List<TmsDatasetRS>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/dataset/upload"
+        },
+        {
+          "id": "TmsDatasetController.getByProjectId",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "getByProjectId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<TmsDatasetRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/dataset"
+        },
+        {
+          "id": "TmsDatasetController.getById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "getById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "TmsDatasetRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/dataset/{datasetId}"
+        },
+        {
+          "id": "TmsDatasetController.update",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "update",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsDatasetRQ"
+          ],
+          "return_type": "TmsDatasetRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/tms/dataset/{datasetId}"
+        },
+        {
+          "id": "TmsDatasetController.patch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "patch",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsDatasetRQ"
+          ],
+          "return_type": "TmsDatasetRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/dataset/{datasetId}"
+        },
+        {
+          "id": "TmsDatasetController.delete",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsDatasetController",
+          "method_name": "delete",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/dataset/{datasetId}"
+        },
+        {
+          "id": "TmsManualLaunchController.createManualLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "createManualLaunch",
+          "param_types": [
+            "String",
+            "TmsManualLaunchRQ"
+          ],
+          "return_type": "TmsManualLaunchRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/launch"
+        },
+        {
+          "id": "TmsManualLaunchController.getManualLaunches",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getManualLaunches",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Page<TmsManualLaunchRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/manual"
+        },
+        {
+          "id": "TmsManualLaunchController.getManualLaunchById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getManualLaunchById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "TmsManualLaunchRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/{launchId}"
+        },
+        {
+          "id": "TmsManualLaunchController.deleteManualLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "deleteManualLaunch",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/launch/{launchId}"
+        },
+        {
+          "id": "TmsManualLaunchController.patchManualLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "patchManualLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsManualLaunchRQ"
+          ],
+          "return_type": "TmsManualLaunchRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/launch/{launchId}"
+        },
+        {
+          "id": "TmsManualLaunchController.batchDeleteManualLaunches",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "batchDeleteManualLaunches",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/launch/manual"
+        },
+        {
+          "id": "TmsManualLaunchController.addTestCaseToLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "addTestCaseToLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "AddTestCaseToLaunchRQ"
+          ],
+          "return_type": "BatchTestCaseOperationResultRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/launch/{launchId}/test-case"
+        },
+        {
+          "id": "TmsManualLaunchController.addTestCasesToLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "addTestCasesToLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "BatchAddTestCasesToLaunchRQ"
+          ],
+          "return_type": "BatchTestCaseOperationResultRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/launch/{launchId}/test-case/batch"
+        },
+        {
+          "id": "TmsManualLaunchController.getLaunchFolders",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getLaunchFolders",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "List<TmsTestFolderRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/{launchId}/folder"
+        },
+        {
+          "id": "TmsManualLaunchController.getLaunchTestCaseExecutions",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getLaunchTestCaseExecutions",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "Page<TmsTestCaseExecutionRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/{launchId}/test-case/execution"
+        },
+        {
+          "id": "TmsManualLaunchController.getTestCaseExecution",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getTestCaseExecution",
+          "param_types": [
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "TmsTestCaseExecutionRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/{launchId}/test-case/execution/{executionId}"
+        },
+        {
+          "id": "TmsManualLaunchController.deleteTestCaseExecution",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "deleteTestCaseExecution",
+          "param_types": [
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/launch/{launchId}/test-case/execution/{executionId}"
+        },
+        {
+          "id": "TmsManualLaunchController.getTestCaseExecutionsInLaunch",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "getTestCaseExecutionsInLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "List<TmsTestCaseExecutionRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/launch/{launchId}/test-case/{testCaseId}/execution"
+        },
+        {
+          "id": "TmsManualLaunchController.patchTestCaseExecution",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsManualLaunchController",
+          "method_name": "patchTestCaseExecution",
+          "param_types": [
+            "String",
+            "Long",
+            "Long",
+            "TmsTestCaseExecutionRQ"
+          ],
+          "return_type": "TmsTestCaseExecutionRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/launch/{launchId}/test-case/execution/{executionId}"
+        },
+        {
+          "id": "TmsTestFolderController.createTestFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "createTestFolder",
+          "param_types": [
+            "String",
+            "TmsTestFolderRQ"
+          ],
+          "return_type": "TmsTestFolderRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/folder"
+        },
+        {
+          "id": "TmsTestFolderController.updateTestFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "updateTestFolder",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestFolderRQ"
+          ],
+          "return_type": "TmsTestFolderRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/tms/folder/{folderId}"
+        },
+        {
+          "id": "TmsTestFolderController.patchTestFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "patchTestFolder",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestFolderRQ"
+          ],
+          "return_type": "TmsTestFolderRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/folder/{folderId}"
+        },
+        {
+          "id": "TmsTestFolderController.getTestFolderById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "getTestFolderById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "TmsTestFolderRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/folder/{folderId}"
+        },
+        {
+          "id": "TmsTestFolderController.getFoldersByCriteria",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "getFoldersByCriteria",
+          "param_types": [
+            "String",
+            "Filter",
+            "OffsetRequest"
+          ],
+          "return_type": "Page<TmsTestFolderRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/folder"
+        },
+        {
+          "id": "TmsTestFolderController.deleteTestFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "deleteTestFolder",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/folder/{folderId}"
+        },
+        {
+          "id": "TmsTestFolderController.exportFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "exportFolder",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestFolderExportFileType"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/folder/{folderId}/export/{fileType}"
+        },
+        {
+          "id": "TmsTestFolderController.duplicateTestFolder",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestFolderController",
+          "method_name": "duplicateTestFolder",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestFolderRQ"
+          ],
+          "return_type": "DuplicateTmsTestFolderRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/folder/{folderId}/duplicate"
+        },
+        {
+          "id": "TmsTestPlanController.createTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "createTestPlan",
+          "param_types": [
+            "String",
+            "TmsTestPlanRQ"
+          ],
+          "return_type": "TmsTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-plan"
+        },
+        {
+          "id": "TmsTestPlanController.getTestPlansByCriteria",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "getTestPlansByCriteria",
+          "param_types": [
+            "String",
+            "Filter",
+            "OffsetRequest"
+          ],
+          "return_type": "Page<TmsTestPlanRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-plan"
+        },
+        {
+          "id": "TmsTestPlanController.updateTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "updateTestPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestPlanRQ"
+          ],
+          "return_type": "TmsTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/tms/test-plan/{id}"
+        },
+        {
+          "id": "TmsTestPlanController.getTestPlanById",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "getTestPlanById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "TmsTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-plan/{id}"
+        },
+        {
+          "id": "TmsTestPlanController.deleteTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "deleteTestPlan",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/test-plan/{id}"
+        },
+        {
+          "id": "TmsTestPlanController.patchTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "patchTestPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestPlanRQ"
+          ],
+          "return_type": "TmsTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "PATCH /v1/project/{projectKey}/tms/test-plan/{id}"
+        },
+        {
+          "id": "TmsTestPlanController.addTestCasesToPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "addTestCasesToPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "BatchAddTestCasesToPlanRQ"
+          ],
+          "return_type": "BatchTestCaseOperationResultRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-plan/{id}/test-case/batch"
+        },
+        {
+          "id": "TmsTestPlanController.removeTestCasesFromPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "removeTestCasesFromPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "BatchRemoveTestCasesFromPlanRQ"
+          ],
+          "return_type": "BatchTestCaseOperationResultRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/tms/test-plan/{id}/test-case/batch"
+        },
+        {
+          "id": "TmsTestPlanController.getTestCasesAddedToPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "getTestCasesAddedToPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "OffsetRequest"
+          ],
+          "return_type": "Page<TmsTestCaseInTestPlanRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-plan/{testPlanId}/test-case"
+        },
+        {
+          "id": "TmsTestPlanController.getTestCaseInTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "getTestCaseInTestPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "TmsTestCaseInTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-plan/{testPlanId}/test-case/{id}"
+        },
+        {
+          "id": "TmsTestPlanController.getTestFoldersFromPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "getTestFoldersFromPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "OffsetRequest"
+          ],
+          "return_type": "Page<TmsTestFolderRS>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/tms/test-plan/{id}/folder"
+        },
+        {
+          "id": "TmsTestPlanController.duplicateTestPlan",
+          "class_name": "com.epam.reportportal.base.core.tms.controller.TmsTestPlanController",
+          "method_name": "duplicateTestPlan",
+          "param_types": [
+            "String",
+            "Long",
+            "TmsTestPlanRQ"
+          ],
+          "return_type": "DuplicateTmsTestPlanRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project/{projectKey}/tms/test-plan/{id}/duplicate"
+        },
+        {
+          "id": "DemoDataController.generate",
+          "class_name": "com.epam.reportportal.base.demodata.DemoDataController",
+          "method_name": "generate",
+          "param_types": [
+            "String",
+            "DemoDataRq"
+          ],
+          "return_type": "DemoDataRs",
+          "protocol": "REST",
+          "endpoint": "POST /v1/demo/{projectKey}/generate"
+        },
+        {
+          "id": "LaunchAsyncController.startLaunch",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LaunchAsyncController",
+          "method_name": "startLaunch",
+          "param_types": [
+            "String",
+            "StartLaunchRQ"
+          ],
+          "return_type": "StartLaunchRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/launch"
+        },
+        {
+          "id": "LaunchAsyncController.finishLaunch",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LaunchAsyncController",
+          "method_name": "finishLaunch",
+          "param_types": [
+            "String",
+            "String",
+            "FinishExecutionRQ"
+          ],
+          "return_type": "FinishLaunchRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/{projectKey}/launch/{launchId}/finish"
+        },
+        {
+          "id": "LaunchAsyncController.mergeLaunches",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LaunchAsyncController",
+          "method_name": "mergeLaunches",
+          "param_types": [
+            "String",
+            "MergeLaunchesRQ"
+          ],
+          "return_type": "LaunchResource",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/launch/merge"
+        },
+        {
+          "id": "LaunchAsyncController.mergeLaunchesOldUuid",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LaunchAsyncController",
+          "method_name": "mergeLaunchesOldUuid",
+          "param_types": [
+            "String",
+            "MergeLaunchesRQ"
+          ],
+          "return_type": "LaunchResourceOld",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/launch/merge"
+        },
+        {
+          "id": "LogAsyncController.createLog",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LogAsyncController",
+          "method_name": "createLog",
+          "param_types": [
+            "String",
+            "SaveLogRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/log"
+        },
+        {
+          "id": "LogAsyncController.createLogEntry",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LogAsyncController",
+          "method_name": "createLogEntry",
+          "param_types": [
+            "String",
+            "SaveLogRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/log/entry"
+        },
+        {
+          "id": "LogAsyncController.createLogMultipart",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.LogAsyncController",
+          "method_name": "createLog",
+          "param_types": [
+            "String",
+            "List<SaveLogRQ>"
+          ],
+          "return_type": "BatchSaveOperatingRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/log"
+        },
+        {
+          "id": "TestItemAsyncController.startRootItem",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.TestItemAsyncController",
+          "method_name": "startRootItem",
+          "param_types": [
+            "String",
+            "StartTestItemRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/item"
+        },
+        {
+          "id": "TestItemAsyncController.startChildItem",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.TestItemAsyncController",
+          "method_name": "startChildItem",
+          "param_types": [
+            "String",
+            "String",
+            "StartTestItemRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{projectKey}/item/{parentItem}"
+        },
+        {
+          "id": "TestItemAsyncController.finishTestItem",
+          "class_name": "com.epam.reportportal.base.reporting.async.controller.TestItemAsyncController",
+          "method_name": "finishTestItem",
+          "param_types": [
+            "String",
+            "String",
+            "FinishTestItemRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/{projectKey}/item/{testItemId}"
+        },
+        {
+          "id": "ActivityController.getActivity",
+          "class_name": "com.epam.reportportal.base.ws.controller.ActivityController",
+          "method_name": "getActivity",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "ActivityResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/activity/{activityId}"
+        },
+        {
+          "id": "ActivityController.getTestItemActivities",
+          "class_name": "com.epam.reportportal.base.ws.controller.ActivityController",
+          "method_name": "getTestItemActivities",
+          "param_types": [
+            "String",
+            "Long",
+            "Filter"
+          ],
+          "return_type": "Page<ActivityEventResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/activity/item/{itemId}"
+        },
+        {
+          "id": "ActivityEventController.getProjectSubjectName",
+          "class_name": "com.epam.reportportal.base.ws.controller.ActivityEventController",
+          "method_name": "getProjectSubjectName",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/activities/{projectKey}/subjectName"
+        },
+        {
+          "id": "BugTrackingSystemController.getSetOfIntegrationSystemFields",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "getSetOfIntegrationSystemFields",
+          "param_types": [
+            "String",
+            "String",
+            "Long"
+          ],
+          "return_type": "List<PostFormField>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/bts/{projectKey}/{integrationId}/fields-set"
+        },
+        {
+          "id": "BugTrackingSystemController.getAllowableIssueTypes",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "getAllowableIssueTypes",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/bts/{projectKey}/{integrationId}/issue_types"
+        },
+        {
+          "id": "BugTrackingSystemController.getSetOfIntegrationSystemFieldsGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "getSetOfIntegrationSystemFields",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "List<PostFormField>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/bts/{integrationId}/fields-set"
+        },
+        {
+          "id": "BugTrackingSystemController.getAllowableIssueTypesGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "getAllowableIssueTypes",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/bts/{integrationId}/issue_types"
+        },
+        {
+          "id": "BugTrackingSystemController.createIssue",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "createIssue",
+          "param_types": [
+            "PostTicketRQ",
+            "String",
+            "Long"
+          ],
+          "return_type": "Ticket",
+          "protocol": "REST",
+          "endpoint": "POST /v1/bts/{projectKey}/{integrationId}/ticket"
+        },
+        {
+          "id": "BugTrackingSystemController.getTicket",
+          "class_name": "com.epam.reportportal.base.ws.controller.BugTrackingSystemController",
+          "method_name": "getTicket",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Ticket",
+          "protocol": "REST",
+          "endpoint": "GET /v1/bts/{projectKey}/ticket/{ticketId}"
+        },
+        {
+          "id": "DashboardController.createDashboard",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "createDashboard",
+          "param_types": [
+            "String",
+            "CreateDashboardRQ"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/dashboard"
+        },
+        {
+          "id": "DashboardController.getAllDashboards",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "getAllDashboards",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<DashboardResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/dashboard"
+        },
+        {
+          "id": "DashboardController.addWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "addWidget",
+          "param_types": [
+            "String",
+            "Long",
+            "AddWidgetRq"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/dashboard/{dashboardId}/add"
+        },
+        {
+          "id": "DashboardController.removeWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "removeWidget",
+          "param_types": [
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/dashboard/{dashboardId}/{widgetId}"
+        },
+        {
+          "id": "DashboardController.updateDashboard",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "updateDashboard",
+          "param_types": [
+            "String",
+            "Long",
+            "UpdateDashboardRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/dashboard/{dashboardId}"
+        },
+        {
+          "id": "DashboardController.deleteDashboard",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "deleteDashboard",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/dashboard/{dashboardId}"
+        },
+        {
+          "id": "DashboardController.getDashboard",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "getDashboard",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "DashboardResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/dashboard/{dashboardId}"
+        },
+        {
+          "id": "DashboardController.getDashboardConfig",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "getDashboardConfig",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "DashboardConfigResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/dashboard/{dashboardId}/config"
+        },
+        {
+          "id": "DashboardController.createPreconfigured",
+          "class_name": "com.epam.reportportal.base.ws.controller.DashboardController",
+          "method_name": "createPreconfigured",
+          "param_types": [
+            "String",
+            "DashboardPreconfiguredRq"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/dashboard/preconfigured"
+        },
+        {
+          "id": "FileStorageController.getFile",
+          "class_name": "com.epam.reportportal.base.ws.controller.FileStorageController",
+          "method_name": "getFile",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/data/{projectKey}/{dataId}"
+        },
+        {
+          "id": "FileStorageController.getFileStream",
+          "class_name": "com.epam.reportportal.base.ws.controller.FileStorageController",
+          "method_name": "getFileStream",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "StreamingResponseBody",
+          "protocol": "REST",
+          "endpoint": "GET /v1/data/{projectKey}/streams/{dataId}"
+        },
+        {
+          "id": "FileStorageController.removeAttachmentsByCsv",
+          "class_name": "com.epam.reportportal.base.ws.controller.FileStorageController",
+          "method_name": "removeAttachmentsByCsv",
+          "param_types": [
+            "MultipartFile"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/data/clean"
+        },
+        {
+          "id": "IntegrationController.getGlobalIntegrations",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getGlobalIntegrations",
+          "param_types": [],
+          "return_type": "List<IntegrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/global/all"
+        },
+        {
+          "id": "IntegrationController.getGlobalIntegrationsGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getGlobalIntegrations",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<IntegrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/global/all/{pluginName}"
+        },
+        {
+          "id": "IntegrationController.getProjectIntegrations",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getProjectIntegrations",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<IntegrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/project/{projectKey}/all"
+        },
+        {
+          "id": "IntegrationController.getProjectIntegrationsGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getProjectIntegrations",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<IntegrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/project/{projectKey}/all/{pluginName}"
+        },
+        {
+          "id": "IntegrationController.createGlobalIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "createGlobalIntegration",
+          "param_types": [
+            "IntegrationRQ",
+            "String"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/integration/{pluginName}"
+        },
+        {
+          "id": "IntegrationController.createProjectIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "createProjectIntegration",
+          "param_types": [
+            "IntegrationRQ",
+            "String",
+            "String"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/integration/{projectKey}/{pluginName}"
+        },
+        {
+          "id": "IntegrationController.testIntegrationConnection",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "testIntegrationConnection",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/{projectKey}/{integrationId}/connection/test"
+        },
+        {
+          "id": "IntegrationController.testIntegrationConnectionGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "testIntegrationConnection",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/{integrationId}/connection/test"
+        },
+        {
+          "id": "IntegrationController.getGlobalIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getGlobalIntegration",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "IntegrationResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.getProjectIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "getProjectIntegration",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "IntegrationResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/integration/{projectKey}/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.updateGlobalIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "updateGlobalIntegration",
+          "param_types": [
+            "Long",
+            "IntegrationRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/integration/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.updateProjectIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "updateProjectIntegration",
+          "param_types": [
+            "Long",
+            "IntegrationRQ",
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/integration/{projectKey}/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.deleteGlobalIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "deleteGlobalIntegration",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/integration/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.deleteAllIntegrations",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "deleteAllIntegrations",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/integration/all/{type}"
+        },
+        {
+          "id": "IntegrationController.deleteProjectIntegration",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "deleteProjectIntegration",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/integration/{projectKey}/{integrationId}"
+        },
+        {
+          "id": "IntegrationController.deleteAllProjectIntegrations",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "deleteAllProjectIntegrations",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/integration/{projectKey}/all/{type}"
+        },
+        {
+          "id": "IntegrationController.executeIntegrationCommand",
+          "class_name": "com.epam.reportportal.base.ws.controller.IntegrationController",
+          "method_name": "executeIntegrationCommand",
+          "param_types": [
+            "String",
+            "Long",
+            "String",
+            "Map<String,Object>"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/integration/{projectKey}/{integrationId}/{command}"
+        },
+        {
+          "id": "LaunchController.startLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "startLaunch",
+          "param_types": [
+            "String",
+            "StartLaunchRQ"
+          ],
+          "return_type": "StartLaunchRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/launch"
+        },
+        {
+          "id": "LaunchController.finishLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "finishLaunch",
+          "param_types": [
+            "String",
+            "String",
+            "FinishExecutionRQ"
+          ],
+          "return_type": "FinishLaunchRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/{launchId}/finish"
+        },
+        {
+          "id": "LaunchController.forceFinishLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "forceFinishLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "FinishExecutionRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/{launchId}/stop"
+        },
+        {
+          "id": "LaunchController.bulkForceFinish",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "bulkForceFinish",
+          "param_types": [
+            "String",
+            "BulkRQ<Long,FinishExecutionRQ>"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/stop"
+        },
+        {
+          "id": "LaunchController.updateLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "updateLaunch",
+          "param_types": [
+            "String",
+            "Long",
+            "UpdateLaunchRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/{launchId}/update"
+        },
+        {
+          "id": "LaunchController.updateLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "updateLaunches",
+          "param_types": [
+            "String",
+            "BulkRQ<Long,UpdateLaunchRQ>"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/update"
+        },
+        {
+          "id": "LaunchController.deleteLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "deleteLaunch",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/launch/{launchId}"
+        },
+        {
+          "id": "LaunchController.getLaunch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getLaunch",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LaunchResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/{launchId}"
+        },
+        {
+          "id": "LaunchController.getLaunchByUuid",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getLaunchByUuid",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LaunchResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/uuid/{launchId}"
+        },
+        {
+          "id": "LaunchController.getLaunchByUuidOldTimestamp",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getLaunchByUuidOldTimestamp",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LaunchResourceOld",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/uuid/{launchId}"
+        },
+        {
+          "id": "LaunchController.getProjectLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getProjectLaunches",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<LaunchResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch"
+        },
+        {
+          "id": "LaunchController.getLatestLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getLatestLaunches",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<LaunchResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/latest"
+        },
+        {
+          "id": "LaunchController.getDebugLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getDebugLaunches",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<LaunchResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/mode"
+        },
+        {
+          "id": "LaunchController.getAttributeKeys",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getAttributeKeys",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/attribute/keys"
+        },
+        {
+          "id": "LaunchController.getAttributeValues",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getAttributeValues",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/attribute/values"
+        },
+        {
+          "id": "LaunchController.getClusters",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getClusters",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Page<ClusterInfoResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/cluster/{launchId}"
+        },
+        {
+          "id": "LaunchController.bulkUpdate",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "bulkUpdate",
+          "param_types": [
+            "String",
+            "BulkInfoUpdateRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/launch/info"
+        },
+        {
+          "id": "LaunchController.getAllOwners",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getAllOwners",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/owners"
+        },
+        {
+          "id": "LaunchController.getAllLaunchNames",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getAllLaunchNames",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/names"
+        },
+        {
+          "id": "LaunchController.compareLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "compareLaunches",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "Map<String,List<ChartStatisticsContent>>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/compare"
+        },
+        {
+          "id": "LaunchController.mergeLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "mergeLaunches",
+          "param_types": [
+            "String",
+            "MergeLaunchesRQ"
+          ],
+          "return_type": "LaunchResource",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/launch/merge"
+        },
+        {
+          "id": "LaunchController.mergeLaunchesOldUuid",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "mergeLaunchesOldUuid",
+          "param_types": [
+            "String",
+            "MergeLaunchesRQ"
+          ],
+          "return_type": "LaunchResourceOld",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/launch/merge"
+        },
+        {
+          "id": "LaunchController.startLaunchAnalyzer",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "startLaunchAnalyzer",
+          "param_types": [
+            "String",
+            "AnalyzeLaunchRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/launch/analyze"
+        },
+        {
+          "id": "LaunchController.createClusters",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "createClusters",
+          "param_types": [
+            "String",
+            "CreateClustersRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/launch/cluster"
+        },
+        {
+          "id": "LaunchController.getStatuses",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getStatuses",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/status"
+        },
+        {
+          "id": "LaunchController.getLaunchReport",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "getLaunchReport",
+          "param_types": [
+            "String",
+            "Long",
+            "String",
+            "boolean"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/launch/{launchId}/report"
+        },
+        {
+          "id": "LaunchController.deleteLaunches",
+          "class_name": "com.epam.reportportal.base.ws.controller.LaunchController",
+          "method_name": "deleteLaunches",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "DeleteBulkRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/launch"
+        },
+        {
+          "id": "LogController.createLog",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "createLog",
+          "param_types": [
+            "String",
+            "SaveLogRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/log"
+        },
+        {
+          "id": "LogController.createLogEntry",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "createLogEntry",
+          "param_types": [
+            "String",
+            "SaveLogRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/log/entry"
+        },
+        {
+          "id": "LogController.createLogMultipart",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "createLog",
+          "param_types": [
+            "String",
+            "List<SaveLogRQ>"
+          ],
+          "return_type": "BatchSaveOperatingRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/log"
+        },
+        {
+          "id": "LogController.deleteLog",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "deleteLog",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/log/{logId}"
+        },
+        {
+          "id": "LogController.getLogs",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getLogs",
+          "param_types": [
+            "String",
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<LogResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log"
+        },
+        {
+          "id": "LogController.getLogsUnder",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getLogsUnder",
+          "param_types": [
+            "String",
+            "GetLogsUnderRq"
+          ],
+          "return_type": "Map<Long,List<LogResource>>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/log/under"
+        },
+        {
+          "id": "LogController.getPageNumber",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getPageNumber",
+          "param_types": [
+            "String",
+            "Long",
+            "Filter"
+          ],
+          "return_type": "Map<String,Serializable>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/{logId}/page"
+        },
+        {
+          "id": "LogController.getLog",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getLog",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LogResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/{logId}"
+        },
+        {
+          "id": "LogController.getLogByUuid",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getLogByUuid",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LogResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/uuid/{logId}"
+        },
+        {
+          "id": "LogController.getNestedItems",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getNestedItems",
+          "param_types": [
+            "String",
+            "Long",
+            "Map<String,String>",
+            "Filter"
+          ],
+          "return_type": "Page<?>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/nested/{parentId}"
+        },
+        {
+          "id": "LogController.getErrorPage",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getErrorPage",
+          "param_types": [
+            "String",
+            "Long",
+            "Map<String,String>",
+            "Filter"
+          ],
+          "return_type": "List<PagedLogResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/locations/{parentId}"
+        },
+        {
+          "id": "LogController.getLogsWithLocationBySearch",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "getLogsWithLocationBySearch",
+          "param_types": [
+            "String",
+            "Long",
+            "Map<String,String>",
+            "Filter"
+          ],
+          "return_type": "Page<PagedLogResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/log/locations/search/{parentId}"
+        },
+        {
+          "id": "LogController.searchLogs",
+          "class_name": "com.epam.reportportal.base.ws.controller.LogController",
+          "method_name": "searchLogs",
+          "param_types": [
+            "String",
+            "SearchLogRq",
+            "Long"
+          ],
+          "return_type": "List<SearchLogRs>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/log/search/{itemId}"
+        },
+        {
+          "id": "PluginController.uploadPlugin",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "uploadPlugin",
+          "param_types": [
+            "MultipartFile"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/plugin"
+        },
+        {
+          "id": "PluginController.updatePluginState",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "updatePluginState",
+          "param_types": [
+            "Long",
+            "UpdatePluginStateRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/plugin/{pluginId}"
+        },
+        {
+          "id": "PluginController.getPlugins",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "getPlugins",
+          "param_types": [],
+          "return_type": "List<IntegrationTypeResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/plugin"
+        },
+        {
+          "id": "PluginController.deletePlugin",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "deletePlugin",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/plugin/{pluginId}"
+        },
+        {
+          "id": "PluginController.executePluginCommand",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "executePluginCommand",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "Map<String,Object>"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/plugin/{projectKey}/{pluginName}/common/{command}"
+        },
+        {
+          "id": "PluginController.executeImportPluginCommand",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginController",
+          "method_name": "executeImportPluginCommand",
+          "param_types": [
+            "String",
+            "String",
+            "MultipartFile",
+            "LaunchImportRQ"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /v1/plugin/{projectKey}/{pluginName}/import"
+        },
+        {
+          "id": "PluginPublicController.getPublicFile",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginPublicController",
+          "method_name": "getPublicFile",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/plugin/public/{pluginName}/file/{name}"
+        },
+        {
+          "id": "PluginPublicController.executePublicPluginCommand",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginPublicController",
+          "method_name": "executePublicPluginCommand",
+          "param_types": [
+            "String",
+            "String",
+            "Map<String,Object>"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/plugin/public/{pluginName}/{command}"
+        },
+        {
+          "id": "PluginPublicController.getPlugins",
+          "class_name": "com.epam.reportportal.base.ws.controller.PluginPublicController",
+          "method_name": "getPlugins",
+          "param_types": [],
+          "return_type": "List<IntegrationTypeResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/plugin/public"
+        },
+        {
+          "id": "ProjectController.createProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "createProject",
+          "param_types": [
+            "CreateProjectRQ"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/project"
+        },
+        {
+          "id": "ProjectController.updateProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "updateProject",
+          "param_types": [
+            "String",
+            "UpdateProjectRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}"
+        },
+        {
+          "id": "ProjectController.updateProjectNotificationConfig",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "updateProjectNotificationConfig",
+          "param_types": [
+            "String",
+            "ProjectNotificationConfigDTO"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/notification"
+        },
+        {
+          "id": "ProjectController.deleteProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "deleteProject",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "DeleteBulkRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project"
+        },
+        {
+          "id": "ProjectController.deleteProjectDelete",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "deleteProject",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectId}"
+        },
+        {
+          "id": "ProjectController.deleteProjectIndex",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "deleteProjectIndex",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/index"
+        },
+        {
+          "id": "ProjectController.indexProjectData",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "indexProjectData",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/index"
+        },
+        {
+          "id": "ProjectController.getProjectUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getProjectUsers",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<UserResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/users"
+        },
+        {
+          "id": "ProjectController.getProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getProject",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ProjectResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}"
+        },
+        {
+          "id": "ProjectController.unassignProjectUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "unassignProjectUsers",
+          "param_types": [
+            "String",
+            "UnassignUsersRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/unassign"
+        },
+        {
+          "id": "ProjectController.assignProjectUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "assignProjectUsers",
+          "param_types": [
+            "String",
+            "AssignUsersRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/assign"
+        },
+        {
+          "id": "ProjectController.getUsersForAssign",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getUsersForAssign",
+          "param_types": [
+            "Filter",
+            "String"
+          ],
+          "return_type": "Page<UserResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/assignable"
+        },
+        {
+          "id": "ProjectController.getProjectUsersGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getProjectUsers",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/usernames"
+        },
+        {
+          "id": "ProjectController.searchForUser",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "searchForUser",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Page<SearchUserResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/usernames/search"
+        },
+        {
+          "id": "ProjectController.addUserPreference",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "addUserPreference",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/project/{projectKey}/preference/{filterId}"
+        },
+        {
+          "id": "ProjectController.removeUserPreference",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "removeUserPreference",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/project/{projectKey}/preference/{filterId}"
+        },
+        {
+          "id": "ProjectController.getUserPreference",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getUserPreference",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "PreferenceResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/preference"
+        },
+        {
+          "id": "ProjectController.getAllProjectsInfo",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getAllProjectsInfo",
+          "param_types": [
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "Page<ProjectInfoResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/list"
+        },
+        {
+          "id": "ProjectController.exportProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "exportProjects",
+          "param_types": [
+            "String",
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/export"
+        },
+        {
+          "id": "ProjectController.getProjectInfo",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getProjectInfo",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "ProjectInfoResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/list/{projectKey}"
+        },
+        {
+          "id": "ProjectController.getProjectWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getProjectWidget",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Map<String,?>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/{projectKey}/widget/{widgetCode}"
+        },
+        {
+          "id": "ProjectController.getAllProjectNames",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getAllProjectNames",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/names"
+        },
+        {
+          "id": "ProjectController.searchProjectNames",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "searchProjectNames",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/names/search"
+        },
+        {
+          "id": "ProjectController.getAnalyzerIndexingStatus",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectController",
+          "method_name": "getAnalyzerIndexingStatus",
+          "param_types": [],
+          "return_type": "Map<String,Boolean>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/project/analyzer/status"
+        },
+        {
+          "id": "ProjectSettingsController.createProjectIssueSubType",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "createProjectIssueSubType",
+          "param_types": [
+            "String",
+            "CreateIssueSubTypeRQ"
+          ],
+          "return_type": "IssueSubTypeCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/settings/sub-type"
+        },
+        {
+          "id": "ProjectSettingsController.updateProjectIssueSubType",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "updateProjectIssueSubType",
+          "param_types": [
+            "String",
+            "UpdateIssueSubTypeRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/settings/sub-type"
+        },
+        {
+          "id": "ProjectSettingsController.deleteProjectIssueSubType",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "deleteProjectIssueSubType",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/settings/sub-type/{id}"
+        },
+        {
+          "id": "ProjectSettingsController.getProjectSettings",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "getProjectSettings",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ProjectSettingsResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/settings"
+        },
+        {
+          "id": "ProjectSettingsController.createPatternTemplate",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "createPatternTemplate",
+          "param_types": [
+            "String",
+            "CreatePatternTemplateRQ"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/settings/pattern"
+        },
+        {
+          "id": "ProjectSettingsController.updatePatternTemplate",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "updatePatternTemplate",
+          "param_types": [
+            "String",
+            "Long",
+            "UpdatePatternTemplateRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/settings/pattern/{id}"
+        },
+        {
+          "id": "ProjectSettingsController.deletePatternTemplate",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "deletePatternTemplate",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/settings/pattern/{id}"
+        },
+        {
+          "id": "ProjectSettingsController.getNotifications",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "getNotifications",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<SenderCaseDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/settings/notification"
+        },
+        {
+          "id": "ProjectSettingsController.createNotification",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "createNotification",
+          "param_types": [
+            "String",
+            "SenderCaseDTO"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/settings/notification"
+        },
+        {
+          "id": "ProjectSettingsController.updateNotification",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "updateNotification",
+          "param_types": [
+            "String",
+            "SenderCaseDTO"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/settings/notification"
+        },
+        {
+          "id": "ProjectSettingsController.deleteNotification",
+          "class_name": "com.epam.reportportal.base.ws.controller.ProjectSettingsController",
+          "method_name": "deleteNotification",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/settings/notification/{notificationId:\\\\d+}"
+        },
+        {
+          "id": "SettingsController.saveAnalyticsSettings",
+          "class_name": "com.epam.reportportal.base.ws.controller.SettingsController",
+          "method_name": "saveAnalyticsSettings",
+          "param_types": [
+            "AnalyticsResource"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/settings/analytics"
+        },
+        {
+          "id": "SettingsController.updateServerSettings",
+          "class_name": "com.epam.reportportal.base.ws.controller.SettingsController",
+          "method_name": "updateServerSettings",
+          "param_types": [
+            "UpdateSettingsRq"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/settings"
+        },
+        {
+          "id": "SettingsController.getServerSettings",
+          "class_name": "com.epam.reportportal.base.ws.controller.SettingsController",
+          "method_name": "getServerSettings",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/settings"
+        },
+        {
+          "id": "TestItemController.startRootItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "startRootItem",
+          "param_types": [
+            "String",
+            "StartTestItemRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/item"
+        },
+        {
+          "id": "TestItemController.startChildItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "startChildItem",
+          "param_types": [
+            "String",
+            "String",
+            "StartTestItemRQ"
+          ],
+          "return_type": "EntryCreatedAsyncRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/item/{parentItem}"
+        },
+        {
+          "id": "TestItemController.finishTestItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "finishTestItem",
+          "param_types": [
+            "String",
+            "String",
+            "FinishTestItemRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/{testItemId}"
+        },
+        {
+          "id": "TestItemController.getTestItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItem",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "TestItemResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/{itemId}"
+        },
+        {
+          "id": "TestItemController.getTestItemByUuid",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItemByUuid",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "TestItemResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/uuid/{itemId}"
+        },
+        {
+          "id": "TestItemController.getTestItemByUuidTimestamp",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItemByUuidTimestamp",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "TestItemResourceOld",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/uuid/{itemId}"
+        },
+        {
+          "id": "TestItemController.getSuggestedItems",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getSuggestedItems",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "List<SuggestedItem>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/suggest/{itemId}"
+        },
+        {
+          "id": "TestItemController.getSuggestedClusterItems",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getSuggestedClusterItems",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "List<SuggestedItem>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/suggest/cluster/{clusterId}"
+        },
+        {
+          "id": "TestItemController.handleSuggestChoose",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "handleSuggestChoose",
+          "param_types": [
+            "String",
+            "List<SuggestInfo>"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/suggest/choice"
+        },
+        {
+          "id": "TestItemController.getTestItems",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItems",
+          "param_types": [
+            "String",
+            "Long",
+            "Long",
+            "boolean",
+            "int",
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "Page<TestItemResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item"
+        },
+        {
+          "id": "TestItemController.getTestItemsV2",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItemsV2",
+          "param_types": [
+            "String",
+            "Map<String,String>",
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "Page<TestItemResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/v2"
+        },
+        {
+          "id": "TestItemController.getTestItemsGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItems",
+          "param_types": [
+            "String",
+            "Filter",
+            "Queryable",
+            "Map<String,String>"
+          ],
+          "return_type": "StatisticsResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/statistics"
+        },
+        {
+          "id": "TestItemController.deleteTestItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "deleteTestItem",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/item/{itemId}"
+        },
+        {
+          "id": "TestItemController.deleteTestItems",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "deleteTestItems",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/item"
+        },
+        {
+          "id": "TestItemController.defineTestItemIssueType",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "defineTestItemIssueType",
+          "param_types": [
+            "String",
+            "DefineIssueRQ"
+          ],
+          "return_type": "List<Issue>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item"
+        },
+        {
+          "id": "TestItemController.getItemsHistory",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getItemsHistory",
+          "param_types": [
+            "String",
+            "Filter",
+            "Queryable",
+            "Long",
+            "Long",
+            "Long",
+            "String",
+            "Long",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "Page<TestItemHistoryElement>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/history"
+        },
+        {
+          "id": "TestItemController.getTicketIds",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTicketIds",
+          "param_types": [
+            "String",
+            "Long",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/ticket/ids"
+        },
+        {
+          "id": "TestItemController.getTicketIdsForProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTicketIdsForProject",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/ticket/ids/all"
+        },
+        {
+          "id": "TestItemController.getUniqueAttributeKeys",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getUniqueAttributeKeys",
+          "param_types": [
+            "String",
+            "Long",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/attribute/keys"
+        },
+        {
+          "id": "TestItemController.getAttributeValues",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getAttributeValues",
+          "param_types": [
+            "String",
+            "Long",
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/attribute/values"
+        },
+        {
+          "id": "TestItemController.getAttributeKeysForProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getAttributeKeysForProject",
+          "param_types": [
+            "String",
+            "String",
+            "Long",
+            "boolean",
+            "int"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/attribute/keys/all"
+        },
+        {
+          "id": "TestItemController.getAttributeKeys",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getAttributeKeys",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/step/attribute/keys"
+        },
+        {
+          "id": "TestItemController.getAttributeValuesGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getAttributeValues",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/step/attribute/values"
+        },
+        {
+          "id": "TestItemController.bulkUpdate",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "bulkUpdate",
+          "param_types": [
+            "String",
+            "BulkInfoUpdateRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/info"
+        },
+        {
+          "id": "TestItemController.updateTestItem",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "updateTestItem",
+          "param_types": [
+            "String",
+            "Long",
+            "UpdateTestItemRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/{itemId}/update"
+        },
+        {
+          "id": "TestItemController.linkExternalIssues",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "linkExternalIssues",
+          "param_types": [
+            "String",
+            "LinkExternalIssueRQ"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/issue/link"
+        },
+        {
+          "id": "TestItemController.unlinkExternalIssues",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "unlinkExternalIssues",
+          "param_types": [
+            "String",
+            "UnlinkExternalIssueRQ"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/item/issue/unlink"
+        },
+        {
+          "id": "TestItemController.getTestItems2",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItems",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "List<TestItemResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/items"
+        },
+        {
+          "id": "TestItemController.getTestItemsByIds",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItemsByIds",
+          "param_types": [
+            "String",
+            "BulkItemsRQ"
+          ],
+          "return_type": "List<TestItemResource>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/item/bulk"
+        },
+        {
+          "id": "TestItemController.getTestItems3",
+          "class_name": "com.epam.reportportal.base.ws.controller.TestItemController",
+          "method_name": "getTestItems",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Page<TestItemResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/item/search"
+        },
+        {
+          "id": "UserController.deleteUser",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "deleteUser",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/users/{id}"
+        },
+        {
+          "id": "UserController.deleteUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "deleteUsers",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "DeleteBulkRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/users"
+        },
+        {
+          "id": "UserController.editUser",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "editUser",
+          "param_types": [
+            "String",
+            "EditUserRQ",
+            "UserRole"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/users/{login}"
+        },
+        {
+          "id": "UserController.getUser",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UserResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/{login}"
+        },
+        {
+          "id": "UserController.getMyself",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "getMyself",
+          "param_types": [],
+          "return_type": "UserResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users"
+        },
+        {
+          "id": "UserController.getUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "getUsers",
+          "param_types": [
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "Page<UserResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/all"
+        },
+        {
+          "id": "UserController.restorePassword",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "restorePassword",
+          "param_types": [
+            "RestorePasswordRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users/password/restore"
+        },
+        {
+          "id": "UserController.resetPassword",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "resetPassword",
+          "param_types": [
+            "ResetPasswordRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users/password/reset"
+        },
+        {
+          "id": "UserController.isRestorePasswordBidExist",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "isRestorePasswordBidExist",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "YesNoRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/password/reset/{uuid}"
+        },
+        {
+          "id": "UserController.changePassword",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "changePassword",
+          "param_types": [
+            "ChangePasswordRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users/password/change"
+        },
+        {
+          "id": "UserController.getUserProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "getUserProjects",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,UserResource.AssignedProject>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/{userName}/projects"
+        },
+        {
+          "id": "UserController.findUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "findUsers",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<UserResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/search"
+        },
+        {
+          "id": "UserController.export",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "export",
+          "param_types": [
+            "String",
+            "Filter",
+            "Queryable"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/export"
+        },
+        {
+          "id": "UserController.createApiKey",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "createApiKey",
+          "param_types": [
+            "ApiKeyRQ",
+            "Long"
+          ],
+          "return_type": "ApiKeyRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/users/{userId}/api-keys"
+        },
+        {
+          "id": "UserController.deleteApiKey",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "deleteApiKey",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/users/{userId}/api-keys/{keyId}"
+        },
+        {
+          "id": "UserController.getUsersApiKeys",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserController",
+          "method_name": "getUsersApiKeys",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "ApiKeysRS",
+          "protocol": "REST",
+          "endpoint": "GET /v1/users/{userId}/api-keys"
+        },
+        {
+          "id": "UserFilterController.createFilter",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "createFilter",
+          "param_types": [
+            "String",
+            "UpdateUserFilterRQ"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/filter"
+        },
+        {
+          "id": "UserFilterController.getFilter",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "getFilter",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "UserFilterResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/filter/{filterId}"
+        },
+        {
+          "id": "UserFilterController.getAllFilters",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "getAllFilters",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<UserFilterResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/filter"
+        },
+        {
+          "id": "UserFilterController.deleteFilter",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "deleteFilter",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/{projectKey}/filter/{filterId}"
+        },
+        {
+          "id": "UserFilterController.getAllFiltersNames",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "getAllFiltersNames",
+          "param_types": [
+            "String",
+            "Filter"
+          ],
+          "return_type": "Page<OwnedEntityResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/filter/names"
+        },
+        {
+          "id": "UserFilterController.updateUserFilter",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "updateUserFilter",
+          "param_types": [
+            "String",
+            "Long",
+            "UpdateUserFilterRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/filter/{filterId}"
+        },
+        {
+          "id": "UserFilterController.getUserFilters",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "getUserFilters",
+          "param_types": [
+            "String",
+            "List<Long>"
+          ],
+          "return_type": "List<UserFilterResource>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/filter/filters"
+        },
+        {
+          "id": "UserFilterController.updateUserFilters",
+          "class_name": "com.epam.reportportal.base.ws.controller.UserFilterController",
+          "method_name": "updateUserFilters",
+          "param_types": [
+            "String",
+            "CollectionsRQ<BulkUpdateFilterRQ>"
+          ],
+          "return_type": "List<OperationCompletionRS>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/filter"
+        },
+        {
+          "id": "WidgetController.createWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.WidgetController",
+          "method_name": "createWidget",
+          "param_types": [
+            "WidgetRQ",
+            "String"
+          ],
+          "return_type": "EntryCreatedRS",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/widget"
+        },
+        {
+          "id": "WidgetController.getWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.WidgetController",
+          "method_name": "getWidget",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "WidgetResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/widget/{widgetId}"
+        },
+        {
+          "id": "WidgetController.getWidgetGet",
+          "class_name": "com.epam.reportportal.base.ws.controller.WidgetController",
+          "method_name": "getWidget",
+          "param_types": [
+            "String",
+            "Long",
+            "List<String>",
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "WidgetResource",
+          "protocol": "REST",
+          "endpoint": "GET /v1/{projectKey}/widget/multilevel/{widgetId}"
+        },
+        {
+          "id": "WidgetController.getWidgetPreview",
+          "class_name": "com.epam.reportportal.base.ws.controller.WidgetController",
+          "method_name": "getWidgetPreview",
+          "param_types": [
+            "String",
+            "WidgetPreviewRQ"
+          ],
+          "return_type": "Map<String,?>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/{projectKey}/widget/preview"
+        },
+        {
+          "id": "WidgetController.updateWidget",
+          "class_name": "com.epam.reportportal.base.ws.controller.WidgetController",
+          "method_name": "updateWidget",
+          "param_types": [
+            "String",
+            "Long",
+            "WidgetRQ"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/{projectKey}/widget/{widgetId}"
+        },
+        {
+          "id": "GeneratedActivityController.activitiesSearch",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedActivityController",
+          "method_name": "activitiesSearch",
+          "param_types": [
+            "SearchCriteriaRQ"
+          ],
+          "return_type": "ActivitiesSearch200Response",
+          "protocol": "REST",
+          "endpoint": "POST /activities/searches"
+        },
+        {
+          "id": "GroupController.getGroups",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroups",
+          "param_types": [
+            "Integer",
+            "Integer",
+            "String",
+            "String",
+            "Long"
+          ],
+          "return_type": "GroupPage",
+          "protocol": "REST",
+          "endpoint": "GET /groups"
+        },
+        {
+          "id": "GroupController.createGroup",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "createGroup",
+          "param_types": [
+            "CreateGroupRequest"
+          ],
+          "return_type": "GroupInfo",
+          "protocol": "REST",
+          "endpoint": "POST /groups"
+        },
+        {
+          "id": "GroupController.getGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroupById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "GroupInfo",
+          "protocol": "REST",
+          "endpoint": "GET /groups/{group_id}"
+        },
+        {
+          "id": "GroupController.updateGroup",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "updateGroup",
+          "param_types": [
+            "Long",
+            "UpdateGroupRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /groups/{group_id}"
+        },
+        {
+          "id": "GroupController.deleteGroup",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "deleteGroup",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /groups/{group_id}"
+        },
+        {
+          "id": "GroupController.getGroupUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroupUsers",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "GroupUsersPage",
+          "protocol": "REST",
+          "endpoint": "GET /groups/{group_id}/users"
+        },
+        {
+          "id": "GroupController.getGroupUserById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroupUserById",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "GroupUserInfo",
+          "protocol": "REST",
+          "endpoint": "GET /groups/{group_id}/users/{user_id}"
+        },
+        {
+          "id": "GroupController.deleteUserFromGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "deleteUserFromGroupById",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /groups/{group_id}/users/{user_id}"
+        },
+        {
+          "id": "GroupController.addUserToGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "addUserToGroupById",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /groups/{group_id}/users/{user_id}"
+        },
+        {
+          "id": "GroupController.getGroupProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroupProjects",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "GroupProjectsPage",
+          "protocol": "REST",
+          "endpoint": "GET /groups/{group_id}/projects"
+        },
+        {
+          "id": "GroupController.getGroupProjectById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "getGroupProjectById",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "GroupProjectInfo",
+          "protocol": "REST",
+          "endpoint": "GET /groups/{group_id}/projects/{project_id}"
+        },
+        {
+          "id": "GroupController.addProjectToGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "addProjectToGroupById",
+          "param_types": [
+            "Long",
+            "Long",
+            "AddProjectToGroupByIdRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /groups/{group_id}/projects/{project_id}"
+        },
+        {
+          "id": "GroupController.deleteProjectFromGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GroupController",
+          "method_name": "deleteProjectFromGroupById",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /groups/{group_id}/projects/{project_id}"
+        },
+        {
+          "id": "OrganizationController.getOrganizations",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "getOrganizations",
+          "param_types": [
+            "Integer",
+            "Integer",
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "OrganizationPage",
+          "protocol": "REST",
+          "endpoint": "GET /organizations"
+        },
+        {
+          "id": "OrganizationController.postOrganizations",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "postOrganizations",
+          "param_types": [
+            "CreateOrganizationRequest"
+          ],
+          "return_type": "OrganizationInfo",
+          "protocol": "REST",
+          "endpoint": "POST /organizations"
+        },
+        {
+          "id": "OrganizationController.postOrganizationsSearches",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "postOrganizationsSearches",
+          "param_types": [
+            "String",
+            "SearchCriteriaRQ"
+          ],
+          "return_type": "OrganizationPage",
+          "protocol": "REST",
+          "endpoint": "POST /organizations/searches"
+        },
+        {
+          "id": "OrganizationController.getOrganizationsOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "getOrganizationsOrgId",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OrganizationInfo",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}"
+        },
+        {
+          "id": "OrganizationController.putOrganizationsOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "putOrganizationsOrgId",
+          "param_types": [
+            "Long",
+            "UpdateOrganizationRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /organizations/{org_id}"
+        },
+        {
+          "id": "OrganizationController.patchOrganizationOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "patchOrganizationOrgId",
+          "param_types": [
+            "Long",
+            "List<PatchOperation>"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PATCH /organizations/{org_id}"
+        },
+        {
+          "id": "OrganizationController.deleteOrganizationsOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "deleteOrganizationsOrgId",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /organizations/{org_id}"
+        },
+        {
+          "id": "OrganizationController.getOrgSettingsByOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "getOrgSettingsByOrgId",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OrganizationSettings",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}/settings"
+        },
+        {
+          "id": "OrganizationController.updateOrgSettingsByOrgId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationController",
+          "method_name": "updateOrgSettingsByOrgId",
+          "param_types": [
+            "Long",
+            "OrganizationSettings"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /organizations/{org_id}/settings"
+        },
+        {
+          "id": "OrganizationUsersController.getOrganizationsOrgIdUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationUsersController",
+          "method_name": "getOrganizationsOrgIdUsers",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer",
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "OrganizationUsersPage",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}/users"
+        },
+        {
+          "id": "OrganizationUsersController.postOrganizationsOrgIdUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationUsersController",
+          "method_name": "postOrganizationsOrgIdUsers",
+          "param_types": [
+            "Long",
+            "OrgUserAssignment"
+          ],
+          "return_type": "UserAssignmentResponse",
+          "protocol": "REST",
+          "endpoint": "POST /organizations/{org_id}/users"
+        },
+        {
+          "id": "OrganizationUsersController.putOrganizationsOrgIdUsersUserId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationUsersController",
+          "method_name": "putOrganizationsOrgIdUsersUserId",
+          "param_types": [
+            "Long",
+            "Long",
+            "OrgUserUpdateRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /organizations/{org_id}/users/{user_id}"
+        },
+        {
+          "id": "OrganizationUsersController.deleteOrganizationsOrgIdUsersUserId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationUsersController",
+          "method_name": "deleteOrganizationsOrgIdUsersUserId",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /organizations/{org_id}/users/{user_id}"
+        },
+        {
+          "id": "OrganizationUsersController.getOrgUserProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationUsersController",
+          "method_name": "getOrgUserProjects",
+          "param_types": [
+            "Long",
+            "Long",
+            "Integer",
+            "Integer",
+            "String",
+            "String"
+          ],
+          "return_type": "OrgUserProjectPage",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}/users/{user_id}/projects"
+        },
+        {
+          "id": "OrganizationProjectController.getOrganizationsOrgIdProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationProjectController",
+          "method_name": "getOrganizationsOrgIdProjects",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer",
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "OrganizationProjectsPage",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}/projects"
+        },
+        {
+          "id": "OrganizationProjectController.postOrganizationsOrgIdProjects",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationProjectController",
+          "method_name": "postOrganizationsOrgIdProjects",
+          "param_types": [
+            "Long",
+            "ProjectBase"
+          ],
+          "return_type": "ProjectInfo",
+          "protocol": "REST",
+          "endpoint": "POST /organizations/{org_id}/projects"
+        },
+        {
+          "id": "OrganizationProjectController.postOrganizationsOrgIdProjectsSearches",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationProjectController",
+          "method_name": "postOrganizationsOrgIdProjectsSearches",
+          "param_types": [
+            "Long",
+            "SearchCriteriaRQ"
+          ],
+          "return_type": "OrganizationProjectsPage",
+          "protocol": "REST",
+          "endpoint": "POST /organizations/{org_id}/projects/searches"
+        },
+        {
+          "id": "OrganizationProjectController.patchOrganizationsOrgIdProjectsProjectId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationProjectController",
+          "method_name": "patchOrganizationsOrgIdProjectsProjectId",
+          "param_types": [
+            "Long",
+            "Long",
+            "List<PatchOperation>"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PATCH /organizations/{org_id}/projects/{project_id}"
+        },
+        {
+          "id": "OrganizationProjectController.deleteOrganizationsOrgIdProjectsProjectId",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationProjectController",
+          "method_name": "deleteOrganizationsOrgIdProjectsProjectId",
+          "param_types": [
+            "Long",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /organizations/{org_id}/projects/{project_id}"
+        },
+        {
+          "id": "OrganizationGroupController.getOrgGroups",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationGroupController",
+          "method_name": "getOrgGroups",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer",
+            "String",
+            "String"
+          ],
+          "return_type": "OrgGroupPage",
+          "protocol": "REST",
+          "endpoint": "GET /organizations/{org_id}/groups"
+        },
+        {
+          "id": "OrganizationGroupController.createOrgGroup",
+          "class_name": "com.epam.reportportal.base.ws.controller.OrganizationGroupController",
+          "method_name": "createOrgGroup",
+          "param_types": [
+            "Long",
+            "CreateOrgGroupRequest"
+          ],
+          "return_type": "GroupInfo",
+          "protocol": "REST",
+          "endpoint": "POST /organizations/{org_id}/groups"
+        },
+        {
+          "id": "GeneratedPluginsController.executePluginCommand",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedPluginsController",
+          "method_name": "executePluginCommand",
+          "param_types": [
+            "String",
+            "String",
+            "PluginCommandRQ"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /plugins/{plugin_name}/commands/{command_name}"
+        },
+        {
+          "id": "GeneratedProjectController.getGroupsOfProject",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "getGroupsOfProject",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "ProjectGroupsPage",
+          "protocol": "REST",
+          "endpoint": "GET /projects/{project_key}/groups"
+        },
+        {
+          "id": "GeneratedProjectController.getProjectGroupById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "getProjectGroupById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "ProjectGroupInfo",
+          "protocol": "REST",
+          "endpoint": "GET /projects/{project_key}/groups/{group_id}"
+        },
+        {
+          "id": "GeneratedProjectController.addGroupToProjectById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "addGroupToProjectById",
+          "param_types": [
+            "String",
+            "Long",
+            "AddProjectToGroupByIdRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /projects/{project_key}/groups/{group_id}"
+        },
+        {
+          "id": "GeneratedProjectController.deleteGroupFromProjectById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "deleteGroupFromProjectById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /projects/{project_key}/groups/{group_id}"
+        },
+        {
+          "id": "GeneratedProjectController.getLogTypes",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "getLogTypes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "GetLogTypes200Response",
+          "protocol": "REST",
+          "endpoint": "GET /projects/{project_key}/log-types"
+        },
+        {
+          "id": "GeneratedProjectController.createLogType",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "createLogType",
+          "param_types": [
+            "String",
+            "LogTypeRequest"
+          ],
+          "return_type": "LogTypeResponse",
+          "protocol": "REST",
+          "endpoint": "POST /projects/{project_key}/log-types"
+        },
+        {
+          "id": "GeneratedProjectController.updateLogTypeById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "updateLogTypeById",
+          "param_types": [
+            "String",
+            "Long",
+            "LogTypeRequest"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /projects/{project_key}/log-types/{log_type_id}"
+        },
+        {
+          "id": "GeneratedProjectController.deleteLogTypeById",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedProjectController",
+          "method_name": "deleteLogTypeById",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /projects/{project_key}/log-types/{log_type_id}"
+        },
+        {
+          "id": "InvitationController.postInvitations",
+          "class_name": "com.epam.reportportal.base.ws.controller.InvitationController",
+          "method_name": "postInvitations",
+          "param_types": [
+            "InvitationRequest"
+          ],
+          "return_type": "Invitation",
+          "protocol": "REST",
+          "endpoint": "POST /invitations"
+        },
+        {
+          "id": "InvitationController.getInvitationsId",
+          "class_name": "com.epam.reportportal.base.ws.controller.InvitationController",
+          "method_name": "getInvitationsId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Invitation",
+          "protocol": "REST",
+          "endpoint": "GET /invitations/{invitation_id}"
+        },
+        {
+          "id": "InvitationController.putInvitationsId",
+          "class_name": "com.epam.reportportal.base.ws.controller.InvitationController",
+          "method_name": "putInvitationsId",
+          "param_types": [
+            "String",
+            "InvitationActivation"
+          ],
+          "return_type": "Invitation",
+          "protocol": "REST",
+          "endpoint": "PUT /invitations/{invitation_id}"
+        },
+        {
+          "id": "GeneratedUserController.getUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "getUsers",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "String",
+            "String",
+            "String",
+            "String",
+            "UUID",
+            "String",
+            "String",
+            "InstanceRole",
+            "AccountType"
+          ],
+          "return_type": "InstanceUserPage",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "GeneratedUserController.postUsers",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "postUsers",
+          "param_types": [
+            "NewUserRequest"
+          ],
+          "return_type": "InstanceUser",
+          "protocol": "REST",
+          "endpoint": "POST /users"
+        },
+        {
+          "id": "GeneratedUserController.postUsersSearches",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "postUsersSearches",
+          "param_types": [
+            "String",
+            "SearchCriteriaRQ"
+          ],
+          "return_type": "InstanceUserPage",
+          "protocol": "REST",
+          "endpoint": "POST /users/searches"
+        },
+        {
+          "id": "GeneratedUserController.patchUsersUserId",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "patchUsersUserId",
+          "param_types": [
+            "Long",
+            "List<PatchOperation>"
+          ],
+          "return_type": "SuccessfulUpdate",
+          "protocol": "REST",
+          "endpoint": "PATCH /users/{user_id}"
+        },
+        {
+          "id": "GeneratedUserController.getUsersMe",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "getUsersMe",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "InstanceUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/me"
+        },
+        {
+          "id": "GeneratedUserController.getUsersUserIdAvatar",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "getUsersUserIdAvatar",
+          "param_types": [
+            "Long",
+            "Boolean"
+          ],
+          "return_type": "Resource",
+          "protocol": "REST",
+          "endpoint": "GET /users/{user_id}/avatar"
+        },
+        {
+          "id": "GeneratedUserController.postUsersUserIdAvatar",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "postUsersUserIdAvatar",
+          "param_types": [
+            "Long",
+            "MultipartFile"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /users/{user_id}/avatar"
+        },
+        {
+          "id": "GeneratedUserController.deleteUsersUserIdAvatar",
+          "class_name": "com.epam.reportportal.base.ws.controller.GeneratedUserController",
+          "method_name": "deleteUsersUserIdAvatar",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /users/{user_id}/avatar"
+        },
+        {
+          "id": "ActivityConsumer.onEvent",
+          "class_name": "com.epam.reportportal.base.ws.rabbit.ActivityConsumer",
+          "method_name": "onEvent",
+          "param_types": [
+            "AbstractEvent<?>"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "activity"
+        },
+        {
+          "id": "EmailNotificationConsumer.onEvent",
+          "class_name": "com.epam.reportportal.base.ws.rabbit.EmailNotificationConsumer",
+          "method_name": "onEvent",
+          "param_types": [
+            "EmailNotificationRQ"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "notification.email"
+        },
+        {
+          "id": "ProjectCreatedConsumer.onProjectCreated",
+          "class_name": "com.epam.reportportal.base.ws.rabbit.ProjectCreatedConsumer",
+          "method_name": "onProjectCreated",
+          "param_types": [
+            "ProjectCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "project.created"
+        },
+        {
+          "id": "QueryConsumer.find",
+          "class_name": "com.epam.reportportal.base.ws.rabbit.QueryConsumer",
+          "method_name": "find",
+          "param_types": [
+            "QueryRQ"
+          ],
+          "return_type": "Object",
+          "protocol": "Messaging",
+          "endpoint": "query-rq"
+        },
+        {
+          "id": "UserCreatedConsumer.onEvent",
+          "class_name": "com.epam.reportportal.base.ws.rabbit.UserCreatedConsumer",
+          "method_name": "onEvent",
+          "param_types": [
+            "UserCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "user.created"
+        },
+        {
+          "id": "ItemsPatternAnalyzeConsumer.handleEvent",
+          "class_name": "com.epam.reportportal.base.core.analyzer.pattern.handler.proxy.ItemsPatternAnalyzeConsumer",
+          "method_name": "handleEvent",
+          "param_types": [
+            "ItemsPatternAnalyzeDto"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "analysis.pattern.regex"
+        },
+        {
+          "id": "ReportingConsumer.onMessage",
+          "class_name": "com.epam.reportportal.base.reporting.async.consumer.ReportingConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "Message"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "q.reporting.{n}"
+        }
+      ]
+    },
+    "uat": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthConfigurationEndpoint.createAuthIntegration",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "createAuthIntegration",
+          "param_types": [
+            "UpdateAuthRQ",
+            "AuthIntegrationType"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "POST /settings/auth/{authType}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.updateAuthIntegration",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "updateAuthIntegration",
+          "param_types": [
+            "UpdateAuthRQ",
+            "AuthIntegrationType",
+            "Long"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "PUT /settings/auth/{authType}/{integrationId}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.getSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "getSettings",
+          "param_types": [
+            "AuthIntegrationType"
+          ],
+          "return_type": "AbstractAuthResource",
+          "protocol": "REST",
+          "endpoint": "GET /settings/auth/{authType}"
+        },
+        {
+          "id": "AuthConfigurationEndpoint.deleteSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.AuthConfigurationEndpoint",
+          "method_name": "deleteSettings",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /settings/auth/{integrationId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.updateOAuthSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "updateOAuthSettings",
+          "param_types": [
+            "String",
+            "OAuthRegistrationResource"
+          ],
+          "return_type": "OAuthRegistrationResource",
+          "protocol": "REST",
+          "endpoint": "POST /settings/oauth/{authId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.deleteOAuthSetting",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "deleteOAuthSetting",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "DELETE /settings/oauth/{authId}"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.getOAuthSettings",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "getOAuthSettings",
+          "param_types": [],
+          "return_type": "Map<String,OAuthRegistrationResource>",
+          "protocol": "REST",
+          "endpoint": "GET /settings/oauth"
+        },
+        {
+          "id": "OAuthConfigurationEndpoint.getOAuthSettingsGet",
+          "class_name": "com.epam.reportportal.auth.endpoint.OAuthConfigurationEndpoint",
+          "method_name": "getOAuthSettings",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OAuthRegistrationResource",
+          "protocol": "REST",
+          "endpoint": "GET /settings/oauth/{authId}"
+        },
+        {
+          "id": "SsoEndpoint.user",
+          "class_name": "com.epam.reportportal.auth.endpoint.SsoEndpoint",
+          "method_name": "user",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /sso/me"
+        },
+        {
+          "id": "GithubEndpoint.synchronize",
+          "class_name": "com.epam.reportportal.auth.integration.github.GithubEndpoint",
+          "method_name": "synchronize",
+          "param_types": [],
+          "return_type": "OperationCompletionRS",
+          "protocol": "REST",
+          "endpoint": "POST /sso/me/github/synchronize"
+        }
+      ]
+    },
+    "jobs": {
+      "exposed_interfaces": [
+        {
+          "id": "SaveLogMessageJob.execute",
+          "class_name": "com.epam.reportportal.jobs.processing.SaveLogMessageJob",
+          "method_name": "execute",
+          "param_types": [
+            "LogMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "log_message_saving"
+        }
+      ]
+    },
+    "analyzer": {
+      "exposed_interfaces": [
+        {
+          "id": "IndexService.index_logs",
+          "class_name": "IndexService",
+          "method_name": "index_logs",
+          "param_types": [
+            "list[Launch]"
+          ],
+          "return_type": "BulkResponse",
+          "protocol": "Messaging",
+          "endpoint": "index"
+        },
+        {
+          "id": "IndexService.defect_update",
+          "class_name": "IndexService",
+          "method_name": "defect_update",
+          "param_types": [
+            "DefectUpdate"
+          ],
+          "return_type": "list[int]",
+          "protocol": "Messaging",
+          "endpoint": "defect_update"
+        },
+        {
+          "id": "AutoAnalyzerService.analyze_logs",
+          "class_name": "AutoAnalyzerService",
+          "method_name": "analyze_logs",
+          "param_types": [
+            "list[Launch]"
+          ],
+          "return_type": "list[AnalysisResult]",
+          "protocol": "Messaging",
+          "endpoint": "analyze"
+        },
+        {
+          "id": "CleanIndexService.delete_index",
+          "class_name": "CleanIndexService",
+          "method_name": "delete_index",
+          "param_types": [
+            "int|str"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "delete"
+        },
+        {
+          "id": "CleanIndexService.delete_logs",
+          "class_name": "CleanIndexService",
+          "method_name": "delete_logs",
+          "param_types": [
+            "DeleteLogsRequest"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "clean"
+        },
+        {
+          "id": "CleanIndexService.delete_test_items",
+          "class_name": "CleanIndexService",
+          "method_name": "delete_test_items",
+          "param_types": [
+            "DeleteTestItemsRequest"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "item_remove"
+        },
+        {
+          "id": "CleanIndexService.delete_launches",
+          "class_name": "CleanIndexService",
+          "method_name": "delete_launches",
+          "param_types": [
+            "DeleteLaunchesRequest"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "launch_remove"
+        },
+        {
+          "id": "CleanIndexService.remove_by_launch_start_time",
+          "class_name": "CleanIndexService",
+          "method_name": "remove_by_launch_start_time",
+          "param_types": [
+            "RemoveByDatesRequest"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "remove_by_launch_start_time"
+        },
+        {
+          "id": "CleanIndexService.remove_by_log_time",
+          "class_name": "CleanIndexService",
+          "method_name": "remove_by_log_time",
+          "param_types": [
+            "RemoveByDatesRequest"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "remove_by_log_time"
+        },
+        {
+          "id": "SearchService.search_logs",
+          "class_name": "SearchService",
+          "method_name": "search_logs",
+          "param_types": [
+            "SearchLogs"
+          ],
+          "return_type": "list[SearchLogInfo]",
+          "protocol": "Messaging",
+          "endpoint": "search"
+        },
+        {
+          "id": "SuggestService.suggest_items",
+          "class_name": "SuggestService",
+          "method_name": "suggest_items",
+          "param_types": [
+            "TestItemInfo"
+          ],
+          "return_type": "list[SuggestAnalysisResult]",
+          "protocol": "Messaging",
+          "endpoint": "suggest"
+        },
+        {
+          "id": "ClusterService.find_clusters",
+          "class_name": "ClusterService",
+          "method_name": "find_clusters",
+          "param_types": [
+            "LaunchInfoForClustering"
+          ],
+          "return_type": "ClusterResult",
+          "protocol": "Messaging",
+          "endpoint": "cluster"
+        },
+        {
+          "id": "NamespaceFinderService.update_chosen_namespaces",
+          "class_name": "NamespaceFinderService",
+          "method_name": "update_chosen_namespaces",
+          "param_types": [
+            "list[Launch]"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "namespace_finder"
+        },
+        {
+          "id": "SuggestPatternsService.suggest_patterns",
+          "class_name": "SuggestPatternsService",
+          "method_name": "suggest_patterns",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "SuggestPattern",
+          "protocol": "Messaging",
+          "endpoint": "suggest_patterns"
+        },
+        {
+          "id": "processor.log_suggest_info_index_warning",
+          "class_name": "processor",
+          "method_name": "log_suggest_info_index_warning",
+          "param_types": [
+            "list[SuggestAnalysisResult]"
+          ],
+          "return_type": "Any",
+          "protocol": "Messaging",
+          "endpoint": "index_suggest_info"
+        },
+        {
+          "id": "processor.log_suggest_info_remove_warning",
+          "class_name": "processor",
+          "method_name": "log_suggest_info_remove_warning",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "remove_suggest_info"
+        },
+        {
+          "id": "processor.log_suggest_info_update_warning",
+          "class_name": "processor",
+          "method_name": "log_suggest_info_update_warning",
+          "param_types": [
+            "Any"
+          ],
+          "return_type": "int",
+          "protocol": "Messaging",
+          "endpoint": "update_suggest_info"
+        },
+        {
+          "id": "processor.remove_models",
+          "class_name": "processor",
+          "method_name": "remove_models",
+          "param_types": [
+            "Any"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "remove_models"
+        },
+        {
+          "id": "processor.get_model_info",
+          "class_name": "processor",
+          "method_name": "get_model_info",
+          "param_types": [
+            "Any"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "get_model_info"
+        },
+        {
+          "id": "RetrainingService.train_models",
+          "class_name": "RetrainingService",
+          "method_name": "train_models",
+          "param_types": [
+            "TrainInfo"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "train_models"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "analyze",
+      "dst_service": "analyzer",
+      "dst_class": "AutoAnalyzerService",
+      "dst_interface_id": "AutoAnalyzerService.analyze_logs",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:153 rabbitTemplate.convertSendAndReceiveAsType(exchangeInfo.getName(), ANALYZE_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "searchLogs",
+      "dst_service": "analyzer",
+      "dst_class": "SearchService",
+      "dst_interface_id": "SearchService.search_logs",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:98 return rabbitTemplate.convertSendAndReceiveAsType(exchangeName, SEARCH_ROUTE, rq,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "removeSuggest",
+      "dst_service": "analyzer",
+      "dst_class": "processor",
+      "dst_interface_id": "processor.log_suggest_info_remove_warning",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:107 suggestExchange -> rabbitTemplate.convertAndSend(suggestExchange, REMOVE_SUGGEST_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "searchSuggests",
+      "dst_service": "analyzer",
+      "dst_class": "SuggestService",
+      "dst_interface_id": "SuggestService.suggest_items",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:114 return rabbitTemplate.convertSendAndReceiveAsType(getSuggestExchangeName(), SUGGEST_ROUTE, rq,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "handleSuggestChoice",
+      "dst_service": "analyzer",
+      "dst_class": "processor",
+      "dst_interface_id": "processor.log_suggest_info_index_warning",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:122 rabbitTemplate.convertAndSend(getSuggestExchangeName(), SUGGEST_INFO_ROUTE, suggestInfos);"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.AnalyzerServiceClientImpl",
+      "src_method": "generateClusters",
+      "dst_service": "analyzer",
+      "dst_class": "ClusterService",
+      "dst_interface_id": "ClusterService.find_clusters",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/AnalyzerServiceClientImpl.java:132 return rabbitTemplate.convertSendAndReceiveAsType(exchangeName, CLUSTER_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "index",
+      "dst_service": "analyzer",
+      "dst_class": "NamespaceFinderService",
+      "dst_interface_id": "NamespaceFinderService.update_chosen_namespaces",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:74 rabbitTemplate.convertAndSend(exchange.getName(), NAMESPACE_FINDER_ROUTE, rq);"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "index",
+      "dst_service": "analyzer",
+      "dst_class": "IndexService",
+      "dst_interface_id": "IndexService.index_logs",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:75 rabbitTemplate.convertAndSend(exchange.getName(), INDEX_ROUTE, rq);"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "indexDefectsUpdate",
+      "dst_service": "analyzer",
+      "dst_class": "IndexService",
+      "dst_interface_id": "IndexService.defect_update",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:83 rabbitTemplate.convertSendAndReceiveAsType(exchange.getName(), DEFECT_UPDATE_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "indexItemsRemove",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_test_items",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:94 rabbitTemplate.convertSendAndReceiveAsType(exchange.getName(), ITEM_REMOVE_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "indexItemsRemoveAsync",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_test_items",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:104 exchange -> rabbitTemplate.convertAndSend(exchange.getName(), ITEM_REMOVE_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "indexLaunchesRemove",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_launches",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:112 exchange -> rabbitTemplate.convertAndSend(exchange.getName(), LAUNCH_REMOVE_ROUTE,"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "cleanIndex",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_logs",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:123 CLEAN_ROUTE, new CleanIndexRq(index, ids), new ParameterizedTypeReference<>() {"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.analyzer.auto.client.impl.IndexerServiceClientImpl",
+      "src_method": "deleteIndex",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_index",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/analyzer/auto/client/impl/IndexerServiceClientImpl.java:134 exchange -> rabbitTemplate.convertSendAndReceiveAsType(exchange.getName(), DELETE_ROUTE,"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.analyzer.index.IndexerServiceClientImpl",
+      "src_method": "cleanIndex",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_logs",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/analyzer/index/IndexerServiceClientImpl.java:61 CLEAN_ROUTE,"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.analyzer.index.IndexerServiceClientImpl",
+      "src_method": "deleteIndex",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.delete_index",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/analyzer/index/IndexerServiceClientImpl.java:89 DELETE_ROUTE,"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.analyzer.index.IndexerServiceClientImpl",
+      "src_method": "removeSuggest",
+      "dst_service": "analyzer",
+      "dst_class": "processor",
+      "dst_interface_id": "processor.log_suggest_info_remove_warning",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/analyzer/index/IndexerServiceClientImpl.java:111 .ifPresent(suggestExchange -> rabbitTemplate.convertAndSend(suggestExchange, REMOVE_SUGGEST_ROUTE, projectId));"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.analyzer.index.IndexerServiceClientImpl",
+      "src_method": "sendRangeRemovingMessageToRoute",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.remove_by_log_time",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/analyzer/index/IndexerServiceClientImpl.java:105 rabbitTemplate.convertAndSend(EXCHANGE_NAME, route, message);"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.analyzer.index.IndexerServiceClientImpl",
+      "src_method": "sendRangeRemovingMessageToRoute",
+      "dst_service": "analyzer",
+      "dst_class": "CleanIndexService",
+      "dst_interface_id": "CleanIndexService.remove_by_launch_start_time",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/analyzer/index/IndexerServiceClientImpl.java:105 rabbitTemplate.convertAndSend(EXCHANGE_NAME, route, message);"
+    },
+    {
+      "src_service": "api",
+      "src_class": "com.epam.reportportal.base.core.log.ElasticLogService",
+      "src_method": "saveLogMessage",
+      "dst_service": "jobs",
+      "dst_class": "com.epam.reportportal.jobs.processing.SaveLogMessageJob",
+      "dst_interface_id": "SaveLogMessageJob.execute",
+      "protocol": "Messaging",
+      "evidence": "service-api/src/main/java/com/epam/reportportal/base/core/log/ElasticLogService.java:81 amqpTemplate.convertAndSend(PROCESSING_EXCHANGE_NAME, LOG_MESSAGE_SAVING_ROUTING_KEY,"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.service.impl.MessageBusImpl",
+      "src_method": "publishDomainEvent",
+      "dst_service": "api",
+      "dst_class": "com.epam.reportportal.base.ws.rabbit.ActivityConsumer",
+      "dst_interface_id": "ActivityConsumer.onEvent",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/service/impl/MessageBusImpl.java:55 rabbitTemplate.convertAndSend(DOMAIN_EVENTS_EXCHANGE, routingKey, event);"
+    },
+    {
+      "src_service": "jobs",
+      "src_class": "com.epam.reportportal.service.impl.MessageBusImpl",
+      "src_method": "publishEmailNotificationEvents",
+      "dst_service": "api",
+      "dst_class": "com.epam.reportportal.base.ws.rabbit.EmailNotificationConsumer",
+      "dst_interface_id": "EmailNotificationConsumer.onEvent",
+      "protocol": "Messaging",
+      "evidence": "service-jobs/src/main/java/com/epam/reportportal/service/impl/MessageBusImpl.java:61 rabbitTemplate.convertAndSend(EXCHANGE_NOTIFICATION, QUEUE_EMAIL, notification));"
+    },
+    {
+      "src_service": "uat",
+      "src_class": "com.epam.reportportal.auth.event.DomainEventPublisher",
+      "src_method": "onDomainEvent",
+      "dst_service": "api",
+      "dst_class": "com.epam.reportportal.base.ws.rabbit.ActivityConsumer",
+      "dst_interface_id": "ActivityConsumer.onEvent",
+      "protocol": "Messaging",
+      "evidence": "service-authorization/src/main/java/com/epam/reportportal/auth/event/DomainEventPublisher.java:50 rabbitTemplate.convertAndSend(DOMAIN_EVENTS_EXCHANGE, generateRoutingKey(event), event);"
+    },
+    {
+      "src_service": "uat",
+      "src_class": "com.epam.reportportal.auth.event.DomainEventPublisher",
+      "src_method": "onDomainEvent",
+      "dst_service": "api",
+      "dst_class": "com.epam.reportportal.base.ws.rabbit.UserCreatedConsumer",
+      "dst_interface_id": "UserCreatedConsumer.onEvent",
+      "protocol": "Messaging",
+      "evidence": "service-authorization/src/main/java/com/epam/reportportal/auth/event/DomainEventPublisher.java:50 rabbitTemplate.convertAndSend(DOMAIN_EVENTS_EXCHANGE, generateRoutingKey(event), event);"
+    }
+  ]
+}

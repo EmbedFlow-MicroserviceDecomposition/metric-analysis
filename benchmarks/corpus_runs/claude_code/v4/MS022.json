@@ -1,0 +1,2903 @@
+{
+  "system_id": "MS022",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "mall-demo": {
+      "exposed_interfaces": [
+        {
+          "id": "DemoController.getBrandList",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "getBrandList",
+          "param_types": [],
+          "return_type": "List<PmsBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/listAll"
+        },
+        {
+          "id": "DemoController.createBrand",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "createBrand",
+          "param_types": [
+            "PmsBrandDto"
+          ],
+          "return_type": "PmsBrandDto",
+          "protocol": "REST",
+          "endpoint": "POST /brand/create"
+        },
+        {
+          "id": "DemoController.updateBrand",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "updateBrand",
+          "param_types": [
+            "Long",
+            "PmsBrandDto"
+          ],
+          "return_type": "PmsBrandDto",
+          "protocol": "REST",
+          "endpoint": "POST /brand/update/{id}"
+        },
+        {
+          "id": "DemoController.deleteBrand",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "deleteBrand",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /brand/delete/{id}"
+        },
+        {
+          "id": "DemoController.listBrand",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "listBrand",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/list"
+        },
+        {
+          "id": "DemoController.brand",
+          "class_name": "com.macro.mall.demo.controller.DemoController",
+          "method_name": "brand",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsBrand",
+          "protocol": "REST",
+          "endpoint": "GET /brand/{id}"
+        },
+        {
+          "id": "FeignAdminController.login",
+          "class_name": "com.macro.mall.demo.controller.FeignAdminController",
+          "method_name": "login",
+          "param_types": [
+            "UmsAdminLoginParam"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /feign/admin/login"
+        },
+        {
+          "id": "FeignAdminController.getBrandList",
+          "class_name": "com.macro.mall.demo.controller.FeignAdminController",
+          "method_name": "getBrandList",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /feign/admin/getBrandList"
+        },
+        {
+          "id": "FeignPortalController.login",
+          "class_name": "com.macro.mall.demo.controller.FeignPortalController",
+          "method_name": "login",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /feign/portal/login"
+        },
+        {
+          "id": "FeignPortalController.cartList",
+          "class_name": "com.macro.mall.demo.controller.FeignPortalController",
+          "method_name": "cartList",
+          "param_types": [],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /feign/portal/cartList"
+        },
+        {
+          "id": "FeignSearchController.search",
+          "class_name": "com.macro.mall.demo.controller.FeignSearchController",
+          "method_name": "search",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /feign/search/justSearch"
+        }
+      ]
+    },
+    "mall-admin": {
+      "exposed_interfaces": [
+        {
+          "id": "CmsPrefrenceAreaController.listAll",
+          "class_name": "com.macro.mall.controller.CmsPrefrenceAreaController",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<CmsPrefrenceArea>",
+          "protocol": "REST",
+          "endpoint": "GET /prefrenceArea/listAll"
+        },
+        {
+          "id": "CmsSubjectController.listAll",
+          "class_name": "com.macro.mall.controller.CmsSubjectController",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<CmsSubject>",
+          "protocol": "REST",
+          "endpoint": "GET /subject/listAll"
+        },
+        {
+          "id": "CmsSubjectController.getList",
+          "class_name": "com.macro.mall.controller.CmsSubjectController",
+          "method_name": "getList",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<CmsSubject>",
+          "protocol": "REST",
+          "endpoint": "GET /subject/list"
+        },
+        {
+          "id": "MinioController.upload",
+          "class_name": "com.macro.mall.controller.MinioController",
+          "method_name": "upload",
+          "param_types": [
+            "MultipartFile"
+          ],
+          "return_type": "MinioUploadDto",
+          "protocol": "REST",
+          "endpoint": "POST /minio/upload"
+        },
+        {
+          "id": "MinioController.delete",
+          "class_name": "com.macro.mall.controller.MinioController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /minio/delete"
+        },
+        {
+          "id": "OmsCompanyAddressController.list",
+          "class_name": "com.macro.mall.controller.OmsCompanyAddressController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<OmsCompanyAddress>",
+          "protocol": "REST",
+          "endpoint": "GET /companyAddress/list"
+        },
+        {
+          "id": "OmsOrderController.list",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "list",
+          "param_types": [
+            "OmsOrderQueryParam",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<OmsOrder>",
+          "protocol": "REST",
+          "endpoint": "GET /order/list"
+        },
+        {
+          "id": "OmsOrderController.delivery",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "delivery",
+          "param_types": [
+            "List<OmsOrderDeliveryParam>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/update/delivery"
+        },
+        {
+          "id": "OmsOrderController.close",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "close",
+          "param_types": [
+            "List<Long>",
+            "String"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/update/close"
+        },
+        {
+          "id": "OmsOrderController.delete",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/delete"
+        },
+        {
+          "id": "OmsOrderController.detail",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OmsOrderDetail",
+          "protocol": "REST",
+          "endpoint": "GET /order/{id}"
+        },
+        {
+          "id": "OmsOrderController.updateReceiverInfo",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "updateReceiverInfo",
+          "param_types": [
+            "OmsReceiverInfoParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/update/receiverInfo"
+        },
+        {
+          "id": "OmsOrderController.updateReceiverInfoMoneyInfo",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "updateReceiverInfo",
+          "param_types": [
+            "OmsMoneyInfoParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/update/moneyInfo"
+        },
+        {
+          "id": "OmsOrderController.updateNote",
+          "class_name": "com.macro.mall.controller.OmsOrderController",
+          "method_name": "updateNote",
+          "param_types": [
+            "Long",
+            "String",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /order/update/note"
+        },
+        {
+          "id": "OmsOrderReturnApplyController.list",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnApplyController",
+          "method_name": "list",
+          "param_types": [
+            "OmsReturnApplyQueryParam",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<OmsOrderReturnApply>",
+          "protocol": "REST",
+          "endpoint": "GET /returnApply/list"
+        },
+        {
+          "id": "OmsOrderReturnApplyController.delete",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnApplyController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnApply/delete"
+        },
+        {
+          "id": "OmsOrderReturnApplyController.getItem",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnApplyController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OmsOrderReturnApplyResult",
+          "protocol": "REST",
+          "endpoint": "GET /returnApply/{id}"
+        },
+        {
+          "id": "OmsOrderReturnApplyController.updateStatus",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnApplyController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Long",
+            "OmsUpdateStatusParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnApply/update/status/{id}"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.create",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "create",
+          "param_types": [
+            "OmsOrderReturnReason"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnReason/create"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.update",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "OmsOrderReturnReason"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnReason/update/{id}"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.delete",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnReason/delete"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.list",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "list",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<OmsOrderReturnReason>",
+          "protocol": "REST",
+          "endpoint": "GET /returnReason/list"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.getItem",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OmsOrderReturnReason",
+          "protocol": "REST",
+          "endpoint": "GET /returnReason/{id}"
+        },
+        {
+          "id": "OmsOrderReturnReasonController.updateStatus",
+          "class_name": "com.macro.mall.controller.OmsOrderReturnReasonController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Integer",
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnReason/update/status"
+        },
+        {
+          "id": "OmsOrderSettingController.getItem",
+          "class_name": "com.macro.mall.controller.OmsOrderSettingController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OmsOrderSetting",
+          "protocol": "REST",
+          "endpoint": "GET /orderSetting/{id}"
+        },
+        {
+          "id": "OmsOrderSettingController.update",
+          "class_name": "com.macro.mall.controller.OmsOrderSettingController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "OmsOrderSetting"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /orderSetting/update/{id}"
+        },
+        {
+          "id": "OssController.policy",
+          "class_name": "com.macro.mall.controller.OssController",
+          "method_name": "policy",
+          "param_types": [],
+          "return_type": "OssPolicyResult",
+          "protocol": "REST",
+          "endpoint": "GET /aliyun/oss/policy"
+        },
+        {
+          "id": "OssController.callback",
+          "class_name": "com.macro.mall.controller.OssController",
+          "method_name": "callback",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "OssCallbackResult",
+          "protocol": "REST",
+          "endpoint": "POST /aliyun/oss/callback"
+        },
+        {
+          "id": "PmsBrandController.getList",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "getList",
+          "param_types": [],
+          "return_type": "List<PmsBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/listAll"
+        },
+        {
+          "id": "PmsBrandController.create",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "create",
+          "param_types": [
+            "PmsBrandParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /brand/create"
+        },
+        {
+          "id": "PmsBrandController.update",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "PmsBrandParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /brand/update/{id}"
+        },
+        {
+          "id": "PmsBrandController.delete",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /brand/delete/{id}"
+        },
+        {
+          "id": "PmsBrandController.getListPage",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "getList",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/list"
+        },
+        {
+          "id": "PmsBrandController.getItem",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsBrand",
+          "protocol": "REST",
+          "endpoint": "GET /brand/{id}"
+        },
+        {
+          "id": "PmsBrandController.deleteBatch",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "deleteBatch",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /brand/delete/batch"
+        },
+        {
+          "id": "PmsBrandController.updateShowStatus",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "updateShowStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /brand/update/showStatus"
+        },
+        {
+          "id": "PmsBrandController.updateFactoryStatus",
+          "class_name": "com.macro.mall.controller.PmsBrandController",
+          "method_name": "updateFactoryStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /brand/update/factoryStatus"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.create",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "create",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productAttribute/category/create"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.update",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productAttribute/category/update/{id}"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.delete",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/category/delete/{id}"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.getItem",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsProductAttributeCategory",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/category/{id}"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.getList",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "getList",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProductAttributeCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/category/list"
+        },
+        {
+          "id": "PmsProductAttributeCategoryController.getListWithAttr",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeCategoryController",
+          "method_name": "getListWithAttr",
+          "param_types": [],
+          "return_type": "List<PmsProductAttributeCategoryItem>",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/category/list/withAttr"
+        },
+        {
+          "id": "PmsProductAttributeController.getList",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "getList",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProductAttribute>",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/list/{cid}"
+        },
+        {
+          "id": "PmsProductAttributeController.create",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "create",
+          "param_types": [
+            "PmsProductAttributeParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productAttribute/create"
+        },
+        {
+          "id": "PmsProductAttributeController.update",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "PmsProductAttributeParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productAttribute/update/{id}"
+        },
+        {
+          "id": "PmsProductAttributeController.getItem",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsProductAttribute",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/{id}"
+        },
+        {
+          "id": "PmsProductAttributeController.delete",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productAttribute/delete"
+        },
+        {
+          "id": "PmsProductAttributeController.getAttrInfo",
+          "class_name": "com.macro.mall.controller.PmsProductAttributeController",
+          "method_name": "getAttrInfo",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<ProductAttrInfo>",
+          "protocol": "REST",
+          "endpoint": "GET /productAttribute/attrInfo/{productCategoryId}"
+        },
+        {
+          "id": "PmsProductCategoryController.create",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "create",
+          "param_types": [
+            "PmsProductCategoryParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productCategory/create"
+        },
+        {
+          "id": "PmsProductCategoryController.update",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "PmsProductCategoryParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productCategory/update/{id}"
+        },
+        {
+          "id": "PmsProductCategoryController.getList",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "getList",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProductCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /productCategory/list/{parentId}"
+        },
+        {
+          "id": "PmsProductCategoryController.getItem",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsProductCategory",
+          "protocol": "REST",
+          "endpoint": "GET /productCategory/{id}"
+        },
+        {
+          "id": "PmsProductCategoryController.delete",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productCategory/delete/{id}"
+        },
+        {
+          "id": "PmsProductCategoryController.updateNavStatus",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "updateNavStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productCategory/update/navStatus"
+        },
+        {
+          "id": "PmsProductCategoryController.updateShowStatus",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "updateShowStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /productCategory/update/showStatus"
+        },
+        {
+          "id": "PmsProductCategoryController.listWithChildren",
+          "class_name": "com.macro.mall.controller.PmsProductCategoryController",
+          "method_name": "listWithChildren",
+          "param_types": [],
+          "return_type": "List<PmsProductCategoryWithChildrenItem>",
+          "protocol": "REST",
+          "endpoint": "GET /productCategory/list/withChildren"
+        },
+        {
+          "id": "PmsProductController.create",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "create",
+          "param_types": [
+            "PmsProductParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/create"
+        },
+        {
+          "id": "PmsProductController.getUpdateInfo",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "getUpdateInfo",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsProductResult",
+          "protocol": "REST",
+          "endpoint": "GET /product/updateInfo/{id}"
+        },
+        {
+          "id": "PmsProductController.update",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "PmsProductParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/{id}"
+        },
+        {
+          "id": "PmsProductController.getList",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "getList",
+          "param_types": [
+            "PmsProductQueryParam",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /product/list"
+        },
+        {
+          "id": "PmsProductController.getListSimple",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "getList",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /product/simpleList"
+        },
+        {
+          "id": "PmsProductController.updateVerifyStatus",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "updateVerifyStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer",
+            "String"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/verifyStatus"
+        },
+        {
+          "id": "PmsProductController.updatePublishStatus",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "updatePublishStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/publishStatus"
+        },
+        {
+          "id": "PmsProductController.updateRecommendStatus",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "updateRecommendStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/recommendStatus"
+        },
+        {
+          "id": "PmsProductController.updateNewStatus",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "updateNewStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/newStatus"
+        },
+        {
+          "id": "PmsProductController.updateDeleteStatus",
+          "class_name": "com.macro.mall.controller.PmsProductController",
+          "method_name": "updateDeleteStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /product/update/deleteStatus"
+        },
+        {
+          "id": "PmsSkuStockController.getList",
+          "class_name": "com.macro.mall.controller.PmsSkuStockController",
+          "method_name": "getList",
+          "param_types": [
+            "Long",
+            "String"
+          ],
+          "return_type": "List<PmsSkuStock>",
+          "protocol": "REST",
+          "endpoint": "GET /sku/{pid}"
+        },
+        {
+          "id": "PmsSkuStockController.update",
+          "class_name": "com.macro.mall.controller.PmsSkuStockController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "List<PmsSkuStock>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /sku/update/{pid}"
+        },
+        {
+          "id": "SmsCouponController.add",
+          "class_name": "com.macro.mall.controller.SmsCouponController",
+          "method_name": "add",
+          "param_types": [
+            "SmsCouponParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /coupon/create"
+        },
+        {
+          "id": "SmsCouponController.delete",
+          "class_name": "com.macro.mall.controller.SmsCouponController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /coupon/delete/{id}"
+        },
+        {
+          "id": "SmsCouponController.update",
+          "class_name": "com.macro.mall.controller.SmsCouponController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "SmsCouponParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /coupon/update/{id}"
+        },
+        {
+          "id": "SmsCouponController.list",
+          "class_name": "com.macro.mall.controller.SmsCouponController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsCoupon>",
+          "protocol": "REST",
+          "endpoint": "GET /coupon/list"
+        },
+        {
+          "id": "SmsCouponController.getItem",
+          "class_name": "com.macro.mall.controller.SmsCouponController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SmsCouponParam",
+          "protocol": "REST",
+          "endpoint": "GET /coupon/{id}"
+        },
+        {
+          "id": "SmsCouponHistoryController.list",
+          "class_name": "com.macro.mall.controller.SmsCouponHistoryController",
+          "method_name": "list",
+          "param_types": [
+            "Long",
+            "Integer",
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsCouponHistory>",
+          "protocol": "REST",
+          "endpoint": "GET /couponHistory/list"
+        },
+        {
+          "id": "SmsFlashPromotionController.create",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "create",
+          "param_types": [
+            "SmsFlashPromotion"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flash/create"
+        },
+        {
+          "id": "SmsFlashPromotionController.update",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "SmsFlashPromotion"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flash/update/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionController.delete",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flash/delete/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionController.updateStatus",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flash/update/status/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionController.getItem",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SmsFlashPromotion",
+          "protocol": "REST",
+          "endpoint": "GET /flash/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionController.getItemList",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionController",
+          "method_name": "getItem",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsFlashPromotion>",
+          "protocol": "REST",
+          "endpoint": "GET /flash/list"
+        },
+        {
+          "id": "SmsFlashPromotionProductRelationController.create",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionProductRelationController",
+          "method_name": "create",
+          "param_types": [
+            "List<SmsFlashPromotionProductRelation>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashProductRelation/create"
+        },
+        {
+          "id": "SmsFlashPromotionProductRelationController.update",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionProductRelationController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "SmsFlashPromotionProductRelation"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashProductRelation/update/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionProductRelationController.delete",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionProductRelationController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashProductRelation/delete/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionProductRelationController.getItem",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionProductRelationController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SmsFlashPromotionProductRelation",
+          "protocol": "REST",
+          "endpoint": "GET /flashProductRelation/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionProductRelationController.list",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionProductRelationController",
+          "method_name": "list",
+          "param_types": [
+            "Long",
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsFlashPromotionProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /flashProductRelation/list"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.create",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "create",
+          "param_types": [
+            "SmsFlashPromotionSession"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashSession/create"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.update",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "SmsFlashPromotionSession"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashSession/update/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.updateStatus",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashSession/update/status/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.delete",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /flashSession/delete/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.getItem",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SmsFlashPromotionSession",
+          "protocol": "REST",
+          "endpoint": "GET /flashSession/{id}"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.list",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<SmsFlashPromotionSession>",
+          "protocol": "REST",
+          "endpoint": "GET /flashSession/list"
+        },
+        {
+          "id": "SmsFlashPromotionSessionController.selectList",
+          "class_name": "com.macro.mall.controller.SmsFlashPromotionSessionController",
+          "method_name": "selectList",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<SmsFlashPromotionSessionDetail>",
+          "protocol": "REST",
+          "endpoint": "GET /flashSession/selectList"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.create",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "create",
+          "param_types": [
+            "SmsHomeAdvertise"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/advertise/create"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.delete",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/advertise/delete"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.updateStatus",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/advertise/update/status/{id}"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.getItem",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SmsHomeAdvertise",
+          "protocol": "REST",
+          "endpoint": "GET /home/advertise/{id}"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.update",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "SmsHomeAdvertise"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/advertise/update/{id}"
+        },
+        {
+          "id": "SmsHomeAdvertiseController.list",
+          "class_name": "com.macro.mall.controller.SmsHomeAdvertiseController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsHomeAdvertise>",
+          "protocol": "REST",
+          "endpoint": "GET /home/advertise/list"
+        },
+        {
+          "id": "SmsHomeBrandController.create",
+          "class_name": "com.macro.mall.controller.SmsHomeBrandController",
+          "method_name": "create",
+          "param_types": [
+            "List<SmsHomeBrand>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/brand/create"
+        },
+        {
+          "id": "SmsHomeBrandController.updateSort",
+          "class_name": "com.macro.mall.controller.SmsHomeBrandController",
+          "method_name": "updateSort",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/brand/update/sort/{id}"
+        },
+        {
+          "id": "SmsHomeBrandController.delete",
+          "class_name": "com.macro.mall.controller.SmsHomeBrandController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/brand/delete"
+        },
+        {
+          "id": "SmsHomeBrandController.updateRecommendStatus",
+          "class_name": "com.macro.mall.controller.SmsHomeBrandController",
+          "method_name": "updateRecommendStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/brand/update/recommendStatus"
+        },
+        {
+          "id": "SmsHomeBrandController.list",
+          "class_name": "com.macro.mall.controller.SmsHomeBrandController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsHomeBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /home/brand/list"
+        },
+        {
+          "id": "SmsHomeNewProductController.create",
+          "class_name": "com.macro.mall.controller.SmsHomeNewProductController",
+          "method_name": "create",
+          "param_types": [
+            "List<SmsHomeNewProduct>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/newProduct/create"
+        },
+        {
+          "id": "SmsHomeNewProductController.updateSort",
+          "class_name": "com.macro.mall.controller.SmsHomeNewProductController",
+          "method_name": "updateSort",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/newProduct/update/sort/{id}"
+        },
+        {
+          "id": "SmsHomeNewProductController.delete",
+          "class_name": "com.macro.mall.controller.SmsHomeNewProductController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/newProduct/delete"
+        },
+        {
+          "id": "SmsHomeNewProductController.updateRecommendStatus",
+          "class_name": "com.macro.mall.controller.SmsHomeNewProductController",
+          "method_name": "updateRecommendStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/newProduct/update/recommendStatus"
+        },
+        {
+          "id": "SmsHomeNewProductController.list",
+          "class_name": "com.macro.mall.controller.SmsHomeNewProductController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsHomeNewProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /home/newProduct/list"
+        },
+        {
+          "id": "SmsHomeRecommendProductController.create",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendProductController",
+          "method_name": "create",
+          "param_types": [
+            "List<SmsHomeRecommendProduct>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendProduct/create"
+        },
+        {
+          "id": "SmsHomeRecommendProductController.updateSort",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendProductController",
+          "method_name": "updateSort",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendProduct/update/sort/{id}"
+        },
+        {
+          "id": "SmsHomeRecommendProductController.delete",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendProductController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendProduct/delete"
+        },
+        {
+          "id": "SmsHomeRecommendProductController.updateRecommendStatus",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendProductController",
+          "method_name": "updateRecommendStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendProduct/update/recommendStatus"
+        },
+        {
+          "id": "SmsHomeRecommendProductController.list",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendProductController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsHomeRecommendProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /home/recommendProduct/list"
+        },
+        {
+          "id": "SmsHomeRecommendSubjectController.create",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendSubjectController",
+          "method_name": "create",
+          "param_types": [
+            "List<SmsHomeRecommendSubject>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendSubject/create"
+        },
+        {
+          "id": "SmsHomeRecommendSubjectController.updateSort",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendSubjectController",
+          "method_name": "updateSort",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendSubject/update/sort/{id}"
+        },
+        {
+          "id": "SmsHomeRecommendSubjectController.delete",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendSubjectController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendSubject/delete"
+        },
+        {
+          "id": "SmsHomeRecommendSubjectController.updateRecommendStatus",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendSubjectController",
+          "method_name": "updateRecommendStatus",
+          "param_types": [
+            "List<Long>",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /home/recommendSubject/update/recommendStatus"
+        },
+        {
+          "id": "SmsHomeRecommendSubjectController.list",
+          "class_name": "com.macro.mall.controller.SmsHomeRecommendSubjectController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<SmsHomeRecommendSubject>",
+          "protocol": "REST",
+          "endpoint": "GET /home/recommendSubject/list"
+        },
+        {
+          "id": "UmsAdminController.register",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "register",
+          "param_types": [
+            "UmsAdminParam"
+          ],
+          "return_type": "UmsAdmin",
+          "protocol": "REST",
+          "endpoint": "POST /admin/register"
+        },
+        {
+          "id": "UmsAdminController.login",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "login",
+          "param_types": [
+            "UmsAdminLoginParam"
+          ],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "POST /admin/login"
+        },
+        {
+          "id": "UmsAdminController.getAdminInfo",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "getAdminInfo",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/info"
+        },
+        {
+          "id": "UmsAdminController.logout",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/logout"
+        },
+        {
+          "id": "UmsAdminController.list",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<UmsAdmin>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/list"
+        },
+        {
+          "id": "UmsAdminController.getItem",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UmsAdmin",
+          "protocol": "REST",
+          "endpoint": "GET /admin/{id}"
+        },
+        {
+          "id": "UmsAdminController.update",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsAdmin"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /admin/update/{id}"
+        },
+        {
+          "id": "UmsAdminController.updatePassword",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "updatePassword",
+          "param_types": [
+            "UpdateAdminPasswordParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /admin/updatePassword"
+        },
+        {
+          "id": "UmsAdminController.delete",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /admin/delete/{id}"
+        },
+        {
+          "id": "UmsAdminController.updateStatus",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /admin/updateStatus/{id}"
+        },
+        {
+          "id": "UmsAdminController.updateRole",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "updateRole",
+          "param_types": [
+            "Long",
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /admin/role/update"
+        },
+        {
+          "id": "UmsAdminController.getRoleList",
+          "class_name": "com.macro.mall.controller.UmsAdminController",
+          "method_name": "getRoleList",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<UmsRole>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/role/{adminId}"
+        },
+        {
+          "id": "UmsMemberLevelController.list",
+          "class_name": "com.macro.mall.controller.UmsMemberLevelController",
+          "method_name": "list",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<UmsMemberLevel>",
+          "protocol": "REST",
+          "endpoint": "GET /memberLevel/list"
+        },
+        {
+          "id": "UmsMenuController.create",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "create",
+          "param_types": [
+            "UmsMenu"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /menu/create"
+        },
+        {
+          "id": "UmsMenuController.update",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsMenu"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /menu/update/{id}"
+        },
+        {
+          "id": "UmsMenuController.getItem",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UmsMenu",
+          "protocol": "REST",
+          "endpoint": "GET /menu/{id}"
+        },
+        {
+          "id": "UmsMenuController.delete",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /menu/delete/{id}"
+        },
+        {
+          "id": "UmsMenuController.list",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "list",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<UmsMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /menu/list/{parentId}"
+        },
+        {
+          "id": "UmsMenuController.treeList",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "treeList",
+          "param_types": [],
+          "return_type": "List<UmsMenuNode>",
+          "protocol": "REST",
+          "endpoint": "GET /menu/treeList"
+        },
+        {
+          "id": "UmsMenuController.updateHidden",
+          "class_name": "com.macro.mall.controller.UmsMenuController",
+          "method_name": "updateHidden",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /menu/updateHidden/{id}"
+        },
+        {
+          "id": "UmsResourceCategoryController.listAll",
+          "class_name": "com.macro.mall.controller.UmsResourceCategoryController",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<UmsResourceCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /resourceCategory/listAll"
+        },
+        {
+          "id": "UmsResourceCategoryController.create",
+          "class_name": "com.macro.mall.controller.UmsResourceCategoryController",
+          "method_name": "create",
+          "param_types": [
+            "UmsResourceCategory"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resourceCategory/create"
+        },
+        {
+          "id": "UmsResourceCategoryController.update",
+          "class_name": "com.macro.mall.controller.UmsResourceCategoryController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsResourceCategory"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resourceCategory/update/{id}"
+        },
+        {
+          "id": "UmsResourceCategoryController.delete",
+          "class_name": "com.macro.mall.controller.UmsResourceCategoryController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resourceCategory/delete/{id}"
+        },
+        {
+          "id": "UmsResourceController.create",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "create",
+          "param_types": [
+            "UmsResource"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resource/create"
+        },
+        {
+          "id": "UmsResourceController.update",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsResource"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resource/update/{id}"
+        },
+        {
+          "id": "UmsResourceController.getItem",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UmsResource",
+          "protocol": "REST",
+          "endpoint": "GET /resource/{id}"
+        },
+        {
+          "id": "UmsResourceController.delete",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /resource/delete/{id}"
+        },
+        {
+          "id": "UmsResourceController.list",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "list",
+          "param_types": [
+            "Long",
+            "String",
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<UmsResource>",
+          "protocol": "REST",
+          "endpoint": "GET /resource/list"
+        },
+        {
+          "id": "UmsResourceController.listAll",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<UmsResource>",
+          "protocol": "REST",
+          "endpoint": "GET /resource/listAll"
+        },
+        {
+          "id": "UmsResourceController.initPathResourceMap",
+          "class_name": "com.macro.mall.controller.UmsResourceController",
+          "method_name": "initPathResourceMap",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "GET /resource/initPathResourceMap"
+        },
+        {
+          "id": "UmsRoleController.create",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "create",
+          "param_types": [
+            "UmsRole"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/create"
+        },
+        {
+          "id": "UmsRoleController.update",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsRole"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/update/{id}"
+        },
+        {
+          "id": "UmsRoleController.delete",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/delete"
+        },
+        {
+          "id": "UmsRoleController.listAll",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "listAll",
+          "param_types": [],
+          "return_type": "List<UmsRole>",
+          "protocol": "REST",
+          "endpoint": "GET /role/listAll"
+        },
+        {
+          "id": "UmsRoleController.list",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "list",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<UmsRole>",
+          "protocol": "REST",
+          "endpoint": "GET /role/list"
+        },
+        {
+          "id": "UmsRoleController.updateStatus",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "updateStatus",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/updateStatus/{id}"
+        },
+        {
+          "id": "UmsRoleController.listMenu",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "listMenu",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<UmsMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /role/listMenu/{roleId}"
+        },
+        {
+          "id": "UmsRoleController.listResource",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "listResource",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<UmsResource>",
+          "protocol": "REST",
+          "endpoint": "GET /role/listResource/{roleId}"
+        },
+        {
+          "id": "UmsRoleController.allocMenu",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "allocMenu",
+          "param_types": [
+            "Long",
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/allocMenu"
+        },
+        {
+          "id": "UmsRoleController.allocResource",
+          "class_name": "com.macro.mall.controller.UmsRoleController",
+          "method_name": "allocResource",
+          "param_types": [
+            "Long",
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /role/allocResource"
+        }
+      ]
+    },
+    "mall-search": {
+      "exposed_interfaces": [
+        {
+          "id": "EsProductController.importAllList",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "importAllList",
+          "param_types": [],
+          "return_type": "Integer",
+          "protocol": "REST",
+          "endpoint": "POST /esProduct/importAll"
+        },
+        {
+          "id": "EsProductController.delete",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "GET /esProduct/delete/{id}"
+        },
+        {
+          "id": "EsProductController.deleteBatch",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /esProduct/delete/batch"
+        },
+        {
+          "id": "EsProductController.create",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "create",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "EsProduct",
+          "protocol": "REST",
+          "endpoint": "POST /esProduct/create/{id}"
+        },
+        {
+          "id": "EsProductController.search",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "search",
+          "param_types": [
+            "String",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<EsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /esProduct/search/simple"
+        },
+        {
+          "id": "EsProductController.searchFull",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "search",
+          "param_types": [
+            "String",
+            "Long",
+            "Long",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<EsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /esProduct/search"
+        },
+        {
+          "id": "EsProductController.recommend",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "recommend",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<EsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /esProduct/recommend/{id}"
+        },
+        {
+          "id": "EsProductController.searchRelatedInfo",
+          "class_name": "com.macro.mall.search.controller.EsProductController",
+          "method_name": "searchRelatedInfo",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "EsProductRelatedInfo",
+          "protocol": "REST",
+          "endpoint": "GET /esProduct/search/relate"
+        }
+      ]
+    },
+    "mall-portal": {
+      "exposed_interfaces": [
+        {
+          "id": "AlipayController.pay",
+          "class_name": "com.macro.mall.portal.controller.AlipayController",
+          "method_name": "pay",
+          "param_types": [
+            "AliPayParam"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /alipay/pay"
+        },
+        {
+          "id": "AlipayController.webPay",
+          "class_name": "com.macro.mall.portal.controller.AlipayController",
+          "method_name": "webPay",
+          "param_types": [
+            "AliPayParam"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /alipay/webPay"
+        },
+        {
+          "id": "AlipayController.notify",
+          "class_name": "com.macro.mall.portal.controller.AlipayController",
+          "method_name": "notify",
+          "param_types": [
+            "Map<String,String>"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /alipay/notify"
+        },
+        {
+          "id": "AlipayController.query",
+          "class_name": "com.macro.mall.portal.controller.AlipayController",
+          "method_name": "query",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /alipay/query"
+        },
+        {
+          "id": "HomeController.content",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "content",
+          "param_types": [],
+          "return_type": "HomeContentResult",
+          "protocol": "REST",
+          "endpoint": "GET /home/content"
+        },
+        {
+          "id": "HomeController.recommendProductList",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "recommendProductList",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /home/recommendProductList"
+        },
+        {
+          "id": "HomeController.getProductCateList",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "getProductCateList",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<PmsProductCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /home/productCateList/{parentId}"
+        },
+        {
+          "id": "HomeController.getSubjectList",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "getSubjectList",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<CmsSubject>",
+          "protocol": "REST",
+          "endpoint": "GET /home/subjectList"
+        },
+        {
+          "id": "HomeController.hotProductList",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "hotProductList",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /home/hotProductList"
+        },
+        {
+          "id": "HomeController.newProductList",
+          "class_name": "com.macro.mall.portal.controller.HomeController",
+          "method_name": "newProductList",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /home/newProductList"
+        },
+        {
+          "id": "MemberAttentionController.add",
+          "class_name": "com.macro.mall.portal.controller.MemberAttentionController",
+          "method_name": "add",
+          "param_types": [
+            "MemberBrandAttention"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/attention/add"
+        },
+        {
+          "id": "MemberAttentionController.delete",
+          "class_name": "com.macro.mall.portal.controller.MemberAttentionController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/attention/delete"
+        },
+        {
+          "id": "MemberAttentionController.list",
+          "class_name": "com.macro.mall.portal.controller.MemberAttentionController",
+          "method_name": "list",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<MemberBrandAttention>",
+          "protocol": "REST",
+          "endpoint": "GET /member/attention/list"
+        },
+        {
+          "id": "MemberAttentionController.detail",
+          "class_name": "com.macro.mall.portal.controller.MemberAttentionController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "MemberBrandAttention",
+          "protocol": "REST",
+          "endpoint": "GET /member/attention/detail"
+        },
+        {
+          "id": "MemberAttentionController.clear",
+          "class_name": "com.macro.mall.portal.controller.MemberAttentionController",
+          "method_name": "clear",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /member/attention/clear"
+        },
+        {
+          "id": "MemberProductCollectionController.add",
+          "class_name": "com.macro.mall.portal.controller.MemberProductCollectionController",
+          "method_name": "add",
+          "param_types": [
+            "MemberProductCollection"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/productCollection/add"
+        },
+        {
+          "id": "MemberProductCollectionController.delete",
+          "class_name": "com.macro.mall.portal.controller.MemberProductCollectionController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/productCollection/delete"
+        },
+        {
+          "id": "MemberProductCollectionController.list",
+          "class_name": "com.macro.mall.portal.controller.MemberProductCollectionController",
+          "method_name": "list",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<MemberProductCollection>",
+          "protocol": "REST",
+          "endpoint": "GET /member/productCollection/list"
+        },
+        {
+          "id": "MemberProductCollectionController.detail",
+          "class_name": "com.macro.mall.portal.controller.MemberProductCollectionController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "MemberProductCollection",
+          "protocol": "REST",
+          "endpoint": "GET /member/productCollection/detail"
+        },
+        {
+          "id": "MemberProductCollectionController.clear",
+          "class_name": "com.macro.mall.portal.controller.MemberProductCollectionController",
+          "method_name": "clear",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /member/productCollection/clear"
+        },
+        {
+          "id": "MemberReadHistoryController.create",
+          "class_name": "com.macro.mall.portal.controller.MemberReadHistoryController",
+          "method_name": "create",
+          "param_types": [
+            "MemberReadHistory"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/readHistory/create"
+        },
+        {
+          "id": "MemberReadHistoryController.delete",
+          "class_name": "com.macro.mall.portal.controller.MemberReadHistoryController",
+          "method_name": "delete",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/readHistory/delete"
+        },
+        {
+          "id": "MemberReadHistoryController.clear",
+          "class_name": "com.macro.mall.portal.controller.MemberReadHistoryController",
+          "method_name": "clear",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /member/readHistory/clear"
+        },
+        {
+          "id": "MemberReadHistoryController.list",
+          "class_name": "com.macro.mall.portal.controller.MemberReadHistoryController",
+          "method_name": "list",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<MemberReadHistory>",
+          "protocol": "REST",
+          "endpoint": "GET /member/readHistory/list"
+        },
+        {
+          "id": "OmsCartItemController.add",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "add",
+          "param_types": [
+            "OmsCartItem"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /cart/add"
+        },
+        {
+          "id": "OmsCartItemController.list",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<OmsCartItem>",
+          "protocol": "REST",
+          "endpoint": "GET /cart/list"
+        },
+        {
+          "id": "OmsCartItemController.listPromotion",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "listPromotion",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "List<CartPromotionItem>",
+          "protocol": "REST",
+          "endpoint": "GET /cart/list/promotion"
+        },
+        {
+          "id": "OmsCartItemController.updateQuantity",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "updateQuantity",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "GET /cart/update/quantity"
+        },
+        {
+          "id": "OmsCartItemController.getCartProduct",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "getCartProduct",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "CartProduct",
+          "protocol": "REST",
+          "endpoint": "GET /cart/getProduct/{productId}"
+        },
+        {
+          "id": "OmsCartItemController.updateAttr",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "updateAttr",
+          "param_types": [
+            "OmsCartItem"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /cart/update/attr"
+        },
+        {
+          "id": "OmsCartItemController.delete",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /cart/delete"
+        },
+        {
+          "id": "OmsCartItemController.clear",
+          "class_name": "com.macro.mall.portal.controller.OmsCartItemController",
+          "method_name": "clear",
+          "param_types": [],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /cart/clear"
+        },
+        {
+          "id": "OmsPortalOrderController.generateConfirmOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "generateConfirmOrder",
+          "param_types": [
+            "List<Long>"
+          ],
+          "return_type": "ConfirmOrderResult",
+          "protocol": "REST",
+          "endpoint": "POST /order/generateConfirmOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.generateOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "generateOrder",
+          "param_types": [
+            "OrderParam"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "POST /order/generateOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.paySuccess",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "paySuccess",
+          "param_types": [
+            "Long",
+            "Integer"
+          ],
+          "return_type": "Integer",
+          "protocol": "REST",
+          "endpoint": "POST /order/paySuccess"
+        },
+        {
+          "id": "OmsPortalOrderController.cancelTimeOutOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "cancelTimeOutOrder",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order/cancelTimeOutOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.cancelOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "cancelOrder",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order/cancelOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.list",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "list",
+          "param_types": [
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<OmsOrderDetail>",
+          "protocol": "REST",
+          "endpoint": "GET /order/list"
+        },
+        {
+          "id": "OmsPortalOrderController.detail",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "OmsOrderDetail",
+          "protocol": "REST",
+          "endpoint": "GET /order/detail/{orderId}"
+        },
+        {
+          "id": "OmsPortalOrderController.cancelUserOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "cancelUserOrder",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order/cancelUserOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.confirmReceiveOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "confirmReceiveOrder",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order/confirmReceiveOrder"
+        },
+        {
+          "id": "OmsPortalOrderController.deleteOrder",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderController",
+          "method_name": "deleteOrder",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /order/deleteOrder"
+        },
+        {
+          "id": "OmsPortalOrderReturnApplyController.create",
+          "class_name": "com.macro.mall.portal.controller.OmsPortalOrderReturnApplyController",
+          "method_name": "create",
+          "param_types": [
+            "OmsOrderReturnApplyParam"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /returnApply/create"
+        },
+        {
+          "id": "PmsPortalProductController.search",
+          "class_name": "com.macro.mall.portal.controller.PmsPortalProductController",
+          "method_name": "search",
+          "param_types": [
+            "String",
+            "Long",
+            "Long",
+            "Integer",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /product/search"
+        },
+        {
+          "id": "PmsPortalProductController.categoryTreeList",
+          "class_name": "com.macro.mall.portal.controller.PmsPortalProductController",
+          "method_name": "categoryTreeList",
+          "param_types": [],
+          "return_type": "List<PmsProductCategoryNode>",
+          "protocol": "REST",
+          "endpoint": "GET /product/categoryTreeList"
+        },
+        {
+          "id": "PmsPortalProductController.detail",
+          "class_name": "com.macro.mall.portal.controller.PmsPortalProductController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsPortalProductDetail",
+          "protocol": "REST",
+          "endpoint": "GET /product/detail/{id}"
+        },
+        {
+          "id": "PortalBrandController.recommendList",
+          "class_name": "com.macro.mall.portal.controller.PortalBrandController",
+          "method_name": "recommendList",
+          "param_types": [
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "List<PmsBrand>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/recommendList"
+        },
+        {
+          "id": "PortalBrandController.detail",
+          "class_name": "com.macro.mall.portal.controller.PortalBrandController",
+          "method_name": "detail",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "PmsBrand",
+          "protocol": "REST",
+          "endpoint": "GET /brand/detail/{brandId}"
+        },
+        {
+          "id": "PortalBrandController.productList",
+          "class_name": "com.macro.mall.portal.controller.PortalBrandController",
+          "method_name": "productList",
+          "param_types": [
+            "Long",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "CommonPage<PmsProduct>",
+          "protocol": "REST",
+          "endpoint": "GET /brand/productList"
+        },
+        {
+          "id": "UmsMemberController.register",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "register",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /sso/register"
+        },
+        {
+          "id": "UmsMemberController.login",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "login",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "POST /sso/login"
+        },
+        {
+          "id": "UmsMemberController.info",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "info",
+          "param_types": [],
+          "return_type": "UmsMember",
+          "protocol": "REST",
+          "endpoint": "GET /sso/info"
+        },
+        {
+          "id": "UmsMemberController.logout",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /sso/logout"
+        },
+        {
+          "id": "UmsMemberController.getAuthCode",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "getAuthCode",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /sso/getAuthCode"
+        },
+        {
+          "id": "UmsMemberController.updatePassword",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberController",
+          "method_name": "updatePassword",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /sso/updatePassword"
+        },
+        {
+          "id": "UmsMemberCouponController.add",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberCouponController",
+          "method_name": "add",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /member/coupon/add/{couponId}"
+        },
+        {
+          "id": "UmsMemberCouponController.listHistory",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberCouponController",
+          "method_name": "listHistory",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<SmsCouponHistory>",
+          "protocol": "REST",
+          "endpoint": "GET /member/coupon/listHistory"
+        },
+        {
+          "id": "UmsMemberCouponController.list",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberCouponController",
+          "method_name": "list",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<SmsCoupon>",
+          "protocol": "REST",
+          "endpoint": "GET /member/coupon/list"
+        },
+        {
+          "id": "UmsMemberCouponController.listCart",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberCouponController",
+          "method_name": "listCart",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "List<SmsCouponHistoryDetail>",
+          "protocol": "REST",
+          "endpoint": "GET /member/coupon/list/cart/{type}"
+        },
+        {
+          "id": "UmsMemberCouponController.listByProduct",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberCouponController",
+          "method_name": "listByProduct",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<SmsCoupon>",
+          "protocol": "REST",
+          "endpoint": "GET /member/coupon/listByProduct/{productId}"
+        },
+        {
+          "id": "UmsMemberReceiveAddressController.add",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberReceiveAddressController",
+          "method_name": "add",
+          "param_types": [
+            "UmsMemberReceiveAddress"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/address/add"
+        },
+        {
+          "id": "UmsMemberReceiveAddressController.delete",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberReceiveAddressController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/address/delete/{id}"
+        },
+        {
+          "id": "UmsMemberReceiveAddressController.update",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberReceiveAddressController",
+          "method_name": "update",
+          "param_types": [
+            "Long",
+            "UmsMemberReceiveAddress"
+          ],
+          "return_type": "int",
+          "protocol": "REST",
+          "endpoint": "POST /member/address/update/{id}"
+        },
+        {
+          "id": "UmsMemberReceiveAddressController.list",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberReceiveAddressController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<UmsMemberReceiveAddress>",
+          "protocol": "REST",
+          "endpoint": "GET /member/address/list"
+        },
+        {
+          "id": "UmsMemberReceiveAddressController.getItem",
+          "class_name": "com.macro.mall.portal.controller.UmsMemberReceiveAddressController",
+          "method_name": "getItem",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "UmsMemberReceiveAddress",
+          "protocol": "REST",
+          "endpoint": "GET /member/address/{id}"
+        },
+        {
+          "id": "CancelOrderReceiver.handle",
+          "class_name": "com.macro.mall.portal.component.CancelOrderReceiver",
+          "method_name": "handle",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "mall.order.cancel"
+        }
+      ]
+    },
+    "mall-gateway": {
+      "exposed_interfaces": []
+    },
+    "mall-auth": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthController.login",
+          "class_name": "com.macro.mall.auth.controller.AuthController",
+          "method_name": "login",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Object",
+          "protocol": "REST",
+          "endpoint": "POST /auth/login"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "mall-auth",
+      "src_class": "com.macro.mall.auth.controller.AuthController",
+      "src_method": "login",
+      "dst_service": "mall-admin",
+      "dst_class": "com.macro.mall.controller.UmsAdminController",
+      "dst_interface_id": "UmsAdminController.login",
+      "protocol": "REST",
+      "evidence": "mall-auth/src/main/java/com/macro/mall/auth/controller/AuthController.java:44 adminService.login(loginParam)"
+    },
+    {
+      "src_service": "mall-auth",
+      "src_class": "com.macro.mall.auth.controller.AuthController",
+      "src_method": "login",
+      "dst_service": "mall-portal",
+      "dst_class": "com.macro.mall.portal.controller.UmsMemberController",
+      "dst_interface_id": "UmsMemberController.login",
+      "protocol": "REST",
+      "evidence": "mall-auth/src/main/java/com/macro/mall/auth/controller/AuthController.java:46 memberService.login(username,password)"
+    },
+    {
+      "src_service": "mall-demo",
+      "src_class": "com.macro.mall.demo.controller.FeignAdminController",
+      "src_method": "login",
+      "dst_service": "mall-admin",
+      "dst_class": "com.macro.mall.controller.UmsAdminController",
+      "dst_interface_id": "UmsAdminController.login",
+      "protocol": "REST",
+      "evidence": "mall-demo/src/main/java/com/macro/mall/demo/controller/FeignAdminController.java:29 adminService.login(loginParam)"
+    },
+    {
+      "src_service": "mall-demo",
+      "src_class": "com.macro.mall.demo.controller.FeignAdminController",
+      "src_method": "getBrandList",
+      "dst_service": "mall-admin",
+      "dst_class": "com.macro.mall.controller.PmsBrandController",
+      "dst_interface_id": "PmsBrandController.getList",
+      "protocol": "REST",
+      "evidence": "mall-demo/src/main/java/com/macro/mall/demo/controller/FeignAdminController.java:35 adminService.getList()"
+    },
+    {
+      "src_service": "mall-demo",
+      "src_class": "com.macro.mall.demo.controller.FeignPortalController",
+      "src_method": "login",
+      "dst_service": "mall-portal",
+      "dst_class": "com.macro.mall.portal.controller.UmsMemberController",
+      "dst_interface_id": "UmsMemberController.login",
+      "protocol": "REST",
+      "evidence": "mall-demo/src/main/java/com/macro/mall/demo/controller/FeignPortalController.java:26 portalService.login(username,password)"
+    },
+    {
+      "src_service": "mall-demo",
+      "src_class": "com.macro.mall.demo.controller.FeignPortalController",
+      "src_method": "cartList",
+      "dst_service": "mall-portal",
+      "dst_class": "com.macro.mall.portal.controller.OmsCartItemController",
+      "dst_interface_id": "OmsCartItemController.list",
+      "protocol": "REST",
+      "evidence": "mall-demo/src/main/java/com/macro/mall/demo/controller/FeignPortalController.java:32 portalService.list()"
+    },
+    {
+      "src_service": "mall-demo",
+      "src_class": "com.macro.mall.demo.controller.FeignSearchController",
+      "src_method": "search",
+      "dst_service": "mall-search",
+      "dst_class": "com.macro.mall.search.controller.EsProductController",
+      "dst_interface_id": "EsProductController.search",
+      "protocol": "REST",
+      "evidence": "mall-demo/src/main/java/com/macro/mall/demo/controller/FeignSearchController.java:29 feignSearchService.search(keyword, pageNum, pageSize)"
+    }
+  ]
+}
