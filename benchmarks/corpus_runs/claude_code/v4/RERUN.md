@@ -16,7 +16,7 @@ The outputs in this folder were produced with prompt v4.0 and the previous manif
 | MS041 | 0 | now has no services: delete the old output |
 | MS042 | 14 | manifest changed |
 | MS044 | 14 | manifest changed |
-| MS045 | 0 | now has no services: delete the old output |
+| MS045 | 21 | manifest changed: now lists the `daprApps_v1` services |
 | MS046 | 0 | now has no services: delete the old output |
 | MS050 | 8 | manifest changed |
 | MS051 | 7 | manifest changed |

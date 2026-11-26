@@ -595,7 +595,29 @@
     "name": "DeathStarBench-swarm-ecommerce",
     "path": "MS045_DeathStarBench_swarm-ecommerce",
     "language": "Go",
-    "services": {}
+    "services": {
+      "social-frontend": "daprApps_v1/socialNetwork/frontend",
+      "social-object-detect": "daprApps_v1/socialNetwork/object-detect",
+      "social-post": "daprApps_v1/socialNetwork/post",
+      "social-proxy": "daprApps_v1/socialNetwork/proxy",
+      "social-recommend": "daprApps_v1/socialNetwork/recommend",
+      "social-sentiment": "daprApps_v1/socialNetwork/sentiment",
+      "social-socialgraph": "daprApps_v1/socialNetwork/socialgraph",
+      "social-timeline-read": "daprApps_v1/socialNetwork/timeline-read",
+      "social-timeline-update": "daprApps_v1/socialNetwork/timeline-update",
+      "social-translate": "daprApps_v1/socialNetwork/translate",
+      "social-user": "daprApps_v1/socialNetwork/user",
+      "vpipe-face-detect": "daprApps_v1/video-pipe/face-detect",
+      "vpipe-video-meta": "daprApps_v1/video-pipe/video-meta",
+      "vpipe-video-scene": "daprApps_v1/video-pipe/video-scene",
+      "vshare-dates": "daprApps_v1/video-sharing/dates",
+      "vshare-proxy": "daprApps_v1/video-sharing/proxy",
+      "vshare-user-rating": "daprApps_v1/video-sharing/user-rating",
+      "vshare-video-frontend": "daprApps_v1/video-sharing/video-frontend",
+      "vshare-video-info": "daprApps_v1/video-sharing/video-info",
+      "vshare-video-scale": "daprApps_v1/video-sharing/video-scale",
+      "vshare-video-thumbnail": "daprApps_v1/video-sharing/video-thumbnail"
+    }
   },
   "MS046": {
     "name": "DeathStarBench-banking",
