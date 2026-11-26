@@ -280,6 +280,7 @@
     "path": "MS025_xxl-job",
     "language": "Java",
     "services": {
+      "xxl-job-core": "xxl-job-core",
       "xxl-job-admin": "xxl-job-admin",
       "xxl-job-executor-samples": "xxl-job-executor-samples"
     }
@@ -369,7 +370,7 @@
       "job-engine": "job-engine",
       "broker": "broker",
       "consumer": "consumer",
-      "authentication-app": "service/authentication-app"
+      "authentication": "service/authentication"
     }
   },
   "MS030": {
@@ -665,7 +666,8 @@
       "virt-handler": "pkg/virt-handler",
       "virt-launcher": "pkg/virt-launcher",
       "virt-operator": "pkg/virt-operator",
-      "synchronization-controller": "pkg/synchronization-controller"
+      "synchronization-controller": "pkg/synchronization-controller",
+      "virt-exportserver": "pkg/storage/export/virt-exportserver"
     }
   },
   "MS052": {
@@ -911,7 +913,10 @@
       "storegateway": "pkg/storegateway",
       "compactor": "pkg/compactor",
       "alertmanager": "pkg/alertmanager",
-      "parquetconverter": "pkg/parquetconverter"
+      "parquetconverter": "pkg/parquetconverter",
+      "purger": "pkg/purger",
+      "configs": "pkg/configs",
+      "overrides": "pkg/overrides"
     }
   },
   "MS072": {

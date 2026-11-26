@@ -1,13 +1,12 @@
 # Systems to re-extract with prompt v4.2
 
-The outputs in this folder were produced with prompt v4.0 and the previous manifest. Do not compare the systems below against the current manifest until they are re-run.
+The outputs in this folder were produced with prompt v4.0 and the previous manifest. Re-run outputs are in `../v4.2/`.
 
 | System | Services now | Reason |
 | :--- | ---: | :--- |
 | MS003 | 0 | now has no services: delete the old output |
 | MS019 | 45 | manifest changed |
 | MS024 | 2 | manifest changed |
-| MS025 | 2 | manifest changed |
 | MS027 | 2 | manifest changed |
 | MS029 | 6 | manifest changed |
 | MS033 | 5 | manifest changed |
@@ -20,7 +19,7 @@ The outputs in this folder were produced with prompt v4.0 and the previous manif
 | MS045 | 0 | now has no services: delete the old output |
 | MS046 | 0 | now has no services: delete the old output |
 | MS050 | 8 | manifest changed |
-| MS051 | 6 | manifest changed |
+| MS051 | 7 | manifest changed |
 | MS054 | 0 | now has no services: delete the old output |
 | MS055 | 1 | Celery rule changed |
 | MS060 | 1 | manifest changed |
@@ -31,7 +30,7 @@ The outputs in this folder were produced with prompt v4.0 and the previous manif
 | MS066 | 8 | manifest changed |
 | MS067 | 1 | manifest changed |
 | MS068 | 2 | manifest changed |
-| MS071 | 10 | manifest changed |
+| MS071 | 13 | manifest changed |
 | MS074 | 1 | manifest changed |
 | MS075 | 3 | manifest changed |
 | MS076 | 1 | manifest changed |
