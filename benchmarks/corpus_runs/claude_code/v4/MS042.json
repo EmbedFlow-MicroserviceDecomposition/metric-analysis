@@ -1,0 +1,359 @@
+{
+  "system_id": "MS042",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "openshift": {
+      "exposed_interfaces": [
+        {
+          "id": "api/user/register.RegisterUser",
+          "class_name": "api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/register"
+        },
+        {
+          "id": "api/user/follow.Follow",
+          "class_name": "api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/follow"
+        },
+        {
+          "id": "api/user/unfollow.Unfollow",
+          "class_name": "api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/unfollow"
+        },
+        {
+          "id": "api/user/login.Login",
+          "class_name": "api/user/login",
+          "method_name": "Login",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/login"
+        },
+        {
+          "id": "api/post/compose.ComposePost",
+          "class_name": "api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/post/compose"
+        },
+        {
+          "id": "api/user-timeline/read.ReadUserTimeline",
+          "class_name": "api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user-timeline/read"
+        },
+        {
+          "id": "api/home-timeline/read.ReadHomeTimeline",
+          "class_name": "api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/home-timeline/read"
+        },
+        {
+          "id": "wrk2-api/home-timeline/read.ReadHomeTimeline",
+          "class_name": "wrk2-api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/home-timeline/read"
+        },
+        {
+          "id": "wrk2-api/user-timeline/read.ReadUserTimeline",
+          "class_name": "wrk2-api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/user-timeline/read"
+        },
+        {
+          "id": "wrk2-api/post/compose.ComposePost",
+          "class_name": "wrk2-api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/post/compose"
+        },
+        {
+          "id": "wrk2-api/user/register.RegisterUser",
+          "class_name": "wrk2-api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "wrk2-api/user/follow.Follow",
+          "class_name": "wrk2-api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/follow"
+        },
+        {
+          "id": "wrk2-api/user/unfollow.Unfollow",
+          "class_name": "wrk2-api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/unfollow"
+        },
+        {
+          "id": "upload-media.UploadMedia",
+          "class_name": "upload-media",
+          "method_name": "UploadMedia",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /upload-media"
+        },
+        {
+          "id": "get-media.GetMedia",
+          "class_name": "get-media",
+          "method_name": "GetMedia",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /get-media"
+        }
+      ]
+    },
+    "gen-py": {
+      "exposed_interfaces": []
+    },
+    "nginx-web-server": {
+      "exposed_interfaces": [
+        {
+          "id": "api/user/register.RegisterUser",
+          "class_name": "api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/register"
+        },
+        {
+          "id": "api/user/follow.Follow",
+          "class_name": "api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/follow"
+        },
+        {
+          "id": "api/user/unfollow.Unfollow",
+          "class_name": "api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/unfollow"
+        },
+        {
+          "id": "api/user/login.Login",
+          "class_name": "api/user/login",
+          "method_name": "Login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/login"
+        },
+        {
+          "id": "api/post/compose.ComposePost",
+          "class_name": "api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/post/compose"
+        },
+        {
+          "id": "api/user-timeline/read.ReadUserTimeline",
+          "class_name": "api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user-timeline/read"
+        },
+        {
+          "id": "api/home-timeline/read.ReadHomeTimeline",
+          "class_name": "api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/home-timeline/read"
+        },
+        {
+          "id": "api/user/get_follower.GetFollower",
+          "class_name": "api/user/get_follower",
+          "method_name": "GetFollower",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_follower"
+        },
+        {
+          "id": "api/user/get_followee.GetFollowee",
+          "class_name": "api/user/get_followee",
+          "method_name": "GetFollowee",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_followee"
+        },
+        {
+          "id": "wrk2-api/home-timeline/read.ReadHomeTimeline",
+          "class_name": "wrk2-api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/home-timeline/read"
+        },
+        {
+          "id": "wrk2-api/user-timeline/read.ReadUserTimeline",
+          "class_name": "wrk2-api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/user-timeline/read"
+        },
+        {
+          "id": "wrk2-api/post/compose.ComposePost",
+          "class_name": "wrk2-api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/post/compose"
+        },
+        {
+          "id": "wrk2-api/user/register.RegisterUser",
+          "class_name": "wrk2-api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "wrk2-api/user/follow.Follow",
+          "class_name": "wrk2-api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/follow"
+        },
+        {
+          "id": "wrk2-api/user/unfollow.Unfollow",
+          "class_name": "wrk2-api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/unfollow"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,213 @@
+{
+  "system_id": "MS081",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "web": {
+      "exposed_interfaces": [
+        {
+          "id": "index.loader",
+          "class_name": "routes/index",
+          "method_name": "loader",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "index.action",
+          "class_name": "routes/index",
+          "method_name": "action",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        },
+        {
+          "id": "index.loader_cart",
+          "class_name": "routes/cart/index",
+          "method_name": "loader",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /cart"
+        },
+        {
+          "id": "index.action_cart",
+          "class_name": "routes/cart/index",
+          "method_name": "action",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart"
+        },
+        {
+          "id": "$id.loader",
+          "class_name": "routes/product/$id",
+          "method_name": "loader",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /product/{id}"
+        }
+      ]
+    },
+    "dotnet": {
+      "exposed_interfaces": [
+        {
+          "id": "GatewayEndpoints.UseLogoutEndpoint",
+          "class_name": "GatewayEndpoints",
+          "method_name": "UseLogoutEndpoint",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /logout"
+        },
+        {
+          "id": "GatewayEndpoints.UseLoginEndpoint",
+          "class_name": "GatewayEndpoints",
+          "method_name": "UseLoginEndpoint",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "GatewayEndpoints.UseUserInfoEndpoint",
+          "class_name": "GatewayEndpoints",
+          "method_name": "UseUserInfoEndpoint",
+          "param_types": [],
+          "return_type": "Dictionary<string,string>",
+          "protocol": "REST",
+          "endpoint": "GET /userinfo"
+        },
+        {
+          "id": "Program.get_carts",
+          "class_name": "Program",
+          "method_name": "get_carts",
+          "param_types": [],
+          "return_type": "CartDto",
+          "protocol": "REST",
+          "endpoint": "GET /api/carts"
+        },
+        {
+          "id": "Program.post_carts",
+          "class_name": "Program",
+          "method_name": "post_carts",
+          "param_types": [
+            "CreateShoppingCartWithProductCommand"
+          ],
+          "return_type": "CartDto",
+          "protocol": "REST",
+          "endpoint": "POST /api/carts"
+        },
+        {
+          "id": "Program.put_carts",
+          "class_name": "Program",
+          "method_name": "put_carts",
+          "param_types": [
+            "UpdateAmountOfProductInShoppingCartCommand"
+          ],
+          "return_type": "CartDto",
+          "protocol": "REST",
+          "endpoint": "PUT /api/carts"
+        },
+        {
+          "id": "Program.put_carts_checkout",
+          "class_name": "Program",
+          "method_name": "put_carts_checkout",
+          "param_types": [],
+          "return_type": "CartDto",
+          "protocol": "REST",
+          "endpoint": "PUT /api/carts/checkout"
+        }
+      ]
+    },
+    "go": {
+      "exposed_interfaces": [
+        {
+          "id": "main.eventHandler",
+          "class_name": "main",
+          "method_name": "eventHandler",
+          "param_types": [
+            "common.TopicEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "processing-order"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "web",
+      "src_class": "auth",
+      "src_method": "getUserInfo",
+      "dst_service": "dotnet",
+      "dst_class": "GatewayEndpoints",
+      "dst_interface_id": "GatewayEndpoints.UseUserInfoEndpoint",
+      "protocol": "REST",
+      "evidence": "src/web/app/lib/auth.ts:91 axios.get<any>("
+    },
+    {
+      "src_service": "web",
+      "src_class": "auth",
+      "src_method": "getCartForCurrentUser",
+      "dst_service": "dotnet",
+      "dst_class": "Program",
+      "dst_interface_id": "Program.get_carts",
+      "protocol": "REST",
+      "evidence": "src/web/app/lib/auth.ts:142 axios.get<any>("
+    },
+    {
+      "src_service": "web",
+      "src_class": "auth",
+      "src_method": "updateCartForCurrentUser",
+      "dst_service": "dotnet",
+      "dst_class": "Program",
+      "dst_interface_id": "Program.post_carts",
+      "protocol": "REST",
+      "evidence": "src/web/app/lib/auth.ts:160 axios.post<any>("
+    },
+    {
+      "src_service": "web",
+      "src_class": "auth",
+      "src_method": "updateCartForCurrentUser",
+      "dst_service": "dotnet",
+      "dst_class": "Program",
+      "dst_interface_id": "Program.put_carts",
+      "protocol": "REST",
+      "evidence": "src/web/app/lib/auth.ts:173 axios.put<any>("
+    },
+    {
+      "src_service": "web",
+      "src_class": "auth",
+      "src_method": "checkout",
+      "dst_service": "dotnet",
+      "dst_class": "Program",
+      "dst_interface_id": "Program.put_carts_checkout",
+      "protocol": "REST",
+      "evidence": "src/web/app/lib/auth.ts:187 axios.put<any>("
+    },
+    {
+      "src_service": "dotnet",
+      "src_class": "CheckOutHandler",
+      "src_method": "Handle",
+      "dst_service": "go",
+      "dst_class": "main",
+      "dst_interface_id": "main.eventHandler",
+      "protocol": "Messaging",
+      "evidence": "src/dotnet/shopping-cart/UseCases/Checkout/CheckOutHandler.cs:26 PublishEventAsync(\"pubsub\", \"processing-order\""
+    }
+  ]
+}

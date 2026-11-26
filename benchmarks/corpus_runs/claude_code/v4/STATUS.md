@@ -2,8 +2,8 @@
 
 Prompt: `prompts/claude_code_prompt.md` (v4.0). Extractor: Sonnet subagents, one fresh context per system, no ground-truth access.
 
-- **Extracted:** 78 systems (below)
-- **Pending:** 23 systems (codebase submodule folders still empty)
+- **Extracted:** 101 systems (below)
+- **Pending:** 0 systems
 - **No services in manifest (skipped):** 6 systems: MS002, MS058, MS065, MS099, MS108, MS111
 
 Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo's metrics, copy each file to `outputs/<MS_ID>/agent_extraction.json`.
@@ -47,6 +47,11 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 | MS039 | 11 | 27 | 21 |  |
 | MS040 | 13 | 36 | 35 |  |
 | MS041 | 1 | 0 | 0 | only Dockerfiles and dashboard generator scripts (no application handlers) |
+| MS042 | 3 | 30 | 0 | calls target services outside the manifest folders; `daprApps_v1/test` not checked out (Windows-invalid names) |
+| MS043 | 10 | 20 | 18 |  |
+| MS044 | 3 | 0 | 0 | manifest lists config, datasets and generated stubs; the services in `src/` are not listed |
+| MS045 | 5 | 156 | 0 | manifest 'services' are whole DeathStarBench apps; calls inside one app are not cross-service |
+| MS046 | 5 | 155 | 0 | manifest 'services' are whole DeathStarBench apps; same folders as MS045 |
 | MS047 | 8 | 28 | 7 |  |
 | MS048 | 6 | 44 | 6 | MCP tools, OTLP proxy and one extension left out (judgment calls) |
 | MS049 | 3 | 64 | 1 |  |
@@ -56,7 +61,12 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 | MS053 | 1 | 25 | 0 |  |
 | MS054 | 5 | 0 | 0 | infrastructure only (Dockerfiles, compose, config): no handler code (real zero) |
 | MS055 | 1 | 428 | 0 | ~80 Celery tasks excluded as same-service queues (prompt wording gap) |
+| MS056 | 3 | 3 | 1 |  |
+| MS057 | 1 | 37 | 0 |  |
 | MS059 | 7 | 4 | 0 | Kafka Streams topologies and CLI-topic consumers are not captured by the prompt (known gap) |
+| MS060 | 2 | 1 | 0 |  |
+| MS061 | 3 | 55 | 0 |  |
+| MS062 | 3 | 26 | 0 | outbound targets are services outside this repo |
 | MS063 | 4 | 66 | 26 |  |
 | MS064 | 2 | 0 | 0 | Helm config plus a shared library only |
 | MS066 | 6 | 621 | 132 | manifest 'services' are top-level folders of one Go program; calls are in-process |
@@ -70,27 +80,40 @@ Outputs live here (not in the gitignored `outputs/`). To evaluate with the repo'
 | MS074 | 2 | 142 | 0 |  |
 | MS075 | 3 | 245 | 0 | web router, admin and chain-specific routes excluded as optional configuration |
 | MS076 | 1 | 0 | 0 | only a BigQuery-emulator Dockerfile (no application code) |
+| MS077 | 2 | 830 | 0 | Celery tasks included although used within one service (unlike MS055) |
 | MS078 | 3 | 8 | 0 |  |
 | MS079 | 7 | 30 | 0 |  |
 | MS080 | 2 | 0 | 0 | routes live in external superdesk-core, outside the manifest folders |
+| MS081 | 3 | 13 | 6 |  |
 | MS082 | 12 | 168 | 63 |  |
 | MS083 | 6 | 367 | 24 |  |
+| MS084 | 4 | 7 | 0 | checked out on Windows: symlinked folders became text stubs (possible undercount) |
+| MS085 | 1 | 0 | 0 | only proxy rules and static pages |
 | MS086 | 6 | 839 | 407 |  |
 | MS087 | 1 | 0 | 0 | only Hugo static assets |
 | MS088 | 2 | 412 | 0 | signatures are heuristic; 23 routed actions have no method |
 | MS089 | 2 | 0 | 0 | manifest lists a React SPA and static assets only; the Rails API is not a listed service |
+| MS090 | 1 | 0 | 0 | packaging of third-party OpenVAS (real zero) |
+| MS091 | 1 | 189 | 0 |  |
 | MS092 | 2 | 0 | 0 | tracing library, not a service system |
 | MS093 | 1 | 0 | 0 | standalone Kafka demo scripts with CLI-supplied topics (known gap) |
 | MS094 | 1 | 0 | 0 | client SDK monorepo, no server code |
+| MS095 | 8 | 146 | 225 |  |
+| MS096 | 4 | 77 | 0 |  |
+| MS097 | 2 | 66 | 0 | `services/notification` is not in the manifest |
 | MS098 | 9 | 128 | 56 |  |
 | MS100 | 3 | 224 | 0 |  |
 | MS101 | 2 | 59 | 0 | backend and storefront are one `src` service |
 | MS102 | 3 | 57 | 0 | manifest 'Microservices' folder is one service containing all backends |
+| MS103 | 3 | 21 | 13 | manifest groups all backend services as `Services`; calls between them are not counted |
+| MS104 | 1 | 32 | 0 |  |
+| MS105 | 3 | 5 | 0 | manifest groups the gRPC services under `internal`; calls between them are not counted |
 | MS106 | 13 | 24 | 4 |  |
 | MS107 | 9 | 359 | 103 | some edges inferred from machinery-client function names (library source not in repo) |
+| MS109 | 1 | 0 | 0 | configuration files only |
 | MS110 | 3 | 39 | 0 |  |
 | MS112 | 1 | 6 | 0 |  |
 
 ## Pending
 
-MS042, MS043, MS044, MS045, MS046, MS056, MS057, MS060, MS061, MS062, MS077, MS081, MS084, MS085, MS090, MS091, MS095, MS096, MS097, MS103, MS104, MS105, MS109
+None.

@@ -1,0 +1,396 @@
+{
+  "system_id": "MS104",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "app": {
+      "exposed_interfaces": [
+        {
+          "id": "DojoController.index",
+          "class_name": "DojoController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /dojo/index(/:id)"
+        },
+        {
+          "id": "IndividualController.show",
+          "class_name": "IndividualController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /individual/show(/:id)"
+        },
+        {
+          "id": "GroupController.show",
+          "class_name": "GroupController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /group/show(/:id)"
+        },
+        {
+          "id": "SetupDefaultStartPointController.show",
+          "class_name": "SetupDefaultStartPointController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /setup_default_start_point/show(/:id)"
+        },
+        {
+          "id": "SetupDefaultStartPointController.save_individual",
+          "class_name": "SetupDefaultStartPointController",
+          "method_name": "save_individual",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /setup_default_start_point/save_individual"
+        },
+        {
+          "id": "SetupDefaultStartPointController.save_group",
+          "class_name": "SetupDefaultStartPointController",
+          "method_name": "save_group",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /setup_default_start_point/save_group"
+        },
+        {
+          "id": "SetupCustomStartPointController.show",
+          "class_name": "SetupCustomStartPointController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /setup_custom_start_point/show(/:id)"
+        },
+        {
+          "id": "SetupCustomStartPointController.save_individual",
+          "class_name": "SetupCustomStartPointController",
+          "method_name": "save_individual",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /setup_custom_start_point/save_individual"
+        },
+        {
+          "id": "SetupCustomStartPointController.save_group",
+          "class_name": "SetupCustomStartPointController",
+          "method_name": "save_group",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /setup_custom_start_point/save_group"
+        },
+        {
+          "id": "KataController.individual",
+          "class_name": "KataController",
+          "method_name": "individual",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /kata/individual(/:id)"
+        },
+        {
+          "id": "KataController.group",
+          "class_name": "KataController",
+          "method_name": "group",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /kata/group(/:id)"
+        },
+        {
+          "id": "KataController.edit",
+          "class_name": "KataController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /kata/edit(/:id)"
+        },
+        {
+          "id": "KataController.show_json",
+          "class_name": "KataController",
+          "method_name": "show_json",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /kata/show_json(/:id)"
+        },
+        {
+          "id": "KataController.run_tests",
+          "class_name": "KataController",
+          "method_name": "run_tests",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "Integer",
+            "object",
+            "object",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /kata/run_tests(/:id)"
+        },
+        {
+          "id": "IdJoinController.show",
+          "class_name": "IdJoinController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /id_join/show"
+        },
+        {
+          "id": "IdJoinController.drop_down",
+          "class_name": "IdJoinController",
+          "method_name": "drop_down",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /id_join/drop_down"
+        },
+        {
+          "id": "IdRejoinController.show",
+          "class_name": "IdRejoinController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /id_rejoin/show"
+        },
+        {
+          "id": "IdRejoinController.drop_down",
+          "class_name": "IdRejoinController",
+          "method_name": "drop_down",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /id_rejoin/drop_down"
+        },
+        {
+          "id": "IdReviewController.show",
+          "class_name": "IdReviewController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /id_review/show"
+        },
+        {
+          "id": "IdReviewController.drop_down",
+          "class_name": "IdReviewController",
+          "method_name": "drop_down",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /id_review/drop_down"
+        },
+        {
+          "id": "DashboardController.show",
+          "class_name": "DashboardController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/show(/:id)"
+        },
+        {
+          "id": "DashboardController.progress",
+          "class_name": "DashboardController",
+          "method_name": "progress",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/progress"
+        },
+        {
+          "id": "DashboardController.heartbeat",
+          "class_name": "DashboardController",
+          "method_name": "heartbeat",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/heartbeat"
+        },
+        {
+          "id": "ReviewController.show",
+          "class_name": "ReviewController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "Integer",
+            "Integer",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /review/show(/:id)"
+        },
+        {
+          "id": "TipperController.traffic_light_tip",
+          "class_name": "TipperController",
+          "method_name": "traffic_light_tip",
+          "param_types": [
+            "string",
+            "string",
+            "Integer",
+            "Integer"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /tipper/traffic_light_tip"
+        },
+        {
+          "id": "DifferController.diff",
+          "class_name": "DifferController",
+          "method_name": "diff",
+          "param_types": [
+            "string",
+            "string",
+            "Integer",
+            "Integer",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /differ/diff"
+        },
+        {
+          "id": "ForkerController.fork",
+          "class_name": "ForkerController",
+          "method_name": "fork",
+          "param_types": [
+            "string",
+            "string",
+            "Integer"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /forker/fork(/:id)"
+        },
+        {
+          "id": "ReverterController.revert",
+          "class_name": "ReverterController",
+          "method_name": "revert",
+          "param_types": [
+            "string",
+            "string",
+            "Integer"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /reverter/revert"
+        },
+        {
+          "id": "DownloaderController.download",
+          "class_name": "DownloaderController",
+          "method_name": "download",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /download(/:id)"
+        },
+        {
+          "id": "DownloaderController.download_tag",
+          "class_name": "DownloaderController",
+          "method_name": "download_tag",
+          "param_types": [
+            "string",
+            "string",
+            "Integer"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /download_tag(/:id/:avatar/:tag)"
+        },
+        {
+          "id": "ImagePullerController.image_pulled?",
+          "class_name": "ImagePullerController",
+          "method_name": "image_pulled?",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /image_puller/image_pulled"
+        },
+        {
+          "id": "ImagePullerController.image_pull",
+          "class_name": "ImagePullerController",
+          "method_name": "image_pull",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /image_puller/image_pull"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

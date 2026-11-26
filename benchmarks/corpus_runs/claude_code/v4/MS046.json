@@ -1,0 +1,1931 @@
+{
+  "system_id": "MS046",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "daprApps_v1": {
+      "exposed_interfaces": [
+        {
+          "id": "social_frontend.saveHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "saveHandler",
+          "param_types": [
+            "frontend.SaveReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "social_frontend.delHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "delHandler",
+          "param_types": [
+            "frontend.DelReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "social_frontend.commentHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "commentHandler",
+          "param_types": [
+            "frontend.CommentReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "social_frontend.upvoteHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "social_frontend.imageHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "imageHandler",
+          "param_types": [
+            "frontend.ImageReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "image"
+        },
+        {
+          "id": "social_frontend.timelineHandler",
+          "class_name": "daprApps_v1/socialNetwork/frontend/main.go",
+          "method_name": "timelineHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "post.ReadResp",
+          "protocol": "RPC",
+          "endpoint": "timeline"
+        },
+        {
+          "id": "social_post.saveHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "saveHandler",
+          "param_types": [
+            "post.SavePostReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "social_post.delHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "delHandler",
+          "param_types": [
+            "post.DelPostReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "social_post.metaHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "metaHandler",
+          "param_types": [
+            "post.MetaReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "meta"
+        },
+        {
+          "id": "social_post.commentHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "commentHandler",
+          "param_types": [
+            "post.CommentReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "social_post.upvoteHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "social_post.readHandler",
+          "class_name": "daprApps_v1/socialNetwork/post/main.go",
+          "method_name": "readHandler",
+          "param_types": [
+            "post.ReadPostReq"
+          ],
+          "return_type": "post.ReadPostResp",
+          "protocol": "RPC",
+          "endpoint": "read"
+        },
+        {
+          "id": "social_proxy.saveHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "saveHandler",
+          "param_types": [
+            "frontend.SaveReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "social_proxy.delHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "delHandler",
+          "param_types": [
+            "frontend.DelReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "social_proxy.commentHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "commentHandler",
+          "param_types": [
+            "frontend.CommentReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "social_proxy.upvoteHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "social_proxy.imageHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "imageHandler",
+          "param_types": [
+            "frontend.ImageReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "image"
+        },
+        {
+          "id": "social_proxy.timelineHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "timelineHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "timeline"
+        },
+        {
+          "id": "social_proxy.recmdHandler",
+          "class_name": "daprApps_v1/socialNetwork/proxy/main.go",
+          "method_name": "recmdHandler",
+          "param_types": [
+            "recommend.Req"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "recmd"
+        },
+        {
+          "id": "social_recommend.recmdHandler",
+          "class_name": "daprApps_v1/socialNetwork/recommend/main.go",
+          "method_name": "recmdHandler",
+          "param_types": [
+            "recommend.Req"
+          ],
+          "return_type": "recommend.Resp",
+          "protocol": "RPC",
+          "endpoint": "recmd"
+        },
+        {
+          "id": "social_socialgraph.getFollowHandler",
+          "class_name": "daprApps_v1/socialNetwork/socialgraph/main.go",
+          "method_name": "getFollowHandler",
+          "param_types": [
+            "socialgraph.GetReq"
+          ],
+          "return_type": "socialgraph.GetFollowResp",
+          "protocol": "RPC",
+          "endpoint": "getfollow"
+        },
+        {
+          "id": "social_socialgraph.getRecmdHandler",
+          "class_name": "daprApps_v1/socialNetwork/socialgraph/main.go",
+          "method_name": "getRecmdHandler",
+          "param_types": [
+            "socialgraph.GetRecmdReq"
+          ],
+          "return_type": "socialgraph.GetRecmdResp",
+          "protocol": "RPC",
+          "endpoint": "getrecmd"
+        },
+        {
+          "id": "social_socialgraph.getFollowerHandler",
+          "class_name": "daprApps_v1/socialNetwork/socialgraph/main.go",
+          "method_name": "getFollowerHandler",
+          "param_types": [
+            "socialgraph.GetReq"
+          ],
+          "return_type": "socialgraph.GetFollowerResp",
+          "protocol": "RPC",
+          "endpoint": "getfollower"
+        },
+        {
+          "id": "social_socialgraph.followHandler",
+          "class_name": "daprApps_v1/socialNetwork/socialgraph/main.go",
+          "method_name": "followHandler",
+          "param_types": [
+            "socialgraph.FollowReq"
+          ],
+          "return_type": "socialgraph.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "follow"
+        },
+        {
+          "id": "social_socialgraph.unfollowHandler",
+          "class_name": "daprApps_v1/socialNetwork/socialgraph/main.go",
+          "method_name": "unfollowHandler",
+          "param_types": [
+            "socialgraph.UnfollowReq"
+          ],
+          "return_type": "socialgraph.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "unfollow"
+        },
+        {
+          "id": "social_timeline_read.readHandler",
+          "class_name": "daprApps_v1/socialNetwork/timeline-read/main.go",
+          "method_name": "readHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "timeline.ReadResp",
+          "protocol": "RPC",
+          "endpoint": "read"
+        },
+        {
+          "id": "social_user.regHandler",
+          "class_name": "daprApps_v1/socialNetwork/user/main.go",
+          "method_name": "regHandler",
+          "param_types": [
+            "user.RegisterReq"
+          ],
+          "return_type": "user.RegisterResp",
+          "protocol": "RPC",
+          "endpoint": "register"
+        },
+        {
+          "id": "video_dates.getHandler",
+          "class_name": "daprApps_v1/video-sharing/dates/main.go",
+          "method_name": "getHandler",
+          "param_types": [
+            "dates.GetReq"
+          ],
+          "return_type": "dates.GetResp",
+          "protocol": "RPC",
+          "endpoint": "get"
+        },
+        {
+          "id": "video_dates.uploadHandler",
+          "class_name": "daprApps_v1/video-sharing/dates/main.go",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "dates.UploadReq"
+          ],
+          "return_type": "dates.UploadResp",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "video_proxy.uploadHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "UploadReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "video_proxy.infoHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "infoHandler",
+          "param_types": [
+            "InfoReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "info"
+        },
+        {
+          "id": "video_proxy.videoHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "videoHandler",
+          "param_types": [
+            "VideoReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "video"
+        },
+        {
+          "id": "video_proxy.rateHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "rateHandler",
+          "param_types": [
+            "RateReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "video_proxy.getRateHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "getRateHandler",
+          "param_types": [
+            "GetRateReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "getRate"
+        },
+        {
+          "id": "video_proxy.trendngHandler",
+          "class_name": "daprApps_v1/video-sharing/proxy/main.go",
+          "method_name": "trendngHandler",
+          "param_types": [
+            "trending.Req"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "trending"
+        },
+        {
+          "id": "video_user_rating.getHandler",
+          "class_name": "daprApps_v1/video-sharing/user-rating/main.go",
+          "method_name": "getHandler",
+          "param_types": [
+            "rating.GetReq"
+          ],
+          "return_type": "rating.GetResp",
+          "protocol": "RPC",
+          "endpoint": "get"
+        },
+        {
+          "id": "video_user_rating.rateHandler",
+          "class_name": "daprApps_v1/video-sharing/user-rating/main.go",
+          "method_name": "rateHandler",
+          "param_types": [
+            "rating.RateReq"
+          ],
+          "return_type": "rating.RateResp",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "video_info.uploadHandler",
+          "class_name": "daprApps_v1/video-sharing/video-info/main.go",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "info.UploadReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "video_info.rateHandler",
+          "class_name": "daprApps_v1/video-sharing/video-info/main.go",
+          "method_name": "rateHandler",
+          "param_types": [
+            "info.RateReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "video_info.viewHandler",
+          "class_name": "daprApps_v1/video-sharing/video-info/main.go",
+          "method_name": "viewHandler",
+          "param_types": [
+            "info.ViewReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "view"
+        },
+        {
+          "id": "video_info.infoHandler",
+          "class_name": "daprApps_v1/video-sharing/video-info/main.go",
+          "method_name": "infoHandler",
+          "param_types": [
+            "info.InfoReq"
+          ],
+          "return_type": "info.InfoResp",
+          "protocol": "RPC",
+          "endpoint": "info"
+        },
+        {
+          "id": "social_timeline_update.updateHandler",
+          "class_name": "daprApps_v1/socialNetwork/timeline-update/main.go",
+          "method_name": "updateHandler",
+          "param_types": [
+            "timeline.UpdateReq"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "timeline"
+        },
+        {
+          "id": "proxy_server.forward",
+          "class_name": "daprApps_v1/proxy/server.py",
+          "method_name": "forward",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "forward"
+        },
+        {
+          "id": "translate_server.transEnToDe",
+          "class_name": "daprApps_v1/socialNetwork/translate/server.py",
+          "method_name": "transEnToDe",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "en_to_de"
+        },
+        {
+          "id": "sentiment_server.sentimentAnalysis",
+          "class_name": "daprApps_v1/socialNetwork/sentiment/server.py",
+          "method_name": "sentimentAnalysis",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "sentiment"
+        },
+        {
+          "id": "object_detect_server.objectDetect",
+          "class_name": "daprApps_v1/socialNetwork/object-detect/server.py",
+          "method_name": "objectDetect",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "object-detect"
+        },
+        {
+          "id": "face_detect_server.videoScene",
+          "class_name": "daprApps_v1/video-pipe/face-detect/server.py",
+          "method_name": "videoScene",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "face"
+        },
+        {
+          "id": "video_meta_server.videoMeta",
+          "class_name": "daprApps_v1/video-pipe/video-meta/server.py",
+          "method_name": "videoMeta",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "meta"
+        },
+        {
+          "id": "video_scene_server.videoScene",
+          "class_name": "daprApps_v1/video-pipe/video-scene/server.py",
+          "method_name": "videoScene",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "scene"
+        },
+        {
+          "id": "video_frontend_server.uploadVideo",
+          "class_name": "daprApps_v1/video-sharing/video-frontend/server.py",
+          "method_name": "uploadVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "video_frontend_server.getVideoInfo",
+          "class_name": "daprApps_v1/video-sharing/video-frontend/server.py",
+          "method_name": "getVideoInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "info"
+        },
+        {
+          "id": "video_frontend_server.getVideoData",
+          "class_name": "daprApps_v1/video-sharing/video-frontend/server.py",
+          "method_name": "getVideoData",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "video"
+        },
+        {
+          "id": "video_frontend_server.rateVideo",
+          "class_name": "daprApps_v1/video-sharing/video-frontend/server.py",
+          "method_name": "rateVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "video_frontend_server.getVideoRating",
+          "class_name": "daprApps_v1/video-sharing/video-frontend/server.py",
+          "method_name": "getVideoRating",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_rate"
+        },
+        {
+          "id": "video_scale_server.scaleVideo",
+          "class_name": "daprApps_v1/video-sharing/video-scale/server.py",
+          "method_name": "scaleVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "scale"
+        },
+        {
+          "id": "video_thumbnail_server.videoThumbnail",
+          "class_name": "daprApps_v1/video-sharing/video-thumbnail/server.py",
+          "method_name": "videoThumbnail",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "thumbnail"
+        }
+      ]
+    },
+    "mediaMicroservices": {
+      "exposed_interfaces": [
+        {
+          "id": "UniqueIdHandler.UploadUniqueId",
+          "class_name": "UniqueIdHandler",
+          "method_name": "UploadUniqueId",
+          "param_types": [
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UniqueIdService/UploadUniqueId"
+        },
+        {
+          "id": "MovieIdHandler.UploadMovieId",
+          "class_name": "MovieIdHandler",
+          "method_name": "UploadMovieId",
+          "param_types": [
+            "i64",
+            "string",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieIdService/UploadMovieId"
+        },
+        {
+          "id": "MovieIdHandler.RegisterMovieId",
+          "class_name": "MovieIdHandler",
+          "method_name": "RegisterMovieId",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieIdService/RegisterMovieId"
+        },
+        {
+          "id": "TextHandler.UploadText",
+          "class_name": "TextHandler",
+          "method_name": "UploadText",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "TextService/UploadText"
+        },
+        {
+          "id": "RatingHandler.UploadRating",
+          "class_name": "RatingHandler",
+          "method_name": "UploadRating",
+          "param_types": [
+            "i64",
+            "string",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "RatingService/UploadRating"
+        },
+        {
+          "id": "UserHandler.RegisterUser",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUser"
+        },
+        {
+          "id": "UserHandler.RegisterUserWithId",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUserWithId",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "string",
+            "string",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUserWithId"
+        },
+        {
+          "id": "UserHandler.Login",
+          "class_name": "UserHandler",
+          "method_name": "Login",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "UserService/Login"
+        },
+        {
+          "id": "UserHandler.UploadUserWithUserId",
+          "class_name": "UserHandler",
+          "method_name": "UploadUserWithUserId",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/UploadUserWithUserId"
+        },
+        {
+          "id": "UserHandler.UploadUserWithUsername",
+          "class_name": "UserHandler",
+          "method_name": "UploadUserWithUsername",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/UploadUserWithUsername"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadText",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadText",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadText"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadRating",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadRating",
+          "param_types": [
+            "i64",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadRating"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadMovieId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadMovieId",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadMovieId"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadUniqueId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadUniqueId",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadUniqueId"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadUserId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadUserId",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadUserId"
+        },
+        {
+          "id": "ReviewStorageHandler.StoreReview",
+          "class_name": "ReviewStorageHandler",
+          "method_name": "StoreReview",
+          "param_types": [
+            "i64",
+            "Review",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ReviewStorageService/StoreReview"
+        },
+        {
+          "id": "ReviewStorageHandler.ReadReviews",
+          "class_name": "ReviewStorageHandler",
+          "method_name": "ReadReviews",
+          "param_types": [
+            "i64",
+            "list<i64>",
+            "map<string,string>"
+          ],
+          "return_type": "List<Review>",
+          "protocol": "RPC",
+          "endpoint": "ReviewStorageService/ReadReviews"
+        },
+        {
+          "id": "MovieReviewHandler.UploadMovieReview",
+          "class_name": "MovieReviewHandler",
+          "method_name": "UploadMovieReview",
+          "param_types": [
+            "i64",
+            "string",
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieReviewService/UploadMovieReview"
+        },
+        {
+          "id": "MovieReviewHandler.ReadMovieReviews",
+          "class_name": "MovieReviewHandler",
+          "method_name": "ReadMovieReviews",
+          "param_types": [
+            "i64",
+            "string",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "List<Review>",
+          "protocol": "RPC",
+          "endpoint": "MovieReviewService/ReadMovieReviews"
+        },
+        {
+          "id": "UserReviewHandler.UploadUserReview",
+          "class_name": "UserReviewHandler",
+          "method_name": "UploadUserReview",
+          "param_types": [
+            "i64",
+            "i64",
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserReviewService/UploadUserReview"
+        },
+        {
+          "id": "UserReviewHandler.ReadUserReviews",
+          "class_name": "UserReviewHandler",
+          "method_name": "ReadUserReviews",
+          "param_types": [
+            "i64",
+            "i64",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "List<Review>",
+          "protocol": "RPC",
+          "endpoint": "UserReviewService/ReadUserReviews"
+        },
+        {
+          "id": "CastInfoHandler.WriteCastInfo",
+          "class_name": "CastInfoHandler",
+          "method_name": "WriteCastInfo",
+          "param_types": [
+            "i64",
+            "i64",
+            "string",
+            "bool",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "CastInfoService/WriteCastInfo"
+        },
+        {
+          "id": "CastInfoHandler.ReadCastInfo",
+          "class_name": "CastInfoHandler",
+          "method_name": "ReadCastInfo",
+          "param_types": [
+            "i64",
+            "list<i64>",
+            "map<string,string>"
+          ],
+          "return_type": "List<CastInfo>",
+          "protocol": "RPC",
+          "endpoint": "CastInfoService/ReadCastInfo"
+        },
+        {
+          "id": "PlotHandler.WritePlot",
+          "class_name": "PlotHandler",
+          "method_name": "WritePlot",
+          "param_types": [
+            "i64",
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PlotService/WritePlot"
+        },
+        {
+          "id": "PlotHandler.ReadPlot",
+          "class_name": "PlotHandler",
+          "method_name": "ReadPlot",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "PlotService/ReadPlot"
+        },
+        {
+          "id": "MovieInfoHandler.WriteMovieInfo",
+          "class_name": "MovieInfoHandler",
+          "method_name": "WriteMovieInfo",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "list<Cast>",
+            "i64",
+            "list<string>",
+            "list<string>",
+            "list<string>",
+            "string",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/WriteMovieInfo"
+        },
+        {
+          "id": "MovieInfoHandler.ReadMovieInfo",
+          "class_name": "MovieInfoHandler",
+          "method_name": "ReadMovieInfo",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "MovieInfo",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/ReadMovieInfo"
+        },
+        {
+          "id": "MovieInfoHandler.UpdateRating",
+          "class_name": "MovieInfoHandler",
+          "method_name": "UpdateRating",
+          "param_types": [
+            "i64",
+            "string",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/UpdateRating"
+        },
+        {
+          "id": "PageHandler.ReadPage",
+          "class_name": "PageHandler",
+          "method_name": "ReadPage",
+          "param_types": [
+            "i64",
+            "string",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "Page",
+          "protocol": "RPC",
+          "endpoint": "PageService/ReadPage"
+        },
+        {
+          "id": "wrk2_api_user_register.RegisterUser",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/user/register.lua",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "wrk2_api_movie_register.RegisterMovie",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/movie/register.lua",
+          "method_name": "RegisterMovie",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/movie/register"
+        },
+        {
+          "id": "wrk2_api_review_compose.ComposeReview",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/review/compose.lua",
+          "method_name": "ComposeReview",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/review/compose"
+        },
+        {
+          "id": "wrk2_api_movie_info_write.WriteMovieInfo",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/movie-info/write.lua",
+          "method_name": "WriteMovieInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/movie-info/write"
+        },
+        {
+          "id": "wrk2_api_cast_info_write.WriteCastInfo",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/cast-info/write.lua",
+          "method_name": "WriteCastInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/cast-info/write"
+        },
+        {
+          "id": "wrk2_api_plot_write.WritePlot",
+          "class_name": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/plot/write.lua",
+          "method_name": "WritePlot",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/plot/write"
+        }
+      ]
+    },
+    "socialNetwork": {
+      "exposed_interfaces": [
+        {
+          "id": "UniqueIdHandler.ComposeUniqueId",
+          "class_name": "UniqueIdHandler",
+          "method_name": "ComposeUniqueId",
+          "param_types": [
+            "i64",
+            "PostType",
+            "map<string,string>"
+          ],
+          "return_type": "i64",
+          "protocol": "RPC",
+          "endpoint": "UniqueIdService/ComposeUniqueId"
+        },
+        {
+          "id": "TextHandler.ComposeText",
+          "class_name": "TextHandler",
+          "method_name": "ComposeText",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "TextServiceReturn",
+          "protocol": "RPC",
+          "endpoint": "TextService/ComposeText"
+        },
+        {
+          "id": "UserHandler.RegisterUser",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUser"
+        },
+        {
+          "id": "UserHandler.RegisterUserWithId",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUserWithId",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "string",
+            "string",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUserWithId"
+        },
+        {
+          "id": "UserHandler.Login",
+          "class_name": "UserHandler",
+          "method_name": "Login",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "UserService/Login"
+        },
+        {
+          "id": "UserHandler.ComposeCreatorWithUserId",
+          "class_name": "UserHandler",
+          "method_name": "ComposeCreatorWithUserId",
+          "param_types": [
+            "i64",
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "Creator",
+          "protocol": "RPC",
+          "endpoint": "UserService/ComposeCreatorWithUserId"
+        },
+        {
+          "id": "UserHandler.ComposeCreatorWithUsername",
+          "class_name": "UserHandler",
+          "method_name": "ComposeCreatorWithUsername",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "Creator",
+          "protocol": "RPC",
+          "endpoint": "UserService/ComposeCreatorWithUsername"
+        },
+        {
+          "id": "UserHandler.GetUserId",
+          "class_name": "UserHandler",
+          "method_name": "GetUserId",
+          "param_types": [
+            "i64",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "i64",
+          "protocol": "RPC",
+          "endpoint": "UserService/GetUserId"
+        },
+        {
+          "id": "ComposePostHandler.ComposePost",
+          "class_name": "ComposePostHandler",
+          "method_name": "ComposePost",
+          "param_types": [
+            "i64",
+            "string",
+            "i64",
+            "string",
+            "list<i64>",
+            "list<string>",
+            "PostType",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposePostService/ComposePost"
+        },
+        {
+          "id": "PostStorageHandler.StorePost",
+          "class_name": "PostStorageHandler",
+          "method_name": "StorePost",
+          "param_types": [
+            "i64",
+            "Post",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/StorePost"
+        },
+        {
+          "id": "PostStorageHandler.ReadPost",
+          "class_name": "PostStorageHandler",
+          "method_name": "ReadPost",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "Post",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/ReadPost"
+        },
+        {
+          "id": "PostStorageHandler.ReadPosts",
+          "class_name": "PostStorageHandler",
+          "method_name": "ReadPosts",
+          "param_types": [
+            "i64",
+            "list<i64>",
+            "map<string,string>"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/ReadPosts"
+        },
+        {
+          "id": "HomeTimelineHandler.ReadHomeTimeline",
+          "class_name": "HomeTimelineHandler",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "i64",
+            "i64",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "RPC",
+          "endpoint": "HomeTimelineService/ReadHomeTimeline"
+        },
+        {
+          "id": "HomeTimelineHandler.WriteHomeTimeline",
+          "class_name": "HomeTimelineHandler",
+          "method_name": "WriteHomeTimeline",
+          "param_types": [
+            "i64",
+            "i64",
+            "i64",
+            "i64",
+            "list<i64>",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "HomeTimelineService/WriteHomeTimeline"
+        },
+        {
+          "id": "UserTimelineHandler.WriteUserTimeline",
+          "class_name": "UserTimelineHandler",
+          "method_name": "WriteUserTimeline",
+          "param_types": [
+            "i64",
+            "i64",
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserTimelineService/WriteUserTimeline"
+        },
+        {
+          "id": "UserTimelineHandler.ReadUserTimeline",
+          "class_name": "UserTimelineHandler",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "i64",
+            "i64",
+            "i32",
+            "i32",
+            "map<string,string>"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "RPC",
+          "endpoint": "UserTimelineService/ReadUserTimeline"
+        },
+        {
+          "id": "SocialGraphHandler.GetFollowers",
+          "class_name": "SocialGraphHandler",
+          "method_name": "GetFollowers",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "List<i64>",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/GetFollowers"
+        },
+        {
+          "id": "SocialGraphHandler.GetFollowees",
+          "class_name": "SocialGraphHandler",
+          "method_name": "GetFollowees",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "List<i64>",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/GetFollowees"
+        },
+        {
+          "id": "SocialGraphHandler.Follow",
+          "class_name": "SocialGraphHandler",
+          "method_name": "Follow",
+          "param_types": [
+            "i64",
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/Follow"
+        },
+        {
+          "id": "SocialGraphHandler.Unfollow",
+          "class_name": "SocialGraphHandler",
+          "method_name": "Unfollow",
+          "param_types": [
+            "i64",
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/Unfollow"
+        },
+        {
+          "id": "SocialGraphHandler.FollowWithUsername",
+          "class_name": "SocialGraphHandler",
+          "method_name": "FollowWithUsername",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/FollowWithUsername"
+        },
+        {
+          "id": "SocialGraphHandler.UnfollowWithUsername",
+          "class_name": "SocialGraphHandler",
+          "method_name": "UnfollowWithUsername",
+          "param_types": [
+            "i64",
+            "string",
+            "string",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/UnfollowWithUsername"
+        },
+        {
+          "id": "SocialGraphHandler.InsertUser",
+          "class_name": "SocialGraphHandler",
+          "method_name": "InsertUser",
+          "param_types": [
+            "i64",
+            "i64",
+            "map<string,string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/InsertUser"
+        },
+        {
+          "id": "UserMentionHandler.ComposeUserMentions",
+          "class_name": "UserMentionHandler",
+          "method_name": "ComposeUserMentions",
+          "param_types": [
+            "i64",
+            "list<string>",
+            "map<string,string>"
+          ],
+          "return_type": "List<UserMention>",
+          "protocol": "RPC",
+          "endpoint": "UserMentionService/ComposeUserMentions"
+        },
+        {
+          "id": "UrlShortenHandler.ComposeUrls",
+          "class_name": "UrlShortenHandler",
+          "method_name": "ComposeUrls",
+          "param_types": [
+            "i64",
+            "list<string>",
+            "map<string,string>"
+          ],
+          "return_type": "List<Url>",
+          "protocol": "RPC",
+          "endpoint": "UrlShortenService/ComposeUrls"
+        },
+        {
+          "id": "UrlShortenHandler.GetExtendedUrls",
+          "class_name": "UrlShortenHandler",
+          "method_name": "GetExtendedUrls",
+          "param_types": [
+            "i64",
+            "list<string>",
+            "map<string,string>"
+          ],
+          "return_type": "List<string>",
+          "protocol": "RPC",
+          "endpoint": "UrlShortenService/GetExtendedUrls"
+        },
+        {
+          "id": "MediaHandler.ComposeMedia",
+          "class_name": "MediaHandler",
+          "method_name": "ComposeMedia",
+          "param_types": [
+            "i64",
+            "list<string>",
+            "list<i64>",
+            "map<string,string>"
+          ],
+          "return_type": "List<Media>",
+          "protocol": "RPC",
+          "endpoint": "MediaService/ComposeMedia"
+        },
+        {
+          "id": "api_home_timeline_read.ReadHomeTimeline",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/home-timeline/read.lua",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/home-timeline/read"
+        },
+        {
+          "id": "api_user_timeline_read.ReadUserTimeline",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user-timeline/read.lua",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user-timeline/read"
+        },
+        {
+          "id": "api_post_compose.ComposePost",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/post/compose.lua",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/post/compose"
+        },
+        {
+          "id": "api_user_register.RegisterUser",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/register.lua",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/register"
+        },
+        {
+          "id": "api_user_follow.Follow",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/follow.lua",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/follow"
+        },
+        {
+          "id": "api_user_unfollow.Unfollow",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/unfollow.lua",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/unfollow"
+        },
+        {
+          "id": "api_user_login.Login",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/login.lua",
+          "method_name": "Login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/login"
+        },
+        {
+          "id": "api_user_get_follower.GetFollower",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/get_follower.lua",
+          "method_name": "GetFollower",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_follower"
+        },
+        {
+          "id": "api_user_get_followee.GetFollowee",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/api/user/get_followee.lua",
+          "method_name": "GetFollowee",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_followee"
+        },
+        {
+          "id": "wrk2_api_home_timeline_read.ReadHomeTimeline",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/home-timeline/read.lua",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/home-timeline/read"
+        },
+        {
+          "id": "wrk2_api_user_timeline_read.ReadUserTimeline",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user-timeline/read.lua",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/user-timeline/read"
+        },
+        {
+          "id": "wrk2_api_post_compose.ComposePost",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/post/compose.lua",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/post/compose"
+        },
+        {
+          "id": "wrk2_api_user_register.RegisterUser",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/register.lua",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "wrk2_api_user_follow.Follow",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/follow.lua",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/follow"
+        },
+        {
+          "id": "wrk2_api_user_unfollow.Unfollow",
+          "class_name": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/unfollow.lua",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/unfollow"
+        },
+        {
+          "id": "upload_media.UploadMedia",
+          "class_name": "socialNetwork/media-frontend/lua-scripts/upload-media.lua",
+          "method_name": "UploadMedia",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /upload-media"
+        },
+        {
+          "id": "get_media.GetMedia",
+          "class_name": "socialNetwork/media-frontend/lua-scripts/get-media.lua",
+          "method_name": "GetMedia",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /get-media"
+        }
+      ]
+    },
+    "ms_collecter": {
+      "exposed_interfaces": []
+    },
+    "hotelReservation": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.NearbyRest",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyRest",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyRest"
+        },
+        {
+          "id": "Server.NearbyMus",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyMus",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyMus"
+        },
+        {
+          "id": "Server.NearbyCinema",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyCinema",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyCinema"
+        },
+        {
+          "id": "Server.NearbyGeo",
+          "class_name": "geo.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Geo/Nearby"
+        },
+        {
+          "id": "Server.GetProfiles",
+          "class_name": "profile.Server",
+          "method_name": "GetProfiles",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Profile/GetProfiles"
+        },
+        {
+          "id": "Server.GetRates",
+          "class_name": "rate.Server",
+          "method_name": "GetRates",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Rate/GetRates"
+        },
+        {
+          "id": "Server.GetRecommendations",
+          "class_name": "recommendation.Server",
+          "method_name": "GetRecommendations",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Recommendation/GetRecommendations"
+        },
+        {
+          "id": "Server.MakeReservation",
+          "class_name": "reservation.Server",
+          "method_name": "MakeReservation",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Reservation/MakeReservation"
+        },
+        {
+          "id": "Server.CheckAvailability",
+          "class_name": "reservation.Server",
+          "method_name": "CheckAvailability",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Reservation/CheckAvailability"
+        },
+        {
+          "id": "Server.GetReviews",
+          "class_name": "review.Server",
+          "method_name": "GetReviews",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Review/GetReviews"
+        },
+        {
+          "id": "Server.NearbySearch",
+          "class_name": "search.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "NearbyRequest"
+          ],
+          "return_type": "SearchResult",
+          "protocol": "gRPC",
+          "endpoint": "Search/Nearby"
+        },
+        {
+          "id": "Server.CheckUser",
+          "class_name": "user.Server",
+          "method_name": "CheckUser",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "User/CheckUser"
+        },
+        {
+          "id": "Server.searchHandler",
+          "class_name": "frontend.Server",
+          "method_name": "searchHandler",
+          "param_types": [
+            "string",
+            "string",
+            "float32",
+            "float32",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /hotels"
+        },
+        {
+          "id": "Server.recommendHandler",
+          "class_name": "frontend.Server",
+          "method_name": "recommendHandler",
+          "param_types": [
+            "float64",
+            "float64",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /recommendations"
+        },
+        {
+          "id": "Server.userHandler",
+          "class_name": "frontend.Server",
+          "method_name": "userHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "POST /user"
+        },
+        {
+          "id": "Server.reviewHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reviewHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /review"
+        },
+        {
+          "id": "Server.restaurantHandler",
+          "class_name": "frontend.Server",
+          "method_name": "restaurantHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /restaurants"
+        },
+        {
+          "id": "Server.museumHandler",
+          "class_name": "frontend.Server",
+          "method_name": "museumHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /museums"
+        },
+        {
+          "id": "Server.cinemaHandler",
+          "class_name": "frontend.Server",
+          "method_name": "cinemaHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /cinema"
+        },
+        {
+          "id": "Server.reservationHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reservationHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "POST /reservation"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

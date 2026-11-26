@@ -1,0 +1,294 @@
+{
+  "system_id": "MS062",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "cart.get_cart",
+          "class_name": "api/cart/index.js",
+          "method_name": "get_cart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /cart"
+        },
+        {
+          "id": "cart.delete_cart",
+          "class_name": "api/cart/index.js",
+          "method_name": "delete_cart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /cart"
+        },
+        {
+          "id": "cart.delete_cart_id",
+          "class_name": "api/cart/index.js",
+          "method_name": "delete_cart_id",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /cart/:id"
+        },
+        {
+          "id": "cart.post_cart",
+          "class_name": "api/cart/index.js",
+          "method_name": "post_cart",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart"
+        },
+        {
+          "id": "cart.post_cart_update",
+          "class_name": "api/cart/index.js",
+          "method_name": "post_cart_update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/update"
+        },
+        {
+          "id": "catalogue.get_catalogue_images_wildcard",
+          "class_name": "api/catalogue/index.js",
+          "method_name": "get_catalogue_images_wildcard",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /catalogue/images*"
+        },
+        {
+          "id": "catalogue.get_catalogue_wildcard",
+          "class_name": "api/catalogue/index.js",
+          "method_name": "get_catalogue_wildcard",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /catalogue*"
+        },
+        {
+          "id": "catalogue.get_tags",
+          "class_name": "api/catalogue/index.js",
+          "method_name": "get_tags",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /tags"
+        },
+        {
+          "id": "orders.get_orders",
+          "class_name": "api/orders/index.js",
+          "method_name": "get_orders",
+          "param_types": [],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "GET /orders"
+        },
+        {
+          "id": "orders.get_orders_wildcard",
+          "class_name": "api/orders/index.js",
+          "method_name": "get_orders_wildcard",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /orders/*"
+        },
+        {
+          "id": "orders.post_orders",
+          "class_name": "api/orders/index.js",
+          "method_name": "post_orders",
+          "param_types": [],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders"
+        },
+        {
+          "id": "user.get_customers_id",
+          "class_name": "api/user/index.js",
+          "method_name": "get_customers_id",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /customers/:id"
+        },
+        {
+          "id": "user.get_cards_id",
+          "class_name": "api/user/index.js",
+          "method_name": "get_cards_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /cards/:id"
+        },
+        {
+          "id": "user.get_customers",
+          "class_name": "api/user/index.js",
+          "method_name": "get_customers",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /customers"
+        },
+        {
+          "id": "user.get_addresses",
+          "class_name": "api/user/index.js",
+          "method_name": "get_addresses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /addresses"
+        },
+        {
+          "id": "user.get_cards",
+          "class_name": "api/user/index.js",
+          "method_name": "get_cards",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /cards"
+        },
+        {
+          "id": "user.post_customers",
+          "class_name": "api/user/index.js",
+          "method_name": "post_customers",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /customers"
+        },
+        {
+          "id": "user.post_addresses",
+          "class_name": "api/user/index.js",
+          "method_name": "post_addresses",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /addresses"
+        },
+        {
+          "id": "user.get_card",
+          "class_name": "api/user/index.js",
+          "method_name": "get_card",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /card"
+        },
+        {
+          "id": "user.get_address",
+          "class_name": "api/user/index.js",
+          "method_name": "get_address",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Address",
+          "protocol": "REST",
+          "endpoint": "GET /address"
+        },
+        {
+          "id": "user.post_cards",
+          "class_name": "api/user/index.js",
+          "method_name": "post_cards",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /cards"
+        },
+        {
+          "id": "user.delete_customers_id",
+          "class_name": "api/user/index.js",
+          "method_name": "delete_customers_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /customers/:id"
+        },
+        {
+          "id": "user.delete_addresses_id",
+          "class_name": "api/user/index.js",
+          "method_name": "delete_addresses_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /addresses/:id"
+        },
+        {
+          "id": "user.delete_cards_id",
+          "class_name": "api/user/index.js",
+          "method_name": "delete_cards_id",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /cards/:id"
+        },
+        {
+          "id": "user.post_register",
+          "class_name": "api/user/index.js",
+          "method_name": "post_register",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /register"
+        },
+        {
+          "id": "user.get_login",
+          "class_name": "api/user/index.js",
+          "method_name": "get_login",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        }
+      ]
+    },
+    "public": {
+      "exposed_interfaces": []
+    },
+    "helpers": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}
