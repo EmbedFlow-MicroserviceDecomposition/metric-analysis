@@ -1,0 +1,2529 @@
+{
+  "system_id": "MS100",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "rucio": {
+      "exposed_interfaces": [
+        {
+          "id": "Attributes.get_accounts",
+          "class_name": "Attributes",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/attr/"
+        },
+        {
+          "id": "Attributes.post_accounts",
+          "class_name": "Attributes",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>/attr/<key>"
+        },
+        {
+          "id": "Attributes.delete_accounts",
+          "class_name": "Attributes",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/<account>/attr/<key>"
+        },
+        {
+          "id": "Scopes.get",
+          "class_name": "Scopes",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/scopes/"
+        },
+        {
+          "id": "Scopes.post",
+          "class_name": "Scopes",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>/scopes/<scope>"
+        },
+        {
+          "id": "LocalAccountLimits.get",
+          "class_name": "LocalAccountLimits",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/limits/local"
+        },
+        {
+          "id": "LocalAccountLimits.post",
+          "class_name": "LocalAccountLimits",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>/limits/local/<rse>"
+        },
+        {
+          "id": "LocalAccountLimits.delete",
+          "class_name": "LocalAccountLimits",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/<account>/limits/local/<rse>"
+        },
+        {
+          "id": "GlobalAccountLimits.get",
+          "class_name": "GlobalAccountLimits",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/limits/global"
+        },
+        {
+          "id": "GlobalAccountLimits.post",
+          "class_name": "GlobalAccountLimits",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>/limits/global/<rse_expression>"
+        },
+        {
+          "id": "GlobalAccountLimits.delete",
+          "class_name": "GlobalAccountLimits",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/<account>/limits/global/<rse_expression>"
+        },
+        {
+          "id": "Identities.get",
+          "class_name": "Identities",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "List<Identity>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/identities"
+        },
+        {
+          "id": "Identities.post",
+          "class_name": "Identities",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>/identities"
+        },
+        {
+          "id": "Identities.delete",
+          "class_name": "Identities",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/<account>/identities"
+        },
+        {
+          "id": "Rules.get_accounts",
+          "class_name": "Rules",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "object"
+          ],
+          "return_type": "List<ReplicationRule>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/rules"
+        },
+        {
+          "id": "UsageHistory.get_accounts",
+          "class_name": "UsageHistory",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/usage/history/<rse>"
+        },
+        {
+          "id": "LocalUsage.get",
+          "class_name": "LocalUsage",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/usage/local"
+        },
+        {
+          "id": "GlobalUsage.get",
+          "class_name": "GlobalUsage",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>/usage/global"
+        },
+        {
+          "id": "AccountParameter.get",
+          "class_name": "AccountParameter",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/<account>"
+        },
+        {
+          "id": "AccountParameter.put",
+          "class_name": "AccountParameter",
+          "method_name": "put",
+          "param_types": [
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /accounts/<account>"
+        },
+        {
+          "id": "AccountParameter.post",
+          "class_name": "AccountParameter",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/<account>"
+        },
+        {
+          "id": "AccountParameter.delete",
+          "class_name": "AccountParameter",
+          "method_name": "delete",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /accounts/<account>"
+        },
+        {
+          "id": "Account.get",
+          "class_name": "Account",
+          "method_name": "get",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Account>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts"
+        },
+        {
+          "id": "Archive.get",
+          "class_name": "Archive",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /archives/<path:scope_name>/files"
+        },
+        {
+          "id": "UserPass.get",
+          "class_name": "UserPass",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/userpass"
+        },
+        {
+          "id": "GSS.get",
+          "class_name": "GSS",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/gss"
+        },
+        {
+          "id": "x509.get",
+          "class_name": "x509",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/x509"
+        },
+        {
+          "id": "SSH.get",
+          "class_name": "SSH",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/ssh"
+        },
+        {
+          "id": "SSHChallengeToken.get",
+          "class_name": "SSHChallengeToken",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/ssh_challenge_token"
+        },
+        {
+          "id": "Validate.get",
+          "class_name": "Validate",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /auth/validate"
+        },
+        {
+          "id": "OIDC.get",
+          "class_name": "OIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc"
+        },
+        {
+          "id": "CodeOIDC.get",
+          "class_name": "CodeOIDC",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_code"
+        },
+        {
+          "id": "RedirectOIDC.get",
+          "class_name": "RedirectOIDC",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_redirect"
+        },
+        {
+          "id": "RefreshOIDC.get",
+          "class_name": "RefreshOIDC",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/oidc_refresh"
+        },
+        {
+          "id": "OptionSet.put",
+          "class_name": "OptionSet",
+          "method_name": "put",
+          "param_types": [
+            "str",
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /config/<section>/<option>/<value>"
+        },
+        {
+          "id": "OptionGetDel.get",
+          "class_name": "OptionGetDel",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config/<section>/<option>"
+        },
+        {
+          "id": "OptionGetDel.delete",
+          "class_name": "OptionGetDel",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /config/<section>/<option>"
+        },
+        {
+          "id": "Section.get",
+          "class_name": "Section",
+          "method_name": "get",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config/<section>"
+        },
+        {
+          "id": "Section.delete",
+          "class_name": "Section",
+          "method_name": "delete",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /config/<section>"
+        },
+        {
+          "id": "Config.get",
+          "class_name": "Config",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /config"
+        },
+        {
+          "id": "Config.post",
+          "class_name": "Config",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /config"
+        },
+        {
+          "id": "SignURL.get",
+          "class_name": "SignURL",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "int",
+            "string",
+            "string"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /credentials/signurl"
+        },
+        {
+          "id": "DIDs.put",
+          "class_name": "DIDs",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /dids/<path:scope_name>/status"
+        },
+        {
+          "id": "DIDs.get",
+          "class_name": "DIDs",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "DataIdentifier",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/status"
+        },
+        {
+          "id": "DIDs.post",
+          "class_name": "DIDs",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/<path:scope_name>"
+        },
+        {
+          "id": "Meta.get",
+          "class_name": "Meta",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/meta"
+        },
+        {
+          "id": "Meta.post",
+          "class_name": "Meta",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/<path:scope_name>/meta"
+        },
+        {
+          "id": "Meta.delete",
+          "class_name": "Meta",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/<path:scope_name>/meta"
+        },
+        {
+          "id": "BulkDIDsMeta.postSet",
+          "class_name": "BulkDIDsMeta",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/bulkdidsmeta"
+        },
+        {
+          "id": "BulkDIDsMeta.postGet",
+          "class_name": "BulkDIDsMeta",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /dids/bulkmeta"
+        },
+        {
+          "id": "Attachment.get",
+          "class_name": "Attachment",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/dids"
+        },
+        {
+          "id": "Attachment.post",
+          "class_name": "Attachment",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/<path:scope_name>/dids"
+        },
+        {
+          "id": "Attachment.delete",
+          "class_name": "Attachment",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/<path:scope_name>/dids"
+        },
+        {
+          "id": "NewDIDs.get",
+          "class_name": "NewDIDs",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/new"
+        },
+        {
+          "id": "BulkDIDS.post",
+          "class_name": "BulkDIDS",
+          "method_name": "post",
+          "param_types": [
+            "list"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids"
+        },
+        {
+          "id": "AttachmentHistory.get",
+          "class_name": "AttachmentHistory",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/dids/history"
+        },
+        {
+          "id": "Attachments.post",
+          "class_name": "Attachments",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/attachments"
+        },
+        {
+          "id": "Search.get",
+          "class_name": "Search",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "int",
+            "bool",
+            "bool"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<scope>/dids/search"
+        },
+        {
+          "id": "Scope.get_dids",
+          "class_name": "Scope",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "bool"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<scope>/"
+        },
+        {
+          "id": "GUIDLookup.get",
+          "class_name": "GUIDLookup",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<guid>/guid"
+        },
+        {
+          "id": "Files.get",
+          "class_name": "Files",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/files"
+        },
+        {
+          "id": "BulkFiles.post",
+          "class_name": "BulkFiles",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /dids/bulkfiles"
+        },
+        {
+          "id": "Rules.get_dids",
+          "class_name": "Rules",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<ReplicationRule>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/rules"
+        },
+        {
+          "id": "Parents.get",
+          "class_name": "Parents",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<DataIdentifier>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/parents"
+        },
+        {
+          "id": "AssociatedRules.get",
+          "class_name": "AssociatedRules",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<ReplicationRule>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/associated_rules"
+        },
+        {
+          "id": "Follow.get",
+          "class_name": "Follow",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /dids/<path:scope_name>/follow"
+        },
+        {
+          "id": "Follow.post",
+          "class_name": "Follow",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/<path:scope_name>/follow"
+        },
+        {
+          "id": "Follow.delete",
+          "class_name": "Follow",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dids/<path:scope_name>/follow"
+        },
+        {
+          "id": "SampleLegacy.post",
+          "class_name": "SampleLegacy",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/<input_scope>/<input_name>/<output_scope>/<output_name>/<nbfiles>/sample"
+        },
+        {
+          "id": "Sample.post",
+          "class_name": "Sample",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/sample"
+        },
+        {
+          "id": "Resurrect.post",
+          "class_name": "Resurrect",
+          "method_name": "post",
+          "param_types": [
+            "list"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dids/resurrect"
+        },
+        {
+          "id": "AddFiles.post",
+          "class_name": "AddFiles",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dirac/addfiles"
+        },
+        {
+          "id": "Export.get",
+          "class_name": "Export",
+          "method_name": "get",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /export"
+        },
+        {
+          "id": "Heartbeat.get",
+          "class_name": "Heartbeat",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /heartbeats"
+        },
+        {
+          "id": "Heartbeat.post",
+          "class_name": "Heartbeat",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /heartbeats"
+        },
+        {
+          "id": "UserPass.put",
+          "class_name": "UserPass",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/<account>/userpass"
+        },
+        {
+          "id": "X509.put",
+          "class_name": "X509",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/<account>/x509"
+        },
+        {
+          "id": "GSS.put",
+          "class_name": "GSS",
+          "method_name": "put",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /identities/<account>/gss"
+        },
+        {
+          "id": "Accounts.get",
+          "class_name": "Accounts",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "GET /identities/<identity_key>/<type>/accounts"
+        },
+        {
+          "id": "AccountsByIdentity.get",
+          "class_name": "AccountsByIdentity",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "GET /identities/accounts"
+        },
+        {
+          "id": "Import.post",
+          "class_name": "Import",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /import"
+        },
+        {
+          "id": "LifetimeException.get",
+          "class_name": "LifetimeException",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<LifetimeException>",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exceptions/"
+        },
+        {
+          "id": "LifetimeException.post",
+          "class_name": "LifetimeException",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /lifetime_exceptions/"
+        },
+        {
+          "id": "LifetimeExceptionId.get",
+          "class_name": "LifetimeExceptionId",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<LifetimeException>",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exceptions/<exception_id>"
+        },
+        {
+          "id": "LifetimeExceptionId.put",
+          "class_name": "LifetimeExceptionId",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /lifetime_exceptions/<exception_id>"
+        },
+        {
+          "id": "LockByRSE.get",
+          "class_name": "LockByRSE",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /locks/<rse>"
+        },
+        {
+          "id": "LocksByScopeName.get",
+          "class_name": "LocksByScopeName",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /locks/<path:scope_name>"
+        },
+        {
+          "id": "DatasetLocksForDids.post",
+          "class_name": "DatasetLocksForDids",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /locks/bulk_locks_for_dids"
+        },
+        {
+          "id": "MetaConventions.get",
+          "class_name": "MetaConventions",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /meta_conventions/"
+        },
+        {
+          "id": "MetaConventions.post",
+          "class_name": "MetaConventions",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /meta_conventions/<key>"
+        },
+        {
+          "id": "Values.get",
+          "class_name": "Values",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /meta_conventions/<key>/"
+        },
+        {
+          "id": "Values.post",
+          "class_name": "Values",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /meta_conventions/<key>/"
+        },
+        {
+          "id": "XAODTrace.post",
+          "class_name": "XAODTrace",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /nongrid_traces/"
+        },
+        {
+          "id": "OpenDataView.get",
+          "class_name": "OpenDataView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/dids"
+        },
+        {
+          "id": "OpenDataDIDsView.get",
+          "class_name": "OpenDataDIDsView",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str",
+            "string",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/dids/<scope>/<name>"
+        },
+        {
+          "id": "OpenDataDIDsView.post",
+          "class_name": "OpenDataDIDsView",
+          "method_name": "post",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /opendata/dids/<scope>/<name>"
+        },
+        {
+          "id": "OpenDataDIDsView.put",
+          "class_name": "OpenDataDIDsView",
+          "method_name": "put",
+          "param_types": [
+            "str",
+            "str",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /opendata/dids/<scope>/<name>"
+        },
+        {
+          "id": "OpenDataDIDsView.delete",
+          "class_name": "OpenDataDIDsView",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /opendata/dids/<scope>/<name>"
+        },
+        {
+          "id": "OpenDataPublicView.get",
+          "class_name": "OpenDataPublicView",
+          "method_name": "get",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/public/dids"
+        },
+        {
+          "id": "OpenDataPublicDIDsView.get",
+          "class_name": "OpenDataPublicDIDsView",
+          "method_name": "get",
+          "param_types": [
+            "str",
+            "str",
+            "bool",
+            "bool",
+            "bool",
+            "bool",
+            "bool"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /opendata/public/dids/<scope>/<name>"
+        },
+        {
+          "id": "MetaLinkRedirector.get",
+          "class_name": "MetaLinkRedirector",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "list",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /redirect/<path:scope_name>/metalink"
+        },
+        {
+          "id": "HeaderRedirector.get",
+          "class_name": "HeaderRedirector",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "list",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /redirect/<path:scope_name>"
+        },
+        {
+          "id": "ListReplicas.post",
+          "class_name": "ListReplicas",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/list"
+        },
+        {
+          "id": "Replicas.post",
+          "class_name": "Replicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas"
+        },
+        {
+          "id": "Replicas.put",
+          "class_name": "Replicas",
+          "method_name": "put",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /replicas"
+        },
+        {
+          "id": "Replicas.delete",
+          "class_name": "Replicas",
+          "method_name": "delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /replicas"
+        },
+        {
+          "id": "SuspiciousReplicas.get",
+          "class_name": "SuspiciousReplicas",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "datetime",
+            "int"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/suspicious"
+        },
+        {
+          "id": "SuspiciousReplicas.post",
+          "class_name": "SuspiciousReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/suspicious"
+        },
+        {
+          "id": "BadReplicasStates.get",
+          "class_name": "BadReplicasStates",
+          "method_name": "get",
+          "param_types": [
+            "BadFilesStatus",
+            "string",
+            "datetime",
+            "datetime",
+            "int",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/bad/states"
+        },
+        {
+          "id": "BadReplicasSummary.get",
+          "class_name": "BadReplicasSummary",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "datetime",
+            "datetime"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/bad/summary"
+        },
+        {
+          "id": "BadPFNs.post",
+          "class_name": "BadPFNs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad/pfns"
+        },
+        {
+          "id": "BadDIDs.post",
+          "class_name": "BadDIDs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad/dids"
+        },
+        {
+          "id": "ReplicasRSE.get",
+          "class_name": "ReplicasRSE",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/rse/<rse>"
+        },
+        {
+          "id": "BadReplicas.post",
+          "class_name": "BadReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/bad"
+        },
+        {
+          "id": "QuarantineReplicas.post",
+          "class_name": "QuarantineReplicas",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/quarantine"
+        },
+        {
+          "id": "ReplicasDIDs.post",
+          "class_name": "ReplicasDIDs",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/dids"
+        },
+        {
+          "id": "DatasetReplicas.get",
+          "class_name": "DatasetReplicas",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/<path:scope_name>/datasets"
+        },
+        {
+          "id": "DatasetReplicasBulk.post",
+          "class_name": "DatasetReplicasBulk",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/datasets_bulk"
+        },
+        {
+          "id": "Replicas.get",
+          "class_name": "Replicas",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/<path:scope_name>"
+        },
+        {
+          "id": "Tombstone.post",
+          "class_name": "Tombstone",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /replicas/tombstone"
+        },
+        {
+          "id": "DatasetReplicasVP.get",
+          "class_name": "DatasetReplicasVP",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /replicas/<path:scope_name>/datasets_vp"
+        },
+        {
+          "id": "RequestGet.get",
+          "class_name": "RequestGet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Request",
+          "protocol": "REST",
+          "endpoint": "GET /requests/<path:scope_name>/<rse>"
+        },
+        {
+          "id": "RequestHistoryGet.get",
+          "class_name": "RequestHistoryGet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Request",
+          "protocol": "REST",
+          "endpoint": "GET /requests/history/<path:scope_name>/<rse>"
+        },
+        {
+          "id": "RequestList.get",
+          "class_name": "RequestList",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<Request>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/list"
+        },
+        {
+          "id": "RequestHistoryList.get",
+          "class_name": "RequestHistoryList",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "int",
+            "int"
+          ],
+          "return_type": "List<Request>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/history/list"
+        },
+        {
+          "id": "RequestMetricsGet.get",
+          "class_name": "RequestMetricsGet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /requests/metrics"
+        },
+        {
+          "id": "TransferLimits.get",
+          "class_name": "TransferLimits",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /requests/transfer_limits"
+        },
+        {
+          "id": "TransferLimits.put",
+          "class_name": "TransferLimits",
+          "method_name": "put",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /requests/transfer_limits"
+        },
+        {
+          "id": "TransferLimits.delete",
+          "class_name": "TransferLimits",
+          "method_name": "delete",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /requests/transfer_limits"
+        },
+        {
+          "id": "Attributes.post_rses",
+          "class_name": "Attributes",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/<rse>/attr/<key>"
+        },
+        {
+          "id": "Attributes.delete_rses",
+          "class_name": "Attributes",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/<rse>/attr/<key>"
+        },
+        {
+          "id": "Attributes.get_rses",
+          "class_name": "Attributes",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/attr/"
+        },
+        {
+          "id": "Distance.get",
+          "class_name": "Distance",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<source>/distances/<destination>"
+        },
+        {
+          "id": "Distance.post",
+          "class_name": "Distance",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/<source>/distances/<destination>"
+        },
+        {
+          "id": "Distance.put",
+          "class_name": "Distance",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/<source>/distances/<destination>"
+        },
+        {
+          "id": "Distance.delete",
+          "class_name": "Distance",
+          "method_name": "delete",
+          "param_types": [
+            "str",
+            "str",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/<source>/distances/<destination>"
+        },
+        {
+          "id": "Protocol.delete",
+          "class_name": "Protocol",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/<rse>/protocols/<scheme>/<hostname>/<port>"
+        },
+        {
+          "id": "Protocol.put",
+          "class_name": "Protocol",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "int",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/<rse>/protocols/<scheme>/<hostname>/<port>"
+        },
+        {
+          "id": "Protocol.get",
+          "class_name": "Protocol",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/protocols/<scheme>"
+        },
+        {
+          "id": "Protocol.post",
+          "class_name": "Protocol",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/<rse>/protocols/<scheme>"
+        },
+        {
+          "id": "ProtocolList.get",
+          "class_name": "ProtocolList",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/protocols"
+        },
+        {
+          "id": "LFNS2PFNS.get",
+          "class_name": "LFNS2PFNS",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "list",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/lfns2pfns"
+        },
+        {
+          "id": "RSEAccountUsageLimit.get",
+          "class_name": "RSEAccountUsageLimit",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/accounts/usage"
+        },
+        {
+          "id": "Usage.get",
+          "class_name": "Usage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/usage"
+        },
+        {
+          "id": "Usage.put",
+          "class_name": "Usage",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/<rse>/usage"
+        },
+        {
+          "id": "UsageHistory.get_rses",
+          "class_name": "UsageHistory",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/usage/history"
+        },
+        {
+          "id": "Limits.get",
+          "class_name": "Limits",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>/limits"
+        },
+        {
+          "id": "Limits.put",
+          "class_name": "Limits",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/<rse>/limits"
+        },
+        {
+          "id": "Limits.delete",
+          "class_name": "Limits",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/<rse>/limits"
+        },
+        {
+          "id": "RSE.get",
+          "class_name": "RSE",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "RSE",
+          "protocol": "REST",
+          "endpoint": "GET /rses/<rse>"
+        },
+        {
+          "id": "RSE.delete",
+          "class_name": "RSE",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rses/<rse>"
+        },
+        {
+          "id": "RSE.put",
+          "class_name": "RSE",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rses/<rse>"
+        },
+        {
+          "id": "RSE.post",
+          "class_name": "RSE",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rses/<rse>"
+        },
+        {
+          "id": "RSEs.get",
+          "class_name": "RSEs",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<RSE>",
+          "protocol": "REST",
+          "endpoint": "GET /rses/"
+        },
+        {
+          "id": "Rule.get",
+          "class_name": "Rule",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "ReplicationRule",
+          "protocol": "REST",
+          "endpoint": "GET /rules/<rule_id>"
+        },
+        {
+          "id": "Rule.put",
+          "class_name": "Rule",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /rules/<rule_id>"
+        },
+        {
+          "id": "Rule.delete",
+          "class_name": "Rule",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /rules/<rule_id>"
+        },
+        {
+          "id": "AllRule.get",
+          "class_name": "AllRule",
+          "method_name": "get",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<ReplicationRule>",
+          "protocol": "REST",
+          "endpoint": "GET /rules/"
+        },
+        {
+          "id": "AllRule.post",
+          "class_name": "AllRule",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/"
+        },
+        {
+          "id": "ReplicaLocks.get",
+          "class_name": "ReplicaLocks",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rules/<rule_id>/locks"
+        },
+        {
+          "id": "ReduceRule.post",
+          "class_name": "ReduceRule",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/<rule_id>/reduce"
+        },
+        {
+          "id": "MoveRule.post",
+          "class_name": "MoveRule",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "POST /rules/<rule_id>/move"
+        },
+        {
+          "id": "RuleHistory.get",
+          "class_name": "RuleHistory",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rules/<rule_id>/history"
+        },
+        {
+          "id": "RuleHistoryFull.get",
+          "class_name": "RuleHistoryFull",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /rules/<path:scope_name>/history"
+        },
+        {
+          "id": "RuleAnalysis.get",
+          "class_name": "RuleAnalysis",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rules/<rule_id>/analysis"
+        },
+        {
+          "id": "Scope.get_scopes",
+          "class_name": "Scope",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/"
+        },
+        {
+          "id": "Scope.post",
+          "class_name": "Scope",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /scopes/<account>/<scope>"
+        },
+        {
+          "id": "Scope.put",
+          "class_name": "Scope",
+          "method_name": "put",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /scopes/<account>/<scope>"
+        },
+        {
+          "id": "AccountScopeList.get",
+          "class_name": "AccountScopeList",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<str>",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/<account>/scopes"
+        },
+        {
+          "id": "ScopeOwnershipList.get",
+          "class_name": "ScopeOwnershipList",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /scopes/owner/"
+        },
+        {
+          "id": "SubscriptionId.get",
+          "class_name": "SubscriptionId",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Subscription",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/id/<subscription_id>"
+        },
+        {
+          "id": "States.get",
+          "class_name": "States",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "bool"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/<account>/<name>/rules/states"
+        },
+        {
+          "id": "Rules.get_subscriptions",
+          "class_name": "Rules",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<ReplicationRule>",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/<account>/<name>/rules"
+        },
+        {
+          "id": "Subscription.get",
+          "class_name": "Subscription",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Subscription>",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/<account>/<name>"
+        },
+        {
+          "id": "Subscription.post",
+          "class_name": "Subscription",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /subscriptions/<account>/<name>"
+        },
+        {
+          "id": "Subscription.put",
+          "class_name": "Subscription",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /subscriptions/<account>/<name>"
+        },
+        {
+          "id": "SubscriptionName.get",
+          "class_name": "SubscriptionName",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Subscription>",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/name/<name>"
+        },
+        {
+          "id": "Trace.post",
+          "class_name": "Trace",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /traces/"
+        },
+        {
+          "id": "RecoverVO.post",
+          "class_name": "RecoverVO",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /vos/<vo>/recover"
+        },
+        {
+          "id": "VO.put",
+          "class_name": "VO",
+          "method_name": "put",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /vos/<vo>"
+        },
+        {
+          "id": "VO.post",
+          "class_name": "VO",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /vos/<vo>"
+        },
+        {
+          "id": "VOs.get",
+          "class_name": "VOs",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /vos/"
+        },
+        {
+          "id": "bp.get_",
+          "class_name": "bp",
+          "method_name": "get_",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "bp.get_account_rse_usage",
+          "class_name": "bp",
+          "method_name": "get_account_rse_usage",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /account_rse_usage"
+        },
+        {
+          "id": "bp.get_account",
+          "class_name": "bp",
+          "method_name": "get_account",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /account"
+        },
+        {
+          "id": "bp.get_bad_replicas",
+          "class_name": "bp",
+          "method_name": "get_bad_replicas",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /bad_replicas"
+        },
+        {
+          "id": "bp.get_bad_replicas_summary",
+          "class_name": "bp",
+          "method_name": "get_bad_replicas_summary",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /bad_replicas/summary"
+        },
+        {
+          "id": "bp.get_did",
+          "class_name": "bp",
+          "method_name": "get_did",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /did"
+        },
+        {
+          "id": "bp.get_heartbeats",
+          "class_name": "bp",
+          "method_name": "get_heartbeats",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /heartbeats"
+        },
+        {
+          "id": "bp.get_lifetime_exception",
+          "class_name": "bp",
+          "method_name": "get_lifetime_exception",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /lifetime_exception"
+        },
+        {
+          "id": "bp.get_list_lifetime_exceptions",
+          "class_name": "bp",
+          "method_name": "get_list_lifetime_exceptions",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /list_lifetime_exceptions"
+        },
+        {
+          "id": "bp.get_list_accounts",
+          "class_name": "bp",
+          "method_name": "get_list_accounts",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /list_accounts"
+        },
+        {
+          "id": "bp.get_r2d2_approve",
+          "class_name": "bp",
+          "method_name": "get_r2d2_approve",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/approve"
+        },
+        {
+          "id": "bp.get_r2d2_request",
+          "class_name": "bp",
+          "method_name": "get_r2d2_request",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/request"
+        },
+        {
+          "id": "bp.get_r2d2_manage_quota",
+          "class_name": "bp",
+          "method_name": "get_r2d2_manage_quota",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2/manage_quota"
+        },
+        {
+          "id": "bp.get_r2d2",
+          "class_name": "bp",
+          "method_name": "get_r2d2",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /r2d2"
+        },
+        {
+          "id": "bp.get_rse",
+          "class_name": "bp",
+          "method_name": "get_rse",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rse"
+        },
+        {
+          "id": "bp.get_rse_protocol_add",
+          "class_name": "bp",
+          "method_name": "get_rse_protocol_add",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rse/protocol/add"
+        },
+        {
+          "id": "bp.get_rses",
+          "class_name": "bp",
+          "method_name": "get_rses",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rses"
+        },
+        {
+          "id": "bp.get_rses_add",
+          "class_name": "bp",
+          "method_name": "get_rses_add",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rses/add"
+        },
+        {
+          "id": "bp.get_rule",
+          "class_name": "bp",
+          "method_name": "get_rule",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rule"
+        },
+        {
+          "id": "bp.get_rules",
+          "class_name": "bp",
+          "method_name": "get_rules",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rules"
+        },
+        {
+          "id": "bp.get_search",
+          "class_name": "bp",
+          "method_name": "get_search",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /search"
+        },
+        {
+          "id": "bp.get_subscriptions_rules",
+          "class_name": "bp",
+          "method_name": "get_subscriptions_rules",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions/rules"
+        },
+        {
+          "id": "bp.get_subscription",
+          "class_name": "bp",
+          "method_name": "get_subscription",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscription"
+        },
+        {
+          "id": "bp.get_subscriptions",
+          "class_name": "bp",
+          "method_name": "get_subscriptions",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions"
+        },
+        {
+          "id": "bp.get_subscriptions_editor",
+          "class_name": "bp",
+          "method_name": "get_subscriptions_editor",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /subscriptions_editor"
+        },
+        {
+          "id": "bp.get_suspicious_replicas",
+          "class_name": "bp",
+          "method_name": "get_suspicious_replicas",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /suspicious_replicas"
+        },
+        {
+          "id": "bp.get_account_usage",
+          "class_name": "bp",
+          "method_name": "get_account_usage",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /account_usage"
+        },
+        {
+          "id": "bp.get_dumps",
+          "class_name": "bp",
+          "method_name": "get_dumps",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /dumps"
+        },
+        {
+          "id": "bp.get_conditions_summary",
+          "class_name": "bp",
+          "method_name": "get_conditions_summary",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /conditions_summary"
+        },
+        {
+          "id": "bp.get_dbrelease_summary",
+          "class_name": "bp",
+          "method_name": "get_dbrelease_summary",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /dbrelease_summary"
+        },
+        {
+          "id": "bp.get_infrastructure",
+          "class_name": "bp",
+          "method_name": "get_infrastructure",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /infrastructure"
+        },
+        {
+          "id": "bp.get_rule_backlog_monitor",
+          "class_name": "bp",
+          "method_name": "get_rule_backlog_monitor",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /rule_backlog_monitor"
+        },
+        {
+          "id": "bp.auth",
+          "class_name": "bp",
+          "method_name": "auth",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /auth"
+        },
+        {
+          "id": "bp.login",
+          "class_name": "bp",
+          "method_name": "login",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "bp.oidc",
+          "class_name": "bp",
+          "method_name": "oidc",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /oidc"
+        },
+        {
+          "id": "bp.oidc_final",
+          "class_name": "bp",
+          "method_name": "oidc_final",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /oidc_final"
+        },
+        {
+          "id": "bp.x509",
+          "class_name": "bp",
+          "method_name": "x509",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /x509"
+        },
+        {
+          "id": "AMQConsumer.on_message_cache",
+          "class_name": "AMQConsumer",
+          "method_name": "on_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "messaging-cache.destination"
+        },
+        {
+          "id": "AMQConsumer.on_message_kronos",
+          "class_name": "AMQConsumer",
+          "method_name": "on_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "tracer-kronos.queue"
+        },
+        {
+          "id": "Receiver.on_message",
+          "class_name": "Receiver",
+          "method_name": "on_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "messaging-fts3.destination"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,99 @@
+{
+  "system_id": "MS108",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "mooc-backend": {
+      "exposed_interfaces": [
+        {
+          "id": "CoursesPutController.__invoke",
+          "class_name": "CodelyTv\\Apps\\Mooc\\Backend\\Controller\\Courses\\CoursesPutController",
+          "method_name": "__invoke",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /courses/{id}"
+        },
+        {
+          "id": "CoursesCounterGetController.__invoke",
+          "class_name": "CodelyTv\\Apps\\Mooc\\Backend\\Controller\\CoursesCounter\\CoursesCounterGetController",
+          "method_name": "__invoke",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses-counter"
+        },
+        {
+          "id": "IncrementCoursesCounterOnCourseCreated.__invoke",
+          "class_name": "CodelyTv\\Mooc\\CoursesCounter\\Application\\Increment\\IncrementCoursesCounterOnCourseCreated",
+          "method_name": "__invoke",
+          "param_types": [
+            "CourseCreatedDomainEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "codelytv.mooc.courses_counter.increment_courses_counter_on_course_created"
+        }
+      ]
+    },
+    "backoffice-backend": {
+      "exposed_interfaces": [
+        {
+          "id": "CoursesGetController.__invoke",
+          "class_name": "CodelyTv\\Apps\\Backoffice\\Backend\\Controller\\Courses\\CoursesGetController",
+          "method_name": "__invoke",
+          "param_types": [
+            "string",
+            "string",
+            "int",
+            "int",
+            "array"
+          ],
+          "return_type": "List<BackofficeCourseResponse>",
+          "protocol": "REST",
+          "endpoint": "GET /courses"
+        }
+      ]
+    },
+    "backoffice-frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "CoursesGetWebController.__invoke",
+          "class_name": "CodelyTv\\Apps\\Backoffice\\Frontend\\Controller\\Courses\\CoursesGetWebController",
+          "method_name": "__invoke",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses"
+        },
+        {
+          "id": "CoursesPostWebController.__invoke",
+          "class_name": "CodelyTv\\Apps\\Backoffice\\Frontend\\Controller\\Courses\\CoursesPostWebController",
+          "method_name": "__invoke",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "backoffice-frontend",
+      "src_class": "CodelyTv\\Apps\\Backoffice\\Frontend\\Controller\\Courses\\CoursesPostWebController",
+      "src_method": "createCourse",
+      "dst_service": "mooc-backend",
+      "dst_class": "CodelyTv\\Mooc\\CoursesCounter\\Application\\Increment\\IncrementCoursesCounterOnCourseCreated",
+      "dst_interface_id": "IncrementCoursesCounterOnCourseCreated.__invoke",
+      "protocol": "Messaging",
+      "evidence": "apps/backoffice/frontend/src/Controller/Courses/CoursesPostWebController.php:48 $this->dispatch( -> src/Mooc/CoursesCounter/Application/Increment/IncrementCoursesCounterOnCourseCreated.php:22"
+    }
+  ]
+}

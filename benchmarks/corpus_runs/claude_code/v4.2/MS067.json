@@ -1,0 +1,829 @@
+{
+  "system_id": "MS067",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "data": {
+      "exposed_interfaces": [
+        {
+          "id": "main.get_host_update_stats",
+          "class_name": "main",
+          "method_name": "get_host_update_stats",
+          "param_types": [],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /host/stats"
+        },
+        {
+          "id": "main.get_container",
+          "class_name": "main",
+          "method_name": "get_container",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /containers/{container_id}/json"
+        },
+        {
+          "id": "main.get_containers",
+          "class_name": "main",
+          "method_name": "get_containers",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /containers/json"
+        },
+        {
+          "id": "main.post_container_update_stats",
+          "class_name": "main",
+          "method_name": "post_container_update_stats",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /container/{container_id}/stats/update"
+        },
+        {
+          "id": "DockerApi.container_post__stop",
+          "class_name": "DockerApi",
+          "method_name": "container_post__stop",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/stop"
+        },
+        {
+          "id": "DockerApi.container_post__start",
+          "class_name": "DockerApi",
+          "method_name": "container_post__start",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/start"
+        },
+        {
+          "id": "DockerApi.container_post__restart",
+          "class_name": "DockerApi",
+          "method_name": "container_post__restart",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/restart"
+        },
+        {
+          "id": "DockerApi.container_post__top",
+          "class_name": "DockerApi",
+          "method_name": "container_post__top",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/top"
+        },
+        {
+          "id": "DockerApi.container_post__stats",
+          "class_name": "DockerApi",
+          "method_name": "container_post__stats",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/stats"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__delete",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__delete",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=delete"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__hold",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__hold",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=hold"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__cat",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__cat",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=cat"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__unhold",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__unhold",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=unhold"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__deliver",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__deliver",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=deliver"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__list",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__list",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=list"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__flush",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__flush",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=flush"
+        },
+        {
+          "id": "DockerApi.container_post__exec__mailq__super_delete",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__mailq__super_delete",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=mailq&task=super_delete"
+        },
+        {
+          "id": "DockerApi.container_post__exec__system__fts_rescan",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__system__fts_rescan",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=system&task=fts_rescan"
+        },
+        {
+          "id": "DockerApi.container_post__exec__system__df",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__system__df",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=system&task=df"
+        },
+        {
+          "id": "DockerApi.container_post__exec__system__mysql_upgrade",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__system__mysql_upgrade",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=system&task=mysql_upgrade"
+        },
+        {
+          "id": "DockerApi.container_post__exec__system__mysql_tzinfo_to_sql",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__system__mysql_tzinfo_to_sql",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=system&task=mysql_tzinfo_to_sql"
+        },
+        {
+          "id": "DockerApi.container_post__exec__reload__dovecot",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__reload__dovecot",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=reload&task=dovecot"
+        },
+        {
+          "id": "DockerApi.container_post__exec__reload__postfix",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__reload__postfix",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=reload&task=postfix"
+        },
+        {
+          "id": "DockerApi.container_post__exec__reload__nginx",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__reload__nginx",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=reload&task=nginx"
+        },
+        {
+          "id": "DockerApi.container_post__exec__sieve__list",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__sieve__list",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=sieve&task=list"
+        },
+        {
+          "id": "DockerApi.container_post__exec__sieve__print",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__sieve__print",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=sieve&task=print"
+        },
+        {
+          "id": "DockerApi.container_post__exec__maildir__cleanup",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__maildir__cleanup",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=maildir&task=cleanup"
+        },
+        {
+          "id": "DockerApi.container_post__exec__maildir__move",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__maildir__move",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=maildir&task=move"
+        },
+        {
+          "id": "DockerApi.container_post__exec__rspamd__worker_password",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__rspamd__worker_password",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=rspamd&task=worker_password"
+        },
+        {
+          "id": "DockerApi.container_post__exec__sogo__rename_user",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__sogo__rename_user",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=sogo&task=rename_user"
+        },
+        {
+          "id": "DockerApi.container_post__exec__doveadm__get_acl",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__doveadm__get_acl",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "list",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=doveadm&task=get_acl"
+        },
+        {
+          "id": "DockerApi.container_post__exec__doveadm__delete_acl",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__doveadm__delete_acl",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=doveadm&task=delete_acl"
+        },
+        {
+          "id": "DockerApi.container_post__exec__doveadm__set_acl",
+          "class_name": "DockerApi",
+          "method_name": "container_post__exec__doveadm__set_acl",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /containers/{container_id}/exec?cmd=doveadm&task=set_acl"
+        },
+        {
+          "id": "main.handle_pubsub_messages",
+          "class_name": "main",
+          "method_name": "handle_pubsub_messages",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "MC_CHANNEL"
+        },
+        {
+          "id": "main.watch",
+          "class_name": "main",
+          "method_name": "watch",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "F2B_CHANNEL"
+        },
+        {
+          "id": "olefy.oletools",
+          "class_name": "olefy",
+          "method_name": "oletools",
+          "param_types": [
+            "bytearray"
+          ],
+          "return_type": "bytes",
+          "protocol": "RPC",
+          "endpoint": "OLEFY/1.0 oletools"
+        },
+        {
+          "id": "json_api.add",
+          "class_name": "json_api.php",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=add"
+        },
+        {
+          "id": "json_api.get",
+          "class_name": "json_api.php",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /json_api.php?query=get"
+        },
+        {
+          "id": "json_api.search",
+          "class_name": "json_api.php",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=search"
+        },
+        {
+          "id": "json_api.delete",
+          "class_name": "json_api.php",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=delete"
+        },
+        {
+          "id": "json_api.edit",
+          "class_name": "json_api.php",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /json_api.php?query=edit"
+        },
+        {
+          "id": "autoconfig.get_mail_config_v1_1_xml",
+          "class_name": "autoconfig.php",
+          "method_name": "get_mail_config_v1_1_xml",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /mail/config-v1.1.xml"
+        },
+        {
+          "id": "autodiscover.post_autodiscover_autodiscover_xml",
+          "class_name": "autodiscover.php",
+          "method_name": "post_autodiscover_autodiscover_xml",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /Autodiscover/Autodiscover.xml"
+        },
+        {
+          "id": "autodiscover-json.get_autodiscover_autodiscover_json",
+          "class_name": "autodiscover-json.php",
+          "method_name": "get_autodiscover_autodiscover_json",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /Autodiscover/Autodiscover.json"
+        },
+        {
+          "id": "f2b-banlist.get_f2b_banlist",
+          "class_name": "f2b-banlist.php",
+          "method_name": "get_f2b_banlist",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /f2b-banlist.php"
+        },
+        {
+          "id": "mobileconfig.get_mobileconfig",
+          "class_name": "mobileconfig.php",
+          "method_name": "get_mobileconfig",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /mobileconfig.php"
+        },
+        {
+          "id": "mta-sts.get_well_known_mta_sts_txt",
+          "class_name": "mta-sts.php",
+          "method_name": "get_well_known_mta_sts_txt",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /.well-known/mta-sts.txt"
+        },
+        {
+          "id": "token.post_oauth_token",
+          "class_name": "token.php",
+          "method_name": "post_oauth_token",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /oauth/token.php"
+        },
+        {
+          "id": "profile.get_oauth_profile",
+          "class_name": "profile.php",
+          "method_name": "get_oauth_profile",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /oauth/profile.php"
+        },
+        {
+          "id": "sogo-auth.get_sogo_auth",
+          "class_name": "sogo-auth.php",
+          "method_name": "get_sogo_auth",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /sogo-auth.php"
+        },
+        {
+          "id": "container_ctrl.start",
+          "class_name": "container_ctrl.php",
+          "method_name": "start",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/container_ctrl.php?action=start"
+        },
+        {
+          "id": "container_ctrl.stop",
+          "class_name": "container_ctrl.php",
+          "method_name": "stop",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/container_ctrl.php?action=stop"
+        },
+        {
+          "id": "container_ctrl.restart",
+          "class_name": "container_ctrl.php",
+          "method_name": "restart",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/container_ctrl.php?action=restart"
+        },
+        {
+          "id": "container_ctrl.logs",
+          "class_name": "container_ctrl.php",
+          "method_name": "logs",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/container_ctrl.php?action=logs"
+        },
+        {
+          "id": "destroy_tfa_auth.get_inc_ajax_destroy_tfa_auth",
+          "class_name": "destroy_tfa_auth.php",
+          "method_name": "get_inc_ajax_destroy_tfa_auth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/destroy_tfa_auth.php"
+        },
+        {
+          "id": "show_rspamd_global_filters.get_inc_ajax_show_rspamd_global_filters",
+          "class_name": "show_rspamd_global_filters.php",
+          "method_name": "get_inc_ajax_show_rspamd_global_filters",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/show_rspamd_global_filters.php"
+        },
+        {
+          "id": "dns_diagnostics.get_inc_ajax_dns_diagnostics",
+          "class_name": "dns_diagnostics.php",
+          "method_name": "get_inc_ajax_dns_diagnostics",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/dns_diagnostics.php"
+        },
+        {
+          "id": "qitem_details.get_inc_ajax_qitem_details",
+          "class_name": "qitem_details.php",
+          "method_name": "get_inc_ajax_qitem_details",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/qitem_details.php"
+        },
+        {
+          "id": "qr_gen.get_inc_ajax_qr_gen",
+          "class_name": "qr_gen.php",
+          "method_name": "get_inc_ajax_qr_gen",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/qr_gen.php"
+        },
+        {
+          "id": "sieve_validation.post_inc_ajax_sieve_validation",
+          "class_name": "sieve_validation.php",
+          "method_name": "post_inc_ajax_sieve_validation",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /inc/ajax/sieve_validation.php"
+        },
+        {
+          "id": "syncjob_logs.get_inc_ajax_syncjob_logs",
+          "class_name": "syncjob_logs.php",
+          "method_name": "get_inc_ajax_syncjob_logs",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/syncjob_logs.php"
+        },
+        {
+          "id": "transport_check.get_inc_ajax_transport_check",
+          "class_name": "transport_check.php",
+          "method_name": "get_inc_ajax_transport_check",
+          "param_types": [
+            "int",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/transport_check.php"
+        },
+        {
+          "id": "update_check.get_inc_ajax_update_check",
+          "class_name": "update_check.php",
+          "method_name": "get_inc_ajax_update_check",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /inc/ajax/update_check.php"
+        },
+        {
+          "id": "aliasexp.get_aliasexp",
+          "class_name": "aliasexp.php",
+          "method_name": "get_aliasexp",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /aliasexp.php"
+        },
+        {
+          "id": "bcc.get_bcc",
+          "class_name": "bcc.php",
+          "method_name": "get_bcc",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /bcc.php"
+        },
+        {
+          "id": "footer.get_footer",
+          "class_name": "footer.php",
+          "method_name": "get_footer",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /footer.php"
+        },
+        {
+          "id": "forwardinghosts.get_forwardinghosts",
+          "class_name": "forwardinghosts.php",
+          "method_name": "get_forwardinghosts",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forwardinghosts.php"
+        },
+        {
+          "id": "settings.get_settings",
+          "class_name": "settings.php",
+          "method_name": "get_settings",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /settings.php"
+        },
+        {
+          "id": "pipe.post_pipe",
+          "class_name": "pipe.php",
+          "method_name": "post_pipe",
+          "param_types": [
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /pipe.php"
+        },
+        {
+          "id": "pipe_rl.post_pipe_rl",
+          "class_name": "pipe_rl.php",
+          "method_name": "post_pipe_rl",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /pipe_rl.php"
+        },
+        {
+          "id": "pushover.post_pushover",
+          "class_name": "pushover.php",
+          "method_name": "post_pushover",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /pushover.php"
+        },
+        {
+          "id": "mailcowauth.post_mailcowauth",
+          "class_name": "mailcowauth.php",
+          "method_name": "post_mailcowauth",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /mailcowauth.php"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

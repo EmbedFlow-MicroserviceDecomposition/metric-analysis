@@ -1,0 +1,5208 @@
+{
+  "system_id": "MS088",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "app": {
+      "exposed_interfaces": [
+        {
+          "id": "MainController.login",
+          "class_name": "MainController",
+          "method_name": "login",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "UsersController.indexApi",
+          "class_name": "Api::UsersController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UsersController.createApi",
+          "class_name": "Api::UsersController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/users"
+        },
+        {
+          "id": "UsersController.show",
+          "class_name": "Api::UsersController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/:id"
+        },
+        {
+          "id": "UsersController.updateApi",
+          "class_name": "Api::UsersController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/users/:id"
+        },
+        {
+          "id": "UsersController.update_by_username",
+          "class_name": "Api::UsersController",
+          "method_name": "update_by_username",
+          "param_types": [
+            "string",
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/users/update_by_username"
+        },
+        {
+          "id": "CoursesController.indexApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Course>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses"
+        },
+        {
+          "id": "CoursesController.createApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "create",
+          "param_types": [
+            "Course"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses"
+        },
+        {
+          "id": "CoursesController.showApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:id"
+        },
+        {
+          "id": "CoursesController.updateApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "Course"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:id"
+        },
+        {
+          "id": "CoursesController.update_autotest_url",
+          "class_name": "Api::CoursesController",
+          "method_name": "update_autotest_url",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:id/update_autotest_url"
+        },
+        {
+          "id": "CoursesController.test_autotest_connectionApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "test_autotest_connection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:id/test_autotest_connection"
+        },
+        {
+          "id": "CoursesController.reset_autotest_connectionApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "reset_autotest_connection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:id/reset_autotest_connection"
+        },
+        {
+          "id": "CoursesController.refresh_autotest_schemaApi",
+          "class_name": "Api::CoursesController",
+          "method_name": "refresh_autotest_schema",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:id/refresh_autotest_schema"
+        },
+        {
+          "id": "TagsController.indexApi",
+          "class_name": "Api::TagsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/tags"
+        },
+        {
+          "id": "TagsController.createApi",
+          "class_name": "Api::TagsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Tag"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/tags"
+        },
+        {
+          "id": "TagsController.updateApi",
+          "class_name": "Api::TagsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Tag"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/tags/:id"
+        },
+        {
+          "id": "TagsController.destroyApi",
+          "class_name": "Api::TagsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/tags/:id"
+        },
+        {
+          "id": "RolesController.index",
+          "class_name": "Api::RolesController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Role>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/roles"
+        },
+        {
+          "id": "RolesController.create",
+          "class_name": "Api::RolesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Role"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/roles"
+        },
+        {
+          "id": "RolesController.show",
+          "class_name": "Api::RolesController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Role",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/roles/:id"
+        },
+        {
+          "id": "RolesController.update",
+          "class_name": "Api::RolesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Role"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/roles/:id"
+        },
+        {
+          "id": "RolesController.create_or_unhide",
+          "class_name": "Api::RolesController",
+          "method_name": "create_or_unhide",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Role"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/roles/create_or_unhide"
+        },
+        {
+          "id": "RolesController.update_by_username",
+          "class_name": "Api::RolesController",
+          "method_name": "update_by_username",
+          "param_types": [
+            "string",
+            "string",
+            "Role"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/roles/update_by_username"
+        },
+        {
+          "id": "GradeEntryFormsController.index",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<GradeEntryForm>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/grade_entry_forms"
+        },
+        {
+          "id": "GradeEntryFormsController.createApi",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "GradeEntryForm",
+            "List<object>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/grade_entry_forms"
+        },
+        {
+          "id": "GradeEntryFormsController.show",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/grade_entry_forms/:id"
+        },
+        {
+          "id": "GradeEntryFormsController.updateApi",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "GradeEntryForm",
+            "List<object>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/grade_entry_forms/:id"
+        },
+        {
+          "id": "GradeEntryFormsController.destroyApi",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/grade_entry_forms/:id"
+        },
+        {
+          "id": "GradeEntryFormsController.update_grades",
+          "class_name": "Api::GradeEntryFormsController",
+          "method_name": "update_grades",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/grade_entry_forms/:id/update_grades"
+        },
+        {
+          "id": "AssignmentsController.indexApi",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Assignment>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments"
+        },
+        {
+          "id": "AssignmentsController.createApi",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "Assignment"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments"
+        },
+        {
+          "id": "AssignmentsController.showApi",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Assignment",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "AssignmentsController.updateApi",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "Assignment"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "AssignmentsController.destroyApi",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "GroupsController.indexApi",
+          "class_name": "Api::GroupsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Group>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups"
+        },
+        {
+          "id": "GroupsController.createApi",
+          "class_name": "Api::GroupsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "Group",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups"
+        },
+        {
+          "id": "GroupsController.show",
+          "class_name": "Api::GroupsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "Group",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:id"
+        },
+        {
+          "id": "GroupsController.annotations",
+          "class_name": "Api::GroupsController",
+          "method_name": "annotations",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Annotation>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/annotations"
+        },
+        {
+          "id": "GroupsController.group_ids_by_name",
+          "class_name": "Api::GroupsController",
+          "method_name": "group_ids_by_name",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/group_ids_by_name"
+        },
+        {
+          "id": "GroupsController.add_tag",
+          "class_name": "Api::GroupsController",
+          "method_name": "add_tag",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/assignments/:assignment_id/groups/:id/add_tag"
+        },
+        {
+          "id": "GroupsController.remove_tag",
+          "class_name": "Api::GroupsController",
+          "method_name": "remove_tag",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/assignments/:assignment_id/groups/:id/remove_tag"
+        },
+        {
+          "id": "GroupsController.collect_submission",
+          "class_name": "Api::GroupsController",
+          "method_name": "collect_submission",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/collect_submission"
+        },
+        {
+          "id": "GroupsController.add_test_run",
+          "class_name": "Api::GroupsController",
+          "method_name": "add_test_run",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/add_test_run"
+        },
+        {
+          "id": "GroupsController.test_results",
+          "class_name": "Api::GroupsController",
+          "method_name": "test_results",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:id/test_results"
+        },
+        {
+          "id": "GroupsController.test_runs",
+          "class_name": "Api::GroupsController",
+          "method_name": "test_runs",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<TestRun>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:id/test_runs"
+        },
+        {
+          "id": "SubmissionFilesController.index",
+          "class_name": "Api::SubmissionFilesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/submission_files"
+        },
+        {
+          "id": "SubmissionFilesController.create",
+          "class_name": "Api::SubmissionFilesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/submission_files"
+        },
+        {
+          "id": "SubmissionFilesController.remove_file",
+          "class_name": "Api::SubmissionFilesController",
+          "method_name": "remove_file",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/submission_files/remove_file"
+        },
+        {
+          "id": "SubmissionFilesController.remove_folder",
+          "class_name": "Api::SubmissionFilesController",
+          "method_name": "remove_folder",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/submission_files/remove_folder"
+        },
+        {
+          "id": "SubmissionFilesController.create_folders",
+          "class_name": "Api::SubmissionFilesController",
+          "method_name": "create_folders",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/submission_files/create_folders"
+        },
+        {
+          "id": "FeedbackFilesController.index",
+          "class_name": "Api::FeedbackFilesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<FeedbackFile>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/feedback_files"
+        },
+        {
+          "id": "FeedbackFilesController.create",
+          "class_name": "Api::FeedbackFilesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/feedback_files"
+        },
+        {
+          "id": "FeedbackFilesController.showApi",
+          "class_name": "Api::FeedbackFilesController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/feedback_files/:id"
+        },
+        {
+          "id": "FeedbackFilesController.update",
+          "class_name": "Api::FeedbackFilesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/feedback_files/:id"
+        },
+        {
+          "id": "FeedbackFilesController.destroy",
+          "class_name": "Api::FeedbackFilesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/assignments/:assignment_id/groups/:group_id/feedback_files/:id"
+        },
+        {
+          "id": "GroupsController.add_annotations",
+          "class_name": "Api::GroupsController",
+          "method_name": "add_annotations",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "List<object>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/add_annotations"
+        },
+        {
+          "id": "GroupsController.add_members",
+          "class_name": "Api::GroupsController",
+          "method_name": "add_members",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/add_members"
+        },
+        {
+          "id": "GroupsController.create_extra_marks",
+          "class_name": "Api::GroupsController",
+          "method_name": "create_extra_marks",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/create_extra_marks"
+        },
+        {
+          "id": "GroupsController.update_marks",
+          "class_name": "Api::GroupsController",
+          "method_name": "update_marks",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/assignments/:assignment_id/groups/:id/update_marks"
+        },
+        {
+          "id": "GroupsController.update_marking_state",
+          "class_name": "Api::GroupsController",
+          "method_name": "update_marking_state",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/courses/:course_id/assignments/:assignment_id/groups/:id/update_marking_state"
+        },
+        {
+          "id": "GroupsController.remove_extra_marks",
+          "class_name": "Api::GroupsController",
+          "method_name": "remove_extra_marks",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/assignments/:assignment_id/groups/:id/remove_extra_marks"
+        },
+        {
+          "id": "GroupsController.extension",
+          "class_name": "Api::GroupsController",
+          "method_name": "extension",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Extension"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/groups/:id/extension"
+        },
+        {
+          "id": "GroupsController.overall_comment",
+          "class_name": "Api::GroupsController",
+          "method_name": "overall_comment",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/groups/:id/overall_comment"
+        },
+        {
+          "id": "StarterFileGroupsController.index",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<StarterFileGroup>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:assignment_id/starter_file_groups"
+        },
+        {
+          "id": "StarterFileGroupsController.createApi",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "StarterFileGroup"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:assignment_id/starter_file_groups"
+        },
+        {
+          "id": "AssignmentsController.test_files",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "test_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:id/test_files"
+        },
+        {
+          "id": "AssignmentsController.grades_summary",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "grades_summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:id/grades_summary"
+        },
+        {
+          "id": "AssignmentsController.test_specs",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "test_specs",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/assignments/:id/test_specs"
+        },
+        {
+          "id": "AssignmentsController.update_test_specs",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "update_test_specs",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:id/update_test_specs"
+        },
+        {
+          "id": "AssignmentsController.submit_file",
+          "class_name": "Api::AssignmentsController",
+          "method_name": "submit_file",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/assignments/:id/submit_file"
+        },
+        {
+          "id": "StarterFileGroupsController.show",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "StarterFileGroup",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/starter_file_groups/:id"
+        },
+        {
+          "id": "StarterFileGroupsController.updateApi",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "StarterFileGroup"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/starter_file_groups/:id"
+        },
+        {
+          "id": "StarterFileGroupsController.destroy",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/starter_file_groups/:id"
+        },
+        {
+          "id": "StarterFileGroupsController.entries",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "entries",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/starter_file_groups/:id/entries"
+        },
+        {
+          "id": "StarterFileGroupsController.create_file",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "create_file",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/starter_file_groups/:id/create_file"
+        },
+        {
+          "id": "StarterFileGroupsController.create_folder",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "create_folder",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/starter_file_groups/:id/create_folder"
+        },
+        {
+          "id": "StarterFileGroupsController.remove_file",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "remove_file",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/starter_file_groups/:id/remove_file"
+        },
+        {
+          "id": "StarterFileGroupsController.remove_folder",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "remove_folder",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/starter_file_groups/:id/remove_folder"
+        },
+        {
+          "id": "StarterFileGroupsController.download_entries",
+          "class_name": "Api::StarterFileGroupsController",
+          "method_name": "download_entries",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/starter_file_groups/:id/download_entries"
+        },
+        {
+          "id": "SectionsController.indexApi",
+          "class_name": "Api::SectionsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Section>",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/sections"
+        },
+        {
+          "id": "SectionsController.createApi",
+          "class_name": "Api::SectionsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "Section"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/courses/:course_id/sections"
+        },
+        {
+          "id": "SectionsController.show",
+          "class_name": "Api::SectionsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Section",
+          "protocol": "REST",
+          "endpoint": "GET /api/courses/:course_id/sections/:id"
+        },
+        {
+          "id": "SectionsController.updateApi",
+          "class_name": "Api::SectionsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/courses/:course_id/sections/:id"
+        },
+        {
+          "id": "SectionsController.destroyApi",
+          "class_name": "Api::SectionsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/courses/:course_id/sections/:id"
+        },
+        {
+          "id": "UsersController.indexAdmin",
+          "class_name": "Admin::UsersController",
+          "method_name": "index",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/users"
+        },
+        {
+          "id": "UsersController.createAdmin",
+          "class_name": "Admin::UsersController",
+          "method_name": "create",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /admin/users"
+        },
+        {
+          "id": "UsersController.new",
+          "class_name": "Admin::UsersController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin/users/new"
+        },
+        {
+          "id": "UsersController.edit",
+          "class_name": "Admin::UsersController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin/users/:id/edit"
+        },
+        {
+          "id": "UsersController.updateAdmin",
+          "class_name": "Admin::UsersController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/users/:id"
+        },
+        {
+          "id": "UsersController.upload",
+          "class_name": "Admin::UsersController",
+          "method_name": "upload",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/users/upload"
+        },
+        {
+          "id": "CoursesController.indexAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Course>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/courses"
+        },
+        {
+          "id": "CoursesController.createAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "create",
+          "param_types": [
+            "Course"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "POST /admin/courses"
+        },
+        {
+          "id": "CoursesController.new",
+          "class_name": "Admin::CoursesController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin/courses/new"
+        },
+        {
+          "id": "CoursesController.editAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin/courses/:id/edit"
+        },
+        {
+          "id": "CoursesController.updateAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "Course"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/courses/:id"
+        },
+        {
+          "id": "CoursesController.test_autotest_connectionAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "test_autotest_connection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /admin/courses/:id/test_autotest_connection"
+        },
+        {
+          "id": "CoursesController.reset_autotest_connectionAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "reset_autotest_connection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "PUT /admin/courses/:id/reset_autotest_connection"
+        },
+        {
+          "id": "CoursesController.refresh_autotest_schemaAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "refresh_autotest_schema",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "POST /admin/courses/:id/refresh_autotest_schema"
+        },
+        {
+          "id": "CoursesController.destroy_lti_deploymentAdmin",
+          "class_name": "Admin::CoursesController",
+          "method_name": "destroy_lti_deployment",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/courses/:id/destroy_lti_deployment"
+        },
+        {
+          "id": "MainAdminController.index",
+          "class_name": "Admin::MainAdminController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin"
+        },
+        {
+          "id": "CoursesController.index",
+          "class_name": "CoursesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Course>",
+          "protocol": "REST",
+          "endpoint": "GET /courses"
+        },
+        {
+          "id": "CoursesController.edit",
+          "class_name": "CoursesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id/edit"
+        },
+        {
+          "id": "CoursesController.show",
+          "class_name": "CoursesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id"
+        },
+        {
+          "id": "CoursesController.update",
+          "class_name": "CoursesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "Course"
+          ],
+          "return_type": "Course",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:id"
+        },
+        {
+          "id": "CoursesController.clear_role_switch_session",
+          "class_name": "CoursesController",
+          "method_name": "clear_role_switch_session",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id/clear_role_switch_session"
+        },
+        {
+          "id": "CoursesController.role_switch",
+          "class_name": "CoursesController",
+          "method_name": "role_switch",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id/role_switch"
+        },
+        {
+          "id": "CoursesController.switch_role",
+          "class_name": "CoursesController",
+          "method_name": "switch_role",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:id/switch_role"
+        },
+        {
+          "id": "CoursesController.download_assignments",
+          "class_name": "CoursesController",
+          "method_name": "download_assignments",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id/download_assignments"
+        },
+        {
+          "id": "CoursesController.upload_assignments",
+          "class_name": "CoursesController",
+          "method_name": "upload_assignments",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:id/upload_assignments"
+        },
+        {
+          "id": "CoursesController.destroy_lti_deployment",
+          "class_name": "CoursesController",
+          "method_name": "destroy_lti_deployment",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:id/destroy_lti_deployment"
+        },
+        {
+          "id": "CoursesController.sync_roster",
+          "class_name": "CoursesController",
+          "method_name": "sync_roster",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:id/sync_roster"
+        },
+        {
+          "id": "CoursesController.lti_deployments",
+          "class_name": "CoursesController",
+          "method_name": "lti_deployments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<LtiDeployment>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:id/lti_deployments"
+        },
+        {
+          "id": "InstructorsController.index",
+          "class_name": "InstructorsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/instructors"
+        },
+        {
+          "id": "InstructorsController.create",
+          "class_name": "InstructorsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "Instructor"
+          ],
+          "return_type": "Instructor",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/instructors"
+        },
+        {
+          "id": "InstructorsController.new",
+          "class_name": "InstructorsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/instructors/new"
+        },
+        {
+          "id": "InstructorsController.edit",
+          "class_name": "InstructorsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/instructors/:id/edit"
+        },
+        {
+          "id": "InstructorsController.update",
+          "class_name": "InstructorsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Instructor"
+          ],
+          "return_type": "Instructor",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/instructors/:id"
+        },
+        {
+          "id": "InstructorsController.destroy",
+          "class_name": "InstructorsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/instructors/:id"
+        },
+        {
+          "id": "StarterFileGroupsController.update",
+          "class_name": "StarterFileGroupsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "StarterFileGroup"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/starter_file_groups/:id"
+        },
+        {
+          "id": "StarterFileGroupsController.download_file",
+          "class_name": "StarterFileGroupsController",
+          "method_name": "download_file",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/starter_file_groups/:id/download_file"
+        },
+        {
+          "id": "StarterFileGroupsController.download_files",
+          "class_name": "StarterFileGroupsController",
+          "method_name": "download_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/starter_file_groups/:id/download_files"
+        },
+        {
+          "id": "StarterFileGroupsController.update_files",
+          "class_name": "StarterFileGroupsController",
+          "method_name": "update_files",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "List<string>",
+            "List<object>",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/starter_file_groups/:id/update_files"
+        },
+        {
+          "id": "TagsController.index",
+          "class_name": "TagsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tags"
+        },
+        {
+          "id": "TagsController.create",
+          "class_name": "TagsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Tag"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/tags"
+        },
+        {
+          "id": "TagsController.edit",
+          "class_name": "TagsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tags/:id/edit"
+        },
+        {
+          "id": "TagsController.update",
+          "class_name": "TagsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Tag"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/tags/:id"
+        },
+        {
+          "id": "TagsController.destroy",
+          "class_name": "TagsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/tags/:id"
+        },
+        {
+          "id": "TagsController.download",
+          "class_name": "TagsController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tags/download"
+        },
+        {
+          "id": "TagsController.upload",
+          "class_name": "TagsController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/tags/upload"
+        },
+        {
+          "id": "CriteriaController.edit",
+          "class_name": "CriteriaController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/criteria/:id/edit"
+        },
+        {
+          "id": "CriteriaController.update",
+          "class_name": "CriteriaController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Criterion"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/criteria/:id"
+        },
+        {
+          "id": "CriteriaController.destroy",
+          "class_name": "CriteriaController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/criteria/:id"
+        },
+        {
+          "id": "ExamTemplatesController.edit",
+          "class_name": "ExamTemplatesController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/edit"
+        },
+        {
+          "id": "ExamTemplatesController.update",
+          "class_name": "ExamTemplatesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "ExamTemplate"
+          ],
+          "return_type": "ExamTemplate",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/exam_templates/:id"
+        },
+        {
+          "id": "ExamTemplatesController.destroy",
+          "class_name": "ExamTemplatesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/exam_templates/:id"
+        },
+        {
+          "id": "ExamTemplatesController.download",
+          "class_name": "ExamTemplatesController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/download"
+        },
+        {
+          "id": "ExamTemplatesController.download_generate",
+          "class_name": "ExamTemplatesController",
+          "method_name": "download_generate",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/download_generate"
+        },
+        {
+          "id": "ExamTemplatesController.show_cover",
+          "class_name": "ExamTemplatesController",
+          "method_name": "show_cover",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/show_cover"
+        },
+        {
+          "id": "ExamTemplatesController.assign_errors",
+          "class_name": "ExamTemplatesController",
+          "method_name": "assign_errors",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/assign_errors"
+        },
+        {
+          "id": "ExamTemplatesController.download_raw_split_file",
+          "class_name": "ExamTemplatesController",
+          "method_name": "download_raw_split_file",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/download_raw_split_file"
+        },
+        {
+          "id": "ExamTemplatesController.download_error_file",
+          "class_name": "ExamTemplatesController",
+          "method_name": "download_error_file",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/download_error_file"
+        },
+        {
+          "id": "ExamTemplatesController.error_pages",
+          "class_name": "ExamTemplatesController",
+          "method_name": "error_pages",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/exam_templates/:id/error_pages"
+        },
+        {
+          "id": "ExamTemplatesController.add_fields",
+          "class_name": "ExamTemplatesController",
+          "method_name": "add_fields",
+          "param_types": [
+            "string",
+            "string",
+            "ExamTemplate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/exam_templates/:id/add_fields"
+        },
+        {
+          "id": "ExamTemplatesController.generate",
+          "class_name": "ExamTemplatesController",
+          "method_name": "generate",
+          "param_types": [
+            "string",
+            "string",
+            "int",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/exam_templates/:id/generate"
+        },
+        {
+          "id": "ExamTemplatesController.fix_error",
+          "class_name": "ExamTemplatesController",
+          "method_name": "fix_error",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/exam_templates/:id/fix_error"
+        },
+        {
+          "id": "GroupsController.rename_group",
+          "class_name": "GroupsController",
+          "method_name": "rename_group",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/groups/:id/rename_group"
+        },
+        {
+          "id": "ResultsController.edit",
+          "class_name": "ResultsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/edit"
+        },
+        {
+          "id": "ResultsController.show",
+          "class_name": "ResultsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id"
+        },
+        {
+          "id": "ResultsController.get_annotations",
+          "class_name": "ResultsController",
+          "method_name": "get_annotations",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Annotation>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/get_annotations"
+        },
+        {
+          "id": "ResultsController.add_extra_mark",
+          "class_name": "ResultsController",
+          "method_name": "add_extra_mark",
+          "param_types": [
+            "string",
+            "string",
+            "ExtraMark"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/add_extra_mark"
+        },
+        {
+          "id": "ResultsController.delete_grace_period_deduction",
+          "class_name": "ResultsController",
+          "method_name": "delete_grace_period_deduction",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/results/:id/delete_grace_period_deduction"
+        },
+        {
+          "id": "ResultsController.next_grouping",
+          "class_name": "ResultsController",
+          "method_name": "next_grouping",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/next_grouping"
+        },
+        {
+          "id": "ResultsController.get_filtered_grouping_ids",
+          "class_name": "ResultsController",
+          "method_name": "get_filtered_grouping_ids",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/get_filtered_grouping_ids"
+        },
+        {
+          "id": "ResultsController.print",
+          "class_name": "ResultsController",
+          "method_name": "print",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/print"
+        },
+        {
+          "id": "ResultsController.remove_extra_mark",
+          "class_name": "ResultsController",
+          "method_name": "remove_extra_mark",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/results/:id/remove_extra_mark"
+        },
+        {
+          "id": "ResultsController.revert_to_automatic_deductions",
+          "class_name": "ResultsController",
+          "method_name": "revert_to_automatic_deductions",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/results/:id/revert_to_automatic_deductions"
+        },
+        {
+          "id": "ResultsController.set_released_to_students",
+          "class_name": "ResultsController",
+          "method_name": "set_released_to_students",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/set_released_to_students"
+        },
+        {
+          "id": "ResultsController.update_overall_comment",
+          "class_name": "ResultsController",
+          "method_name": "update_overall_comment",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/update_overall_comment"
+        },
+        {
+          "id": "ResultsController.toggle_marking_state",
+          "class_name": "ResultsController",
+          "method_name": "toggle_marking_state",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/toggle_marking_state"
+        },
+        {
+          "id": "ResultsController.update_mark",
+          "class_name": "ResultsController",
+          "method_name": "update_mark",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "float"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/results/:id/update_mark"
+        },
+        {
+          "id": "ResultsController.view_marks",
+          "class_name": "ResultsController",
+          "method_name": "view_marks",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/view_marks"
+        },
+        {
+          "id": "ResultsController.add_tag",
+          "class_name": "ResultsController",
+          "method_name": "add_tag",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/add_tag"
+        },
+        {
+          "id": "ResultsController.random_incomplete_submission",
+          "class_name": "ResultsController",
+          "method_name": "random_incomplete_submission",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/random_incomplete_submission"
+        },
+        {
+          "id": "ResultsController.remove_tag",
+          "class_name": "ResultsController",
+          "method_name": "remove_tag",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/remove_tag"
+        },
+        {
+          "id": "ResultsController.run_tests",
+          "class_name": "ResultsController",
+          "method_name": "run_tests",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/results/:id/run_tests"
+        },
+        {
+          "id": "ResultsController.get_test_runs_instructors",
+          "class_name": "ResultsController",
+          "method_name": "get_test_runs_instructors",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<TestRun>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/get_test_runs_instructors"
+        },
+        {
+          "id": "ResultsController.get_test_runs_instructors_released",
+          "class_name": "ResultsController",
+          "method_name": "get_test_runs_instructors_released",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<TestRun>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/get_test_runs_instructors_released"
+        },
+        {
+          "id": "ResultsController.view_token_check",
+          "class_name": "ResultsController",
+          "method_name": "view_token_check",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/results/:id/view_token_check"
+        },
+        {
+          "id": "PeerReviewsController.show_result",
+          "class_name": "PeerReviewsController",
+          "method_name": "show_result",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/peer_reviews/:id/show_result"
+        },
+        {
+          "id": "AnnotationCategoriesController.show",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/annotation_categories/:id"
+        },
+        {
+          "id": "AnnotationCategoriesController.update",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "AnnotationCategory"
+          ],
+          "return_type": "AnnotationCategory",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/annotation_categories/:id"
+        },
+        {
+          "id": "AnnotationCategoriesController.destroy",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/annotation_categories/:id"
+        },
+        {
+          "id": "AnnotationCategoriesController.update_annotation_text_positions",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "update_annotation_text_positions",
+          "param_types": [
+            "string",
+            "string",
+            "List<int>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/annotation_categories/:id/update_annotation_text_positions"
+        },
+        {
+          "id": "AssignmentsController.index",
+          "class_name": "AssignmentsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments"
+        },
+        {
+          "id": "AssignmentsController.create",
+          "class_name": "AssignmentsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "Assignment"
+          ],
+          "return_type": "Assignment",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments"
+        },
+        {
+          "id": "AssignmentsController.new",
+          "class_name": "AssignmentsController",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/new"
+        },
+        {
+          "id": "AssignmentsController.edit",
+          "class_name": "AssignmentsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/edit"
+        },
+        {
+          "id": "AssignmentsController.show",
+          "class_name": "AssignmentsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "AssignmentsController.update",
+          "class_name": "AssignmentsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Assignment"
+          ],
+          "return_type": "Assignment",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "AssignmentsController.destroy",
+          "class_name": "AssignmentsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Assignment",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:id"
+        },
+        {
+          "id": "AssignmentsController.batch_runs",
+          "class_name": "AssignmentsController",
+          "method_name": "batch_runs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<TestRun>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/batch_runs"
+        },
+        {
+          "id": "AssignmentsController.upload_config_files",
+          "class_name": "AssignmentsController",
+          "method_name": "upload_config_files",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/upload_config_files"
+        },
+        {
+          "id": "AssignmentsController.download_sample_starter_files",
+          "class_name": "AssignmentsController",
+          "method_name": "download_sample_starter_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/download_sample_starter_files"
+        },
+        {
+          "id": "AssignmentsController.download_starter_file_mappings",
+          "class_name": "AssignmentsController",
+          "method_name": "download_starter_file_mappings",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/download_starter_file_mappings"
+        },
+        {
+          "id": "AssignmentsController.view_summary",
+          "class_name": "AssignmentsController",
+          "method_name": "view_summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/view_summary"
+        },
+        {
+          "id": "AssignmentsController.update_starter_file",
+          "class_name": "AssignmentsController",
+          "method_name": "update_starter_file",
+          "param_types": [
+            "string",
+            "string",
+            "Assignment",
+            "List<object>",
+            "List<object>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:id/update_starter_file"
+        },
+        {
+          "id": "AssignmentsController.peer_review",
+          "class_name": "AssignmentsController",
+          "method_name": "peer_review",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/peer_review"
+        },
+        {
+          "id": "AssignmentsController.populate_starter_file_manager",
+          "class_name": "AssignmentsController",
+          "method_name": "populate_starter_file_manager",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/populate_starter_file_manager"
+        },
+        {
+          "id": "AssignmentsController.summary",
+          "class_name": "AssignmentsController",
+          "method_name": "summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/summary"
+        },
+        {
+          "id": "AssignmentsController.upload_grades",
+          "class_name": "AssignmentsController",
+          "method_name": "upload_grades",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:id/upload_grades"
+        },
+        {
+          "id": "AssignmentsController.set_boolean_graders_options",
+          "class_name": "AssignmentsController",
+          "method_name": "set_boolean_graders_options",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:id/set_boolean_graders_options"
+        },
+        {
+          "id": "AssignmentsController.stop_test",
+          "class_name": "AssignmentsController",
+          "method_name": "stop_test",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/stop_test"
+        },
+        {
+          "id": "AssignmentsController.stop_batch_tests",
+          "class_name": "AssignmentsController",
+          "method_name": "stop_batch_tests",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/stop_batch_tests"
+        },
+        {
+          "id": "AssignmentsController.switch",
+          "class_name": "AssignmentsController",
+          "method_name": "switch",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/switch"
+        },
+        {
+          "id": "AssignmentsController.start_timed_assignment",
+          "class_name": "AssignmentsController",
+          "method_name": "start_timed_assignment",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /courses/:course_id/assignments/:id/start_timed_assignment"
+        },
+        {
+          "id": "AssignmentsController.starter_file",
+          "class_name": "AssignmentsController",
+          "method_name": "starter_file",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/starter_file"
+        },
+        {
+          "id": "AssignmentsController.grade_distribution",
+          "class_name": "AssignmentsController",
+          "method_name": "grade_distribution",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/grade_distribution"
+        },
+        {
+          "id": "AssignmentsController.download_config_files",
+          "class_name": "AssignmentsController",
+          "method_name": "download_config_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/download_config_files"
+        },
+        {
+          "id": "AssignmentsController.download_test_results",
+          "class_name": "AssignmentsController",
+          "method_name": "download_test_results",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/download_test_results"
+        },
+        {
+          "id": "AssignmentsController.lti_settings",
+          "class_name": "AssignmentsController",
+          "method_name": "lti_settings",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:id/lti_settings"
+        },
+        {
+          "id": "AssignmentsController.create_lti_grades",
+          "class_name": "AssignmentsController",
+          "method_name": "create_lti_grades",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:id/create_lti_grades"
+        },
+        {
+          "id": "AssignmentsController.create_lti_line_items",
+          "class_name": "AssignmentsController",
+          "method_name": "create_lti_line_items",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Assignment",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:id/create_lti_line_items"
+        },
+        {
+          "id": "StarterFileGroupsController.create",
+          "class_name": "StarterFileGroupsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "StarterFileGroup"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/starter_file_groups"
+        },
+        {
+          "id": "CriteriaController.index",
+          "class_name": "CriteriaController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/criteria"
+        },
+        {
+          "id": "CriteriaController.create",
+          "class_name": "CriteriaController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/criteria"
+        },
+        {
+          "id": "CriteriaController.new",
+          "class_name": "CriteriaController",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/criteria/new"
+        },
+        {
+          "id": "CriteriaController.update_positions",
+          "class_name": "CriteriaController",
+          "method_name": "update_positions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/criteria/update_positions"
+        },
+        {
+          "id": "CriteriaController.upload",
+          "class_name": "CriteriaController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/criteria/upload"
+        },
+        {
+          "id": "CriteriaController.download",
+          "class_name": "CriteriaController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/criteria/download"
+        },
+        {
+          "id": "AutomatedTestsController.manage",
+          "class_name": "AutomatedTestsController",
+          "method_name": "manage",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/manage"
+        },
+        {
+          "id": "AutomatedTestsController.update",
+          "class_name": "AutomatedTestsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "Assignment"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/automated_tests/update"
+        },
+        {
+          "id": "AutomatedTestsController.get_test_runs_students",
+          "class_name": "AutomatedTestsController",
+          "method_name": "get_test_runs_students",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<TestRun>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/get_test_runs_students"
+        },
+        {
+          "id": "AutomatedTestsController.populate_autotest_manager",
+          "class_name": "AutomatedTestsController",
+          "method_name": "populate_autotest_manager",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/populate_autotest_manager"
+        },
+        {
+          "id": "AutomatedTestsController.download_file",
+          "class_name": "AutomatedTestsController",
+          "method_name": "download_file",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/download_file"
+        },
+        {
+          "id": "AutomatedTestsController.download_files",
+          "class_name": "AutomatedTestsController",
+          "method_name": "download_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/download_files"
+        },
+        {
+          "id": "AutomatedTestsController.upload_files",
+          "class_name": "AutomatedTestsController",
+          "method_name": "upload_files",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "List<string>",
+            "List<object>",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/automated_tests/upload_files"
+        },
+        {
+          "id": "AutomatedTestsController.download_specs",
+          "class_name": "AutomatedTestsController",
+          "method_name": "download_specs",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/download_specs"
+        },
+        {
+          "id": "AutomatedTestsController.upload_specs",
+          "class_name": "AutomatedTestsController",
+          "method_name": "upload_specs",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/automated_tests/upload_specs"
+        },
+        {
+          "id": "AutomatedTestsController.student_interface",
+          "class_name": "AutomatedTestsController",
+          "method_name": "student_interface",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/automated_tests/student_interface"
+        },
+        {
+          "id": "AutomatedTestsController.execute_test_run",
+          "class_name": "AutomatedTestsController",
+          "method_name": "execute_test_run",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/automated_tests/execute_test_run"
+        },
+        {
+          "id": "ExamTemplatesController.index",
+          "class_name": "ExamTemplatesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/exam_templates"
+        },
+        {
+          "id": "ExamTemplatesController.create",
+          "class_name": "ExamTemplatesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/exam_templates"
+        },
+        {
+          "id": "ExamTemplatesController.view_logs",
+          "class_name": "ExamTemplatesController",
+          "method_name": "view_logs",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/exam_templates/view_logs"
+        },
+        {
+          "id": "ExamTemplatesController.split",
+          "class_name": "ExamTemplatesController",
+          "method_name": "split",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/exam_templates/split"
+        },
+        {
+          "id": "GroupsController.index",
+          "class_name": "GroupsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups"
+        },
+        {
+          "id": "GroupsController.create",
+          "class_name": "GroupsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/groups"
+        },
+        {
+          "id": "GroupsController.new",
+          "class_name": "GroupsController",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/new"
+        },
+        {
+          "id": "GroupsController.destroy",
+          "class_name": "GroupsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:assignment_id/groups/:id"
+        },
+        {
+          "id": "GroupsController.use_another_assignment_groups",
+          "class_name": "GroupsController",
+          "method_name": "use_another_assignment_groups",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/groups/use_another_assignment_groups"
+        },
+        {
+          "id": "GroupsController.assign_scans",
+          "class_name": "GroupsController",
+          "method_name": "assign_scans",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/assign_scans"
+        },
+        {
+          "id": "GroupsController.download",
+          "class_name": "GroupsController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/download"
+        },
+        {
+          "id": "GroupsController.download_starter_file",
+          "class_name": "GroupsController",
+          "method_name": "download_starter_file",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/download_starter_file"
+        },
+        {
+          "id": "GroupsController.populate_repo_with_starter_files",
+          "class_name": "GroupsController",
+          "method_name": "populate_repo_with_starter_files",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/groups/populate_repo_with_starter_files"
+        },
+        {
+          "id": "GroupsController.get_names",
+          "class_name": "GroupsController",
+          "method_name": "get_names",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/get_names"
+        },
+        {
+          "id": "GroupsController.assign_student_and_next",
+          "class_name": "GroupsController",
+          "method_name": "assign_student_and_next",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/assign_student_and_next"
+        },
+        {
+          "id": "GroupsController.next_grouping",
+          "class_name": "GroupsController",
+          "method_name": "next_grouping",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/next_grouping"
+        },
+        {
+          "id": "GroupsController.upload",
+          "class_name": "GroupsController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/groups/upload"
+        },
+        {
+          "id": "GroupsController.download_grouplist",
+          "class_name": "GroupsController",
+          "method_name": "download_grouplist",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/download_grouplist"
+        },
+        {
+          "id": "GroupsController.create_groups_when_students_work_alone",
+          "class_name": "GroupsController",
+          "method_name": "create_groups_when_students_work_alone",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/create_groups_when_students_work_alone"
+        },
+        {
+          "id": "GroupsController.valid_grouping",
+          "class_name": "GroupsController",
+          "method_name": "valid_grouping",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/valid_grouping"
+        },
+        {
+          "id": "GroupsController.invalid_grouping",
+          "class_name": "GroupsController",
+          "method_name": "invalid_grouping",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/invalid_grouping"
+        },
+        {
+          "id": "GroupsController.global_actions",
+          "class_name": "GroupsController",
+          "method_name": "global_actions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/groups/global_actions"
+        },
+        {
+          "id": "GroupsController.remove_group",
+          "class_name": "GroupsController",
+          "method_name": "remove_group",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:assignment_id/groups/remove_group"
+        },
+        {
+          "id": "GroupsController.accept_invitation",
+          "class_name": "GroupsController",
+          "method_name": "accept_invitation",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/groups/accept_invitation"
+        },
+        {
+          "id": "GroupsController.decline_invitation",
+          "class_name": "GroupsController",
+          "method_name": "decline_invitation",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/groups/decline_invitation"
+        },
+        {
+          "id": "GroupsController.delete_rejected",
+          "class_name": "GroupsController",
+          "method_name": "delete_rejected",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:assignment_id/groups/delete_rejected"
+        },
+        {
+          "id": "GroupsController.invite_member",
+          "class_name": "GroupsController",
+          "method_name": "invite_member",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/groups/invite_member"
+        },
+        {
+          "id": "GroupsController.disinvite_member",
+          "class_name": "GroupsController",
+          "method_name": "disinvite_member",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/groups/disinvite_member"
+        },
+        {
+          "id": "GroupsController.auto_match",
+          "class_name": "GroupsController",
+          "method_name": "auto_match",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/groups/auto_match"
+        },
+        {
+          "id": "SubmissionsController.index",
+          "class_name": "SubmissionsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions"
+        },
+        {
+          "id": "SubmissionsController.file_manager",
+          "class_name": "SubmissionsController",
+          "method_name": "file_manager",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/file_manager"
+        },
+        {
+          "id": "SubmissionsController.browse",
+          "class_name": "SubmissionsController",
+          "method_name": "browse",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/browse"
+        },
+        {
+          "id": "SubmissionsController.populate_file_manager",
+          "class_name": "SubmissionsController",
+          "method_name": "populate_file_manager",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/populate_file_manager"
+        },
+        {
+          "id": "SubmissionsController.revisions",
+          "class_name": "SubmissionsController",
+          "method_name": "revisions",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/revisions"
+        },
+        {
+          "id": "SubmissionsController.collect_submissions",
+          "class_name": "SubmissionsController",
+          "method_name": "collect_submissions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/collect_submissions"
+        },
+        {
+          "id": "SubmissionsController.uncollect_all_submissions",
+          "class_name": "SubmissionsController",
+          "method_name": "uncollect_all_submissions",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/uncollect_all_submissions"
+        },
+        {
+          "id": "SubmissionsController.run_tests",
+          "class_name": "SubmissionsController",
+          "method_name": "run_tests",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/run_tests"
+        },
+        {
+          "id": "SubmissionsController.download_repo_checkout_commands",
+          "class_name": "SubmissionsController",
+          "method_name": "download_repo_checkout_commands",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/download_repo_checkout_commands"
+        },
+        {
+          "id": "SubmissionsController.download_repo_list",
+          "class_name": "SubmissionsController",
+          "method_name": "download_repo_list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/download_repo_list"
+        },
+        {
+          "id": "SubmissionsController.set_result_marking_state",
+          "class_name": "SubmissionsController",
+          "method_name": "set_result_marking_state",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/set_result_marking_state"
+        },
+        {
+          "id": "SubmissionsController.update_submissions",
+          "class_name": "SubmissionsController",
+          "method_name": "update_submissions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/update_submissions"
+        },
+        {
+          "id": "SubmissionsController.update_files",
+          "class_name": "SubmissionsController",
+          "method_name": "update_files",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "List<string>",
+            "List<object>",
+            "List<string>",
+            "List<string>",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/update_files"
+        },
+        {
+          "id": "SubmissionsController.download",
+          "class_name": "SubmissionsController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/download"
+        },
+        {
+          "id": "SubmissionsController.zip_groupings_files",
+          "class_name": "SubmissionsController",
+          "method_name": "zip_groupings_files",
+          "param_types": [
+            "string",
+            "string",
+            "List<int>",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/zip_groupings_files"
+        },
+        {
+          "id": "SubmissionsController.download_zipped_file",
+          "class_name": "SubmissionsController",
+          "method_name": "download_zipped_file",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/download_zipped_file"
+        },
+        {
+          "id": "SubmissionsController.download_summary",
+          "class_name": "SubmissionsController",
+          "method_name": "download_summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/download_summary"
+        },
+        {
+          "id": "SubmissionsController.repo_browser",
+          "class_name": "SubmissionsController",
+          "method_name": "repo_browser",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/repo_browser"
+        },
+        {
+          "id": "SubmissionsController.manually_collect_and_begin_grading",
+          "class_name": "SubmissionsController",
+          "method_name": "manually_collect_and_begin_grading",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/submissions/manually_collect_and_begin_grading"
+        },
+        {
+          "id": "SubmissionsController.downloads",
+          "class_name": "SubmissionsController",
+          "method_name": "downloads",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/downloads"
+        },
+        {
+          "id": "SubmissionsController.download_file",
+          "class_name": "SubmissionsController",
+          "method_name": "download_file",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/:id/download_file"
+        },
+        {
+          "id": "SubmissionsController.download_file_zip",
+          "class_name": "SubmissionsController",
+          "method_name": "download_file_zip",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/submissions/:id/download_file_zip"
+        },
+        {
+          "id": "SubmissionsController.cancel_remark_request",
+          "class_name": "SubmissionsController",
+          "method_name": "cancel_remark_request",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:assignment_id/submissions/:id/cancel_remark_request"
+        },
+        {
+          "id": "SubmissionsController.update_remark_request",
+          "class_name": "SubmissionsController",
+          "method_name": "update_remark_request",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/assignments/:assignment_id/submissions/:id/update_remark_request"
+        },
+        {
+          "id": "PeerReviewsController.index",
+          "class_name": "PeerReviewsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews"
+        },
+        {
+          "id": "PeerReviewsController.populate",
+          "class_name": "PeerReviewsController",
+          "method_name": "populate",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews/populate"
+        },
+        {
+          "id": "PeerReviewsController.assign_groups",
+          "class_name": "PeerReviewsController",
+          "method_name": "assign_groups",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>",
+            "object",
+            "string",
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/peer_reviews/assign_groups"
+        },
+        {
+          "id": "PeerReviewsController.peer_review_mapping",
+          "class_name": "PeerReviewsController",
+          "method_name": "peer_review_mapping",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews/peer_review_mapping"
+        },
+        {
+          "id": "PeerReviewsController.upload",
+          "class_name": "PeerReviewsController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/peer_reviews/upload"
+        },
+        {
+          "id": "PeerReviewsController.list_reviews",
+          "class_name": "PeerReviewsController",
+          "method_name": "list_reviews",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Grouping>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews/list_reviews"
+        },
+        {
+          "id": "PeerReviewsController.show_reviews",
+          "class_name": "PeerReviewsController",
+          "method_name": "show_reviews",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews/show_reviews"
+        },
+        {
+          "id": "PeerReviewsController.populate_table",
+          "class_name": "PeerReviewsController",
+          "method_name": "populate_table",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/peer_reviews/populate_table"
+        },
+        {
+          "id": "GradersController.index",
+          "class_name": "GradersController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/graders"
+        },
+        {
+          "id": "GradersController.upload",
+          "class_name": "GradersController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/graders/upload"
+        },
+        {
+          "id": "GradersController.grader_groupings_mapping",
+          "class_name": "GradersController",
+          "method_name": "grader_groupings_mapping",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/graders/grader_groupings_mapping"
+        },
+        {
+          "id": "GradersController.grader_criteria_mapping",
+          "class_name": "GradersController",
+          "method_name": "grader_criteria_mapping",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/graders/grader_criteria_mapping"
+        },
+        {
+          "id": "GradersController.global_actions",
+          "class_name": "GradersController",
+          "method_name": "global_actions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "string",
+            "List<string>",
+            "string",
+            "List<string>",
+            "List<string>",
+            "string",
+            "List<float>",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/graders/global_actions"
+        },
+        {
+          "id": "GradersController.grader_summary",
+          "class_name": "GradersController",
+          "method_name": "grader_summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/graders/grader_summary"
+        },
+        {
+          "id": "AnnotationCategoriesController.index",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories"
+        },
+        {
+          "id": "AnnotationCategoriesController.create",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "AnnotationCategory"
+          ],
+          "return_type": "AnnotationCategory",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/annotation_categories"
+        },
+        {
+          "id": "AnnotationCategoriesController.new",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/new"
+        },
+        {
+          "id": "AnnotationCategoriesController.update_positions",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "update_positions",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/annotation_categories/update_positions"
+        },
+        {
+          "id": "AnnotationCategoriesController.upload",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/annotation_categories/upload"
+        },
+        {
+          "id": "AnnotationCategoriesController.download",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/download"
+        },
+        {
+          "id": "AnnotationCategoriesController.new_annotation_text",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "new_annotation_text",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/new_annotation_text"
+        },
+        {
+          "id": "AnnotationCategoriesController.create_annotation_text",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "create_annotation_text",
+          "param_types": [
+            "string",
+            "string",
+            "AnnotationText"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/assignments/:assignment_id/annotation_categories/create_annotation_text"
+        },
+        {
+          "id": "AnnotationCategoriesController.destroy_annotation_text",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "destroy_annotation_text",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/assignments/:assignment_id/annotation_categories/destroy_annotation_text"
+        },
+        {
+          "id": "AnnotationCategoriesController.update_annotation_text",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "update_annotation_text",
+          "param_types": [
+            "string",
+            "string",
+            "AnnotationText"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "PUT /courses/:course_id/assignments/:assignment_id/annotation_categories/update_annotation_text"
+        },
+        {
+          "id": "AnnotationCategoriesController.find_annotation_text",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "find_annotation_text",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<AnnotationText>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/find_annotation_text"
+        },
+        {
+          "id": "AnnotationCategoriesController.annotation_text_uses",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "annotation_text_uses",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/annotation_text_uses"
+        },
+        {
+          "id": "AnnotationCategoriesController.uncategorized_annotations",
+          "class_name": "AnnotationCategoriesController",
+          "method_name": "uncategorized_annotations",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<AnnotationText>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/annotation_categories/uncategorized_annotations"
+        },
+        {
+          "id": "ResultsController.refresh_view_tokens",
+          "class_name": "ResultsController",
+          "method_name": "refresh_view_tokens",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /courses/:course_id/assignments/:assignment_id/results/refresh_view_tokens"
+        },
+        {
+          "id": "ResultsController.update_view_token_expiry",
+          "class_name": "ResultsController",
+          "method_name": "update_view_token_expiry",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /courses/:course_id/assignments/:assignment_id/results/update_view_token_expiry"
+        },
+        {
+          "id": "ResultsController.download_view_tokens",
+          "class_name": "ResultsController",
+          "method_name": "download_view_tokens",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/assignments/:assignment_id/results/download_view_tokens"
+        },
+        {
+          "id": "GradeEntryFormsController.create",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "GradeEntryForm"
+          ],
+          "return_type": "GradeEntryForm",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms"
+        },
+        {
+          "id": "GradeEntryFormsController.new",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/new"
+        },
+        {
+          "id": "GradeEntryFormsController.edit",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/edit"
+        },
+        {
+          "id": "GradeEntryFormsController.update",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "GradeEntryForm"
+          ],
+          "return_type": "GradeEntryForm",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/grade_entry_forms/:id"
+        },
+        {
+          "id": "GradeEntryFormsController.destroy",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/grade_entry_forms/:id"
+        },
+        {
+          "id": "GradeEntryFormsController.student_interface",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "student_interface",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/student_interface"
+        },
+        {
+          "id": "GradeEntryFormsController.populate_grades_table",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "populate_grades_table",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/populate_grades_table"
+        },
+        {
+          "id": "GradeEntryFormsController.get_mark_columns",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "get_mark_columns",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/get_mark_columns"
+        },
+        {
+          "id": "GradeEntryFormsController.view_summary",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "view_summary",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/view_summary"
+        },
+        {
+          "id": "GradeEntryFormsController.grades",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "grades",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/grades"
+        },
+        {
+          "id": "GradeEntryFormsController.download",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/download"
+        },
+        {
+          "id": "GradeEntryFormsController.upload",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:id/upload"
+        },
+        {
+          "id": "GradeEntryFormsController.update_grade",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "update_grade",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:id/update_grade"
+        },
+        {
+          "id": "GradeEntryFormsController.update_grade_entry_students",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "update_grade_entry_students",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:id/update_grade_entry_students"
+        },
+        {
+          "id": "GradeEntryFormsController.grade_distribution",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "grade_distribution",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/grade_distribution"
+        },
+        {
+          "id": "GradeEntryFormsController.switch",
+          "class_name": "GradeEntryFormsController",
+          "method_name": "switch",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:id/switch"
+        },
+        {
+          "id": "MarksGradersController.index",
+          "class_name": "MarksGradersController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders"
+        },
+        {
+          "id": "MarksGradersController.upload",
+          "class_name": "MarksGradersController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "string",
+            "object",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/upload"
+        },
+        {
+          "id": "MarksGradersController.grader_mapping",
+          "class_name": "MarksGradersController",
+          "method_name": "grader_mapping",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/grader_mapping"
+        },
+        {
+          "id": "MarksGradersController.assign_all",
+          "class_name": "MarksGradersController",
+          "method_name": "assign_all",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/assign_all"
+        },
+        {
+          "id": "MarksGradersController.unassign_all",
+          "class_name": "MarksGradersController",
+          "method_name": "unassign_all",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/unassign_all"
+        },
+        {
+          "id": "MarksGradersController.unassign_single",
+          "class_name": "MarksGradersController",
+          "method_name": "unassign_single",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/unassign_single"
+        },
+        {
+          "id": "MarksGradersController.randomly_assign",
+          "class_name": "MarksGradersController",
+          "method_name": "randomly_assign",
+          "param_types": [
+            "string",
+            "string",
+            "List<string>",
+            "List<string>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/grade_entry_forms/:grade_entry_form_id/marks_graders/randomly_assign"
+        },
+        {
+          "id": "NotesController.index",
+          "class_name": "NotesController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Note>",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/notes"
+        },
+        {
+          "id": "NotesController.create",
+          "class_name": "NotesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "Note"
+          ],
+          "return_type": "Note",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/notes"
+        },
+        {
+          "id": "NotesController.new",
+          "class_name": "NotesController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/notes/new"
+        },
+        {
+          "id": "NotesController.edit",
+          "class_name": "NotesController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/notes/:id/edit"
+        },
+        {
+          "id": "NotesController.update",
+          "class_name": "NotesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Note"
+          ],
+          "return_type": "Note",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/notes/:id"
+        },
+        {
+          "id": "NotesController.destroy",
+          "class_name": "NotesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Note",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/notes/:id"
+        },
+        {
+          "id": "NotesController.add_note",
+          "class_name": "NotesController",
+          "method_name": "add_note",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/notes/add_note"
+        },
+        {
+          "id": "NotesController.noteable_object_selector",
+          "class_name": "NotesController",
+          "method_name": "noteable_object_selector",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/notes/noteable_object_selector"
+        },
+        {
+          "id": "NotesController.new_update_groupings",
+          "class_name": "NotesController",
+          "method_name": "new_update_groupings",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/notes/new_update_groupings"
+        },
+        {
+          "id": "NotesController.notes_dialog",
+          "class_name": "NotesController",
+          "method_name": "notes_dialog",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/notes/notes_dialog"
+        },
+        {
+          "id": "CourseSummariesController.index",
+          "class_name": "CourseSummariesController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries"
+        },
+        {
+          "id": "CourseSummariesController.populate",
+          "class_name": "CourseSummariesController",
+          "method_name": "populate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries/populate"
+        },
+        {
+          "id": "CourseSummariesController.get_marking_scheme_details",
+          "class_name": "CourseSummariesController",
+          "method_name": "get_marking_scheme_details",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries/get_marking_scheme_details"
+        },
+        {
+          "id": "CourseSummariesController.download_csv_grades_report",
+          "class_name": "CourseSummariesController",
+          "method_name": "download_csv_grades_report",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries/download_csv_grades_report"
+        },
+        {
+          "id": "CourseSummariesController.view_summary",
+          "class_name": "CourseSummariesController",
+          "method_name": "view_summary",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries/view_summary"
+        },
+        {
+          "id": "CourseSummariesController.grade_distribution",
+          "class_name": "CourseSummariesController",
+          "method_name": "grade_distribution",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/course_summaries/grade_distribution"
+        },
+        {
+          "id": "MarkingSchemesController.index",
+          "class_name": "MarkingSchemesController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/marking_schemes"
+        },
+        {
+          "id": "MarkingSchemesController.create",
+          "class_name": "MarkingSchemesController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/marking_schemes"
+        },
+        {
+          "id": "MarkingSchemesController.new",
+          "class_name": "MarkingSchemesController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/marking_schemes/new"
+        },
+        {
+          "id": "MarkingSchemesController.edit",
+          "class_name": "MarkingSchemesController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/marking_schemes/:id/edit"
+        },
+        {
+          "id": "MarkingSchemesController.update",
+          "class_name": "MarkingSchemesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/marking_schemes/:id"
+        },
+        {
+          "id": "MarkingSchemesController.destroy",
+          "class_name": "MarkingSchemesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/marking_schemes/:id"
+        },
+        {
+          "id": "MarkingSchemesController.populate",
+          "class_name": "MarkingSchemesController",
+          "method_name": "populate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/marking_schemes/populate"
+        },
+        {
+          "id": "SectionsController.index",
+          "class_name": "SectionsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/sections"
+        },
+        {
+          "id": "SectionsController.create",
+          "class_name": "SectionsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "Section"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/sections"
+        },
+        {
+          "id": "SectionsController.new",
+          "class_name": "SectionsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/sections/new"
+        },
+        {
+          "id": "SectionsController.edit",
+          "class_name": "SectionsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/sections/:id/edit"
+        },
+        {
+          "id": "SectionsController.update",
+          "class_name": "SectionsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Section"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/sections/:id"
+        },
+        {
+          "id": "SectionsController.destroy",
+          "class_name": "SectionsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/sections/:id"
+        },
+        {
+          "id": "AnnotationsController.create",
+          "class_name": "AnnotationsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Annotation",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/annotations"
+        },
+        {
+          "id": "AnnotationsController.update",
+          "class_name": "AnnotationsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/annotations/:id"
+        },
+        {
+          "id": "AnnotationsController.destroy",
+          "class_name": "AnnotationsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/annotations/:id"
+        },
+        {
+          "id": "AnnotationsController.add_existing_annotation",
+          "class_name": "AnnotationsController",
+          "method_name": "add_existing_annotation",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Annotation",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/annotations/add_existing_annotation"
+        },
+        {
+          "id": "StudentsController.index",
+          "class_name": "StudentsController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students"
+        },
+        {
+          "id": "StudentsController.create",
+          "class_name": "StudentsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "Student"
+          ],
+          "return_type": "Student",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/students"
+        },
+        {
+          "id": "StudentsController.new",
+          "class_name": "StudentsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students/new"
+        },
+        {
+          "id": "StudentsController.edit",
+          "class_name": "StudentsController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students/:id/edit"
+        },
+        {
+          "id": "StudentsController.update",
+          "class_name": "StudentsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Student"
+          ],
+          "return_type": "Student",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/students/:id"
+        },
+        {
+          "id": "StudentsController.destroy",
+          "class_name": "StudentsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/students/:id"
+        },
+        {
+          "id": "StudentsController.bulk_modify",
+          "class_name": "StudentsController",
+          "method_name": "bulk_modify",
+          "param_types": [
+            "string",
+            "List<int>",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/students/bulk_modify"
+        },
+        {
+          "id": "StudentsController.add_new_section",
+          "class_name": "StudentsController",
+          "method_name": "add_new_section",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students/add_new_section"
+        },
+        {
+          "id": "StudentsController.download",
+          "class_name": "StudentsController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students/download"
+        },
+        {
+          "id": "StudentsController.upload",
+          "class_name": "StudentsController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/students/upload"
+        },
+        {
+          "id": "StudentsController.settings",
+          "class_name": "StudentsController",
+          "method_name": "settings",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/students/settings"
+        },
+        {
+          "id": "StudentsController.update_settings",
+          "class_name": "StudentsController",
+          "method_name": "update_settings",
+          "param_types": [
+            "string",
+            "Student"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/students/update_settings"
+        },
+        {
+          "id": "StudentsController.delete_grace_period_deduction",
+          "class_name": "StudentsController",
+          "method_name": "delete_grace_period_deduction",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/students/:id/delete_grace_period_deduction"
+        },
+        {
+          "id": "TasController.index",
+          "class_name": "TasController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tas"
+        },
+        {
+          "id": "TasController.create",
+          "class_name": "TasController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "Ta"
+          ],
+          "return_type": "Ta",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/tas"
+        },
+        {
+          "id": "TasController.new",
+          "class_name": "TasController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tas/new"
+        },
+        {
+          "id": "TasController.edit",
+          "class_name": "TasController",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tas/:id/edit"
+        },
+        {
+          "id": "TasController.update",
+          "class_name": "TasController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "Ta"
+          ],
+          "return_type": "Ta",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/tas/:id"
+        },
+        {
+          "id": "TasController.destroy",
+          "class_name": "TasController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/tas/:id"
+        },
+        {
+          "id": "TasController.download",
+          "class_name": "TasController",
+          "method_name": "download",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/tas/download"
+        },
+        {
+          "id": "TasController.upload",
+          "class_name": "TasController",
+          "method_name": "upload",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/tas/upload"
+        },
+        {
+          "id": "ExtensionsController.create",
+          "class_name": "ExtensionsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "Extension"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /courses/:course_id/extensions"
+        },
+        {
+          "id": "ExtensionsController.update",
+          "class_name": "ExtensionsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "Extension"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /courses/:course_id/extensions/:id"
+        },
+        {
+          "id": "ExtensionsController.destroy",
+          "class_name": "ExtensionsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /courses/:course_id/extensions/:id"
+        },
+        {
+          "id": "FeedbackFilesController.show",
+          "class_name": "FeedbackFilesController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /courses/:course_id/feedback_files/:id"
+        },
+        {
+          "id": "KeyPairsController.create",
+          "class_name": "KeyPairsController",
+          "method_name": "create",
+          "param_types": [
+            "KeyPair"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /key_pairs"
+        },
+        {
+          "id": "KeyPairsController.new",
+          "class_name": "KeyPairsController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /key_pairs/new"
+        },
+        {
+          "id": "KeyPairsController.destroy",
+          "class_name": "KeyPairsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /key_pairs/:id"
+        },
+        {
+          "id": "UsersController.reset_api_key",
+          "class_name": "UsersController",
+          "method_name": "reset_api_key",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /users/reset_api_key"
+        },
+        {
+          "id": "UsersController.settings",
+          "class_name": "UsersController",
+          "method_name": "settings",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /users/settings"
+        },
+        {
+          "id": "UsersController.update_settings",
+          "class_name": "UsersController",
+          "method_name": "update_settings",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /users/update_settings"
+        },
+        {
+          "id": "MainController.logout",
+          "class_name": "MainController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /main/logout"
+        },
+        {
+          "id": "MainController.about",
+          "class_name": "MainController",
+          "method_name": "about",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /main/about"
+        },
+        {
+          "id": "MainController.check_timeout",
+          "class_name": "MainController",
+          "method_name": "check_timeout",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /main/check_timeout"
+        },
+        {
+          "id": "MainController.refresh_session",
+          "class_name": "MainController",
+          "method_name": "refresh_session",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /main/refresh_session"
+        },
+        {
+          "id": "MainController.login_remote_auth",
+          "class_name": "MainController",
+          "method_name": "login_remote_auth",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /main/login_remote_auth"
+        },
+        {
+          "id": "JobMessagesController.get",
+          "class_name": "JobMessagesController",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /job_messages/:job_id/get"
+        },
+        {
+          "id": "LtiDeploymentsController.public_jwk",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "public_jwk",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /lti_deployments/public_jwk"
+        },
+        {
+          "id": "CanvasController.get_config",
+          "class_name": "CanvasController",
+          "method_name": "get_config",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /lti_deployments/canvas/get_config"
+        },
+        {
+          "id": "LtiDeploymentsController.choose_course",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "choose_course",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /lti_deployments/:id/choose_course"
+        },
+        {
+          "id": "LtiDeploymentsController.course_not_set_up",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "course_not_set_up",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /lti_deployments/:id/course_not_set_up"
+        },
+        {
+          "id": "LtiDeploymentsController.create_course",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "create_course",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /lti_deployments/:id/create_course"
+        },
+        {
+          "id": "JupyterSubmissionsController.create_session",
+          "class_name": "Jupyter::JupyterSubmissionsController",
+          "method_name": "create_session",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /jupyter/authenticate"
+        },
+        {
+          "id": "JupyterSubmissionsController.get_courses",
+          "class_name": "Jupyter::JupyterSubmissionsController",
+          "method_name": "get_courses",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /jupyter/courses"
+        },
+        {
+          "id": "JupyterSubmissionsController.get_assignments",
+          "class_name": "Jupyter::JupyterSubmissionsController",
+          "method_name": "get_assignments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /jupyter/assignments"
+        },
+        {
+          "id": "JupyterSubmissionsController.submit",
+          "class_name": "Jupyter::JupyterSubmissionsController",
+          "method_name": "submit",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /jupyter/submit"
+        },
+        {
+          "id": "LtiDeploymentsController.launch",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "launch",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /lti_deployments/canvas/launch"
+        },
+        {
+          "id": "LtiDeploymentsController.redirect_login",
+          "class_name": "LtiDeploymentsController",
+          "method_name": "redirect_login",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /lti_deployments/canvas/redirect_login"
+        },
+        {
+          "id": "CollectSubmissionsChannel.subscribed",
+          "class_name": "CollectSubmissionsChannel",
+          "method_name": "subscribed",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "CollectSubmissionsChannel"
+        },
+        {
+          "id": "ExamTemplatesChannel.subscribed",
+          "class_name": "ExamTemplatesChannel",
+          "method_name": "subscribed",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "ExamTemplatesChannel"
+        },
+        {
+          "id": "GroupsChannel.subscribed",
+          "class_name": "GroupsChannel",
+          "method_name": "subscribed",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GroupsChannel"
+        },
+        {
+          "id": "TestRunsChannel.subscribed",
+          "class_name": "TestRunsChannel",
+          "method_name": "subscribed",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "TestRunsChannel"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

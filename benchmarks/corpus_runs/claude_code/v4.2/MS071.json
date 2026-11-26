@@ -1,0 +1,1339 @@
+{
+  "system_id": "MS071",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "distributor": {
+      "exposed_interfaces": [
+        {
+          "id": "Distributor.Push",
+          "class_name": "distributor.Distributor",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "cortexpb.WriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "distributor.Distributor/Push"
+        },
+        {
+          "id": "Distributor.PushHTTP",
+          "class_name": "distributor.Distributor",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/push"
+        },
+        {
+          "id": "Distributor.PushOTLP",
+          "class_name": "distributor.Distributor",
+          "method_name": "Push",
+          "param_types": [
+            "pmetricotlp.ExportRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/otlp/v1/metrics"
+        },
+        {
+          "id": "OTLPGRPCServer.Export",
+          "class_name": "push.OTLPGRPCServer",
+          "method_name": "Export",
+          "param_types": [
+            "pmetricotlp.ExportRequest"
+          ],
+          "return_type": "pmetricotlp.ExportResponse",
+          "protocol": "gRPC",
+          "endpoint": "opentelemetry.proto.collector.metrics.v1.MetricsService/Export"
+        },
+        {
+          "id": "Distributor.ServeHTTP",
+          "class_name": "distributor.Distributor",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /distributor/ring"
+        },
+        {
+          "id": "Distributor.AllUserStatsHandler",
+          "class_name": "distributor.Distributor",
+          "method_name": "AllUserStatsHandler",
+          "param_types": [],
+          "return_type": "List<UserIDStats>",
+          "protocol": "REST",
+          "endpoint": "GET /distributor/all_user_stats"
+        },
+        {
+          "id": "HATracker.ServeHTTP",
+          "class_name": "ha.HATracker",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /distributor/ha_tracker"
+        },
+        {
+          "id": "Distributor.UserStatsHandler",
+          "class_name": "distributor.Distributor",
+          "method_name": "UserStatsHandler",
+          "param_types": [],
+          "return_type": "ingester.UserStats",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/user_stats"
+        }
+      ]
+    },
+    "ingester": {
+      "exposed_interfaces": [
+        {
+          "id": "Ingester.Push",
+          "class_name": "ingester.Ingester",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "cortexpb.WriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/Push"
+        },
+        {
+          "id": "Ingester.PushStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "PushStream",
+          "param_types": [
+            "cortexpb.StreamWriteRequest"
+          ],
+          "return_type": "List<cortexpb.WriteResponse>",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/PushStream"
+        },
+        {
+          "id": "Ingester.QueryStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "QueryStream",
+          "param_types": [
+            "QueryRequest"
+          ],
+          "return_type": "List<QueryStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/QueryStream"
+        },
+        {
+          "id": "Ingester.QueryExemplars",
+          "class_name": "ingester.Ingester",
+          "method_name": "QueryExemplars",
+          "param_types": [
+            "ExemplarQueryRequest"
+          ],
+          "return_type": "ExemplarQueryResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/QueryExemplars"
+        },
+        {
+          "id": "Ingester.LabelValues",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelValues",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/LabelValues"
+        },
+        {
+          "id": "Ingester.LabelValuesStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelValuesStream",
+          "param_types": [
+            "LabelValuesRequest"
+          ],
+          "return_type": "List<LabelValuesStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/LabelValuesStream"
+        },
+        {
+          "id": "Ingester.LabelNames",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelNames",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/LabelNames"
+        },
+        {
+          "id": "Ingester.LabelNamesStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "LabelNamesStream",
+          "param_types": [
+            "LabelNamesRequest"
+          ],
+          "return_type": "List<LabelNamesStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/LabelNamesStream"
+        },
+        {
+          "id": "Ingester.UserStats",
+          "class_name": "ingester.Ingester",
+          "method_name": "UserStats",
+          "param_types": [
+            "UserStatsRequest"
+          ],
+          "return_type": "UserStatsResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/UserStats"
+        },
+        {
+          "id": "Ingester.AllUserStats",
+          "class_name": "ingester.Ingester",
+          "method_name": "AllUserStats",
+          "param_types": [
+            "UserStatsRequest"
+          ],
+          "return_type": "UsersStatsResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/AllUserStats"
+        },
+        {
+          "id": "Ingester.MetricsForLabelMatchers",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsForLabelMatchers",
+          "param_types": [
+            "MetricsForLabelMatchersRequest"
+          ],
+          "return_type": "MetricsForLabelMatchersResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/MetricsForLabelMatchers"
+        },
+        {
+          "id": "Ingester.MetricsForLabelMatchersStream",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsForLabelMatchersStream",
+          "param_types": [
+            "MetricsForLabelMatchersRequest"
+          ],
+          "return_type": "List<MetricsForLabelMatchersStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/MetricsForLabelMatchersStream"
+        },
+        {
+          "id": "Ingester.MetricsMetadata",
+          "class_name": "ingester.Ingester",
+          "method_name": "MetricsMetadata",
+          "param_types": [
+            "MetricsMetadataRequest"
+          ],
+          "return_type": "MetricsMetadataResponse",
+          "protocol": "gRPC",
+          "endpoint": "cortex.Ingester/MetricsMetadata"
+        },
+        {
+          "id": "Ingester.FlushHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "FlushHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ingester/flush"
+        },
+        {
+          "id": "Ingester.ShutdownHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "ShutdownHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ingester/shutdown"
+        },
+        {
+          "id": "Ingester.RenewTokenHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "RenewTokenHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ingester/renewTokens"
+        },
+        {
+          "id": "Ingester.AllUserStatsHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "AllUserStatsHandler",
+          "param_types": [],
+          "return_type": "List<UserIDStats>",
+          "protocol": "REST",
+          "endpoint": "GET /ingester/all_user_stats"
+        },
+        {
+          "id": "Ingester.ModeHandler",
+          "class_name": "ingester.Ingester",
+          "method_name": "ModeHandler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /ingester/mode"
+        },
+        {
+          "id": "Ingester.PushHTTP",
+          "class_name": "ingester.Ingester",
+          "method_name": "Push",
+          "param_types": [
+            "cortexpb.WriteRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /ingester/push"
+        }
+      ]
+    },
+    "querier": {
+      "exposed_interfaces": [
+        {
+          "id": "querier.MetadataHandler",
+          "class_name": "querier",
+          "method_name": "MetadataHandler",
+          "param_types": [
+            "int",
+            "int",
+            "string"
+          ],
+          "return_type": "metadataSuccessResult",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/metadata"
+        },
+        {
+          "id": "querier.RemoteReadHandler",
+          "class_name": "querier",
+          "method_name": "RemoteReadHandler",
+          "param_types": [
+            "client.ReadRequest"
+          ],
+          "return_type": "client.ReadResponse",
+          "protocol": "REST",
+          "endpoint": "POST /prometheus/api/v1/read"
+        },
+        {
+          "id": "QueryAPI.InstantQueryHandler",
+          "class_name": "queryapi.QueryAPI",
+          "method_name": "InstantQueryHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/query"
+        },
+        {
+          "id": "QueryAPI.RangeQueryHandler",
+          "class_name": "queryapi.QueryAPI",
+          "method_name": "RangeQueryHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/query_range"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_query_exemplars",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_query_exemplars",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/query_exemplars"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_format_query",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_format_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/format_query"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_parse_query",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_parse_query",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/parse_query"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_labels",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_labels",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/labels"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_label_name_values",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_label_name_values",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/label/{name}/values"
+        },
+        {
+          "id": "handlers.get_prometheus_api_v1_series",
+          "class_name": "handlers.go",
+          "method_name": "get_prometheus_api_v1_series",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/series"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "Handler.ServeHTTPRead",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /prometheus/api/v1/read"
+        },
+        {
+          "id": "Handler.ServeHTTPQuery",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /prometheus/api/v1/query"
+        },
+        {
+          "id": "Handler.ServeHTTPQueryRange",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /prometheus/api/v1/query_range"
+        },
+        {
+          "id": "Handler.ServeHTTPQueryExemplars",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/query_exemplars"
+        },
+        {
+          "id": "Handler.ServeHTTPFormatQuery",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/format_query"
+        },
+        {
+          "id": "Handler.ServeHTTPParseQuery",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/parse_query"
+        },
+        {
+          "id": "Handler.ServeHTTPLabels",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/labels"
+        },
+        {
+          "id": "Handler.ServeHTTPLabelValues",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/label/{name}/values"
+        },
+        {
+          "id": "Handler.ServeHTTPSeries",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/series"
+        },
+        {
+          "id": "Handler.ServeHTTPMetadata",
+          "class_name": "transport.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/metadata"
+        },
+        {
+          "id": "Frontend.Process",
+          "class_name": "v1.Frontend",
+          "method_name": "Process",
+          "param_types": [
+            "ClientToFrontend"
+          ],
+          "return_type": "List<FrontendToClient>",
+          "protocol": "gRPC",
+          "endpoint": "frontend.Frontend/Process"
+        },
+        {
+          "id": "Frontend.NotifyClientShutdown",
+          "class_name": "v1.Frontend",
+          "method_name": "NotifyClientShutdown",
+          "param_types": [
+            "NotifyClientShutdownRequest"
+          ],
+          "return_type": "NotifyClientShutdownResponse",
+          "protocol": "gRPC",
+          "endpoint": "frontend.Frontend/NotifyClientShutdown"
+        },
+        {
+          "id": "Frontend.QueryResult",
+          "class_name": "v2.Frontend",
+          "method_name": "QueryResult",
+          "param_types": [
+            "QueryResultRequest"
+          ],
+          "return_type": "QueryResultResponse",
+          "protocol": "gRPC",
+          "endpoint": "frontendv2pb.FrontendForQuerier/QueryResult"
+        }
+      ]
+    },
+    "scheduler": {
+      "exposed_interfaces": [
+        {
+          "id": "Scheduler.FrontendLoop",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "FrontendLoop",
+          "param_types": [
+            "FrontendToScheduler"
+          ],
+          "return_type": "List<SchedulerToFrontend>",
+          "protocol": "gRPC",
+          "endpoint": "schedulerpb.SchedulerForFrontend/FrontendLoop"
+        },
+        {
+          "id": "Scheduler.QuerierLoop",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "QuerierLoop",
+          "param_types": [
+            "QuerierToScheduler"
+          ],
+          "return_type": "List<SchedulerToQuerier>",
+          "protocol": "gRPC",
+          "endpoint": "schedulerpb.SchedulerForQuerier/QuerierLoop"
+        },
+        {
+          "id": "Scheduler.NotifyQuerierShutdown",
+          "class_name": "scheduler.Scheduler",
+          "method_name": "NotifyQuerierShutdown",
+          "param_types": [
+            "NotifyQuerierShutdownRequest"
+          ],
+          "return_type": "NotifyQuerierShutdownResponse",
+          "protocol": "gRPC",
+          "endpoint": "schedulerpb.SchedulerForQuerier/NotifyQuerierShutdown"
+        }
+      ]
+    },
+    "ruler": {
+      "exposed_interfaces": [
+        {
+          "id": "Ruler.Rules",
+          "class_name": "ruler.Ruler",
+          "method_name": "Rules",
+          "param_types": [
+            "RulesRequest"
+          ],
+          "return_type": "RulesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ruler.Ruler/Rules"
+        },
+        {
+          "id": "Ruler.LivenessCheck",
+          "class_name": "ruler.Ruler",
+          "method_name": "LivenessCheck",
+          "param_types": [
+            "LivenessCheckRequest"
+          ],
+          "return_type": "LivenessCheckResponse",
+          "protocol": "gRPC",
+          "endpoint": "ruler.Ruler/LivenessCheck"
+        },
+        {
+          "id": "Ruler.ServeHTTP",
+          "class_name": "ruler.Ruler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /ruler/ring"
+        },
+        {
+          "id": "Ruler.DeleteTenantConfiguration",
+          "class_name": "ruler.Ruler",
+          "method_name": "DeleteTenantConfiguration",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /ruler/delete_tenant_config"
+        },
+        {
+          "id": "Ruler.ListAllRules",
+          "class_name": "ruler.Ruler",
+          "method_name": "ListAllRules",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /ruler/rule_groups"
+        },
+        {
+          "id": "API.PrometheusRules",
+          "class_name": "ruler.API",
+          "method_name": "PrometheusRules",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "RuleDiscovery",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/rules"
+        },
+        {
+          "id": "API.PrometheusAlerts",
+          "class_name": "ruler.API",
+          "method_name": "PrometheusAlerts",
+          "param_types": [],
+          "return_type": "AlertDiscovery",
+          "protocol": "REST",
+          "endpoint": "GET /prometheus/api/v1/alerts"
+        },
+        {
+          "id": "API.ListRules",
+          "class_name": "ruler.API",
+          "method_name": "ListRules",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/rules"
+        },
+        {
+          "id": "API.GetRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "GetRuleGroup",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "rulespb.RuleGroup",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/rules/{namespace}/{groupName}"
+        },
+        {
+          "id": "API.CreateRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "CreateRuleGroup",
+          "param_types": [
+            "string",
+            "rulespb.RuleGroup"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/rules/{namespace}"
+        },
+        {
+          "id": "API.DeleteRuleGroup",
+          "class_name": "ruler.API",
+          "method_name": "DeleteRuleGroup",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/rules/{namespace}/{groupName}"
+        },
+        {
+          "id": "API.DeleteNamespace",
+          "class_name": "ruler.API",
+          "method_name": "DeleteNamespace",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/rules/{namespace}"
+        }
+      ]
+    },
+    "storegateway": {
+      "exposed_interfaces": [
+        {
+          "id": "StoreGateway.Series",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "Series",
+          "param_types": [
+            "thanos.SeriesRequest"
+          ],
+          "return_type": "List<thanos.SeriesResponse>",
+          "protocol": "gRPC",
+          "endpoint": "gatewaypb.StoreGateway/Series"
+        },
+        {
+          "id": "StoreGateway.LabelNames",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "LabelNames",
+          "param_types": [
+            "thanos.LabelNamesRequest"
+          ],
+          "return_type": "thanos.LabelNamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "gatewaypb.StoreGateway/LabelNames"
+        },
+        {
+          "id": "StoreGateway.LabelValues",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "LabelValues",
+          "param_types": [
+            "thanos.LabelValuesRequest"
+          ],
+          "return_type": "thanos.LabelValuesResponse",
+          "protocol": "gRPC",
+          "endpoint": "gatewaypb.StoreGateway/LabelValues"
+        },
+        {
+          "id": "StoreGateway.RingHandler",
+          "class_name": "storegateway.StoreGateway",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /store-gateway/ring"
+        }
+      ]
+    },
+    "compactor": {
+      "exposed_interfaces": [
+        {
+          "id": "Compactor.RingHandler",
+          "class_name": "compactor.Compactor",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /compactor/ring"
+        }
+      ]
+    },
+    "alertmanager": {
+      "exposed_interfaces": [
+        {
+          "id": "MultitenantAlertmanager.HandleRequest",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "HandleRequest",
+          "param_types": [
+            "httpgrpc.HTTPRequest"
+          ],
+          "return_type": "httpgrpc.HTTPResponse",
+          "protocol": "gRPC",
+          "endpoint": "alertmanagerpb.Alertmanager/HandleRequest"
+        },
+        {
+          "id": "MultitenantAlertmanager.UpdateState",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "UpdateState",
+          "param_types": [
+            "clusterpb.Part"
+          ],
+          "return_type": "UpdateStateResponse",
+          "protocol": "gRPC",
+          "endpoint": "alertmanagerpb.Alertmanager/UpdateState"
+        },
+        {
+          "id": "MultitenantAlertmanager.ReadState",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "ReadState",
+          "param_types": [
+            "ReadStateRequest"
+          ],
+          "return_type": "ReadStateResponse",
+          "protocol": "gRPC",
+          "endpoint": "alertmanagerpb.Alertmanager/ReadState"
+        },
+        {
+          "id": "MultitenantAlertmanager.ListAllConfigs",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "ListAllConfigs",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /multitenant_alertmanager/configs"
+        },
+        {
+          "id": "MultitenantAlertmanager.RingHandler",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /multitenant_alertmanager/ring"
+        },
+        {
+          "id": "MultitenantAlertmanager.DeleteUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "DeleteUserConfig",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.GetUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "GetUserConfig",
+          "param_types": [],
+          "return_type": "UserConfig",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.SetUserConfig",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "SetUserConfig",
+          "param_types": [
+            "UserConfig"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/alerts"
+        },
+        {
+          "id": "MultitenantAlertmanager.ServeHTTP",
+          "class_name": "alertmanager.MultitenantAlertmanager",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "ANY /alertmanager/{path}"
+        }
+      ]
+    },
+    "parquetconverter": {
+      "exposed_interfaces": [
+        {
+          "id": "Converter.RingHandler",
+          "class_name": "parquetconverter.Converter",
+          "method_name": "RingHandler",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /parquet-converter/ring"
+        }
+      ]
+    },
+    "purger": {
+      "exposed_interfaces": [
+        {
+          "id": "TenantDeletionAPI.DeleteTenant",
+          "class_name": "purger.TenantDeletionAPI",
+          "method_name": "DeleteTenant",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /purger/delete_tenant"
+        },
+        {
+          "id": "TenantDeletionAPI.DeleteTenantStatus",
+          "class_name": "purger.TenantDeletionAPI",
+          "method_name": "DeleteTenantStatus",
+          "param_types": [],
+          "return_type": "DeleteTenantStatusResponse",
+          "protocol": "REST",
+          "endpoint": "GET /purger/delete_tenant_status"
+        }
+      ]
+    },
+    "configs": {
+      "exposed_interfaces": [
+        {
+          "id": "API.getConfigRules",
+          "class_name": "api.API",
+          "method_name": "getConfig",
+          "param_types": [],
+          "return_type": "userconfig.View",
+          "protocol": "REST",
+          "endpoint": "GET /api/prom/configs/rules"
+        },
+        {
+          "id": "API.setConfigRules",
+          "class_name": "api.API",
+          "method_name": "setConfig",
+          "param_types": [
+            "userconfig.Config"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/prom/configs/rules"
+        },
+        {
+          "id": "API.getConfigTemplates",
+          "class_name": "api.API",
+          "method_name": "getConfig",
+          "param_types": [],
+          "return_type": "userconfig.View",
+          "protocol": "REST",
+          "endpoint": "GET /api/prom/configs/templates"
+        },
+        {
+          "id": "API.setConfigTemplates",
+          "class_name": "api.API",
+          "method_name": "setConfig",
+          "param_types": [
+            "userconfig.Config"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/prom/configs/templates"
+        },
+        {
+          "id": "API.getConfigAlertmanager",
+          "class_name": "api.API",
+          "method_name": "getConfig",
+          "param_types": [],
+          "return_type": "userconfig.View",
+          "protocol": "REST",
+          "endpoint": "GET /api/prom/configs/alertmanager"
+        },
+        {
+          "id": "API.setConfigAlertmanager",
+          "class_name": "api.API",
+          "method_name": "setConfig",
+          "param_types": [
+            "userconfig.Config"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/prom/configs/alertmanager"
+        },
+        {
+          "id": "API.validateAlertmanagerConfig",
+          "class_name": "api.API",
+          "method_name": "validateAlertmanagerConfig",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "map[string]string",
+          "protocol": "REST",
+          "endpoint": "POST /api/prom/configs/alertmanager/validate"
+        },
+        {
+          "id": "API.deactivateConfig",
+          "class_name": "api.API",
+          "method_name": "deactivateConfig",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/prom/configs/deactivate"
+        },
+        {
+          "id": "API.restoreConfig",
+          "class_name": "api.API",
+          "method_name": "restoreConfig",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/prom/configs/restore"
+        },
+        {
+          "id": "API.getConfigsPrivateRules",
+          "class_name": "api.API",
+          "method_name": "getConfigs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ConfigsView",
+          "protocol": "REST",
+          "endpoint": "GET /private/api/prom/configs/rules"
+        },
+        {
+          "id": "API.getConfigsPrivateAlertmanager",
+          "class_name": "api.API",
+          "method_name": "getConfigs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ConfigsView",
+          "protocol": "REST",
+          "endpoint": "GET /private/api/prom/configs/alertmanager"
+        }
+      ]
+    },
+    "overrides": {
+      "exposed_interfaces": [
+        {
+          "id": "API.GetOverrides",
+          "class_name": "overrides.API",
+          "method_name": "GetOverrides",
+          "param_types": [],
+          "return_type": "map[string]any",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/user-overrides"
+        },
+        {
+          "id": "API.SetOverrides",
+          "class_name": "overrides.API",
+          "method_name": "SetOverrides",
+          "param_types": [
+            "map[string]any"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/user-overrides"
+        },
+        {
+          "id": "API.DeleteOverrides",
+          "class_name": "overrides.API",
+          "method_name": "DeleteOverrides",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/user-overrides"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "send",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.PushStream",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1320 c.PushStreamConnection(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "send",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.Push",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1328 c.PushPreAlloc(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "LabelValuesForLabelName",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.LabelValues",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1419 client.LabelValues(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "LabelValuesForLabelNameStream",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.LabelValuesStream",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1435 client.LabelValuesStream(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "LabelNamesStream",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.LabelNamesStream",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1505 client.LabelNamesStream(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "LabelNames",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.LabelNames",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1534 client.LabelNames(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "MetricsForLabelMatchers",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.MetricsForLabelMatchers",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1551 client.MetricsForLabelMatchers(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "MetricsForLabelMatchersStream",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.MetricsForLabelMatchersStream",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1580 client.MetricsForLabelMatchersStream(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "MetricsMetadata",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.MetricsMetadata",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1655 client.MetricsMetadata(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "UserStats",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.UserStats",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1697 client.UserStats(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "AllUserStats",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.AllUserStats",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/distributor.go:1739 .AllUserStats(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "queryIngestersExemplars",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.QueryExemplars",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/query.go:176 .QueryExemplars(ctx, req)"
+    },
+    {
+      "src_service": "distributor",
+      "src_class": "distributor.Distributor",
+      "src_method": "queryIngesterStream",
+      "dst_service": "ingester",
+      "dst_class": "ingester.Ingester",
+      "dst_interface_id": "Ingester.QueryStream",
+      "protocol": "gRPC",
+      "evidence": "pkg/distributor/query.go:245 .QueryStream(ctx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "querier.blocksStoreQuerier",
+      "src_method": "fetchSeriesFromStores",
+      "dst_service": "storegateway",
+      "dst_class": "storegateway.StoreGateway",
+      "dst_interface_id": "StoreGateway.Series",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/blocks_store_queryable.go:668 c.Series(gCtx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "querier.blocksStoreQuerier",
+      "src_method": "fetchLabelNamesFromStore",
+      "dst_service": "storegateway",
+      "dst_class": "storegateway.StoreGateway",
+      "dst_interface_id": "StoreGateway.LabelNames",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/blocks_store_queryable.go:898 c.LabelNames(gCtx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "querier.blocksStoreQuerier",
+      "src_method": "fetchLabelValuesFromStore",
+      "dst_service": "storegateway",
+      "dst_class": "storegateway.StoreGateway",
+      "dst_interface_id": "StoreGateway.LabelValues",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/blocks_store_queryable.go:1003 c.LabelValues(gCtx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "worker.frontendProcessor",
+      "src_method": "notifyShutdown",
+      "dst_service": "frontend",
+      "dst_class": "v1.Frontend",
+      "dst_interface_id": "Frontend.NotifyClientShutdown",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/worker/frontend_processor.go:56 client.NotifyClientShutdown(ctx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "worker.frontendProcessor",
+      "src_method": "processQueriesOnSingleStream",
+      "dst_service": "frontend",
+      "dst_class": "v1.Frontend",
+      "dst_interface_id": "Frontend.Process",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/worker/frontend_processor.go:68 client.Process(ctx)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "worker.schedulerProcessor",
+      "src_method": "notifyShutdown",
+      "dst_service": "scheduler",
+      "dst_class": "scheduler.Scheduler",
+      "dst_interface_id": "Scheduler.NotifyQuerierShutdown",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/worker/scheduler_processor.go:92 client.NotifyQuerierShutdown(ctx, req)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "worker.schedulerProcessor",
+      "src_method": "processQueriesOnSingleStream",
+      "dst_service": "scheduler",
+      "dst_class": "scheduler.Scheduler",
+      "dst_interface_id": "Scheduler.QuerierLoop",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/worker/scheduler_processor.go:103 schedulerClient.QuerierLoop(ctx)"
+    },
+    {
+      "src_service": "querier",
+      "src_class": "worker.schedulerProcessor",
+      "src_method": "runRequest",
+      "dst_service": "frontend",
+      "dst_class": "v2.Frontend",
+      "dst_interface_id": "Frontend.QueryResult",
+      "protocol": "gRPC",
+      "evidence": "pkg/querier/worker/scheduler_processor.go:225 .QueryResult(ctx, &frontendv2pb.QueryResultRequest{"
+    },
+    {
+      "src_service": "scheduler",
+      "src_class": "scheduler.Scheduler",
+      "src_method": "forwardErrorToFrontend",
+      "dst_service": "frontend",
+      "dst_class": "v2.Frontend",
+      "dst_interface_id": "Frontend.QueryResult",
+      "protocol": "gRPC",
+      "evidence": "pkg/scheduler/scheduler.go:658 client.QueryResult(userCtx, &frontendv2pb.QueryResultRequest{"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "v2.frontendSchedulerWorker",
+      "src_method": "runOne",
+      "dst_service": "scheduler",
+      "dst_class": "scheduler.Scheduler",
+      "dst_interface_id": "Scheduler.FrontendLoop",
+      "protocol": "gRPC",
+      "evidence": "pkg/frontend/v2/frontend_scheduler_worker.go:206 client.FrontendLoop(ctx)"
+    },
+    {
+      "src_service": "ruler",
+      "src_class": "ruler.FrontendClient",
+      "src_method": "InstantQuery",
+      "dst_service": "frontend",
+      "dst_class": "transport.Handler",
+      "dst_interface_id": "Handler.ServeHTTPQuery",
+      "protocol": "REST",
+      "evidence": "pkg/ruler/frontend_client.go:115 p.client.Handle(ctx, req)"
+    },
+    {
+      "src_service": "ruler",
+      "src_class": "ruler.DefaultMultiTenantManager",
+      "src_method": "getOrCreateNotifier",
+      "dst_service": "alertmanager",
+      "dst_class": "alertmanager.MultitenantAlertmanager",
+      "dst_interface_id": "MultitenantAlertmanager.ServeHTTP",
+      "protocol": "REST",
+      "evidence": "pkg/ruler/manager.go:440 ctxhttp.Do(ctx, client, req)"
+    },
+    {
+      "src_service": "ruler",
+      "src_class": "configdb.ConfigRuleStore",
+      "src_method": "ListAllRuleGroups",
+      "dst_service": "configs",
+      "dst_class": "api.API",
+      "dst_interface_id": "API.getConfigsPrivateRules",
+      "protocol": "REST",
+      "evidence": "pkg/ruler/rulestore/configdb/store.go:55 c.configClient.GetRules(ctx, c.since)"
+    },
+    {
+      "src_service": "alertmanager",
+      "src_class": "configdb.Store",
+      "src_method": "reloadConfigs",
+      "dst_service": "configs",
+      "dst_class": "api.API",
+      "dst_interface_id": "API.getConfigsPrivateAlertmanager",
+      "protocol": "REST",
+      "evidence": "pkg/alertmanager/alertstore/configdb/store.go:123 c.configClient.GetAlerts(ctx, c.since)"
+    }
+  ]
+}

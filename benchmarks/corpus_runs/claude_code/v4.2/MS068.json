@@ -1,0 +1,796 @@
+{
+  "system_id": "MS068",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "backend": {
+      "exposed_interfaces": [
+        {
+          "id": "search.list_crates",
+          "class_name": "krate::search",
+          "method_name": "list_crates",
+          "param_types": [
+            "CrateListQueryParams"
+          ],
+          "return_type": "CrateListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates"
+        },
+        {
+          "id": "publish.publish",
+          "class_name": "krate::publish",
+          "method_name": "publish",
+          "param_types": [
+            "PublishMetadata"
+          ],
+          "return_type": "GoodCrate",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/crates/new"
+        },
+        {
+          "id": "metadata.find_new_crate",
+          "class_name": "krate::metadata",
+          "method_name": "find_new_crate",
+          "param_types": [
+            "FindQueryParams"
+          ],
+          "return_type": "CrateGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/new"
+        },
+        {
+          "id": "owners.list_owners",
+          "class_name": "krate::owners",
+          "method_name": "list_owners",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UsersResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/owners"
+        },
+        {
+          "id": "owners.add_owners",
+          "class_name": "krate::owners",
+          "method_name": "add_owners",
+          "param_types": [
+            "String",
+            "ChangeOwnersRequest"
+          ],
+          "return_type": "ModifyResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/crates/{name}/owners"
+        },
+        {
+          "id": "owners.remove_owners",
+          "class_name": "krate::owners",
+          "method_name": "remove_owners",
+          "param_types": [
+            "String",
+            "ChangeOwnersRequest"
+          ],
+          "return_type": "ModifyResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/crates/{name}/owners"
+        },
+        {
+          "id": "yank.yank_version",
+          "class_name": "version::yank",
+          "method_name": "yank_version",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/crates/{name}/{version}/yank"
+        },
+        {
+          "id": "yank.unyank_version",
+          "class_name": "version::yank",
+          "method_name": "unyank_version",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/crates/{name}/{version}/unyank"
+        },
+        {
+          "id": "downloads.download_version",
+          "class_name": "version::downloads",
+          "method_name": "download_version",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}/download"
+        },
+        {
+          "id": "metadata.find_crate",
+          "class_name": "krate::metadata",
+          "method_name": "find_crate",
+          "param_types": [
+            "String",
+            "FindQueryParams"
+          ],
+          "return_type": "CrateGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}"
+        },
+        {
+          "id": "update.update_crate",
+          "class_name": "krate::update",
+          "method_name": "update_crate",
+          "param_types": [
+            "String",
+            "PatchRequest"
+          ],
+          "return_type": "PatchResponse",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/crates/{name}"
+        },
+        {
+          "id": "delete.delete_crate",
+          "class_name": "krate::delete",
+          "method_name": "delete_crate",
+          "param_types": [
+            "String",
+            "DeleteQueryParams"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/crates/{name}"
+        },
+        {
+          "id": "metadata.find_version",
+          "class_name": "version::metadata",
+          "method_name": "find_version",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "VersionGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}"
+        },
+        {
+          "id": "update.update_version",
+          "class_name": "version::update",
+          "method_name": "update_version",
+          "param_types": [
+            "String",
+            "String",
+            "VersionUpdateRequest"
+          ],
+          "return_type": "UpdateResponse",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/v1/crates/{name}/{version}"
+        },
+        {
+          "id": "readme.get_version_readme",
+          "class_name": "version::readme",
+          "method_name": "get_version_readme",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "UrlResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}/readme"
+        },
+        {
+          "id": "dependencies.get_version_dependencies",
+          "class_name": "version::dependencies",
+          "method_name": "get_version_dependencies",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}/dependencies"
+        },
+        {
+          "id": "downloads.get_version_downloads",
+          "class_name": "version::downloads",
+          "method_name": "get_version_downloads",
+          "param_types": [
+            "String",
+            "String",
+            "DownloadsQueryParams"
+          ],
+          "return_type": "DownloadsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}/downloads"
+        },
+        {
+          "id": "docs.rebuild_version_docs",
+          "class_name": "version::docs",
+          "method_name": "rebuild_version_docs",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/crates/{name}/{version}/rebuild_docs"
+        },
+        {
+          "id": "authors.get_version_authors",
+          "class_name": "version::authors",
+          "method_name": "get_version_authors",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/{version}/authors"
+        },
+        {
+          "id": "downloads.get_crate_downloads",
+          "class_name": "krate::downloads",
+          "method_name": "get_crate_downloads",
+          "param_types": [
+            "String",
+            "DownloadsQueryParams"
+          ],
+          "return_type": "DownloadsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/downloads"
+        },
+        {
+          "id": "versions.list_versions",
+          "class_name": "krate::versions",
+          "method_name": "list_versions",
+          "param_types": [
+            "String",
+            "VersionListQueryParams",
+            "PaginationQueryParams"
+          ],
+          "return_type": "VersionListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/versions"
+        },
+        {
+          "id": "follow.follow_crate",
+          "class_name": "krate::follow",
+          "method_name": "follow_crate",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/crates/{name}/follow"
+        },
+        {
+          "id": "follow.unfollow_crate",
+          "class_name": "krate::follow",
+          "method_name": "unfollow_crate",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/crates/{name}/follow"
+        },
+        {
+          "id": "follow.get_following_crate",
+          "class_name": "krate::follow",
+          "method_name": "get_following_crate",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FollowingResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/following"
+        },
+        {
+          "id": "owners.get_team_owners",
+          "class_name": "krate::owners",
+          "method_name": "get_team_owners",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TeamsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/owner_team"
+        },
+        {
+          "id": "owners.get_user_owners",
+          "class_name": "krate::owners",
+          "method_name": "get_user_owners",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UsersResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/owner_user"
+        },
+        {
+          "id": "rev_deps.list_reverse_dependencies",
+          "class_name": "krate::rev_deps",
+          "method_name": "list_reverse_dependencies",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "RevDepsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/crates/{name}/reverse_dependencies"
+        },
+        {
+          "id": "keyword.list_keywords",
+          "class_name": "keyword",
+          "method_name": "list_keywords",
+          "param_types": [
+            "KeywordListQueryParams"
+          ],
+          "return_type": "KeywordListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/keywords"
+        },
+        {
+          "id": "keyword.find_keyword",
+          "class_name": "keyword",
+          "method_name": "find_keyword",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "KeywordGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/keywords/{keyword}"
+        },
+        {
+          "id": "category.list_categories",
+          "class_name": "category",
+          "method_name": "list_categories",
+          "param_types": [
+            "CategoryListQueryParams"
+          ],
+          "return_type": "CategoryListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/categories"
+        },
+        {
+          "id": "category.find_category",
+          "class_name": "category",
+          "method_name": "find_category",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "CategoryGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/categories/{category}"
+        },
+        {
+          "id": "category.list_category_slugs",
+          "class_name": "category",
+          "method_name": "list_category_slugs",
+          "param_types": [],
+          "return_type": "ListSlugsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/category_slugs"
+        },
+        {
+          "id": "other.find_user",
+          "class_name": "user::other",
+          "method_name": "find_user",
+          "param_types": [
+            "String",
+            "UserQueryParams"
+          ],
+          "return_type": "UserGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/users/{user}"
+        },
+        {
+          "id": "update.update_user",
+          "class_name": "user::update",
+          "method_name": "update_user",
+          "param_types": [
+            "i32",
+            "UserUpdate"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/users/{user}"
+        },
+        {
+          "id": "other.get_user_stats",
+          "class_name": "user::other",
+          "method_name": "get_user_stats",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "StatsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/users/{id}/stats"
+        },
+        {
+          "id": "team.find_team",
+          "class_name": "team",
+          "method_name": "find_team",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TeamGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/teams/{team}"
+        },
+        {
+          "id": "me.get_authenticated_user",
+          "class_name": "user::me",
+          "method_name": "get_authenticated_user",
+          "param_types": [],
+          "return_type": "EncodableMe",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/me"
+        },
+        {
+          "id": "me.get_authenticated_user_updates",
+          "class_name": "user::me",
+          "method_name": "get_authenticated_user_updates",
+          "param_types": [],
+          "return_type": "UpdatesResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/me/updates"
+        },
+        {
+          "id": "token.list_api_tokens",
+          "class_name": "token",
+          "method_name": "list_api_tokens",
+          "param_types": [
+            "GetParams"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/me/tokens"
+        },
+        {
+          "id": "token.create_api_token",
+          "class_name": "token",
+          "method_name": "create_api_token",
+          "param_types": [
+            "NewApiTokenRequest"
+          ],
+          "return_type": "CreateResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/me/tokens"
+        },
+        {
+          "id": "token.find_api_token",
+          "class_name": "token",
+          "method_name": "find_api_token",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "ApiTokenGetResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/me/tokens/{id}"
+        },
+        {
+          "id": "token.revoke_api_token",
+          "class_name": "token",
+          "method_name": "revoke_api_token",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/me/tokens/{id}"
+        },
+        {
+          "id": "token.revoke_current_api_token",
+          "class_name": "token",
+          "method_name": "revoke_current_api_token",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/tokens/current"
+        },
+        {
+          "id": "crate_owner_invitation.list_crate_owner_invitations",
+          "class_name": "crate_owner_invitation",
+          "method_name": "list_crate_owner_invitations",
+          "param_types": [
+            "CrateOwnerInvitationListQueryParams"
+          ],
+          "return_type": "PrivateListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/private/crate_owner_invitations"
+        },
+        {
+          "id": "crate_owner_invitation.handle_crate_owner_invitation",
+          "class_name": "crate_owner_invitation",
+          "method_name": "handle_crate_owner_invitation",
+          "param_types": [
+            "OwnerInvitation"
+          ],
+          "return_type": "HandleResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/me/crate_owner_invitations/{crate_id}"
+        },
+        {
+          "id": "crate_owner_invitation.accept_crate_owner_invitation_with_token",
+          "class_name": "crate_owner_invitation",
+          "method_name": "accept_crate_owner_invitation_with_token",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "HandleResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/me/crate_owner_invitations/accept/{token}"
+        },
+        {
+          "id": "email_notifications.update_email_notifications",
+          "class_name": "user::email_notifications",
+          "method_name": "update_email_notifications",
+          "param_types": [
+            "Vec<CrateEmailNotifications>"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/me/email_notifications"
+        },
+        {
+          "id": "summary.get_summary",
+          "class_name": "summary",
+          "method_name": "get_summary",
+          "param_types": [],
+          "return_type": "SummaryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/summary"
+        },
+        {
+          "id": "email_verification.confirm_user_email",
+          "class_name": "user::email_verification",
+          "method_name": "confirm_user_email",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/confirm/{email_token}"
+        },
+        {
+          "id": "email_verification.resend_email_verification",
+          "class_name": "user::email_verification",
+          "method_name": "resend_email_verification",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/users/{id}/resend"
+        },
+        {
+          "id": "site_metadata.get_site_metadata",
+          "class_name": "site_metadata",
+          "method_name": "get_site_metadata",
+          "param_types": [],
+          "return_type": "MetadataResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/site_metadata"
+        },
+        {
+          "id": "session.begin_session",
+          "class_name": "session",
+          "method_name": "begin_session",
+          "param_types": [],
+          "return_type": "BeginResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/private/session/begin"
+        },
+        {
+          "id": "session.authorize_session",
+          "class_name": "session",
+          "method_name": "authorize_session",
+          "param_types": [
+            "AuthorizeBody"
+          ],
+          "return_type": "AuthorizeResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/private/session/authorize"
+        },
+        {
+          "id": "session.get_pending_signup",
+          "class_name": "session",
+          "method_name": "get_pending_signup",
+          "param_types": [],
+          "return_type": "SignupResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/private/session/signup"
+        },
+        {
+          "id": "session.complete_pending_signup",
+          "class_name": "session",
+          "method_name": "complete_pending_signup",
+          "param_types": [
+            "CompletePendingSignupRequest"
+          ],
+          "return_type": "EncodableMe",
+          "protocol": "REST",
+          "endpoint": "POST /api/private/session/signup"
+        },
+        {
+          "id": "session.delete_pending_signup",
+          "class_name": "session",
+          "method_name": "delete_pending_signup",
+          "param_types": [],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/private/session/signup"
+        },
+        {
+          "id": "session.end_session",
+          "class_name": "session",
+          "method_name": "end_session",
+          "param_types": [],
+          "return_type": "OkResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/private/session"
+        },
+        {
+          "id": "exchange.exchange_trustpub_token",
+          "class_name": "trustpub::tokens::exchange",
+          "method_name": "exchange_trustpub_token",
+          "param_types": [
+            "json::ExchangeRequest"
+          ],
+          "return_type": "json::ExchangeResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/trusted_publishing/tokens"
+        },
+        {
+          "id": "revoke.revoke_trustpub_token",
+          "class_name": "trustpub::tokens::revoke",
+          "method_name": "revoke_trustpub_token",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/trusted_publishing/tokens"
+        },
+        {
+          "id": "create.create_trustpub_github_config",
+          "class_name": "trustpub::github_configs::create",
+          "method_name": "create_trustpub_github_config",
+          "param_types": [
+            "json::CreateRequest"
+          ],
+          "return_type": "json::CreateResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/trusted_publishing/github_configs"
+        },
+        {
+          "id": "delete.delete_trustpub_github_config",
+          "class_name": "trustpub::github_configs::delete",
+          "method_name": "delete_trustpub_github_config",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/trusted_publishing/github_configs/{id}"
+        },
+        {
+          "id": "list.list_trustpub_github_configs",
+          "class_name": "trustpub::github_configs::list",
+          "method_name": "list_trustpub_github_configs",
+          "param_types": [
+            "GitHubConfigListQueryParams"
+          ],
+          "return_type": "GitHubConfigListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trusted_publishing/github_configs"
+        },
+        {
+          "id": "create.create_trustpub_gitlab_config",
+          "class_name": "trustpub::gitlab_configs::create",
+          "method_name": "create_trustpub_gitlab_config",
+          "param_types": [
+            "json::CreateRequest"
+          ],
+          "return_type": "json::CreateResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/trusted_publishing/gitlab_configs"
+        },
+        {
+          "id": "delete.delete_trustpub_gitlab_config",
+          "class_name": "trustpub::gitlab_configs::delete",
+          "method_name": "delete_trustpub_gitlab_config",
+          "param_types": [
+            "i32"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/trusted_publishing/gitlab_configs/{id}"
+        },
+        {
+          "id": "list.list_trustpub_gitlab_configs",
+          "class_name": "trustpub::gitlab_configs::list",
+          "method_name": "list_trustpub_gitlab_configs",
+          "param_types": [
+            "GitLabConfigListQueryParams"
+          ],
+          "return_type": "GitLabConfigListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/trusted_publishing/gitlab_configs"
+        },
+        {
+          "id": "admin.list",
+          "class_name": "admin",
+          "method_name": "list",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/private/admin_list/{username}"
+        },
+        {
+          "id": "secret_scanning.verify",
+          "class_name": "github::secret_scanning",
+          "method_name": "verify",
+          "param_types": [
+            "Vec<GitHubSecretAlert>"
+          ],
+          "return_type": "Vec<GitHubSecretAlertFeedback>",
+          "protocol": "REST",
+          "endpoint": "POST /api/github/secret-scanning/verify"
+        },
+        {
+          "id": "git.http_backendGet",
+          "class_name": "git",
+          "method_name": "http_backend",
+          "param_types": [
+            "String",
+            "Bytes"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /git/index/{*path}"
+        },
+        {
+          "id": "git.http_backendPost",
+          "class_name": "git",
+          "method_name": "http_backend",
+          "param_types": [
+            "String",
+            "Bytes"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /git/index/{*path}"
+        },
+        {
+          "id": "openapi.handler",
+          "class_name": "openapi",
+          "method_name": "handler",
+          "param_types": [
+            "Params"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/openapi.json"
+        },
+        {
+          "id": "ProcessCdnLogQueue.run",
+          "class_name": "ProcessCdnLogQueue",
+          "method_name": "run",
+          "param_types": [
+            "Message"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "CDN_LOG_QUEUE_URL"
+        }
+      ]
+    },
+    "svelte": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

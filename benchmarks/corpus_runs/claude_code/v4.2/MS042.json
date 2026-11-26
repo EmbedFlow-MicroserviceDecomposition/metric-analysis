@@ -1,0 +1,1005 @@
+{
+  "system_id": "MS042",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "ComposePostService": {
+      "exposed_interfaces": [
+        {
+          "id": "ComposePostHandler.ComposePost",
+          "class_name": "ComposePostHandler",
+          "method_name": "ComposePost",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int64_t",
+            "std::string",
+            "std::vector<int64_t>",
+            "std::vector<std::string>",
+            "PostType::type",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposePostService/ComposePost"
+        }
+      ]
+    },
+    "HomeTimelineService": {
+      "exposed_interfaces": [
+        {
+          "id": "HomeTimelineHandler.ReadHomeTimeline",
+          "class_name": "HomeTimelineHandler",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int",
+            "int",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Post>",
+          "protocol": "RPC",
+          "endpoint": "HomeTimelineService/ReadHomeTimeline"
+        },
+        {
+          "id": "HomeTimelineHandler.WriteHomeTimeline",
+          "class_name": "HomeTimelineHandler",
+          "method_name": "WriteHomeTimeline",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "std::vector<int64_t>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "HomeTimelineService/WriteHomeTimeline"
+        }
+      ]
+    },
+    "MediaService": {
+      "exposed_interfaces": [
+        {
+          "id": "MediaHandler.ComposeMedia",
+          "class_name": "MediaHandler",
+          "method_name": "ComposeMedia",
+          "param_types": [
+            "int64_t",
+            "std::vector<std::string>",
+            "std::vector<int64_t>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Media>",
+          "protocol": "RPC",
+          "endpoint": "MediaService/ComposeMedia"
+        }
+      ]
+    },
+    "PostStorageService": {
+      "exposed_interfaces": [
+        {
+          "id": "PostStorageHandler.StorePost",
+          "class_name": "PostStorageHandler",
+          "method_name": "StorePost",
+          "param_types": [
+            "int64_t",
+            "Post",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/StorePost"
+        },
+        {
+          "id": "PostStorageHandler.ReadPost",
+          "class_name": "PostStorageHandler",
+          "method_name": "ReadPost",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "Post",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/ReadPost"
+        },
+        {
+          "id": "PostStorageHandler.ReadPosts",
+          "class_name": "PostStorageHandler",
+          "method_name": "ReadPosts",
+          "param_types": [
+            "int64_t",
+            "std::vector<int64_t>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Post>",
+          "protocol": "RPC",
+          "endpoint": "PostStorageService/ReadPosts"
+        }
+      ]
+    },
+    "SocialGraphService": {
+      "exposed_interfaces": [
+        {
+          "id": "SocialGraphHandler.Follow",
+          "class_name": "SocialGraphHandler",
+          "method_name": "Follow",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/Follow"
+        },
+        {
+          "id": "SocialGraphHandler.Unfollow",
+          "class_name": "SocialGraphHandler",
+          "method_name": "Unfollow",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/Unfollow"
+        },
+        {
+          "id": "SocialGraphHandler.GetFollowers",
+          "class_name": "SocialGraphHandler",
+          "method_name": "GetFollowers",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<int64_t>",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/GetFollowers"
+        },
+        {
+          "id": "SocialGraphHandler.GetFollowees",
+          "class_name": "SocialGraphHandler",
+          "method_name": "GetFollowees",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<int64_t>",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/GetFollowees"
+        },
+        {
+          "id": "SocialGraphHandler.InsertUser",
+          "class_name": "SocialGraphHandler",
+          "method_name": "InsertUser",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/InsertUser"
+        },
+        {
+          "id": "SocialGraphHandler.FollowWithUsername",
+          "class_name": "SocialGraphHandler",
+          "method_name": "FollowWithUsername",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/FollowWithUsername"
+        },
+        {
+          "id": "SocialGraphHandler.UnfollowWithUsername",
+          "class_name": "SocialGraphHandler",
+          "method_name": "UnfollowWithUsername",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "SocialGraphService/UnfollowWithUsername"
+        }
+      ]
+    },
+    "TextService": {
+      "exposed_interfaces": [
+        {
+          "id": "TextHandler.ComposeText",
+          "class_name": "TextHandler",
+          "method_name": "ComposeText",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "TextServiceReturn",
+          "protocol": "RPC",
+          "endpoint": "TextService/ComposeText"
+        }
+      ]
+    },
+    "UniqueIdService": {
+      "exposed_interfaces": [
+        {
+          "id": "UniqueIdHandler.ComposeUniqueId",
+          "class_name": "UniqueIdHandler",
+          "method_name": "ComposeUniqueId",
+          "param_types": [
+            "int64_t",
+            "PostType::type",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "int64_t",
+          "protocol": "RPC",
+          "endpoint": "UniqueIdService/ComposeUniqueId"
+        }
+      ]
+    },
+    "UrlShortenService": {
+      "exposed_interfaces": [
+        {
+          "id": "UrlShortenHandler.ComposeUrls",
+          "class_name": "UrlShortenHandler",
+          "method_name": "ComposeUrls",
+          "param_types": [
+            "int64_t",
+            "std::vector<std::string>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Url>",
+          "protocol": "RPC",
+          "endpoint": "UrlShortenService/ComposeUrls"
+        },
+        {
+          "id": "UrlShortenHandler.GetExtendedUrls",
+          "class_name": "UrlShortenHandler",
+          "method_name": "GetExtendedUrls",
+          "param_types": [
+            "int64_t",
+            "std::vector<std::string>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<std::string>",
+          "protocol": "RPC",
+          "endpoint": "UrlShortenService/GetExtendedUrls"
+        }
+      ]
+    },
+    "UserMentionService": {
+      "exposed_interfaces": [
+        {
+          "id": "UserMentionHandler.ComposeUserMentions",
+          "class_name": "UserMentionHandler",
+          "method_name": "ComposeUserMentions",
+          "param_types": [
+            "int64_t",
+            "std::vector<std::string>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<UserMention>",
+          "protocol": "RPC",
+          "endpoint": "UserMentionService/ComposeUserMentions"
+        }
+      ]
+    },
+    "UserService": {
+      "exposed_interfaces": [
+        {
+          "id": "UserHandler.RegisterUser",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUser"
+        },
+        {
+          "id": "UserHandler.RegisterUserWithId",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUserWithId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::string",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUserWithId"
+        },
+        {
+          "id": "UserHandler.Login",
+          "class_name": "UserHandler",
+          "method_name": "Login",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::string",
+          "protocol": "RPC",
+          "endpoint": "UserService/Login"
+        },
+        {
+          "id": "UserHandler.ComposeCreatorWithUserId",
+          "class_name": "UserHandler",
+          "method_name": "ComposeCreatorWithUserId",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "Creator",
+          "protocol": "RPC",
+          "endpoint": "UserService/ComposeCreatorWithUserId"
+        },
+        {
+          "id": "UserHandler.ComposeCreatorWithUsername",
+          "class_name": "UserHandler",
+          "method_name": "ComposeCreatorWithUsername",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "Creator",
+          "protocol": "RPC",
+          "endpoint": "UserService/ComposeCreatorWithUsername"
+        },
+        {
+          "id": "UserHandler.GetUserId",
+          "class_name": "UserHandler",
+          "method_name": "GetUserId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "int64_t",
+          "protocol": "RPC",
+          "endpoint": "UserService/GetUserId"
+        }
+      ]
+    },
+    "UserTimelineService": {
+      "exposed_interfaces": [
+        {
+          "id": "UserTimelineHandler.WriteUserTimeline",
+          "class_name": "UserTimelineHandler",
+          "method_name": "WriteUserTimeline",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserTimelineService/WriteUserTimeline"
+        },
+        {
+          "id": "UserTimelineHandler.ReadUserTimeline",
+          "class_name": "UserTimelineHandler",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int",
+            "int",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Post>",
+          "protocol": "RPC",
+          "endpoint": "UserTimelineService/ReadUserTimeline"
+        }
+      ]
+    },
+    "WriteHomeTimelineService": {
+      "exposed_interfaces": [
+        {
+          "id": "WriteHomeTimelineService.OnReceivedWorker",
+          "class_name": "WriteHomeTimelineService",
+          "method_name": "OnReceivedWorker",
+          "param_types": [
+            "json"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "write-home-timeline"
+        }
+      ]
+    },
+    "nginx-web-server": {
+      "exposed_interfaces": [
+        {
+          "id": "register.RegisterUser",
+          "class_name": "api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/register"
+        },
+        {
+          "id": "follow.Follow",
+          "class_name": "api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/follow"
+        },
+        {
+          "id": "unfollow.Unfollow",
+          "class_name": "api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/unfollow"
+        },
+        {
+          "id": "login.Login",
+          "class_name": "api/user/login",
+          "method_name": "Login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/user/login"
+        },
+        {
+          "id": "compose.ComposePost",
+          "class_name": "api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/post/compose"
+        },
+        {
+          "id": "read.ReadUserTimeline",
+          "class_name": "api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user-timeline/read"
+        },
+        {
+          "id": "read.ReadHomeTimeline",
+          "class_name": "api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/home-timeline/read"
+        },
+        {
+          "id": "get_follower.GetFollower",
+          "class_name": "api/user/get_follower",
+          "method_name": "GetFollower",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_follower"
+        },
+        {
+          "id": "get_followee.GetFollowee",
+          "class_name": "api/user/get_followee",
+          "method_name": "GetFollowee",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /api/user/get_followee"
+        },
+        {
+          "id": "read.ReadHomeTimelineWrk2",
+          "class_name": "wrk2-api/home-timeline/read",
+          "method_name": "ReadHomeTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/home-timeline/read"
+        },
+        {
+          "id": "read.ReadUserTimelineWrk2",
+          "class_name": "wrk2-api/user-timeline/read",
+          "method_name": "ReadUserTimeline",
+          "param_types": [
+            "number",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /wrk2-api/user-timeline/read"
+        },
+        {
+          "id": "compose.ComposePostWrk2",
+          "class_name": "wrk2-api/post/compose",
+          "method_name": "ComposePost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/post/compose"
+        },
+        {
+          "id": "register.RegisterUserWrk2",
+          "class_name": "wrk2-api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "follow.FollowWrk2",
+          "class_name": "wrk2-api/user/follow",
+          "method_name": "Follow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/follow"
+        },
+        {
+          "id": "unfollow.UnfollowWrk2",
+          "class_name": "wrk2-api/user/unfollow",
+          "method_name": "Unfollow",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/unfollow"
+        }
+      ]
+    },
+    "media-frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "upload-media.UploadMedia",
+          "class_name": "upload-media",
+          "method_name": "UploadMedia",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /upload-media"
+        },
+        {
+          "id": "get-media.GetMedia",
+          "class_name": "get-media",
+          "method_name": "GetMedia",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /get-media"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_ComposeCreaterHelper",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.ComposeCreatorWithUserId",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:134 user_client->ComposeCreatorWithUserId(_return_creator, req_id, user_id,"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_ComposeTextHelper",
+      "dst_service": "TextService",
+      "dst_class": "TextHandler",
+      "dst_interface_id": "TextHandler.ComposeText",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:172 text_client->ComposeText(_return_text, req_id, text, writer_text_map);"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_ComposeMediaHelper",
+      "dst_service": "MediaService",
+      "dst_class": "MediaHandler",
+      "dst_interface_id": "MediaHandler.ComposeMedia",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:210 media_client->ComposeMedia(_return_media, req_id, media_types, media_ids,"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_ComposeUniqueIdHelper",
+      "dst_service": "UniqueIdService",
+      "dst_class": "UniqueIdHandler",
+      "dst_interface_id": "UniqueIdHandler.ComposeUniqueId",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:248 unique_id_client->ComposeUniqueId(req_id, post_type, writer_text_map);"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_UploadPostHelper",
+      "dst_service": "PostStorageService",
+      "dst_class": "PostStorageHandler",
+      "dst_interface_id": "PostStorageHandler.StorePost",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:282 post_storage_client->StorePost(req_id, post, writer_text_map);"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_UploadUserTimelineHelper",
+      "dst_service": "UserTimelineService",
+      "dst_class": "UserTimelineHandler",
+      "dst_interface_id": "UserTimelineHandler.WriteUserTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:315 user_timeline_client->WriteUserTimeline(req_id, post_id, user_id, timestamp,"
+    },
+    {
+      "src_service": "ComposePostService",
+      "src_class": "ComposePostHandler",
+      "src_method": "_UploadHomeTimelineHelper",
+      "dst_service": "HomeTimelineService",
+      "dst_class": "HomeTimelineHandler",
+      "dst_interface_id": "HomeTimelineHandler.WriteHomeTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/ComposePostService/ComposePostHandler.h:349 home_timeline_client->WriteHomeTimeline(req_id, post_id, user_id, timestamp,"
+    },
+    {
+      "src_service": "HomeTimelineService",
+      "src_class": "HomeTimelineHandler",
+      "src_method": "WriteHomeTimeline",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.GetFollowers",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/HomeTimelineService/HomeTimelineHandler.h:126 social_graph_client->GetFollowers(followers_id, req_id, user_id,"
+    },
+    {
+      "src_service": "HomeTimelineService",
+      "src_class": "HomeTimelineHandler",
+      "src_method": "ReadHomeTimeline",
+      "dst_service": "PostStorageService",
+      "dst_class": "PostStorageHandler",
+      "dst_interface_id": "PostStorageHandler.ReadPosts",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/HomeTimelineService/HomeTimelineHandler.h:272 post_client->ReadPosts(_return, req_id, post_ids, writer_text_map);"
+    },
+    {
+      "src_service": "UserTimelineService",
+      "src_class": "UserTimelineHandler",
+      "src_method": "ReadUserTimeline",
+      "dst_service": "PostStorageService",
+      "dst_class": "PostStorageHandler",
+      "dst_interface_id": "PostStorageHandler.ReadPosts",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/UserTimelineService/UserTimelineHandler.h:315 post_client->ReadPosts(_return_posts, req_id, post_ids,"
+    },
+    {
+      "src_service": "TextService",
+      "src_class": "TextHandler",
+      "src_method": "ComposeText",
+      "dst_service": "UrlShortenService",
+      "dst_class": "UrlShortenHandler",
+      "dst_interface_id": "UrlShortenHandler.ComposeUrls",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/TextService/TextHandler.h:91 url_client->ComposeUrls(_return_urls, req_id, urls, url_writer_text_map);"
+    },
+    {
+      "src_service": "TextService",
+      "src_class": "TextHandler",
+      "src_method": "ComposeText",
+      "dst_service": "UserMentionService",
+      "dst_class": "UserMentionHandler",
+      "dst_interface_id": "UserMentionHandler.ComposeUserMentions",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/TextService/TextHandler.h:121 user_mention_client->ComposeUserMentions(_return_user_mentions, req_id,"
+    },
+    {
+      "src_service": "UserService",
+      "src_class": "UserHandler",
+      "src_method": "RegisterUserWithId",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.InsertUser",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/UserService/UserHandler.h:220 social_graph_client->InsertUser(req_id, user_id, writer_text_map);"
+    },
+    {
+      "src_service": "UserService",
+      "src_class": "UserHandler",
+      "src_method": "RegisterUser",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.InsertUser",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/UserService/UserHandler.h:367 social_graph_client->InsertUser(req_id, user_id, writer_text_map);"
+    },
+    {
+      "src_service": "SocialGraphService",
+      "src_class": "SocialGraphHandler",
+      "src_method": "FollowWithUsername",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.GetUserId",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/SocialGraphService/SocialGraphHandler.h:849 _return = user_client->GetUserId(req_id, user_name, writer_text_map);"
+    },
+    {
+      "src_service": "SocialGraphService",
+      "src_class": "SocialGraphHandler",
+      "src_method": "UnfollowWithUsername",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.GetUserId",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/SocialGraphService/SocialGraphHandler.h:923 _return = user_client->GetUserId(req_id, user_name, writer_text_map);"
+    },
+    {
+      "src_service": "WriteHomeTimelineService",
+      "src_class": "WriteHomeTimelineService",
+      "src_method": "OnReceivedWorker",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.GetFollowers",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/src/WriteHomeTimelineService/WriteHomeTimelineService.cpp:69 social_graph_client->GetFollowers(followers_id, req_id, user_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/register",
+      "src_method": "RegisterUser",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.RegisterUser",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/register.lua:39 local status, err = pcall(client.RegisterUser, client, req_id, post.first_name,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/follow",
+      "src_method": "Follow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.Follow",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/follow.lua:55 status, err = pcall(client.Follow, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/follow",
+      "src_method": "Follow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.FollowWithUsername",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/follow.lua:58 status, err = pcall(client.FollowWithUsername, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/unfollow",
+      "src_method": "Unfollow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.Unfollow",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/unfollow.lua:35 status, err = pcall(client.Unfollow, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/unfollow",
+      "src_method": "Unfollow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.UnfollowWithUsername",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/unfollow.lua:38 status, err = pcall(client.UnfollowWithUsername, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/login",
+      "src_method": "Login",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.Login",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/login.lua:42 local status, ret = pcall(client.Login, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/post/compose",
+      "src_method": "ComposePost",
+      "dst_service": "ComposePostService",
+      "dst_class": "ComposePostHandler",
+      "dst_interface_id": "ComposePostHandler.ComposePost",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/post/compose.lua:74 status, ret = pcall(client.ComposePost, client,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user-timeline/read",
+      "src_method": "ReadUserTimeline",
+      "dst_service": "UserTimelineService",
+      "dst_class": "UserTimelineHandler",
+      "dst_interface_id": "UserTimelineHandler.ReadUserTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user-timeline/read.lua:109 local status, ret = pcall(client.ReadUserTimeline, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/home-timeline/read",
+      "src_method": "ReadHomeTimeline",
+      "dst_service": "HomeTimelineService",
+      "dst_class": "HomeTimelineHandler",
+      "dst_interface_id": "HomeTimelineHandler.ReadHomeTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/home-timeline/read.lua:114 local status, ret = pcall(client.ReadHomeTimeline, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/get_follower",
+      "src_method": "GetFollower",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.GetFollowers",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/get_follower.lua:67 local status, ret = pcall(client.GetFollowers, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "api/user/get_followee",
+      "src_method": "GetFollowee",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.GetFollowees",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/api/user/get_followee.lua:67 local status, ret = pcall(client.GetFollowees, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/home-timeline/read",
+      "src_method": "ReadHomeTimeline",
+      "dst_service": "HomeTimelineService",
+      "dst_class": "HomeTimelineHandler",
+      "dst_interface_id": "HomeTimelineHandler.ReadHomeTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/home-timeline/read.lua:81 local status, ret = pcall(client.ReadHomeTimeline, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user-timeline/read",
+      "src_method": "ReadUserTimeline",
+      "dst_service": "UserTimelineService",
+      "dst_class": "UserTimelineHandler",
+      "dst_interface_id": "UserTimelineHandler.ReadUserTimeline",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user-timeline/read.lua:81 local status, ret = pcall(client.ReadUserTimeline, client, req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/post/compose",
+      "src_method": "ComposePost",
+      "dst_service": "ComposePostService",
+      "dst_class": "ComposePostHandler",
+      "dst_interface_id": "ComposePostHandler.ComposePost",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/post/compose.lua:49 status, ret = pcall(client.ComposePost, client,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/register",
+      "src_method": "RegisterUser",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.RegisterUserWithId",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/register.lua:41 local status, err = pcall(client.RegisterUserWithId, client, req_id, post.first_name,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/follow",
+      "src_method": "Follow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.Follow",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/follow.lua:36 status, err = pcall(client.Follow, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/follow",
+      "src_method": "Follow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.FollowWithUsername",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/follow.lua:39 status, err = pcall(client.FollowWithUsername, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/unfollow",
+      "src_method": "Unfollow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.Unfollow",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/unfollow.lua:36 status, err = pcall(client.Unfollow, client,req_id,"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/unfollow",
+      "src_method": "Unfollow",
+      "dst_service": "SocialGraphService",
+      "dst_class": "SocialGraphHandler",
+      "dst_interface_id": "SocialGraphHandler.UnfollowWithUsername",
+      "protocol": "RPC",
+      "evidence": "socialNetwork/nginx-web-server/lua-scripts/wrk2-api/user/unfollow.lua:39 status, err = pcall(client.UnfollowWithUsername, client,req_id,"
+    }
+  ]
+}

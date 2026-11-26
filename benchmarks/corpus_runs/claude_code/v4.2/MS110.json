@@ -1,0 +1,493 @@
+{
+  "system_id": "MS110",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "browser": {
+      "exposed_interfaces": []
+    },
+    "pkg": {
+      "exposed_interfaces": [
+        {
+          "id": "crud.FindFlags",
+          "class_name": "handler.crud",
+          "method_name": "FindFlags",
+          "param_types": [
+            "bool",
+            "string",
+            "string",
+            "int64",
+            "int64",
+            "bool",
+            "string",
+            "bool",
+            "string"
+          ],
+          "return_type": "List<models.Flag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags"
+        },
+        {
+          "id": "crud.CreateFlag",
+          "class_name": "handler.crud",
+          "method_name": "CreateFlag",
+          "param_types": [
+            "models.CreateFlagRequest"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags"
+        },
+        {
+          "id": "crud.DuplicateFlag",
+          "class_name": "handler.crud",
+          "method_name": "DuplicateFlag",
+          "param_types": [
+            "int64",
+            "models.DuplicateFlagRequest"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags/{flagID}/duplicate"
+        },
+        {
+          "id": "crud.GetFlag",
+          "class_name": "handler.crud",
+          "method_name": "GetFlag",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}"
+        },
+        {
+          "id": "crud.PutFlag",
+          "class_name": "handler.crud",
+          "method_name": "PutFlag",
+          "param_types": [
+            "int64",
+            "models.PutFlagRequest"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}"
+        },
+        {
+          "id": "crud.DeleteFlag",
+          "class_name": "handler.crud",
+          "method_name": "DeleteFlag",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/flags/{flagID}"
+        },
+        {
+          "id": "crud.RestoreFlag",
+          "class_name": "handler.crud",
+          "method_name": "RestoreFlag",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/restore"
+        },
+        {
+          "id": "crud.SetFlagEnabledState",
+          "class_name": "handler.crud",
+          "method_name": "SetFlagEnabledState",
+          "param_types": [
+            "int64",
+            "models.SetFlagEnabledRequest"
+          ],
+          "return_type": "models.Flag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/enabled"
+        },
+        {
+          "id": "crud.GetFlagSnapshots",
+          "class_name": "handler.crud",
+          "method_name": "GetFlagSnapshots",
+          "param_types": [
+            "int64",
+            "int64",
+            "int64",
+            "string"
+          ],
+          "return_type": "List<models.FlagSnapshot>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/snapshots"
+        },
+        {
+          "id": "crud.GetFlagEntityTypes",
+          "class_name": "handler.crud",
+          "method_name": "GetFlagEntityTypes",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/entity_types"
+        },
+        {
+          "id": "crud.GetFlagSnapshotMaxID",
+          "class_name": "handler.crud",
+          "method_name": "GetFlagSnapshotMaxID",
+          "param_types": [],
+          "return_type": "models.FlagSnapshotMaxID",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/snapshots/max_id"
+        },
+        {
+          "id": "crud.CreateTag",
+          "class_name": "handler.crud",
+          "method_name": "CreateTag",
+          "param_types": [
+            "int64",
+            "models.CreateTagRequest"
+          ],
+          "return_type": "models.Tag",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags/{flagID}/tags"
+        },
+        {
+          "id": "crud.DeleteTag",
+          "class_name": "handler.crud",
+          "method_name": "DeleteTag",
+          "param_types": [
+            "int64",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/flags/{flagID}/tags/{tagID}"
+        },
+        {
+          "id": "crud.FindTags",
+          "class_name": "handler.crud",
+          "method_name": "FindTags",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "List<models.Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/tags"
+        },
+        {
+          "id": "crud.FindAllTags",
+          "class_name": "handler.crud",
+          "method_name": "FindAllTags",
+          "param_types": [
+            "int64",
+            "int64",
+            "string"
+          ],
+          "return_type": "List<models.Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/tags"
+        },
+        {
+          "id": "crud.CreateSegment",
+          "class_name": "handler.crud",
+          "method_name": "CreateSegment",
+          "param_types": [
+            "int64",
+            "models.CreateSegmentRequest"
+          ],
+          "return_type": "models.Segment",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags/{flagID}/segments"
+        },
+        {
+          "id": "crud.FindSegments",
+          "class_name": "handler.crud",
+          "method_name": "FindSegments",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "List<models.Segment>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/segments"
+        },
+        {
+          "id": "crud.PutSegment",
+          "class_name": "handler.crud",
+          "method_name": "PutSegment",
+          "param_types": [
+            "int64",
+            "int64",
+            "models.PutSegmentRequest"
+          ],
+          "return_type": "models.Segment",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/segments/{segmentID}"
+        },
+        {
+          "id": "crud.DeleteSegment",
+          "class_name": "handler.crud",
+          "method_name": "DeleteSegment",
+          "param_types": [
+            "int64",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/flags/{flagID}/segments/{segmentID}"
+        },
+        {
+          "id": "crud.PutSegmentsReorder",
+          "class_name": "handler.crud",
+          "method_name": "PutSegmentsReorder",
+          "param_types": [
+            "int64",
+            "models.PutSegmentReorderRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/segments/reorder"
+        },
+        {
+          "id": "crud.CreateConstraint",
+          "class_name": "handler.crud",
+          "method_name": "CreateConstraint",
+          "param_types": [
+            "int64",
+            "int64",
+            "models.CreateConstraintRequest"
+          ],
+          "return_type": "models.Constraint",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags/{flagID}/segments/{segmentID}/constraints"
+        },
+        {
+          "id": "crud.FindConstraints",
+          "class_name": "handler.crud",
+          "method_name": "FindConstraints",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "List<models.Constraint>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/segments/{segmentID}/constraints"
+        },
+        {
+          "id": "crud.PutConstraint",
+          "class_name": "handler.crud",
+          "method_name": "PutConstraint",
+          "param_types": [
+            "int64",
+            "int64",
+            "models.CreateConstraintRequest"
+          ],
+          "return_type": "models.Constraint",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/segments/{segmentID}/constraints/{constraintID}"
+        },
+        {
+          "id": "crud.DeleteConstraint",
+          "class_name": "handler.crud",
+          "method_name": "DeleteConstraint",
+          "param_types": [
+            "int64",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/flags/{flagID}/segments/{segmentID}/constraints/{constraintID}"
+        },
+        {
+          "id": "crud.FindDistributions",
+          "class_name": "handler.crud",
+          "method_name": "FindDistributions",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "List<models.Distribution>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/segments/{segmentID}/distributions"
+        },
+        {
+          "id": "crud.PutDistributions",
+          "class_name": "handler.crud",
+          "method_name": "PutDistributions",
+          "param_types": [
+            "int64",
+            "int64",
+            "models.PutDistributionsRequest"
+          ],
+          "return_type": "List<models.Distribution>",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/segments/{segmentID}/distributions"
+        },
+        {
+          "id": "crud.CreateVariant",
+          "class_name": "handler.crud",
+          "method_name": "CreateVariant",
+          "param_types": [
+            "int64",
+            "models.CreateVariantRequest"
+          ],
+          "return_type": "models.Variant",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/flags/{flagID}/variants"
+        },
+        {
+          "id": "crud.FindVariants",
+          "class_name": "handler.crud",
+          "method_name": "FindVariants",
+          "param_types": [
+            "int64"
+          ],
+          "return_type": "List<models.Variant>",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/flags/{flagID}/variants"
+        },
+        {
+          "id": "crud.PutVariant",
+          "class_name": "handler.crud",
+          "method_name": "PutVariant",
+          "param_types": [
+            "int64",
+            "int64",
+            "models.PutVariantRequest"
+          ],
+          "return_type": "models.Variant",
+          "protocol": "REST",
+          "endpoint": "PUT /api/v1/flags/{flagID}/variants/{variantID}"
+        },
+        {
+          "id": "crud.DeleteVariant",
+          "class_name": "handler.crud",
+          "method_name": "DeleteVariant",
+          "param_types": [
+            "int64",
+            "int64"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/v1/flags/{flagID}/variants/{variantID}"
+        },
+        {
+          "id": "eval.GetEvaluation",
+          "class_name": "handler.eval",
+          "method_name": "GetEvaluation",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "models.EvalResult",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/evaluation"
+        },
+        {
+          "id": "eval.GetEvaluationBatch",
+          "class_name": "handler.eval",
+          "method_name": "GetEvaluationBatch",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "models.EvaluationBatchResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/evaluation/batch"
+        },
+        {
+          "id": "eval.PostEvaluation",
+          "class_name": "handler.eval",
+          "method_name": "PostEvaluation",
+          "param_types": [
+            "models.EvalContext"
+          ],
+          "return_type": "models.EvalResult",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/evaluation"
+        },
+        {
+          "id": "eval.PostEvaluationBatch",
+          "class_name": "handler.eval",
+          "method_name": "PostEvaluationBatch",
+          "param_types": [
+            "models.EvaluationBatchRequest"
+          ],
+          "return_type": "models.EvaluationBatchResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/evaluation/batch"
+        },
+        {
+          "id": "exposureHandler.PostExposures",
+          "class_name": "handler.exposureHandler",
+          "method_name": "PostExposures",
+          "param_types": [
+            "models.ExposuresRequest"
+          ],
+          "return_type": "models.ExposuresResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/v1/exposures"
+        },
+        {
+          "id": "handler.HandleGetDatarSummary",
+          "class_name": "handler",
+          "method_name": "HandleGetDatarSummary",
+          "param_types": [
+            "strfmt.DateTime",
+            "strfmt.DateTime",
+            "int32",
+            "int32"
+          ],
+          "return_type": "models.DatarSummaryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/datar/summary"
+        },
+        {
+          "id": "handler.HandleGetDatarFlagSummary",
+          "class_name": "handler",
+          "method_name": "HandleGetDatarFlagSummary",
+          "param_types": [
+            "int64",
+            "strfmt.DateTime",
+            "strfmt.DateTime"
+          ],
+          "return_type": "models.DatarFlagSummaryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/datar/flags/{flagID}/summary"
+        },
+        {
+          "id": "handler.get_v1_health",
+          "class_name": "handler",
+          "method_name": "get_v1_health",
+          "param_types": [],
+          "return_type": "models.Health",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/health"
+        },
+        {
+          "id": "handler.exportSQLiteHandler",
+          "class_name": "handler",
+          "method_name": "exportSQLiteHandler",
+          "param_types": [
+            "bool"
+          ],
+          "return_type": "io.ReadCloser",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/export/sqlite"
+        },
+        {
+          "id": "handler.exportEvalCacheJSONHandler",
+          "class_name": "handler",
+          "method_name": "exportEvalCacheJSONHandler",
+          "param_types": [
+            "List<int64>",
+            "List<string>",
+            "bool",
+            "List<string>",
+            "string"
+          ],
+          "return_type": "EvalCacheJSON",
+          "protocol": "REST",
+          "endpoint": "GET /api/v1/export/eval_cache/json"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

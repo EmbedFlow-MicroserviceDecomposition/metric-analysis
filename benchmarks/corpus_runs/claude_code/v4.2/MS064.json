@@ -1,0 +1,2305 @@
+{
+  "system_id": "MS064",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "hmda": {
+      "exposed_interfaces": [
+        {
+          "id": "InstitutionAdminHttpApi.institutionWritePathPost",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionWritePath",
+          "param_types": [
+            "Institution"
+          ],
+          "return_type": "Institution",
+          "protocol": "REST",
+          "endpoint": "POST /institutions"
+        },
+        {
+          "id": "InstitutionAdminHttpApi.institutionWritePathPut",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionWritePath",
+          "param_types": [
+            "Institution"
+          ],
+          "return_type": "Institution",
+          "protocol": "REST",
+          "endpoint": "PUT /institutions"
+        },
+        {
+          "id": "InstitutionAdminHttpApi.institutionWritePathDelete",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionWritePath",
+          "param_types": [
+            "Institution"
+          ],
+          "return_type": "InstitutionDeletedResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /institutions"
+        },
+        {
+          "id": "InstitutionAdminHttpApi.institutionReadPathYear",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "Institution",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}"
+        },
+        {
+          "id": "InstitutionAdminHttpApi.institutionReadPathQuarter",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String"
+          ],
+          "return_type": "Institution",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "InstitutionAdminHttpApi.institutionReadPathByLei",
+          "class_name": "InstitutionAdminHttpApi",
+          "method_name": "institutionReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Institution>",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}"
+        },
+        {
+          "id": "PublishAdminHttpApi.publishTopicPath",
+          "class_name": "PublishAdminHttpApi",
+          "method_name": "publishTopicPath",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /publish/{topic}/institutions/{lei}/filings/{period}/submissions/{sequenceNumber}"
+        },
+        {
+          "id": "StatsAdminHttpApi.routesSignedCount",
+          "class_name": "StatsAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SignedLeiCountResponse",
+          "protocol": "REST",
+          "endpoint": "GET /admin/count/lei/{period}/filed"
+        },
+        {
+          "id": "StatsAdminHttpApi.routesSignedList",
+          "class_name": "StatsAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SignedLeiListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /admin/list/lei/{period}/filed"
+        },
+        {
+          "id": "StatsAdminHttpApi.routesTotalCount",
+          "class_name": "StatsAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TotalLeiCountResponse",
+          "protocol": "REST",
+          "endpoint": "GET /admin/count/{period}/lei"
+        },
+        {
+          "id": "StatsAdminHttpApi.routesTotalList",
+          "class_name": "StatsAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TotalLeiListResponse",
+          "protocol": "REST",
+          "endpoint": "GET /admin/list/{period}/lei"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesOldestSigned",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/signed/oldest/{period}"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesLatestSigned",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/signed/latest/{period}"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesLatestHmdaFile",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/hmdafile/latest/{period}"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesReceiptHmdaFile",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /receipt/{submissionId}/hmdafile"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesReceiptHmdaFileCount",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /receipt/{submissionId}/hmdafile/count"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesValidateAllCount",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [],
+          "return_type": "List<LeiSubmissionSummaryResponse>",
+          "protocol": "REST",
+          "endpoint": "GET /validate/all/leis/submissions/count"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesValidateBatchAllCount",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "List<LeiSubmissionSummaryResponse>",
+          "protocol": "REST",
+          "endpoint": "POST /validate/batch/leis/all/submissions/count"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesValidateBatchLatestSignedCount",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "List<LeiLatestSubmissionSummaryResponse>",
+          "protocol": "REST",
+          "endpoint": "POST /validate/batch/leis/latest/submissions/signed/count"
+        },
+        {
+          "id": "SubmissionAdminHttpApi.routesValidateLeiCount",
+          "class_name": "SubmissionAdminHttpApi",
+          "method_name": "routes",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<LeiSubmissionSummaryResponse>",
+          "protocol": "REST",
+          "endpoint": "GET /validate/{lei}/submissions/count"
+        },
+        {
+          "id": "FilingHttpApi.filingReadPathPost",
+          "class_name": "FilingHttpApi",
+          "method_name": "filingReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilingDetails",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}"
+        },
+        {
+          "id": "FilingHttpApi.filingReadPathGet",
+          "class_name": "FilingHttpApi",
+          "method_name": "filingReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "FilingDetails",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}"
+        },
+        {
+          "id": "FilingHttpApi.filingReadPathPostQuarter",
+          "class_name": "FilingHttpApi",
+          "method_name": "filingReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String"
+          ],
+          "return_type": "FilingDetails",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "FilingHttpApi.filingReadPathGetQuarter",
+          "class_name": "FilingHttpApi",
+          "method_name": "filingReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "FilingDetails",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "InstitutionHttpApi.institutionReadPath",
+          "class_name": "InstitutionHttpApi",
+          "method_name": "institutionReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "InstitutionDetail",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}"
+        },
+        {
+          "id": "InstitutionHttpApi.institutionReadPathQuarter",
+          "class_name": "InstitutionHttpApi",
+          "method_name": "institutionReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String"
+          ],
+          "return_type": "InstitutionDetail",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "SubmissionHttpApi.submissionCreatePath",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "submissionCreatePath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/submissions"
+        },
+        {
+          "id": "SubmissionHttpApi.submissionCreatePathQuarter",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "submissionCreatePath",
+          "param_types": [
+            "String",
+            "Int",
+            "String"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions"
+        },
+        {
+          "id": "SubmissionHttpApi.submissionSummaryPath",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "submissionSummaryPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "SubmissionSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/summary"
+        },
+        {
+          "id": "SubmissionHttpApi.submissionSummaryPathQuarter",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "submissionSummaryPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "SubmissionSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/summary"
+        },
+        {
+          "id": "SubmissionHttpApi.latestSubmissionPath",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "latestSubmissionPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "SubmissionResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/latest"
+        },
+        {
+          "id": "SubmissionHttpApi.latestSubmissionPathQuarter",
+          "class_name": "SubmissionHttpApi",
+          "method_name": "latestSubmissionPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String"
+          ],
+          "return_type": "SubmissionResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/latest"
+        },
+        {
+          "id": "UploadHttpApi.uploadHmdaFileRoute",
+          "class_name": "UploadHttpApi",
+          "method_name": "uploadHmdaFileRoute",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/submissions/{seqNr}"
+        },
+        {
+          "id": "UploadHttpApi.uploadHmdaFileRouteQuarter",
+          "class_name": "UploadHttpApi",
+          "method_name": "uploadHmdaFileRoute",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "Submission",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}"
+        },
+        {
+          "id": "UploadHttpApi.uploadHmdaFileRouteProgress",
+          "class_name": "UploadHttpApi",
+          "method_name": "uploadHmdaFileRoute",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "WebSocket",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/progress"
+        },
+        {
+          "id": "UploadHttpApi.uploadHmdaFileRouteProgressQuarter",
+          "class_name": "UploadHttpApi",
+          "method_name": "uploadHmdaFileRoute",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "WebSocket",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/progress"
+        },
+        {
+          "id": "VerifyHttpApi.verifyPath",
+          "class_name": "VerifyHttpApi",
+          "method_name": "verifyPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int",
+            "String",
+            "EditsVerification"
+          ],
+          "return_type": "EditsVerificationResponse",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/submissions/{seqNr}/edits/{editType}"
+        },
+        {
+          "id": "VerifyHttpApi.verifyPathQuarter",
+          "class_name": "VerifyHttpApi",
+          "method_name": "verifyPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int",
+            "String",
+            "EditsVerification"
+          ],
+          "return_type": "EditsVerificationResponse",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/edits/{editType}"
+        },
+        {
+          "id": "SignHttpApi.signPathGet",
+          "class_name": "SignHttpApi",
+          "method_name": "signPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "SignedResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/sign"
+        },
+        {
+          "id": "SignHttpApi.signPathPost",
+          "class_name": "SignHttpApi",
+          "method_name": "signPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int",
+            "EditsSign"
+          ],
+          "return_type": "SignedResponse",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/submissions/{seqNr}/sign"
+        },
+        {
+          "id": "SignHttpApi.signPathGetQuarter",
+          "class_name": "SignHttpApi",
+          "method_name": "signPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "SignedResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/sign"
+        },
+        {
+          "id": "SignHttpApi.signPathPostQuarter",
+          "class_name": "SignHttpApi",
+          "method_name": "signPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int",
+            "EditsSign"
+          ],
+          "return_type": "SignedResponse",
+          "protocol": "REST",
+          "endpoint": "POST /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/sign"
+        },
+        {
+          "id": "EditsHttpApi.editsSummaryPath",
+          "class_name": "EditsHttpApi",
+          "method_name": "editsSummaryPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "EditsSummaryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/edits"
+        },
+        {
+          "id": "EditsHttpApi.editsSummaryPathQuarter",
+          "class_name": "EditsHttpApi",
+          "method_name": "editsSummaryPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "EditsSummaryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/edits"
+        },
+        {
+          "id": "EditsHttpApi.editsSummaryCsvPath",
+          "class_name": "EditsHttpApi",
+          "method_name": "editsSummaryCsvPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/edits/csv"
+        },
+        {
+          "id": "EditsHttpApi.editsSummaryCsvPathQuarter",
+          "class_name": "EditsHttpApi",
+          "method_name": "editsSummaryCsvPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/edits/csv"
+        },
+        {
+          "id": "EditsHttpApi.editDetailsPath",
+          "class_name": "EditsHttpApi",
+          "method_name": "editDetailsPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "EditDetailsSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/edits/{editName}"
+        },
+        {
+          "id": "EditsHttpApi.editDetailsPathQuarter",
+          "class_name": "EditsHttpApi",
+          "method_name": "editDetailsPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "EditDetailsSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/edits/{editName}"
+        },
+        {
+          "id": "ParseErrorHttpApi.parseErrorPath",
+          "class_name": "ParseErrorHttpApi",
+          "method_name": "parseErrorPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int",
+            "Int"
+          ],
+          "return_type": "ParsingErrorSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/submissions/{seqNr}/parseErrors"
+        },
+        {
+          "id": "ParseErrorHttpApi.parseErrorPathQuarter",
+          "class_name": "ParseErrorHttpApi",
+          "method_name": "parseErrorPath",
+          "param_types": [
+            "String",
+            "Int",
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "ParsingErrorSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/filings/{year}/quarter/{quarter}/submissions/{seqNr}/parseErrors"
+        },
+        {
+          "id": "TsValidationHttpApi.parseTsRoute",
+          "class_name": "TsValidationHttpApi",
+          "method_name": "parseTsRoute",
+          "param_types": [
+            "TsValidateRequest"
+          ],
+          "return_type": "TransmittalSheet",
+          "protocol": "REST",
+          "endpoint": "POST /ts/parse"
+        },
+        {
+          "id": "TsValidationHttpApi.validateYearTsRoute",
+          "class_name": "TsValidationHttpApi",
+          "method_name": "validateYearTsRoute",
+          "param_types": [
+            "Int",
+            "String",
+            "TsValidateRequest"
+          ],
+          "return_type": "TransmittalSheet",
+          "protocol": "REST",
+          "endpoint": "POST /ts/validate/{year}"
+        },
+        {
+          "id": "TsValidationHttpApi.validateQuarterTsRoute",
+          "class_name": "TsValidationHttpApi",
+          "method_name": "validateQuarterTsRoute",
+          "param_types": [
+            "Int",
+            "String",
+            "String",
+            "TsValidateRequest"
+          ],
+          "return_type": "TransmittalSheet",
+          "protocol": "REST",
+          "endpoint": "POST /ts/validate/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "LarValidationHttpApi.parseLarRoute",
+          "class_name": "LarValidationHttpApi",
+          "method_name": "parseLarRoute",
+          "param_types": [
+            "LarValidateRequest"
+          ],
+          "return_type": "LoanApplicationRegister",
+          "protocol": "REST",
+          "endpoint": "POST /lar/parse"
+        },
+        {
+          "id": "LarValidationHttpApi.validateYearLarRoute",
+          "class_name": "LarValidationHttpApi",
+          "method_name": "validateYearLarRoute",
+          "param_types": [
+            "Int",
+            "String",
+            "LarValidateRequest"
+          ],
+          "return_type": "LoanApplicationRegister",
+          "protocol": "REST",
+          "endpoint": "POST /lar/validate/{year}"
+        },
+        {
+          "id": "LarValidationHttpApi.validateQuarterLarRoute",
+          "class_name": "LarValidationHttpApi",
+          "method_name": "validateQuarterLarRoute",
+          "param_types": [
+            "Int",
+            "String",
+            "String",
+            "LarValidateRequest"
+          ],
+          "return_type": "LoanApplicationRegister",
+          "protocol": "REST",
+          "endpoint": "POST /lar/validate/{year}/quarter/{quarter}"
+        },
+        {
+          "id": "HmdaFileValidationHttpApi.validateYearRoute",
+          "class_name": "HmdaFileValidationHttpApi",
+          "method_name": "validateYearRoute",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "ValidationErrorSummary",
+          "protocol": "REST",
+          "endpoint": "POST /hmda/validate/{year}"
+        },
+        {
+          "id": "HmdaFileParsingHttpApi.parseHmdaFileRoute",
+          "class_name": "HmdaFileParsingHttpApi",
+          "method_name": "parseHmdaFileRoute",
+          "param_types": [],
+          "return_type": "List<HmdaRowParsedErrorSummary>",
+          "protocol": "REST",
+          "endpoint": "POST /hmda/parse"
+        },
+        {
+          "id": "HmdaFileParsingHttpApi.parseHmdaFileRouteCsv",
+          "class_name": "HmdaFileParsingHttpApi",
+          "method_name": "parseHmdaFileRoute",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /hmda/parse/csv"
+        },
+        {
+          "id": "SubmissionWsApi.routes",
+          "class_name": "SubmissionWsApi",
+          "method_name": "routes",
+          "param_types": [
+            "String",
+            "String",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "WebSocket",
+          "endpoint": "GET /institutions/{lei}/filings/{period}/submissions/{seqNr}"
+        }
+      ]
+    },
+    "hmda-dashboard": {
+      "exposed_interfaces": [
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTotalFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TotalFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/total_filers/{period}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTotalLars",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TotalLarsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/total_lars/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathSingleAttempts",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SingleAttemptsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/single_attempts/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathMultipleAttempts",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "MultipleAttemptsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/multiple_attempts/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTopFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "TopFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/top_filers/{count}/year/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilerAllPeriods",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilerAllPeriodsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filer_all_periods/lei/{lei}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersByLar",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "FilersByLarAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_by_lar/year/{year}/min/{min_lar}/max/{max_lar}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersCountByLar",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int",
+            "Int"
+          ],
+          "return_type": "FilersCountByLarAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_count_by_lar/year/{year}/min/{min_lar}/max/{max_lar}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathSignsPerDay",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "SignsForLastDaysAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/signs_per_day/{days}/year/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilerAttempts",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "FilerAttemptsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filer_attempts/{count}/year/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTotalTs",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TSRecordCountAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/total_ts/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersByAgencyAgggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathLarByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "LarByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/lar_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTopCountiesLar",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "TopCountiesLarAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/top_counties_lar/{count}/year/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathLarByProperty",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "LarCountByPropertyTypeAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/lar_by_property/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersUsingExemptionByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersUsingExemptionByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_using_exemption_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathDenialReasonCountsByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "DenialReasonCountsByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/denial_reason_counts_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathLarCountUsingExemptionByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "LarCountUsingExemptionByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/lar_count_using_exemption_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathOpenEndCreditFilersByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OpenEndCreditByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/open_end_credit_filers_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathOpenEndCreditLarCountByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OpenEndCreditLarCountByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/open_end_credit_lar_count_by_agency/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersWithOnlyOpenEndCreditTransactions",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersWithOnlyOpenEndCreditTransactionsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_with_only_open_end_credit_transactions/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersWithOnlyClosedEndCreditTransactions",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersWithOnlyClosedEndCreditTransactionsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_with_only_closed_end_credit_transactions/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilerListOnlyOpenEndTransactions",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersListWithOnlyOpenEndCreditAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filer_list_only_open_end_transactions/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersClaimingExemption",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "FilersClaimingExemptionAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_claiming_exemption/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathListQuarterlyFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ListQuarterlyFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/list_quarterly_filers/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathQuarterlyInfo",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "QuarterDetailsAggregationsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/quarterly_info/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersByWeekByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilersByWeekByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_by_week_by_agency/{year}/week/{week}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathLarByWeekByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "LarByWeekByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/lar_by_week_by_agency/{year}/week/{week}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathListFilersWithOnlyClosedEndCreditTransactions",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ListFilersWithOnlyClosedEndCreditTransactionsAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/list_filers_with_only_closed_end_credit_transactions/{year}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersCountClosedEndOriginationsByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilersCountClosedEndOriginationsByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_count_closed_end_originations_by_agency/{year}/thresh/{x}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersCountClosedEndOriginationsByAgencyGraterOrEqual",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilersCountClosedEndOriginationsByAgencyGraterThanEqualAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_count_closed_end_originations_by_agency_grater_or_equal/{year}/thresh/{x}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersCountOpenEndOriginationsByAgency",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilersCountOpenEndOriginationsByAgencyAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_count_open_end_originations_by_agency/{year}/thresh/{x}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathFilersCountOpenEndOriginationsByAgencyGraterOrEqual",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "FilersCountOpenEndOriginationsByAgencyGraterOrEqualAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/filers_count_open_end_originations_by_agency_grater_or_equal/{year}/thresh/{x}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathTopInstitutionsCountOpenEndCredit",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "TopInstitutionsCountOpenEndCreditAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/top_institutions_count_open_end_credit/{year}/count/{x}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathLateFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LateFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/late_filers/{period}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathQuarterLateFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "LateFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/quarter_late_filers/{period}"
+        },
+        {
+          "id": "HmdaDashboardHttpApi.hmdaDashboardReadPathVoluntaryFilers",
+          "class_name": "HmdaDashboardHttpApi",
+          "method_name": "hmdaDashboardReadPath",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "VoluntaryFilersAggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/voluntary_filers/{period}"
+        }
+      ]
+    },
+    "hmda-quarterly-data-service": {
+      "exposed_interfaces": [
+        {
+          "id": "HmdaQuarterlyGraphRequestHandler.routes",
+          "class_name": "HmdaQuarterlyGraphRequestHandler",
+          "method_name": "routes",
+          "param_types": [],
+          "return_type": "GraphRouteInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs"
+        },
+        {
+          "id": "ApplicationsVolume.route",
+          "class_name": "ApplicationsVolume",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/applications"
+        },
+        {
+          "id": "AllApplicationsVolume.route",
+          "class_name": "AllApplicationsVolume",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/all-applications"
+        },
+        {
+          "id": "LoansVolume.route",
+          "class_name": "LoansVolume",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/loans"
+        },
+        {
+          "id": "MedianCreditScores.route",
+          "class_name": "MedianCreditScores",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores"
+        },
+        {
+          "id": "MedianCreditScoresCCByRace.route",
+          "class_name": "MedianCreditScoresCCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-cc-re"
+        },
+        {
+          "id": "MedianCreditScoresFHAByRace.route",
+          "class_name": "MedianCreditScoresFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-fha-re"
+        },
+        {
+          "id": "MedianCLTVByType.route",
+          "class_name": "MedianCLTVByType",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv"
+        },
+        {
+          "id": "MedianCLTVCCByRace.route",
+          "class_name": "MedianCLTVCCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-cc-re"
+        },
+        {
+          "id": "MedianCLTVFHAByRace.route",
+          "class_name": "MedianCLTVFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-fha-re"
+        },
+        {
+          "id": "MedianDTIByType.route",
+          "class_name": "MedianDTIByType",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti"
+        },
+        {
+          "id": "MedianDTICCByRace.route",
+          "class_name": "MedianDTICCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-cc-re"
+        },
+        {
+          "id": "MedianDTIFHAByRace.route",
+          "class_name": "MedianDTIFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-fha-re"
+        },
+        {
+          "id": "DenialRatesByType.route",
+          "class_name": "DenialRatesByType",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials"
+        },
+        {
+          "id": "DenialRatesCCByRace.route",
+          "class_name": "DenialRatesCCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-cc-re"
+        },
+        {
+          "id": "DenialRatesFHAByRace.route",
+          "class_name": "DenialRatesFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-fha-re"
+        },
+        {
+          "id": "MedianInterestRates.route",
+          "class_name": "MedianInterestRates",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates"
+        },
+        {
+          "id": "MedianInterestRatesCCByRace.route",
+          "class_name": "MedianInterestRatesCCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-cc-re"
+        },
+        {
+          "id": "MedianInterestRatesFHAByRace.route",
+          "class_name": "MedianInterestRatesFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-fha-re"
+        },
+        {
+          "id": "MedianTotalLoanCosts.route",
+          "class_name": "MedianTotalLoanCosts",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc"
+        },
+        {
+          "id": "MedianTotalLoanCostsCCByRace.route",
+          "class_name": "MedianTotalLoanCostsCCByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-cc-re"
+        },
+        {
+          "id": "MedianTotalLoanCostsFHAByRace.route",
+          "class_name": "MedianTotalLoanCostsFHAByRace",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-fha-re"
+        },
+        {
+          "id": "ApplicationsVolumeLoanPurposeHome.route",
+          "class_name": "ApplicationsVolumeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/applications-loan-purpose-home"
+        },
+        {
+          "id": "AllApplicationsVolumeLoanPurposeHome.route",
+          "class_name": "AllApplicationsVolumeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/all-applications-loan-purpose-home"
+        },
+        {
+          "id": "LoansVolumeLoanPurposeHome.route",
+          "class_name": "LoansVolumeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/loans-loan-purpose-home"
+        },
+        {
+          "id": "MedianCreditScoresLoanPurposeHome.route",
+          "class_name": "MedianCreditScoresLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-loan-purpose-home"
+        },
+        {
+          "id": "MedianCreditScoresCCByRaceLoanPurposeHome.route",
+          "class_name": "MedianCreditScoresCCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianCreditScoresFHAByRaceLoanPurposeHome.route",
+          "class_name": "MedianCreditScoresFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianCLTVByTypeLoanPurposeHome.route",
+          "class_name": "MedianCLTVByTypeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-loan-purpose-home"
+        },
+        {
+          "id": "MedianCLTVCCByRaceLoanPurposeHome.route",
+          "class_name": "MedianCLTVCCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianCLTVFHAByRaceLoanPurposeHome.route",
+          "class_name": "MedianCLTVFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianDTIByTypeLoanPurposeHome.route",
+          "class_name": "MedianDTIByTypeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-loan-purpose-home"
+        },
+        {
+          "id": "MedianDTICCByRaceLoanPurposeHome.route",
+          "class_name": "MedianDTICCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianDTIFHAByRaceLoanPurposeHome.route",
+          "class_name": "MedianDTIFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "DenialRatesByTypeLoanPurposeHome.route",
+          "class_name": "DenialRatesByTypeLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-loan-purpose-home"
+        },
+        {
+          "id": "DenialRatesCCByRaceLoanPurposeHome.route",
+          "class_name": "DenialRatesCCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "DenialRatesFHAByRaceLoanPurposeHome.route",
+          "class_name": "DenialRatesFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianInterestRatesLoanPurposeHome.route",
+          "class_name": "MedianInterestRatesLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-loan-purpose-home"
+        },
+        {
+          "id": "MedianInterestRatesCCByRaceLoanPurposeHome.route",
+          "class_name": "MedianInterestRatesCCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianInterestRatesFHAByRaceLoanPurposeHome.route",
+          "class_name": "MedianInterestRatesFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianTotalLoanCostsLoanPurposeHome.route",
+          "class_name": "MedianTotalLoanCostsLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-loan-purpose-home"
+        },
+        {
+          "id": "MedianTotalLoanCostsCCByRaceLoanPurposeHome.route",
+          "class_name": "MedianTotalLoanCostsCCByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-cc-re-loan-purpose-home"
+        },
+        {
+          "id": "MedianTotalLoanCostsFHAByRaceLoanPurposeHome.route",
+          "class_name": "MedianTotalLoanCostsFHAByRaceLoanPurposeHome",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-fha-re-loan-purpose-home"
+        },
+        {
+          "id": "ApplicationsVolumeLoanPurposeRefinance.route",
+          "class_name": "ApplicationsVolumeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/applications-loan-purpose-refinance"
+        },
+        {
+          "id": "AllApplicationsVolumeLoanPurposeRefinance.route",
+          "class_name": "AllApplicationsVolumeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/all-applications-loan-purpose-refinance"
+        },
+        {
+          "id": "LoansVolumeLoanPurposeRefinance.route",
+          "class_name": "LoansVolumeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/loans-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCreditScoresLoanPurposeRefinance.route",
+          "class_name": "MedianCreditScoresLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCreditScoresCCByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianCreditScoresCCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCreditScoresFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianCreditScoresFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/credit-scores-fha-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCLTVByTypeLoanPurposeRefinance.route",
+          "class_name": "MedianCLTVByTypeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCLTVCCByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianCLTVCCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianCLTVFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianCLTVFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/ltv-fha-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianDTIByTypeLoanPurposeRefinance.route",
+          "class_name": "MedianDTIByTypeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianDTICCByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianDTICCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianDTIFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianDTIFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/dti-fha-re-loan-purpose-refinance"
+        },
+        {
+          "id": "DenialRatesByTypeLoanPurposeRefinance.route",
+          "class_name": "DenialRatesByTypeLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-loan-purpose-refinance"
+        },
+        {
+          "id": "DenialRatesCCByRaceLoanPurposeRefinance.route",
+          "class_name": "DenialRatesCCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "DenialRatesFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "DenialRatesFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/denials-fha-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianInterestRatesLoanPurposeRefinance.route",
+          "class_name": "MedianInterestRatesLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianInterestRatesCCByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianInterestRatesCCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianInterestRatesFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianInterestRatesFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/interest-rates-fha-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianTotalLoanCostsLoanPurposeRefinance.route",
+          "class_name": "MedianTotalLoanCostsLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianTotalLoanCostsCCByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianTotalLoanCostsCCByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-cc-re-loan-purpose-refinance"
+        },
+        {
+          "id": "MedianTotalLoanCostsFHAByRaceLoanPurposeRefinance.route",
+          "class_name": "MedianTotalLoanCostsFHAByRaceLoanPurposeRefinance",
+          "method_name": "route",
+          "param_types": [],
+          "return_type": "GraphSeriesInfo",
+          "protocol": "REST",
+          "endpoint": "GET /graphs/tlc-fha-re-loan-purpose-refinance"
+        }
+      ]
+    },
+    "hmda-data-publisher": {
+      "exposed_interfaces": [
+        {
+          "id": "DataPublisherHttpApi.triggerScheduler",
+          "class_name": "DataPublisherHttpApi",
+          "method_name": "triggerScheduler",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /trigger/{schedulerName}/{year}"
+        }
+      ]
+    },
+    "data-browser": {
+      "exposed_interfaces": [
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesCount",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "AggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /view/count"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesNationwideCsv",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /view/nationwide/csv"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesNationwidePipe",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /view/nationwide/pipe"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesNationwideAggregations",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "AggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /view/nationwide/aggregations"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesAggregations",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "AggregationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /view/aggregations"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesCsv",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /view/csv"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesPipe",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /view/pipe"
+        },
+        {
+          "id": "DataBrowserHttpApi.dataBrowserRoutesFilers",
+          "class_name": "DataBrowserHttpApi",
+          "method_name": "dataBrowserRoutes",
+          "param_types": [
+            "QueryFields"
+          ],
+          "return_type": "FilerInstitutionHttpResponseLatest",
+          "protocol": "REST",
+          "endpoint": "GET /view/filers"
+        }
+      ]
+    },
+    "institutions-api": {
+      "exposed_interfaces": [
+        {
+          "id": "InstitutionQueryHttpApi.institutionByIdPath",
+          "class_name": "InstitutionQueryHttpApi",
+          "method_name": "institutionByIdPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "Institution",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}"
+        },
+        {
+          "id": "InstitutionQueryHttpApi.institutionHistoryPath",
+          "class_name": "InstitutionQueryHttpApi",
+          "method_name": "institutionHistoryPath",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "InstitutionNoteHistoryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/{lei}/year/{year}/history"
+        },
+        {
+          "id": "InstitutionQueryHttpApi.institutionByDomainPath",
+          "class_name": "InstitutionQueryHttpApi",
+          "method_name": "institutionByDomainPath",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "InstitutionsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /institutions"
+        },
+        {
+          "id": "InstitutionQueryHttpApi.quarterlyFilersLarCountsPath",
+          "class_name": "InstitutionQueryHttpApi",
+          "method_name": "quarterlyFilersLarCountsPath",
+          "param_types": [
+            "Int",
+            "Int"
+          ],
+          "return_type": "LarCountSummary",
+          "protocol": "REST",
+          "endpoint": "GET /institutions/quarterly/{year}/lars/past/{pastCount}"
+        },
+        {
+          "id": "HmdaInstitutionApi.processData",
+          "class_name": "HmdaInstitutionApi",
+          "method_name": "processData",
+          "param_types": [
+            "InstitutionKafkaEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "institution"
+        }
+      ]
+    },
+    "ratespread-calculator": {
+      "exposed_interfaces": [
+        {
+          "id": "RateSpreadAPIRoutes.rateSpreadRoutes",
+          "class_name": "RateSpreadAPIRoutes",
+          "method_name": "rateSpreadRoutes",
+          "param_types": [
+            "RateSpreadRequest"
+          ],
+          "return_type": "RateSpreadResponse",
+          "protocol": "REST",
+          "endpoint": "POST /rateSpread"
+        },
+        {
+          "id": "RateSpreadAPIRoutes.rateSpreadRoutesCsv",
+          "class_name": "RateSpreadAPIRoutes",
+          "method_name": "rateSpreadRoutes",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /rateSpread/csv"
+        }
+      ]
+    },
+    "email-service": {
+      "exposed_interfaces": [
+        {
+          "id": "SubmissionStream.sendEmailAndUpdateStatus",
+          "class_name": "SubmissionStream",
+          "method_name": "sendEmailAndUpdateStatus",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "hmda-email"
+        },
+        {
+          "id": "AdminStream.sendEmailAndUpdateStatus",
+          "class_name": "AdminStream",
+          "method_name": "sendEmailAndUpdateStatus",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "admin-email"
+        }
+      ]
+    },
+    "modified-lar": {
+      "exposed_interfaces": [
+        {
+          "id": "ModifiedLarApp.submitForPersistence",
+          "class_name": "ModifiedLarApp",
+          "method_name": "submitForPersistence",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "hmda-sign, hmda-modified-lar"
+        }
+      ]
+    },
+    "irs-publisher": {
+      "exposed_interfaces": [
+        {
+          "id": "IrsPublisherApp.processData",
+          "class_name": "IrsPublisherApp",
+          "method_name": "processData",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "hmda-sign, hmda-irs"
+        }
+      ]
+    },
+    "submission-errors": {
+      "exposed_interfaces": [
+        {
+          "id": "SubmissionProcessor.processRawKafkaSubmission",
+          "class_name": "SubmissionProcessor",
+          "method_name": "processRawKafkaSubmission",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "submission-errors"
+        }
+      ]
+    },
+    "check-digit": {
+      "exposed_interfaces": [
+        {
+          "id": "ULIHttpApi.uliHttpRoutesCheckDigit",
+          "class_name": "ULIHttpApi",
+          "method_name": "uliHttpRoutes",
+          "param_types": [
+            "Loan"
+          ],
+          "return_type": "ULI",
+          "protocol": "REST",
+          "endpoint": "POST /uli/checkDigit"
+        },
+        {
+          "id": "ULIHttpApi.uliHttpRoutesCheckDigitCsv",
+          "class_name": "ULIHttpApi",
+          "method_name": "uliHttpRoutes",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /uli/checkDigit/csv"
+        },
+        {
+          "id": "ULIHttpApi.uliHttpRoutesValidate",
+          "class_name": "ULIHttpApi",
+          "method_name": "uliHttpRoutes",
+          "param_types": [
+            "ULICheck"
+          ],
+          "return_type": "ULIValidated",
+          "protocol": "REST",
+          "endpoint": "POST /uli/validate"
+        },
+        {
+          "id": "ULIHttpApi.uliHttpRoutesValidateCsv",
+          "class_name": "ULIHttpApi",
+          "method_name": "uliHttpRoutes",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /uli/validate/csv"
+        }
+      ]
+    },
+    "hmda-analytics": {
+      "exposed_interfaces": [
+        {
+          "id": "HmdaAnalyticsApp.processData",
+          "class_name": "HmdaAnalyticsApp",
+          "method_name": "processData",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "hmda-sign, hmda-analytics"
+        }
+      ]
+    },
+    "hmda-reporting": {
+      "exposed_interfaces": [
+        {
+          "id": "ReportingHttpApi.filerListRoute",
+          "class_name": "ReportingHttpApi",
+          "method_name": "filerListRoute",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "HmdaFilerResponse",
+          "protocol": "REST",
+          "endpoint": "GET /filers/{filingYear}"
+        },
+        {
+          "id": "ReportingHttpApi.filerListRouteMsaMds",
+          "class_name": "ReportingHttpApi",
+          "method_name": "filerListRoute",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "MsaMdResponse",
+          "protocol": "REST",
+          "endpoint": "GET /filers/{year}/{lei}/msaMds"
+        }
+      ]
+    },
+    "hmda-auth": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthHttpApi.authHttpRoutes",
+          "class_name": "AuthHttpApi",
+          "method_name": "authHttpRoutes",
+          "param_types": [
+            "UserUpdate"
+          ],
+          "return_type": "UserUpdate",
+          "protocol": "REST",
+          "endpoint": "PUT /user"
+        }
+      ]
+    },
+    "rate-limit": {
+      "exposed_interfaces": [
+        {
+          "id": "RateLimitServiceImpl.shouldRateLimit",
+          "class_name": "RateLimitServiceImpl",
+          "method_name": "shouldRateLimit",
+          "param_types": [
+            "RateLimitRequest"
+          ],
+          "return_type": "RateLimitResponse",
+          "protocol": "gRPC",
+          "endpoint": "pb.lyft.ratelimit.RateLimitService/ShouldRateLimit"
+        }
+      ]
+    },
+    "file-proxy": {
+      "exposed_interfaces": [
+        {
+          "id": "ProxyHttpApi.proxyHttpRoutesModifiedLarCsv",
+          "class_name": "ProxyHttpApi",
+          "method_name": "proxyHttpRoutes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /file/modifiedLar/year/{year}/institution/{lei}/csv"
+        },
+        {
+          "id": "ProxyHttpApi.proxyHttpRoutesModifiedLarCsvHeader",
+          "class_name": "ProxyHttpApi",
+          "method_name": "proxyHttpRoutes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /file/modifiedLar/year/{year}/institution/{lei}/csv/header"
+        },
+        {
+          "id": "ProxyHttpApi.proxyHttpRoutesModifiedLarTxt",
+          "class_name": "ProxyHttpApi",
+          "method_name": "proxyHttpRoutes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /file/modifiedLar/year/{year}/institution/{lei}/txt"
+        },
+        {
+          "id": "ProxyHttpApi.proxyHttpRoutesModifiedLarTxtHeader",
+          "class_name": "ProxyHttpApi",
+          "method_name": "proxyHttpRoutes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /file/modifiedLar/year/{year}/institution/{lei}/txt/header"
+        },
+        {
+          "id": "ProxyHttpApi.proxyHttpRoutesIrsReport",
+          "class_name": "ProxyHttpApi",
+          "method_name": "proxyHttpRoutes",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /file/reports/irs/year/{year}/institution/{lei}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "hmda",
+      "src_class": "HmdaValidationError",
+      "src_method": "publishSignEvent",
+      "dst_service": "modified-lar",
+      "dst_class": "ModifiedLarApp",
+      "dst_interface_id": "ModifiedLarApp.submitForPersistence",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/persistence/submission/HmdaValidationError.scala:703 produceRecord(signTopic, submissionId.lei"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "HmdaValidationError",
+      "src_method": "publishSignEvent",
+      "dst_service": "irs-publisher",
+      "dst_class": "IrsPublisherApp",
+      "dst_interface_id": "IrsPublisherApp.processData",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/persistence/submission/HmdaValidationError.scala:703 produceRecord(signTopic, submissionId.lei"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "HmdaValidationError",
+      "src_method": "publishSignEvent",
+      "dst_service": "hmda-analytics",
+      "dst_class": "HmdaAnalyticsApp",
+      "dst_interface_id": "HmdaAnalyticsApp.processData",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/persistence/submission/HmdaValidationError.scala:703 produceRecord(signTopic, submissionId.lei"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "HmdaValidationError",
+      "src_method": "publishSignEvent",
+      "dst_service": "email-service",
+      "dst_class": "SubmissionStream",
+      "dst_interface_id": "SubmissionStream.sendEmailAndUpdateStatus",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/persistence/submission/HmdaValidationError.scala:704 produceRecord(emailTopic,"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "InstitutionPersistence",
+      "src_method": "publishInstitutionEvent",
+      "dst_service": "institutions-api",
+      "dst_class": "HmdaInstitutionApi",
+      "dst_interface_id": "HmdaInstitutionApi.processData",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/persistence/institution/InstitutionPersistence.scala:148 produceInstitutionRecord(institutionTopic, institutionID"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "PublishAdminHttpApi",
+      "src_method": "publishKafkaEvent",
+      "dst_service": "modified-lar",
+      "dst_class": "ModifiedLarApp",
+      "dst_interface_id": "ModifiedLarApp.submitForPersistence",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/api/http/admin/PublishAdminHttpApi.scala:68 produceRecord(topic, lei, submissionId"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "PublishAdminHttpApi",
+      "src_method": "publishKafkaEvent",
+      "dst_service": "irs-publisher",
+      "dst_class": "IrsPublisherApp",
+      "dst_interface_id": "IrsPublisherApp.processData",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/api/http/admin/PublishAdminHttpApi.scala:68 produceRecord(topic, lei, submissionId"
+    },
+    {
+      "src_service": "hmda",
+      "src_class": "PublishAdminHttpApi",
+      "src_method": "publishKafkaEvent",
+      "dst_service": "hmda-analytics",
+      "dst_class": "HmdaAnalyticsApp",
+      "dst_interface_id": "HmdaAnalyticsApp.processData",
+      "protocol": "Messaging",
+      "evidence": "hmda/src/main/scala/hmda/api/http/admin/PublishAdminHttpApi.scala:68 produceRecord(topic, lei, submissionId"
+    }
+  ]
+}

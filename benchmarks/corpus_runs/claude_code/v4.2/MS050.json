@@ -1,0 +1,1937 @@
+{
+  "system_id": "MS050",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "applicationset": {
+      "exposed_interfaces": [
+        {
+          "id": "WebhookHandler.Handler",
+          "class_name": "webhook.WebhookHandler",
+          "method_name": "Handler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/webhook"
+        }
+      ]
+    },
+    "commitserver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.CommitHydratedManifests",
+          "class_name": "commit.Service",
+          "method_name": "CommitHydratedManifests",
+          "param_types": [
+            "CommitHydratedManifestsRequest"
+          ],
+          "return_type": "CommitHydratedManifestsResponse",
+          "protocol": "gRPC",
+          "endpoint": "CommitService/CommitHydratedManifests"
+        }
+      ]
+    },
+    "ui": {
+      "exposed_interfaces": []
+    },
+    "notification_controller": {
+      "exposed_interfaces": []
+    },
+    "reposerver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.GenerateManifest",
+          "class_name": "repository.Service",
+          "method_name": "GenerateManifest",
+          "param_types": [
+            "ManifestRequest"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GenerateManifest"
+        },
+        {
+          "id": "Service.GenerateManifestWithFiles",
+          "class_name": "repository.Service",
+          "method_name": "GenerateManifestWithFiles",
+          "param_types": [
+            "ManifestRequestWithFiles"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GenerateManifestWithFiles"
+        },
+        {
+          "id": "Service.TestRepository",
+          "class_name": "repository.Service",
+          "method_name": "TestRepository",
+          "param_types": [
+            "TestRepositoryRequest"
+          ],
+          "return_type": "TestRepositoryResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/TestRepository"
+        },
+        {
+          "id": "Service.ResolveRevision",
+          "class_name": "repository.Service",
+          "method_name": "ResolveRevision",
+          "param_types": [
+            "ResolveRevisionRequest"
+          ],
+          "return_type": "ResolveRevisionResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ResolveRevision"
+        },
+        {
+          "id": "Service.ListRefs",
+          "class_name": "repository.Service",
+          "method_name": "ListRefs",
+          "param_types": [
+            "ListRefsRequest"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListRefs"
+        },
+        {
+          "id": "Service.ListOCITags",
+          "class_name": "repository.Service",
+          "method_name": "ListOCITags",
+          "param_types": [
+            "ListRefsRequest"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListOCITags"
+        },
+        {
+          "id": "Service.ListApps",
+          "class_name": "repository.Service",
+          "method_name": "ListApps",
+          "param_types": [
+            "ListAppsRequest"
+          ],
+          "return_type": "AppList",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListApps"
+        },
+        {
+          "id": "Service.ListPlugins",
+          "class_name": "repository.Service",
+          "method_name": "ListPlugins",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "PluginList",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListPlugins"
+        },
+        {
+          "id": "Service.GetAppDetails",
+          "class_name": "repository.Service",
+          "method_name": "GetAppDetails",
+          "param_types": [
+            "RepoServerAppDetailsQuery"
+          ],
+          "return_type": "RepoAppDetailsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetAppDetails"
+        },
+        {
+          "id": "Service.GetRevisionMetadata",
+          "class_name": "repository.Service",
+          "method_name": "GetRevisionMetadata",
+          "param_types": [
+            "RepoServerRevisionMetadataRequest"
+          ],
+          "return_type": "RevisionMetadata",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetRevisionMetadata"
+        },
+        {
+          "id": "Service.GetOCIMetadata",
+          "class_name": "repository.Service",
+          "method_name": "GetOCIMetadata",
+          "param_types": [
+            "RepoServerRevisionChartDetailsRequest"
+          ],
+          "return_type": "OCIMetadata",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOCIMetadata"
+        },
+        {
+          "id": "Service.GetRevisionChartDetails",
+          "class_name": "repository.Service",
+          "method_name": "GetRevisionChartDetails",
+          "param_types": [
+            "RepoServerRevisionChartDetailsRequest"
+          ],
+          "return_type": "ChartDetails",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetRevisionChartDetails"
+        },
+        {
+          "id": "Service.GetHelmCharts",
+          "class_name": "repository.Service",
+          "method_name": "GetHelmCharts",
+          "param_types": [
+            "HelmChartsRequest"
+          ],
+          "return_type": "HelmChartsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetHelmCharts"
+        },
+        {
+          "id": "Service.GetGitFiles",
+          "class_name": "repository.Service",
+          "method_name": "GetGitFiles",
+          "param_types": [
+            "GitFilesRequest"
+          ],
+          "return_type": "GitFilesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetGitFiles"
+        },
+        {
+          "id": "Service.GetGitDirectories",
+          "class_name": "repository.Service",
+          "method_name": "GetGitDirectories",
+          "param_types": [
+            "GitDirectoriesRequest"
+          ],
+          "return_type": "GitDirectoriesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetGitDirectories"
+        },
+        {
+          "id": "Service.GetOciFiles",
+          "class_name": "repository.Service",
+          "method_name": "GetOciFiles",
+          "param_types": [
+            "OciFilesRequest"
+          ],
+          "return_type": "OciFilesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOciFiles"
+        },
+        {
+          "id": "Service.GetOciDirectories",
+          "class_name": "repository.Service",
+          "method_name": "GetOciDirectories",
+          "param_types": [
+            "OciDirectoriesRequest"
+          ],
+          "return_type": "OciDirectoriesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOciDirectories"
+        },
+        {
+          "id": "Service.UpdateRevisionForPaths",
+          "class_name": "repository.Service",
+          "method_name": "UpdateRevisionForPaths",
+          "param_types": [
+            "UpdateRevisionForPathsRequest"
+          ],
+          "return_type": "UpdateRevisionForPathsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/UpdateRevisionForPaths"
+        }
+      ]
+    },
+    "controller": {
+      "exposed_interfaces": []
+    },
+    "server": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.CanI",
+          "class_name": "account.Server",
+          "method_name": "CanI",
+          "param_types": [
+            "CanIRequest"
+          ],
+          "return_type": "CanIResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/CanI"
+        },
+        {
+          "id": "Server.UpdatePassword",
+          "class_name": "account.Server",
+          "method_name": "UpdatePassword",
+          "param_types": [
+            "UpdatePasswordRequest"
+          ],
+          "return_type": "UpdatePasswordResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/UpdatePassword"
+        },
+        {
+          "id": "Server.ListAccounts",
+          "class_name": "account.Server",
+          "method_name": "ListAccounts",
+          "param_types": [
+            "ListAccountRequest"
+          ],
+          "return_type": "AccountsList",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/ListAccounts"
+        },
+        {
+          "id": "Server.GetAccount",
+          "class_name": "account.Server",
+          "method_name": "GetAccount",
+          "param_types": [
+            "GetAccountRequest"
+          ],
+          "return_type": "Account",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/GetAccount"
+        },
+        {
+          "id": "Server.CreateTokenInAccount",
+          "class_name": "account.Server",
+          "method_name": "CreateToken",
+          "param_types": [
+            "CreateTokenRequest"
+          ],
+          "return_type": "CreateTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/CreateToken"
+        },
+        {
+          "id": "Server.DeleteTokenInAccount",
+          "class_name": "account.Server",
+          "method_name": "DeleteToken",
+          "param_types": [
+            "DeleteTokenRequest"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/DeleteToken"
+        },
+        {
+          "id": "Server.ListInApplication",
+          "class_name": "application.Server",
+          "method_name": "List",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "ApplicationList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/List"
+        },
+        {
+          "id": "Server.ListResourceEventsInApplication",
+          "class_name": "application.Server",
+          "method_name": "ListResourceEvents",
+          "param_types": [
+            "ApplicationResourceEventsQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceEvents"
+        },
+        {
+          "id": "Server.WatchInApplication",
+          "class_name": "application.Server",
+          "method_name": "Watch",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "List<ApplicationWatchEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Watch"
+        },
+        {
+          "id": "Server.CreateInApplication",
+          "class_name": "application.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ApplicationCreateRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Create"
+        },
+        {
+          "id": "Server.GetInApplication",
+          "class_name": "application.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Get"
+        },
+        {
+          "id": "Server.GetApplicationSyncWindows",
+          "class_name": "application.Server",
+          "method_name": "GetApplicationSyncWindows",
+          "param_types": [
+            "ApplicationSyncWindowsQuery"
+          ],
+          "return_type": "ApplicationSyncWindowsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetApplicationSyncWindows"
+        },
+        {
+          "id": "Server.RevisionMetadata",
+          "class_name": "application.Server",
+          "method_name": "RevisionMetadata",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "RevisionMetadata",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RevisionMetadata"
+        },
+        {
+          "id": "Server.RevisionChartDetails",
+          "class_name": "application.Server",
+          "method_name": "RevisionChartDetails",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "ChartDetails",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RevisionChartDetails"
+        },
+        {
+          "id": "Server.GetOCIMetadata",
+          "class_name": "application.Server",
+          "method_name": "GetOCIMetadata",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "OCIMetadata",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetOCIMetadata"
+        },
+        {
+          "id": "Server.GetManifests",
+          "class_name": "application.Server",
+          "method_name": "GetManifests",
+          "param_types": [
+            "ApplicationManifestQuery"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetManifests"
+        },
+        {
+          "id": "Server.GetManifestsWithFiles",
+          "class_name": "application.Server",
+          "method_name": "GetManifestsWithFiles",
+          "param_types": [
+            "ApplicationManifestQueryWithFilesWrapper"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetManifestsWithFiles"
+        },
+        {
+          "id": "Server.UpdateInApplication",
+          "class_name": "application.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ApplicationUpdateRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Update"
+        },
+        {
+          "id": "Server.UpdateSpec",
+          "class_name": "application.Server",
+          "method_name": "UpdateSpec",
+          "param_types": [
+            "ApplicationUpdateSpecRequest"
+          ],
+          "return_type": "ApplicationSpec",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/UpdateSpec"
+        },
+        {
+          "id": "Server.Patch",
+          "class_name": "application.Server",
+          "method_name": "Patch",
+          "param_types": [
+            "ApplicationPatchRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Patch"
+        },
+        {
+          "id": "Server.DeleteInApplication",
+          "class_name": "application.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ApplicationDeleteRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Delete"
+        },
+        {
+          "id": "Server.Sync",
+          "class_name": "application.Server",
+          "method_name": "Sync",
+          "param_types": [
+            "ApplicationSyncRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Sync"
+        },
+        {
+          "id": "Server.ManagedResources",
+          "class_name": "application.Server",
+          "method_name": "ManagedResources",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "ManagedResourcesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ManagedResources"
+        },
+        {
+          "id": "Server.ServerSideDiff",
+          "class_name": "application.Server",
+          "method_name": "ServerSideDiff",
+          "param_types": [
+            "ApplicationServerSideDiffQuery"
+          ],
+          "return_type": "ApplicationServerSideDiffResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ServerSideDiff"
+        },
+        {
+          "id": "Server.ResourceTreeInApplication",
+          "class_name": "application.Server",
+          "method_name": "ResourceTree",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "ApplicationTree",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ResourceTree"
+        },
+        {
+          "id": "Server.WatchResourceTree",
+          "class_name": "application.Server",
+          "method_name": "WatchResourceTree",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "List<ApplicationTree>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/WatchResourceTree"
+        },
+        {
+          "id": "Server.Rollback",
+          "class_name": "application.Server",
+          "method_name": "Rollback",
+          "param_types": [
+            "ApplicationRollbackRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Rollback"
+        },
+        {
+          "id": "Server.TerminateOperation",
+          "class_name": "application.Server",
+          "method_name": "TerminateOperation",
+          "param_types": [
+            "OperationTerminateRequest"
+          ],
+          "return_type": "OperationTerminateResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/TerminateOperation"
+        },
+        {
+          "id": "Server.GetResource",
+          "class_name": "application.Server",
+          "method_name": "GetResource",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "ApplicationResourceResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetResource"
+        },
+        {
+          "id": "Server.PatchResource",
+          "class_name": "application.Server",
+          "method_name": "PatchResource",
+          "param_types": [
+            "ApplicationResourcePatchRequest"
+          ],
+          "return_type": "ApplicationResourceResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/PatchResource"
+        },
+        {
+          "id": "Server.ListResourceActions",
+          "class_name": "application.Server",
+          "method_name": "ListResourceActions",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "ResourceActionsListResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceActions"
+        },
+        {
+          "id": "Server.RunResourceAction",
+          "class_name": "application.Server",
+          "method_name": "RunResourceAction",
+          "param_types": [
+            "ResourceActionRunRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RunResourceAction"
+        },
+        {
+          "id": "Server.RunResourceActionV2",
+          "class_name": "application.Server",
+          "method_name": "RunResourceActionV2",
+          "param_types": [
+            "ResourceActionRunRequestV2"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RunResourceActionV2"
+        },
+        {
+          "id": "Server.DeleteResource",
+          "class_name": "application.Server",
+          "method_name": "DeleteResource",
+          "param_types": [
+            "ApplicationResourceDeleteRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/DeleteResource"
+        },
+        {
+          "id": "Server.PodLogs",
+          "class_name": "application.Server",
+          "method_name": "PodLogs",
+          "param_types": [
+            "ApplicationPodLogsQuery"
+          ],
+          "return_type": "List<LogEntry>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/PodLogs"
+        },
+        {
+          "id": "Server.ListLinksInApplication",
+          "class_name": "application.Server",
+          "method_name": "ListLinks",
+          "param_types": [
+            "ListAppLinksRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListLinks"
+        },
+        {
+          "id": "Server.ListResourceLinks",
+          "class_name": "application.Server",
+          "method_name": "ListResourceLinks",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceLinks"
+        },
+        {
+          "id": "Server.GetInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ApplicationSetGetQuery"
+          ],
+          "return_type": "ApplicationSet",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Get"
+        },
+        {
+          "id": "Server.Generate",
+          "class_name": "applicationset.Server",
+          "method_name": "Generate",
+          "param_types": [
+            "ApplicationSetGenerateRequest"
+          ],
+          "return_type": "ApplicationSetGenerateResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Generate"
+        },
+        {
+          "id": "Server.ListInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "List",
+          "param_types": [
+            "ApplicationSetListQuery"
+          ],
+          "return_type": "ApplicationSetList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/List"
+        },
+        {
+          "id": "Server.CreateInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ApplicationSetCreateRequest"
+          ],
+          "return_type": "ApplicationSet",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Create"
+        },
+        {
+          "id": "Server.DeleteInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ApplicationSetDeleteRequest"
+          ],
+          "return_type": "ApplicationSetResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Delete"
+        },
+        {
+          "id": "Server.ResourceTreeInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "ResourceTree",
+          "param_types": [
+            "ApplicationSetTreeQuery"
+          ],
+          "return_type": "ApplicationSetTree",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/ResourceTree"
+        },
+        {
+          "id": "Server.ListResourceEventsInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "ListResourceEvents",
+          "param_types": [
+            "ApplicationSetGetQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/ListResourceEvents"
+        },
+        {
+          "id": "Server.WatchInApplicationset",
+          "class_name": "applicationset.Server",
+          "method_name": "Watch",
+          "param_types": [
+            "ApplicationSetWatchQuery"
+          ],
+          "return_type": "List<ApplicationSetWatchEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Watch"
+        },
+        {
+          "id": "Server.ListCertificates",
+          "class_name": "certificate.Server",
+          "method_name": "ListCertificates",
+          "param_types": [
+            "RepositoryCertificateQuery"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/ListCertificates"
+        },
+        {
+          "id": "Server.CreateCertificate",
+          "class_name": "certificate.Server",
+          "method_name": "CreateCertificate",
+          "param_types": [
+            "RepositoryCertificateCreateRequest"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/CreateCertificate"
+        },
+        {
+          "id": "Server.DeleteCertificate",
+          "class_name": "certificate.Server",
+          "method_name": "DeleteCertificate",
+          "param_types": [
+            "RepositoryCertificateQuery"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/DeleteCertificate"
+        },
+        {
+          "id": "Server.ListInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "List",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterList",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/List"
+        },
+        {
+          "id": "Server.CreateInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ClusterCreateRequest"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Create"
+        },
+        {
+          "id": "Server.GetInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Get"
+        },
+        {
+          "id": "Server.UpdateInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ClusterUpdateRequest"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Update"
+        },
+        {
+          "id": "Server.DeleteInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterResponse",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Delete"
+        },
+        {
+          "id": "Server.RotateAuth",
+          "class_name": "cluster.Server",
+          "method_name": "RotateAuth",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterResponse",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/RotateAuth"
+        },
+        {
+          "id": "Server.InvalidateCache",
+          "class_name": "cluster.Server",
+          "method_name": "InvalidateCache",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/InvalidateCache"
+        },
+        {
+          "id": "Server.ListInGpgkey",
+          "class_name": "gpgkey.Server",
+          "method_name": "List",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKeyList",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/List"
+        },
+        {
+          "id": "Server.GetInGpgkey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Get",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKey",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Get"
+        },
+        {
+          "id": "Server.CreateInGpgkey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Create",
+          "param_types": [
+            "GnuPGPublicKeyCreateRequest"
+          ],
+          "return_type": "GnuPGPublicKeyCreateResponse",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Create"
+        },
+        {
+          "id": "Server.DeleteInGpgkey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKeyResponse",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Delete"
+        },
+        {
+          "id": "Server.ListTriggers",
+          "class_name": "notification.Server",
+          "method_name": "ListTriggers",
+          "param_types": [
+            "TriggersListRequest"
+          ],
+          "return_type": "TriggerList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListTriggers"
+        },
+        {
+          "id": "Server.ListServices",
+          "class_name": "notification.Server",
+          "method_name": "ListServices",
+          "param_types": [
+            "ServicesListRequest"
+          ],
+          "return_type": "ServiceList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListServices"
+        },
+        {
+          "id": "Server.ListTemplates",
+          "class_name": "notification.Server",
+          "method_name": "ListTemplates",
+          "param_types": [
+            "TemplatesListRequest"
+          ],
+          "return_type": "TemplateList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListTemplates"
+        },
+        {
+          "id": "Server.CreateTokenInProject",
+          "class_name": "project.Server",
+          "method_name": "CreateToken",
+          "param_types": [
+            "ProjectTokenCreateRequest"
+          ],
+          "return_type": "ProjectTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/CreateToken"
+        },
+        {
+          "id": "Server.DeleteTokenInProject",
+          "class_name": "project.Server",
+          "method_name": "DeleteToken",
+          "param_types": [
+            "ProjectTokenDeleteRequest"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/DeleteToken"
+        },
+        {
+          "id": "Server.CreateInProject",
+          "class_name": "project.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ProjectCreateRequest"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Create"
+        },
+        {
+          "id": "Server.ListInProject",
+          "class_name": "project.Server",
+          "method_name": "List",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "AppProjectList",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/List"
+        },
+        {
+          "id": "Server.GetDetailedProject",
+          "class_name": "project.Server",
+          "method_name": "GetDetailedProject",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "DetailedProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetDetailedProject"
+        },
+        {
+          "id": "Server.GetInProject",
+          "class_name": "project.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Get"
+        },
+        {
+          "id": "Server.GetGlobalProjects",
+          "class_name": "project.Server",
+          "method_name": "GetGlobalProjects",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "GlobalProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetGlobalProjects"
+        },
+        {
+          "id": "Server.UpdateInProject",
+          "class_name": "project.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ProjectUpdateRequest"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Update"
+        },
+        {
+          "id": "Server.DeleteInProject",
+          "class_name": "project.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Delete"
+        },
+        {
+          "id": "Server.ListEvents",
+          "class_name": "project.Server",
+          "method_name": "ListEvents",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/ListEvents"
+        },
+        {
+          "id": "Server.GetSyncWindowsState",
+          "class_name": "project.Server",
+          "method_name": "GetSyncWindowsState",
+          "param_types": [
+            "SyncWindowsQuery"
+          ],
+          "return_type": "SyncWindowsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetSyncWindowsState"
+        },
+        {
+          "id": "Server.ListLinksInProject",
+          "class_name": "project.Server",
+          "method_name": "ListLinks",
+          "param_types": [
+            "ListProjectLinksRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/ListLinks"
+        },
+        {
+          "id": "Server.ListRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "ListRepositoryCredentials",
+          "param_types": [
+            "RepoCredsQuery"
+          ],
+          "return_type": "RepoCredsList",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/ListRepositoryCredentials"
+        },
+        {
+          "id": "Server.ListWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "ListWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsQuery"
+          ],
+          "return_type": "RepoCredsList",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/ListWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.CreateRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "CreateRepositoryCredentials",
+          "param_types": [
+            "RepoCredsCreateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/CreateRepositoryCredentials"
+        },
+        {
+          "id": "Server.CreateWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "CreateWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsCreateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/CreateWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.UpdateRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "UpdateRepositoryCredentials",
+          "param_types": [
+            "RepoCredsUpdateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/UpdateRepositoryCredentials"
+        },
+        {
+          "id": "Server.UpdateWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "UpdateWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsUpdateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/UpdateWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.DeleteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "DeleteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsDeleteRequest"
+          ],
+          "return_type": "RepoCredsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/DeleteRepositoryCredentials"
+        },
+        {
+          "id": "Server.DeleteWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "DeleteWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsDeleteRequest"
+          ],
+          "return_type": "RepoCredsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/DeleteWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.ListInRepository",
+          "class_name": "repository.Server",
+          "method_name": "List",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/List"
+        },
+        {
+          "id": "Server.GetInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Get",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Get"
+        },
+        {
+          "id": "Server.GetWrite",
+          "class_name": "repository.Server",
+          "method_name": "GetWrite",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetWrite"
+        },
+        {
+          "id": "Server.ListRepositories",
+          "class_name": "repository.Server",
+          "method_name": "ListRepositories",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListRepositories"
+        },
+        {
+          "id": "Server.ListWriteRepositories",
+          "class_name": "repository.Server",
+          "method_name": "ListWriteRepositories",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListWriteRepositories"
+        },
+        {
+          "id": "Server.ListRefs",
+          "class_name": "repository.Server",
+          "method_name": "ListRefs",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListRefs"
+        },
+        {
+          "id": "Server.ListOCITags",
+          "class_name": "repository.Server",
+          "method_name": "ListOCITags",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListOCITags"
+        },
+        {
+          "id": "Server.ListApps",
+          "class_name": "repository.Server",
+          "method_name": "ListApps",
+          "param_types": [
+            "RepoAppsQuery"
+          ],
+          "return_type": "RepoAppsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListApps"
+        },
+        {
+          "id": "Server.GetAppDetails",
+          "class_name": "repository.Server",
+          "method_name": "GetAppDetails",
+          "param_types": [
+            "RepoAppDetailsQuery"
+          ],
+          "return_type": "RepoAppDetailsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetAppDetails"
+        },
+        {
+          "id": "Server.GetHelmCharts",
+          "class_name": "repository.Server",
+          "method_name": "GetHelmCharts",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "HelmChartsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetHelmCharts"
+        },
+        {
+          "id": "Server.CreateInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Create",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Create"
+        },
+        {
+          "id": "Server.CreateRepository",
+          "class_name": "repository.Server",
+          "method_name": "CreateRepository",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/CreateRepository"
+        },
+        {
+          "id": "Server.CreateWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "CreateWriteRepository",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/CreateWriteRepository"
+        },
+        {
+          "id": "Server.UpdateInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Update",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Update"
+        },
+        {
+          "id": "Server.UpdateRepository",
+          "class_name": "repository.Server",
+          "method_name": "UpdateRepository",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/UpdateRepository"
+        },
+        {
+          "id": "Server.UpdateWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "UpdateWriteRepository",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/UpdateWriteRepository"
+        },
+        {
+          "id": "Server.DeleteInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Delete"
+        },
+        {
+          "id": "Server.DeleteRepository",
+          "class_name": "repository.Server",
+          "method_name": "DeleteRepository",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/DeleteRepository"
+        },
+        {
+          "id": "Server.DeleteWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "DeleteWriteRepository",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/DeleteWriteRepository"
+        },
+        {
+          "id": "Server.ValidateAccess",
+          "class_name": "repository.Server",
+          "method_name": "ValidateAccess",
+          "param_types": [
+            "RepoAccessQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ValidateAccess"
+        },
+        {
+          "id": "Server.ValidateWriteAccess",
+          "class_name": "repository.Server",
+          "method_name": "ValidateWriteAccess",
+          "param_types": [
+            "RepoAccessQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ValidateWriteAccess"
+        },
+        {
+          "id": "Server.GetUserInfo",
+          "class_name": "session.Server",
+          "method_name": "GetUserInfo",
+          "param_types": [
+            "GetUserInfoRequest"
+          ],
+          "return_type": "GetUserInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/GetUserInfo"
+        },
+        {
+          "id": "Server.CreateInSession",
+          "class_name": "session.Server",
+          "method_name": "Create",
+          "param_types": [
+            "SessionCreateRequest"
+          ],
+          "return_type": "SessionResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/Create"
+        },
+        {
+          "id": "Server.DeleteInSession",
+          "class_name": "session.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "SessionDeleteRequest"
+          ],
+          "return_type": "SessionResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/Delete"
+        },
+        {
+          "id": "Server.GetInSettings",
+          "class_name": "settings.Server",
+          "method_name": "Get",
+          "param_types": [
+            "SettingsQuery"
+          ],
+          "return_type": "Settings",
+          "protocol": "gRPC",
+          "endpoint": "SettingsService/Get"
+        },
+        {
+          "id": "Server.GetPlugins",
+          "class_name": "settings.Server",
+          "method_name": "GetPlugins",
+          "param_types": [
+            "SettingsQuery"
+          ],
+          "return_type": "SettingsPluginsResponse",
+          "protocol": "gRPC",
+          "endpoint": "SettingsService/GetPlugins"
+        },
+        {
+          "id": "Handler.ServeHTTPBadge",
+          "class_name": "badge.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/badge"
+        },
+        {
+          "id": "Handler.ServeHTTPLogout",
+          "class_name": "logout.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/logout"
+        },
+        {
+          "id": "terminalHandler.ServeHTTP",
+          "class_name": "application.terminalHandler",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /terminal"
+        },
+        {
+          "id": "ClientApp.HandleLogin",
+          "class_name": "oidc.ClientApp",
+          "method_name": "HandleLogin",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/login"
+        },
+        {
+          "id": "ClientApp.HandleCallback",
+          "class_name": "oidc.ClientApp",
+          "method_name": "HandleCallback",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/callback"
+        },
+        {
+          "id": "ArgoCDWebhookHandler.Handler",
+          "class_name": "webhook.ArgoCDWebhookHandler",
+          "method_name": "Handler",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/webhook"
+        }
+      ]
+    },
+    "cmpserver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.GenerateManifest",
+          "class_name": "plugin.Service",
+          "method_name": "GenerateManifest",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/GenerateManifest"
+        },
+        {
+          "id": "Service.CheckPluginConfiguration",
+          "class_name": "plugin.Service",
+          "method_name": "CheckPluginConfiguration",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "CheckPluginConfigurationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/CheckPluginConfiguration"
+        },
+        {
+          "id": "Service.MatchRepository",
+          "class_name": "plugin.Service",
+          "method_name": "MatchRepository",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "RepositoryResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/MatchRepository"
+        },
+        {
+          "id": "Service.GetParametersAnnouncement",
+          "class_name": "plugin.Service",
+          "method_name": "GetParametersAnnouncement",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "ParametersAnnouncementResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/GetParametersAnnouncement"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "applicationset",
+      "src_class": "repo_service",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetGitFiles",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:48 client.GetGitFiles(ctx,"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "repo_service",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetGitDirectories",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:56 client.GetGitDirectories(ctx,"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "repo_service",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOciFiles",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:64 client.GetOciFiles(ctx,"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "repo_service",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOciDirectories",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:72 client.GetOciDirectories(ctx,"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "GetRepoObjs",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:395 repoClient.GenerateManifest("
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "evaluateRevisionChanges",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.UpdateRevisionForPaths",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:509 repoClient.UpdateRevisionForPaths("
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "evaluateRevisionChanges",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ResolveRevision",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:539 repoClient.ResolveRevision("
+    },
+    {
+      "src_service": "controller",
+      "src_class": "hydrator.Hydrator",
+      "src_method": "hydrate",
+      "dst_service": "commitserver",
+      "dst_class": "commit.Service",
+      "dst_interface_id": "Service.CommitHydratedManifests",
+      "protocol": "gRPC",
+      "evidence": "controller/hydrator/hydrator.go:561 commitService.CommitHydratedManifests("
+    },
+    {
+      "src_service": "controller",
+      "src_class": "hydrator.Hydrator",
+      "src_method": "getRevisionMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "controller/hydrator/hydrator.go:621 repoService.GetRevisionMetadata("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetManifests",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:594 client.GenerateManifest("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetManifestsWithFiles",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifestWithFiles",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:741 client.GenerateManifestWithFiles("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "Get",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:868 client.GetAppDetails("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "RevisionMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1702 repoClient.GetRevisionMetadata("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "RevisionChartDetails",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionChartDetails",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1735 repoClient.GetRevisionChartDetails("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetOCIMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOCIMetadata",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1763 repoClient.GetOCIMetadata("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "resolveRevision",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ResolveRevision",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:2519 repoClient.ResolveRevision("
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "validateAndNormalizeApp",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.TestRepository",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1389 argo.ValidateRepo( -> util/argo/argo.go:329"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "validateAndNormalizeApp",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1389 argo.ValidateRepo( -> util/argo/argo.go:965"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListOCITags",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListOCITags",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:257 repoClient.ListOCITags("
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListRefs",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListRefs",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:278 repoClient.ListRefs("
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListApps",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListApps",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:316 repoClient.ListApps("
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "GetAppDetails",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:400 repoClient.GetAppDetails("
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "GetHelmCharts",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetHelmCharts",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:425 repoClient.GetHelmCharts("
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "testRepo",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.TestRepository",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:782 repoClient.TestRepository("
+    },
+    {
+      "src_service": "server",
+      "src_class": "settings.Server",
+      "src_method": "plugins",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListPlugins",
+      "protocol": "gRPC",
+      "evidence": "server/settings/settings.go:184 client.ListPlugins("
+    },
+    {
+      "src_service": "notification_controller",
+      "src_class": "controller",
+      "src_method": "NewController",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "notification_controller/controller/controller.go:102 settings.GetFactorySettings(argocdService -> util/notification/argocd/service.go:71"
+    },
+    {
+      "src_service": "notification_controller",
+      "src_class": "controller",
+      "src_method": "NewController",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "notification_controller/controller/controller.go:102 settings.GetFactorySettings(argocdService -> util/notification/argocd/service.go:106"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository.Service",
+      "src_method": "ListApps",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:287 discovery.Discover( -> util/app/discovery/discovery.go:182"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository.Service",
+      "src_method": "ListApps",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.MatchRepository",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:287 discovery.Discover( -> util/app/discovery/discovery.go:139"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "GetAppSourceType",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:1970 discovery.AppType( -> util/app/discovery/discovery.go:182"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "GetAppSourceType",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.MatchRepository",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:1970 discovery.AppType( -> util/app/discovery/discovery.go:139"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "runConfigManagementPluginSidecars",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2446 discovery.DetectConfigManagementPlugin( -> util/app/discovery/discovery.go:182"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "runConfigManagementPluginSidecars",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.MatchRepository",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2446 discovery.DetectConfigManagementPlugin( -> util/app/discovery/discovery.go:139"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "populatePluginAppDetails",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2791 discovery.DetectConfigManagementPlugin( -> util/app/discovery/discovery.go:182"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "populatePluginAppDetails",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.MatchRepository",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2791 discovery.DetectConfigManagementPlugin( -> util/app/discovery/discovery.go:139"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "generateManifestsCMP",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2503 cmpClient.GenerateManifest("
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "populatePluginAppDetails",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.GetParametersAnnouncement",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2797 cmpClient.GetParametersAnnouncement("
+    }
+  ]
+}

@@ -1,0 +1,1071 @@
+{
+  "system_id": "MS040",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "cart.handlerGet",
+          "class_name": "pages/api/cart",
+          "method_name": "handler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "IProductCart",
+          "protocol": "REST",
+          "endpoint": "GET /api/cart"
+        },
+        {
+          "id": "cart.handlerPost",
+          "class_name": "pages/api/cart",
+          "method_name": "handler",
+          "param_types": [
+            "AddItemRequest"
+          ],
+          "return_type": "Cart",
+          "protocol": "REST",
+          "endpoint": "POST /api/cart"
+        },
+        {
+          "id": "cart.handlerDelete",
+          "class_name": "pages/api/cart",
+          "method_name": "handler",
+          "param_types": [
+            "AddItemRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/cart"
+        },
+        {
+          "id": "checkout.handlerPost",
+          "class_name": "pages/api/checkout",
+          "method_name": "handler",
+          "param_types": [
+            "string",
+            "PlaceOrderRequest"
+          ],
+          "return_type": "IProductCheckout",
+          "protocol": "REST",
+          "endpoint": "POST /api/checkout"
+        },
+        {
+          "id": "currency.handlerGet",
+          "class_name": "pages/api/currency",
+          "method_name": "handler",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /api/currency"
+        },
+        {
+          "id": "data.handlerGet",
+          "class_name": "pages/api/data",
+          "method_name": "handler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Ad>",
+          "protocol": "REST",
+          "endpoint": "GET /api/data"
+        },
+        {
+          "id": "products.handlerGet",
+          "class_name": "pages/api/products/index",
+          "method_name": "handler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "productId.handlerGet",
+          "class_name": "pages/api/products/[productId]/index",
+          "method_name": "handler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{productId}"
+        },
+        {
+          "id": "recommendations.handlerGet",
+          "class_name": "pages/api/recommendations",
+          "method_name": "handler",
+          "param_types": [
+            "List<string>",
+            "string",
+            "string"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/recommendations"
+        },
+        {
+          "id": "shipping.handlerGet",
+          "class_name": "pages/api/shipping",
+          "method_name": "handler",
+          "param_types": [
+            "List<CartItem>",
+            "string",
+            "Address"
+          ],
+          "return_type": "Money",
+          "protocol": "REST",
+          "endpoint": "GET /api/shipping"
+        }
+      ]
+    },
+    "accounting": {
+      "exposed_interfaces": [
+        {
+          "id": "Consumer.ExecuteAsync",
+          "class_name": "Consumer",
+          "method_name": "ExecuteAsync",
+          "param_types": [
+            "OrderResult"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "orders"
+        }
+      ]
+    },
+    "flagd-ui": {
+      "exposed_interfaces": [
+        {
+          "id": "Dashboard.mount",
+          "class_name": "FlagdUiWeb.Dashboard",
+          "method_name": "mount",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "AdvancedEditor.mount",
+          "class_name": "FlagdUiWeb.AdvancedEditor",
+          "method_name": "mount",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /advanced"
+        },
+        {
+          "id": "Scheduler.mount",
+          "class_name": "FlagdUiWeb.Scheduler",
+          "method_name": "mount",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /scheduler"
+        },
+        {
+          "id": "FeatureController.read",
+          "class_name": "FlagdUiWeb.FeatureController",
+          "method_name": "read",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/read"
+        },
+        {
+          "id": "FeatureController.readFile",
+          "class_name": "FlagdUiWeb.FeatureController",
+          "method_name": "read",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/read-file"
+        },
+        {
+          "id": "FeatureController.write",
+          "class_name": "FlagdUiWeb.FeatureController",
+          "method_name": "write",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/write"
+        },
+        {
+          "id": "FeatureController.writeToFile",
+          "class_name": "FlagdUiWeb.FeatureController",
+          "method_name": "write",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/write-to-file"
+        }
+      ]
+    },
+    "recommendation": {
+      "exposed_interfaces": [
+        {
+          "id": "RecommendationService.listRecommendations",
+          "class_name": "RecommendationService",
+          "method_name": "listRecommendations",
+          "param_types": [
+            "ListRecommendationsRequest"
+          ],
+          "return_type": "ListRecommendationsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RecommendationService/ListRecommendations"
+        }
+      ]
+    },
+    "payment": {
+      "exposed_interfaces": [
+        {
+          "id": "index.chargeServiceHandler",
+          "class_name": "index.js",
+          "method_name": "chargeServiceHandler",
+          "param_types": [
+            "ChargeRequest"
+          ],
+          "return_type": "ChargeResponse",
+          "protocol": "gRPC",
+          "endpoint": "PaymentService/Charge"
+        }
+      ]
+    },
+    "react-native-app": {
+      "exposed_interfaces": []
+    },
+    "ad": {
+      "exposed_interfaces": [
+        {
+          "id": "AdServiceImpl.getAds",
+          "class_name": "AdServiceImpl",
+          "method_name": "getAds",
+          "param_types": [
+            "AdRequest"
+          ],
+          "return_type": "AdResponse",
+          "protocol": "gRPC",
+          "endpoint": "AdService/GetAds"
+        }
+      ]
+    },
+    "chatbot": {
+      "exposed_interfaces": []
+    },
+    "agent": {
+      "exposed_interfaces": [
+        {
+          "id": "Agent.handle_prompt",
+          "class_name": "Agent",
+          "method_name": "handle_prompt",
+          "param_types": [
+            "ChatRequest"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /prompt"
+        }
+      ]
+    },
+    "mcp": {
+      "exposed_interfaces": [
+        {
+          "id": "tools.add_to_cart",
+          "class_name": "tools",
+          "method_name": "add_to_cart",
+          "param_types": [
+            "str",
+            "str",
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "add_to_cart"
+        },
+        {
+          "id": "tools.checkout",
+          "class_name": "tools",
+          "method_name": "checkout",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "checkout"
+        },
+        {
+          "id": "tools.empty_cart",
+          "class_name": "tools",
+          "method_name": "empty_cart",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "empty_cart"
+        },
+        {
+          "id": "tools.get_ads",
+          "class_name": "tools",
+          "method_name": "get_ads",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_ads"
+        },
+        {
+          "id": "tools.get_cart",
+          "class_name": "tools",
+          "method_name": "get_cart",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_cart"
+        },
+        {
+          "id": "tools.get_product",
+          "class_name": "tools",
+          "method_name": "get_product",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_product"
+        },
+        {
+          "id": "tools.get_recommendations",
+          "class_name": "tools",
+          "method_name": "get_recommendations",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_recommendations"
+        },
+        {
+          "id": "tools.get_shipping_quote",
+          "class_name": "tools",
+          "method_name": "get_shipping_quote",
+          "param_types": [
+            "object",
+            "object",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_shipping_quote"
+        },
+        {
+          "id": "tools.get_supported_currencies",
+          "class_name": "tools",
+          "method_name": "get_supported_currencies",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_supported_currencies"
+        },
+        {
+          "id": "tools.list_products",
+          "class_name": "tools",
+          "method_name": "list_products",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "list_products"
+        }
+      ]
+    },
+    "product-catalog": {
+      "exposed_interfaces": [
+        {
+          "id": "productCatalog.ListProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "ListProducts",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/ListProducts"
+        },
+        {
+          "id": "productCatalog.GetProduct",
+          "class_name": "main.productCatalog",
+          "method_name": "GetProduct",
+          "param_types": [
+            "GetProductRequest"
+          ],
+          "return_type": "Product",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/GetProduct"
+        },
+        {
+          "id": "productCatalog.SearchProducts",
+          "class_name": "main.productCatalog",
+          "method_name": "SearchProducts",
+          "param_types": [
+            "SearchProductsRequest"
+          ],
+          "return_type": "SearchProductsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProductCatalogService/SearchProducts"
+        }
+      ]
+    },
+    "checkout": {
+      "exposed_interfaces": [
+        {
+          "id": "checkout.PlaceOrder",
+          "class_name": "main.checkout",
+          "method_name": "PlaceOrder",
+          "param_types": [
+            "PlaceOrderRequest"
+          ],
+          "return_type": "PlaceOrderResponse",
+          "protocol": "gRPC",
+          "endpoint": "CheckoutService/PlaceOrder"
+        }
+      ]
+    },
+    "cart": {
+      "exposed_interfaces": [
+        {
+          "id": "CartService.AddItem",
+          "class_name": "CartService",
+          "method_name": "AddItem",
+          "param_types": [
+            "AddItemRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "CartService/AddItem"
+        },
+        {
+          "id": "CartService.GetCart",
+          "class_name": "CartService",
+          "method_name": "GetCart",
+          "param_types": [
+            "GetCartRequest"
+          ],
+          "return_type": "Cart",
+          "protocol": "gRPC",
+          "endpoint": "CartService/GetCart"
+        },
+        {
+          "id": "CartService.EmptyCart",
+          "class_name": "CartService",
+          "method_name": "EmptyCart",
+          "param_types": [
+            "EmptyCartRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "CartService/EmptyCart"
+        }
+      ]
+    },
+    "shipping": {
+      "exposed_interfaces": [
+        {
+          "id": "shipping_service.get_quote",
+          "class_name": "shipping_service",
+          "method_name": "get_quote",
+          "param_types": [
+            "GetQuoteRequest"
+          ],
+          "return_type": "GetQuoteResponse",
+          "protocol": "REST",
+          "endpoint": "POST /get-quote"
+        },
+        {
+          "id": "shipping_service.ship_order",
+          "class_name": "shipping_service",
+          "method_name": "ship_order",
+          "param_types": [
+            "ShipOrderRequest"
+          ],
+          "return_type": "ShipOrderResponse",
+          "protocol": "REST",
+          "endpoint": "POST /ship-order"
+        }
+      ]
+    },
+    "quote": {
+      "exposed_interfaces": [
+        {
+          "id": "routes.post_getquote",
+          "class_name": "routes.php",
+          "method_name": "post_getquote",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "float",
+          "protocol": "REST",
+          "endpoint": "POST /getquote"
+        }
+      ]
+    },
+    "currency": {
+      "exposed_interfaces": [
+        {
+          "id": "CurrencyService.GetSupportedCurrencies",
+          "class_name": "CurrencyService",
+          "method_name": "GetSupportedCurrencies",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "GetSupportedCurrenciesResponse",
+          "protocol": "gRPC",
+          "endpoint": "CurrencyService/GetSupportedCurrencies"
+        },
+        {
+          "id": "CurrencyService.Convert",
+          "class_name": "CurrencyService",
+          "method_name": "Convert",
+          "param_types": [
+            "CurrencyConversionRequest"
+          ],
+          "return_type": "Money",
+          "protocol": "gRPC",
+          "endpoint": "CurrencyService/Convert"
+        }
+      ]
+    },
+    "email": {
+      "exposed_interfaces": [
+        {
+          "id": "email_server.post_send_order_confirmation",
+          "class_name": "email_server.rb",
+          "method_name": "post_send_order_confirmation",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /send_order_confirmation"
+        }
+      ]
+    },
+    "fraud-detection": {
+      "exposed_interfaces": [
+        {
+          "id": "main.main",
+          "class_name": "main",
+          "method_name": "main",
+          "param_types": [
+            "OrderResult"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "orders"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "frontend",
+      "src_class": "AdGateway",
+      "src_method": "listAds",
+      "dst_service": "ad",
+      "dst_class": "AdServiceImpl",
+      "dst_interface_id": "AdServiceImpl.getAds",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Ad.gateway.ts:14 client.getAds("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CartGateway",
+      "src_method": "getCart",
+      "dst_service": "cart",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Cart.gateway.ts:14 client.getCart("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CartGateway",
+      "src_method": "addItem",
+      "dst_service": "cart",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.AddItem",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Cart.gateway.ts:19 client.addItem("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CartGateway",
+      "src_method": "emptyCart",
+      "dst_service": "cart",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Cart.gateway.ts:24 client.emptyCart("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CheckoutGateway",
+      "src_method": "placeOrder",
+      "dst_service": "checkout",
+      "dst_class": "main.checkout",
+      "dst_interface_id": "checkout.PlaceOrder",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Checkout.gateway.ts:14 client.placeOrder("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CurrencyGateway",
+      "src_method": "convert",
+      "dst_service": "currency",
+      "dst_class": "CurrencyService",
+      "dst_interface_id": "CurrencyService.Convert",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Currency.gateway.ts:14 client.convert("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "CurrencyGateway",
+      "src_method": "getSupportedCurrencies",
+      "dst_service": "currency",
+      "dst_class": "CurrencyService",
+      "dst_interface_id": "CurrencyService.GetSupportedCurrencies",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Currency.gateway.ts:19 client.getSupportedCurrencies("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "ProductCatalogGateway",
+      "src_method": "listProducts",
+      "dst_service": "product-catalog",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/ProductCatalog.gateway.ts:14 client.listProducts("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "ProductCatalogGateway",
+      "src_method": "getProduct",
+      "dst_service": "product-catalog",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/ProductCatalog.gateway.ts:19 client.getProduct("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "RecommendationsGateway",
+      "src_method": "listRecommendations",
+      "dst_service": "recommendation",
+      "dst_class": "RecommendationService",
+      "dst_interface_id": "RecommendationService.listRecommendations",
+      "protocol": "gRPC",
+      "evidence": "src/frontend/gateways/rpc/Recommendations.gateway.ts:14 client.listRecommendations("
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "ShippingGateway",
+      "src_method": "getShippingCost",
+      "dst_service": "shipping",
+      "dst_class": "shipping_service",
+      "dst_interface_id": "shipping_service.get_quote",
+      "protocol": "REST",
+      "evidence": "src/frontend/gateways/http/Shipping.gateway.ts:31 fetch(`${SHIPPING_ADDR}/get-quote`"
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "getUserCart",
+      "dst_service": "cart",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.GetCart",
+      "protocol": "gRPC",
+      "evidence": "src/checkout/main.go:528 cs.cartSvcClient.GetCart("
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "emptyUserCart",
+      "dst_service": "cart",
+      "dst_class": "CartService",
+      "dst_interface_id": "CartService.EmptyCart",
+      "protocol": "gRPC",
+      "evidence": "src/checkout/main.go:536 cs.cartSvcClient.EmptyCart("
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "prepOrderItems",
+      "dst_service": "product-catalog",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.GetProduct",
+      "protocol": "gRPC",
+      "evidence": "src/checkout/main.go:546 cs.productCatalogSvcClient.GetProduct("
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "convertCurrency",
+      "dst_service": "currency",
+      "dst_class": "CurrencyService",
+      "dst_interface_id": "CurrencyService.Convert",
+      "protocol": "gRPC",
+      "evidence": "src/checkout/main.go:563 cs.currencySvcClient.Convert("
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "chargeCard",
+      "dst_service": "payment",
+      "dst_class": "index.js",
+      "dst_interface_id": "index.chargeServiceHandler",
+      "protocol": "gRPC",
+      "evidence": "src/checkout/main.go:582 paymentService.Charge("
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "quoteShipping",
+      "dst_service": "shipping",
+      "dst_class": "shipping_service",
+      "dst_interface_id": "shipping_service.get_quote",
+      "protocol": "REST",
+      "evidence": "src/checkout/main.go:494 cs.shippingSvcAddr+\"/get-quote\""
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "shipOrder",
+      "dst_service": "shipping",
+      "dst_class": "shipping_service",
+      "dst_interface_id": "shipping_service.ship_order",
+      "protocol": "REST",
+      "evidence": "src/checkout/main.go:631 cs.shippingSvcAddr+\"/ship-order\""
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "sendOrderConfirmation",
+      "dst_service": "email",
+      "dst_class": "email_server.rb",
+      "dst_interface_id": "email_server.post_send_order_confirmation",
+      "protocol": "REST",
+      "evidence": "src/checkout/main.go:604 cs.emailSvcAddr+\"/send_order_confirmation\""
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "sendToPostProcessor",
+      "dst_service": "accounting",
+      "dst_class": "Consumer",
+      "dst_interface_id": "Consumer.ExecuteAsync",
+      "protocol": "Messaging",
+      "evidence": "src/checkout/main.go:683 cs.KafkaProducerClient.Input() <- &msg"
+    },
+    {
+      "src_service": "checkout",
+      "src_class": "main.checkout",
+      "src_method": "sendToPostProcessor",
+      "dst_service": "fraud-detection",
+      "dst_class": "main",
+      "dst_interface_id": "main.main",
+      "protocol": "Messaging",
+      "evidence": "src/checkout/main.go:683 cs.KafkaProducerClient.Input() <- &msg"
+    },
+    {
+      "src_service": "recommendation",
+      "src_class": "RecommendationService",
+      "src_method": "fetchProductIds",
+      "dst_service": "product-catalog",
+      "dst_class": "main.productCatalog",
+      "dst_interface_id": "productCatalog.ListProducts",
+      "protocol": "gRPC",
+      "evidence": "src/recommendation/src/main/java/oteldemo/recommendation/RecommendationService.java:154 productCatalog.listProducts("
+    },
+    {
+      "src_service": "shipping",
+      "src_class": "quote",
+      "src_method": "request_quote",
+      "dst_service": "quote",
+      "dst_class": "routes.php",
+      "dst_interface_id": "routes.post_getquote",
+      "protocol": "REST",
+      "evidence": "src/shipping/src/shipping_service/quote.rs:69 .post(quote_service_addr)"
+    },
+    {
+      "src_service": "chatbot",
+      "src_class": "ChatAgentUI",
+      "src_method": "chat_with_agent",
+      "dst_service": "agent",
+      "dst_class": "Agent",
+      "dst_interface_id": "Agent.handle_prompt",
+      "protocol": "REST",
+      "evidence": "src/chatbot/src/chat_interface/chat_interface.py:50 requests.post("
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:69 add_to_cart, -> src/shared/tools.py:66"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:26 self.mcp.tool(\"add_to_cart\")(tools.add_to_cart) -> src/shared/tools.py:66"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/checkout",
+      "dst_interface_id": "checkout.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:70 checkout, -> src/shared/tools.py:138"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/checkout",
+      "dst_interface_id": "checkout.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:27 self.mcp.tool(\"checkout\")(tools.checkout) -> src/shared/tools.py:138"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerDelete",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:71 empty_cart, -> src/shared/tools.py:93"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerDelete",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:28 self.mcp.tool(\"empty_cart\")(tools.empty_cart) -> src/shared/tools.py:93"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/data",
+      "dst_interface_id": "data.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:72 get_ads, -> src/shared/tools.py:46"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/data",
+      "dst_interface_id": "data.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:29 self.mcp.tool(\"get_ads\")(tools.get_ads) -> src/shared/tools.py:46"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:73 get_cart, -> src/shared/tools.py:79"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:30 self.mcp.tool(\"get_cart\")(tools.get_cart) -> src/shared/tools.py:79"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/products/[productId]/index",
+      "dst_interface_id": "productId.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:74 get_product, -> src/shared/tools.py:121"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/products/[productId]/index",
+      "dst_interface_id": "productId.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:31 self.mcp.tool(\"get_product\")(tools.get_product) -> src/shared/tools.py:121"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/recommendations",
+      "dst_interface_id": "recommendations.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:75 get_recommendations, -> src/shared/tools.py:173"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/recommendations",
+      "dst_interface_id": "recommendations.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:32 self.mcp.tool(\"get_recommendations\")(tools.get_recommendations) -> src/shared/tools.py:173"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/shipping",
+      "dst_interface_id": "shipping.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:76 get_shipping_quote, -> src/shared/tools.py:209"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/shipping",
+      "dst_interface_id": "shipping.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:33 self.mcp.tool(\"get_shipping_quote\")(tools.get_shipping_quote) -> src/shared/tools.py:209"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/currency",
+      "dst_interface_id": "currency.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:77 get_supported_currencies, -> src/shared/tools.py:159"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/currency",
+      "dst_interface_id": "currency.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:34 self.mcp.tool(\"get_supported_currencies\")(tools.get_supported_currencies) -> src/shared/tools.py:159"
+    },
+    {
+      "src_service": "agent",
+      "src_class": "Agent",
+      "src_method": "get_tool_list",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/products/index",
+      "dst_interface_id": "products.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/agent/src/agents/agents.py:78 list_products, -> src/shared/tools.py:108"
+    },
+    {
+      "src_service": "mcp",
+      "src_class": "AstronomyShopMcp",
+      "src_method": "_register_tools",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/products/index",
+      "dst_interface_id": "products.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/mcp/src/mcp_server/astronomy_shop_mcp_server.py:35 self.mcp.tool(\"list_products\")(tools.list_products) -> src/shared/tools.py:108"
+    },
+    {
+      "src_service": "react-native-app",
+      "src_class": "ApiGateway",
+      "src_method": "getCart",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/react-native-app/gateways/Api.gateway.ts:31 return request<IProductCart>({"
+    },
+    {
+      "src_service": "react-native-app",
+      "src_class": "ApiGateway",
+      "src_method": "addCartItem",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/react-native-app/gateways/Api.gateway.ts:41 return request<Cart>({"
+    },
+    {
+      "src_service": "react-native-app",
+      "src_class": "ApiGateway",
+      "src_method": "emptyCart",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/cart",
+      "dst_interface_id": "cart.handlerDelete",
+      "protocol": "REST",
+      "evidence": "src/react-native-app/gateways/Api.gateway.ts:50 return request<undefined>({"
+    },
+    {
+      "src_service": "react-native-app",
+      "src_class": "ApiGateway",
+      "src_method": "placeOrder",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/checkout",
+      "dst_interface_id": "checkout.handlerPost",
+      "protocol": "REST",
+      "evidence": "src/react-native-app/gateways/Api.gateway.ts:84 return request<IProductCheckout>({"
+    },
+    {
+      "src_service": "react-native-app",
+      "src_class": "ApiGateway",
+      "src_method": "listProducts",
+      "dst_service": "frontend",
+      "dst_class": "pages/api/products/index",
+      "dst_interface_id": "products.handlerGet",
+      "protocol": "REST",
+      "evidence": "src/react-native-app/gateways/Api.gateway.ts:93 return request<Product[]>({"
+    }
+  ]
+}

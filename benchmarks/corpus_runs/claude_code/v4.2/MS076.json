@@ -1,0 +1,4498 @@
+{
+  "system_id": "MS076",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "bmo": {
+      "exposed_interfaces": [
+        {
+          "id": "admin.admin_cgi",
+          "class_name": "admin.cgi",
+          "method_name": "admin_cgi",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin.cgi"
+        },
+        {
+          "id": "buglist.buglist_cgi",
+          "class_name": "buglist.cgi",
+          "method_name": "buglist_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /buglist.cgi"
+        },
+        {
+          "id": "colchange.colchange_cgi",
+          "class_name": "colchange.cgi",
+          "method_name": "colchange_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /colchange.cgi"
+        },
+        {
+          "id": "config.config_cgi",
+          "class_name": "config.cgi",
+          "method_name": "config_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /config.cgi"
+        },
+        {
+          "id": "createaccount.createaccount_cgi",
+          "class_name": "createaccount.cgi",
+          "method_name": "createaccount_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /createaccount.cgi"
+        },
+        {
+          "id": "describecomponents.describecomponents_cgi",
+          "class_name": "describecomponents.cgi",
+          "method_name": "describecomponents_cgi",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /describecomponents.cgi"
+        },
+        {
+          "id": "describekeywords.describekeywords_cgi",
+          "class_name": "describekeywords.cgi",
+          "method_name": "describekeywords_cgi",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /describekeywords.cgi"
+        },
+        {
+          "id": "duplicates.duplicates_cgi",
+          "class_name": "duplicates.cgi",
+          "method_name": "duplicates_cgi",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /duplicates.cgi"
+        },
+        {
+          "id": "editwhines.editwhines_cgi",
+          "class_name": "editwhines.cgi",
+          "method_name": "editwhines_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editwhines.cgi"
+        },
+        {
+          "id": "enter_bug.enter_bug_cgi",
+          "class_name": "enter_bug.cgi",
+          "method_name": "enter_bug_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /enter_bug.cgi"
+        },
+        {
+          "id": "index.index_cgi",
+          "class_name": "index.cgi",
+          "method_name": "index_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /index.cgi"
+        },
+        {
+          "id": "long_list.long_list_cgi",
+          "class_name": "long_list.cgi",
+          "method_name": "long_list_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /long_list.cgi"
+        },
+        {
+          "id": "post_bug.post_bug_cgi",
+          "class_name": "post_bug.cgi",
+          "method_name": "post_bug_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /post_bug.cgi"
+        },
+        {
+          "id": "process_bug.process_bug_cgi",
+          "class_name": "process_bug.cgi",
+          "method_name": "process_bug_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /process_bug.cgi"
+        },
+        {
+          "id": "query.query_cgi",
+          "class_name": "query.cgi",
+          "method_name": "query_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /query.cgi"
+        },
+        {
+          "id": "reports.reports_cgi",
+          "class_name": "reports.cgi",
+          "method_name": "reports_cgi",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /reports.cgi"
+        },
+        {
+          "id": "sanitycheck.sanitycheck_cgi",
+          "class_name": "sanitycheck.cgi",
+          "method_name": "sanitycheck_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /sanitycheck.cgi"
+        },
+        {
+          "id": "search_plugin.search_plugin_cgi",
+          "class_name": "search_plugin.cgi",
+          "method_name": "search_plugin_cgi",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /search_plugin.cgi"
+        },
+        {
+          "id": "show_activity.show_activity_cgi",
+          "class_name": "show_activity.cgi",
+          "method_name": "show_activity_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /show_activity.cgi"
+        },
+        {
+          "id": "show_bug.show_bug_cgi",
+          "class_name": "show_bug.cgi",
+          "method_name": "show_bug_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /show_bug.cgi"
+        },
+        {
+          "id": "showdependencygraph.showdependencygraph_cgi",
+          "class_name": "showdependencygraph.cgi",
+          "method_name": "showdependencygraph_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /showdependencygraph.cgi"
+        },
+        {
+          "id": "showdependencytree.showdependencytree_cgi",
+          "class_name": "showdependencytree.cgi",
+          "method_name": "showdependencytree_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /showdependencytree.cgi"
+        },
+        {
+          "id": "summarize_time.summarize_time_cgi",
+          "class_name": "summarize_time.cgi",
+          "method_name": "summarize_time_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /summarize_time.cgi"
+        },
+        {
+          "id": "view_job_queue.view_job_queue_cgi",
+          "class_name": "view_job_queue.cgi",
+          "method_name": "view_job_queue_cgi",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /view_job_queue.cgi"
+        },
+        {
+          "id": "xml.xml_cgi",
+          "class_name": "xml.cgi",
+          "method_name": "xml_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /xml.cgi"
+        },
+        {
+          "id": "page.page_cgi",
+          "class_name": "page.cgi",
+          "method_name": "page_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi"
+        },
+        {
+          "id": "showattachment.showattachment_cgi",
+          "class_name": "showattachment.cgi",
+          "method_name": "showattachment_cgi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /showattachment.cgi"
+        },
+        {
+          "id": "github.github_cgi",
+          "class_name": "github.cgi",
+          "method_name": "github_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /github.cgi"
+        },
+        {
+          "id": "oauth2.oauth2_cgi",
+          "class_name": "oauth2.cgi",
+          "method_name": "oauth2_cgi",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /oauth2.cgi"
+        },
+        {
+          "id": "attachment.view",
+          "class_name": "attachment.cgi",
+          "method_name": "view",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=view"
+        },
+        {
+          "id": "attachment.interdiff",
+          "class_name": "attachment.cgi",
+          "method_name": "interdiff",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=interdiff"
+        },
+        {
+          "id": "attachment.diff",
+          "class_name": "attachment.cgi",
+          "method_name": "diff",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=diff"
+        },
+        {
+          "id": "attachment.viewall",
+          "class_name": "attachment.cgi",
+          "method_name": "viewall",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=viewall"
+        },
+        {
+          "id": "attachment.enter",
+          "class_name": "attachment.cgi",
+          "method_name": "enter",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=enter"
+        },
+        {
+          "id": "attachment.insert",
+          "class_name": "attachment.cgi",
+          "method_name": "insert",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=insert"
+        },
+        {
+          "id": "attachment.edit",
+          "class_name": "attachment.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=edit"
+        },
+        {
+          "id": "attachment.update",
+          "class_name": "attachment.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=update"
+        },
+        {
+          "id": "attachment.delete_attachment",
+          "class_name": "attachment.cgi",
+          "method_name": "delete_attachment",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /attachment.cgi?action=delete"
+        },
+        {
+          "id": "buglist.forget",
+          "class_name": "buglist.cgi",
+          "method_name": "forget",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /buglist.cgi?cmdtype=dorem&remaction=forget"
+        },
+        {
+          "id": "buglist.asdefault",
+          "class_name": "buglist.cgi",
+          "method_name": "asdefault",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /buglist.cgi?cmdtype=doit&remtype=asdefault"
+        },
+        {
+          "id": "buglist.asnamed",
+          "class_name": "buglist.cgi",
+          "method_name": "asnamed",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /buglist.cgi?cmdtype=doit&remtype=asnamed"
+        },
+        {
+          "id": "chart.assemble",
+          "class_name": "chart.cgi",
+          "method_name": "assemble",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=assemble"
+        },
+        {
+          "id": "chart.add",
+          "class_name": "chart.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=add"
+        },
+        {
+          "id": "chart.remove",
+          "class_name": "chart.cgi",
+          "method_name": "remove",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=remove"
+        },
+        {
+          "id": "chart.sum",
+          "class_name": "chart.cgi",
+          "method_name": "sum",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=sum"
+        },
+        {
+          "id": "chart.subscribe",
+          "class_name": "chart.cgi",
+          "method_name": "subscribe",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=subscribe"
+        },
+        {
+          "id": "chart.unsubscribe",
+          "class_name": "chart.cgi",
+          "method_name": "unsubscribe",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=unsubscribe"
+        },
+        {
+          "id": "chart.search",
+          "class_name": "chart.cgi",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=search"
+        },
+        {
+          "id": "chart.plot",
+          "class_name": "chart.cgi",
+          "method_name": "plot",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=plot"
+        },
+        {
+          "id": "chart.wrap",
+          "class_name": "chart.cgi",
+          "method_name": "wrap",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=wrap"
+        },
+        {
+          "id": "chart.create",
+          "class_name": "chart.cgi",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=create"
+        },
+        {
+          "id": "chart.edit",
+          "class_name": "chart.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=edit"
+        },
+        {
+          "id": "chart.alter",
+          "class_name": "chart.cgi",
+          "method_name": "alter",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=alter"
+        },
+        {
+          "id": "chart.confirm-delete",
+          "class_name": "chart.cgi",
+          "method_name": "confirm-delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=confirm-delete"
+        },
+        {
+          "id": "chart.delete",
+          "class_name": "chart.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=delete"
+        },
+        {
+          "id": "chart.convert_search",
+          "class_name": "chart.cgi",
+          "method_name": "convert_search",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /chart.cgi?action=convert_search"
+        },
+        {
+          "id": "editclassifications.select",
+          "class_name": "editclassifications.cgi",
+          "method_name": "select",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi"
+        },
+        {
+          "id": "editclassifications.add",
+          "class_name": "editclassifications.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=add"
+        },
+        {
+          "id": "editclassifications.new",
+          "class_name": "editclassifications.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=new"
+        },
+        {
+          "id": "editclassifications.del",
+          "class_name": "editclassifications.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=del"
+        },
+        {
+          "id": "editclassifications.delete",
+          "class_name": "editclassifications.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=delete"
+        },
+        {
+          "id": "editclassifications.edit",
+          "class_name": "editclassifications.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=edit"
+        },
+        {
+          "id": "editclassifications.update",
+          "class_name": "editclassifications.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=update"
+        },
+        {
+          "id": "editclassifications.reclassify",
+          "class_name": "editclassifications.cgi",
+          "method_name": "reclassify",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editclassifications.cgi?action=reclassify"
+        },
+        {
+          "id": "editcomponents.list",
+          "class_name": "editcomponents.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi"
+        },
+        {
+          "id": "editcomponents.add",
+          "class_name": "editcomponents.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=add"
+        },
+        {
+          "id": "editcomponents.new",
+          "class_name": "editcomponents.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=new"
+        },
+        {
+          "id": "editcomponents.del",
+          "class_name": "editcomponents.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=del"
+        },
+        {
+          "id": "editcomponents.delete",
+          "class_name": "editcomponents.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=delete"
+        },
+        {
+          "id": "editcomponents.edit",
+          "class_name": "editcomponents.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=edit"
+        },
+        {
+          "id": "editcomponents.update",
+          "class_name": "editcomponents.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editcomponents.cgi?action=update"
+        },
+        {
+          "id": "editfields.list",
+          "class_name": "editfields.cgi",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi"
+        },
+        {
+          "id": "editfields.add",
+          "class_name": "editfields.cgi",
+          "method_name": "add",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=add"
+        },
+        {
+          "id": "editfields.new",
+          "class_name": "editfields.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=new"
+        },
+        {
+          "id": "editfields.edit",
+          "class_name": "editfields.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=edit"
+        },
+        {
+          "id": "editfields.update",
+          "class_name": "editfields.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=update"
+        },
+        {
+          "id": "editfields.del",
+          "class_name": "editfields.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=del"
+        },
+        {
+          "id": "editfields.delete",
+          "class_name": "editfields.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editfields.cgi?action=delete"
+        },
+        {
+          "id": "editflagtypes.list",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=list"
+        },
+        {
+          "id": "editflagtypes.enter",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "enter",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=enter"
+        },
+        {
+          "id": "editflagtypes.insert",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "insert",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=insert"
+        },
+        {
+          "id": "editflagtypes.update",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=update"
+        },
+        {
+          "id": "editflagtypes.confirmdelete",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "confirmdelete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=confirmdelete"
+        },
+        {
+          "id": "editflagtypes.delete",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=delete"
+        },
+        {
+          "id": "editflagtypes.deactivate",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "deactivate",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=deactivate"
+        },
+        {
+          "id": "editflagtypes.edit",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=edit"
+        },
+        {
+          "id": "editflagtypes.copy",
+          "class_name": "editflagtypes.cgi",
+          "method_name": "copy",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editflagtypes.cgi?action=copy"
+        },
+        {
+          "id": "editgroups.list",
+          "class_name": "editgroups.cgi",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi"
+        },
+        {
+          "id": "editgroups.changeform",
+          "class_name": "editgroups.cgi",
+          "method_name": "changeform",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=changeform"
+        },
+        {
+          "id": "editgroups.add",
+          "class_name": "editgroups.cgi",
+          "method_name": "add",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=add"
+        },
+        {
+          "id": "editgroups.new",
+          "class_name": "editgroups.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=new"
+        },
+        {
+          "id": "editgroups.del",
+          "class_name": "editgroups.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=del"
+        },
+        {
+          "id": "editgroups.delete",
+          "class_name": "editgroups.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=delete"
+        },
+        {
+          "id": "editgroups.postchanges",
+          "class_name": "editgroups.cgi",
+          "method_name": "postchanges",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=postchanges"
+        },
+        {
+          "id": "editgroups.confirm_remove",
+          "class_name": "editgroups.cgi",
+          "method_name": "confirm_remove",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=confirm_remove"
+        },
+        {
+          "id": "editgroups.remove_regexp",
+          "class_name": "editgroups.cgi",
+          "method_name": "remove_regexp",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editgroups.cgi?action=remove_regexp"
+        },
+        {
+          "id": "editkeywords.list",
+          "class_name": "editkeywords.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi"
+        },
+        {
+          "id": "editkeywords.add",
+          "class_name": "editkeywords.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=add"
+        },
+        {
+          "id": "editkeywords.new",
+          "class_name": "editkeywords.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=new"
+        },
+        {
+          "id": "editkeywords.edit",
+          "class_name": "editkeywords.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=edit"
+        },
+        {
+          "id": "editkeywords.update",
+          "class_name": "editkeywords.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=update"
+        },
+        {
+          "id": "editkeywords.del",
+          "class_name": "editkeywords.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=del"
+        },
+        {
+          "id": "editkeywords.delete",
+          "class_name": "editkeywords.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editkeywords.cgi?action=delete"
+        },
+        {
+          "id": "editmilestones.list",
+          "class_name": "editmilestones.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi"
+        },
+        {
+          "id": "editmilestones.add",
+          "class_name": "editmilestones.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=add"
+        },
+        {
+          "id": "editmilestones.new",
+          "class_name": "editmilestones.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=new"
+        },
+        {
+          "id": "editmilestones.del",
+          "class_name": "editmilestones.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=del"
+        },
+        {
+          "id": "editmilestones.delete",
+          "class_name": "editmilestones.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=delete"
+        },
+        {
+          "id": "editmilestones.edit",
+          "class_name": "editmilestones.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=edit"
+        },
+        {
+          "id": "editmilestones.update",
+          "class_name": "editmilestones.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editmilestones.cgi?action=update"
+        },
+        {
+          "id": "editparams.list",
+          "class_name": "editparams.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editparams.cgi"
+        },
+        {
+          "id": "editparams.save",
+          "class_name": "editparams.cgi",
+          "method_name": "save",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editparams.cgi?action=save"
+        },
+        {
+          "id": "editproducts.list",
+          "class_name": "editproducts.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi"
+        },
+        {
+          "id": "editproducts.add",
+          "class_name": "editproducts.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=add"
+        },
+        {
+          "id": "editproducts.new",
+          "class_name": "editproducts.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=new"
+        },
+        {
+          "id": "editproducts.del",
+          "class_name": "editproducts.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=del"
+        },
+        {
+          "id": "editproducts.delete",
+          "class_name": "editproducts.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=delete"
+        },
+        {
+          "id": "editproducts.edit",
+          "class_name": "editproducts.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=edit"
+        },
+        {
+          "id": "editproducts.update",
+          "class_name": "editproducts.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=update"
+        },
+        {
+          "id": "editproducts.editgroupcontrols",
+          "class_name": "editproducts.cgi",
+          "method_name": "editgroupcontrols",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=editgroupcontrols"
+        },
+        {
+          "id": "editproducts.updategroupcontrols",
+          "class_name": "editproducts.cgi",
+          "method_name": "updategroupcontrols",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editproducts.cgi?action=updategroupcontrols"
+        },
+        {
+          "id": "editsettings.list",
+          "class_name": "editsettings.cgi",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editsettings.cgi"
+        },
+        {
+          "id": "editsettings.update",
+          "class_name": "editsettings.cgi",
+          "method_name": "update",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editsettings.cgi?action=update"
+        },
+        {
+          "id": "editusers.search",
+          "class_name": "editusers.cgi",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=search"
+        },
+        {
+          "id": "editusers.list",
+          "class_name": "editusers.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=list"
+        },
+        {
+          "id": "editusers.add",
+          "class_name": "editusers.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=add"
+        },
+        {
+          "id": "editusers.new",
+          "class_name": "editusers.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=new"
+        },
+        {
+          "id": "editusers.edit",
+          "class_name": "editusers.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=edit"
+        },
+        {
+          "id": "editusers.update",
+          "class_name": "editusers.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=update"
+        },
+        {
+          "id": "editusers.del",
+          "class_name": "editusers.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=del"
+        },
+        {
+          "id": "editusers.delete",
+          "class_name": "editusers.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=delete"
+        },
+        {
+          "id": "editusers.activity",
+          "class_name": "editusers.cgi",
+          "method_name": "activity",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=activity"
+        },
+        {
+          "id": "editusers.admin_activity",
+          "class_name": "editusers.cgi",
+          "method_name": "admin_activity",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editusers.cgi?action=admin_activity"
+        },
+        {
+          "id": "editvalues.display_field_values",
+          "class_name": "editvalues.cgi",
+          "method_name": "display_field_values",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi"
+        },
+        {
+          "id": "editvalues.add",
+          "class_name": "editvalues.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=add"
+        },
+        {
+          "id": "editvalues.new",
+          "class_name": "editvalues.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=new"
+        },
+        {
+          "id": "editvalues.del",
+          "class_name": "editvalues.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=del"
+        },
+        {
+          "id": "editvalues.delete",
+          "class_name": "editvalues.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=delete"
+        },
+        {
+          "id": "editvalues.edit",
+          "class_name": "editvalues.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=edit"
+        },
+        {
+          "id": "editvalues.update",
+          "class_name": "editvalues.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editvalues.cgi?action=update"
+        },
+        {
+          "id": "editversions.list",
+          "class_name": "editversions.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi"
+        },
+        {
+          "id": "editversions.add",
+          "class_name": "editversions.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=add"
+        },
+        {
+          "id": "editversions.new",
+          "class_name": "editversions.cgi",
+          "method_name": "new",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=new"
+        },
+        {
+          "id": "editversions.del",
+          "class_name": "editversions.cgi",
+          "method_name": "del",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=del"
+        },
+        {
+          "id": "editversions.delete",
+          "class_name": "editversions.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=delete"
+        },
+        {
+          "id": "editversions.edit",
+          "class_name": "editversions.cgi",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=edit"
+        },
+        {
+          "id": "editversions.update",
+          "class_name": "editversions.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editversions.cgi?action=update"
+        },
+        {
+          "id": "editworkflow.edit",
+          "class_name": "editworkflow.cgi",
+          "method_name": "edit",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editworkflow.cgi?action=edit"
+        },
+        {
+          "id": "editworkflow.update",
+          "class_name": "editworkflow.cgi",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editworkflow.cgi?action=update"
+        },
+        {
+          "id": "editworkflow.edit_comment",
+          "class_name": "editworkflow.cgi",
+          "method_name": "edit_comment",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editworkflow.cgi?action=edit_comment"
+        },
+        {
+          "id": "editworkflow.update_comment",
+          "class_name": "editworkflow.cgi",
+          "method_name": "update_comment",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /editworkflow.cgi?action=update_comment"
+        },
+        {
+          "id": "quips.list",
+          "class_name": "quips.cgi",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /quips.cgi"
+        },
+        {
+          "id": "quips.show",
+          "class_name": "quips.cgi",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /quips.cgi?action=show"
+        },
+        {
+          "id": "quips.add",
+          "class_name": "quips.cgi",
+          "method_name": "add",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /quips.cgi?action=add"
+        },
+        {
+          "id": "quips.approve",
+          "class_name": "quips.cgi",
+          "method_name": "approve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /quips.cgi?action=approve"
+        },
+        {
+          "id": "quips.delete",
+          "class_name": "quips.cgi",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /quips.cgi?action=delete"
+        },
+        {
+          "id": "relogin.prepare-sudo",
+          "class_name": "relogin.cgi",
+          "method_name": "prepare-sudo",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /relogin.cgi?action=prepare-sudo"
+        },
+        {
+          "id": "relogin.begin-sudo",
+          "class_name": "relogin.cgi",
+          "method_name": "begin-sudo",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /relogin.cgi?action=begin-sudo"
+        },
+        {
+          "id": "relogin.end-sudo",
+          "class_name": "relogin.cgi",
+          "method_name": "end-sudo",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /relogin.cgi?action=end-sudo"
+        },
+        {
+          "id": "report.menu",
+          "class_name": "report.cgi",
+          "method_name": "menu",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /report.cgi?action=menu"
+        },
+        {
+          "id": "report.wrap",
+          "class_name": "report.cgi",
+          "method_name": "wrap",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /report.cgi?action=wrap"
+        },
+        {
+          "id": "report.plot",
+          "class_name": "report.cgi",
+          "method_name": "plot",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /report.cgi?action=plot"
+        },
+        {
+          "id": "request.queue",
+          "class_name": "request.cgi",
+          "method_name": "queue",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /request.cgi?action=queue"
+        },
+        {
+          "id": "request.list",
+          "class_name": "request.cgi",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /request.cgi"
+        },
+        {
+          "id": "reset_password.reset_password_cgi",
+          "class_name": "reset_password.cgi",
+          "method_name": "reset_password_cgi",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /reset_password.cgi"
+        },
+        {
+          "id": "token.requestChangePassword",
+          "class_name": "token.cgi",
+          "method_name": "requestChangePassword",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=reqpw"
+        },
+        {
+          "id": "token.confirmChangePassword",
+          "class_name": "token.cgi",
+          "method_name": "confirmChangePassword",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=cfmpw"
+        },
+        {
+          "id": "token.cancelChangePassword",
+          "class_name": "token.cgi",
+          "method_name": "cancelChangePassword",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=cxlpw"
+        },
+        {
+          "id": "token.changePassword",
+          "class_name": "token.cgi",
+          "method_name": "changePassword",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=chgpw"
+        },
+        {
+          "id": "token.confirmChangeEmail",
+          "class_name": "token.cgi",
+          "method_name": "confirmChangeEmail",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=cfmem"
+        },
+        {
+          "id": "token.cancelChangeEmail",
+          "class_name": "token.cgi",
+          "method_name": "cancelChangeEmail",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=cxlem"
+        },
+        {
+          "id": "token.changeEmail",
+          "class_name": "token.cgi",
+          "method_name": "changeEmail",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=chgem"
+        },
+        {
+          "id": "token.request_create_account",
+          "class_name": "token.cgi",
+          "method_name": "request_create_account",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=request_new_account"
+        },
+        {
+          "id": "token.confirm_create_account",
+          "class_name": "token.cgi",
+          "method_name": "confirm_create_account",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=confirm_new_account"
+        },
+        {
+          "id": "token.cancel_create_account",
+          "class_name": "token.cgi",
+          "method_name": "cancel_create_account",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=cancel_new_account"
+        },
+        {
+          "id": "token.verify_mfa_login",
+          "class_name": "token.cgi",
+          "method_name": "verify_mfa_login",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=mfa_l"
+        },
+        {
+          "id": "token.verify_mfa_password",
+          "class_name": "token.cgi",
+          "method_name": "verify_mfa_password",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=mfa_p"
+        },
+        {
+          "id": "token.verify_auto_account_creation",
+          "class_name": "token.cgi",
+          "method_name": "verify_auto_account_creation",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /token.cgi?a=verify_auto_account_creation"
+        },
+        {
+          "id": "userprefs.DoAccount",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoAccount",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=account"
+        },
+        {
+          "id": "userprefs.DoSettings",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoSettings",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=settings"
+        },
+        {
+          "id": "userprefs.DoEmail",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoEmail",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=email"
+        },
+        {
+          "id": "userprefs.DoPermissions",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoPermissions",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=permissions"
+        },
+        {
+          "id": "userprefs.DoSavedSearches",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoSavedSearches",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=saved-searches"
+        },
+        {
+          "id": "userprefs.DoApiKey",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoApiKey",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=apikey"
+        },
+        {
+          "id": "userprefs.DoSessions",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoSessions",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=sessions"
+        },
+        {
+          "id": "userprefs.DoMFA",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoMFA",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=mfa"
+        },
+        {
+          "id": "userprefs.DoReminders",
+          "class_name": "userprefs.cgi",
+          "method_name": "DoReminders",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=reminders"
+        },
+        {
+          "id": "votes.show_bug",
+          "class_name": "votes.cgi",
+          "method_name": "show_bug",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /votes.cgi?action=show_bug"
+        },
+        {
+          "id": "votes.show_user",
+          "class_name": "votes.cgi",
+          "method_name": "show_user",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /votes.cgi?action=show_user"
+        },
+        {
+          "id": "votes.vote",
+          "class_name": "votes.cgi",
+          "method_name": "vote",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /votes.cgi?action=vote"
+        },
+        {
+          "id": "BugmailFilter.user_preferences_bugmail_filter",
+          "class_name": "Bugzilla::Extension::BugmailFilter",
+          "method_name": "user_preferences",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=bugmail_filter"
+        },
+        {
+          "id": "ComponentWatching.user_preferences_component_watch",
+          "class_name": "Bugzilla::Extension::ComponentWatching",
+          "method_name": "user_preferences",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=component_watch"
+        },
+        {
+          "id": "RequestNagger.user_preferences_request_nagging",
+          "class_name": "Bugzilla::Extension::RequestNagger",
+          "method_name": "user_preferences",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=request_nagging"
+        },
+        {
+          "id": "SecureMail.user_preferences_securemail",
+          "class_name": "Bugzilla::Extension::SecureMail",
+          "method_name": "user_preferences",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=securemail"
+        },
+        {
+          "id": "Webhooks.user_preferences_webhooks",
+          "class_name": "Bugzilla::Extension::Webhooks",
+          "method_name": "user_preferences",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /userprefs.cgi?tab=webhooks"
+        },
+        {
+          "id": "UserActivity.report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::UserActivity",
+          "method_name": "report",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=user_activity.html"
+        },
+        {
+          "id": "Triage.unconfirmed",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Triage",
+          "method_name": "unconfirmed",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=triage_reports.html"
+        },
+        {
+          "id": "Triage.owners",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Triage",
+          "method_name": "owners",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=triage_owners.html"
+        },
+        {
+          "id": "Groups.admins_report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Groups",
+          "method_name": "admins_report",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=group_admins.html"
+        },
+        {
+          "id": "Groups.membership_report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Groups",
+          "method_name": "membership_report",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=group_membership.html"
+        },
+        {
+          "id": "Groups.members_report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Groups",
+          "method_name": "members_report",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=group_members.html"
+        },
+        {
+          "id": "BMO.email_queue",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "email_queue",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=email_queue.html"
+        },
+        {
+          "id": "ReleaseTracking.report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::ReleaseTracking",
+          "method_name": "report",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=release_tracking_report.html"
+        },
+        {
+          "id": "ProductSecurity.report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::ProductSecurity",
+          "method_name": "report",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=product_security_report.html"
+        },
+        {
+          "id": "Attention.report",
+          "class_name": "Bugzilla::Extension::BMO::Reports::Attention",
+          "method_name": "report",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=attention.html"
+        },
+        {
+          "id": "BMO.whats_next",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "whats_next",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=whats_next.html"
+        },
+        {
+          "id": "BMO.fields",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "fields",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=fields.html"
+        },
+        {
+          "id": "BMO.query_database",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "query_database",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=query_database.html"
+        },
+        {
+          "id": "BMO.bounty_attachment",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "bounty_attachment",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=attachment_bounty_form.html"
+        },
+        {
+          "id": "BMO.triage_request",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "triage_request",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=triage_request.html"
+        },
+        {
+          "id": "EditComments.page_before_template_EditComments",
+          "class_name": "Bugzilla::Extension::EditComments",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=comment-revisions.html"
+        },
+        {
+          "id": "EditTable.page_before_template_EditTable",
+          "class_name": "Bugzilla::Extension::EditTable",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=edit_table.html"
+        },
+        {
+          "id": "GuidedBugEntry.page_before_template_GuidedBugEntry",
+          "class_name": "Bugzilla::Extension::GuidedBugEntry",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=guided_products.js"
+        },
+        {
+          "id": "MyDashboard.page_before_template_MyDashboard",
+          "class_name": "Bugzilla::Extension::MyDashboard",
+          "method_name": "page_before_template",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=mydashboard.html"
+        },
+        {
+          "id": "RequestNagger.page_before_template_RequestNagger",
+          "class_name": "Bugzilla::Extension::RequestNagger",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=request_defer.html"
+        },
+        {
+          "id": "Splinter.page_before_template_Splinter",
+          "class_name": "Bugzilla::Extension::Splinter",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=splinter.html"
+        },
+        {
+          "id": "UserProfile.page_before_template_UserProfile",
+          "class_name": "Bugzilla::Extension::UserProfile",
+          "method_name": "page_before_template",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=user_profile.html"
+        },
+        {
+          "id": "Admin.admin_config",
+          "class_name": "Bugzilla::Extension::Push::Admin",
+          "method_name": "admin_config",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=push_config.html"
+        },
+        {
+          "id": "Admin.admin_queues",
+          "class_name": "Bugzilla::Extension::Push::Admin",
+          "method_name": "admin_queues",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=push_queues.html"
+        },
+        {
+          "id": "Admin.admin_log",
+          "class_name": "Bugzilla::Extension::Push::Admin",
+          "method_name": "admin_log",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=push_log.html"
+        },
+        {
+          "id": "Admin.admin_webhooks",
+          "class_name": "Bugzilla::Extension::Push::Admin",
+          "method_name": "admin_webhooks",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=webhooks_config.html"
+        },
+        {
+          "id": "Review.review_suggestions_report",
+          "class_name": "Bugzilla::Extension::Review",
+          "method_name": "review_suggestions_report",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=review_suggestions.html"
+        },
+        {
+          "id": "Review.review_requests_rebuild",
+          "class_name": "Bugzilla::Extension::Review",
+          "method_name": "review_requests_rebuild",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=review_requests_rebuild.html"
+        },
+        {
+          "id": "Review.review_history",
+          "class_name": "Bugzilla::Extension::Review",
+          "method_name": "review_history",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=review_history.html"
+        },
+        {
+          "id": "page.quicksearch_field_names",
+          "class_name": "page.cgi",
+          "method_name": "quicksearch_field_names",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=quicksearch.html"
+        },
+        {
+          "id": "Admin.admin_list",
+          "class_name": "Bugzilla::Extension::TrackingFlags::Admin",
+          "method_name": "admin_list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=tracking_flags_admin_list.html"
+        },
+        {
+          "id": "Admin.admin_edit",
+          "class_name": "Bugzilla::Extension::TrackingFlags::Admin",
+          "method_name": "admin_edit",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=tracking_flags_admin_edit.html"
+        },
+        {
+          "id": "Voting._page_bug",
+          "class_name": "Bugzilla::Extension::Voting",
+          "method_name": "_page_bug",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=voting/bug.html"
+        },
+        {
+          "id": "Voting._page_user",
+          "class_name": "Bugzilla::Extension::Voting",
+          "method_name": "_page_user",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=voting/user.html"
+        },
+        {
+          "id": "Webhooks.webhooks_queues",
+          "class_name": "Bugzilla::Extension::Webhooks",
+          "method_name": "webhooks_queues",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /page.cgi?id=webhooks_queues.html"
+        },
+        {
+          "id": "Main.root",
+          "class_name": "Bugzilla::App::Controller::Main",
+          "method_name": "root",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /"
+        },
+        {
+          "id": "Main.announcement_hide",
+          "class_name": "Bugzilla::App::Controller::Main",
+          "method_name": "announcement_hide",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /announcement/hide/{checksum}"
+        },
+        {
+          "id": "CGI.any_new_bug",
+          "class_name": "Bugzilla::App::Controller::CGI",
+          "method_name": "any_new_bug",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /{new_bug}"
+        },
+        {
+          "id": "BMO.any_rewrite_mdn",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "any_rewrite_mdn",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /{REWRITE_mdn}"
+        },
+        {
+          "id": "BMO.any_rewrite_dev_engagement_event",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "any_rewrite_dev_engagement_event",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /{REWRITE_dev_engagement_event}"
+        },
+        {
+          "id": "BMO.any_rewrite_ipc",
+          "class_name": "Bugzilla::Extension::BMO",
+          "method_name": "any_rewrite_ipc",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /{REWRITE_ipc}"
+        },
+        {
+          "id": "BouncedEmails.view",
+          "class_name": "Bugzilla::App::Controller::BouncedEmails",
+          "method_name": "view",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /bounced_emails/{userid}"
+        },
+        {
+          "id": "CSPReport.report",
+          "class_name": "Bugzilla::App::Controller::CSPReport",
+          "method_name": "report",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /csp_report"
+        },
+        {
+          "id": "SES.main",
+          "class_name": "Bugzilla::App::Controller::SES",
+          "method_name": "main",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /ses/index.cgi"
+        },
+        {
+          "id": "AntiSpam.antispam",
+          "class_name": "Bugzilla::App::Controller::BMO::AntiSpam",
+          "method_name": "antispam",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/antispam"
+        },
+        {
+          "id": "ComponentGraveyard.graveyard",
+          "class_name": "Bugzilla::App::Controller::BMO::ComponentGraveyard",
+          "method_name": "graveyard",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/component/graveyard"
+        },
+        {
+          "id": "NewRelease.new_release",
+          "class_name": "Bugzilla::App::Controller::BMO::NewRelease",
+          "method_name": "new_release",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/new_release"
+        },
+        {
+          "id": "Duo.callback",
+          "class_name": "Bugzilla::App::Controller::MFA::Duo",
+          "method_name": "callback",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /mfa/duo/callback"
+        },
+        {
+          "id": "Clients.list",
+          "class_name": "Bugzilla::App::Controller::OAuth2::Provider::Clients",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/oauth/provider/list"
+        },
+        {
+          "id": "Clients.create",
+          "class_name": "Bugzilla::App::Controller::OAuth2::Provider::Clients",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/oauth/provider/create"
+        },
+        {
+          "id": "Clients.delete",
+          "class_name": "Bugzilla::App::Controller::OAuth2::Provider::Clients",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/oauth/provider/delete"
+        },
+        {
+          "id": "Clients.edit",
+          "class_name": "Bugzilla::App::Controller::OAuth2::Provider::Clients",
+          "method_name": "edit",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "ANY /admin/oauth/provider/edit"
+        },
+        {
+          "id": "BugField.fields",
+          "class_name": "Bugzilla::API::V1::BugField",
+          "method_name": "fields",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/field/bug"
+        },
+        {
+          "id": "BugField.legal_values",
+          "class_name": "Bugzilla::API::V1::BugField",
+          "method_name": "legal_values",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/field/bug/{field}/values"
+        },
+        {
+          "id": "BugField.flag_types",
+          "class_name": "Bugzilla::API::V1::BugField",
+          "method_name": "flag_types",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/flag_types/{product}"
+        },
+        {
+          "id": "BugField.options",
+          "class_name": "Bugzilla::API::V1::BugField",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/field/bug"
+        },
+        {
+          "id": "BugGraph.graph",
+          "class_name": "Bugzilla::API::V1::BugGraph",
+          "method_name": "graph",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/{id}/graph"
+        },
+        {
+          "id": "BugUserLastVisit.get",
+          "class_name": "Bugzilla::API::V1::BugUserLastVisit",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<BugUserLastVisit>",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_user_last_visit/{id}"
+        },
+        {
+          "id": "BugUserLastVisit.update",
+          "class_name": "Bugzilla::API::V1::BugUserLastVisit",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<BugUserLastVisit>",
+          "protocol": "REST",
+          "endpoint": "POST /rest/bug_user_last_visit/{id}"
+        },
+        {
+          "id": "BugUserLastVisit.options",
+          "class_name": "Bugzilla::API::V1::BugUserLastVisit",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/bug_user_last_visit"
+        },
+        {
+          "id": "Classification.get",
+          "class_name": "Bugzilla::API::V1::Classification",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/classification/{id_or_name}"
+        },
+        {
+          "id": "Classification.options",
+          "class_name": "Bugzilla::API::V1::Classification",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/classification/{id_or_name}"
+        },
+        {
+          "id": "Component.create",
+          "class_name": "Bugzilla::API::V1::Component",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Component",
+          "protocol": "REST",
+          "endpoint": "POST /rest/component/{product}"
+        },
+        {
+          "id": "Component.update",
+          "class_name": "Bugzilla::API::V1::Component",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Component",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/component/{product}/{component}"
+        },
+        {
+          "id": "Component.get",
+          "class_name": "Bugzilla::API::V1::Component",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Component",
+          "protocol": "REST",
+          "endpoint": "GET /rest/component/{product}/{component}"
+        },
+        {
+          "id": "Configuration.configuration",
+          "class_name": "Bugzilla::API::V1::Configuration",
+          "method_name": "configuration",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/configuration"
+        },
+        {
+          "id": "Github.pull_request",
+          "class_name": "Bugzilla::API::V1::Github",
+          "method_name": "pull_request",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/github/pull_request"
+        },
+        {
+          "id": "Github.push_comment",
+          "class_name": "Bugzilla::API::V1::Github",
+          "method_name": "push_comment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/github/push_comment"
+        },
+        {
+          "id": "Group.get",
+          "class_name": "Bugzilla::API::V1::Group",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/group/{id}"
+        },
+        {
+          "id": "Group.create",
+          "class_name": "Bugzilla::API::V1::Group",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/group"
+        },
+        {
+          "id": "Group.update",
+          "class_name": "Bugzilla::API::V1::Group",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/group/{id}"
+        },
+        {
+          "id": "Group.options",
+          "class_name": "Bugzilla::API::V1::Group",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/group"
+        },
+        {
+          "id": "Product.get_products_by_type",
+          "class_name": "Bugzilla::API::V1::Product",
+          "method_name": "get_products_by_type",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/product_{type}"
+        },
+        {
+          "id": "Product.get",
+          "class_name": "Bugzilla::API::V1::Product",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/product/{id_or_name}"
+        },
+        {
+          "id": "Product.create",
+          "class_name": "Bugzilla::API::V1::Product",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/product"
+        },
+        {
+          "id": "Product.options",
+          "class_name": "Bugzilla::API::V1::Product",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/product"
+        },
+        {
+          "id": "Reminders.list",
+          "class_name": "Bugzilla::API::V1::Reminders",
+          "method_name": "list",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/reminder/{id}"
+        },
+        {
+          "id": "Reminders.add",
+          "class_name": "Bugzilla::API::V1::Reminders",
+          "method_name": "add",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Reminder",
+          "protocol": "REST",
+          "endpoint": "POST /rest/reminder"
+        },
+        {
+          "id": "Reminders.remove",
+          "class_name": "Bugzilla::API::V1::Reminders",
+          "method_name": "remove",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /rest/reminder/{id}"
+        },
+        {
+          "id": "Teams.component_teams",
+          "class_name": "Bugzilla::API::V1::Teams",
+          "method_name": "component_teams",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/config/component_teams/{team}"
+        },
+        {
+          "id": "User.user_profile",
+          "class_name": "Bugzilla::API::V1::User",
+          "method_name": "user_profile",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/user_profile"
+        },
+        {
+          "id": "UserObject.whoami",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "whoami",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/whoami"
+        },
+        {
+          "id": "UserObject.suggest",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "suggest",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/user/suggest"
+        },
+        {
+          "id": "UserObject.offer_account_by_email",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "offer_account_by_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rest/user/offer_account_by_email"
+        },
+        {
+          "id": "UserObject.get",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/user/{id_or_name}"
+        },
+        {
+          "id": "UserObject.create",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/user"
+        },
+        {
+          "id": "UserObject.update",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/user/{id_or_name}"
+        },
+        {
+          "id": "UserObject.options",
+          "class_name": "Bugzilla::API::V1::UserObject",
+          "method_name": "options",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "OPTIONS /rest/user"
+        },
+        {
+          "id": "Triage.triage_owners",
+          "class_name": "Bugzilla::Extension::BMO::API::V1::Triage",
+          "method_name": "triage_owners",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bmo/triage_owners"
+        },
+        {
+          "id": "PullRequests.bug_pull_requests",
+          "class_name": "Bugzilla::Extension::GitHubPullRequests::API::V1::PullRequests",
+          "method_name": "bug_pull_requests",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/githubpr/bug_pull_requests/{bug_id}"
+        },
+        {
+          "id": "PhabBugz.get_bugs",
+          "class_name": "Bugzilla::Extension::PhabBugz::API::V1::PhabBugz",
+          "method_name": "get_bugs",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/lando/uplift/{id}"
+        },
+        {
+          "id": "PhabBugz.update_bugs",
+          "class_name": "Bugzilla::Extension::PhabBugz::API::V1::PhabBugz",
+          "method_name": "update_bugs",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/lando/uplift"
+        },
+        {
+          "id": "PhabBugz.get_comments",
+          "class_name": "Bugzilla::Extension::PhabBugz::API::V1::PhabBugz",
+          "method_name": "get_comments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/pulsebot/bug/{id}/comment"
+        },
+        {
+          "id": "PhabBugz.add_comment",
+          "class_name": "Bugzilla::Extension::PhabBugz::API::V1::PhabBugz",
+          "method_name": "add_comment",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/pulsebot/bug/{id}/comment"
+        },
+        {
+          "id": "LastSeen.needinfo_last_seen",
+          "class_name": "Bugzilla::Extension::SearchAPI::API::V1::LastSeen",
+          "method_name": "needinfo_last_seen",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/search/needinfo_last_seen"
+        },
+        {
+          "id": "LastSeen.assignee_last_seen",
+          "class_name": "Bugzilla::Extension::SearchAPI::API::V1::LastSeen",
+          "method_name": "assignee_last_seen",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/search/assignee_last_seen"
+        },
+        {
+          "id": "Webhooks.list",
+          "class_name": "Bugzilla::Extension::Webhooks::API::V1::Webhooks",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/webhooks/list"
+        },
+        {
+          "id": "Bug.search",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "search",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug"
+        },
+        {
+          "id": "Bug.create",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/bug"
+        },
+        {
+          "id": "Bug.get",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/{id}"
+        },
+        {
+          "id": "Bug.possible_duplicates",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "possible_duplicates",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/possible_duplicates"
+        },
+        {
+          "id": "Bug.update",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug/{id}"
+        },
+        {
+          "id": "Bug.comments",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "comments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/{id}/comment"
+        },
+        {
+          "id": "Bug.add_comment",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "add_comment",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/bug/{id}/comment"
+        },
+        {
+          "id": "Bug.get_comment_reactions",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "get_comment_reactions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/comment/{comment_id}/reactions"
+        },
+        {
+          "id": "Bug.update_comment_reactions",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "update_comment_reactions",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug/comment/{comment_id}/reactions"
+        },
+        {
+          "id": "Bug.search_comment_tags",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "search_comment_tags",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/comment/tags/{query}"
+        },
+        {
+          "id": "Bug.update_comment_tags",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "update_comment_tags",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug/comment/{comment_id}/tags"
+        },
+        {
+          "id": "Bug.render_comment",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "render_comment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/bug/comment/render"
+        },
+        {
+          "id": "Bug.history",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "history",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/{id}/history"
+        },
+        {
+          "id": "Bug.attachments",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "attachments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug/{id}/attachment"
+        },
+        {
+          "id": "Bug.add_attachment",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "add_attachment",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/bug/{id}/attachment"
+        },
+        {
+          "id": "Bug.update_attachment",
+          "class_name": "Bugzilla::WebService::Bug",
+          "method_name": "update_attachment",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug/attachment/{id}"
+        },
+        {
+          "id": "Bugzilla.extensions",
+          "class_name": "Bugzilla::WebService::Bugzilla",
+          "method_name": "extensions",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/extensions"
+        },
+        {
+          "id": "Bugzilla.timezone",
+          "class_name": "Bugzilla::WebService::Bugzilla",
+          "method_name": "timezone",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/timezone"
+        },
+        {
+          "id": "Bugzilla.time",
+          "class_name": "Bugzilla::WebService::Bugzilla",
+          "method_name": "time",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/time"
+        },
+        {
+          "id": "Bugzilla.jobqueue_status",
+          "class_name": "Bugzilla::WebService::Bugzilla",
+          "method_name": "jobqueue_status",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/jobqueue_status"
+        },
+        {
+          "id": "User.suggest",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "suggest",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest.cgi/user/suggest"
+        },
+        {
+          "id": "User.valid_login",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "valid_login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/valid_login"
+        },
+        {
+          "id": "User.login",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/login"
+        },
+        {
+          "id": "User.logout",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/logout"
+        },
+        {
+          "id": "User.offer_account_by_email",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "offer_account_by_email",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest.cgi/user/offer_account_by_email"
+        },
+        {
+          "id": "User.get",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest.cgi/user/{id_or_name}"
+        },
+        {
+          "id": "User.create",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest.cgi/user"
+        },
+        {
+          "id": "User.update",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest.cgi/user/{id_or_name}"
+        },
+        {
+          "id": "User.mfa_enroll",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "mfa_enroll",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/user/mfa/{provider}/enroll"
+        },
+        {
+          "id": "User.mfa_verify_totp_code",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "mfa_verify_totp_code",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/user/mfa/verify_totp_code"
+        },
+        {
+          "id": "User.whoami",
+          "class_name": "Bugzilla::WebService::User",
+          "method_name": "whoami",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest.cgi/whoami"
+        },
+        {
+          "id": "WebService.shorten_Bitly",
+          "class_name": "Bugzilla::Extension::Bitly::WebService",
+          "method_name": "shorten",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bitly/shorten"
+        },
+        {
+          "id": "WebService.list_Bitly",
+          "class_name": "Bugzilla::Extension::Bitly::WebService",
+          "method_name": "list",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bitly/list"
+        },
+        {
+          "id": "WebService.initial_field_values_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "initial_field_values",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/initial_field_values"
+        },
+        {
+          "id": "WebService.product_info_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "product_info",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/product_info"
+        },
+        {
+          "id": "WebService.edit_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/edit/{id}"
+        },
+        {
+          "id": "WebService.cc_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "cc",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/cc/{id}"
+        },
+        {
+          "id": "WebService.comment_tags_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "comment_tags",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/comment_tags/{id}"
+        },
+        {
+          "id": "WebService.update_comment_tags_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "update_comment_tags",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug_modal/update_comment_tags/{id}"
+        },
+        {
+          "id": "WebService.new_product_BugModal",
+          "class_name": "Bugzilla::Extension::BugModal::WebService",
+          "method_name": "new_product",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/bug_modal/new_product/{id}"
+        },
+        {
+          "id": "WebService.list_ComponentWatching",
+          "class_name": "Bugzilla::Extension::ComponentWatching::WebService",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/component-watching"
+        },
+        {
+          "id": "WebService.add_ComponentWatching",
+          "class_name": "Bugzilla::Extension::ComponentWatching::WebService",
+          "method_name": "add",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/component-watching"
+        },
+        {
+          "id": "WebService.get_ComponentWatching",
+          "class_name": "Bugzilla::Extension::ComponentWatching::WebService",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/component-watching/{id}"
+        },
+        {
+          "id": "WebService.remove_ComponentWatching",
+          "class_name": "Bugzilla::Extension::ComponentWatching::WebService",
+          "method_name": "remove",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /rest/component-watching/{id}"
+        },
+        {
+          "id": "WebService.comments_EditComments",
+          "class_name": "Bugzilla::Extension::EditComments::WebService",
+          "method_name": "comments",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/editcomments/comment/{comment_id}"
+        },
+        {
+          "id": "WebService.update_comment_EditComments",
+          "class_name": "Bugzilla::Extension::EditComments::WebService",
+          "method_name": "update_comment",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/editcomments/comment/{comment_id}"
+        },
+        {
+          "id": "WebService.modify_revision_EditComments",
+          "class_name": "Bugzilla::Extension::EditComments::WebService",
+          "method_name": "modify_revision",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/editcomments/revision"
+        },
+        {
+          "id": "WebService.close_as_invalid_InvalidBugHelper",
+          "class_name": "Bugzilla::Extension::InvalidBugHelper::WebService",
+          "method_name": "close_as_invalid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /rest/invalid_bug_helper/close/{bug_id}"
+        },
+        {
+          "id": "WebService.bug_interest_unmark_MyDashboard",
+          "class_name": "Bugzilla::Extension::MyDashboard::WebService",
+          "method_name": "bug_interest_unmark",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /rest/bug_interest_unmark"
+        },
+        {
+          "id": "WebService.run_bug_query_MyDashboard",
+          "class_name": "Bugzilla::Extension::MyDashboard::WebService",
+          "method_name": "run_bug_query",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/mydashboard/run_bug_query"
+        },
+        {
+          "id": "WebService.run_flag_query_MyDashboard",
+          "class_name": "Bugzilla::Extension::MyDashboard::WebService",
+          "method_name": "run_flag_query",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/mydashboard/run_flag_query"
+        },
+        {
+          "id": "WebService.run_last_changes_MyDashboard",
+          "class_name": "Bugzilla::Extension::MyDashboard::WebService",
+          "method_name": "run_last_changes",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/mydashboard/run_last_changes"
+        },
+        {
+          "id": "WebService.check_user_permission_for_bug_PhabBugz",
+          "class_name": "Bugzilla::Extension::PhabBugz::WebService",
+          "method_name": "check_user_permission_for_bug",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/phabbugz/check_bug/{bug_id}/{user_id}"
+        },
+        {
+          "id": "WebService.check_user_enter_bug_permission_PhabBugz",
+          "class_name": "Bugzilla::Extension::PhabBugz::WebService",
+          "method_name": "check_user_enter_bug_permission",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/phabbugz/check_enter_bug/{product}/{user_id}"
+        },
+        {
+          "id": "WebService.bug_revisions_PhabBugz",
+          "class_name": "Bugzilla::Extension::PhabBugz::WebService",
+          "method_name": "bug_revisions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/phabbugz/bug_revisions/{bug_id}"
+        },
+        {
+          "id": "WebService.user_PhabBugz",
+          "class_name": "Bugzilla::Extension::PhabBugz::WebService",
+          "method_name": "user",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/phabbugz/user/{user_id}"
+        },
+        {
+          "id": "WebService.prod_comp_search_ProdCompSearch",
+          "class_name": "Bugzilla::Extension::ProdCompSearch::WebService",
+          "method_name": "prod_comp_search",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/prod_comp_search/find/{search}"
+        },
+        {
+          "id": "WebService.list_frequent_components_ProdCompSearch",
+          "class_name": "Bugzilla::Extension::ProdCompSearch::WebService",
+          "method_name": "list_frequent_components",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/prod_comp_search/frequent"
+        },
+        {
+          "id": "WebService.suggestions_Review",
+          "class_name": "Bugzilla::Extension::Review::WebService",
+          "method_name": "suggestions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/review/suggestions/{bug_id}"
+        },
+        {
+          "id": "WebService.flag_activity_Review",
+          "class_name": "Bugzilla::Extension::Review::WebService",
+          "method_name": "flag_activity",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /rest/review/flag_activity/{flag_id}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}
