@@ -8,7 +8,7 @@ All files pass schema, manifest-key, id, destination and evidence-line checks. T
 
 For each system with services in the manifest, use the `v4.2` file if it exists, otherwise the `v4.0` file. Ignore `v4.0` files for systems that now have no services.
 
-**89 systems** (40 from v4.2, 49 from v4.0): 13,168 interfaces, 3,068 calls.
+**90 systems** (41 from v4.2, 49 from v4.0): 13,223 interfaces, 3,106 calls.
 
 ## Ground-truth check
 
@@ -27,6 +27,7 @@ MS106 is the only re-run system with ground truth: interface F1 0.88 (v4.0) to 1
 | MS040 | 18 | 36 / 35 | 46 / 49 | includes five calls from the React Native app; MCP-mode calls omitted |
 | MS042 | 14 | 30 / 0 | 45 / 36 |  |
 | MS044 | 14 | 0 / 0 | 35 / 25 |  |
+| MS045 | 21 | 156 / 0 | 55 / 38 | lists the `daprApps_v1` apps (Dapr social network, video pipeline, video sharing); the name "swarm-ecommerce" does not describe them |
 | MS050 | 8 | 141 / 211 | 138 / 37 | fewer calls than v4.0 because the CLI is no longer a service; applicationset-to-reposerver generator edges omitted |
 | MS051 | 7 | 192 / 59 | 185 / 74 |  |
 | MS055 | 1 | 428 / 0 | 1356 / 0 | run-to-run difference: this run lists every GraphQL field resolver, v4.0 listed only queries and mutations |
