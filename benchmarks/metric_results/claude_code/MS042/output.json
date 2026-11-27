@@ -1,0 +1,63 @@
+{
+    "system": "MS042",
+    "tool": "Ground-Truth Architecture (MS042)",
+    "microservices": {
+        "ComposePostService": [
+            "ComposePostHandler",
+            "ComposePostService",
+            "RabbitmqClient"
+        ],
+        "HomeTimelineService": [
+            "HomeTimelineHandler",
+            "HomeTimelineService"
+        ],
+        "MediaService": [
+            "MediaHandler",
+            "MediaService"
+        ],
+        "PostStorageService": [
+            "PostStorageHandler",
+            "PostStorageService"
+        ],
+        "SocialGraphService": [
+            "SocialGraphHandler",
+            "SocialGraphService"
+        ],
+        "TextService": [
+            "TextHandler",
+            "TextService"
+        ],
+        "UniqueIdService": [
+            "UniqueIdHandler",
+            "UniqueIdService"
+        ],
+        "UrlShortenService": [
+            "UrlShortenHandler",
+            "UrlShortenService"
+        ],
+        "UserMentionService": [
+            "UserMentionHandler",
+            "UserMentionService"
+        ],
+        "UserService": [
+            "UserHandler",
+            "UserService"
+        ],
+        "UserTimelineService": [
+            "UserTimelineHandler",
+            "UserTimelineService"
+        ],
+        "WriteHomeTimelineService": [
+            "WriteHomeTimelineService"
+        ],
+        "nginx-web-server": [
+            "pages/javascript/button-click.js",
+            "pages/javascript/contact.js",
+            "pages/javascript/create-post.js",
+            "pages/javascript/default_user.js",
+            "pages/javascript/get-followee.js",
+            "pages/javascript/get-follower.js",
+            "pages/javascript/timeline.js"
+        ]
+    }
+}

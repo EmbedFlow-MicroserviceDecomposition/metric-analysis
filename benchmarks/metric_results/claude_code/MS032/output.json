@@ -1,0 +1,49 @@
+{
+    "system": "MS032",
+    "tool": "Ground-Truth Architecture (MS032)",
+    "microservices": {
+        "user-service": [
+            "io.example.StreamConfig",
+            "io.example.UserServiceApplication",
+            "io.example.config.DataSourceConfiguration",
+            "io.example.domain.DomainEvent",
+            "io.example.domain.EventType",
+            "io.example.domain.User",
+            "io.example.domain.UserController",
+            "io.example.domain.UserEvent",
+            "io.example.domain.UserRepository",
+            "io.example.domain.UserService"
+        ],
+        "friend-service": [
+            "io.example.FriendServiceApplication",
+            "io.example.StreamConfig",
+            "io.example.config.DataSourceConfiguration",
+            "io.example.domain.friend.DomainEvent",
+            "io.example.domain.friend.EventType",
+            "io.example.domain.friend.Friend",
+            "io.example.domain.friend.FriendController",
+            "io.example.domain.friend.FriendEvent",
+            "io.example.domain.friend.FriendMessage",
+            "io.example.domain.friend.FriendRepository",
+            "io.example.domain.friend.FriendService",
+            "io.example.domain.user.User",
+            "io.example.domain.user.UserClient"
+        ],
+        "recommendation-service": [
+            "io.example.RecommendationService",
+            "io.example.domain.friend.FriendEvent",
+            "io.example.domain.friend.FriendEventType",
+            "io.example.domain.friend.FriendMessage",
+            "io.example.domain.friend.FriendProcessor",
+            "io.example.domain.friend.FriendSink",
+            "io.example.domain.friend.entity.RankedUser",
+            "io.example.domain.user.UserController",
+            "io.example.domain.user.UserEvent",
+            "io.example.domain.user.UserEventType",
+            "io.example.domain.user.UserProcessor",
+            "io.example.domain.user.UserRepository",
+            "io.example.domain.user.UserSink",
+            "io.example.domain.user.entity.User"
+        ]
+    }
+}

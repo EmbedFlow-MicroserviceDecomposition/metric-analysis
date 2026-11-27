@@ -1,0 +1,40 @@
+{
+    "system": "MS034",
+    "tool": "Ground-Truth Architecture (MS034)",
+    "microservices": {
+        "api-gateway": [
+            "com.mudigal.ApiGatewayApplication",
+            "com.mudigal.controller.ApiGatewayMainController"
+        ],
+        "service-one": [
+            "com.mudigal.one.ServiceOneApplication",
+            "com.mudigal.one.component.ScheduledTask",
+            "com.mudigal.one.component.queue.ServiceOneRabbitMQBean",
+            "com.mudigal.one.config.ReactiveMongoConfiguration",
+            "com.mudigal.one.config.SwaggerConfig",
+            "com.mudigal.one.controller.NameValueController",
+            "com.mudigal.one.dao.NameValueRepository",
+            "com.mudigal.one.domain.NameValue",
+            "com.mudigal.one.model.NameValueTO",
+            "com.mudigal.one.service.NameValueService",
+            "com.mudigal.one.service.impl.NameValueServiceImpl",
+            "com.mudigal.one.service.impl.ServiceOneRabbitMessageConsumer",
+            "com.mudigal.one.service.impl.ServiceOneRabbitMessageProducer"
+        ],
+        "service-two": [
+            "com.mudigal.two.ServiceTwoApplication",
+            "com.mudigal.two.component.queue.ServiceTwoRabbitMQBean",
+            "com.mudigal.two.config.Swagger3Config",
+            "com.mudigal.two.controller.NameValueController",
+            "com.mudigal.two.domain.NameValue",
+            "com.mudigal.two.mapper.NameValueMapper",
+            "com.mudigal.two.model.AllNameValueTO",
+            "com.mudigal.two.model.NameValueTO",
+            "com.mudigal.two.repository.NameValueRepository",
+            "com.mudigal.two.service.NameValueService",
+            "com.mudigal.two.service.impl.NameValueServiceImpl",
+            "com.mudigal.two.service.impl.ServiceTwoRabbitMessageConsumer",
+            "com.mudigal.two.service.impl.ServiceTwoRabbitMessageProducer"
+        ]
+    }
+}

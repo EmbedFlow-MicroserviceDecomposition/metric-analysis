@@ -1,0 +1,16 @@
+{
+    "system": "MS018",
+    "tool": "Ground-Truth Architecture (MS018)",
+    "microservices": {
+        "static-code-analyser": [
+            "com.rokin.sca.StaticCodeAnalyserApplication",
+            "com.rokin.sca.controller.AnalyserController",
+            "com.rokin.sca.service.AnalyserService",
+            "com.rokin.sca.utils.InheritedClasses"
+        ],
+        "result-analyser": [
+            "data-processing",
+            "similarity"
+        ]
+    }
+}

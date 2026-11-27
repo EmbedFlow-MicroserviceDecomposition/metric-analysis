@@ -1,0 +1,133 @@
+{
+    "system": "MS106",
+    "tool": "Ground-Truth Architecture (MS106)",
+    "microservices": {
+        "awsmail": [
+            "admin",
+            "apps.awsmailConfig",
+            "models",
+            "tasks",
+            "urls",
+            "views.AwsMailAttachmentView",
+            "views.AwsMailView"
+        ],
+        "registration": [
+            "admin",
+            "apps.RegistrationConfig",
+            "models",
+            "serializers.RegistrationMailSerializer",
+            "tasks",
+            "urls",
+            "views.SendRegistrationMail"
+        ],
+        "send_certificate": [
+            "admin",
+            "apps.SendCertificateConfig",
+            "models",
+            "serializers.SendCertificateSerializer",
+            "tasks",
+            "urls",
+            "views.SendCertificateLink"
+        ],
+        "info": [
+            "admin",
+            "apps.InfoConfig",
+            "models.Info",
+            "serializers.InfoSerializer",
+            "serializers.Meta",
+            "urls",
+            "views.InfoView"
+        ],
+        "confirmation": [
+            "admin",
+            "apps.ConfirmationConfig",
+            "models",
+            "serializers.ConfirmationMailSerializer",
+            "tasks",
+            "urls",
+            "views.SendConfirmationLink"
+        ],
+        "scheduler": [
+            "admin",
+            "apps.SchedulerConfig",
+            "models",
+            "serializers.EmailSchedulingSerializer",
+            "tasks",
+            "urls",
+            "views.SendSchduledEmail"
+        ],
+        "invitation": [
+            "admin",
+            "apps.InvitationConfig",
+            "models",
+            "serializers.InvitationMailSerializer",
+            "tasks",
+            "urls",
+            "views.SendInvitationLink"
+        ],
+        "greetings_mail": [
+            "admin",
+            "apps.GreetingsMailConfig",
+            "models.GreetingsBC",
+            "serializers.GreetingsSerializer",
+            "serializers.Meta",
+            "urls",
+            "views.GreetingsApiView"
+        ],
+        "api": [
+            "admin",
+            "apps.ApiConfig",
+            "models",
+            "serializers.MailAttachmentSerializer",
+            "serializers.MailSerializer",
+            "serializers.TemplateMailSerializer",
+            "tasks",
+            "urls",
+            "views.SendMail",
+            "views.SendMailWithTemplate"
+        ],
+        "newsletter": [
+            "admin.NewsletterEmail",
+            "apps.NewsletterConfig",
+            "models.Newsletter",
+            "serializers.CustomSerializer",
+            "serializers.Meta",
+            "serializers.NewsletterSerializer",
+            "tasks",
+            "urls",
+            "views.DisplayAll",
+            "views.SendCustomMail",
+            "views.SendNewsletter"
+        ],
+        "settings": [
+            "admin",
+            "apps.SettingsConfig",
+            "models.Settings",
+            "serializers.Meta",
+            "serializers.SettingsSerializer",
+            "urls",
+            "views.SettingsConfig",
+            "views.SettingsConfigDetail",
+            "views.SettingsView"
+        ],
+        "newsletter_with_frontend": [
+            "admin.AdminUserProfile",
+            "apps.NewsletterWithFrontendConfig",
+            "models.Meta",
+            "models.UserProfile",
+            "serializer.EditSerializer",
+            "serializer.Meta",
+            "serializer.UserProfileSerializers",
+            "urls",
+            "views"
+        ],
+        "bounce_notification": [
+            "admin",
+            "apps.BounceNotificationConfig",
+            "models",
+            "serializer.BounceSerializer",
+            "urls",
+            "views.BounceNotification"
+        ]
+    }
+}

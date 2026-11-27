@@ -1,0 +1,23 @@
+{
+    "system": "MS030",
+    "tool": "Ground-Truth Architecture (MS030)",
+    "microservices": {
+        "account-service": [
+            "pl.piomin.microservices.account.AccountServiceApplication",
+            "pl.piomin.microservices.account.api.Api",
+            "pl.piomin.microservices.account.config.AccountConfiguration",
+            "pl.piomin.microservices.account.exceptions.AccountNotFoundException",
+            "pl.piomin.microservices.account.model.Account"
+        ],
+        "customer-service": [
+            "pl.piomin.microservices.customer.CustomerServiceApplication",
+            "pl.piomin.microservices.customer.api.Api",
+            "pl.piomin.microservices.customer.config.CustomerConfiguration",
+            "pl.piomin.microservices.customer.exceptions.CustomerNotFoundException",
+            "pl.piomin.microservices.customer.intercomm.AccountClient",
+            "pl.piomin.microservices.customer.model.Account",
+            "pl.piomin.microservices.customer.model.Customer",
+            "pl.piomin.microservices.customer.model.CustomerType"
+        ]
+    }
+}

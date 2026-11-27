@@ -1,0 +1,453 @@
+{
+    "system": "MS019",
+    "tool": "Ground-Truth Architecture (MS019)",
+    "microservices": {
+        "ts-verification-code-service": [
+            "verifycode.VerifyCodeApplication",
+            "verifycode.config.SecurityConfig",
+            "verifycode.controller.VerifyCodeController",
+            "verifycode.service.VerifyCodeService",
+            "verifycode.service.impl.VerifyCodeServiceImpl",
+            "verifycode.util.CookieUtil"
+        ],
+        "ts-contacts-service": [
+            "contacts.ContactsApplication",
+            "contacts.config.SecurityConfig",
+            "contacts.controller.ContactsController",
+            "contacts.entity.Contacts",
+            "contacts.entity.DocumentType",
+            "contacts.init.InitData",
+            "contacts.repository.ContactsRepository",
+            "contacts.service.ContactsService",
+            "contacts.service.ContactsServiceImpl"
+        ],
+        "ts-order-service": [
+            "order.OrderApplication",
+            "order.config.SecurityConfig",
+            "order.controller.OrderController",
+            "order.entity.Order",
+            "order.entity.OrderAlterInfo",
+            "order.entity.OrderInfo",
+            "order.init.InitData",
+            "order.repository.OrderRepository",
+            "order.service.OrderService",
+            "order.service.OrderServiceImpl"
+        ],
+        "ts-order-other-service": [
+            "other.OrderOtherApplication",
+            "other.config.SecurityConfig",
+            "other.controller.OrderOtherController",
+            "other.entity.Order",
+            "other.entity.OrderAlterInfo",
+            "other.entity.QueryInfo",
+            "other.init.InitData",
+            "other.repository.OrderOtherRepository",
+            "other.service.OrderOtherService",
+            "other.service.OrderOtherServiceImpl"
+        ],
+        "ts-config-service": [
+            "config.ConfigApplication",
+            "config.SecurityConfig",
+            "config.controller.ConfigController",
+            "config.entity.Config",
+            "config.init.InitData",
+            "config.repository.ConfigRepository",
+            "config.service.ConfigService",
+            "config.service.ConfigServiceImpl"
+        ],
+        "ts-station-service": [
+            "fdse.microservice.StationApplication",
+            "fdse.microservice.config.SecurityConfig",
+            "fdse.microservice.controller.StationController",
+            "fdse.microservice.entity.Station",
+            "fdse.microservice.init.InitData",
+            "fdse.microservice.repository.StationRepository",
+            "fdse.microservice.service.StationService",
+            "fdse.microservice.service.StationServiceImpl"
+        ],
+        "ts-train-service": [
+            "train.TrainApplication",
+            "train.config.SecurityConfig",
+            "train.controller.TrainController",
+            "train.entity.TrainType",
+            "train.init.InitData",
+            "train.repository.TrainTypeRepository",
+            "train.service.TrainService",
+            "train.service.TrainServiceImpl"
+        ],
+        "ts-travel-service": [
+            "travel.TravelApplication",
+            "travel.config.SecurityConfig",
+            "travel.controller.TravelController",
+            "travel.entity.AdminTrip",
+            "travel.entity.Travel",
+            "travel.entity.Trip",
+            "travel.entity.TripAllDetail",
+            "travel.init.InitData",
+            "travel.repository.TripRepository",
+            "travel.service.MyCallable",
+            "travel.service.TravelService",
+            "travel.service.TravelServiceImpl"
+        ],
+        "ts-travel2-service": [
+            "travel2.Travel2Application",
+            "travel2.config.SecurityConfig",
+            "travel2.controller.Travel2Controller",
+            "travel2.entity.AdminTrip",
+            "travel2.entity.Travel",
+            "travel2.entity.Trip",
+            "travel2.entity.TripAllDetail",
+            "travel2.init.InitData",
+            "travel2.repository.TripRepository",
+            "travel2.service.TravelService",
+            "travel2.service.TravelServiceImpl"
+        ],
+        "ts-preserve-service": [
+            "preserve.PreserveApplication",
+            "preserve.config.Queues",
+            "preserve.config.SecurityConfig",
+            "preserve.controller.PreserveController",
+            "preserve.mq.RabbitSend",
+            "preserve.service.PreserveService",
+            "preserve.service.PreserveServiceImpl"
+        ],
+        "ts-preserve-other-service": [
+            "preserveOther.PreserveOtherApplication",
+            "preserveOther.config.Queues",
+            "preserveOther.config.SecurityConfig",
+            "preserveOther.controller.PreserveOtherController",
+            "preserveOther.mq.RabbitSend",
+            "preserveOther.service.PreserveOtherService",
+            "preserveOther.service.PreserveOtherServiceImpl"
+        ],
+        "ts-basic-service": [
+            "fdse.microservice.BasicApplication",
+            "fdse.microservice.config.SecurityConfig",
+            "fdse.microservice.controller.BasicController",
+            "fdse.microservice.service.BasicService",
+            "fdse.microservice.service.BasicServiceImpl"
+        ],
+        "ts-price-service": [
+            "price.PriceApplication",
+            "price.config.SecurityConfig",
+            "price.controller.PriceController",
+            "price.entity.PriceConfig",
+            "price.init.InitData",
+            "price.repository.PriceConfigRepository",
+            "price.service.PriceService",
+            "price.service.PriceServiceImpl"
+        ],
+        "ts-notification-service": [
+            "notification.NotificationApplication",
+            "notification.config.EmailConfig",
+            "notification.config.EmailProperties",
+            "notification.config.Queues",
+            "notification.config.SecurityConfig",
+            "notification.controller.NotificationController",
+            "notification.entity.Mail",
+            "notification.entity.NotifyInfo",
+            "notification.mq.RabbitReceive",
+            "notification.mq.RabbitSend",
+            "notification.repository.NotifyRepository",
+            "notification.service.MailService",
+            "notification.service.NotificationService",
+            "notification.service.NotificationServiceImpl"
+        ],
+        "ts-security-service": [
+            "security.SecurityApplication",
+            "security.config.SecurityConfig",
+            "security.controller.SecurityController",
+            "security.entity.SecurityConfig",
+            "security.init.InitData",
+            "security.repository.SecurityRepository",
+            "security.service.SecurityService",
+            "security.service.SecurityServiceImpl"
+        ],
+        "ts-inside-payment-service": [
+            "inside_payment.InsidePaymentApplication",
+            "inside_payment.async.AsyncTask",
+            "inside_payment.async.ExecutorConfig",
+            "inside_payment.config.SecurityConfig",
+            "inside_payment.controller.InsidePaymentController",
+            "inside_payment.entity.AccountInfo",
+            "inside_payment.entity.Balance",
+            "inside_payment.entity.Money",
+            "inside_payment.entity.MoneyType",
+            "inside_payment.entity.OutsidePaymentInfo",
+            "inside_payment.entity.Payment",
+            "inside_payment.entity.PaymentInfo",
+            "inside_payment.entity.PaymentType",
+            "inside_payment.init.InitData",
+            "inside_payment.repository.AddMoneyRepository",
+            "inside_payment.repository.PaymentRepository",
+            "inside_payment.service.InsidePaymentService",
+            "inside_payment.service.InsidePaymentServiceImpl",
+            "inside_payment.util.CookieUtil"
+        ],
+        "ts-execute-service": [
+            "execute.ExecuteApplication",
+            "execute.config.SecurityConfig",
+            "execute.controller.ExecuteControlller",
+            "execute.serivce.ExecuteService",
+            "execute.serivce.ExecuteServiceImpl"
+        ],
+        "ts-payment-service": [
+            "com.trainticket.PaymentApplication",
+            "com.trainticket.config.SecurityConfig",
+            "com.trainticket.controller.PaymentController",
+            "com.trainticket.entity.Money",
+            "com.trainticket.entity.Payment",
+            "com.trainticket.init.InitData",
+            "com.trainticket.repository.AddMoneyRepository",
+            "com.trainticket.repository.PaymentRepository",
+            "com.trainticket.service.PaymentService",
+            "com.trainticket.service.PaymentServiceImpl"
+        ],
+        "ts-rebook-service": [
+            "rebook.RebookApplication",
+            "rebook.config.SecurityConfig",
+            "rebook.controller.RebookController",
+            "rebook.entity.RebookInfo",
+            "rebook.service.RebookService",
+            "rebook.service.RebookServiceImpl"
+        ],
+        "ts-cancel-service": [
+            "cancel.CancelApplication",
+            "cancel.config.SecurityConfig",
+            "cancel.controller.CancelController",
+            "cancel.entity.GetAccountByIdInfo",
+            "cancel.entity.GetAccountByIdResult",
+            "cancel.entity.GetOrderByIdInfo",
+            "cancel.service.CancelService",
+            "cancel.service.CancelServiceImpl"
+        ],
+        "ts-route-service": [
+            "route.RouteApplication",
+            "route.config.SecurityConfig",
+            "route.controller.RouteController",
+            "route.entity.Route",
+            "route.entity.RouteInfo",
+            "route.init.InitData",
+            "route.repository.RouteRepository",
+            "route.service.RouteService",
+            "route.service.RouteServiceImpl"
+        ],
+        "ts-assurance-service": [
+            "assurance.AssuranceApplication",
+            "assurance.config.SecurityConfig",
+            "assurance.controller.AssuranceController",
+            "assurance.entity.Assurance",
+            "assurance.entity.AssuranceType",
+            "assurance.entity.AssuranceTypeBean",
+            "assurance.entity.PlainAssurance",
+            "assurance.init.InitData",
+            "assurance.repository.AssuranceRepository",
+            "assurance.service.AssuranceService",
+            "assurance.service.AssuranceServiceImpl"
+        ],
+        "ts-seat-service": [
+            "seat.SeatApplication",
+            "seat.config.SecurityConfig",
+            "seat.controller.SeatController",
+            "seat.service.SeatService",
+            "seat.service.SeatServiceImpl"
+        ],
+        "ts-travel-plan-service": [
+            "travelplan.TravelPlanApplication",
+            "travelplan.config.SecurityConfig",
+            "travelplan.controller.TravelPlanController",
+            "travelplan.entity.TransferTravelInfo",
+            "travelplan.entity.TransferTravelResult",
+            "travelplan.entity.TravelAdvanceResultUnit",
+            "travelplan.service.TravelPlanService",
+            "travelplan.service.TravelPlanServiceImpl"
+        ],
+        "ts-route-plan-service": [
+            "plan.RoutePlanApplication",
+            "plan.config.SecurityConfig",
+            "plan.controller.RoutePlanController",
+            "plan.service.RoutePlanService",
+            "plan.service.RoutePlanServiceImpl"
+        ],
+        "ts-food-service": [
+            "foodsearch.FoodApplication",
+            "foodsearch.config.Queues",
+            "foodsearch.config.SecurityConfig",
+            "foodsearch.controller.FoodController",
+            "foodsearch.entity.AllTripFood",
+            "foodsearch.entity.Delivery",
+            "foodsearch.entity.FoodOrder",
+            "foodsearch.mq.RabbitSend",
+            "foodsearch.repository.FoodOrderRepository",
+            "foodsearch.service.FoodService",
+            "foodsearch.service.FoodServiceImpl"
+        ],
+        "ts-station-food-service": [
+            "food.StationFoodApplication",
+            "food.config.SecurityConfig",
+            "food.controller.StationFoodController",
+            "food.entity.StationFoodStore",
+            "food.init.InitData",
+            "food.repository.StationFoodRepository",
+            "food.service.StationFoodService",
+            "food.service.StationFoodServiceImpl"
+        ],
+        "ts-consign-price-service": [
+            "consignprice.ConsignPriceApplication",
+            "consignprice.config.SecurityConfig",
+            "consignprice.controller.ConsignPriceController",
+            "consignprice.entity.ConsignPrice",
+            "consignprice.init.InitData",
+            "consignprice.repository.ConsignPriceConfigRepository",
+            "consignprice.service.ConsignPriceService",
+            "consignprice.service.ConsignPriceServiceImpl"
+        ],
+        "ts-consign-service": [
+            "consign.ConsignApplication",
+            "consign.config.SecurityConfig",
+            "consign.controller.ConsignController",
+            "consign.entity.Consign",
+            "consign.entity.ConsignRecord",
+            "consign.entity.GetPriceDomain",
+            "consign.entity.InsertConsignRecordResult",
+            "consign.init.InitData",
+            "consign.repository.ConsignRepository",
+            "consign.service.ConsignService",
+            "consign.service.ConsignServiceImpl"
+        ],
+        "ts-admin-order-service": [
+            "adminorder.AdminOrderApplication",
+            "adminorder.config.SecurityConfig",
+            "adminorder.controller.AdminOrderController",
+            "adminorder.service.AdminOrderService",
+            "adminorder.service.AdminOrderServiceImpl"
+        ],
+        "ts-admin-basic-info-service": [
+            "adminbasic.AdminBasicInfoApplication",
+            "adminbasic.config.SecurityConfig",
+            "adminbasic.controller.AdminBasicInfoController",
+            "adminbasic.entity.PriceInfo",
+            "adminbasic.service.AdminBasicInfoService",
+            "adminbasic.service.AdminBasicInfoServiceImpl"
+        ],
+        "ts-admin-route-service": [
+            "adminroute.AdminRouteApplication",
+            "adminroute.config.SecurityConfig",
+            "adminroute.controller.AdminRouteController",
+            "adminroute.service.AdminRouteService",
+            "adminroute.service.AdminRouteServiceImpl"
+        ],
+        "ts-admin-travel-service": [
+            "admintravel.AdminTravelApplication",
+            "admintravel.config.SecurityConfig",
+            "admintravel.controller.AdminTravelController",
+            "admintravel.service.AdminTravelService",
+            "admintravel.service.AdminTravelServiceImpl"
+        ],
+        "ts-admin-user-service": [
+            "adminuser.AdminUserApplication",
+            "adminuser.config.SecurityConfig",
+            "adminuser.controller.AdminUserController",
+            "adminuser.dto.UserDto",
+            "adminuser.service.AdminUserService",
+            "adminuser.service.AdminUserServiceImpl"
+        ],
+        "ts-auth-service": [
+            "auth.AuthApplication",
+            "auth.config.WebSecurityConfig",
+            "auth.constant.AuthConstant",
+            "auth.constant.InfoConstant",
+            "auth.controller.AuthController",
+            "auth.controller.UserController",
+            "auth.dto.AuthDto",
+            "auth.dto.BasicAuthDto",
+            "auth.dto.TokenDto",
+            "auth.entity.User",
+            "auth.exception.UserOperationException",
+            "auth.exception.handler.GlobalExceptionHandler",
+            "auth.init.InitUser",
+            "auth.repository.UserRepository",
+            "auth.security.UserDetailsServiceImpl",
+            "auth.security.jwt.JWTProvider",
+            "auth.service.TokenService",
+            "auth.service.UserService",
+            "auth.service.impl.TokenServiceImpl",
+            "auth.service.impl.UserServiceImpl"
+        ],
+        "ts-user-service": [
+            "user.UserApplication",
+            "user.config.SecurityConfig",
+            "user.controller.UserController",
+            "user.dto.AuthDto",
+            "user.dto.Gender",
+            "user.dto.UserDto",
+            "user.entity.User",
+            "user.init.InitUser",
+            "user.repository.UserRepository",
+            "user.service.UserService",
+            "user.service.impl.UserServiceImpl"
+        ],
+        "ts-delivery-service": [
+            "delivery.DeliveryApplication",
+            "delivery.config.Queues",
+            "delivery.entity.Delivery",
+            "delivery.mq.RabbitReceive",
+            "delivery.repository.DeliveryRepository"
+        ],
+        "ts-train-food-service": [
+            "trainFood.TrainFoodApplication",
+            "trainFood.config.SecurityConfig",
+            "trainFood.controller.TrainFoodController",
+            "trainFood.entity.TrainFood",
+            "trainFood.init.InitData",
+            "trainFood.repository.TrainFoodRepository",
+            "trainFood.service.TrainFoodService",
+            "trainFood.service.TrainFoodServiceImpl"
+        ],
+        "ts-gateway-service": [
+            "gateway.GatewayApplication",
+            "gateway.GatewayConfiguration"
+        ],
+        "ts-food-delivery-service": [
+            "food_delivery.FoodDeliveryApplication",
+            "food_delivery.config.SecurityConfig",
+            "food_delivery.controller.FoodDeliveryController",
+            "food_delivery.entity.DeliveryInfo",
+            "food_delivery.entity.FoodDeliveryOrder",
+            "food_delivery.entity.SeatInfo",
+            "food_delivery.entity.StationFoodStoreInfo",
+            "food_delivery.entity.TripOrderInfo",
+            "food_delivery.init.InitData",
+            "food_delivery.repository.FoodDeliveryOrderRepository",
+            "food_delivery.service.FoodDeliveryService",
+            "food_delivery.service.FoodDeliveryServiceImpl"
+        ],
+        "ts-wait-order-service": [
+            "waitorder.WaitOrderApplication",
+            "waitorder.config.SecurityConfig",
+            "waitorder.controller.WaitListOrderController",
+            "waitorder.entity.WaitListOrder",
+            "waitorder.entity.WaitListOrderStatus",
+            "waitorder.entity.WaitListOrderVO",
+            "waitorder.repository.WaitListOrderRepository",
+            "waitorder.service.Impl.WaitListOrderServiceImpl",
+            "waitorder.service.WaitListOrderService",
+            "waitorder.utils.PollThread"
+        ],
+        "ts-avatar-service": [
+            "app",
+            "base64toimage",
+            "face_detect"
+        ],
+        "ts-news-service": [
+            "main.News",
+            "main.lib"
+        ],
+        "ts-ticket-office-service": [
+            "app.js"
+        ],
+        "ts-voucher-service": [
+            "server.GetVoucherHandler"
+        ]
+    }
+}

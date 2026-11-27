@@ -1,0 +1,54 @@
+{
+    "system": "MS047",
+    "tool": "Ground-Truth Architecture (MS047)",
+    "microservices": {
+        "catalogue": [
+            "server.js"
+        ],
+        "user": [
+            "server.js"
+        ],
+        "cart": [
+            "server.js"
+        ],
+        "shipping": [
+            "com.instana.robotshop.shipping.Calculator",
+            "com.instana.robotshop.shipping.CartHelper",
+            "com.instana.robotshop.shipping.City",
+            "com.instana.robotshop.shipping.CityRepository",
+            "com.instana.robotshop.shipping.Code",
+            "com.instana.robotshop.shipping.CodeRepository",
+            "com.instana.robotshop.shipping.Controller",
+            "com.instana.robotshop.shipping.DataSourcePostProcessor",
+            "com.instana.robotshop.shipping.InstanaDatacenterTagInterceptor",
+            "com.instana.robotshop.shipping.JpaConfig",
+            "com.instana.robotshop.shipping.RetryableDataSource",
+            "com.instana.robotshop.shipping.Ship",
+            "com.instana.robotshop.shipping.ShippingServiceApplication"
+        ],
+        "ratings": [
+            "Instana.RobotShop.Ratings.Controller.HealthController",
+            "Instana.RobotShop.Ratings.Controller.RatingsApiController",
+            "Instana.RobotShop.Ratings.Database",
+            "Instana.RobotShop.Ratings.EventListener.InstanaDataCenterListener",
+            "Instana.RobotShop.Ratings.Integration.InstanaHeadersLoggingProcessor",
+            "Instana.RobotShop.Ratings.Kernel",
+            "Instana.RobotShop.Ratings.Service.CatalogueService",
+            "Instana.RobotShop.Ratings.Service.HealthCheckService",
+            "Instana.RobotShop.Ratings.Service.RatingsService",
+            "html/index.php",
+            "html/info.php"
+        ],
+        "payment": [
+            "payment",
+            "rabbitmq.Publisher"
+        ],
+        "dispatch": [
+            "main.main"
+        ],
+        "web": [
+            "static/js/auto-complete.js",
+            "static/js/controller.js"
+        ]
+    }
+}

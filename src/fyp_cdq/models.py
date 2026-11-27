@@ -77,7 +77,7 @@ class MetricResult:
             res["score_relative"] = self.score_relative
         if self.bounds:
             res["bounds"] = self.bounds
-        res["microservice_scores"] = self.microservice_scores
+        res["microservice_scores"] = dict(sorted(self.microservice_scores.items()))
         if self.metadata:
             res["metadata"] = self.metadata
         return res

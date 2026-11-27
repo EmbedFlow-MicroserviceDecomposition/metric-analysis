@@ -1,0 +1,39 @@
+{
+    "system": "MS084",
+    "tool": "Ground-Truth Architecture (MS084)",
+    "microservices": {
+        "0-model-store": [
+            "page.js"
+        ],
+        "3-data-fetching": [
+            "team-green/fragments.js",
+            "team-green/src/api.js",
+            "team-green/src/client.js",
+            "team-green/src/green-recos/custom-element.js",
+            "team-green/src/green-recos/fetch.js",
+            "team-green/src/green-recos/render.js",
+            "team-green/src/server.js"
+        ],
+        "2-composition-universal": [
+            "team-blue/src/blue-basket/custom-element.js",
+            "team-blue/src/blue-basket/render.js",
+            "team-blue/src/blue-buy/custom-element.js",
+            "team-blue/src/blue-buy/render.js",
+            "team-blue/src/client.js",
+            "team-blue/src/server.js",
+            "team-green/fragments.js",
+            "team-green/src/client.js",
+            "team-green/src/green-recos/custom-element.js",
+            "team-green/src/green-recos/render.js",
+            "team-green/src/server.js",
+            "team-red/src/client.js",
+            "team-red/src/page/render.js",
+            "team-red/src/server.js"
+        ],
+        "1-composition-client-only": [
+            "team-blue/fragments.js",
+            "team-green/fragments.js",
+            "team-red/page.js"
+        ]
+    }
+}

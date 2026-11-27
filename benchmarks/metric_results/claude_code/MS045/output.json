@@ -1,0 +1,78 @@
+{
+    "system": "MS045",
+    "tool": "Ground-Truth Architecture (MS045)",
+    "microservices": {
+        "social-frontend": [
+            "main.main"
+        ],
+        "social-object-detect": [
+            "pull_model",
+            "server"
+        ],
+        "social-post": [
+            "main.main"
+        ],
+        "social-proxy": [
+            "main.DummyResp"
+        ],
+        "social-recommend": [
+            "main.KV"
+        ],
+        "social-sentiment": [
+            "pull_model",
+            "server"
+        ],
+        "social-socialgraph": [
+            "main.main"
+        ],
+        "social-timeline-read": [
+            "main.main"
+        ],
+        "social-timeline-update": [
+            "main.Job",
+            "main.Result"
+        ],
+        "social-translate": [
+            "pull_model",
+            "server"
+        ],
+        "social-user": [
+            "main.main"
+        ],
+        "vpipe-face-detect": [
+            "server"
+        ],
+        "vpipe-video-meta": [
+            "server"
+        ],
+        "vpipe-video-scene": [
+            "server"
+        ],
+        "vshare-dates": [
+            "main.main"
+        ],
+        "vshare-proxy": [
+            "main.DummyResp",
+            "main.GetRateReq",
+            "main.InfoReq",
+            "main.RateReq",
+            "main.UploadReq",
+            "main.VideoReq"
+        ],
+        "vshare-user-rating": [
+            "main.main"
+        ],
+        "vshare-video-frontend": [
+            "server"
+        ],
+        "vshare-video-info": [
+            "main.main"
+        ],
+        "vshare-video-scale": [
+            "server"
+        ],
+        "vshare-video-thumbnail": [
+            "server"
+        ]
+    }
+}

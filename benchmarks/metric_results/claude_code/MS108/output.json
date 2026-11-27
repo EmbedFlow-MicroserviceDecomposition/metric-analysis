@@ -1,0 +1,36 @@
+{
+    "system": "MS108",
+    "tool": "Ground-Truth Architecture (MS108)",
+    "microservices": {
+        "mooc-backend": [
+            "CodelyTv.Apps.Mooc.Backend.Command.DomainEvents.MySql.ConsumeMySqlDomainEventsCommand",
+            "CodelyTv.Apps.Mooc.Backend.Command.DomainEvents.PublishDomainEventsFromMutationsCommand",
+            "CodelyTv.Apps.Mooc.Backend.Command.DomainEvents.RabbitMq.ConfigureRabbitMqCommand",
+            "CodelyTv.Apps.Mooc.Backend.Command.DomainEvents.RabbitMq.ConsumeRabbitMqDomainEventsCommand",
+            "CodelyTv.Apps.Mooc.Backend.Command.DomainEvents.RabbitMq.GenerateSupervisorRabbitMqConsumerFilesCommand",
+            "CodelyTv.Apps.Mooc.Backend.Controller.Courses.CoursesPutController",
+            "CodelyTv.Apps.Mooc.Backend.Controller.CoursesCounter.CoursesCounterGetController",
+            "CodelyTv.Apps.Mooc.Backend.Controller.HealthCheck.HealthCheckGetController",
+            "CodelyTv.Apps.Mooc.Backend.Controller.Metrics.MetricsController",
+            "CodelyTv.Apps.Mooc.Backend.MoocBackendKernel",
+            "config/bundles.php"
+        ],
+        "backoffice-backend": [
+            "CodelyTv.Apps.Backoffice.Backend.BackofficeBackendKernel",
+            "CodelyTv.Apps.Backoffice.Backend.Controller.Courses.CoursesGetController",
+            "CodelyTv.Apps.Backoffice.Backend.Controller.HealthCheck.HealthCheckGetController",
+            "CodelyTv.Apps.Backoffice.Backend.Controller.Metrics.MetricsController",
+            "config/bundles.php"
+        ],
+        "backoffice-frontend": [
+            "CodelyTv.Apps.Backoffice.Frontend.BackofficeFrontendKernel",
+            "CodelyTv.Apps.Backoffice.Frontend.Command.ImportCoursesToElasticsearchCommand",
+            "CodelyTv.Apps.Backoffice.Frontend.Controller.Courses.CoursesGetWebController",
+            "CodelyTv.Apps.Backoffice.Frontend.Controller.Courses.CoursesPostWebController",
+            "CodelyTv.Apps.Backoffice.Frontend.Controller.HealthCheck.HealthCheckGetController",
+            "CodelyTv.Apps.Backoffice.Frontend.Controller.Home.HomeGetWebController",
+            "CodelyTv.Apps.Backoffice.Frontend.Controller.Metrics.MetricsController",
+            "config/bundles.php"
+        ]
+    }
+}
