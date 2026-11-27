@@ -1,0 +1,90 @@
+{
+    "system": "MS007",
+    "tool": "Ground-Truth Architecture (MS007)",
+    "microservices": {
+        "review-service": [
+            "com.redhat.coolstore.model.Review",
+            "com.redhat.coolstore.rest.InfraEndpoint",
+            "com.redhat.coolstore.rest.RestApplication",
+            "com.redhat.coolstore.rest.ReviewEndpoint",
+            "com.redhat.coolstore.service.ReviewService"
+        ],
+        "pricing-service": [
+            "com.redhat.coolstore.Product",
+            "com.redhat.coolstore.PromoEvent",
+            "com.redhat.coolstore.ShoppingCart",
+            "com.redhat.coolstore.ShoppingCartItem"
+        ],
+        "coolstore-ui": [
+            "app/app.js",
+            "app/controllers/controllers.js",
+            "app/directives/header.js",
+            "app/directives/rating.js",
+            "app/routes/routes.js",
+            "app/services/cart.js",
+            "app/services/catalog.js",
+            "app/services/rating.js",
+            "app/services/review.js",
+            "server.js"
+        ],
+        "catalog-service": [
+            "com.redhat.coolstore.model.Product",
+            "com.redhat.coolstore.rest.CatalogEndpoint",
+            "com.redhat.coolstore.rest.RestApplication",
+            "com.redhat.coolstore.rest.SwaggerListener",
+            "com.redhat.coolstore.service.CatalogService",
+            "com.redhat.coolstore.service.MongoCatalogService",
+            "com.redhat.coolstore.utils.Producers"
+        ],
+        "cart-service": [
+            "com.redhat.coolstore.CartServiceApplication",
+            "com.redhat.coolstore.Product",
+            "com.redhat.coolstore.PromoEvent",
+            "com.redhat.coolstore.ShoppingCart",
+            "com.redhat.coolstore.ShoppingCartItem",
+            "com.redhat.coolstore.model.kie.Product",
+            "com.redhat.coolstore.model.kie.Promotion",
+            "com.redhat.coolstore.model.kie.ShoppingCart",
+            "com.redhat.coolstore.model.kie.ShoppingCartItem",
+            "com.redhat.coolstore.rest.CartEndpoint",
+            "com.redhat.coolstore.rest.JerseyConfig",
+            "com.redhat.coolstore.service.CatalogService",
+            "com.redhat.coolstore.service.PromoService",
+            "com.redhat.coolstore.service.ShippingService",
+            "com.redhat.coolstore.service.ShoppingCartService",
+            "com.redhat.coolstore.service.ShoppingCartServiceImpl",
+            "com.redhat.coolstore.service.ShoppingCartServiceImplDecisionServer"
+        ],
+        "rating-service": [
+            "com.redhat.coolstore.rating.api.ApiVerticle",
+            "com.redhat.coolstore.rating.model.Rating",
+            "com.redhat.coolstore.rating.verticle.MainVerticle",
+            "com.redhat.coolstore.rating.verticle.service.RatingService",
+            "com.redhat.coolstore.rating.verticle.service.RatingServiceImpl",
+            "com.redhat.coolstore.rating.verticle.service.RatingVerticle"
+        ],
+        "coolstore-gw": [
+            "com.redhat.coolstore.api_gateway.ApiGatewayApplication",
+            "com.redhat.coolstore.api_gateway.CORSServlet",
+            "com.redhat.coolstore.api_gateway.CartGateway",
+            "com.redhat.coolstore.api_gateway.InventoryEnricher",
+            "com.redhat.coolstore.api_gateway.ProductGateway",
+            "com.redhat.coolstore.api_gateway.RatingEnricher",
+            "com.redhat.coolstore.api_gateway.RatingGateway",
+            "com.redhat.coolstore.api_gateway.ReviewGateway",
+            "com.redhat.coolstore.api_gateway.model.Inventory",
+            "com.redhat.coolstore.api_gateway.model.Product",
+            "com.redhat.coolstore.api_gateway.model.Rating",
+            "com.redhat.coolstore.api_gateway.model.Review",
+            "com.redhat.coolstore.api_gateway.model.ShoppingCart",
+            "com.redhat.coolstore.api_gateway.model.ShoppingCartItem"
+        ],
+        "inventory-service": [
+            "com.redhat.coolstore.model.Inventory",
+            "com.redhat.coolstore.rest.AvailabilityEndpoint",
+            "com.redhat.coolstore.rest.RestApplication",
+            "com.redhat.coolstore.rest.SwaggerListener",
+            "com.redhat.coolstore.service.InventoryService"
+        ]
+    }
+}

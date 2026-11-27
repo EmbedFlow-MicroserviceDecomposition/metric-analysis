@@ -1,0 +1,80 @@
+{
+    "system": "MS035",
+    "tool": "Ground-Truth Architecture (MS035)",
+    "microservices": {
+        "query-side-blog-service": [
+            "com.idugalic.queryside.blog.Application",
+            "com.idugalic.queryside.blog.configuration.CloudConfiguration",
+            "com.idugalic.queryside.blog.configuration.RabbitConfiguration",
+            "com.idugalic.queryside.blog.configuration.SecurityConfiguration"
+        ],
+        "authserver": [
+            "com.idugalic.authserver.AuthserverApplication",
+            "com.idugalic.authserver.OAuth2Config",
+            "com.idugalic.authserver.WebSecurityConfig"
+        ],
+        "command-side-blog": [
+            "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+            "com.idugalic.commandside.blog.aggregate.exception.PublishBlogPostException",
+            "com.idugalic.commandside.blog.command.CreateBlogPostCommand",
+            "com.idugalic.commandside.blog.command.PublishBlogPostCommand",
+            "com.idugalic.commandside.blog.web.BlogController",
+            "com.idugalic.commandside.blog.web.CreateBlogPostRequest",
+            "com.idugalic.commandside.blog.web.PublishBlogPostRequest",
+            "com.idugalic.commandside.blog.web.ValidationWsDto"
+        ],
+        "query-side-project": [
+            "com.idugalic.queryside.project.domain.Project",
+            "com.idugalic.queryside.project.handler.ProjectViewEventHandler",
+            "com.idugalic.queryside.project.repository.ProjectRepository",
+            "com.idugalic.queryside.project.repository.ReadOnlyPagingAndSortingRepository"
+        ],
+        "command-side-project": [
+            "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+            "com.idugalic.commandside.project.aggregate.ProjectRelease",
+            "com.idugalic.commandside.project.aggregate.ReleaseStatus",
+            "com.idugalic.commandside.project.command.CreateProjectCommand",
+            "com.idugalic.commandside.project.command.UpdateProjectCommand",
+            "com.idugalic.commandside.project.web.CreateProjectRequest",
+            "com.idugalic.commandside.project.web.ProjectController",
+            "com.idugalic.commandside.project.web.UpdateProjectRequest",
+            "com.idugalic.commandside.project.web.ValidationWsDto"
+        ],
+        "command-side-project-service": [
+            "com.idugalic.commandside.project.Application",
+            "com.idugalic.commandside.project.RestResponseEntityExceptionHandler",
+            "com.idugalic.commandside.project.configuration.AxonConfiguration",
+            "com.idugalic.commandside.project.configuration.CloudConfiguration",
+            "com.idugalic.commandside.project.configuration.RabbitConfiguration",
+            "com.idugalic.commandside.project.configuration.SecurityConfiguration"
+        ],
+        "command-side-blog-service": [
+            "com.idugalic.commandside.blog.Application",
+            "com.idugalic.commandside.blog.RestResponseEntityExceptionHandler",
+            "com.idugalic.commandside.blog.configuration.AxonConfiguration",
+            "com.idugalic.commandside.blog.configuration.CloudConfiguration",
+            "com.idugalic.commandside.blog.configuration.RabbitConfiguration",
+            "com.idugalic.commandside.blog.configuration.SecurityConfiguration"
+        ],
+        "query-side-blog": [
+            "com.idugalic.queryside.blog.domain.BlogPost",
+            "com.idugalic.queryside.blog.handler.BlogPostViewEventHandler",
+            "com.idugalic.queryside.blog.repository.BlogPostRepository",
+            "com.idugalic.queryside.blog.repository.ReadOnlyPagingAndSortingRepository"
+        ],
+        "query-side-project-service": [
+            "com.idugalic.queryside.project.Application",
+            "com.idugalic.queryside.project.configuration.CloudConfiguration",
+            "com.idugalic.queryside.project.configuration.RabbitConfiguration",
+            "com.idugalic.queryside.project.configuration.SecurityConfiguration"
+        ],
+        "api-gateway": [
+            "com.idugalic.apigateway.Application",
+            "com.idugalic.apigateway.RestSecurityConfig",
+            "com.idugalic.apigateway.configuration.CloudConfiguration",
+            "com.idugalic.apigateway.configuration.RabbitConfiguration",
+            "com.idugalic.apigateway.configuration.WebSocketConfiguration",
+            "com.idugalic.apigateway.handler.EventLoggingHandler"
+        ]
+    }
+}

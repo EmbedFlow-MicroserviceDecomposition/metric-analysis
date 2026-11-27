@@ -1,0 +1,19 @@
+{
+    "system": "MS080",
+    "tool": "Ground-Truth Architecture (MS080)",
+    "microservices": {
+        "superdesk-server": [
+            "app",
+            "features.environment",
+            "features.steps.steps",
+            "hypercorn_config",
+            "macros.replace_words",
+            "settings",
+            "worker",
+            "ws"
+        ],
+        "superdesk-client": [
+            "index.ts"
+        ]
+    }
+}

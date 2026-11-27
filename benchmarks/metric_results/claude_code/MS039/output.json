@@ -1,0 +1,83 @@
+{
+    "system": "MS039",
+    "tool": "Ground-Truth Architecture (MS039)",
+    "microservices": {
+        "cartservice": [
+            "Program",
+            "cartservice.Startup",
+            "cartservice.cartstore.AlloyDBCartStore",
+            "cartservice.cartstore.ICartStore",
+            "cartservice.cartstore.RedisCartStore",
+            "cartservice.cartstore.SpannerCartStore",
+            "cartservice.services.CartService",
+            "cartservice.services.HealthCheckService"
+        ],
+        "frontend": [
+            "main.LLMResponse",
+            "main.PackagingInfo",
+            "main.Response",
+            "main.cartItemView",
+            "main.ctxKeyLog",
+            "main.ctxKeyRequestID",
+            "main.ctxKeySessionID",
+            "main.deployment_details",
+            "main.frontendServer",
+            "main.logHandler",
+            "main.platformDetails",
+            "main.productView",
+            "main.responseRecorder",
+            "main.rpc",
+            "money.money",
+            "validator.AddToCartPayload",
+            "validator.Payload",
+            "validator.PlaceOrderPayload",
+            "validator.SetCurrencyPayload"
+        ],
+        "shoppingassistantservice": [
+            "shoppingassistantservice"
+        ],
+        "emailservice": [
+            "email_client",
+            "email_server.BaseEmailService",
+            "email_server.DummyEmailService",
+            "email_server.EmailService",
+            "email_server.HealthCheck",
+            "logger.CustomJsonFormatter"
+        ],
+        "recommendationservice": [
+            "client",
+            "logger.CustomJsonFormatter",
+            "recommendation_server.RecommendationService"
+        ],
+        "checkoutservice": [
+            "main.checkoutService",
+            "main.orderPrep",
+            "money.money"
+        ],
+        "productcatalogservice": [
+            "main.catalog_loader",
+            "main.productCatalog",
+            "main.server"
+        ],
+        "currencyservice": [
+            "client.js",
+            "server.js"
+        ],
+        "shippingservice": [
+            "main.Quote",
+            "main.server",
+            "main.tracker"
+        ],
+        "paymentservice": [
+            "charge.js",
+            "index.js",
+            "logger.js",
+            "server.js"
+        ],
+        "adservice": [
+            "hipstershop.AdService",
+            "hipstershop.AdServiceClient",
+            "hipstershop.AdServiceImpl"
+        ]
+    }
+}

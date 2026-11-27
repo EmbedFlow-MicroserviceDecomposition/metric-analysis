@@ -1,0 +1,86 @@
+{
+    "system": "MS059",
+    "tool": "Ground-Truth Architecture (MS059)",
+    "microservices": {
+        "multi-datacenter": [
+            "io.confluent.examples.clients.ConsumerMultiDatacenterExample"
+        ],
+        "security": [
+            "rbac.scripts.create_login_properties"
+        ],
+        "clients": [
+            "io.confluent.examples.clients.basicavro.ConsumerExample",
+            "io.confluent.examples.clients.basicavro.ProducerExample",
+            "io.confluent.examples.clients.cloud.ConsumerAvroExample",
+            "io.confluent.examples.clients.cloud.ConsumerExample",
+            "io.confluent.examples.clients.cloud.ConsumerExamplePageviews",
+            "io.confluent.examples.clients.cloud.ProducerAvroExample",
+            "io.confluent.examples.clients.cloud.ProducerExample",
+            "io.confluent.examples.clients.cloud.StreamsAvroExample",
+            "io.confluent.examples.clients.cloud.StreamsExample",
+            "io.confluent.examples.clients.cloud.Util",
+            "io.confluent.examples.clients.cloud.model.DataRecord",
+            "io.confluent.examples.clients.cloud.model.PageviewRecord",
+            "io.confluent.examples.clients.cloud.springboot.kafka.ConsumerExample",
+            "io.confluent.examples.clients.cloud.springboot.kafka.ProducerExample",
+            "io.confluent.examples.clients.cloud.springboot.kafka.SpringbootKafkaApplication",
+            "io.confluent.examples.clients.cloud.springboot.streams.SpringbootStreamsApplication"
+        ],
+        "ccloud-observability": [
+            "io.confluent.examples.clients.cloud.ConsumerExample",
+            "io.confluent.examples.clients.cloud.ProducerExample",
+            "io.confluent.examples.clients.cloud.model.PageviewRecord"
+        ],
+        "cloud-etl": [
+            "stringify-gcp-credentials"
+        ],
+        "microservices-orders": [
+            "io.confluent.examples.streams.microservices.AddInventory",
+            "io.confluent.examples.streams.microservices.EmailService",
+            "io.confluent.examples.streams.microservices.EmailTuple",
+            "io.confluent.examples.streams.microservices.Emailer",
+            "io.confluent.examples.streams.microservices.FilteredResponse",
+            "io.confluent.examples.streams.microservices.FraudService",
+            "io.confluent.examples.streams.microservices.InventoryService",
+            "io.confluent.examples.streams.microservices.InventoryValidator",
+            "io.confluent.examples.streams.microservices.LoggingEmailer",
+            "io.confluent.examples.streams.microservices.OrderDetailsService",
+            "io.confluent.examples.streams.microservices.OrdersService",
+            "io.confluent.examples.streams.microservices.PostOrdersAndPayments",
+            "io.confluent.examples.streams.microservices.Service",
+            "io.confluent.examples.streams.microservices.ValidationsAggregatorService",
+            "io.confluent.examples.streams.microservices.domain.Schemas",
+            "io.confluent.examples.streams.microservices.domain.Topic",
+            "io.confluent.examples.streams.microservices.domain.Topics",
+            "io.confluent.examples.streams.microservices.domain.beans.OrderBean",
+            "io.confluent.examples.streams.microservices.domain.beans.OrderId",
+            "io.confluent.examples.streams.microservices.util.ConsumeCustomers",
+            "io.confluent.examples.streams.microservices.util.ConsumeOrders",
+            "io.confluent.examples.streams.microservices.util.ConsumePayments",
+            "io.confluent.examples.streams.microservices.util.CustomRocksDBConfig",
+            "io.confluent.examples.streams.microservices.util.HostStoreInfo",
+            "io.confluent.examples.streams.microservices.util.MetadataService",
+            "io.confluent.examples.streams.microservices.util.MicroserviceUtils",
+            "io.confluent.examples.streams.microservices.util.Paths",
+            "io.confluent.examples.streams.microservices.util.ProduceCustomers",
+            "io.confluent.examples.streams.microservices.util.ProduceOrders",
+            "io.confluent.examples.streams.microservices.util.ProducePayments",
+            "io.confluent.examples.streams.microservices.util.ProductTypeSerde",
+            "io.confluent.examples.streams.utils.MonitoringInterceptorUtils",
+            "io.confluent.examples.streams.utils.PriorityQueueDeserializer",
+            "io.confluent.examples.streams.utils.PriorityQueueSerde",
+            "io.confluent.examples.streams.utils.PriorityQueueSerializer"
+        ],
+        "connect-streams-pipeline": [
+            "io.confluent.examples.connectandstreams.consoleproducer.StreamsIngest",
+            "io.confluent.examples.connectandstreams.javaproducer.Driver",
+            "io.confluent.examples.connectandstreams.javaproducer.StreamsIngest",
+            "io.confluent.examples.connectandstreams.jdbcgenericavro.StreamsIngest",
+            "io.confluent.examples.connectandstreams.jdbcjson.StreamsIngest",
+            "io.confluent.examples.connectandstreams.jdbcjson.model.LocationJSON",
+            "io.confluent.examples.connectandstreams.jdbcjson.serde.JsonDeserializer",
+            "io.confluent.examples.connectandstreams.jdbcjson.serde.JsonSerializer",
+            "io.confluent.examples.connectandstreams.jdbcspecificavro.StreamsIngest"
+        ]
+    }
+}

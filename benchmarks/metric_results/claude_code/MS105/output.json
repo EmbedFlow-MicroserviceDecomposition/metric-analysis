@@ -1,0 +1,24 @@
+{
+    "system": "MS105",
+    "tool": "Ground-Truth Architecture (MS105)",
+    "microservices": {
+        "frontend": [
+            "frontend.Frontend"
+        ],
+        "geo": [
+            "geo.Geo",
+            "geo.candidate",
+            "geo.point"
+        ],
+        "profile": [
+            "profile.Profile"
+        ],
+        "rate": [
+            "rate.Rate",
+            "rate.stay"
+        ],
+        "search": [
+            "search.Search"
+        ]
+    }
+}

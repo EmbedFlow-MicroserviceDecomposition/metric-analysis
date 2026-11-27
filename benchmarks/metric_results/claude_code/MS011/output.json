@@ -1,0 +1,16 @@
+{
+    "system": "MS011",
+    "tool": "Ground-Truth Architecture (MS011)",
+    "microservices": {
+        "city-service": [
+            "com.microservices.city.CityApplication",
+            "com.microservices.city.controller.CityController",
+            "com.microservices.city.domain.City"
+        ],
+        "route-service": [
+            "com.microservices.route.RouteApplication",
+            "com.microservices.route.controller.RouteController",
+            "com.microservices.route.domain.Point"
+        ]
+    }
+}

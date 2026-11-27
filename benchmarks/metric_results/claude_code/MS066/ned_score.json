@@ -1,0 +1,35 @@
+{
+    "metric": "NED",
+    "score": 1.0,
+    "score_absolute": 1.0,
+    "score_relative": 0.5,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "datacoord": 1.0,
+        "datanode": 1.0,
+        "proxy": 1.0,
+        "querycoordv2": 1.0,
+        "querynodev2": 1.0,
+        "rootcoord": 1.0,
+        "streamingcoord": 1.0,
+        "streamingnode": 1.0
+    },
+    "metadata": {
+        "total_classes": 2221,
+        "service_count": 8,
+        "service_sizes": {
+            "proxy": 395,
+            "rootcoord": 106,
+            "datacoord": 414,
+            "datanode": 126,
+            "querycoordv2": 293,
+            "querynodev2": 355,
+            "streamingcoord": 79,
+            "streamingnode": 453
+        }
+    }
+}

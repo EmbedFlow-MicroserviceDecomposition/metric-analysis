@@ -1,0 +1,45 @@
+{
+    "metric": "NED",
+    "score": 0.7692307692307692,
+    "score_absolute": 0.7692307692307692,
+    "score_relative": 0.46153846153846156,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "alertmanager": 1.0,
+        "compactor": 1.0,
+        "configs": 1.0,
+        "distributor": 0.0,
+        "frontend": 0.0,
+        "ingester": 1.0,
+        "overrides": 1.0,
+        "parquetconverter": 1.0,
+        "purger": 1.0,
+        "querier": 1.0,
+        "ruler": 1.0,
+        "scheduler": 0.0,
+        "storegateway": 1.0
+    },
+    "metadata": {
+        "total_classes": 464,
+        "service_count": 13,
+        "service_sizes": {
+            "distributor": 15,
+            "ingester": 48,
+            "querier": 143,
+            "frontend": 20,
+            "scheduler": 20,
+            "ruler": 57,
+            "storegateway": 41,
+            "compactor": 34,
+            "alertmanager": 50,
+            "parquetconverter": 4,
+            "purger": 2,
+            "configs": 27,
+            "overrides": 3
+        }
+    }
+}

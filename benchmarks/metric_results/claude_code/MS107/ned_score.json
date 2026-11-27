@@ -1,0 +1,37 @@
+{
+    "metric": "NED",
+    "score": 0.4444444444444444,
+    "score_absolute": 0.4444444444444444,
+    "score_relative": 0.5555555555555556,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "actions-handler": 0.0,
+        "api": 1.0,
+        "api-sidecar-handler": 0.0,
+        "auth-server": 1.0,
+        "backup-handler": 0.0,
+        "keycloak": 1.0,
+        "logs2notifications": 0.0,
+        "ssh": 1.0,
+        "webhook-handler": 0.0
+    },
+    "metadata": {
+        "total_classes": 210,
+        "service_count": 9,
+        "service_sizes": {
+            "auth-server": 4,
+            "webhook-handler": 18,
+            "api": 110,
+            "api-sidecar-handler": 10,
+            "ssh": 1,
+            "logs2notifications": 21,
+            "keycloak": 21,
+            "actions-handler": 16,
+            "backup-handler": 9
+        }
+    }
+}

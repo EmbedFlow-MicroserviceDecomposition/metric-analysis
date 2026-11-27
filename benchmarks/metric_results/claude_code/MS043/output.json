@@ -1,0 +1,48 @@
+{
+    "system": "MS043",
+    "tool": "Ground-Truth Architecture (MS043)",
+    "microservices": {
+        "reservation": [
+            "reservation.Server",
+            "reservation.number",
+            "reservation.reservation",
+            "reservation.taskRes"
+        ],
+        "attractions": [
+            "attractions.Cinema",
+            "attractions.Museum",
+            "attractions.Restaurant",
+            "attractions.Server",
+            "attractions.point"
+        ],
+        "frontend": [
+            "frontend.Server"
+        ],
+        "user": [
+            "user.Server",
+            "user.User"
+        ],
+        "search": [
+            "search.Server"
+        ],
+        "review": [
+            "review.ImageHelper",
+            "review.ReviewHelper",
+            "review.Server"
+        ],
+        "geo": [
+            "geo.Server",
+            "geo.point"
+        ],
+        "recommendation": [
+            "recommendation.Hotel",
+            "recommendation.Server"
+        ],
+        "rate": [
+            "rate.Server"
+        ],
+        "profile": [
+            "profile.Server"
+        ]
+    }
+}

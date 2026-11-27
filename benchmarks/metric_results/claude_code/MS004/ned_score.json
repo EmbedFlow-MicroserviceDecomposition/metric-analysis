@@ -1,0 +1,37 @@
+{
+    "metric": "NED",
+    "score": 0.5555555555555556,
+    "score_absolute": 0.5555555555555556,
+    "score_relative": 0.2222222222222222,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "ftgo-accounting-service": 1.0,
+        "ftgo-api-gateway": 0.0,
+        "ftgo-consumer-service": 0.0,
+        "ftgo-delivery-service": 0.0,
+        "ftgo-kitchen-service": 1.0,
+        "ftgo-order-history-service": 1.0,
+        "ftgo-order-service": 1.0,
+        "ftgo-restaurant-service": 0.0,
+        "ftgo-restaurant-service-aws-lambda": 1.0
+    },
+    "metadata": {
+        "total_classes": 242,
+        "service_count": 9,
+        "service_sizes": {
+            "ftgo-order-service": 78,
+            "ftgo-kitchen-service": 31,
+            "ftgo-accounting-service": 22,
+            "ftgo-consumer-service": 15,
+            "ftgo-restaurant-service": 17,
+            "ftgo-order-history-service": 21,
+            "ftgo-delivery-service": 19,
+            "ftgo-api-gateway": 16,
+            "ftgo-restaurant-service-aws-lambda": 23
+        }
+    }
+}

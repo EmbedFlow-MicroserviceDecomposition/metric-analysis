@@ -1,0 +1,31 @@
+{
+    "system": "MS031",
+    "tool": "Ground-Truth Architecture (MS031)",
+    "microservices": {
+        "employee-service": [
+            "pl.piomin.services.employee.EmployeeApplication",
+            "pl.piomin.services.employee.controller.EmployeeController",
+            "pl.piomin.services.employee.model.Employee",
+            "pl.piomin.services.employee.model.ErrorCode",
+            "pl.piomin.services.employee.repository.EmployeeRepository"
+        ],
+        "department-service": [
+            "pl.piomin.services.department.DepartmentApplication",
+            "pl.piomin.services.department.client.EmployeeClient",
+            "pl.piomin.services.department.controller.DepartmentController",
+            "pl.piomin.services.department.model.Department",
+            "pl.piomin.services.department.model.Employee",
+            "pl.piomin.services.department.repository.DepartmentRepository"
+        ],
+        "organization-service": [
+            "pl.piomin.services.organization.OrganizationApplication",
+            "pl.piomin.services.organization.client.DepartmentClient",
+            "pl.piomin.services.organization.client.EmployeeClient",
+            "pl.piomin.services.organization.controller.OrganizationController",
+            "pl.piomin.services.organization.model.Department",
+            "pl.piomin.services.organization.model.Employee",
+            "pl.piomin.services.organization.model.Organization",
+            "pl.piomin.services.organization.repository.OrganizationRepository"
+        ]
+    }
+}

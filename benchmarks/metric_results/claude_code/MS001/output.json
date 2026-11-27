@@ -1,0 +1,71 @@
+{
+    "system": "MS001",
+    "tool": "Ground-Truth Architecture (MS001)",
+    "microservices": {
+        "spring-petclinic-customers-service": [
+            "org.springframework.samples.petclinic.customers.CustomersServiceApplication",
+            "org.springframework.samples.petclinic.customers.config.MetricConfig",
+            "org.springframework.samples.petclinic.customers.model.Owner",
+            "org.springframework.samples.petclinic.customers.model.OwnerRepository",
+            "org.springframework.samples.petclinic.customers.model.Pet",
+            "org.springframework.samples.petclinic.customers.model.PetRepository",
+            "org.springframework.samples.petclinic.customers.model.PetType",
+            "org.springframework.samples.petclinic.customers.web.OwnerRequest",
+            "org.springframework.samples.petclinic.customers.web.OwnerResource",
+            "org.springframework.samples.petclinic.customers.web.PetDetails",
+            "org.springframework.samples.petclinic.customers.web.PetRequest",
+            "org.springframework.samples.petclinic.customers.web.PetResource",
+            "org.springframework.samples.petclinic.customers.web.ResourceNotFoundException",
+            "org.springframework.samples.petclinic.customers.web.mapper.Mapper",
+            "org.springframework.samples.petclinic.customers.web.mapper.OwnerEntityMapper"
+        ],
+        "spring-petclinic-vets-service": [
+            "org.springframework.samples.petclinic.vets.VetsServiceApplication",
+            "org.springframework.samples.petclinic.vets.model.Specialty",
+            "org.springframework.samples.petclinic.vets.model.Vet",
+            "org.springframework.samples.petclinic.vets.model.VetRepository",
+            "org.springframework.samples.petclinic.vets.system.Cache",
+            "org.springframework.samples.petclinic.vets.system.CacheConfig",
+            "org.springframework.samples.petclinic.vets.system.VetsProperties",
+            "org.springframework.samples.petclinic.vets.web.VetResource"
+        ],
+        "spring-petclinic-visits-service": [
+            "org.springframework.samples.petclinic.visits.VisitsServiceApplication",
+            "org.springframework.samples.petclinic.visits.config.MetricConfig",
+            "org.springframework.samples.petclinic.visits.model.Visit",
+            "org.springframework.samples.petclinic.visits.model.VisitBuilder",
+            "org.springframework.samples.petclinic.visits.model.VisitRepository",
+            "org.springframework.samples.petclinic.visits.web.VisitResource"
+        ],
+        "spring-petclinic-genai-service": [
+            "org.springframework.samples.petclinic.genai.AIBeanConfiguration",
+            "org.springframework.samples.petclinic.genai.AIDataProvider",
+            "org.springframework.samples.petclinic.genai.GenAIServiceApplication",
+            "org.springframework.samples.petclinic.genai.OwnerRequest",
+            "org.springframework.samples.petclinic.genai.PetclinicChatClient",
+            "org.springframework.samples.petclinic.genai.PetclinicTools",
+            "org.springframework.samples.petclinic.genai.VectorStoreController",
+            "org.springframework.samples.petclinic.genai.dto.OwnerDetails",
+            "org.springframework.samples.petclinic.genai.dto.PetDetails",
+            "org.springframework.samples.petclinic.genai.dto.PetRequest",
+            "org.springframework.samples.petclinic.genai.dto.PetType",
+            "org.springframework.samples.petclinic.genai.dto.Specialty",
+            "org.springframework.samples.petclinic.genai.dto.Vet",
+            "org.springframework.samples.petclinic.genai.dto.VisitDetails"
+        ],
+        "spring-petclinic-api-gateway": [
+            "org.springframework.samples.petclinic.api.ApiGatewayApplication",
+            "org.springframework.samples.petclinic.api.application.CustomersServiceClient",
+            "org.springframework.samples.petclinic.api.application.VisitsServiceClient",
+            "org.springframework.samples.petclinic.api.boundary.web.ApiGatewayController",
+            "org.springframework.samples.petclinic.api.boundary.web.FallbackController",
+            "org.springframework.samples.petclinic.api.dto.OwnerDetails",
+            "org.springframework.samples.petclinic.api.dto.OwnerDetailsBuilder",
+            "org.springframework.samples.petclinic.api.dto.PetDetails",
+            "org.springframework.samples.petclinic.api.dto.PetDetailsBuilder",
+            "org.springframework.samples.petclinic.api.dto.PetType",
+            "org.springframework.samples.petclinic.api.dto.VisitDetails",
+            "org.springframework.samples.petclinic.api.dto.Visits"
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "system": "MS081",
+    "tool": "Ground-Truth Architecture (MS081)",
+    "microservices": {
+        "web": [
+            "app/components/AppFooter.tsx",
+            "app/components/AppHeader.tsx",
+            "app/components/SiteLayout.tsx",
+            "app/entry.client.tsx",
+            "app/entry.server.tsx",
+            "app/lib/auth.ts",
+            "app/root.tsx",
+            "app/routes/cart/index.tsx",
+            "app/routes/index.tsx",
+            "app/routes/product/$id.tsx"
+        ],
+        "dotnet": [
+            "identity-server/wwwroot/js/signin-redirect.js",
+            "identity-server/wwwroot/js/signout-redirect.js"
+        ],
+        "go": [
+            "main.main"
+        ],
+        "rust": [
+            "crates.common.src.config.db.mod.DbPool",
+            "crates.common.src.config.db.postgres",
+            "crates.common.src.config.env.PgConfig",
+            "crates.common.src.config.env.ServerConfig",
+            "crates.common.src.config.mod",
+            "crates.common.src.error.Error",
+            "crates.common.src.error.Errors",
+            "crates.common.src.lib.ApiContext",
+            "crates.common.src.logs.PrintlnDrain",
+            "crates.common.src.logs.PrintlnSerializer",
+            "crates.inventory.src.handlers.InventoriesRequest",
+            "crates.inventory.src.handlers.InventoryDto",
+            "crates.inventory.src.handlers.InventoryRequest",
+            "crates.inventory.src.lib",
+            "crates.product_catalog.src.handlers.GetProductByIdRequest",
+            "crates.product_catalog.src.handlers.InventoryDto",
+            "crates.product_catalog.src.handlers.KeyCountPair",
+            "crates.product_catalog.src.handlers.ProductDetailDto",
+            "crates.product_catalog.src.handlers.ProductDto",
+            "crates.product_catalog.src.handlers.SearchResult",
+            "crates.product_catalog.src.lib",
+            "src.cmd.inventory.server",
+            "src.cmd.product_catalog.server"
+        ]
+    }
+}

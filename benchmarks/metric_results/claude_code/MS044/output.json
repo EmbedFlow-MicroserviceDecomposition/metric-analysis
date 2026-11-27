@@ -1,0 +1,58 @@
+{
+    "system": "MS044",
+    "tool": "Ground-Truth Architecture (MS044)",
+    "microservices": {
+        "CastInfoService": [
+            "CastInfoHandler",
+            "CastInfoService"
+        ],
+        "ComposeReviewService": [
+            "ComposeReviewHandler",
+            "ComposeReviewService"
+        ],
+        "MovieIdService": [
+            "MovieIdHandler",
+            "MovieIdService"
+        ],
+        "MovieInfoService": [
+            "MovieInfoHandler",
+            "MovieInfoService"
+        ],
+        "MovieReviewService": [
+            "MovieReviewHandler",
+            "MovieReviewService"
+        ],
+        "PageService": [
+            "PageHandler",
+            "PageService"
+        ],
+        "PlotService": [
+            "PlotHandler",
+            "PlotService"
+        ],
+        "RatingService": [
+            "RatingHandler",
+            "RatingService"
+        ],
+        "ReviewStorageService": [
+            "ReviewStorageHandler",
+            "ReviewStorageService"
+        ],
+        "TextService": [
+            "TextHandler",
+            "TextService"
+        ],
+        "UniqueIdService": [
+            "UniqueIdHandler",
+            "UniqueIdService"
+        ],
+        "UserReviewService": [
+            "UserReviewHandler",
+            "UserReviewService"
+        ],
+        "UserService": [
+            "UserHandler",
+            "UserService"
+        ]
+    }
+}

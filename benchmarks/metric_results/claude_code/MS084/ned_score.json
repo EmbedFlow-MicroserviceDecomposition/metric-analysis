@@ -1,0 +1,27 @@
+{
+    "metric": "NED",
+    "score": 0.75,
+    "score_absolute": 0.75,
+    "score_relative": 0.5,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "0-model-store": 1.0,
+        "1-composition-client-only": 1.0,
+        "2-composition-universal": 0.0,
+        "3-data-fetching": 1.0
+    },
+    "metadata": {
+        "total_classes": 25,
+        "service_count": 4,
+        "service_sizes": {
+            "0-model-store": 1,
+            "3-data-fetching": 7,
+            "2-composition-universal": 14,
+            "1-composition-client-only": 3
+        }
+    }
+}

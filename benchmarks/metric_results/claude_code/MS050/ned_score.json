@@ -1,0 +1,35 @@
+{
+    "metric": "NED",
+    "score": 0.75,
+    "score_absolute": 0.75,
+    "score_relative": 0.625,
+    "bounds": {
+        "lo": 5,
+        "hi": 20,
+        "eps": 0.5
+    },
+    "microservice_scores": {
+        "applicationset": 1.0,
+        "cmpserver": 0.0,
+        "commitserver": 0.0,
+        "controller": 1.0,
+        "notification_controller": 1.0,
+        "reposerver": 1.0,
+        "server": 1.0,
+        "ui": 1.0
+    },
+    "metadata": {
+        "total_classes": 293,
+        "service_count": 8,
+        "service_sizes": {
+            "applicationset": 117,
+            "commitserver": 11,
+            "ui": 1,
+            "notification_controller": 2,
+            "reposerver": 33,
+            "controller": 41,
+            "server": 69,
+            "cmpserver": 19
+        }
+    }
+}
