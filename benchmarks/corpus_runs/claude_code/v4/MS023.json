@@ -1,0 +1,1015 @@
+{
+  "system_id": "MS023",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "zlt-uaa": {
+      "exposed_interfaces": [
+        {
+          "id": "ClientController.list",
+          "class_name": "com.central.oauth.controller.ClientController",
+          "method_name": "list",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "PageResult<ClientDto>",
+          "protocol": "REST",
+          "endpoint": "GET /clients/list"
+        },
+        {
+          "id": "ClientController.get",
+          "class_name": "com.central.oauth.controller.ClientController",
+          "method_name": "get",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "ClientDto",
+          "protocol": "REST",
+          "endpoint": "GET /clients/{id}"
+        },
+        {
+          "id": "ClientController.allClient",
+          "class_name": "com.central.oauth.controller.ClientController",
+          "method_name": "allClient",
+          "param_types": [],
+          "return_type": "List<ClientDto>",
+          "protocol": "REST",
+          "endpoint": "GET /clients/all"
+        },
+        {
+          "id": "ClientController.delete",
+          "class_name": "com.central.oauth.controller.ClientController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /clients/{id}"
+        },
+        {
+          "id": "ClientController.saveOrUpdate",
+          "class_name": "com.central.oauth.controller.ClientController",
+          "method_name": "saveOrUpdate",
+          "param_types": [
+            "Client"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /clients/saveOrUpdate"
+        },
+        {
+          "id": "TokensController.list",
+          "class_name": "com.central.oauth.controller.TokensController",
+          "method_name": "list",
+          "param_types": [
+            "Map<String,Object>",
+            "String"
+          ],
+          "return_type": "PageResult<TokenVo>",
+          "protocol": "REST",
+          "endpoint": "GET /tokens"
+        },
+        {
+          "id": "ValidateCodeController.createCodeImage",
+          "class_name": "com.central.oauth.controller.ValidateCodeController",
+          "method_name": "createCode",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /validata/code/{deviceId}"
+        },
+        {
+          "id": "ValidateCodeController.createCodeSms",
+          "class_name": "com.central.oauth.controller.ValidateCodeController",
+          "method_name": "createCode",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /validata/smsCode/{mobile}"
+        }
+      ]
+    },
+    "zlt-gateway": {
+      "exposed_interfaces": []
+    },
+    "zlt-business": {
+      "exposed_interfaces": [
+        {
+          "id": "SysMenuController.delete",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /menus/{id}"
+        },
+        {
+          "id": "SysMenuController.findMenusByRoleId",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "findMenusByRoleId",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<Map<String,Object>>",
+          "protocol": "REST",
+          "endpoint": "GET /menus/{roleId}/menus"
+        },
+        {
+          "id": "SysMenuController.findMenuByRoles",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "findMenuByRoles",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<SysMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /menus/{roleCodes}"
+        },
+        {
+          "id": "SysMenuController.setMenuToRole",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "setMenuToRole",
+          "param_types": [
+            "SysMenu"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /menus/granted"
+        },
+        {
+          "id": "SysMenuController.findAlls",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "findAlls",
+          "param_types": [],
+          "return_type": "PageResult<SysMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /menus/findAlls"
+        },
+        {
+          "id": "SysMenuController.findOnes",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "findOnes",
+          "param_types": [],
+          "return_type": "PageResult<SysMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /menus/findOnes"
+        },
+        {
+          "id": "SysMenuController.saveOrUpdate",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "saveOrUpdate",
+          "param_types": [
+            "SysMenu"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /menus/saveOrUpdate"
+        },
+        {
+          "id": "SysMenuController.findMyMenu",
+          "class_name": "com.central.user.controller.SysMenuController",
+          "method_name": "findMyMenu",
+          "param_types": [],
+          "return_type": "List<SysMenu>",
+          "protocol": "REST",
+          "endpoint": "GET /menus/current"
+        },
+        {
+          "id": "SysRoleController.findRoles",
+          "class_name": "com.central.user.controller.SysRoleController",
+          "method_name": "findRoles",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "PageResult<SysRole>",
+          "protocol": "REST",
+          "endpoint": "GET /roles"
+        },
+        {
+          "id": "SysRoleController.findAll",
+          "class_name": "com.central.user.controller.SysRoleController",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<SysRole>",
+          "protocol": "REST",
+          "endpoint": "GET /allRoles"
+        },
+        {
+          "id": "SysRoleController.saveOrUpdate",
+          "class_name": "com.central.user.controller.SysRoleController",
+          "method_name": "saveOrUpdate",
+          "param_types": [
+            "SysRole"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /roles/saveOrUpdate"
+        },
+        {
+          "id": "SysRoleController.deleteRole",
+          "class_name": "com.central.user.controller.SysRoleController",
+          "method_name": "deleteRole",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /roles/{id}"
+        },
+        {
+          "id": "SysUserController.getLoginAppUser",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "getLoginAppUser",
+          "param_types": [],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/current"
+        },
+        {
+          "id": "SysUserController.selectByUsername",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "selectByUsername",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/name/{username}"
+        },
+        {
+          "id": "SysUserController.findByUsername",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findByUsername",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users-anon/login?username"
+        },
+        {
+          "id": "SysUserController.findByMobile",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findByMobile",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users-anon/mobile?mobile"
+        },
+        {
+          "id": "SysUserController.findByOpenId",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findByOpenId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users-anon/openId?openId"
+        },
+        {
+          "id": "SysUserController.findUserById",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findUserById",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/{id}"
+        },
+        {
+          "id": "SysUserController.updateSysUser",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "updateSysUser",
+          "param_types": [
+            "SysUser"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /users"
+        },
+        {
+          "id": "SysUserController.setRoleToUser",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "setRoleToUser",
+          "param_types": [
+            "Long",
+            "Set<Long>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /users/{id}/roles"
+        },
+        {
+          "id": "SysUserController.findRolesByUserId",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findRolesByUserId",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "List<SysRole>",
+          "protocol": "REST",
+          "endpoint": "GET /users/{id}/roles"
+        },
+        {
+          "id": "SysUserController.findUsers",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "findUsers",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "PageResult<SysUser>",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "SysUserController.updateEnabled",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "updateEnabled",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/updateEnabled"
+        },
+        {
+          "id": "SysUserController.resetPasswordById",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "resetPassword",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "PUT /users/{id}/password"
+        },
+        {
+          "id": "SysUserController.resetPasswordByBody",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "resetPassword",
+          "param_types": [
+            "SysUser"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "PUT /users/password"
+        },
+        {
+          "id": "SysUserController.delete",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "delete",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /users/{id}"
+        },
+        {
+          "id": "SysUserController.saveOrUpdate",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "saveOrUpdate",
+          "param_types": [
+            "SysUser"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "POST /users/saveOrUpdate"
+        },
+        {
+          "id": "SysUserController.exportUser",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "exportUser",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /users/export"
+        },
+        {
+          "id": "SysUserController.importExcl",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "importExcl",
+          "param_types": [
+            "MultipartFile"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /users/import"
+        },
+        {
+          "id": "SysUserController.search",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "search",
+          "param_types": [
+            "SearchDto"
+          ],
+          "return_type": "PageResult<JsonNode>",
+          "protocol": "REST",
+          "endpoint": "GET /users/search"
+        },
+        {
+          "id": "SysUserController.selectRoleUser",
+          "class_name": "com.central.user.controller.SysUserController",
+          "method_name": "selectRoleUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "SysUser",
+          "protocol": "REST",
+          "endpoint": "GET /users/roleUser/{username}"
+        },
+        {
+          "id": "FileController.upload",
+          "class_name": "com.central.file.controller.FileController",
+          "method_name": "upload",
+          "param_types": [
+            "MultipartFile"
+          ],
+          "return_type": "FileInfo",
+          "protocol": "REST",
+          "endpoint": "POST /files-anon"
+        },
+        {
+          "id": "FileController.delete",
+          "class_name": "com.central.file.controller.FileController",
+          "method_name": "delete",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /files/{id}"
+        },
+        {
+          "id": "FileController.findFiles",
+          "class_name": "com.central.file.controller.FileController",
+          "method_name": "findFiles",
+          "param_types": [
+            "Map<String,Object>"
+          ],
+          "return_type": "PageResult<FileInfo>",
+          "protocol": "REST",
+          "endpoint": "GET /files"
+        },
+        {
+          "id": "IndexController.createIndex",
+          "class_name": "com.central.admin.controller.IndexController",
+          "method_name": "createIndex",
+          "param_types": [
+            "IndexDto"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "POST /admin/index"
+        },
+        {
+          "id": "IndexController.list",
+          "class_name": "com.central.admin.controller.IndexController",
+          "method_name": "list",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "PageResult<Map<String,String>>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/indices"
+        },
+        {
+          "id": "IndexController.showIndex",
+          "class_name": "com.central.admin.controller.IndexController",
+          "method_name": "showIndex",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/index"
+        },
+        {
+          "id": "IndexController.deleteIndex",
+          "class_name": "com.central.admin.controller.IndexController",
+          "method_name": "deleteIndex",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/index"
+        },
+        {
+          "id": "AggregationController.requestStatAgg",
+          "class_name": "com.central.search.controller.AggregationController",
+          "method_name": "requestStatAgg",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /agg/requestStat/{indexName}/{routing}"
+        },
+        {
+          "id": "SearchController.strQuery",
+          "class_name": "com.central.search.controller.SearchController",
+          "method_name": "strQuery",
+          "param_types": [
+            "String",
+            "SearchDto"
+          ],
+          "return_type": "PageResult<JsonNode>",
+          "protocol": "REST",
+          "endpoint": "POST /search/{indexName}"
+        }
+      ]
+    },
+    "zlt-web": {
+      "exposed_interfaces": []
+    },
+    "zlt-monitor": {
+      "exposed_interfaces": [
+        {
+          "id": "AggregationController.requestStatAgg",
+          "class_name": "com.central.log.controller.AggregationController",
+          "method_name": "requestStatAgg",
+          "param_types": [],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /requestStat"
+        },
+        {
+          "id": "AuditLogController.getPage",
+          "class_name": "com.central.log.controller.AuditLogController",
+          "method_name": "getPage",
+          "param_types": [
+            "SearchDto"
+          ],
+          "return_type": "PageResult<JsonNode>",
+          "protocol": "REST",
+          "endpoint": "GET /auditLog"
+        },
+        {
+          "id": "SlowQueryLogController.getPage",
+          "class_name": "com.central.log.controller.SlowQueryLogController",
+          "method_name": "getPage",
+          "param_types": [
+            "SearchDto"
+          ],
+          "return_type": "PageResult<JsonNode>",
+          "protocol": "REST",
+          "endpoint": "GET /slowQueryLog"
+        },
+        {
+          "id": "SysLogController.sysLog",
+          "class_name": "com.central.log.controller.SysLogController",
+          "method_name": "sysLog",
+          "param_types": [
+            "SearchDto"
+          ],
+          "return_type": "PageResult<JsonNode>",
+          "protocol": "REST",
+          "endpoint": "GET /sysLog"
+        },
+        {
+          "id": "SysLogController.traceLog",
+          "class_name": "com.central.log.controller.SysLogController",
+          "method_name": "traceLog",
+          "param_types": [
+            "SearchDto"
+          ],
+          "return_type": "PageResult<TraceLog>",
+          "protocol": "REST",
+          "endpoint": "GET /traceLog"
+        }
+      ]
+    },
+    "zlt-demo": {
+      "exposed_interfaces": [
+        {
+          "id": "WebController.test",
+          "class_name": "org.zlt.controller.WebController",
+          "method_name": "test",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /test/{p}"
+        },
+        {
+          "id": "RpcServiceImpl.test",
+          "class_name": "org.zlt.service.impl.RpcServiceImpl",
+          "method_name": "test",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "RPC",
+          "endpoint": "RpcService/test"
+        },
+        {
+          "id": "TestController.auth",
+          "class_name": "org.zlt.controller.TestController",
+          "method_name": "auth",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /test/auth"
+        },
+        {
+          "id": "TestController.auth2",
+          "class_name": "org.zlt.controller.TestController",
+          "method_name": "auth2",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /test/auth2"
+        },
+        {
+          "id": "TestController.notAuth",
+          "class_name": "org.zlt.controller.TestController",
+          "method_name": "notAuth",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /test/notAuth"
+        },
+        {
+          "id": "TestWebSocketController.onOpen",
+          "class_name": "org.zlt.controller.TestWebSocketController",
+          "method_name": "onOpen",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "/websocket/test"
+        },
+        {
+          "id": "UserController.initDate",
+          "class_name": "com.sharding.demo.controller.UserController",
+          "method_name": "initDate",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /init"
+        },
+        {
+          "id": "UserController.list",
+          "class_name": "com.sharding.demo.controller.UserController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "UserController.get",
+          "class_name": "com.sharding.demo.controller.UserController",
+          "method_name": "get",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /{id}"
+        },
+        {
+          "id": "UserController.clean",
+          "class_name": "com.sharding.demo.controller.UserController",
+          "method_name": "clean",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /clean"
+        },
+        {
+          "id": "ReceiveService.receiveInput",
+          "class_name": "com.rocketmq.demo.service.ReceiveService",
+          "method_name": "receiveInput",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "test-topic"
+        },
+        {
+          "id": "ReceiveService.receiveInput2",
+          "class_name": "com.rocketmq.demo.service.ReceiveService",
+          "method_name": "receiveInput2",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "test-topic"
+        },
+        {
+          "id": "ReceiveService.receiveInput3",
+          "class_name": "com.rocketmq.demo.service.ReceiveService",
+          "method_name": "receiveInput3",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "test-topic"
+        },
+        {
+          "id": "IntegralReceiveService.receive",
+          "class_name": "com.rocketmq.demo.service.impl.IntegralReceiveService",
+          "method_name": "receive",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "TransactionTopic"
+        },
+        {
+          "id": "IntegralReceiveService.receiveDlq",
+          "class_name": "com.rocketmq.demo.service.impl.IntegralReceiveService",
+          "method_name": "receiveDlq",
+          "param_types": [
+            "Order"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "%DLQ%order-tx-consume-group"
+        },
+        {
+          "id": "OrderController.success",
+          "class_name": "com.rocketmq.demo.controller.OrderController",
+          "method_name": "success",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /success"
+        },
+        {
+          "id": "OrderController.produceError",
+          "class_name": "com.rocketmq.demo.controller.OrderController",
+          "method_name": "produceError",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /produceError"
+        },
+        {
+          "id": "OrderController.consumeError",
+          "class_name": "com.rocketmq.demo.controller.OrderController",
+          "method_name": "consumeError",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /consumeError"
+        },
+        {
+          "id": "AccountController.reduce",
+          "class_name": "com.central.account.controller.AccountController",
+          "method_name": "reduce",
+          "param_types": [
+            "String",
+            "Integer"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "ANY /account/reduce"
+        },
+        {
+          "id": "BusinessController.placeOrder",
+          "class_name": "com.central.business.controller.BusinessController",
+          "method_name": "placeOrder",
+          "param_types": [],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "ANY /placeOrder"
+        },
+        {
+          "id": "BusinessController.placeOrderFallBack",
+          "class_name": "com.central.business.controller.BusinessController",
+          "method_name": "placeOrderFallBack",
+          "param_types": [],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "ANY /placeOrderFallBack"
+        },
+        {
+          "id": "OrderController.create",
+          "class_name": "com.central.order.controller.OrderController",
+          "method_name": "create",
+          "param_types": [
+            "String",
+            "String",
+            "Integer"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "ANY /order/create"
+        },
+        {
+          "id": "StorageController.deduct",
+          "class_name": "com.central.storage.controller.StorageController",
+          "method_name": "deduct",
+          "param_types": [
+            "String",
+            "Integer"
+          ],
+          "return_type": "Boolean",
+          "protocol": "REST",
+          "endpoint": "ANY /storage/deduct"
+        },
+        {
+          "id": "ApiController.tokenInfoOidc",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "tokenInfo",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /token/{code}"
+        },
+        {
+          "id": "ApiController.logoutNotify",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "logoutNotify",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /logoutNotify"
+        },
+        {
+          "id": "ApiController.userOidc",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "user",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /user"
+        },
+        {
+          "id": "ApiController.tokenInfoSs",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "tokenInfo",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /token/{code}"
+        },
+        {
+          "id": "ApiController.userSs",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "user",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /user"
+        },
+        {
+          "id": "ApiController.tokenInfoWeb",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "tokenInfo",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /token/{code}"
+        },
+        {
+          "id": "ApiController.userWeb",
+          "class_name": "com.sso.demo.controller.ApiController",
+          "method_name": "user",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,Object>",
+          "protocol": "REST",
+          "endpoint": "GET /user"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "zlt-uaa",
+      "src_class": "com.central.oauth.service.impl.UserDetailServiceImpl",
+      "src_method": "loadUserByUsername",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.user.controller.SysUserController",
+      "dst_interface_id": "SysUserController.findByUsername",
+      "protocol": "REST",
+      "evidence": "zlt-uaa/src/main/java/com/central/oauth/service/impl/UserDetailServiceImpl.java:37 userService.findByUsername(username)"
+    },
+    {
+      "src_service": "zlt-uaa",
+      "src_class": "com.central.oauth.service.impl.UserDetailServiceImpl",
+      "src_method": "loadUserByUserId",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.user.controller.SysUserController",
+      "dst_interface_id": "SysUserController.findByOpenId",
+      "protocol": "REST",
+      "evidence": "zlt-uaa/src/main/java/com/central/oauth/service/impl/UserDetailServiceImpl.java:47 userService.findByOpenId(openId)"
+    },
+    {
+      "src_service": "zlt-uaa",
+      "src_class": "com.central.oauth.service.impl.UserDetailServiceImpl",
+      "src_method": "loadUserByMobile",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.user.controller.SysUserController",
+      "dst_interface_id": "SysUserController.findByMobile",
+      "protocol": "REST",
+      "evidence": "zlt-uaa/src/main/java/com/central/oauth/service/impl/UserDetailServiceImpl.java:54 userService.findByMobile(mobile)"
+    },
+    {
+      "src_service": "zlt-uaa",
+      "src_class": "com.central.oauth.service.impl.ValidateCodeServiceImpl",
+      "src_method": "sendSmsCode",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.user.controller.SysUserController",
+      "dst_interface_id": "SysUserController.findByMobile",
+      "protocol": "REST",
+      "evidence": "zlt-uaa/src/main/java/com/central/oauth/service/impl/ValidateCodeServiceImpl.java:66 userService.findByMobile(mobile)"
+    },
+    {
+      "src_service": "zlt-monitor",
+      "src_class": "com.central.log.controller.AggregationController",
+      "src_method": "requestStatAgg",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.search.controller.AggregationController",
+      "dst_interface_id": "AggregationController.requestStatAgg",
+      "protocol": "REST",
+      "evidence": "zlt-monitor/log-center/src/main/java/com/central/log/controller/AggregationController.java:27 queryService.requestStatAgg("
+    },
+    {
+      "src_service": "zlt-monitor",
+      "src_class": "com.central.log.controller.AuditLogController",
+      "src_method": "getPage",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.search.controller.SearchController",
+      "dst_interface_id": "SearchController.strQuery",
+      "protocol": "REST",
+      "evidence": "zlt-monitor/log-center/src/main/java/com/central/log/controller/AuditLogController.java:35 queryService.strQuery("
+    },
+    {
+      "src_service": "zlt-monitor",
+      "src_class": "com.central.log.controller.SlowQueryLogController",
+      "src_method": "getPage",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.search.controller.SearchController",
+      "dst_interface_id": "SearchController.strQuery",
+      "protocol": "REST",
+      "evidence": "zlt-monitor/log-center/src/main/java/com/central/log/controller/SlowQueryLogController.java:29 queryService.strQuery("
+    },
+    {
+      "src_service": "zlt-monitor",
+      "src_class": "com.central.log.controller.SysLogController",
+      "src_method": "sysLog",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.search.controller.SearchController",
+      "dst_interface_id": "SearchController.strQuery",
+      "protocol": "REST",
+      "evidence": "zlt-monitor/log-center/src/main/java/com/central/log/controller/SysLogController.java:39 queryService.strQuery("
+    },
+    {
+      "src_service": "zlt-monitor",
+      "src_class": "com.central.log.controller.SysLogController",
+      "src_method": "traceLog",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.search.controller.SearchController",
+      "dst_interface_id": "SearchController.strQuery",
+      "protocol": "REST",
+      "evidence": "zlt-monitor/log-center/src/main/java/com/central/log/controller/SysLogController.java:45 queryService.strQuery("
+    },
+    {
+      "src_service": "zlt-demo",
+      "src_class": "com.sso.demo.controller.ApiController",
+      "src_method": "getUserInfo",
+      "dst_service": "zlt-business",
+      "dst_class": "com.central.user.controller.SysUserController",
+      "dst_interface_id": "SysUserController.getLoginAppUser",
+      "protocol": "REST",
+      "evidence": "zlt-demo/sso-demo/ss-sso/src/main/java/com/sso/demo/controller/ApiController.java:98 restTemplate.getForObject(userInfoUri"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "system_id": "MS018",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "static-code-analyser": {
+      "exposed_interfaces": [
+        {
+          "id": "AnalyserController.getDependencyData",
+          "class_name": "com.rokin.sca.controller.AnalyserController",
+          "method_name": "getDependencyData",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,List<String>>",
+          "protocol": "REST",
+          "endpoint": "GET /analyse/dependencies"
+        },
+        {
+          "id": "AnalyserController.getInheritanceData",
+          "class_name": "com.rokin.sca.controller.AnalyserController",
+          "method_name": "getInheritanceData",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /analyse/inheritance"
+        },
+        {
+          "id": "AnalyserController.getMicroserviceClasses",
+          "class_name": "com.rokin.sca.controller.AnalyserController",
+          "method_name": "getMicroserviceClasses",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Map<String,List<String>>",
+          "protocol": "REST",
+          "endpoint": "GET /analyse/microservices"
+        }
+      ]
+    },
+    "result-analyser": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

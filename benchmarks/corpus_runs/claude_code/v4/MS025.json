@@ -1,0 +1,728 @@
+{
+  "system_id": "MS025",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "xxl-job-core": {
+      "exposed_interfaces": [
+        {
+          "id": "ExecutorBizImpl.beat",
+          "class_name": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+          "method_name": "beat",
+          "param_types": [],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /beat"
+        },
+        {
+          "id": "ExecutorBizImpl.idleBeat",
+          "class_name": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+          "method_name": "idleBeat",
+          "param_types": [
+            "IdleBeatRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /idleBeat"
+        },
+        {
+          "id": "ExecutorBizImpl.trigger",
+          "class_name": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+          "method_name": "trigger",
+          "param_types": [
+            "TriggerRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /trigger"
+        },
+        {
+          "id": "ExecutorBizImpl.kill",
+          "class_name": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+          "method_name": "kill",
+          "param_types": [
+            "KillRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /kill"
+        },
+        {
+          "id": "ExecutorBizImpl.log",
+          "class_name": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+          "method_name": "log",
+          "param_types": [
+            "LogRequest"
+          ],
+          "return_type": "Response<LogData>",
+          "protocol": "REST",
+          "endpoint": "POST /log"
+        }
+      ]
+    },
+    "xxl-job-admin": {
+      "exposed_interfaces": [
+        {
+          "id": "AdminBizImpl.callback",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+          "method_name": "callback",
+          "param_types": [
+            "CallbackRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/callback"
+        },
+        {
+          "id": "AdminBizImpl.registry",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+          "method_name": "registry",
+          "param_types": [
+            "RegistryRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/registry"
+        },
+        {
+          "id": "AdminBizImpl.registryRemove",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+          "method_name": "registryRemove",
+          "param_types": [
+            "RegistryRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/registryRemove"
+        },
+        {
+          "id": "AdminJobBizImpl.addJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "addJob",
+          "param_types": [
+            "JobAddRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/addJob"
+        },
+        {
+          "id": "AdminJobBizImpl.updateJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "updateJob",
+          "param_types": [
+            "JobUpdateRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/updateJob"
+        },
+        {
+          "id": "AdminJobBizImpl.removeJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "removeJob",
+          "param_types": [
+            "JobOperateRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/removeJob"
+        },
+        {
+          "id": "AdminJobBizImpl.startJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "startJob",
+          "param_types": [
+            "JobOperateRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/startJob"
+        },
+        {
+          "id": "AdminJobBizImpl.stopJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "stopJob",
+          "param_types": [
+            "JobOperateRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/stopJob"
+        },
+        {
+          "id": "AdminJobBizImpl.triggerJob",
+          "class_name": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminJobBizImpl",
+          "method_name": "triggerJob",
+          "param_types": [
+            "JobTriggerRequest"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/triggerJob"
+        },
+        {
+          "id": "JobCodeController.save",
+          "class_name": "com.xxl.job.admin.business.controller.JobCodeController",
+          "method_name": "save",
+          "param_types": [
+            "int",
+            "String",
+            "String"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobcode/save"
+        },
+        {
+          "id": "JobGroupController.pageList",
+          "class_name": "com.xxl.job.admin.business.controller.JobGroupController",
+          "method_name": "pageList",
+          "param_types": [
+            "int",
+            "int",
+            "String",
+            "String"
+          ],
+          "return_type": "Response<PageModel<XxlJobGroup>>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobgroup/pageList"
+        },
+        {
+          "id": "JobGroupController.insert",
+          "class_name": "com.xxl.job.admin.business.controller.JobGroupController",
+          "method_name": "insert",
+          "param_types": [
+            "XxlJobGroup"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobgroup/insert"
+        },
+        {
+          "id": "JobGroupController.update",
+          "class_name": "com.xxl.job.admin.business.controller.JobGroupController",
+          "method_name": "update",
+          "param_types": [
+            "XxlJobGroup"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobgroup/update"
+        },
+        {
+          "id": "JobGroupController.delete",
+          "class_name": "com.xxl.job.admin.business.controller.JobGroupController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobgroup/delete"
+        },
+        {
+          "id": "JobGroupController.loadById",
+          "class_name": "com.xxl.job.admin.business.controller.JobGroupController",
+          "method_name": "loadById",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "Response<XxlJobGroup>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobgroup/loadById"
+        },
+        {
+          "id": "JobInfoController.pageList",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "pageList",
+          "param_types": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Response<PageModel<XxlJobInfo>>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/pageList"
+        },
+        {
+          "id": "JobInfoController.add",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "add",
+          "param_types": [
+            "XxlJobInfo"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/insert"
+        },
+        {
+          "id": "JobInfoController.update",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "update",
+          "param_types": [
+            "XxlJobInfo"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/update"
+        },
+        {
+          "id": "JobInfoController.delete",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/delete"
+        },
+        {
+          "id": "JobInfoController.pause",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "pause",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/stop"
+        },
+        {
+          "id": "JobInfoController.start",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "start",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/start"
+        },
+        {
+          "id": "JobInfoController.triggerJob",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "triggerJob",
+          "param_types": [
+            "int",
+            "String",
+            "String"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/trigger"
+        },
+        {
+          "id": "JobInfoController.nextTriggerTime",
+          "class_name": "com.xxl.job.admin.business.controller.JobInfoController",
+          "method_name": "nextTriggerTime",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response<List<String>>",
+          "protocol": "REST",
+          "endpoint": "ANY /jobinfo/nextTriggerTime"
+        },
+        {
+          "id": "JobLogController.pageList",
+          "class_name": "com.xxl.job.admin.business.controller.JobLogController",
+          "method_name": "pageList",
+          "param_types": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "String"
+          ],
+          "return_type": "Response<PageModel<XxlJobLogDTO>>",
+          "protocol": "REST",
+          "endpoint": "ANY /joblog/pageList"
+        },
+        {
+          "id": "JobLogController.logKill",
+          "class_name": "com.xxl.job.admin.business.controller.JobLogController",
+          "method_name": "logKill",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /joblog/logKill"
+        },
+        {
+          "id": "JobLogController.clearLog",
+          "class_name": "com.xxl.job.admin.business.controller.JobLogController",
+          "method_name": "clearLog",
+          "param_types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /joblog/clearLog"
+        },
+        {
+          "id": "JobLogController.logDetailCat",
+          "class_name": "com.xxl.job.admin.business.controller.JobLogController",
+          "method_name": "logDetailCat",
+          "param_types": [
+            "long",
+            "int"
+          ],
+          "return_type": "Response<LogData>",
+          "protocol": "REST",
+          "endpoint": "ANY /joblog/logDetailCat"
+        },
+        {
+          "id": "IndexController.chartInfo",
+          "class_name": "com.xxl.job.admin.framework.controller.IndexController",
+          "method_name": "chartInfo",
+          "param_types": [
+            "Date",
+            "Date"
+          ],
+          "return_type": "Response<Map<String,Object>>",
+          "protocol": "REST",
+          "endpoint": "ANY /chartInfo"
+        },
+        {
+          "id": "JobUserController.pageList",
+          "class_name": "com.xxl.job.admin.framework.controller.JobUserController",
+          "method_name": "pageList",
+          "param_types": [
+            "int",
+            "int",
+            "String",
+            "int"
+          ],
+          "return_type": "Response<PageModel<XxlJobUser>>",
+          "protocol": "REST",
+          "endpoint": "ANY /user/pageList"
+        },
+        {
+          "id": "JobUserController.insert",
+          "class_name": "com.xxl.job.admin.framework.controller.JobUserController",
+          "method_name": "insert",
+          "param_types": [
+            "XxlJobUser"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /user/insert"
+        },
+        {
+          "id": "JobUserController.update",
+          "class_name": "com.xxl.job.admin.framework.controller.JobUserController",
+          "method_name": "update",
+          "param_types": [
+            "XxlJobUser"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /user/update"
+        },
+        {
+          "id": "JobUserController.delete",
+          "class_name": "com.xxl.job.admin.framework.controller.JobUserController",
+          "method_name": "delete",
+          "param_types": [
+            "List<Integer>"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /user/delete"
+        },
+        {
+          "id": "LoginController.doLogin",
+          "class_name": "com.xxl.job.admin.framework.controller.LoginController",
+          "method_name": "doLogin",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /auth/doLogin"
+        },
+        {
+          "id": "LoginController.logout",
+          "class_name": "com.xxl.job.admin.framework.controller.LoginController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "POST /auth/logout"
+        },
+        {
+          "id": "LoginController.updatePwd",
+          "class_name": "com.xxl.job.admin.framework.controller.LoginController",
+          "method_name": "updatePwd",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Response<String>",
+          "protocol": "REST",
+          "endpoint": "ANY /auth/updatePwd"
+        }
+      ]
+    },
+    "xxl-job-executor-samples": {
+      "exposed_interfaces": [
+        {
+          "id": "IndexController.simpleChat",
+          "class_name": "com.xxl.job.executor.controller.IndexController",
+          "method_name": "simpleChat",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /chat/simple"
+        },
+        {
+          "id": "IndexController.streamChat",
+          "class_name": "com.xxl.job.executor.controller.IndexController",
+          "method_name": "streamChat",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /chat/stream"
+        },
+        {
+          "id": "IndexController.difySimple",
+          "class_name": "com.xxl.job.executor.controller.IndexController",
+          "method_name": "difySimple",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /dify/simple"
+        },
+        {
+          "id": "IndexController.difyStream",
+          "class_name": "com.xxl.job.executor.controller.IndexController",
+          "method_name": "difyStream",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /dify/stream"
+        },
+        {
+          "id": "SampleXxlJob.demoJobHandlerFrameless",
+          "class_name": "com.xxl.job.executor.sample.frameless.jobhandler.SampleXxlJob",
+          "method_name": "demoJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "demoJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.shardingJobHandlerFrameless",
+          "class_name": "com.xxl.job.executor.sample.frameless.jobhandler.SampleXxlJob",
+          "method_name": "shardingJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "shardingJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.commandJobHandlerFrameless",
+          "class_name": "com.xxl.job.executor.sample.frameless.jobhandler.SampleXxlJob",
+          "method_name": "commandJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "commandJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.httpJobHandlerFrameless",
+          "class_name": "com.xxl.job.executor.sample.frameless.jobhandler.SampleXxlJob",
+          "method_name": "httpJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "httpJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.demoJobHandler2Frameless",
+          "class_name": "com.xxl.job.executor.sample.frameless.jobhandler.SampleXxlJob",
+          "method_name": "demoJobHandler2",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "demoJobHandler2"
+        },
+        {
+          "id": "AIXxlJob.ollamaJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.AIXxlJob",
+          "method_name": "ollamaJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ollamaJobHandler"
+        },
+        {
+          "id": "AIXxlJob.difyWorkflowJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.AIXxlJob",
+          "method_name": "difyWorkflowJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "difyWorkflowJobHandler"
+        },
+        {
+          "id": "AIXxlJob.openClawJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.AIXxlJob",
+          "method_name": "openClawJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "openClawJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.demoJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.SampleXxlJob",
+          "method_name": "demoJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "demoJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.shardingJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.SampleXxlJob",
+          "method_name": "shardingJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "shardingJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.commandJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.SampleXxlJob",
+          "method_name": "commandJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "commandJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.httpJobHandler",
+          "class_name": "com.xxl.job.executor.jobhandler.SampleXxlJob",
+          "method_name": "httpJobHandler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "httpJobHandler"
+        },
+        {
+          "id": "SampleXxlJob.demoJobHandler2",
+          "class_name": "com.xxl.job.executor.jobhandler.SampleXxlJob",
+          "method_name": "demoJobHandler2",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "demoJobHandler2"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "xxl-job-admin",
+      "src_class": "com.xxl.job.admin.business.scheduler.trigger.JobTrigger",
+      "src_method": "doTrigger",
+      "dst_service": "xxl-job-core",
+      "dst_class": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+      "dst_interface_id": "ExecutorBizImpl.trigger",
+      "protocol": "REST",
+      "evidence": "xxl-job-admin/src/main/java/com/xxl/job/admin/business/scheduler/trigger/JobTrigger.java:265 executorBiz.trigger(triggerParam)"
+    },
+    {
+      "src_service": "xxl-job-admin",
+      "src_class": "com.xxl.job.admin.business.scheduler.route.strategy.ExecutorRouteBusyover",
+      "src_method": "route",
+      "dst_service": "xxl-job-core",
+      "dst_class": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+      "dst_interface_id": "ExecutorBizImpl.idleBeat",
+      "protocol": "REST",
+      "evidence": "xxl-job-admin/src/main/java/com/xxl/job/admin/business/scheduler/route/strategy/ExecutorRouteBusyover.java:29 executorBiz.idleBeat("
+    },
+    {
+      "src_service": "xxl-job-admin",
+      "src_class": "com.xxl.job.admin.business.scheduler.route.strategy.ExecutorRouteFailover",
+      "src_method": "route",
+      "dst_service": "xxl-job-core",
+      "dst_class": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+      "dst_interface_id": "ExecutorBizImpl.beat",
+      "protocol": "REST",
+      "evidence": "xxl-job-admin/src/main/java/com/xxl/job/admin/business/scheduler/route/strategy/ExecutorRouteFailover.java:29 executorBiz.beat()"
+    },
+    {
+      "src_service": "xxl-job-admin",
+      "src_class": "com.xxl.job.admin.business.controller.JobLogController",
+      "src_method": "logKill",
+      "dst_service": "xxl-job-core",
+      "dst_class": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+      "dst_interface_id": "ExecutorBizImpl.kill",
+      "protocol": "REST",
+      "evidence": "xxl-job-admin/src/main/java/com/xxl/job/admin/business/controller/JobLogController.java:203 executorBiz.kill("
+    },
+    {
+      "src_service": "xxl-job-admin",
+      "src_class": "com.xxl.job.admin.business.controller.JobLogController",
+      "src_method": "logDetailCat",
+      "dst_service": "xxl-job-core",
+      "dst_class": "com.xxl.job.core.openapi.executor.impl.ExecutorBizImpl",
+      "dst_interface_id": "ExecutorBizImpl.log",
+      "protocol": "REST",
+      "evidence": "xxl-job-admin/src/main/java/com/xxl/job/admin/business/controller/JobLogController.java:308 executorBiz.log("
+    },
+    {
+      "src_service": "xxl-job-core",
+      "src_class": "com.xxl.job.core.thread.ExecutorRegistryThreadHelper",
+      "src_method": "start",
+      "dst_service": "xxl-job-admin",
+      "dst_class": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+      "dst_interface_id": "AdminBizImpl.registry",
+      "protocol": "REST",
+      "evidence": "xxl-job-core/src/main/java/com/xxl/job/core/thread/ExecutorRegistryThreadHelper.java:54 adminBiz.registry(registryParam)"
+    },
+    {
+      "src_service": "xxl-job-core",
+      "src_class": "com.xxl.job.core.thread.ExecutorRegistryThreadHelper",
+      "src_method": "registryRemove",
+      "dst_service": "xxl-job-admin",
+      "dst_class": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+      "dst_interface_id": "AdminBizImpl.registryRemove",
+      "protocol": "REST",
+      "evidence": "xxl-job-core/src/main/java/com/xxl/job/core/thread/ExecutorRegistryThreadHelper.java:95 adminBiz.registryRemove(registryParam)"
+    },
+    {
+      "src_service": "xxl-job-core",
+      "src_class": "com.xxl.job.core.thread.TriggerCallbackThreadHelper",
+      "src_method": "doCallback",
+      "dst_service": "xxl-job-admin",
+      "dst_class": "com.xxl.job.admin.business.scheduler.openapi.impl.AdminBizImpl",
+      "dst_interface_id": "AdminBizImpl.callback",
+      "protocol": "REST",
+      "evidence": "xxl-job-core/src/main/java/com/xxl/job/core/thread/TriggerCallbackThreadHelper.java:163 adminBiz.callback("
+    }
+  ]
+}

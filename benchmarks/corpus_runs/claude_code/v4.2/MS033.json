@@ -1,0 +1,335 @@
+{
+  "system_id": "MS033",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "mail-service": {
+      "exposed_interfaces": [
+        {
+          "id": "EmailController.list",
+          "class_name": "EmailController",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<Email>",
+          "protocol": "REST",
+          "endpoint": "GET /emails"
+        },
+        {
+          "id": "NotifyController.sendEmail",
+          "class_name": "NotifyController",
+          "method_name": "sendEmail",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /send/email"
+        },
+        {
+          "id": "EventInput.todoCreated",
+          "class_name": "EventInput",
+          "method_name": "todoCreated",
+          "param_types": [
+            "TodoCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "todo-mail"
+        }
+      ]
+    },
+    "remainder-service": {
+      "exposed_interfaces": [
+        {
+          "id": "TodoController.all",
+          "class_name": "TodoController",
+          "method_name": "all",
+          "param_types": [],
+          "return_type": "List<ToDo>",
+          "protocol": "REST",
+          "endpoint": "GET /todos"
+        },
+        {
+          "id": "TodoController.getByUserEmail",
+          "class_name": "TodoController",
+          "method_name": "getByUserEmail",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<ToDo>",
+          "protocol": "REST",
+          "endpoint": "GET /todos/search"
+        },
+        {
+          "id": "TodoController.save",
+          "class_name": "TodoController",
+          "method_name": "save",
+          "param_types": [
+            "ToDo"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /todos"
+        },
+        {
+          "id": "TodoController.update",
+          "class_name": "TodoController",
+          "method_name": "update",
+          "param_types": [
+            "long",
+            "ToDo"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "PUT /todos/{id}"
+        },
+        {
+          "id": "TodoController.find",
+          "class_name": "TodoController",
+          "method_name": "find",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "GET /todos/{id}"
+        },
+        {
+          "id": "TodoController.delete",
+          "class_name": "TodoController",
+          "method_name": "delete",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /todos/{id}"
+        },
+        {
+          "id": "TodoController.statusUpdate",
+          "class_name": "TodoController",
+          "method_name": "statusUpdate",
+          "param_types": [
+            "long",
+            "JsonNode"
+          ],
+          "return_type": "ToDo",
+          "protocol": "REST",
+          "endpoint": "PUT /todos/{id}/status"
+        },
+        {
+          "id": "TodoChangesController.expose",
+          "class_name": "TodoChangesController",
+          "method_name": "expose",
+          "param_types": [],
+          "return_type": "List<TodoChangedEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /todo-changes"
+        },
+        {
+          "id": "TodoServiceStatisticsController.get",
+          "class_name": "TodoServiceStatisticsController",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "ObjectNode",
+          "protocol": "REST",
+          "endpoint": "GET /todo-statistics"
+        },
+        {
+          "id": "TodoSocketController.send",
+          "class_name": "TodoSocketController",
+          "method_name": "send",
+          "param_types": [
+            "SocketOutputMessage"
+          ],
+          "return_type": "SocketOutputMessage",
+          "protocol": "WebSocket",
+          "endpoint": "/app/socket-todos"
+        }
+      ]
+    },
+    "api-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "TodoController.all",
+          "class_name": "TodoController",
+          "method_name": "all",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /todos"
+        },
+        {
+          "id": "UserController.all",
+          "class_name": "UserController",
+          "method_name": "all",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts"
+        },
+        {
+          "id": "UserController.me",
+          "class_name": "UserController",
+          "method_name": "me",
+          "param_types": [],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/me"
+        },
+        {
+          "id": "UserController.todos",
+          "class_name": "UserController",
+          "method_name": "todos",
+          "param_types": [],
+          "return_type": "List<Todo>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/me/todos"
+        },
+        {
+          "id": "UserController.create",
+          "class_name": "UserController",
+          "method_name": "create",
+          "param_types": [
+            "Todo"
+          ],
+          "return_type": "Todo",
+          "protocol": "REST",
+          "endpoint": "POST /accounts/me/todos"
+        }
+      ]
+    },
+    "user-service": {
+      "exposed_interfaces": [
+        {
+          "id": "AccountController.all",
+          "class_name": "AccountController",
+          "method_name": "all",
+          "param_types": [],
+          "return_type": "List<Account>",
+          "protocol": "REST",
+          "endpoint": "GET /accounts"
+        },
+        {
+          "id": "AccountController.save",
+          "class_name": "AccountController",
+          "method_name": "save",
+          "param_types": [
+            "Account"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /accounts"
+        },
+        {
+          "id": "AccountController.update",
+          "class_name": "AccountController",
+          "method_name": "update",
+          "param_types": [
+            "long",
+            "Account"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "PUT /accounts/{id}"
+        },
+        {
+          "id": "AccountController.find",
+          "class_name": "AccountController",
+          "method_name": "find",
+          "param_types": [
+            "long"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/{id}"
+        },
+        {
+          "id": "AccountController.findByEmail",
+          "class_name": "AccountController",
+          "method_name": "find",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/search"
+        }
+      ]
+    },
+    "oauth-server": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "api-gateway",
+      "src_class": "TodoController",
+      "src_method": "all",
+      "dst_service": "remainder-service",
+      "dst_class": "TodoController",
+      "dst_interface_id": "TodoController.all",
+      "protocol": "REST",
+      "evidence": "api-gateway/src/main/java/com/apssouza/controllers/TodoController.java:27 this.todoService.getAll()"
+    },
+    {
+      "src_service": "api-gateway",
+      "src_class": "UserController",
+      "src_method": "todos",
+      "dst_service": "remainder-service",
+      "dst_class": "TodoController",
+      "dst_interface_id": "TodoController.getByUserEmail",
+      "protocol": "REST",
+      "evidence": "api-gateway/src/main/java/com/apssouza/controllers/UserController.java:46 this.todoService.getTodoByUserEmaill(auth.getName())"
+    },
+    {
+      "src_service": "api-gateway",
+      "src_class": "UserController",
+      "src_method": "create",
+      "dst_service": "remainder-service",
+      "dst_class": "TodoController",
+      "dst_interface_id": "TodoController.save",
+      "protocol": "REST",
+      "evidence": "api-gateway/src/main/java/com/apssouza/controllers/UserController.java:51 this.todoService.createTodo(todo)"
+    },
+    {
+      "src_service": "api-gateway",
+      "src_class": "UserController",
+      "src_method": "all",
+      "dst_service": "user-service",
+      "dst_class": "AccountController",
+      "dst_interface_id": "AccountController.all",
+      "protocol": "REST",
+      "evidence": "api-gateway/src/main/java/com/apssouza/controllers/UserController.java:36 this.userService.getAll()"
+    },
+    {
+      "src_service": "api-gateway",
+      "src_class": "UserController",
+      "src_method": "me",
+      "dst_service": "user-service",
+      "dst_class": "AccountController",
+      "dst_interface_id": "AccountController.findByEmail",
+      "protocol": "REST",
+      "evidence": "api-gateway/src/main/java/com/apssouza/controllers/UserController.java:41 this.userService.getUserByEmail(auth.getName())"
+    },
+    {
+      "src_service": "oauth-server",
+      "src_class": "AuthenticationConfiguration",
+      "src_method": "userDetailsService",
+      "dst_service": "user-service",
+      "dst_class": "AccountController",
+      "dst_interface_id": "AccountController.findByEmail",
+      "protocol": "REST",
+      "evidence": "oauth-server/src/main/java/com/apssouza/configuration/AuthenticationConfiguration.java:30 userService.getUserByEmail(email)"
+    },
+    {
+      "src_service": "remainder-service",
+      "src_class": "TodoServiceImpl",
+      "src_method": "save",
+      "dst_service": "mail-service",
+      "dst_class": "EventInput",
+      "dst_interface_id": "EventInput.todoCreated",
+      "protocol": "Messaging",
+      "evidence": "remainder-service/src/main/java/com/apssouza/services/TodoServiceImpl.java:49 this.publisher.stream(new TodoCreatedEvent(savedTodo))"
+    }
+  ]
+}

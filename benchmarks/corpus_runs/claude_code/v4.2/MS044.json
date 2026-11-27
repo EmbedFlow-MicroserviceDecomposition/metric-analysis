@@ -1,0 +1,793 @@
+{
+  "system_id": "MS044",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "CastInfoService": {
+      "exposed_interfaces": [
+        {
+          "id": "CastInfoHandler.WriteCastInfo",
+          "class_name": "CastInfoHandler",
+          "method_name": "WriteCastInfo",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::string",
+            "bool",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "CastInfoService/WriteCastInfo"
+        },
+        {
+          "id": "CastInfoHandler.ReadCastInfo",
+          "class_name": "CastInfoHandler",
+          "method_name": "ReadCastInfo",
+          "param_types": [
+            "int64_t",
+            "std::vector<int64_t>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<CastInfo>",
+          "protocol": "RPC",
+          "endpoint": "CastInfoService/ReadCastInfo"
+        }
+      ]
+    },
+    "ComposeReviewService": {
+      "exposed_interfaces": [
+        {
+          "id": "ComposeReviewHandler.UploadMovieId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadMovieId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadMovieId"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadUserId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadUserId",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadUserId"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadUniqueId",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadUniqueId",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadUniqueId"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadText",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadText",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadText"
+        },
+        {
+          "id": "ComposeReviewHandler.UploadRating",
+          "class_name": "ComposeReviewHandler",
+          "method_name": "UploadRating",
+          "param_types": [
+            "int64_t",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ComposeReviewService/UploadRating"
+        }
+      ]
+    },
+    "MovieIdService": {
+      "exposed_interfaces": [
+        {
+          "id": "MovieIdHandler.UploadMovieId",
+          "class_name": "MovieIdHandler",
+          "method_name": "UploadMovieId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieIdService/UploadMovieId"
+        },
+        {
+          "id": "MovieIdHandler.RegisterMovieId",
+          "class_name": "MovieIdHandler",
+          "method_name": "RegisterMovieId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieIdService/RegisterMovieId"
+        }
+      ]
+    },
+    "MovieInfoService": {
+      "exposed_interfaces": [
+        {
+          "id": "MovieInfoHandler.WriteMovieInfo",
+          "class_name": "MovieInfoHandler",
+          "method_name": "WriteMovieInfo",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::vector<Cast>",
+            "int64_t",
+            "std::vector<std::string>",
+            "std::vector<std::string>",
+            "std::vector<std::string>",
+            "std::string",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/WriteMovieInfo"
+        },
+        {
+          "id": "MovieInfoHandler.ReadMovieInfo",
+          "class_name": "MovieInfoHandler",
+          "method_name": "ReadMovieInfo",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "MovieInfo",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/ReadMovieInfo"
+        },
+        {
+          "id": "MovieInfoHandler.UpdateRating",
+          "class_name": "MovieInfoHandler",
+          "method_name": "UpdateRating",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int32_t",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieInfoService/UpdateRating"
+        }
+      ]
+    },
+    "MovieReviewService": {
+      "exposed_interfaces": [
+        {
+          "id": "MovieReviewHandler.UploadMovieReview",
+          "class_name": "MovieReviewHandler",
+          "method_name": "UploadMovieReview",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "MovieReviewService/UploadMovieReview"
+        },
+        {
+          "id": "MovieReviewHandler.ReadMovieReviews",
+          "class_name": "MovieReviewHandler",
+          "method_name": "ReadMovieReviews",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int32_t",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Review>",
+          "protocol": "RPC",
+          "endpoint": "MovieReviewService/ReadMovieReviews"
+        }
+      ]
+    },
+    "PageService": {
+      "exposed_interfaces": [
+        {
+          "id": "PageHandler.ReadPage",
+          "class_name": "PageHandler",
+          "method_name": "ReadPage",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int32_t",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "Page",
+          "protocol": "RPC",
+          "endpoint": "PageService/ReadPage"
+        }
+      ]
+    },
+    "PlotService": {
+      "exposed_interfaces": [
+        {
+          "id": "PlotHandler.ReadPlot",
+          "class_name": "PlotHandler",
+          "method_name": "ReadPlot",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::string",
+          "protocol": "RPC",
+          "endpoint": "PlotService/ReadPlot"
+        },
+        {
+          "id": "PlotHandler.WritePlot",
+          "class_name": "PlotHandler",
+          "method_name": "WritePlot",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PlotService/WritePlot"
+        }
+      ]
+    },
+    "RatingService": {
+      "exposed_interfaces": [
+        {
+          "id": "RatingHandler.UploadRating",
+          "class_name": "RatingHandler",
+          "method_name": "UploadRating",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "RatingService/UploadRating"
+        }
+      ]
+    },
+    "ReviewStorageService": {
+      "exposed_interfaces": [
+        {
+          "id": "ReviewStorageHandler.StoreReview",
+          "class_name": "ReviewStorageHandler",
+          "method_name": "StoreReview",
+          "param_types": [
+            "int64_t",
+            "Review",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ReviewStorageService/StoreReview"
+        },
+        {
+          "id": "ReviewStorageHandler.ReadReviews",
+          "class_name": "ReviewStorageHandler",
+          "method_name": "ReadReviews",
+          "param_types": [
+            "int64_t",
+            "std::vector<int64_t>",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Review>",
+          "protocol": "RPC",
+          "endpoint": "ReviewStorageService/ReadReviews"
+        }
+      ]
+    },
+    "TextService": {
+      "exposed_interfaces": [
+        {
+          "id": "TextHandler.UploadText",
+          "class_name": "TextHandler",
+          "method_name": "UploadText",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "TextService/UploadText"
+        }
+      ]
+    },
+    "UniqueIdService": {
+      "exposed_interfaces": [
+        {
+          "id": "UniqueIdHandler.UploadUniqueId",
+          "class_name": "UniqueIdHandler",
+          "method_name": "UploadUniqueId",
+          "param_types": [
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UniqueIdService/UploadUniqueId"
+        }
+      ]
+    },
+    "UserReviewService": {
+      "exposed_interfaces": [
+        {
+          "id": "UserReviewHandler.UploadUserReview",
+          "class_name": "UserReviewHandler",
+          "method_name": "UploadUserReview",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserReviewService/UploadUserReview"
+        },
+        {
+          "id": "UserReviewHandler.ReadUserReviews",
+          "class_name": "UserReviewHandler",
+          "method_name": "ReadUserReviews",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "int32_t",
+            "int32_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::vector<Review>",
+          "protocol": "RPC",
+          "endpoint": "UserReviewService/ReadUserReviews"
+        }
+      ]
+    },
+    "UserService": {
+      "exposed_interfaces": [
+        {
+          "id": "UserHandler.RegisterUser",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUser"
+        },
+        {
+          "id": "UserHandler.RegisterUserWithId",
+          "class_name": "UserHandler",
+          "method_name": "RegisterUserWithId",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::string",
+            "std::string",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/RegisterUserWithId"
+        },
+        {
+          "id": "UserHandler.UploadUserWithUsername",
+          "class_name": "UserHandler",
+          "method_name": "UploadUserWithUsername",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/UploadUserWithUsername"
+        },
+        {
+          "id": "UserHandler.UploadUserWithUserId",
+          "class_name": "UserHandler",
+          "method_name": "UploadUserWithUserId",
+          "param_types": [
+            "int64_t",
+            "int64_t",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "UserService/UploadUserWithUserId"
+        },
+        {
+          "id": "UserHandler.Login",
+          "class_name": "UserHandler",
+          "method_name": "Login",
+          "param_types": [
+            "int64_t",
+            "std::string",
+            "std::string",
+            "std::map<std::string,std::string>"
+          ],
+          "return_type": "std::string",
+          "protocol": "RPC",
+          "endpoint": "UserService/Login"
+        }
+      ]
+    },
+    "nginx-web-server": {
+      "exposed_interfaces": [
+        {
+          "id": "register.RegisterUser",
+          "class_name": "wrk2-api/user/register",
+          "method_name": "RegisterUser",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/user/register"
+        },
+        {
+          "id": "register.RegisterMovie",
+          "class_name": "wrk2-api/movie/register",
+          "method_name": "RegisterMovie",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/movie/register"
+        },
+        {
+          "id": "compose.ComposeReview",
+          "class_name": "wrk2-api/review/compose",
+          "method_name": "ComposeReview",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/review/compose"
+        },
+        {
+          "id": "write.WriteMovieInfo",
+          "class_name": "wrk2-api/movie-info/write",
+          "method_name": "WriteMovieInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/movie-info/write"
+        },
+        {
+          "id": "write.WriteCastInfo",
+          "class_name": "wrk2-api/cast-info/write",
+          "method_name": "WriteCastInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/cast-info/write"
+        },
+        {
+          "id": "write.WritePlot",
+          "class_name": "wrk2-api/plot/write",
+          "method_name": "WritePlot",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wrk2-api/plot/write"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "ComposeReviewService",
+      "src_class": "ComposeReviewHandler",
+      "src_method": "_ComposeAndUpload",
+      "dst_service": "ReviewStorageService",
+      "dst_class": "ReviewStorageHandler",
+      "dst_interface_id": "ReviewStorageHandler.StoreReview",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/ComposeReviewService/ComposeReviewHandler.h:196 review_storage_client->StoreReview(req_id, new_review, writer_text_map);"
+    },
+    {
+      "src_service": "ComposeReviewService",
+      "src_class": "ComposeReviewHandler",
+      "src_method": "_ComposeAndUpload",
+      "dst_service": "UserReviewService",
+      "dst_class": "UserReviewHandler",
+      "dst_interface_id": "UserReviewHandler.UploadUserReview",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/ComposeReviewService/ComposeReviewHandler.h:215 user_review_client->UploadUserReview(req_id, new_review.user_id,"
+    },
+    {
+      "src_service": "ComposeReviewService",
+      "src_class": "ComposeReviewHandler",
+      "src_method": "_ComposeAndUpload",
+      "dst_service": "MovieReviewService",
+      "dst_class": "MovieReviewHandler",
+      "dst_interface_id": "MovieReviewHandler.UploadMovieReview",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/ComposeReviewService/ComposeReviewHandler.h:235 movie_review_client->UploadMovieReview(req_id, new_review.movie_id,"
+    },
+    {
+      "src_service": "MovieIdService",
+      "src_class": "MovieIdHandler",
+      "src_method": "UploadMovieId",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadMovieId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/MovieIdService/MovieIdHandler.h:219 compose_client->UploadMovieId(req_id, movie_id_str, writer_text_map);"
+    },
+    {
+      "src_service": "MovieIdService",
+      "src_class": "MovieIdHandler",
+      "src_method": "UploadMovieId",
+      "dst_service": "RatingService",
+      "dst_class": "RatingHandler",
+      "dst_interface_id": "RatingHandler.UploadRating",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/MovieIdService/MovieIdHandler.h:238 rating_client->UploadRating(req_id, movie_id_str, rating, writer_text_map);"
+    },
+    {
+      "src_service": "MovieReviewService",
+      "src_class": "MovieReviewHandler",
+      "src_method": "ReadMovieReviews",
+      "dst_service": "ReviewStorageService",
+      "dst_class": "ReviewStorageHandler",
+      "dst_interface_id": "ReviewStorageHandler.ReadReviews",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/MovieReviewService/MovieReviewHandler.h:318 review_client->ReadReviews("
+    },
+    {
+      "src_service": "UserReviewService",
+      "src_class": "UserReviewHandler",
+      "src_method": "ReadUserReviews",
+      "dst_service": "ReviewStorageService",
+      "dst_class": "ReviewStorageHandler",
+      "dst_interface_id": "ReviewStorageHandler.ReadReviews",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/UserReviewService/UserReviewHandler.h:317 review_client->ReadReviews("
+    },
+    {
+      "src_service": "PageService",
+      "src_class": "PageHandler",
+      "src_method": "ReadPage",
+      "dst_service": "MovieInfoService",
+      "dst_class": "MovieInfoHandler",
+      "dst_interface_id": "MovieInfoHandler.ReadMovieInfo",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/PageService/PageHandler.h:84 movie_info_client->ReadMovieInfo(_reture_movie_info,"
+    },
+    {
+      "src_service": "PageService",
+      "src_class": "PageHandler",
+      "src_method": "ReadPage",
+      "dst_service": "MovieReviewService",
+      "dst_class": "MovieReviewHandler",
+      "dst_interface_id": "MovieReviewHandler.ReadMovieReviews",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/PageService/PageHandler.h:106 movie_review_client->ReadMovieReviews(_return_movie_reviews,"
+    },
+    {
+      "src_service": "PageService",
+      "src_class": "PageHandler",
+      "src_method": "ReadPage",
+      "dst_service": "CastInfoService",
+      "dst_class": "CastInfoHandler",
+      "dst_interface_id": "CastInfoHandler.ReadCastInfo",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/PageService/PageHandler.h:139 cast_info_client->ReadCastInfo(_return_cast_infos, req_id,"
+    },
+    {
+      "src_service": "PageService",
+      "src_class": "PageHandler",
+      "src_method": "ReadPage",
+      "dst_service": "PlotService",
+      "dst_class": "PlotHandler",
+      "dst_interface_id": "PlotHandler.ReadPlot",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/PageService/PageHandler.h:161 plot_client->ReadPlot(_return_plot, req_id, _return.movie_info.plot_id,"
+    },
+    {
+      "src_service": "RatingService",
+      "src_class": "RatingHandler",
+      "src_method": "UploadRating",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadRating",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/RatingService/RatingHandler.h:68 compose_client->UploadRating(req_id, rating, writer_text_map);"
+    },
+    {
+      "src_service": "TextService",
+      "src_class": "TextHandler",
+      "src_method": "UploadText",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadText",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/TextService/TextHandler.h:56 compose_client->UploadText(req_id, text, writer_text_map);"
+    },
+    {
+      "src_service": "UniqueIdService",
+      "src_class": "UniqueIdHandler",
+      "src_method": "UploadUniqueId",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadUniqueId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/UniqueIdService/UniqueIdHandler.h:131 compose_client->UploadUniqueId(req_id, review_id, writer_text_map);"
+    },
+    {
+      "src_service": "UserService",
+      "src_class": "UserHandler",
+      "src_method": "UploadUserWithUsername",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadUserId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/UserService/UserHandler.h:502 compose_client->UploadUserId(req_id, user_id, writer_text_map);"
+    },
+    {
+      "src_service": "UserService",
+      "src_class": "UserHandler",
+      "src_method": "UploadUserWithUserId",
+      "dst_service": "ComposeReviewService",
+      "dst_class": "ComposeReviewHandler",
+      "dst_interface_id": "ComposeReviewHandler.UploadUserId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/src/UserService/UserHandler.h:571 compose_client->UploadUserId(req_id, user_id, writer_text_map);"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/cast-info/write",
+      "src_method": "WriteCastInfo",
+      "dst_service": "CastInfoService",
+      "dst_class": "CastInfoHandler",
+      "dst_interface_id": "CastInfoHandler.WriteCastInfo",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/cast-info/write.lua:41 client:WriteCastInfo(req_id, cast_info[\"cast_info_id\"], cast_info[\"name\"],"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/movie/register",
+      "src_method": "RegisterMovie",
+      "dst_service": "MovieIdService",
+      "dst_class": "MovieIdHandler",
+      "dst_interface_id": "MovieIdHandler.RegisterMovieId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/movie/register.lua:36 client:RegisterMovieId(req_id, post.title, tostring(post.movie_id), carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/movie-info/write",
+      "src_method": "WriteMovieInfo",
+      "dst_service": "MovieInfoService",
+      "dst_class": "MovieInfoHandler",
+      "dst_interface_id": "MovieInfoHandler.WriteMovieInfo",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/movie-info/write.lua:56 client:WriteMovieInfo(req_id, movie_info[\"movie_id\"], movie_info[\"title\"],"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/plot/write",
+      "src_method": "WritePlot",
+      "dst_service": "PlotService",
+      "dst_class": "PlotHandler",
+      "dst_interface_id": "PlotHandler.WritePlot",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/plot/write.lua:40 client:WritePlot(req_id, plot[\"plot_id\"], plot[\"plot\"], carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/review/compose",
+      "src_method": "_UploadUserId",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.UploadUserWithUsername",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/review/compose.lua:16 user_client:UploadUserWithUsername(req_id, post.username, carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/review/compose",
+      "src_method": "_UploadText",
+      "dst_service": "TextService",
+      "dst_class": "TextHandler",
+      "dst_interface_id": "TextHandler.UploadText",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/review/compose.lua:25 text_client:UploadText(req_id, post.text, carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/review/compose",
+      "src_method": "_UploadMovieId",
+      "dst_service": "MovieIdService",
+      "dst_class": "MovieIdHandler",
+      "dst_interface_id": "MovieIdHandler.UploadMovieId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/review/compose.lua:34 movie_id_client:UploadMovieId(req_id, post.title, tonumber(post.rating), carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/review/compose",
+      "src_method": "_UploadUniqueId",
+      "dst_service": "UniqueIdService",
+      "dst_class": "UniqueIdHandler",
+      "dst_interface_id": "UniqueIdHandler.UploadUniqueId",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/review/compose.lua:43 unique_id_client:UploadUniqueId(req_id, carrier)"
+    },
+    {
+      "src_service": "nginx-web-server",
+      "src_class": "wrk2-api/user/register",
+      "src_method": "RegisterUser",
+      "dst_service": "UserService",
+      "dst_class": "UserHandler",
+      "dst_interface_id": "UserHandler.RegisterUser",
+      "protocol": "RPC",
+      "evidence": "mediaMicroservices/nginx-web-server/lua-scripts/wrk2-api/user/register.lua:37 client:RegisterUser(req_id, post.first_name, post.last_name,"
+    }
+  ]
+}

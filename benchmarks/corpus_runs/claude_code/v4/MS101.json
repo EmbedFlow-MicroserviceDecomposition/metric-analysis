@@ -1,0 +1,587 @@
+{
+  "system_id": "MS101",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "assets": {
+      "exposed_interfaces": []
+    },
+    "src": {
+      "exposed_interfaces": [
+        {
+          "id": "IndexController.indexAction",
+          "class_name": "Pyz\\Yves\\Application\\Controller\\IndexController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "CartController.indexAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "indexAction",
+          "param_types": [
+            "array"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /cart"
+        },
+        {
+          "id": "CartController.addItemsAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "addItemsAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/add-items"
+        },
+        {
+          "id": "CartController.addAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "addAction",
+          "param_types": [
+            "string",
+            "int",
+            "array"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart/add/{sku}"
+        },
+        {
+          "id": "CartController.removeAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "removeAction",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart/remove/{sku}/{groupKey}"
+        },
+        {
+          "id": "CartController.changeAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "changeAction",
+          "param_types": [
+            "string",
+            "int",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/change/{sku}"
+        },
+        {
+          "id": "CartController.updateAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\CartController",
+          "method_name": "updateAction",
+          "param_types": [
+            "string",
+            "int",
+            "array",
+            "array",
+            "string",
+            "array"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /cart/update/{sku}"
+        },
+        {
+          "id": "VoucherController.addAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\VoucherController",
+          "method_name": "addAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart/voucher/add"
+        },
+        {
+          "id": "VoucherController.removeAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\VoucherController",
+          "method_name": "removeAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart/voucher/remove"
+        },
+        {
+          "id": "VoucherController.clearAction",
+          "class_name": "Pyz\\Yves\\Cart\\Controller\\VoucherController",
+          "method_name": "clearAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /cart/voucher/clear"
+        },
+        {
+          "id": "CatalogController.fulltextSearchAction",
+          "class_name": "Pyz\\Yves\\Catalog\\Controller\\CatalogController",
+          "method_name": "fulltextSearchAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /search"
+        },
+        {
+          "id": "SuggestionController.indexAction",
+          "class_name": "Pyz\\Yves\\Catalog\\Controller\\SuggestionController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /search/suggestion"
+        },
+        {
+          "id": "CatalogController.changeViewModeAction",
+          "class_name": "Pyz\\Yves\\Catalog\\Controller\\CatalogController",
+          "method_name": "changeViewModeAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /catalog/change-view-mode"
+        },
+        {
+          "id": "CheckoutController.indexAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout"
+        },
+        {
+          "id": "CheckoutController.customerAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "customerAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/customer"
+        },
+        {
+          "id": "CheckoutController.addressAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "addressAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/address"
+        },
+        {
+          "id": "CheckoutController.shipmentAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "shipmentAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/shipment"
+        },
+        {
+          "id": "CheckoutController.paymentAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "paymentAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/payment"
+        },
+        {
+          "id": "CheckoutController.summaryAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "summaryAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/summary"
+        },
+        {
+          "id": "CheckoutController.placeOrderAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "placeOrderAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/place-order"
+        },
+        {
+          "id": "CheckoutController.errorAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "errorAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/error"
+        },
+        {
+          "id": "CheckoutController.successAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "successAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/success"
+        },
+        {
+          "id": "CheckoutController.addVoucherAction",
+          "class_name": "Pyz\\Yves\\Checkout\\Controller\\CheckoutController",
+          "method_name": "addVoucherAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET|POST /checkout/add-voucher"
+        },
+        {
+          "id": "PreviewController.indexAction",
+          "class_name": "Pyz\\Yves\\Cms\\Controller\\PreviewController",
+          "method_name": "indexAction",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /cms/preview/{page}"
+        },
+        {
+          "id": "AuthController.loginAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AuthController",
+          "method_name": "loginAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "RegisterController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\RegisterController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /register"
+        },
+        {
+          "id": "PasswordController.forgottenPasswordAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\PasswordController",
+          "method_name": "forgottenPasswordAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /password/forgotten"
+        },
+        {
+          "id": "PasswordController.restorePasswordAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\PasswordController",
+          "method_name": "restorePasswordAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /password/restore"
+        },
+        {
+          "id": "CustomerController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\CustomerController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/overview"
+        },
+        {
+          "id": "ProfileController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\ProfileController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/profile"
+        },
+        {
+          "id": "AddressController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AddressController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/address"
+        },
+        {
+          "id": "AddressController.createAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AddressController",
+          "method_name": "createAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/address/new"
+        },
+        {
+          "id": "AddressController.updateAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AddressController",
+          "method_name": "updateAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/address/update"
+        },
+        {
+          "id": "AddressController.deleteAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AddressController",
+          "method_name": "deleteAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /customer/address/delete"
+        },
+        {
+          "id": "AddressController.refreshAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\AddressController",
+          "method_name": "refreshAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /customer/address/refresh"
+        },
+        {
+          "id": "OrderController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\OrderController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/order"
+        },
+        {
+          "id": "OrderController.detailsAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\OrderController",
+          "method_name": "detailsAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/order/details"
+        },
+        {
+          "id": "NewsletterController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\NewsletterController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /customer/newsletter"
+        },
+        {
+          "id": "DeleteController.indexAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\DeleteController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /customer/delete"
+        },
+        {
+          "id": "DeleteController.confirmAction",
+          "class_name": "Pyz\\Yves\\Customer\\Controller\\DeleteController",
+          "method_name": "confirmAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /customer/delete/confirm"
+        },
+        {
+          "id": "SubscriptionController.subscribeAction",
+          "class_name": "Pyz\\Yves\\Newsletter\\Controller\\SubscriptionController",
+          "method_name": "subscribeAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /newsletter/subscribe"
+        },
+        {
+          "id": "NewProductsController.indexAction",
+          "class_name": "Pyz\\Yves\\ProductNew\\Controller\\NewProductsController",
+          "method_name": "indexAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /new{categoryPath}"
+        },
+        {
+          "id": "IndexController.indexActionProductReview",
+          "class_name": "Pyz\\Yves\\ProductReview\\Controller\\IndexController",
+          "method_name": "indexAction",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /product-review/index/{idProductAbstract}"
+        },
+        {
+          "id": "SubmitController.indexAction",
+          "class_name": "Pyz\\Yves\\ProductReview\\Controller\\SubmitController",
+          "method_name": "indexAction",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /product-review/submit/{idProductAbstract}"
+        },
+        {
+          "id": "SaleController.indexAction",
+          "class_name": "Pyz\\Yves\\ProductSale\\Controller\\SaleController",
+          "method_name": "indexAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /outlet{categoryPath}"
+        },
+        {
+          "id": "ListController.indexAction",
+          "class_name": "Pyz\\Yves\\ProductSet\\Controller\\ListController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /product-sets"
+        },
+        {
+          "id": "AddToWishlistController.indexAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\AddToWishlistController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /wishlist/add-to-wishlist"
+        },
+        {
+          "id": "WishlistOverviewController.indexAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistOverviewController",
+          "method_name": "indexAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /wishlist"
+        },
+        {
+          "id": "WishlistOverviewController.updateAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistOverviewController",
+          "method_name": "updateAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /wishlist/update/{wishlistName}"
+        },
+        {
+          "id": "WishlistOverviewController.deleteAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistOverviewController",
+          "method_name": "deleteAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wishlist/delete/{wishlistName}"
+        },
+        {
+          "id": "WishlistController.indexAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistController",
+          "method_name": "indexAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /wishlist/details/{wishlistName}"
+        },
+        {
+          "id": "WishlistController.addItemAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistController",
+          "method_name": "addItemAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wishlist/add-item"
+        },
+        {
+          "id": "WishlistController.removeItemAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistController",
+          "method_name": "removeItemAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wishlist/remove-item"
+        },
+        {
+          "id": "WishlistController.moveToCartAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistController",
+          "method_name": "moveToCartAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wishlist/move-to-cart"
+        },
+        {
+          "id": "WishlistController.moveAllAvailableToCartAction",
+          "class_name": "Pyz\\Yves\\Wishlist\\Controller\\WishlistController",
+          "method_name": "moveAllAvailableToCartAction",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /wishlist/move-all-available-to-cart/{wishlistName}"
+        },
+        {
+          "id": "GatewayController.getCustomerOverviewAction",
+          "class_name": "Pyz\\Zed\\Customer\\Communication\\Controller\\GatewayController",
+          "method_name": "getCustomerOverviewAction",
+          "param_types": [
+            "CustomerOverviewRequestTransfer"
+          ],
+          "return_type": "CustomerOverviewResponseTransfer",
+          "protocol": "RPC",
+          "endpoint": "POST /customer/gateway/get-customer-overview"
+        },
+        {
+          "id": "TestController.listAction",
+          "class_name": "Pyz\\Zed\\StateMachineExample\\Communication\\Controller\\TestController",
+          "method_name": "listAction",
+          "param_types": [],
+          "return_type": "array",
+          "protocol": "REST",
+          "endpoint": "GET /state-machine-example/test/list"
+        },
+        {
+          "id": "TestController.addItemAction",
+          "class_name": "Pyz\\Zed\\StateMachineExample\\Communication\\Controller\\TestController",
+          "method_name": "addItemAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /state-machine-example/test/add-item"
+        },
+        {
+          "id": "TestController.deleteItemAction",
+          "class_name": "Pyz\\Zed\\StateMachineExample\\Communication\\Controller\\TestController",
+          "method_name": "deleteItemAction",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /state-machine-example/test/delete-item"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

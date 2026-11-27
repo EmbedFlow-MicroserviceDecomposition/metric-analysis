@@ -1,0 +1,65 @@
+{
+  "system_id": "MS056",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "vote": {
+      "exposed_interfaces": [
+        {
+          "id": "app.hello",
+          "class_name": "app",
+          "method_name": "hello",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
+    },
+    "result": {
+      "exposed_interfaces": [
+        {
+          "id": "server.subscribe",
+          "class_name": "server.js",
+          "method_name": "subscribe",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "subscribe"
+        }
+      ]
+    },
+    "worker": {
+      "exposed_interfaces": [
+        {
+          "id": "Program.Main",
+          "class_name": "Worker.Program",
+          "method_name": "Main",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "votes"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "vote",
+      "src_class": "app",
+      "src_method": "hello",
+      "dst_service": "worker",
+      "dst_class": "Worker.Program",
+      "dst_interface_id": "Program.Main",
+      "protocol": "Messaging",
+      "evidence": "vote/app.py:37 redis.rpush('votes', data) -> worker/Program.cs:40"
+    }
+  ]
+}

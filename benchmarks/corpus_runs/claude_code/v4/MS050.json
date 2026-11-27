@@ -1,0 +1,3713 @@
+{
+  "system_id": "MS050",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cmd": {
+      "exposed_interfaces": []
+    },
+    "gitops-engine": {
+      "exposed_interfaces": [
+        {
+          "id": "main.any_api_v1_sync",
+          "class_name": "main",
+          "method_name": "any_api_v1_sync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "ANY /api/v1/sync"
+        }
+      ]
+    },
+    "applicationset": {
+      "exposed_interfaces": [
+        {
+          "id": "WebhookHandler.Handler",
+          "class_name": "webhook.WebhookHandler",
+          "method_name": "Handler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/webhook"
+        }
+      ]
+    },
+    "tools": {
+      "exposed_interfaces": []
+    },
+    "assets": {
+      "exposed_interfaces": []
+    },
+    "resource_customizations": {
+      "exposed_interfaces": []
+    },
+    "commitserver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.CommitHydratedManifests",
+          "class_name": "commit.Service",
+          "method_name": "CommitHydratedManifests",
+          "param_types": [
+            "CommitHydratedManifestsRequest"
+          ],
+          "return_type": "CommitHydratedManifestsResponse",
+          "protocol": "gRPC",
+          "endpoint": "CommitService/CommitHydratedManifests"
+        }
+      ]
+    },
+    "ui": {
+      "exposed_interfaces": []
+    },
+    "hack": {
+      "exposed_interfaces": []
+    },
+    "util": {
+      "exposed_interfaces": [
+        {
+          "id": "server.GetCredentials",
+          "class_name": "askpass.server",
+          "method_name": "GetCredentials",
+          "param_types": [
+            "CredentialsRequest"
+          ],
+          "return_type": "CredentialsResponse",
+          "protocol": "gRPC",
+          "endpoint": "AskPassService/GetCredentials"
+        },
+        {
+          "id": "ArgoCDWebhookHandler.Handler",
+          "class_name": "webhook.ArgoCDWebhookHandler",
+          "method_name": "Handler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/webhook"
+        },
+        {
+          "id": "ClientApp.HandleLogin",
+          "class_name": "oidc.ClientApp",
+          "method_name": "HandleLogin",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/login"
+        },
+        {
+          "id": "ClientApp.HandleCallback",
+          "class_name": "oidc.ClientApp",
+          "method_name": "HandleCallback",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/callback"
+        }
+      ]
+    },
+    "common": {
+      "exposed_interfaces": []
+    },
+    "notification_controller": {
+      "exposed_interfaces": []
+    },
+    "reposerver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.GenerateManifest",
+          "class_name": "repository.Service",
+          "method_name": "GenerateManifest",
+          "param_types": [
+            "ManifestRequest"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GenerateManifest"
+        },
+        {
+          "id": "Service.GenerateManifestWithFiles",
+          "class_name": "repository.Service",
+          "method_name": "GenerateManifestWithFiles",
+          "param_types": [
+            "ManifestRequestWithFiles"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GenerateManifestWithFiles"
+        },
+        {
+          "id": "Service.TestRepository",
+          "class_name": "repository.Service",
+          "method_name": "TestRepository",
+          "param_types": [
+            "TestRepositoryRequest"
+          ],
+          "return_type": "TestRepositoryResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/TestRepository"
+        },
+        {
+          "id": "Service.ResolveRevision",
+          "class_name": "repository.Service",
+          "method_name": "ResolveRevision",
+          "param_types": [
+            "ResolveRevisionRequest"
+          ],
+          "return_type": "ResolveRevisionResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ResolveRevision"
+        },
+        {
+          "id": "Service.ListRefs",
+          "class_name": "repository.Service",
+          "method_name": "ListRefs",
+          "param_types": [
+            "ListRefsRequest"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListRefs"
+        },
+        {
+          "id": "Service.ListOCITags",
+          "class_name": "repository.Service",
+          "method_name": "ListOCITags",
+          "param_types": [
+            "ListRefsRequest"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListOCITags"
+        },
+        {
+          "id": "Service.ListApps",
+          "class_name": "repository.Service",
+          "method_name": "ListApps",
+          "param_types": [
+            "ListAppsRequest"
+          ],
+          "return_type": "AppList",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListApps"
+        },
+        {
+          "id": "Service.ListPlugins",
+          "class_name": "repository.Service",
+          "method_name": "ListPlugins",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "PluginList",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/ListPlugins"
+        },
+        {
+          "id": "Service.GetAppDetails",
+          "class_name": "repository.Service",
+          "method_name": "GetAppDetails",
+          "param_types": [
+            "RepoServerAppDetailsQuery"
+          ],
+          "return_type": "RepoAppDetailsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetAppDetails"
+        },
+        {
+          "id": "Service.GetRevisionMetadata",
+          "class_name": "repository.Service",
+          "method_name": "GetRevisionMetadata",
+          "param_types": [
+            "RepoServerRevisionMetadataRequest"
+          ],
+          "return_type": "RevisionMetadata",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetRevisionMetadata"
+        },
+        {
+          "id": "Service.GetOCIMetadata",
+          "class_name": "repository.Service",
+          "method_name": "GetOCIMetadata",
+          "param_types": [
+            "RepoServerRevisionChartDetailsRequest"
+          ],
+          "return_type": "OCIMetadata",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOCIMetadata"
+        },
+        {
+          "id": "Service.GetRevisionChartDetails",
+          "class_name": "repository.Service",
+          "method_name": "GetRevisionChartDetails",
+          "param_types": [
+            "RepoServerRevisionChartDetailsRequest"
+          ],
+          "return_type": "ChartDetails",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetRevisionChartDetails"
+        },
+        {
+          "id": "Service.GetHelmCharts",
+          "class_name": "repository.Service",
+          "method_name": "GetHelmCharts",
+          "param_types": [
+            "HelmChartsRequest"
+          ],
+          "return_type": "HelmChartsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetHelmCharts"
+        },
+        {
+          "id": "Service.GetGitFiles",
+          "class_name": "repository.Service",
+          "method_name": "GetGitFiles",
+          "param_types": [
+            "GitFilesRequest"
+          ],
+          "return_type": "GitFilesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetGitFiles"
+        },
+        {
+          "id": "Service.GetGitDirectories",
+          "class_name": "repository.Service",
+          "method_name": "GetGitDirectories",
+          "param_types": [
+            "GitDirectoriesRequest"
+          ],
+          "return_type": "GitDirectoriesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetGitDirectories"
+        },
+        {
+          "id": "Service.GetOciFiles",
+          "class_name": "repository.Service",
+          "method_name": "GetOciFiles",
+          "param_types": [
+            "OciFilesRequest"
+          ],
+          "return_type": "OciFilesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOciFiles"
+        },
+        {
+          "id": "Service.GetOciDirectories",
+          "class_name": "repository.Service",
+          "method_name": "GetOciDirectories",
+          "param_types": [
+            "OciDirectoriesRequest"
+          ],
+          "return_type": "OciDirectoriesResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/GetOciDirectories"
+        },
+        {
+          "id": "Service.UpdateRevisionForPaths",
+          "class_name": "repository.Service",
+          "method_name": "UpdateRevisionForPaths",
+          "param_types": [
+            "UpdateRevisionForPathsRequest"
+          ],
+          "return_type": "UpdateRevisionForPathsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoServerService/UpdateRevisionForPaths"
+        }
+      ]
+    },
+    "controller": {
+      "exposed_interfaces": []
+    },
+    "server": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.CanI",
+          "class_name": "account.Server",
+          "method_name": "CanI",
+          "param_types": [
+            "CanIRequest"
+          ],
+          "return_type": "CanIResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/CanI"
+        },
+        {
+          "id": "Server.UpdatePassword",
+          "class_name": "account.Server",
+          "method_name": "UpdatePassword",
+          "param_types": [
+            "UpdatePasswordRequest"
+          ],
+          "return_type": "UpdatePasswordResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/UpdatePassword"
+        },
+        {
+          "id": "Server.ListAccounts",
+          "class_name": "account.Server",
+          "method_name": "ListAccounts",
+          "param_types": [
+            "ListAccountRequest"
+          ],
+          "return_type": "AccountsList",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/ListAccounts"
+        },
+        {
+          "id": "Server.GetAccount",
+          "class_name": "account.Server",
+          "method_name": "GetAccount",
+          "param_types": [
+            "GetAccountRequest"
+          ],
+          "return_type": "Account",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/GetAccount"
+        },
+        {
+          "id": "Server.CreateTokenInAccount",
+          "class_name": "account.Server",
+          "method_name": "CreateToken",
+          "param_types": [
+            "CreateTokenRequest"
+          ],
+          "return_type": "CreateTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/CreateToken"
+        },
+        {
+          "id": "Server.DeleteTokenInAccount",
+          "class_name": "account.Server",
+          "method_name": "DeleteToken",
+          "param_types": [
+            "DeleteTokenRequest"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "AccountService/DeleteToken"
+        },
+        {
+          "id": "Server.ListInApplication",
+          "class_name": "application.Server",
+          "method_name": "List",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "ApplicationList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/List"
+        },
+        {
+          "id": "Server.ListResourceEventsInApplication",
+          "class_name": "application.Server",
+          "method_name": "ListResourceEvents",
+          "param_types": [
+            "ApplicationResourceEventsQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceEvents"
+        },
+        {
+          "id": "Server.WatchInApplication",
+          "class_name": "application.Server",
+          "method_name": "Watch",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "List<ApplicationWatchEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Watch"
+        },
+        {
+          "id": "Server.CreateInApplication",
+          "class_name": "application.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ApplicationCreateRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Create"
+        },
+        {
+          "id": "Server.GetInApplication",
+          "class_name": "application.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ApplicationQuery"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Get"
+        },
+        {
+          "id": "Server.GetApplicationSyncWindows",
+          "class_name": "application.Server",
+          "method_name": "GetApplicationSyncWindows",
+          "param_types": [
+            "ApplicationSyncWindowsQuery"
+          ],
+          "return_type": "ApplicationSyncWindowsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetApplicationSyncWindows"
+        },
+        {
+          "id": "Server.RevisionMetadata",
+          "class_name": "application.Server",
+          "method_name": "RevisionMetadata",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "RevisionMetadata",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RevisionMetadata"
+        },
+        {
+          "id": "Server.RevisionChartDetails",
+          "class_name": "application.Server",
+          "method_name": "RevisionChartDetails",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "ChartDetails",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RevisionChartDetails"
+        },
+        {
+          "id": "Server.GetOCIMetadata",
+          "class_name": "application.Server",
+          "method_name": "GetOCIMetadata",
+          "param_types": [
+            "RevisionMetadataQuery"
+          ],
+          "return_type": "OCIMetadata",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetOCIMetadata"
+        },
+        {
+          "id": "Server.GetManifests",
+          "class_name": "application.Server",
+          "method_name": "GetManifests",
+          "param_types": [
+            "ApplicationManifestQuery"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetManifests"
+        },
+        {
+          "id": "Server.GetManifestsWithFiles",
+          "class_name": "application.Server",
+          "method_name": "GetManifestsWithFiles",
+          "param_types": [
+            "ApplicationManifestQueryWithFilesWrapper"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetManifestsWithFiles"
+        },
+        {
+          "id": "Server.UpdateInApplication",
+          "class_name": "application.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ApplicationUpdateRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Update"
+        },
+        {
+          "id": "Server.UpdateSpec",
+          "class_name": "application.Server",
+          "method_name": "UpdateSpec",
+          "param_types": [
+            "ApplicationUpdateSpecRequest"
+          ],
+          "return_type": "ApplicationSpec",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/UpdateSpec"
+        },
+        {
+          "id": "Server.Patch",
+          "class_name": "application.Server",
+          "method_name": "Patch",
+          "param_types": [
+            "ApplicationPatchRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Patch"
+        },
+        {
+          "id": "Server.DeleteInApplication",
+          "class_name": "application.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ApplicationDeleteRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Delete"
+        },
+        {
+          "id": "Server.Sync",
+          "class_name": "application.Server",
+          "method_name": "Sync",
+          "param_types": [
+            "ApplicationSyncRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Sync"
+        },
+        {
+          "id": "Server.ManagedResources",
+          "class_name": "application.Server",
+          "method_name": "ManagedResources",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "ManagedResourcesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ManagedResources"
+        },
+        {
+          "id": "Server.ServerSideDiff",
+          "class_name": "application.Server",
+          "method_name": "ServerSideDiff",
+          "param_types": [
+            "ApplicationServerSideDiffQuery"
+          ],
+          "return_type": "ApplicationServerSideDiffResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ServerSideDiff"
+        },
+        {
+          "id": "Server.ResourceTreeInApplication",
+          "class_name": "application.Server",
+          "method_name": "ResourceTree",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "ApplicationTree",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ResourceTree"
+        },
+        {
+          "id": "Server.WatchResourceTree",
+          "class_name": "application.Server",
+          "method_name": "WatchResourceTree",
+          "param_types": [
+            "ResourcesQuery"
+          ],
+          "return_type": "List<ApplicationTree>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/WatchResourceTree"
+        },
+        {
+          "id": "Server.Rollback",
+          "class_name": "application.Server",
+          "method_name": "Rollback",
+          "param_types": [
+            "ApplicationRollbackRequest"
+          ],
+          "return_type": "Application",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/Rollback"
+        },
+        {
+          "id": "Server.TerminateOperation",
+          "class_name": "application.Server",
+          "method_name": "TerminateOperation",
+          "param_types": [
+            "OperationTerminateRequest"
+          ],
+          "return_type": "OperationTerminateResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/TerminateOperation"
+        },
+        {
+          "id": "Server.GetResource",
+          "class_name": "application.Server",
+          "method_name": "GetResource",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "ApplicationResourceResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/GetResource"
+        },
+        {
+          "id": "Server.PatchResource",
+          "class_name": "application.Server",
+          "method_name": "PatchResource",
+          "param_types": [
+            "ApplicationResourcePatchRequest"
+          ],
+          "return_type": "ApplicationResourceResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/PatchResource"
+        },
+        {
+          "id": "Server.ListResourceActions",
+          "class_name": "application.Server",
+          "method_name": "ListResourceActions",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "ResourceActionsListResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceActions"
+        },
+        {
+          "id": "Server.RunResourceAction",
+          "class_name": "application.Server",
+          "method_name": "RunResourceAction",
+          "param_types": [
+            "ResourceActionRunRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RunResourceAction"
+        },
+        {
+          "id": "Server.RunResourceActionV2",
+          "class_name": "application.Server",
+          "method_name": "RunResourceActionV2",
+          "param_types": [
+            "ResourceActionRunRequestV2"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/RunResourceActionV2"
+        },
+        {
+          "id": "Server.DeleteResource",
+          "class_name": "application.Server",
+          "method_name": "DeleteResource",
+          "param_types": [
+            "ApplicationResourceDeleteRequest"
+          ],
+          "return_type": "ApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/DeleteResource"
+        },
+        {
+          "id": "Server.PodLogs",
+          "class_name": "application.Server",
+          "method_name": "PodLogs",
+          "param_types": [
+            "ApplicationPodLogsQuery"
+          ],
+          "return_type": "List<LogEntry>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/PodLogs"
+        },
+        {
+          "id": "Server.ListLinksInApplication",
+          "class_name": "application.Server",
+          "method_name": "ListLinks",
+          "param_types": [
+            "ListAppLinksRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListLinks"
+        },
+        {
+          "id": "Server.ListResourceLinks",
+          "class_name": "application.Server",
+          "method_name": "ListResourceLinks",
+          "param_types": [
+            "ApplicationResourceRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationService/ListResourceLinks"
+        },
+        {
+          "id": "Server.GetInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ApplicationSetGetQuery"
+          ],
+          "return_type": "ApplicationSet",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Get"
+        },
+        {
+          "id": "Server.Generate",
+          "class_name": "applicationset.Server",
+          "method_name": "Generate",
+          "param_types": [
+            "ApplicationSetGenerateRequest"
+          ],
+          "return_type": "ApplicationSetGenerateResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Generate"
+        },
+        {
+          "id": "Server.ListInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "List",
+          "param_types": [
+            "ApplicationSetListQuery"
+          ],
+          "return_type": "ApplicationSetList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/List"
+        },
+        {
+          "id": "Server.CreateInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ApplicationSetCreateRequest"
+          ],
+          "return_type": "ApplicationSet",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Create"
+        },
+        {
+          "id": "Server.DeleteInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ApplicationSetDeleteRequest"
+          ],
+          "return_type": "ApplicationSetResponse",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Delete"
+        },
+        {
+          "id": "Server.ResourceTreeInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "ResourceTree",
+          "param_types": [
+            "ApplicationSetTreeQuery"
+          ],
+          "return_type": "ApplicationSetTree",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/ResourceTree"
+        },
+        {
+          "id": "Server.ListResourceEventsInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "ListResourceEvents",
+          "param_types": [
+            "ApplicationSetGetQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/ListResourceEvents"
+        },
+        {
+          "id": "Server.WatchInApplicationSet",
+          "class_name": "applicationset.Server",
+          "method_name": "Watch",
+          "param_types": [
+            "ApplicationSetWatchQuery"
+          ],
+          "return_type": "List<ApplicationSetWatchEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ApplicationSetService/Watch"
+        },
+        {
+          "id": "Server.ListCertificates",
+          "class_name": "certificate.Server",
+          "method_name": "ListCertificates",
+          "param_types": [
+            "RepositoryCertificateQuery"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/ListCertificates"
+        },
+        {
+          "id": "Server.CreateCertificate",
+          "class_name": "certificate.Server",
+          "method_name": "CreateCertificate",
+          "param_types": [
+            "RepositoryCertificateCreateRequest"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/CreateCertificate"
+        },
+        {
+          "id": "Server.DeleteCertificate",
+          "class_name": "certificate.Server",
+          "method_name": "DeleteCertificate",
+          "param_types": [
+            "RepositoryCertificateQuery"
+          ],
+          "return_type": "RepositoryCertificateList",
+          "protocol": "gRPC",
+          "endpoint": "CertificateService/DeleteCertificate"
+        },
+        {
+          "id": "Server.ListInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "List",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterList",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/List"
+        },
+        {
+          "id": "Server.CreateInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ClusterCreateRequest"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Create"
+        },
+        {
+          "id": "Server.GetInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Get"
+        },
+        {
+          "id": "Server.UpdateInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ClusterUpdateRequest"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Update"
+        },
+        {
+          "id": "Server.DeleteInCluster",
+          "class_name": "cluster.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterResponse",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/Delete"
+        },
+        {
+          "id": "Server.RotateAuth",
+          "class_name": "cluster.Server",
+          "method_name": "RotateAuth",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "ClusterResponse",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/RotateAuth"
+        },
+        {
+          "id": "Server.InvalidateCache",
+          "class_name": "cluster.Server",
+          "method_name": "InvalidateCache",
+          "param_types": [
+            "ClusterQuery"
+          ],
+          "return_type": "Cluster",
+          "protocol": "gRPC",
+          "endpoint": "ClusterService/InvalidateCache"
+        },
+        {
+          "id": "Server.ListInGPGKey",
+          "class_name": "gpgkey.Server",
+          "method_name": "List",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKeyList",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/List"
+        },
+        {
+          "id": "Server.GetInGPGKey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Get",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKey",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Get"
+        },
+        {
+          "id": "Server.CreateInGPGKey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Create",
+          "param_types": [
+            "GnuPGPublicKeyCreateRequest"
+          ],
+          "return_type": "GnuPGPublicKeyCreateResponse",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Create"
+        },
+        {
+          "id": "Server.DeleteInGPGKey",
+          "class_name": "gpgkey.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "GnuPGPublicKeyQuery"
+          ],
+          "return_type": "GnuPGPublicKeyResponse",
+          "protocol": "gRPC",
+          "endpoint": "GPGKeyService/Delete"
+        },
+        {
+          "id": "Server.ListTriggers",
+          "class_name": "notification.Server",
+          "method_name": "ListTriggers",
+          "param_types": [
+            "TriggersListRequest"
+          ],
+          "return_type": "TriggerList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListTriggers"
+        },
+        {
+          "id": "Server.ListServices",
+          "class_name": "notification.Server",
+          "method_name": "ListServices",
+          "param_types": [
+            "ServicesListRequest"
+          ],
+          "return_type": "ServiceList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListServices"
+        },
+        {
+          "id": "Server.ListTemplates",
+          "class_name": "notification.Server",
+          "method_name": "ListTemplates",
+          "param_types": [
+            "TemplatesListRequest"
+          ],
+          "return_type": "TemplateList",
+          "protocol": "gRPC",
+          "endpoint": "NotificationService/ListTemplates"
+        },
+        {
+          "id": "Server.CreateTokenInProject",
+          "class_name": "project.Server",
+          "method_name": "CreateToken",
+          "param_types": [
+            "ProjectTokenCreateRequest"
+          ],
+          "return_type": "ProjectTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/CreateToken"
+        },
+        {
+          "id": "Server.DeleteTokenInProject",
+          "class_name": "project.Server",
+          "method_name": "DeleteToken",
+          "param_types": [
+            "ProjectTokenDeleteRequest"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/DeleteToken"
+        },
+        {
+          "id": "Server.CreateInProject",
+          "class_name": "project.Server",
+          "method_name": "Create",
+          "param_types": [
+            "ProjectCreateRequest"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Create"
+        },
+        {
+          "id": "Server.ListInProject",
+          "class_name": "project.Server",
+          "method_name": "List",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "AppProjectList",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/List"
+        },
+        {
+          "id": "Server.GetDetailedProject",
+          "class_name": "project.Server",
+          "method_name": "GetDetailedProject",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "DetailedProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetDetailedProject"
+        },
+        {
+          "id": "Server.GetInProject",
+          "class_name": "project.Server",
+          "method_name": "Get",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Get"
+        },
+        {
+          "id": "Server.GetGlobalProjects",
+          "class_name": "project.Server",
+          "method_name": "GetGlobalProjects",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "GlobalProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetGlobalProjects"
+        },
+        {
+          "id": "Server.UpdateInProject",
+          "class_name": "project.Server",
+          "method_name": "Update",
+          "param_types": [
+            "ProjectUpdateRequest"
+          ],
+          "return_type": "AppProject",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Update"
+        },
+        {
+          "id": "Server.DeleteInProject",
+          "class_name": "project.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "EmptyResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/Delete"
+        },
+        {
+          "id": "Server.ListEvents",
+          "class_name": "project.Server",
+          "method_name": "ListEvents",
+          "param_types": [
+            "ProjectQuery"
+          ],
+          "return_type": "EventList",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/ListEvents"
+        },
+        {
+          "id": "Server.GetSyncWindowsState",
+          "class_name": "project.Server",
+          "method_name": "GetSyncWindowsState",
+          "param_types": [
+            "SyncWindowsQuery"
+          ],
+          "return_type": "SyncWindowsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/GetSyncWindowsState"
+        },
+        {
+          "id": "Server.ListLinksInProject",
+          "class_name": "project.Server",
+          "method_name": "ListLinks",
+          "param_types": [
+            "ListProjectLinksRequest"
+          ],
+          "return_type": "LinksResponse",
+          "protocol": "gRPC",
+          "endpoint": "ProjectService/ListLinks"
+        },
+        {
+          "id": "Server.ListRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "ListRepositoryCredentials",
+          "param_types": [
+            "RepoCredsQuery"
+          ],
+          "return_type": "RepoCredsList",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/ListRepositoryCredentials"
+        },
+        {
+          "id": "Server.ListWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "ListWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsQuery"
+          ],
+          "return_type": "RepoCredsList",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/ListWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.CreateRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "CreateRepositoryCredentials",
+          "param_types": [
+            "RepoCredsCreateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/CreateRepositoryCredentials"
+        },
+        {
+          "id": "Server.CreateWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "CreateWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsCreateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/CreateWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.UpdateRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "UpdateRepositoryCredentials",
+          "param_types": [
+            "RepoCredsUpdateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/UpdateRepositoryCredentials"
+        },
+        {
+          "id": "Server.UpdateWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "UpdateWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsUpdateRequest"
+          ],
+          "return_type": "RepoCreds",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/UpdateWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.DeleteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "DeleteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsDeleteRequest"
+          ],
+          "return_type": "RepoCredsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/DeleteRepositoryCredentials"
+        },
+        {
+          "id": "Server.DeleteWriteRepositoryCredentials",
+          "class_name": "repocreds.Server",
+          "method_name": "DeleteWriteRepositoryCredentials",
+          "param_types": [
+            "RepoCredsDeleteRequest"
+          ],
+          "return_type": "RepoCredsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepoCredsService/DeleteWriteRepositoryCredentials"
+        },
+        {
+          "id": "Server.ListInRepository",
+          "class_name": "repository.Server",
+          "method_name": "List",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/List"
+        },
+        {
+          "id": "Server.GetInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Get",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Get"
+        },
+        {
+          "id": "Server.GetWrite",
+          "class_name": "repository.Server",
+          "method_name": "GetWrite",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetWrite"
+        },
+        {
+          "id": "Server.ListRepositories",
+          "class_name": "repository.Server",
+          "method_name": "ListRepositories",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListRepositories"
+        },
+        {
+          "id": "Server.ListWriteRepositories",
+          "class_name": "repository.Server",
+          "method_name": "ListWriteRepositories",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepositoryList",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListWriteRepositories"
+        },
+        {
+          "id": "Server.ListRefs",
+          "class_name": "repository.Server",
+          "method_name": "ListRefs",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListRefs"
+        },
+        {
+          "id": "Server.ListOCITags",
+          "class_name": "repository.Server",
+          "method_name": "ListOCITags",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "Refs",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListOCITags"
+        },
+        {
+          "id": "Server.ListApps",
+          "class_name": "repository.Server",
+          "method_name": "ListApps",
+          "param_types": [
+            "RepoAppsQuery"
+          ],
+          "return_type": "RepoAppsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ListApps"
+        },
+        {
+          "id": "Server.GetAppDetails",
+          "class_name": "repository.Server",
+          "method_name": "GetAppDetails",
+          "param_types": [
+            "RepoAppDetailsQuery"
+          ],
+          "return_type": "RepoAppDetailsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetAppDetails"
+        },
+        {
+          "id": "Server.GetHelmCharts",
+          "class_name": "repository.Server",
+          "method_name": "GetHelmCharts",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "HelmChartsResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/GetHelmCharts"
+        },
+        {
+          "id": "Server.CreateInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Create",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Create"
+        },
+        {
+          "id": "Server.CreateRepository",
+          "class_name": "repository.Server",
+          "method_name": "CreateRepository",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/CreateRepository"
+        },
+        {
+          "id": "Server.CreateWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "CreateWriteRepository",
+          "param_types": [
+            "RepoCreateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/CreateWriteRepository"
+        },
+        {
+          "id": "Server.UpdateInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Update",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Update"
+        },
+        {
+          "id": "Server.UpdateRepository",
+          "class_name": "repository.Server",
+          "method_name": "UpdateRepository",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/UpdateRepository"
+        },
+        {
+          "id": "Server.UpdateWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "UpdateWriteRepository",
+          "param_types": [
+            "RepoUpdateRequest"
+          ],
+          "return_type": "Repository",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/UpdateWriteRepository"
+        },
+        {
+          "id": "Server.DeleteInRepository",
+          "class_name": "repository.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/Delete"
+        },
+        {
+          "id": "Server.DeleteRepository",
+          "class_name": "repository.Server",
+          "method_name": "DeleteRepository",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/DeleteRepository"
+        },
+        {
+          "id": "Server.DeleteWriteRepository",
+          "class_name": "repository.Server",
+          "method_name": "DeleteWriteRepository",
+          "param_types": [
+            "RepoQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/DeleteWriteRepository"
+        },
+        {
+          "id": "Server.ValidateAccess",
+          "class_name": "repository.Server",
+          "method_name": "ValidateAccess",
+          "param_types": [
+            "RepoAccessQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ValidateAccess"
+        },
+        {
+          "id": "Server.ValidateWriteAccess",
+          "class_name": "repository.Server",
+          "method_name": "ValidateWriteAccess",
+          "param_types": [
+            "RepoAccessQuery"
+          ],
+          "return_type": "RepoResponse",
+          "protocol": "gRPC",
+          "endpoint": "RepositoryService/ValidateWriteAccess"
+        },
+        {
+          "id": "Server.GetUserInfo",
+          "class_name": "session.Server",
+          "method_name": "GetUserInfo",
+          "param_types": [
+            "GetUserInfoRequest"
+          ],
+          "return_type": "GetUserInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/GetUserInfo"
+        },
+        {
+          "id": "Server.CreateInSession",
+          "class_name": "session.Server",
+          "method_name": "Create",
+          "param_types": [
+            "SessionCreateRequest"
+          ],
+          "return_type": "SessionResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/Create"
+        },
+        {
+          "id": "Server.DeleteInSession",
+          "class_name": "session.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "SessionDeleteRequest"
+          ],
+          "return_type": "SessionResponse",
+          "protocol": "gRPC",
+          "endpoint": "SessionService/Delete"
+        },
+        {
+          "id": "Server.GetInSettings",
+          "class_name": "settings.Server",
+          "method_name": "Get",
+          "param_types": [
+            "SettingsQuery"
+          ],
+          "return_type": "Settings",
+          "protocol": "gRPC",
+          "endpoint": "SettingsService/Get"
+        },
+        {
+          "id": "Server.GetPlugins",
+          "class_name": "settings.Server",
+          "method_name": "GetPlugins",
+          "param_types": [
+            "SettingsQuery"
+          ],
+          "return_type": "SettingsPluginsResponse",
+          "protocol": "gRPC",
+          "endpoint": "SettingsService/GetPlugins"
+        },
+        {
+          "id": "Server.Version",
+          "class_name": "version.Server",
+          "method_name": "Version",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "VersionMessage",
+          "protocol": "gRPC",
+          "endpoint": "VersionService/Version"
+        },
+        {
+          "id": "Handler.ServeHTTPBadge",
+          "class_name": "badge.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/badge"
+        },
+        {
+          "id": "Handler.ServeHTTPLogout",
+          "class_name": "logout.Handler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /auth/logout"
+        },
+        {
+          "id": "terminalHandler.ServeHTTP",
+          "class_name": "application.terminalHandler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /terminal"
+        }
+      ]
+    },
+    "cmpserver": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.GenerateManifest",
+          "class_name": "plugin.Service",
+          "method_name": "GenerateManifest",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "ManifestResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/GenerateManifest"
+        },
+        {
+          "id": "Service.CheckPluginConfiguration",
+          "class_name": "plugin.Service",
+          "method_name": "CheckPluginConfiguration",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "CheckPluginConfigurationResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/CheckPluginConfiguration"
+        },
+        {
+          "id": "Service.MatchRepository",
+          "class_name": "plugin.Service",
+          "method_name": "MatchRepository",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "RepositoryResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/MatchRepository"
+        },
+        {
+          "id": "Service.GetParametersAnnouncement",
+          "class_name": "plugin.Service",
+          "method_name": "GetParametersAnnouncement",
+          "param_types": [
+            "AppStreamRequest"
+          ],
+          "return_type": "ParametersAnnouncementResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigManagementPluginService/GetParametersAnnouncement"
+        }
+      ]
+    },
+    "pkg": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountUpdatePasswordCommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.UpdatePassword",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:128 _, err := usrIf.UpdatePassword(ctx, &updatePasswordRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountGetUserInfoCommand",
+      "dst_service": "server",
+      "dst_class": "session.Server",
+      "dst_interface_id": "Server.GetUserInfo",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:182 response, err := client.GetUserInfo(ctx, &session.GetUserInfoRequest{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountCanICommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.CanI",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:238 response, err := client.CanI(ctx, &accountpkg.CanIRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountListCommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.ListAccounts",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:276 response, err := client.ListAccounts(ctx, &accountpkg.ListAccountRequest{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getCurrentAccount",
+      "dst_service": "server",
+      "dst_class": "session.Server",
+      "dst_interface_id": "Server.GetUserInfo",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:299 userInfo, err := client.GetUserInfo(ctx, &session.GetUserInfoRequest{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountGetCommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.GetAccount",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:329 acc, err := client.GetAccount(ctx, &accountpkg.GetAccountRequest{Name: account})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountGenerateTokenCommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.CreateTokenInAccount",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:401 response, err := client.CreateToken(ctx, &accountpkg.CreateTokenRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewAccountDeleteTokenCommand",
+      "dst_service": "server",
+      "dst_class": "account.Server",
+      "dst_interface_id": "Server.DeleteTokenInAccount",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/account.go:444 _, err := client.DeleteToken(ctx, &accountpkg.DeleteTokenRequest{Name: account, Id: id})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationCreateCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:180 existing, err := appIf.Get(ctx, &application.ApplicationQuery{Name: &app.Name})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationCreateCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.CreateInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:187 created, err := appIf.Create(ctx, &appCreateRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "parentChildDetails",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ResourceTreeInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:283 resourceTree, err := appIf.ResourceTree(ctx, &application.ResourcesQuery{Name: &appName, AppNamespace: &appNs,"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationGetCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:413 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationGetCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:470 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: app.Spec.Project})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationLogsCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.PodLogs",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:594 stream, err := appIf.PodLogs(ctx, &application.ApplicationPodLogsQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getAppURL",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:779 argoSettings, err := settingsIf.Get(ctx, &settings.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:880 app, err := appIf.Get(ctx, &application.ApplicationQuery{Name: &appName, AppNamespace: &appNs})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateSpec",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:914 _, err = appIf.UpdateSpec(ctx, &application.ApplicationUpdateSpecRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationUnsetCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:998 app, err := appIf.Get(ctx, &application.ApplicationQuery{Name: &appName, AppNamespace: &appNs})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationUnsetCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateSpec",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1035 _, err = appIf.UpdateSpec(ctx, &application.ApplicationUpdateSpecRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.DeleteInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1342 _, err := appIf.Delete(ctx, &appDeleteReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationListCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ListInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1438 apps, err := appIf.List(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationWaitCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ListInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1643 list, err := appIf.List(ctx, &application.ApplicationQuery{Selector: new(selector)})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1815 app, err := appIf.Get(ctx, &application.ApplicationQuery{Name: &appName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ListInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1831 list, err := appIf.List(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1859 s, err := settingsIf.Get(ctx, &settings.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetManifests",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1892 res, err := appIf.GetManifests(ctx, &q)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.GetInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1953 cluster, err := clusterIf.Get(ctx, &clusterpkg.ClusterQuery{Name: app.Spec.Destination.Name, Server: app.Spec."
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetDetailedProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:1956 proj, err := projIf.GetDetailedProject(ctx, &projectpkg.ProjectQuery{Name: app.Spec.Project})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2019 resources, err := appIf.ManagedResources(ctx, &application.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSyncCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.Sync",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2044 _, err = appIf.Sync(ctx, &syncReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getAppNamesBySelector",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ListInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2103 list, err := appIf.List(ctx, &application.ApplicationQuery{Selector: new(selector)})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "resourceParentChild",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2285 app, err := appIf.Get(ctx, &application.ApplicationQuery{Name: new(appName), AppNamespace: new(appNs)})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "waitOnApplicationStatus",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2414 app, err = appClient.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationHistoryCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2706 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationRollbackCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2768 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationRollbackCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.Rollback",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2777 _, err = appIf.Rollback(ctx, &application.ApplicationRollbackRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationManifestsCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2889 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationManifestsCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2907 resources, err := appIf.ManagedResources(ctx, &application.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationManifestsCommand",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2920 argoSettings, err := settingsIf.Get(ctx, &settings.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationManifestsCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.GetInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2925 cluster, err := clusterIf.Get(ctx, &clusterpkg.ClusterQuery{Name: app.Spec.Destination.Name, Server: app.Spec."
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationManifestsCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetManifests",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:2938 res, err := appIf.GetManifests(ctx, &q)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationTerminateOpCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.TerminateOperation",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3007 _, err := appIf.TerminateOperation(ctx, &application.OperationTerminateRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationEditCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3035 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationEditCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateSpec",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3063 _, err = appIf.UpdateSpec(ctx, &application.ApplicationUpdateSpecRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationPatchCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.Patch",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3106 patchedApp, err := appIf.Patch(ctx, &application.ApplicationPatchRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationAddSourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3150 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationAddSourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateSpec",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3171 _, err = appIf.UpdateSpec(ctx, &application.ApplicationUpdateSpecRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationRemoveSourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3223 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationRemoveSourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateSpec",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3260 _, err = appIf.UpdateSpec(ctx, &application.ApplicationUpdateSpecRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationConfirmDeletionCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3298 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationConfirmDeletionCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.UpdateInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app.go:3312 _, err = appIf.Update(ctx, &application.ApplicationUpdateRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationResourceActionsListCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ListResourceActions",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_actions.go:96 availActionsForResource, err := appIf.ListResourceActions(ctx, &applicationpkg.ApplicationResourceRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationResourceActionsRunCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.RunResourceActionV2",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_actions.go:199 _, err := appIf.RunResourceActionV2(ctx, &applicationpkg.ResourceActionRunRequestV2{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationResourceActionsRunCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.RunResourceAction",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_actions.go:218 _, err = appIf.RunResourceAction(ctx, &applicationpkg.ResourceActionRunRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getActionableResourcesForApplication",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_actions.go:235 resources, err := appIf.ManagedResources(ctx, &applicationpkg.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getActionableResourcesForApplication",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_actions.go:242 app, err := appIf.Get(ctx, &applicationpkg.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newServerSideDiffStrategy",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ServerSideDiff",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:291 serverSideDiffRes, err := appIf.ServerSideDiff(errGroupCtx, serverSideDiffQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newMultiSourceRevisionProvider",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetManifests",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:378 targetManifests, err := appIf.GetManifests(ctx, &manifestQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newSingleRevisionProvider",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetManifests",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:401 targetManifests, err := appIf.GetManifests(ctx, &manifestQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newLocalServerSideProvider",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetManifestsWithFiles",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:420 client, err := appIf.GetManifestsWithFiles(ctx, grpc_retry.Disable())"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newLocalClientSideProvider",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.GetInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:452 cluster, err := clusterIf.Get(ctx, &clusterpkg.ClusterQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDiffCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:677 app, err := appIf.Get(ctx, &application.ApplicationQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDiffCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:696 liveState, err := appIf.ManagedResources(ctx, &application.ResourcesQuery{ApplicationName: &appName, AppNamesp"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDiffCommand",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_diff.go:700 argoSettings, err := settingsIf.Get(ctx, &settings.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationGetResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ResourceTreeInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:85 tree, err := appIf.ResourceTree(ctx, &applicationpkg.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationGetResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.GetResource",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:99 resource, err := appIf.GetResource(ctx, &applicationpkg.ApplicationResourceRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationPatchResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:330 resources, err := appIf.ManagedResources(ctx, &applicationpkg.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationPatchResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.PatchResource",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:340 _, err = appIf.PatchResource(ctx, &applicationpkg.ApplicationResourcePatchRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDeleteResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ManagedResources",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:399 resources, err := appIf.ManagedResources(ctx, &applicationpkg.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationDeleteResourceCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.DeleteResource",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:415 _, err = appIf.DeleteResource(ctx, &applicationpkg.ApplicationResourceDeleteRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationListResourcesCommand",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.ResourceTreeInApplication",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/app_resources.go:565 appResourceTree, err := appIf.ResourceTree(ctx, &applicationpkg.ResourcesQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetGetCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.GetInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:103 appSet, err := appIf.Get(ctx, &applicationset.ApplicationSetGetQuery{Name: appSetName, AppsetNamespace: appSet"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetCreateCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.GetInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:184 existing, err := appIf.Get(ctx, &applicationset.ApplicationSetGetQuery{Name: appset.Name, AppsetNamespace: app"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetCreateCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.CreateInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:194 created, err := appIf.Create(ctx, &appSetCreateRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetGenerateCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.Generate",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:294 resp, err := appIf.Generate(ctx, &req)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetListCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.ListInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:346 appsets, err := appIf.List(ctx, &applicationset.ApplicationSetListQuery{Selector: selector, Projects: projects"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.DeleteInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:431 _, err := appIf.Delete(ctx, &appsetDeleteReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewApplicationSetDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.GetInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/applicationset.go:435 _, getErr := appIf.Get(ctx, &applicationset.ApplicationSetGetQuery{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewCertAddTLSCommand",
+      "dst_service": "server",
+      "dst_class": "certificate.Server",
+      "dst_interface_id": "Server.CreateCertificate",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cert.go:116 _, err = certIf.CreateCertificate("
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewCertAddSSHCommand",
+      "dst_service": "server",
+      "dst_class": "certificate.Server",
+      "dst_interface_id": "Server.CreateCertificate",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cert.go:236 response, err := certIf.CreateCertificate(ctx, &certificatepkg.RepositoryCertificateCreateRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewCertRemoveCommand",
+      "dst_service": "server",
+      "dst_class": "certificate.Server",
+      "dst_interface_id": "Server.DeleteCertificate",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cert.go:287 removed, err := certIf.DeleteCertificate(ctx, &certQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewCertListCommand",
+      "dst_service": "server",
+      "dst_class": "certificate.Server",
+      "dst_interface_id": "Server.ListCertificates",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cert.go:332 certificates, err := certIf.ListCertificates(ctx, &certificatepkg.RepositoryCertificateQuery{HostNamePattern: "
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterAddCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.CreateInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:201 _, err = clusterIf.Create(ctx, &clstCreateReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterSetCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.UpdateInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:310 _, err := clusterIf.Update(ctx, &clusterUpdateRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterGetCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.GetInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:367 clst, err := clusterIf.Get(ctx, getQueryBySelector(clusterSelector))"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterRemoveCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.GetInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:472 clst, err := clusterIf.Get(ctx, clusterQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterRemoveCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.DeleteInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:476 _, err = clusterIf.Delete(ctx, clusterQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterListCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.ListInCluster",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:543 clusters, err := clusterIf.List(ctx, &clusterpkg.ClusterQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewClusterRotateAuthCommand",
+      "dst_service": "server",
+      "dst_class": "cluster.Server",
+      "dst_interface_id": "Server.RotateAuth",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/cluster.go:598 _, err := clusterIf.RotateAuth(ctx, clusterQuery)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewGPGListCommand",
+      "dst_service": "server",
+      "dst_class": "gpgkey.Server",
+      "dst_interface_id": "Server.ListInGPGKey",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/gpg.go:64 keys, err := gpgIf.List(ctx, &gpgkeypkg.GnuPGPublicKeyQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewGPGGetCommand",
+      "dst_service": "server",
+      "dst_class": "gpgkey.Server",
+      "dst_interface_id": "Server.GetInGPGKey",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/gpg.go:106 key, err := gpgIf.Get(ctx, &gpgkeypkg.GnuPGPublicKeyQuery{KeyID: args[0]})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewGPGAddCommand",
+      "dst_service": "server",
+      "dst_class": "gpgkey.Server",
+      "dst_interface_id": "Server.CreateInGPGKey",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/gpg.go:150 resp, err := gpgIf.Create(ctx, &gpgkeypkg.GnuPGPublicKeyCreateRequest{Publickey: &appsv1.GnuPGPublicKey{KeyDat"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewGPGDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "gpgkey.Server",
+      "dst_interface_id": "Server.DeleteInGPGKey",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/gpg.go:183 _, err := gpgIf.Delete(ctx, &gpgkeypkg.GnuPGPublicKeyQuery{KeyID: keyId})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "headless",
+      "src_method": "testAPI",
+      "dst_service": "server",
+      "dst_class": "version.Server",
+      "dst_interface_id": "Server.Version",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/headless/headless.go:168 _, err = versionClient.Version(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewLoginCommand",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/login.go:166 acdSet, err := setIf.Get(ctx, &settingspkg.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "passwordLogin",
+      "dst_service": "server",
+      "dst_class": "session.Server",
+      "dst_interface_id": "Server.CreateInSession",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/login.go:426 createdSession, err := sessionIf.Create(ctx, &sessionRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectCreateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.CreateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:130 _, err = projIf.Create(ctx, &projectpkg.ProjectCreateRequest{Project: proj, Upsert: upsert})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSetCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:168 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSetCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:177 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSignatureKeyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:214 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSignatureKeyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:223 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSignatureKeyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:254 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSignatureKeyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:268 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddDestinationCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:310 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddDestinationCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:321 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveDestinationCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:351 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveDestinationCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:365 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddOrphanedIgnoreCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:399 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddOrphanedIgnoreCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:415 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveOrphanedIgnoreCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:449 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveOrphanedIgnoreCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:468 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSourceCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:497 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSourceCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:511 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSourceNamespace",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:539 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddSourceNamespace",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:549 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSourceNamespace",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:577 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSourceNamespace",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:591 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "modifyResourceListCmd",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:684 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "modifyResourceListCmd",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:712 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSourceCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:809 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveSourceCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:823 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.DeleteInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:856 _, err := projIf.Delete(ctx, &projectpkg.ProjectQuery{Name: name})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectListCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.ListInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:902 projects, err := projIf.List(ctx, &projectpkg.ProjectQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getProject",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetDetailedProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1108 detailedProject, err := projIf.GetDetailedProject(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectEditCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1131 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectEditCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1153 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddDestinationServiceAccountCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1217 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectAddDestinationServiceAccountCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1228 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveDestinationServiceAccountCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1259 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRemoveDestinationServiceAccountCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project.go:1273 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleAddPolicyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:113 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleAddPolicyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:122 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleRemovePolicyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:188 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleRemovePolicyCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:211 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleCreateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:245 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleCreateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:255 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:284 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:297 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleCreateTokenCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.CreateTokenInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:350 tokenResponse, err := projIf.CreateToken(ctx, &projectpkg.ProjectTokenCreateRequest{"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleListTokensCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:415 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleDeleteTokenCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.DeleteTokenInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:500 _, err = projIf.DeleteToken(ctx, &projectpkg.ProjectTokenDeleteRequest{Project: projName, Role: roleName, Iat:"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleListCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:553 project, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleGetCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:599 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleAddGroupCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:651 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleAddGroupCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:659 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleRemoveGroupCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:682 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectRoleRemoveGroupCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_role.go:696 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesListCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:124 proj, err := projects.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:189 proj, err := projects.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:237 _, err = projects.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesAddCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:285 proj, err := projects.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesAddCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:320 _, err = projects.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesUpdateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:391 proj, err := projects.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectSourceIntegrityGitPoliciesUpdateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:514 _, err = projects.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "warnOnProblems",
+      "dst_service": "server",
+      "dst_class": "gpgkey.Server",
+      "dst_interface_id": "Server.ListInGPGKey",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/project_source_integrity.go:548 keyring, err := gpgKeyClient.List(c.Context(), &gpgkey.GnuPGPublicKeyQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newProjectWindowsToggleCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:78 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "newProjectWindowsToggleCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:93 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsAddWindowCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:227 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsAddWindowCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:233 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:278 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsDeleteCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:287 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsUpdateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:331 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsUpdateCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.UpdateInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:343 _, err = projIf.Update(ctx, &projectpkg.ProjectUpdateRequest{Project: proj})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewProjectWindowsListCommand",
+      "dst_service": "server",
+      "dst_class": "project.Server",
+      "dst_interface_id": "Server.GetInProject",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/projectwindows.go:383 proj, err := projIf.Get(ctx, &projectpkg.ProjectQuery{Name: projName})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewReloginCommand",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/relogin.go:87 acdSet, err := setIf.Get(ctx, &settingspkg.SettingsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoAddCommand",
+      "dst_service": "server",
+      "dst_class": "repository.Server",
+      "dst_interface_id": "Server.ValidateAccess",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repo.go:268 _, err = repoIf.ValidateAccess(ctx, &repoAccessReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoAddCommand",
+      "dst_service": "server",
+      "dst_class": "repository.Server",
+      "dst_interface_id": "Server.CreateRepository",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repo.go:276 createdRepo, err := repoIf.CreateRepository(ctx, &repoCreateReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoRemoveCommand",
+      "dst_service": "server",
+      "dst_class": "repository.Server",
+      "dst_interface_id": "Server.DeleteRepository",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repo.go:319 _, err := repoIf.DeleteRepository(ctx, &repositorypkg.RepoQuery{Repo: repoURL, AppProject: project})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoListCommand",
+      "dst_service": "server",
+      "dst_class": "repository.Server",
+      "dst_interface_id": "Server.ListRepositories",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repo.go:400 repos, err := repoIf.ListRepositories(ctx, &repositorypkg.RepoQuery{ForceRefresh: forceRefresh})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoGetCommand",
+      "dst_service": "server",
+      "dst_class": "repository.Server",
+      "dst_interface_id": "Server.GetInRepository",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repo.go:470 repo, err := repoIf.Get(ctx, &repositorypkg.RepoQuery{Repo: repoURL, ForceRefresh: forceRefresh, AppProject: p"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoCredsAddCommand",
+      "dst_service": "server",
+      "dst_class": "repocreds.Server",
+      "dst_interface_id": "Server.CreateRepositoryCredentials",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repocreds.go:192 createdRepo, err := repoIf.CreateRepositoryCredentials(ctx, &repoCreateReq)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoCredsRemoveCommand",
+      "dst_service": "server",
+      "dst_class": "repocreds.Server",
+      "dst_interface_id": "Server.DeleteRepositoryCredentials",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repocreds.go:246 _, err := repoIf.DeleteRepositoryCredentials(ctx, &repocredspkg.RepoCredsDeleteRequest{Url: repoURL})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewRepoCredsListCommand",
+      "dst_service": "server",
+      "dst_class": "repocreds.Server",
+      "dst_interface_id": "Server.ListRepositoryCredentials",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/repocreds.go:302 repos, err := repoIf.ListRepositoryCredentials(ctx, &repocredspkg.RepoCredsQuery{})"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "getServerVersion",
+      "dst_service": "server",
+      "dst_class": "version.Server",
+      "dst_interface_id": "Server.Version",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd/commands/version.go:100 v, err := versionIf.Version(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "pkg",
+      "src_class": "apiclient",
+      "src_method": "NewClientWithContext",
+      "dst_service": "server",
+      "dst_class": "version.Server",
+      "dst_interface_id": "Server.Version",
+      "protocol": "gRPC",
+      "evidence": "pkg/apiclient/apiclient.go:324 _, err = versionIf.Version(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "pkg",
+      "src_class": "apiclient.client",
+      "src_method": "redeemRefreshToken",
+      "dst_service": "server",
+      "dst_class": "settings.Server",
+      "dst_interface_id": "Server.GetInSettings",
+      "protocol": "gRPC",
+      "evidence": "pkg/apiclient/apiclient.go:497 acdSet, err := setIf.Get(ctx, &settingspkg.SettingsQuery{})"
+    },
+    {
+      "src_service": "pkg",
+      "src_class": "apiclient.client",
+      "src_method": "WatchApplicationSetWithRetry",
+      "dst_service": "server",
+      "dst_class": "applicationset.Server",
+      "dst_interface_id": "Server.WatchInApplicationSet",
+      "protocol": "gRPC",
+      "evidence": "pkg/apiclient/apiclient.go:976 wc, err = appsetIf.Watch(ctx, &applicationsetpkg.ApplicationSetWatchQuery{"
+    },
+    {
+      "src_service": "pkg",
+      "src_class": "apiclient.client",
+      "src_method": "WatchApplicationWithRetry",
+      "dst_service": "server",
+      "dst_class": "application.Server",
+      "dst_interface_id": "Server.WatchInApplication",
+      "protocol": "gRPC",
+      "evidence": "pkg/apiclient/apiclient.go:1019 wc, err = appIf.Watch(ctx, &applicationpkg.ApplicationQuery{"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "services",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetGitFiles",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:48 return client.GetGitFiles(ctx, fileRequest)"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "services",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetGitDirectories",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:56 return client.GetGitDirectories(ctx, dirRequest)"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "services",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOciFiles",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:64 return client.GetOciFiles(ctx, fileRequest)"
+    },
+    {
+      "src_service": "applicationset",
+      "src_class": "services",
+      "src_method": "NewArgoCDService",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOciDirectories",
+      "protocol": "gRPC",
+      "evidence": "applicationset/services/repo_service.go:72 return client.GetOciDirectories(ctx, dirRequest)"
+    },
+    {
+      "src_service": "cmd",
+      "src_class": "commands",
+      "src_method": "NewCommand",
+      "dst_service": "util",
+      "dst_class": "askpass.server",
+      "dst_interface_id": "server.GetCredentials",
+      "protocol": "gRPC",
+      "evidence": "cmd/argocd-git-ask-pass/commands/argocd_git_ask_pass.go:39 creds, err := client.GetCredentials(ctx, &askpass.CredentialsRequest{Nonce: nonce})"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "hydrator.Hydrator",
+      "src_method": "hydrate",
+      "dst_service": "commitserver",
+      "dst_class": "commit.Service",
+      "dst_interface_id": "Service.CommitHydratedManifests",
+      "protocol": "gRPC",
+      "evidence": "controller/hydrator/hydrator.go:561 resp, err := commitService.CommitHydratedManifests(ctx, &manifestsRequest)"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "hydrator.Hydrator",
+      "src_method": "getRevisionMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "controller/hydrator/hydrator.go:621 resp, err := repoService.GetRevisionMetadata(ctx, &apiclient.RepoServerRevisionMetadataRequest{"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "GetRepoObjs",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:395 manifestInfo, err := repoClient.GenerateManifest(srcCtx, &apiclient.ManifestRequest{"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "evaluateRevisionChanges",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.UpdateRevisionForPaths",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:509 updateRevisionResult, err := repoClient.UpdateRevisionForPaths(ctx, &apiclient.UpdateRevisionForPathsRequest{"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "controller.appStateManager",
+      "src_method": "evaluateRevisionChanges",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ResolveRevision",
+      "protocol": "gRPC",
+      "evidence": "controller/state.go:539 resp, err := repoClient.ResolveRevision(ctx, &apiclient.ResolveRevisionRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetManifests",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:594 manifestInfo, err := client.GenerateManifest(ctx, &apiclient.ManifestRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetManifestsWithFiles",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifestWithFiles",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:741 repoStreamClient, err := client.GenerateManifestWithFiles(stream.Context())"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "Get",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:868 _, err = client.GetAppDetails(ctx, &apiclient.RepoServerAppDetailsQuery{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "RevisionMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1702 return repoClient.GetRevisionMetadata(ctx, &apiclient.RepoServerRevisionMetadataRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "RevisionChartDetails",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionChartDetails",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1735 return repoClient.GetRevisionChartDetails(ctx, &apiclient.RepoServerRevisionChartDetailsRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "GetOCIMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetOCIMetadata",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:1763 return repoClient.GetOCIMetadata(ctx, &apiclient.RepoServerRevisionChartDetailsRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "application.Server",
+      "src_method": "resolveRevision",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ResolveRevision",
+      "protocol": "gRPC",
+      "evidence": "server/application/application.go:2519 resolveRevisionResponse, err := repoClient.ResolveRevision(ctx, &apiclient.ResolveRevisionRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListOCITags",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListOCITags",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:257 return repoClient.ListOCITags(ctx, &apiclient.ListRefsRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListRefs",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListRefs",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:278 return repoClient.ListRefs(ctx, &apiclient.ListRefsRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "ListApps",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListApps",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:316 apps, err := repoClient.ListApps(ctx, &apiclient.ListAppsRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "GetAppDetails",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:400 return repoClient.GetAppDetails(ctx, &apiclient.RepoServerAppDetailsQuery{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "GetHelmCharts",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetHelmCharts",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:425 return repoClient.GetHelmCharts(ctx, &apiclient.HelmChartsRequest{Repo: repo})"
+    },
+    {
+      "src_service": "server",
+      "src_class": "repository.Server",
+      "src_method": "testRepo",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.TestRepository",
+      "protocol": "gRPC",
+      "evidence": "server/repository/repository.go:782 _, err = repoClient.TestRepository(ctx, &apiclient.TestRepositoryRequest{"
+    },
+    {
+      "src_service": "server",
+      "src_class": "settings.Server",
+      "src_method": "plugins",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.ListPlugins",
+      "protocol": "gRPC",
+      "evidence": "server/settings/settings.go:184 pluginList, err := client.ListPlugins(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "util",
+      "src_class": "discovery",
+      "src_method": "matchRepositoryCMP",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.MatchRepository",
+      "protocol": "gRPC",
+      "evidence": "util/app/discovery/discovery.go:139 matchRepoStream, err := client.MatchRepository(ctx, grpc_retry.Disable())"
+    },
+    {
+      "src_service": "util",
+      "src_class": "discovery",
+      "src_method": "cmpSupports",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "util/app/discovery/discovery.go:182 cfg, err := cmpClient.CheckPluginConfiguration(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "util",
+      "src_class": "argo",
+      "src_method": "TestRepoWithKnownType",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.TestRepository",
+      "protocol": "gRPC",
+      "evidence": "util/argo/argo.go:329 _, err := repoClient.TestRepository(ctx, &apiclient.TestRepositoryRequest{"
+    },
+    {
+      "src_service": "util",
+      "src_class": "argo",
+      "src_method": "verifyGenerateManifests",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "util/argo/argo.go:965 _, err = repoClient.GenerateManifest(ctx, &req)"
+    },
+    {
+      "src_service": "util",
+      "src_class": "service.argoCDService",
+      "src_method": "GetCommitMetadata",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetRevisionMetadata",
+      "protocol": "gRPC",
+      "evidence": "util/notification/argocd/service.go:71 metadata, err := svc.repoServerClient.GetRevisionMetadata(ctx, &apiclient.RepoServerRevisionMetadataRequest{"
+    },
+    {
+      "src_service": "util",
+      "src_class": "service.argoCDService",
+      "src_method": "GetAppDetails",
+      "dst_service": "reposerver",
+      "dst_class": "repository.Service",
+      "dst_interface_id": "Service.GetAppDetails",
+      "protocol": "gRPC",
+      "evidence": "util/notification/argocd/service.go:106 appDetail, err := svc.repoServerClient.GetAppDetails(ctx, &apiclient.RepoServerAppDetailsQuery{"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "runConfigManagementPluginSidecars",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.CheckPluginConfiguration",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2459 pluginConfigResponse, err := cmpClient.CheckPluginConfiguration(ctx, &emptypb.Empty{})"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "generateManifestsCMP",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.GenerateManifest",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2503 generateManifestStream, err := cmpClient.GenerateManifest(ctx, grpc_retry.Disable())"
+    },
+    {
+      "src_service": "reposerver",
+      "src_class": "repository",
+      "src_method": "populatePluginAppDetails",
+      "dst_service": "cmpserver",
+      "dst_class": "plugin.Service",
+      "dst_interface_id": "Service.GetParametersAnnouncement",
+      "protocol": "gRPC",
+      "evidence": "reposerver/repository/repository.go:2797 parametersAnnouncementStream, err := cmpClient.GetParametersAnnouncement(ctx, grpc_retry.Disable())"
+    }
+  ]
+}

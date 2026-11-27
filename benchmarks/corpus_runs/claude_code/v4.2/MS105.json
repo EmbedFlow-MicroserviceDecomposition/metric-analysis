@@ -1,0 +1,147 @@
+{
+  "system_id": "MS105",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "Frontend.searchHandler",
+          "class_name": "frontend.Frontend",
+          "method_name": "searchHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /hotels"
+        }
+      ]
+    },
+    "geo": {
+      "exposed_interfaces": [
+        {
+          "id": "Geo.Nearby",
+          "class_name": "geo.Geo",
+          "method_name": "Nearby",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Geo/Nearby"
+        }
+      ]
+    },
+    "profile": {
+      "exposed_interfaces": [
+        {
+          "id": "Profile.GetProfiles",
+          "class_name": "profile.Profile",
+          "method_name": "GetProfiles",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Profile/GetProfiles"
+        }
+      ]
+    },
+    "rate": {
+      "exposed_interfaces": [
+        {
+          "id": "Rate.GetRates",
+          "class_name": "rate.Rate",
+          "method_name": "GetRates",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Rate/GetRates"
+        }
+      ]
+    },
+    "search": {
+      "exposed_interfaces": [
+        {
+          "id": "Search.Nearby",
+          "class_name": "search.Search",
+          "method_name": "Nearby",
+          "param_types": [
+            "NearbyRequest"
+          ],
+          "return_type": "SearchResult",
+          "protocol": "gRPC",
+          "endpoint": "Search/Nearby"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Frontend",
+      "src_method": "searchHandler",
+      "dst_service": "search",
+      "dst_class": "search.Search",
+      "dst_interface_id": "Search.Nearby",
+      "protocol": "gRPC",
+      "evidence": "internal/services/frontend/frontend.go:59 searchResp, err := s.searchClient.Nearby(ctx, &search.NearbyRequest{ -> internal/services/search/search.go:45"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Frontend",
+      "src_method": "searchHandler",
+      "dst_service": "profile",
+      "dst_class": "profile.Profile",
+      "dst_interface_id": "Profile.GetProfiles",
+      "protocol": "gRPC",
+      "evidence": "internal/services/frontend/frontend.go:77 profileResp, err := s.profileClient.GetProfiles(ctx, &profile.Request{ -> internal/services/profile/profile.go:45"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Frontend",
+      "src_method": "readyHandler",
+      "dst_service": "search",
+      "dst_class": "search.Search",
+      "dst_interface_id": "Search.Nearby",
+      "protocol": "gRPC",
+      "evidence": "internal/services/frontend/frontend.go:97 _, err := s.searchClient.Nearby(ctx, &search.NearbyRequest{ -> internal/services/search/search.go:45"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Frontend",
+      "src_method": "readyHandler",
+      "dst_service": "profile",
+      "dst_class": "profile.Profile",
+      "dst_interface_id": "Profile.GetProfiles",
+      "protocol": "gRPC",
+      "evidence": "internal/services/frontend/frontend.go:108 _, err = s.profileClient.GetProfiles(ctx, &profile.Request{ -> internal/services/profile/profile.go:45"
+    },
+    {
+      "src_service": "search",
+      "src_class": "search.Search",
+      "src_method": "Nearby",
+      "dst_service": "geo",
+      "dst_class": "geo.Geo",
+      "dst_interface_id": "Geo.Nearby",
+      "protocol": "gRPC",
+      "evidence": "internal/services/search/search.go:47 nearby, err := s.geoClient.Nearby(ctx, &geo.Request{ -> internal/services/geo/geo.go:60"
+    },
+    {
+      "src_service": "search",
+      "src_class": "search.Search",
+      "src_method": "Nearby",
+      "dst_service": "rate",
+      "dst_class": "rate.Rate",
+      "dst_interface_id": "Rate.GetRates",
+      "protocol": "gRPC",
+      "evidence": "internal/services/search/search.go:56 rates, err := s.rateClient.GetRates(ctx, &rate.Request{ -> internal/services/rate/rate.go:45"
+    }
+  ]
+}

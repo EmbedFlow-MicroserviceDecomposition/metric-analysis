@@ -1,0 +1,1897 @@
+{
+  "system_id": "MS089",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "RmqUtilsController.user_action",
+          "class_name": "Api::RmqUtilsController",
+          "method_name": "user_action",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/rmq/user"
+        },
+        {
+          "id": "RmqUtilsController.vhost_action",
+          "class_name": "Api::RmqUtilsController",
+          "method_name": "vhost_action",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/rmq/vhost"
+        },
+        {
+          "id": "RmqUtilsController.resource_action",
+          "class_name": "Api::RmqUtilsController",
+          "method_name": "resource_action",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/rmq/resource"
+        },
+        {
+          "id": "RmqUtilsController.topic_action",
+          "class_name": "Api::RmqUtilsController",
+          "method_name": "topic_action",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/rmq/topic"
+        },
+        {
+          "id": "AiFeedbacksController.create",
+          "class_name": "Api::AiFeedbacksController",
+          "method_name": "create",
+          "param_types": [
+            "AiFeedback"
+          ],
+          "return_type": "AiFeedback",
+          "protocol": "REST",
+          "endpoint": "POST /api/ai_feedbacks"
+        },
+        {
+          "id": "AlertsController.index",
+          "class_name": "Api::AlertsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Alert>",
+          "protocol": "REST",
+          "endpoint": "GET /api/alerts"
+        },
+        {
+          "id": "AlertsController.destroy",
+          "class_name": "Api::AlertsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Alert",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/alerts/:id"
+        },
+        {
+          "id": "CurvesController.index",
+          "class_name": "Api::CurvesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Curve>",
+          "protocol": "REST",
+          "endpoint": "GET /api/curves"
+        },
+        {
+          "id": "CurvesController.show",
+          "class_name": "Api::CurvesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Curve",
+          "protocol": "REST",
+          "endpoint": "GET /api/curves/:id"
+        },
+        {
+          "id": "CurvesController.create",
+          "class_name": "Api::CurvesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Curve",
+          "protocol": "REST",
+          "endpoint": "POST /api/curves"
+        },
+        {
+          "id": "CurvesController.update",
+          "class_name": "Api::CurvesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Curve",
+          "protocol": "REST",
+          "endpoint": "PUT /api/curves/:id"
+        },
+        {
+          "id": "CurvesController.destroy",
+          "class_name": "Api::CurvesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/curves/:id"
+        },
+        {
+          "id": "FarmEventsController.index",
+          "class_name": "Api::FarmEventsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<FarmEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /api/farm_events"
+        },
+        {
+          "id": "FarmEventsController.show",
+          "class_name": "Api::FarmEventsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FarmEvent",
+          "protocol": "REST",
+          "endpoint": "GET /api/farm_events/:id"
+        },
+        {
+          "id": "FarmEventsController.create",
+          "class_name": "Api::FarmEventsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "FarmEvent",
+          "protocol": "REST",
+          "endpoint": "POST /api/farm_events"
+        },
+        {
+          "id": "FarmEventsController.update",
+          "class_name": "Api::FarmEventsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "FarmEvent",
+          "protocol": "REST",
+          "endpoint": "PUT /api/farm_events/:id"
+        },
+        {
+          "id": "FarmEventsController.destroy",
+          "class_name": "Api::FarmEventsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/farm_events/:id"
+        },
+        {
+          "id": "FarmwareEnvsController.index",
+          "class_name": "Api::FarmwareEnvsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<FarmwareEnv>",
+          "protocol": "REST",
+          "endpoint": "GET /api/farmware_envs"
+        },
+        {
+          "id": "FarmwareEnvsController.show",
+          "class_name": "Api::FarmwareEnvsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FarmwareEnv",
+          "protocol": "REST",
+          "endpoint": "GET /api/farmware_envs/:id"
+        },
+        {
+          "id": "FarmwareEnvsController.create",
+          "class_name": "Api::FarmwareEnvsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "FarmwareEnv",
+          "protocol": "REST",
+          "endpoint": "POST /api/farmware_envs"
+        },
+        {
+          "id": "FarmwareEnvsController.update",
+          "class_name": "Api::FarmwareEnvsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "FarmwareEnv",
+          "protocol": "REST",
+          "endpoint": "PUT /api/farmware_envs/:id"
+        },
+        {
+          "id": "FarmwareEnvsController.destroy",
+          "class_name": "Api::FarmwareEnvsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/farmware_envs/:id"
+        },
+        {
+          "id": "FirstPartyFarmwaresController.index",
+          "class_name": "Api::FirstPartyFarmwaresController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /api/first_party_farmwares"
+        },
+        {
+          "id": "FirstPartyFarmwaresController.show",
+          "class_name": "Api::FirstPartyFarmwaresController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/first_party_farmwares/:id"
+        },
+        {
+          "id": "FoldersController.index",
+          "class_name": "Api::FoldersController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Folder>",
+          "protocol": "REST",
+          "endpoint": "GET /api/folders"
+        },
+        {
+          "id": "FoldersController.show",
+          "class_name": "Api::FoldersController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Folder",
+          "protocol": "REST",
+          "endpoint": "GET /api/folders/:id"
+        },
+        {
+          "id": "FoldersController.create",
+          "class_name": "Api::FoldersController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Folder",
+          "protocol": "REST",
+          "endpoint": "POST /api/folders"
+        },
+        {
+          "id": "FoldersController.update",
+          "class_name": "Api::FoldersController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Folder",
+          "protocol": "REST",
+          "endpoint": "PUT /api/folders/:id"
+        },
+        {
+          "id": "FoldersController.destroy",
+          "class_name": "Api::FoldersController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/folders/:id"
+        },
+        {
+          "id": "GlobalBulletinsController.show",
+          "class_name": "Api::GlobalBulletinsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "GlobalBulletin",
+          "protocol": "REST",
+          "endpoint": "GET /api/global_bulletins/:id"
+        },
+        {
+          "id": "ImagesController.index",
+          "class_name": "Api::ImagesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Image>",
+          "protocol": "REST",
+          "endpoint": "GET /api/images"
+        },
+        {
+          "id": "ImagesController.show",
+          "class_name": "Api::ImagesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Image",
+          "protocol": "REST",
+          "endpoint": "GET /api/images/:id"
+        },
+        {
+          "id": "ImagesController.create",
+          "class_name": "Api::ImagesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Image",
+          "protocol": "REST",
+          "endpoint": "POST /api/images"
+        },
+        {
+          "id": "ImagesController.destroy",
+          "class_name": "Api::ImagesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/images/:id"
+        },
+        {
+          "id": "PasswordResetsController.create",
+          "class_name": "Api::PasswordResetsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/password_resets"
+        },
+        {
+          "id": "PasswordResetsController.update",
+          "class_name": "Api::PasswordResetsController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/password_resets/:id"
+        },
+        {
+          "id": "PeripheralsController.index",
+          "class_name": "Api::PeripheralsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Peripheral>",
+          "protocol": "REST",
+          "endpoint": "GET /api/peripherals"
+        },
+        {
+          "id": "PeripheralsController.show",
+          "class_name": "Api::PeripheralsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Peripheral",
+          "protocol": "REST",
+          "endpoint": "GET /api/peripherals/:id"
+        },
+        {
+          "id": "PeripheralsController.create",
+          "class_name": "Api::PeripheralsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Peripheral",
+          "protocol": "REST",
+          "endpoint": "POST /api/peripherals"
+        },
+        {
+          "id": "PeripheralsController.update",
+          "class_name": "Api::PeripheralsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Peripheral",
+          "protocol": "REST",
+          "endpoint": "PUT /api/peripherals/:id"
+        },
+        {
+          "id": "PeripheralsController.destroy",
+          "class_name": "Api::PeripheralsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Peripheral",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/peripherals/:id"
+        },
+        {
+          "id": "PinBindingsController.index",
+          "class_name": "Api::PinBindingsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<PinBinding>",
+          "protocol": "REST",
+          "endpoint": "GET /api/pin_bindings"
+        },
+        {
+          "id": "PinBindingsController.show",
+          "class_name": "Api::PinBindingsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "PinBinding",
+          "protocol": "REST",
+          "endpoint": "GET /api/pin_bindings/:id"
+        },
+        {
+          "id": "PinBindingsController.create",
+          "class_name": "Api::PinBindingsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "PinBinding",
+          "protocol": "REST",
+          "endpoint": "POST /api/pin_bindings"
+        },
+        {
+          "id": "PinBindingsController.update",
+          "class_name": "Api::PinBindingsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "PinBinding",
+          "protocol": "REST",
+          "endpoint": "PUT /api/pin_bindings/:id"
+        },
+        {
+          "id": "PinBindingsController.destroy",
+          "class_name": "Api::PinBindingsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/pin_bindings/:id"
+        },
+        {
+          "id": "PlantTemplatesController.index",
+          "class_name": "Api::PlantTemplatesController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<PlantTemplate>",
+          "protocol": "REST",
+          "endpoint": "GET /api/plant_templates"
+        },
+        {
+          "id": "PlantTemplatesController.create",
+          "class_name": "Api::PlantTemplatesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "PlantTemplate",
+          "protocol": "REST",
+          "endpoint": "POST /api/plant_templates"
+        },
+        {
+          "id": "PlantTemplatesController.update",
+          "class_name": "Api::PlantTemplatesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "PlantTemplate",
+          "protocol": "REST",
+          "endpoint": "PUT /api/plant_templates/:id"
+        },
+        {
+          "id": "PlantTemplatesController.destroy",
+          "class_name": "Api::PlantTemplatesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/plant_templates/:id"
+        },
+        {
+          "id": "PointGroupsController.index",
+          "class_name": "Api::PointGroupsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<PointGroup>",
+          "protocol": "REST",
+          "endpoint": "GET /api/point_groups"
+        },
+        {
+          "id": "PointGroupsController.show",
+          "class_name": "Api::PointGroupsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "PointGroup",
+          "protocol": "REST",
+          "endpoint": "GET /api/point_groups/:id"
+        },
+        {
+          "id": "PointGroupsController.create",
+          "class_name": "Api::PointGroupsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "PointGroup",
+          "protocol": "REST",
+          "endpoint": "POST /api/point_groups"
+        },
+        {
+          "id": "PointGroupsController.update",
+          "class_name": "Api::PointGroupsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "PointGroup",
+          "protocol": "REST",
+          "endpoint": "PUT /api/point_groups/:id"
+        },
+        {
+          "id": "PointGroupsController.destroy",
+          "class_name": "Api::PointGroupsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/point_groups/:id"
+        },
+        {
+          "id": "RegimensController.index",
+          "class_name": "Api::RegimensController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Regimen>",
+          "protocol": "REST",
+          "endpoint": "GET /api/regimens"
+        },
+        {
+          "id": "RegimensController.show",
+          "class_name": "Api::RegimensController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Regimen",
+          "protocol": "REST",
+          "endpoint": "GET /api/regimens/:id"
+        },
+        {
+          "id": "RegimensController.create",
+          "class_name": "Api::RegimensController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Regimen",
+          "protocol": "REST",
+          "endpoint": "POST /api/regimens"
+        },
+        {
+          "id": "RegimensController.update",
+          "class_name": "Api::RegimensController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Regimen",
+          "protocol": "REST",
+          "endpoint": "PUT /api/regimens/:id"
+        },
+        {
+          "id": "RegimensController.destroy",
+          "class_name": "Api::RegimensController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/regimens/:id"
+        },
+        {
+          "id": "SensorReadingsController.index",
+          "class_name": "Api::SensorReadingsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<SensorReading>",
+          "protocol": "REST",
+          "endpoint": "GET /api/sensor_readings"
+        },
+        {
+          "id": "SensorReadingsController.show",
+          "class_name": "Api::SensorReadingsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SensorReading",
+          "protocol": "REST",
+          "endpoint": "GET /api/sensor_readings/:id"
+        },
+        {
+          "id": "SensorReadingsController.create",
+          "class_name": "Api::SensorReadingsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "SensorReading",
+          "protocol": "REST",
+          "endpoint": "POST /api/sensor_readings"
+        },
+        {
+          "id": "SensorReadingsController.destroy",
+          "class_name": "Api::SensorReadingsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/sensor_readings/:id"
+        },
+        {
+          "id": "SensorsController.index",
+          "class_name": "Api::SensorsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Sensor>",
+          "protocol": "REST",
+          "endpoint": "GET /api/sensors"
+        },
+        {
+          "id": "SensorsController.show",
+          "class_name": "Api::SensorsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Sensor",
+          "protocol": "REST",
+          "endpoint": "GET /api/sensors/:id"
+        },
+        {
+          "id": "SensorsController.create",
+          "class_name": "Api::SensorsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Sensor",
+          "protocol": "REST",
+          "endpoint": "POST /api/sensors"
+        },
+        {
+          "id": "SensorsController.update",
+          "class_name": "Api::SensorsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Sensor",
+          "protocol": "REST",
+          "endpoint": "PUT /api/sensors/:id"
+        },
+        {
+          "id": "SensorsController.destroy",
+          "class_name": "Api::SensorsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Sensor",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/sensors/:id"
+        },
+        {
+          "id": "SequencesController.index",
+          "class_name": "Api::SequencesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Sequence>",
+          "protocol": "REST",
+          "endpoint": "GET /api/sequences"
+        },
+        {
+          "id": "SequencesController.show",
+          "class_name": "Api::SequencesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Sequence",
+          "protocol": "REST",
+          "endpoint": "GET /api/sequences/:id"
+        },
+        {
+          "id": "SequencesController.create",
+          "class_name": "Api::SequencesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Sequence",
+          "protocol": "REST",
+          "endpoint": "POST /api/sequences"
+        },
+        {
+          "id": "SequencesController.update",
+          "class_name": "Api::SequencesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Sequence",
+          "protocol": "REST",
+          "endpoint": "PUT /api/sequences/:id"
+        },
+        {
+          "id": "SequencesController.destroy",
+          "class_name": "Api::SequencesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/sequences/:id"
+        },
+        {
+          "id": "TelemetriesController.index",
+          "class_name": "Api::TelemetriesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Telemetry>",
+          "protocol": "REST",
+          "endpoint": "GET /api/telemetries"
+        },
+        {
+          "id": "TelemetriesController.create",
+          "class_name": "Api::TelemetriesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Telemetry",
+          "protocol": "REST",
+          "endpoint": "POST /api/telemetries"
+        },
+        {
+          "id": "TelemetriesController.destroy",
+          "class_name": "Api::TelemetriesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/telemetries/:id"
+        },
+        {
+          "id": "FeaturedSequencesController.index",
+          "class_name": "Api::FeaturedSequencesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SequenceVersion>",
+          "protocol": "REST",
+          "endpoint": "GET /api/featured_sequences"
+        },
+        {
+          "id": "SceneObjectsController.index",
+          "class_name": "Api::SceneObjectsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<SceneObject>",
+          "protocol": "REST",
+          "endpoint": "GET /api/scene_objects"
+        },
+        {
+          "id": "SceneObjectsController.show",
+          "class_name": "Api::SceneObjectsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SceneObject",
+          "protocol": "REST",
+          "endpoint": "GET /api/scene_objects/:id"
+        },
+        {
+          "id": "SceneObjectsController.create",
+          "class_name": "Api::SceneObjectsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "SceneObject",
+          "protocol": "REST",
+          "endpoint": "POST /api/scene_objects"
+        },
+        {
+          "id": "SceneObjectsController.update",
+          "class_name": "Api::SceneObjectsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "SceneObject",
+          "protocol": "REST",
+          "endpoint": "PUT /api/scene_objects/:id"
+        },
+        {
+          "id": "SceneObjectsController.destroy",
+          "class_name": "Api::SceneObjectsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/scene_objects/:id"
+        },
+        {
+          "id": "SequenceVersionsController.show",
+          "class_name": "Api::SequenceVersionsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SequenceVersion",
+          "protocol": "REST",
+          "endpoint": "GET /api/sequence_versions/:id"
+        },
+        {
+          "id": "ToolsController.index",
+          "class_name": "Api::ToolsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Tool>",
+          "protocol": "REST",
+          "endpoint": "GET /api/tools"
+        },
+        {
+          "id": "ToolsController.show",
+          "class_name": "Api::ToolsController",
+          "method_name": "show",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Tool",
+          "protocol": "REST",
+          "endpoint": "GET /api/tools/:id"
+        },
+        {
+          "id": "ToolsController.create",
+          "class_name": "Api::ToolsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Tool",
+          "protocol": "REST",
+          "endpoint": "POST /api/tools"
+        },
+        {
+          "id": "ToolsController.update",
+          "class_name": "Api::ToolsController",
+          "method_name": "update",
+          "param_types": [
+            "Integer",
+            "object",
+            "string"
+          ],
+          "return_type": "Tool",
+          "protocol": "REST",
+          "endpoint": "PUT /api/tools/:id"
+        },
+        {
+          "id": "ToolsController.destroy",
+          "class_name": "Api::ToolsController",
+          "method_name": "destroy",
+          "param_types": [
+            "Integer"
+          ],
+          "return_type": "Tool",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/tools/:id"
+        },
+        {
+          "id": "WebcamFeedsController.index",
+          "class_name": "Api::WebcamFeedsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<WebcamFeed>",
+          "protocol": "REST",
+          "endpoint": "GET /api/webcam_feeds"
+        },
+        {
+          "id": "WebcamFeedsController.show",
+          "class_name": "Api::WebcamFeedsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "WebcamFeed",
+          "protocol": "REST",
+          "endpoint": "GET /api/webcam_feeds/:id"
+        },
+        {
+          "id": "WebcamFeedsController.create",
+          "class_name": "Api::WebcamFeedsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "WebcamFeed",
+          "protocol": "REST",
+          "endpoint": "POST /api/webcam_feeds"
+        },
+        {
+          "id": "WebcamFeedsController.update",
+          "class_name": "Api::WebcamFeedsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "WebcamFeed",
+          "protocol": "REST",
+          "endpoint": "PUT /api/webcam_feeds/:id"
+        },
+        {
+          "id": "WebcamFeedsController.destroy",
+          "class_name": "Api::WebcamFeedsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/webcam_feeds/:id"
+        },
+        {
+          "id": "WizardStepResultsController.index",
+          "class_name": "Api::WizardStepResultsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<WizardStepResult>",
+          "protocol": "REST",
+          "endpoint": "GET /api/wizard_step_results"
+        },
+        {
+          "id": "WizardStepResultsController.create",
+          "class_name": "Api::WizardStepResultsController",
+          "method_name": "create",
+          "param_types": [
+            "WizardStepResult"
+          ],
+          "return_type": "WizardStepResult",
+          "protocol": "REST",
+          "endpoint": "POST /api/wizard_step_results"
+        },
+        {
+          "id": "WizardStepResultsController.update",
+          "class_name": "Api::WizardStepResultsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "WizardStepResult"
+          ],
+          "return_type": "WizardStepResult",
+          "protocol": "REST",
+          "endpoint": "PUT /api/wizard_step_results/:id"
+        },
+        {
+          "id": "WizardStepResultsController.destroy",
+          "class_name": "Api::WizardStepResultsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/wizard_step_results/:id"
+        },
+        {
+          "id": "AisController.create",
+          "class_name": "Api::AisController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/ai"
+        },
+        {
+          "id": "FeedbacksController.create",
+          "class_name": "Api::FeedbacksController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/feedback"
+        },
+        {
+          "id": "DemoAccountsController.create",
+          "class_name": "Api::DemoAccountsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/demo_account"
+        },
+        {
+          "id": "DevicesController.show",
+          "class_name": "Api::DevicesController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "Device",
+          "protocol": "REST",
+          "endpoint": "GET /api/device"
+        },
+        {
+          "id": "DevicesController.update",
+          "class_name": "Api::DevicesController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Device",
+          "protocol": "REST",
+          "endpoint": "PUT /api/device"
+        },
+        {
+          "id": "FbosConfigsController.show",
+          "class_name": "Api::FbosConfigsController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "FbosConfig",
+          "protocol": "REST",
+          "endpoint": "GET /api/fbos_config"
+        },
+        {
+          "id": "FbosConfigsController.update",
+          "class_name": "Api::FbosConfigsController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "FbosConfig",
+          "protocol": "REST",
+          "endpoint": "PUT /api/fbos_config"
+        },
+        {
+          "id": "FbosConfigsController.destroy",
+          "class_name": "Api::FbosConfigsController",
+          "method_name": "destroy",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/fbos_config"
+        },
+        {
+          "id": "FirmwareConfigsController.show",
+          "class_name": "Api::FirmwareConfigsController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "FirmwareConfig",
+          "protocol": "REST",
+          "endpoint": "GET /api/firmware_config"
+        },
+        {
+          "id": "FirmwareConfigsController.update",
+          "class_name": "Api::FirmwareConfigsController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "FirmwareConfig",
+          "protocol": "REST",
+          "endpoint": "PUT /api/firmware_config"
+        },
+        {
+          "id": "FirmwareConfigsController.destroy",
+          "class_name": "Api::FirmwareConfigsController",
+          "method_name": "destroy",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/firmware_config"
+        },
+        {
+          "id": "WebAppConfigsController.show",
+          "class_name": "Api::WebAppConfigsController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "WebAppConfig",
+          "protocol": "REST",
+          "endpoint": "GET /api/web_app_config"
+        },
+        {
+          "id": "WebAppConfigsController.update",
+          "class_name": "Api::WebAppConfigsController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "WebAppConfig",
+          "protocol": "REST",
+          "endpoint": "PUT /api/web_app_config"
+        },
+        {
+          "id": "WebAppConfigsController.destroy",
+          "class_name": "Api::WebAppConfigsController",
+          "method_name": "destroy",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/web_app_config"
+        },
+        {
+          "id": "PublicKeysController.show",
+          "class_name": "Api::PublicKeysController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /api/public_key"
+        },
+        {
+          "id": "TokensController.create",
+          "class_name": "Api::TokensController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/tokens"
+        },
+        {
+          "id": "TokensController.show",
+          "class_name": "Api::TokensController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/tokens"
+        },
+        {
+          "id": "TokensController.destroy",
+          "class_name": "Api::TokensController",
+          "method_name": "destroy",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/tokens"
+        },
+        {
+          "id": "CorpusesController.show",
+          "class_name": "Api::CorpusesController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/corpus"
+        },
+        {
+          "id": "ReleasesController.show",
+          "class_name": "Api::ReleasesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Release",
+          "protocol": "REST",
+          "endpoint": "GET /api/releases"
+        },
+        {
+          "id": "PointsController.index",
+          "class_name": "Api::PointsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<Point>",
+          "protocol": "REST",
+          "endpoint": "GET /api/points"
+        },
+        {
+          "id": "PointsController.show",
+          "class_name": "Api::PointsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Point",
+          "protocol": "REST",
+          "endpoint": "GET /api/points/:id"
+        },
+        {
+          "id": "PointsController.search",
+          "class_name": "Api::PointsController",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "List<Point>",
+          "protocol": "REST",
+          "endpoint": "POST /api/points/search"
+        },
+        {
+          "id": "PointsController.create",
+          "class_name": "Api::PointsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Point",
+          "protocol": "REST",
+          "endpoint": "POST /api/points"
+        },
+        {
+          "id": "PointsController.update",
+          "class_name": "Api::PointsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Point",
+          "protocol": "REST",
+          "endpoint": "PUT /api/points/:id"
+        },
+        {
+          "id": "PointsController.destroy",
+          "class_name": "Api::PointsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Point>",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/points/:id"
+        },
+        {
+          "id": "SequencesController.publish",
+          "class_name": "Api::SequencesController",
+          "method_name": "publish",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "SequencePublication",
+          "protocol": "REST",
+          "endpoint": "POST /api/sequences/:id/publish"
+        },
+        {
+          "id": "SequencesController.unpublish",
+          "class_name": "Api::SequencesController",
+          "method_name": "unpublish",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SequencePublication",
+          "protocol": "REST",
+          "endpoint": "POST /api/sequences/:id/unpublish"
+        },
+        {
+          "id": "SequencesController.install",
+          "class_name": "Api::SequencesController",
+          "method_name": "install",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Sequence",
+          "protocol": "REST",
+          "endpoint": "POST /api/sequences/:sequence_version_id/install"
+        },
+        {
+          "id": "SequencesController.upgrade",
+          "class_name": "Api::SequencesController",
+          "method_name": "upgrade",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Sequence",
+          "protocol": "REST",
+          "endpoint": "POST /api/sequences/:id/upgrade/:sequence_version_id"
+        },
+        {
+          "id": "FarmwareInstallationsController.index",
+          "class_name": "Api::FarmwareInstallationsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<FarmwareInstallation>",
+          "protocol": "REST",
+          "endpoint": "GET /api/farmware_installations"
+        },
+        {
+          "id": "FarmwareInstallationsController.show",
+          "class_name": "Api::FarmwareInstallationsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FarmwareInstallation",
+          "protocol": "REST",
+          "endpoint": "GET /api/farmware_installations/:id"
+        },
+        {
+          "id": "FarmwareInstallationsController.create",
+          "class_name": "Api::FarmwareInstallationsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "FarmwareInstallation",
+          "protocol": "REST",
+          "endpoint": "POST /api/farmware_installations"
+        },
+        {
+          "id": "FarmwareInstallationsController.destroy",
+          "class_name": "Api::FarmwareInstallationsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/farmware_installations/:id"
+        },
+        {
+          "id": "FarmwareInstallationsController.refresh",
+          "class_name": "Api::FarmwareInstallationsController",
+          "method_name": "refresh",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FarmwareInstallation",
+          "protocol": "REST",
+          "endpoint": "POST /api/farmware_installations/:id/refresh"
+        },
+        {
+          "id": "LogsController.index",
+          "class_name": "Api::LogsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<Log>",
+          "protocol": "REST",
+          "endpoint": "GET /api/logs"
+        },
+        {
+          "id": "LogsController.create",
+          "class_name": "Api::LogsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Log",
+          "protocol": "REST",
+          "endpoint": "POST /api/logs"
+        },
+        {
+          "id": "LogsController.destroy",
+          "class_name": "Api::LogsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/logs/:id"
+        },
+        {
+          "id": "LogsController.search",
+          "class_name": "Api::LogsController",
+          "method_name": "search",
+          "param_types": [
+            "string",
+            "string",
+            "Integer",
+            "Float",
+            "Float",
+            "Float"
+          ],
+          "return_type": "List<Log>",
+          "protocol": "REST",
+          "endpoint": "GET /api/logs/search"
+        },
+        {
+          "id": "UsersController.show",
+          "class_name": "Api::UsersController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UsersController.create",
+          "class_name": "Api::UsersController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/users"
+        },
+        {
+          "id": "UsersController.update",
+          "class_name": "Api::UsersController",
+          "method_name": "update",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "PUT /api/users"
+        },
+        {
+          "id": "UsersController.destroy",
+          "class_name": "Api::UsersController",
+          "method_name": "destroy",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/users"
+        },
+        {
+          "id": "UsersController.resend_verification",
+          "class_name": "Api::UsersController",
+          "method_name": "resend_verification",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/resend_verification"
+        },
+        {
+          "id": "UsersController.control_certificate",
+          "class_name": "Api::UsersController",
+          "method_name": "control_certificate",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/control_certificate"
+        },
+        {
+          "id": "SavedGardensController.index",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<SavedGarden>",
+          "protocol": "REST",
+          "endpoint": "GET /api/saved_gardens"
+        },
+        {
+          "id": "SavedGardensController.create",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "SavedGarden",
+          "protocol": "REST",
+          "endpoint": "POST /api/saved_gardens"
+        },
+        {
+          "id": "SavedGardensController.update",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "SavedGarden",
+          "protocol": "REST",
+          "endpoint": "PUT /api/saved_gardens/:id"
+        },
+        {
+          "id": "SavedGardensController.destroy",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/saved_gardens/:id"
+        },
+        {
+          "id": "SavedGardensController.snapshot",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "snapshot",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/saved_gardens/snapshot"
+        },
+        {
+          "id": "SavedGardensController.apply",
+          "class_name": "Api::SavedGardensController",
+          "method_name": "apply",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/saved_gardens/:id/apply"
+        },
+        {
+          "id": "GlobalConfigController.show",
+          "class_name": "Api::GlobalConfigController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/global_config"
+        },
+        {
+          "id": "DevicesController.sync",
+          "class_name": "Api::DevicesController",
+          "method_name": "sync",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/device/sync"
+        },
+        {
+          "id": "DevicesController.seed",
+          "class_name": "Api::DevicesController",
+          "method_name": "seed",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/device/seed"
+        },
+        {
+          "id": "DevicesController.reset",
+          "class_name": "Api::DevicesController",
+          "method_name": "reset",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/device/reset"
+        },
+        {
+          "id": "DevicesController.dump",
+          "class_name": "Api::DevicesController",
+          "method_name": "dump",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/export_data"
+        },
+        {
+          "id": "ImagesController.storage_auth",
+          "class_name": "Api::ImagesController",
+          "method_name": "storage_auth",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/storage_auth"
+        },
+        {
+          "id": "DashboardController.front_page",
+          "class_name": "DashboardController",
+          "method_name": "front_page",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "DashboardController.logout",
+          "class_name": "DashboardController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /logout"
+        },
+        {
+          "id": "DashboardController.terminal",
+          "class_name": "DashboardController",
+          "method_name": "terminal",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /terminal"
+        },
+        {
+          "id": "DashboardController.main_app",
+          "class_name": "DashboardController",
+          "method_name": "main_app",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /app"
+        },
+        {
+          "id": "DashboardController.demo",
+          "class_name": "DashboardController",
+          "method_name": "demo",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /demo"
+        },
+        {
+          "id": "DashboardController.try_farmbot",
+          "class_name": "DashboardController",
+          "method_name": "try_farmbot",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /try_farmbot"
+        },
+        {
+          "id": "DashboardController.promo",
+          "class_name": "DashboardController",
+          "method_name": "promo",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /promo"
+        },
+        {
+          "id": "DashboardController.os_download",
+          "class_name": "DashboardController",
+          "method_name": "os_download",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /os"
+        },
+        {
+          "id": "DashboardController.password_reset",
+          "class_name": "DashboardController",
+          "method_name": "password_reset",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /password_reset/*token"
+        },
+        {
+          "id": "DashboardController.tos_update",
+          "class_name": "DashboardController",
+          "method_name": "tos_update",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /tos_update"
+        },
+        {
+          "id": "DashboardController.confirmation_page",
+          "class_name": "DashboardController",
+          "method_name": "confirmation_page",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /verify/:token"
+        },
+        {
+          "id": "DashboardController.csp_reports",
+          "class_name": "DashboardController",
+          "method_name": "csp_reports",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /csp_reports"
+        },
+        {
+          "id": "DashboardController.direct_upload",
+          "class_name": "DashboardController",
+          "method_name": "direct_upload",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /direct_upload"
+        },
+        {
+          "id": "DashboardController.direct_upload_file",
+          "class_name": "DashboardController",
+          "method_name": "direct_upload_file",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /direct_upload/temp/:filename.jpg"
+        },
+        {
+          "id": "WebhooksController.create",
+          "class_name": "WebhooksController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks"
+        },
+        {
+          "id": "LogService.process",
+          "class_name": "LogService",
+          "method_name": "process",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "bot.*.logs"
+        },
+        {
+          "id": "TelemetryService.process",
+          "class_name": "TelemetryService",
+          "method_name": "process",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "bot.*.telemetry"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

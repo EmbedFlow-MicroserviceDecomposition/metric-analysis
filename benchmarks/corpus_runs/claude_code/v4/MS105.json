@@ -1,0 +1,76 @@
+{
+  "system_id": "MS105",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "data": {
+      "exposed_interfaces": []
+    },
+    "cmd": {
+      "exposed_interfaces": []
+    },
+    "internal": {
+      "exposed_interfaces": [
+        {
+          "id": "Frontend.searchHandler",
+          "class_name": "frontend.Frontend",
+          "method_name": "searchHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /hotels"
+        },
+        {
+          "id": "Geo.Nearby",
+          "class_name": "geo.Geo",
+          "method_name": "Nearby",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Geo/Nearby"
+        },
+        {
+          "id": "Search.Nearby",
+          "class_name": "search.Search",
+          "method_name": "Nearby",
+          "param_types": [
+            "NearbyRequest"
+          ],
+          "return_type": "SearchResult",
+          "protocol": "gRPC",
+          "endpoint": "Search/Nearby"
+        },
+        {
+          "id": "Rate.GetRates",
+          "class_name": "rate.Rate",
+          "method_name": "GetRates",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Rate/GetRates"
+        },
+        {
+          "id": "Profile.GetProfiles",
+          "class_name": "profile.Profile",
+          "method_name": "GetProfiles",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Profile/GetProfiles"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

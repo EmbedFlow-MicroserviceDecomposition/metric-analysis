@@ -1,0 +1,530 @@
+{
+  "system_id": "MS035",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "query-side-blog-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RabbitConfiguration.onMessage",
+          "class_name": "com.idugalic.queryside.blog.configuration.RabbitConfiguration",
+          "method_name": "onMessage",
+          "param_types": [
+            "Message"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "${spring.application.queue}"
+        }
+      ]
+    },
+    "authserver": {
+      "exposed_interfaces": []
+    },
+    "command-side-blog": {
+      "exposed_interfaces": [
+        {
+          "id": "BlogController.create",
+          "class_name": "com.idugalic.commandside.blog.web.BlogController",
+          "method_name": "create",
+          "param_types": [
+            "CreateBlogPostRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /blogpostcommands"
+        },
+        {
+          "id": "BlogController.publish",
+          "class_name": "com.idugalic.commandside.blog.web.BlogController",
+          "method_name": "publish",
+          "param_types": [
+            "String",
+            "PublishBlogPostRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /blogpostcommands/{id}/publishcommand"
+        }
+      ]
+    },
+    "query-side-project": {
+      "exposed_interfaces": [
+        {
+          "id": "ProjectRepository.findAll",
+          "class_name": "com.idugalic.queryside.project.repository.ProjectRepository",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "Page<Project>",
+          "protocol": "REST",
+          "endpoint": "GET /projects"
+        },
+        {
+          "id": "ProjectRepository.findOne",
+          "class_name": "com.idugalic.queryside.project.repository.ProjectRepository",
+          "method_name": "findOne",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Project",
+          "protocol": "REST",
+          "endpoint": "GET /projects/{id}"
+        },
+        {
+          "id": "ProjectViewEventHandler.handle",
+          "class_name": "com.idugalic.queryside.project.handler.ProjectViewEventHandler",
+          "method_name": "handle",
+          "param_types": [
+            "ProjectCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "ProjectCreatedEvent"
+        }
+      ]
+    },
+    "command-side-project": {
+      "exposed_interfaces": [
+        {
+          "id": "ProjectController.create",
+          "class_name": "com.idugalic.commandside.project.web.ProjectController",
+          "method_name": "create",
+          "param_types": [
+            "CreateProjectRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /projectcommands"
+        },
+        {
+          "id": "ProjectController.update",
+          "class_name": "com.idugalic.commandside.project.web.ProjectController",
+          "method_name": "update",
+          "param_types": [
+            "String",
+            "UpdateProjectRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /projectcommands/{id}/updatecommand"
+        }
+      ]
+    },
+    "command-side-project-service": {
+      "exposed_interfaces": []
+    },
+    "command-side-blog-service": {
+      "exposed_interfaces": []
+    },
+    "query-side-blog": {
+      "exposed_interfaces": [
+        {
+          "id": "BlogPostRepository.findAll",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts"
+        },
+        {
+          "id": "BlogPostRepository.findOne",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findOne",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "BlogPost",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/{id}"
+        },
+        {
+          "id": "BlogPostRepository.findByDraftTrue",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDraftTrue",
+          "param_types": [],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDraftTrue"
+        },
+        {
+          "id": "BlogPostRepository.findByCategoryAndDraftFalse",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByCategoryAndDraftFalse",
+          "param_types": [
+            "BlogPostCategory"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByCategoryAndDraftFalse"
+        },
+        {
+          "id": "BlogPostRepository.findByDraftFalseAndPublishAtBeforeOrderByPublishAtDesc",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDraftFalseAndPublishAtBeforeOrderByPublishAtDesc",
+          "param_types": [
+            "Date"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDraftFalseAndPublishAtBeforeOrderByPublishAtDesc"
+        },
+        {
+          "id": "BlogPostRepository.findByCategoryAndDraftFalseAndPublishAtBefore",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByCategoryAndDraftFalseAndPublishAtBefore",
+          "param_types": [
+            "BlogPostCategory",
+            "Date"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByCategoryAndDraftFalseAndPublishAtBefore"
+        },
+        {
+          "id": "BlogPostRepository.findByBroadcastAndDraftFalseAndPublishAtBefore",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByBroadcastAndDraftFalseAndPublishAtBefore",
+          "param_types": [
+            "boolean",
+            "Date"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByBroadcastAndDraftFalseAndPublishAtBefore"
+        },
+        {
+          "id": "BlogPostRepository.findByDraftFalseAndPublishAtAfter",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDraftFalseAndPublishAtAfter",
+          "param_types": [
+            "Date"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDraftFalseAndPublishAtAfter"
+        },
+        {
+          "id": "BlogPostRepository.findByDraftFalseAndAuthorIdAndPublishAtBeforeOrderByPublishAtDesc",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDraftFalseAndAuthorIdAndPublishAtBeforeOrderByPublishAtDesc",
+          "param_types": [
+            "String",
+            "Date"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDraftFalseAndAuthorIdAndPublishAtBeforeOrderByPublishAtDesc"
+        },
+        {
+          "id": "BlogPostRepository.findByDateYearMonthDay",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDateYearMonthDay",
+          "param_types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDateYearMonthDay"
+        },
+        {
+          "id": "BlogPostRepository.findByDateYearMonth",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDateYearMonth",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDateYearMonth"
+        },
+        {
+          "id": "BlogPostRepository.findByDateYear",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByDateYear",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "Page<BlogPost>",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByDateYear"
+        },
+        {
+          "id": "BlogPostRepository.findByTitle",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByTitle",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "BlogPost",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByTitle"
+        },
+        {
+          "id": "BlogPostRepository.findByPublicSlugAndDraftFalseAndPublishAtBefore",
+          "class_name": "com.idugalic.queryside.blog.repository.BlogPostRepository",
+          "method_name": "findByPublicSlugAndDraftFalseAndPublishAtBefore",
+          "param_types": [
+            "String",
+            "Date"
+          ],
+          "return_type": "BlogPost",
+          "protocol": "REST",
+          "endpoint": "GET /blogposts/search/findByPublicSlugAndDraftFalseAndPublishAtBefore"
+        },
+        {
+          "id": "BlogPostViewEventHandler.handleCreated",
+          "class_name": "com.idugalic.queryside.blog.handler.BlogPostViewEventHandler",
+          "method_name": "handle",
+          "param_types": [
+            "BlogPostCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "BlogPostCreatedEvent"
+        },
+        {
+          "id": "BlogPostViewEventHandler.handlePublished",
+          "class_name": "com.idugalic.queryside.blog.handler.BlogPostViewEventHandler",
+          "method_name": "handle",
+          "param_types": [
+            "BlogPostPublishedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "BlogPostPublishedEvent"
+        }
+      ]
+    },
+    "query-side-project-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RabbitConfiguration.onMessage",
+          "class_name": "com.idugalic.queryside.project.configuration.RabbitConfiguration",
+          "method_name": "onMessage",
+          "param_types": [
+            "Message"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "${spring.application.queue}"
+        }
+      ]
+    },
+    "api-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "EventLoggingHandler.handleBlogCreate",
+          "class_name": "com.idugalic.apigateway.handler.EventLoggingHandler",
+          "method_name": "handleBlogCreate",
+          "param_types": [
+            "BlogPostCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "BlogPostCreatedEvent"
+        },
+        {
+          "id": "EventLoggingHandler.handleBlogPublis",
+          "class_name": "com.idugalic.apigateway.handler.EventLoggingHandler",
+          "method_name": "handleBlogPublis",
+          "param_types": [
+            "BlogPostPublishedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "BlogPostPublishedEvent"
+        },
+        {
+          "id": "EventLoggingHandler.handleProjectCreate",
+          "class_name": "com.idugalic.apigateway.handler.EventLoggingHandler",
+          "method_name": "handleProjectCreate",
+          "param_types": [
+            "ProjectCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "ProjectCreatedEvent"
+        },
+        {
+          "id": "EventLoggingHandler.handleProjectUpdate",
+          "class_name": "com.idugalic.apigateway.handler.EventLoggingHandler",
+          "method_name": "handleProjectUpdate",
+          "param_types": [
+            "ProjectUpdatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "ProjectUpdatedEvent"
+        },
+        {
+          "id": "RabbitConfiguration.onMessage",
+          "class_name": "com.idugalic.apigateway.configuration.RabbitConfiguration",
+          "method_name": "onMessage",
+          "param_types": [
+            "Message"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "${spring.application.queue}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "BlogPostAggregate",
+      "dst_service": "query-side-blog",
+      "dst_class": "com.idugalic.queryside.blog.handler.BlogPostViewEventHandler",
+      "dst_interface_id": "BlogPostViewEventHandler.handleCreated",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:70 apply(new BlogPostCreatedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "BlogPostAggregate",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.handler.EventLoggingHandler",
+      "dst_interface_id": "EventLoggingHandler.handleBlogCreate",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:70 apply(new BlogPostCreatedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "BlogPostAggregate",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:70 apply(new BlogPostCreatedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "BlogPostAggregate",
+      "dst_service": "query-side-blog-service",
+      "dst_class": "com.idugalic.queryside.blog.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:70 apply(new BlogPostCreatedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "publishBlogPost",
+      "dst_service": "query-side-blog",
+      "dst_class": "com.idugalic.queryside.blog.handler.BlogPostViewEventHandler",
+      "dst_interface_id": "BlogPostViewEventHandler.handlePublished",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:79 apply(new BlogPostPublishedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "publishBlogPost",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.handler.EventLoggingHandler",
+      "dst_interface_id": "EventLoggingHandler.handleBlogPublis",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:79 apply(new BlogPostPublishedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "publishBlogPost",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:79 apply(new BlogPostPublishedEvent("
+    },
+    {
+      "src_service": "command-side-blog",
+      "src_class": "com.idugalic.commandside.blog.aggregate.BlogPostAggregate",
+      "src_method": "publishBlogPost",
+      "dst_service": "query-side-blog-service",
+      "dst_class": "com.idugalic.queryside.blog.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-blog/src/main/java/com/idugalic/commandside/blog/aggregate/BlogPostAggregate.java:79 apply(new BlogPostPublishedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "ProjectAggregate",
+      "dst_service": "query-side-project",
+      "dst_class": "com.idugalic.queryside.project.handler.ProjectViewEventHandler",
+      "dst_interface_id": "ProjectViewEventHandler.handle",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:65 apply(new ProjectCreatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "ProjectAggregate",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.handler.EventLoggingHandler",
+      "dst_interface_id": "EventLoggingHandler.handleProjectCreate",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:65 apply(new ProjectCreatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "ProjectAggregate",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:65 apply(new ProjectCreatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "ProjectAggregate",
+      "dst_service": "query-side-project-service",
+      "dst_class": "com.idugalic.queryside.project.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:65 apply(new ProjectCreatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "updateProject",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.handler.EventLoggingHandler",
+      "dst_interface_id": "EventLoggingHandler.handleProjectUpdate",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:73 apply(new ProjectUpdatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "updateProject",
+      "dst_service": "api-gateway",
+      "dst_class": "com.idugalic.apigateway.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:73 apply(new ProjectUpdatedEvent("
+    },
+    {
+      "src_service": "command-side-project",
+      "src_class": "com.idugalic.commandside.project.aggregate.ProjectAggregate",
+      "src_method": "updateProject",
+      "dst_service": "query-side-project-service",
+      "dst_class": "com.idugalic.queryside.project.configuration.RabbitConfiguration",
+      "dst_interface_id": "RabbitConfiguration.onMessage",
+      "protocol": "Messaging",
+      "evidence": "command-side-project/src/main/java/com/idugalic/commandside/project/aggregate/ProjectAggregate.java:73 apply(new ProjectUpdatedEvent("
+    }
+  ]
+}

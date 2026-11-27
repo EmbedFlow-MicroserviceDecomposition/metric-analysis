@@ -1,0 +1,4902 @@
+{
+  "system_id": "MS107",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "auth-server": {
+      "exposed_interfaces": [
+        {
+          "id": "routes.route",
+          "class_name": "routes",
+          "method_name": "route",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /generate"
+        }
+      ]
+    },
+    "webhook-handler": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.handleWebhookPost",
+          "class_name": "server.Server",
+          "method_name": "handleWebhookPost",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        },
+        {
+          "id": "Server.handleWebhookGet",
+          "class_name": "server.Server",
+          "method_name": "handleWebhookGet",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        }
+      ]
+    },
+    "api": {
+      "exposed_interfaces": [
+        {
+          "id": "resolvers.getMe",
+          "class_name": "resolvers",
+          "method_name": "getMe",
+          "param_types": [],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.me"
+        },
+        {
+          "id": "resolvers.getLagoonVersion",
+          "class_name": "resolvers",
+          "method_name": "getLagoonVersion",
+          "param_types": [],
+          "return_type": "JSON",
+          "protocol": "GraphQL",
+          "endpoint": "Query.lagoonVersion"
+        },
+        {
+          "id": "resolvers.getUserBySshKey",
+          "class_name": "resolvers",
+          "method_name": "getUserBySshKey",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.userBySshKey"
+        },
+        {
+          "id": "resolvers.getUserBySshFingerprint",
+          "class_name": "resolvers",
+          "method_name": "getUserBySshFingerprint",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.userBySshFingerprint"
+        },
+        {
+          "id": "resolvers.getProjectByGitUrl",
+          "class_name": "resolvers",
+          "method_name": "getProjectByGitUrl",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Query.projectByGitUrl"
+        },
+        {
+          "id": "resolvers.getProjectByName",
+          "class_name": "resolvers",
+          "method_name": "getProjectByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Query.projectByName"
+        },
+        {
+          "id": "resolvers.getProjectByNameOrgProjectByName",
+          "class_name": "resolvers",
+          "method_name": "getProjectByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OrgProject",
+          "protocol": "GraphQL",
+          "endpoint": "Query.orgProjectByName"
+        },
+        {
+          "id": "resolvers.getEnvironmentsByKubernetes",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentsByKubernetes",
+          "param_types": [
+            "KubernetesInput",
+            "EnvOrderType",
+            "String",
+            "EnvType"
+          ],
+          "return_type": "List<Environment>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentsByKubernetes"
+        },
+        {
+          "id": "resolvers.getGroupByName",
+          "class_name": "resolvers",
+          "method_name": "getGroupByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "GroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Query.groupByName"
+        },
+        {
+          "id": "resolvers.getGroupByNameAndOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getGroupByNameAndOrganizationId",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "OrgGroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Query.groupByNameAndOrganization"
+        },
+        {
+          "id": "resolvers.getUsersByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getUsersByOrganizationId",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "List<OrgUser>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.usersByOrganization"
+        },
+        {
+          "id": "resolvers.getUserByEmailAndOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getUserByEmailAndOrganizationId",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "OrgUser",
+          "protocol": "GraphQL",
+          "endpoint": "Query.userByEmailAndOrganization"
+        },
+        {
+          "id": "resolvers.getProblemSources",
+          "class_name": "resolvers",
+          "method_name": "getProblemSources",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.problemSources"
+        },
+        {
+          "id": "resolvers.getEnvironmentByName",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentByName",
+          "param_types": [
+            "String",
+            "Int",
+            "Boolean"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentByName"
+        },
+        {
+          "id": "resolvers.getEnvironmentById",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentById"
+        },
+        {
+          "id": "resolvers.getEnvironmentByOpenshiftProjectName",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentByOpenshiftProjectName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentByOpenshiftProjectName"
+        },
+        {
+          "id": "resolvers.getEnvironmentByKubernetesNamespaceName",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentByKubernetesNamespaceName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentByKubernetesNamespaceName"
+        },
+        {
+          "id": "resolvers.getEnvironmentsByFactSearch",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentsByFactSearch",
+          "param_types": [
+            "FactFilterInput"
+          ],
+          "return_type": "EnvironmentFactSearchResults",
+          "protocol": "GraphQL",
+          "endpoint": "Query.environmentsByFactSearch"
+        },
+        {
+          "id": "resolvers.userCanSshToEnvironment",
+          "class_name": "resolvers",
+          "method_name": "userCanSshToEnvironment",
+          "param_types": [
+            "String kubernetesNamespaceName: String"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.userCanSshToEnvironment"
+        },
+        {
+          "id": "resolvers.getDeploymentByRemoteId",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentByRemoteId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Deployment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deploymentByRemoteId"
+        },
+        {
+          "id": "resolvers.getDeploymentByName",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentByName",
+          "param_types": [
+            "DeploymentByNameInput"
+          ],
+          "return_type": "Deployment",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deploymentByName"
+        },
+        {
+          "id": "resolvers.getDeploymentsByBulkId",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentsByBulkId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Deployment>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deploymentsByBulkId"
+        },
+        {
+          "id": "resolvers.getDeploymentsByFilter",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentsByFilter",
+          "param_types": [
+            "List<Int] deploymentStatus: [DeploymentStatusType>"
+          ],
+          "return_type": "List<Deployment>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deploymentsByFilter"
+        },
+        {
+          "id": "resolvers.getTaskByTaskName",
+          "class_name": "resolvers",
+          "method_name": "getTaskByTaskName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taskByTaskName"
+        },
+        {
+          "id": "resolvers.getTaskByRemoteId",
+          "class_name": "resolvers",
+          "method_name": "getTaskByRemoteId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taskByRemoteId"
+        },
+        {
+          "id": "resolvers.getTaskById",
+          "class_name": "resolvers",
+          "method_name": "getTaskById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Query.taskById"
+        },
+        {
+          "id": "task_definition_resolvers.advancedTaskDefinitionById",
+          "class_name": "task_definition_resolvers",
+          "method_name": "advancedTaskDefinitionById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "AdvancedTaskDefinition",
+          "protocol": "GraphQL",
+          "endpoint": "Query.advancedTaskDefinitionById"
+        },
+        {
+          "id": "task_definition_resolvers.resolveTasksForEnvironment",
+          "class_name": "task_definition_resolvers",
+          "method_name": "resolveTasksForEnvironment",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "List<AdvancedTaskDefinition>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.advancedTasksForEnvironment"
+        },
+        {
+          "id": "task_definition_resolvers.allAdvancedTaskDefinitions",
+          "class_name": "task_definition_resolvers",
+          "method_name": "allAdvancedTaskDefinitions",
+          "param_types": [],
+          "return_type": "List<AdvancedTaskDefinition>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allAdvancedTaskDefinitions"
+        },
+        {
+          "id": "task_definition_resolvers.advancedTaskDefinitionArgumentById",
+          "class_name": "task_definition_resolvers",
+          "method_name": "advancedTaskDefinitionArgumentById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "List<AdvancedTaskDefinitionArgument>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.advancedTaskDefinitionArgumentById"
+        },
+        {
+          "id": "resolvers.getAllProjects",
+          "class_name": "resolvers",
+          "method_name": "getAllProjects",
+          "param_types": [
+            "String",
+            "String",
+            "ProjectOrderType",
+            "Boolean"
+          ],
+          "return_type": "List<Project>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allProjects"
+        },
+        {
+          "id": "resolvers.getAllOpenshifts",
+          "class_name": "resolvers",
+          "method_name": "getAllOpenshifts",
+          "param_types": [
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "List<Openshift>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allOpenshifts"
+        },
+        {
+          "id": "resolvers.getAllOpenshiftsAllKubernetes",
+          "class_name": "resolvers",
+          "method_name": "getAllOpenshifts",
+          "param_types": [
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "List<Kubernetes>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allKubernetes"
+        },
+        {
+          "id": "resolvers.getAllEnvironments",
+          "class_name": "resolvers",
+          "method_name": "getAllEnvironments",
+          "param_types": [
+            "String",
+            "EnvType",
+            "EnvOrderType"
+          ],
+          "return_type": "List<Environment>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allEnvironments"
+        },
+        {
+          "id": "resolvers.getAllProblems",
+          "class_name": "resolvers",
+          "method_name": "getAllProblems",
+          "param_types": [
+            "List<String>",
+            "Int",
+            "Int",
+            "List<EnvType>",
+            "String",
+            "List<ProblemSeverityRating>"
+          ],
+          "return_type": "List<Problem>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allProblems"
+        },
+        {
+          "id": "resolvers.getAllGroups",
+          "class_name": "resolvers",
+          "method_name": "getAllGroups",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "List<GroupInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allGroups"
+        },
+        {
+          "id": "resolvers.getAllProjectsInGroup",
+          "class_name": "resolvers",
+          "method_name": "getAllProjectsInGroup",
+          "param_types": [
+            "GroupInput"
+          ],
+          "return_type": "List<Project>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allProjectsInGroup"
+        },
+        {
+          "id": "resolvers.getAllUsers",
+          "class_name": "resolvers",
+          "method_name": "getAllUsers",
+          "param_types": [
+            "String",
+            "String",
+            "Int"
+          ],
+          "return_type": "List<User>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allUsers"
+        },
+        {
+          "id": "resolvers.getAllNotifications",
+          "class_name": "resolvers",
+          "method_name": "getAllNotifications",
+          "param_types": [],
+          "return_type": "List<Notification>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allNotifications"
+        },
+        {
+          "id": "resolvers.getUserByEmail",
+          "class_name": "resolvers",
+          "method_name": "getUserByEmail",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Query.userByEmail"
+        },
+        {
+          "id": "resolvers.getProjectsByMetadata",
+          "class_name": "resolvers",
+          "method_name": "getProjectsByMetadata",
+          "param_types": [
+            "List<MetadataKeyValue>"
+          ],
+          "return_type": "List<Project>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.projectsByMetadata"
+        },
+        {
+          "id": "resolvers.getProjectsByFactSearch",
+          "class_name": "resolvers",
+          "method_name": "getProjectsByFactSearch",
+          "param_types": [
+            "FactFilterInput"
+          ],
+          "return_type": "ProjectFactSearchResults",
+          "protocol": "GraphQL",
+          "endpoint": "Query.projectsByFactSearch"
+        },
+        {
+          "id": "resolvers.getDeployTargetConfigById",
+          "class_name": "resolvers",
+          "method_name": "getDeployTargetConfigById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "DeployTargetConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deployTargetConfigById"
+        },
+        {
+          "id": "resolvers.getDeployTargetConfigsByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getDeployTargetConfigsByProjectId",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "List<DeployTargetConfig>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deployTargetConfigsByProjectId"
+        },
+        {
+          "id": "resolvers.getDeployTargetConfigsByDeployTarget",
+          "class_name": "resolvers",
+          "method_name": "getDeployTargetConfigsByDeployTarget",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "List<DeployTargetConfig>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.deployTargetConfigsByDeployTarget"
+        },
+        {
+          "id": "resolvers.getAllOrganizations",
+          "class_name": "resolvers",
+          "method_name": "getAllOrganizations",
+          "param_types": [],
+          "return_type": "List<Organization>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allOrganizations"
+        },
+        {
+          "id": "resolvers.getOrganizationById",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationById",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Query.organizationById"
+        },
+        {
+          "id": "resolvers.getOrganizationByName",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationByName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Query.organizationByName"
+        },
+        {
+          "id": "resolvers.getGroupProjectOrganizationAssociation",
+          "class_name": "resolvers",
+          "method_name": "getGroupProjectOrganizationAssociation",
+          "param_types": [
+            "AddGroupToOrganizationInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getGroupProjectOrganizationAssociation"
+        },
+        {
+          "id": "resolvers.getProjectGroupOrganizationAssociation",
+          "class_name": "resolvers",
+          "method_name": "getProjectGroupOrganizationAssociation",
+          "param_types": [
+            "ProjectOrgGroupsInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getProjectGroupOrganizationAssociation"
+        },
+        {
+          "id": "resolvers.getEnvVariablesByProjectEnvironmentName",
+          "class_name": "resolvers",
+          "method_name": "getEnvVariablesByProjectEnvironmentName",
+          "param_types": [
+            "EnvVariableByProjectEnvironmentNameInput"
+          ],
+          "return_type": "List<EnvKeyValue>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getEnvVariablesByProjectEnvironmentName"
+        },
+        {
+          "id": "resolvers.checkBulkImportProjectsAndGroupsToOrganization",
+          "class_name": "resolvers",
+          "method_name": "checkBulkImportProjectsAndGroupsToOrganization",
+          "param_types": [
+            "AddProjectToOrganizationInput"
+          ],
+          "return_type": "ProjectGroupsToOrganization",
+          "protocol": "GraphQL",
+          "endpoint": "Query.checkBulkImportProjectsAndGroupsToOrganization"
+        },
+        {
+          "id": "resolvers.getAllPlatformUsers",
+          "class_name": "resolvers",
+          "method_name": "getAllPlatformUsers",
+          "param_types": [
+            "String",
+            "String",
+            "Int",
+            "PlatformRole"
+          ],
+          "return_type": "List<User>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.allPlatformUsers"
+        },
+        {
+          "id": "resolvers.getAuditLogs",
+          "class_name": "resolvers",
+          "method_name": "getAuditLogs",
+          "param_types": [
+            "AuditLogInput"
+          ],
+          "return_type": "List<AuditLog>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getAuditLogs"
+        },
+        {
+          "id": "resolvers.listAllRetentionPolicies",
+          "class_name": "resolvers",
+          "method_name": "listAllRetentionPolicies",
+          "param_types": [
+            "String",
+            "RetentionPolicyType"
+          ],
+          "return_type": "List<RetentionPolicy>",
+          "protocol": "GraphQL",
+          "endpoint": "Query.listAllRetentionPolicies"
+        },
+        {
+          "id": "resolvers.getBackupDownloadLinkByBackupId",
+          "class_name": "resolvers",
+          "method_name": "getBackupDownloadLinkByBackupId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getBackupDownloadLinkByBackupId"
+        },
+        {
+          "id": "resolvers.getDownloadLinkByTaskFileId",
+          "class_name": "resolvers",
+          "method_name": "getDownloadLinkByTaskFileId",
+          "param_types": [
+            "Int",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getDownloadLinkByTaskFileId"
+        },
+        {
+          "id": "resolvers.getTaskFileUploadForm",
+          "class_name": "resolvers",
+          "method_name": "getTaskFileUploadForm",
+          "param_types": [
+            "GetTaskFileUploadFormInput"
+          ],
+          "return_type": "TaskFileUploadForm",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getTaskFileUploadForm"
+        },
+        {
+          "id": "resolvers.getDownloadLinkByProjectCloneFileId",
+          "class_name": "resolvers",
+          "method_name": "getDownloadLinkByProjectCloneFileId",
+          "param_types": [
+            "Int",
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getDownloadLinkByProjectCloneFileId"
+        },
+        {
+          "id": "resolvers.getProjectCloneFileUploadForm",
+          "class_name": "resolvers",
+          "method_name": "getProjectCloneFileUploadForm",
+          "param_types": [
+            "GetProjectCloneFileUploadFormInput"
+          ],
+          "return_type": "TaskFileUploadForm",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getProjectCloneFileUploadForm"
+        },
+        {
+          "id": "resolvers.getOrganizationKeyByProjectName",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationKeyByProjectName",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OrganizationKey",
+          "protocol": "GraphQL",
+          "endpoint": "Query.getOrganizationKeyByProjectName"
+        },
+        {
+          "id": "resolvers.addProblem",
+          "class_name": "resolvers",
+          "method_name": "addProblem",
+          "param_types": [
+            "AddProblemInput"
+          ],
+          "return_type": "Problem",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addProblem"
+        },
+        {
+          "id": "resolvers.deleteProblem",
+          "class_name": "resolvers",
+          "method_name": "deleteProblem",
+          "param_types": [
+            "DeleteProblemInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteProblem"
+        },
+        {
+          "id": "resolvers.deleteProblemsFromSource",
+          "class_name": "resolvers",
+          "method_name": "deleteProblemsFromSource",
+          "param_types": [
+            "DeleteProblemsFromSourceInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteProblemsFromSource"
+        },
+        {
+          "id": "resolvers.addFact",
+          "class_name": "resolvers",
+          "method_name": "addFact",
+          "param_types": [
+            "AddFactInput"
+          ],
+          "return_type": "Fact",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addFact"
+        },
+        {
+          "id": "resolvers.addFacts",
+          "class_name": "resolvers",
+          "method_name": "addFacts",
+          "param_types": [
+            "AddFactsInput"
+          ],
+          "return_type": "List<Fact>",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addFacts"
+        },
+        {
+          "id": "resolvers.addFactsByName",
+          "class_name": "resolvers",
+          "method_name": "addFactsByName",
+          "param_types": [
+            "AddFactsByNameInput"
+          ],
+          "return_type": "List<Fact>",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addFactsByName"
+        },
+        {
+          "id": "resolvers.deleteFact",
+          "class_name": "resolvers",
+          "method_name": "deleteFact",
+          "param_types": [
+            "DeleteFactInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteFact"
+        },
+        {
+          "id": "resolvers.deleteFactsFromSource",
+          "class_name": "resolvers",
+          "method_name": "deleteFactsFromSource",
+          "param_types": [
+            "DeleteFactsFromSourceInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteFactsFromSource"
+        },
+        {
+          "id": "resolvers.addFactReference",
+          "class_name": "resolvers",
+          "method_name": "addFactReference",
+          "param_types": [
+            "AddFactReferenceInput"
+          ],
+          "return_type": "FactReference",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addFactReference"
+        },
+        {
+          "id": "resolvers.deleteFactReference",
+          "class_name": "resolvers",
+          "method_name": "deleteFactReference",
+          "param_types": [
+            "DeleteFactReferenceInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteFactReference"
+        },
+        {
+          "id": "resolvers.deleteAllFactReferencesByFactId",
+          "class_name": "resolvers",
+          "method_name": "deleteAllFactReferencesByFactId",
+          "param_types": [
+            "DeleteFactReferencesByFactIdInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteAllFactReferencesByFactId"
+        },
+        {
+          "id": "resolvers.addOrUpdateEnvironment",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateEnvironment",
+          "param_types": [
+            "AddEnvironmentInput"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateEnvironment"
+        },
+        {
+          "id": "resolvers.updateEnvironment",
+          "class_name": "resolvers",
+          "method_name": "updateEnvironment",
+          "param_types": [
+            "UpdateEnvironmentInput"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateEnvironment"
+        },
+        {
+          "id": "resolvers.deleteEnvironment",
+          "class_name": "resolvers",
+          "method_name": "deleteEnvironment",
+          "param_types": [
+            "DeleteEnvironmentInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteEnvironment"
+        },
+        {
+          "id": "resolvers.addOrUpdateEnvironmentStorage",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateEnvironmentStorage",
+          "param_types": [
+            "AddOrUpdateEnvironmentStorageInput"
+          ],
+          "return_type": "EnvironmentStorage",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateEnvironmentStorage"
+        },
+        {
+          "id": "resolvers.addOrUpdateStorageOnEnvironment",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateStorageOnEnvironment",
+          "param_types": [
+            "AddOrUpdateStorageOnEnvironmentInput"
+          ],
+          "return_type": "EnvironmentStorage",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateStorageOnEnvironment"
+        },
+        {
+          "id": "resolvers.addNotificationSlack",
+          "class_name": "resolvers",
+          "method_name": "addNotificationSlack",
+          "param_types": [
+            "AddNotificationSlackInput"
+          ],
+          "return_type": "NotificationSlack",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationSlack"
+        },
+        {
+          "id": "resolvers.updateNotificationSlack",
+          "class_name": "resolvers",
+          "method_name": "updateNotificationSlack",
+          "param_types": [
+            "UpdateNotificationSlackInput"
+          ],
+          "return_type": "NotificationSlack",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateNotificationSlack"
+        },
+        {
+          "id": "resolvers.deleteNotificationSlack",
+          "class_name": "resolvers",
+          "method_name": "deleteNotificationSlack",
+          "param_types": [
+            "DeleteNotificationSlackInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteNotificationSlack"
+        },
+        {
+          "id": "resolvers.addNotificationWebhook",
+          "class_name": "resolvers",
+          "method_name": "addNotificationWebhook",
+          "param_types": [
+            "AddNotificationWebhookInput"
+          ],
+          "return_type": "NotificationWebhook",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationWebhook"
+        },
+        {
+          "id": "resolvers.updateNotificationWebhook",
+          "class_name": "resolvers",
+          "method_name": "updateNotificationWebhook",
+          "param_types": [
+            "UpdateNotificationWebhookInput"
+          ],
+          "return_type": "NotificationWebhook",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateNotificationWebhook"
+        },
+        {
+          "id": "resolvers.deleteNotificationWebhook",
+          "class_name": "resolvers",
+          "method_name": "deleteNotificationWebhook",
+          "param_types": [
+            "DeleteNotificationWebhookInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteNotificationWebhook"
+        },
+        {
+          "id": "resolvers.addNotificationRocketChat",
+          "class_name": "resolvers",
+          "method_name": "addNotificationRocketChat",
+          "param_types": [
+            "AddNotificationRocketChatInput"
+          ],
+          "return_type": "NotificationRocketChat",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationRocketChat"
+        },
+        {
+          "id": "resolvers.updateNotificationRocketChat",
+          "class_name": "resolvers",
+          "method_name": "updateNotificationRocketChat",
+          "param_types": [
+            "UpdateNotificationRocketChatInput"
+          ],
+          "return_type": "NotificationRocketChat",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateNotificationRocketChat"
+        },
+        {
+          "id": "resolvers.deleteNotificationRocketChat",
+          "class_name": "resolvers",
+          "method_name": "deleteNotificationRocketChat",
+          "param_types": [
+            "DeleteNotificationRocketChatInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteNotificationRocketChat"
+        },
+        {
+          "id": "resolvers.addNotificationMicrosoftTeams",
+          "class_name": "resolvers",
+          "method_name": "addNotificationMicrosoftTeams",
+          "param_types": [
+            "AddNotificationMicrosoftTeamsInput"
+          ],
+          "return_type": "NotificationMicrosoftTeams",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationMicrosoftTeams"
+        },
+        {
+          "id": "resolvers.updateNotificationMicrosoftTeams",
+          "class_name": "resolvers",
+          "method_name": "updateNotificationMicrosoftTeams",
+          "param_types": [
+            "UpdateNotificationMicrosoftTeamsInput"
+          ],
+          "return_type": "NotificationMicrosoftTeams",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateNotificationMicrosoftTeams"
+        },
+        {
+          "id": "resolvers.deleteNotificationMicrosoftTeams",
+          "class_name": "resolvers",
+          "method_name": "deleteNotificationMicrosoftTeams",
+          "param_types": [
+            "DeleteNotificationMicrosoftTeamsInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteNotificationMicrosoftTeams"
+        },
+        {
+          "id": "resolvers.addNotificationEmail",
+          "class_name": "resolvers",
+          "method_name": "addNotificationEmail",
+          "param_types": [
+            "AddNotificationEmailInput"
+          ],
+          "return_type": "NotificationEmail",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationEmail"
+        },
+        {
+          "id": "resolvers.updateNotificationEmail",
+          "class_name": "resolvers",
+          "method_name": "updateNotificationEmail",
+          "param_types": [
+            "UpdateNotificationEmailInput"
+          ],
+          "return_type": "NotificationEmail",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateNotificationEmail"
+        },
+        {
+          "id": "resolvers.deleteNotificationEmail",
+          "class_name": "resolvers",
+          "method_name": "deleteNotificationEmail",
+          "param_types": [
+            "DeleteNotificationEmailInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteNotificationEmail"
+        },
+        {
+          "id": "resolvers.addNotificationToProject",
+          "class_name": "resolvers",
+          "method_name": "addNotificationToProject",
+          "param_types": [
+            "AddNotificationToProjectInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addNotificationToProject"
+        },
+        {
+          "id": "resolvers.removeNotificationFromProject",
+          "class_name": "resolvers",
+          "method_name": "removeNotificationFromProject",
+          "param_types": [
+            "RemoveNotificationFromProjectInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeNotificationFromProject"
+        },
+        {
+          "id": "resolvers.addOpenshift",
+          "class_name": "resolvers",
+          "method_name": "addOpenshift",
+          "param_types": [
+            "AddOpenshiftInput"
+          ],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOpenshift"
+        },
+        {
+          "id": "resolvers.updateOpenshift",
+          "class_name": "resolvers",
+          "method_name": "updateOpenshift",
+          "param_types": [
+            "UpdateOpenshiftInput"
+          ],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateOpenshift"
+        },
+        {
+          "id": "resolvers.deleteOpenshift",
+          "class_name": "resolvers",
+          "method_name": "deleteOpenshift",
+          "param_types": [
+            "DeleteOpenshiftInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteOpenshift"
+        },
+        {
+          "id": "resolvers.addOpenshiftAddKubernetes",
+          "class_name": "resolvers",
+          "method_name": "addOpenshift",
+          "param_types": [
+            "AddKubernetesInput"
+          ],
+          "return_type": "Kubernetes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addKubernetes"
+        },
+        {
+          "id": "resolvers.updateOpenshiftUpdateKubernetes",
+          "class_name": "resolvers",
+          "method_name": "updateOpenshift",
+          "param_types": [
+            "UpdateKubernetesInput"
+          ],
+          "return_type": "Kubernetes",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateKubernetes"
+        },
+        {
+          "id": "resolvers.deleteOpenshiftDeleteKubernetes",
+          "class_name": "resolvers",
+          "method_name": "deleteOpenshift",
+          "param_types": [
+            "DeleteKubernetesInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteKubernetes"
+        },
+        {
+          "id": "resolvers.addProject",
+          "class_name": "resolvers",
+          "method_name": "addProject",
+          "param_types": [
+            "AddProjectInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addProject"
+        },
+        {
+          "id": "resolvers.updateProject",
+          "class_name": "resolvers",
+          "method_name": "updateProject",
+          "param_types": [
+            "UpdateProjectInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateProject"
+        },
+        {
+          "id": "resolvers.deleteProject",
+          "class_name": "resolvers",
+          "method_name": "deleteProject",
+          "param_types": [
+            "DeleteProjectInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteProject"
+        },
+        {
+          "id": "resolvers.updateProjectMetadata",
+          "class_name": "resolvers",
+          "method_name": "updateProjectMetadata",
+          "param_types": [
+            "UpdateMetadataInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateProjectMetadata"
+        },
+        {
+          "id": "resolvers.removeProjectMetadataByKey",
+          "class_name": "resolvers",
+          "method_name": "removeProjectMetadataByKey",
+          "param_types": [
+            "RemoveMetadataInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeProjectMetadataByKey"
+        },
+        {
+          "id": "resolvers.addSshKey",
+          "class_name": "resolvers",
+          "method_name": "addSshKey",
+          "param_types": [
+            "AddSshKeyInput"
+          ],
+          "return_type": "SshKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addSshKey"
+        },
+        {
+          "id": "resolvers.updateSshKey",
+          "class_name": "resolvers",
+          "method_name": "updateSshKey",
+          "param_types": [
+            "UpdateSshKeyInput"
+          ],
+          "return_type": "SshKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateSshKey"
+        },
+        {
+          "id": "resolvers.deleteSshKey",
+          "class_name": "resolvers",
+          "method_name": "deleteSshKey",
+          "param_types": [
+            "DeleteSshKeyInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteSshKey"
+        },
+        {
+          "id": "resolvers.deleteSshKeyById",
+          "class_name": "resolvers",
+          "method_name": "deleteSshKeyById",
+          "param_types": [
+            "DeleteSshKeyByIdInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteSshKeyById"
+        },
+        {
+          "id": "resolvers.addSshKeyAddUserSSHPublicKey",
+          "class_name": "resolvers",
+          "method_name": "addSshKey",
+          "param_types": [
+            "AddUserSSHPublicKeyInput"
+          ],
+          "return_type": "SshKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addUserSSHPublicKey"
+        },
+        {
+          "id": "resolvers.updateSshKeyUpdateUserSSHPublicKey",
+          "class_name": "resolvers",
+          "method_name": "updateSshKey",
+          "param_types": [
+            "UpdateUserSSHPublicKeyInput"
+          ],
+          "return_type": "SshKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateUserSSHPublicKey"
+        },
+        {
+          "id": "resolvers.deleteSshKeyByIdDeleteUserSSHPublicKey",
+          "class_name": "resolvers",
+          "method_name": "deleteSshKeyById",
+          "param_types": [
+            "DeleteUserSSHPublicKeyByIdInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteUserSSHPublicKey"
+        },
+        {
+          "id": "resolvers.addUser",
+          "class_name": "resolvers",
+          "method_name": "addUser",
+          "param_types": [
+            "AddUserInput"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addUser"
+        },
+        {
+          "id": "resolvers.updateUser",
+          "class_name": "resolvers",
+          "method_name": "updateUser",
+          "param_types": [
+            "UpdateUserInput"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateUser"
+        },
+        {
+          "id": "resolvers.addUserToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addUserToOrganization",
+          "param_types": [
+            "addUserToOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addUserToOrganization"
+        },
+        {
+          "id": "resolvers.removeUserFromOrganization",
+          "class_name": "resolvers",
+          "method_name": "removeUserFromOrganization",
+          "param_types": [
+            "addUserToOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeUserFromOrganization"
+        },
+        {
+          "id": "resolvers.addAdminToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addAdminToOrganization",
+          "param_types": [
+            "AddAdminToOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addAdminToOrganization"
+        },
+        {
+          "id": "resolvers.removeAdminFromOrganization",
+          "class_name": "resolvers",
+          "method_name": "removeAdminFromOrganization",
+          "param_types": [
+            "RemoveAdminFromOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeAdminFromOrganization"
+        },
+        {
+          "id": "resolvers.resetUserPassword",
+          "class_name": "resolvers",
+          "method_name": "resetUserPassword",
+          "param_types": [
+            "ResetUserPasswordInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.resetUserPassword"
+        },
+        {
+          "id": "resolvers.deleteUser",
+          "class_name": "resolvers",
+          "method_name": "deleteUser",
+          "param_types": [
+            "DeleteUserInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteUser"
+        },
+        {
+          "id": "resolvers.addDeployment",
+          "class_name": "resolvers",
+          "method_name": "addDeployment",
+          "param_types": [
+            "AddDeploymentInput"
+          ],
+          "return_type": "Deployment",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addDeployment"
+        },
+        {
+          "id": "resolvers.deleteDeployment",
+          "class_name": "resolvers",
+          "method_name": "deleteDeployment",
+          "param_types": [
+            "DeleteDeploymentInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteDeployment"
+        },
+        {
+          "id": "resolvers.updateDeployment",
+          "class_name": "resolvers",
+          "method_name": "updateDeployment",
+          "param_types": [
+            "UpdateDeploymentInput"
+          ],
+          "return_type": "Deployment",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateDeployment"
+        },
+        {
+          "id": "resolvers.cancelDeployment",
+          "class_name": "resolvers",
+          "method_name": "cancelDeployment",
+          "param_types": [
+            "CancelDeploymentInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.cancelDeployment"
+        },
+        {
+          "id": "resolvers.bulkDeployEnvironmentLatest",
+          "class_name": "resolvers",
+          "method_name": "bulkDeployEnvironmentLatest",
+          "param_types": [
+            "BulkDeploymentLatestInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.bulkDeployEnvironmentLatest"
+        },
+        {
+          "id": "resolvers.addBackup",
+          "class_name": "resolvers",
+          "method_name": "addBackup",
+          "param_types": [
+            "AddBackupInput"
+          ],
+          "return_type": "Backup",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addBackup"
+        },
+        {
+          "id": "resolvers.deleteBackup",
+          "class_name": "resolvers",
+          "method_name": "deleteBackup",
+          "param_types": [
+            "DeleteBackupInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteBackup"
+        },
+        {
+          "id": "resolvers.addRestore",
+          "class_name": "resolvers",
+          "method_name": "addRestore",
+          "param_types": [
+            "AddRestoreInput"
+          ],
+          "return_type": "Restore",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addRestore"
+        },
+        {
+          "id": "resolvers.updateRestore",
+          "class_name": "resolvers",
+          "method_name": "updateRestore",
+          "param_types": [
+            "UpdateRestoreInput"
+          ],
+          "return_type": "Restore",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateRestore"
+        },
+        {
+          "id": "resolvers.deleteRestore",
+          "class_name": "resolvers",
+          "method_name": "deleteRestore",
+          "param_types": [
+            "DeleteRestoreInput"
+          ],
+          "return_type": "Backup",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteRestore"
+        },
+        {
+          "id": "resolvers.addEnvVariable",
+          "class_name": "resolvers",
+          "method_name": "addEnvVariable",
+          "param_types": [
+            "EnvVariableInput"
+          ],
+          "return_type": "EnvKeyValue",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addEnvVariable"
+        },
+        {
+          "id": "resolvers.deleteEnvVariable",
+          "class_name": "resolvers",
+          "method_name": "deleteEnvVariable",
+          "param_types": [
+            "DeleteEnvVariableInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteEnvVariable"
+        },
+        {
+          "id": "resolvers.addOrUpdateEnvVariableByName",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateEnvVariableByName",
+          "param_types": [
+            "EnvVariableByNameInput"
+          ],
+          "return_type": "EnvKeyValue",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateEnvVariableByName"
+        },
+        {
+          "id": "resolvers.deleteEnvVariableByName",
+          "class_name": "resolvers",
+          "method_name": "deleteEnvVariableByName",
+          "param_types": [
+            "DeleteEnvVariableByNameInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteEnvVariableByName"
+        },
+        {
+          "id": "resolvers.addTask",
+          "class_name": "resolvers",
+          "method_name": "addTask",
+          "param_types": [
+            "TaskInput"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addTask"
+        },
+        {
+          "id": "task_definition_resolvers.addAdvancedTaskDefinition",
+          "class_name": "task_definition_resolvers",
+          "method_name": "addAdvancedTaskDefinition",
+          "param_types": [
+            "AdvancedTaskDefinitionInput"
+          ],
+          "return_type": "AdvancedTaskDefinition",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addAdvancedTaskDefinition"
+        },
+        {
+          "id": "task_definition_resolvers.updateAdvancedTaskDefinition",
+          "class_name": "task_definition_resolvers",
+          "method_name": "updateAdvancedTaskDefinition",
+          "param_types": [
+            "UpdateAdvancedTaskDefinitionInput"
+          ],
+          "return_type": "AdvancedTaskDefinition",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateAdvancedTaskDefinition"
+        },
+        {
+          "id": "task_definition_resolvers.deleteAdvancedTaskDefinition",
+          "class_name": "task_definition_resolvers",
+          "method_name": "deleteAdvancedTaskDefinition",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteAdvancedTaskDefinition"
+        },
+        {
+          "id": "task_definition_resolvers.invokeRegisteredTask",
+          "class_name": "task_definition_resolvers",
+          "method_name": "invokeRegisteredTask",
+          "param_types": [
+            "Int",
+            "Int",
+            "List<AdvancedTaskDefinitionArgumentValueInput>"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.invokeRegisteredTask"
+        },
+        {
+          "id": "resolvers.taskDrushArchiveDump",
+          "class_name": "resolvers",
+          "method_name": "taskDrushArchiveDump",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushArchiveDump"
+        },
+        {
+          "id": "resolvers.taskDrushSqlDump",
+          "class_name": "resolvers",
+          "method_name": "taskDrushSqlDump",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushSqlDump"
+        },
+        {
+          "id": "resolvers.taskDrushCacheClear",
+          "class_name": "resolvers",
+          "method_name": "taskDrushCacheClear",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushCacheClear"
+        },
+        {
+          "id": "resolvers.taskDrushCron",
+          "class_name": "resolvers",
+          "method_name": "taskDrushCron",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushCron"
+        },
+        {
+          "id": "resolvers.taskDrushSqlSync",
+          "class_name": "resolvers",
+          "method_name": "taskDrushSqlSync",
+          "param_types": [
+            "Int! destinationEnvironment: Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushSqlSync"
+        },
+        {
+          "id": "resolvers.taskDrushRsyncFiles",
+          "class_name": "resolvers",
+          "method_name": "taskDrushRsyncFiles",
+          "param_types": [
+            "Int! destinationEnvironment: Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushRsyncFiles"
+        },
+        {
+          "id": "resolvers.taskDrushUserLogin",
+          "class_name": "resolvers",
+          "method_name": "taskDrushUserLogin",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.taskDrushUserLogin"
+        },
+        {
+          "id": "resolvers.deleteTask",
+          "class_name": "resolvers",
+          "method_name": "deleteTask",
+          "param_types": [
+            "DeleteTaskInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteTask"
+        },
+        {
+          "id": "resolvers.updateTask",
+          "class_name": "resolvers",
+          "method_name": "updateTask",
+          "param_types": [
+            "UpdateTaskInput"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateTask"
+        },
+        {
+          "id": "resolvers.cancelTask",
+          "class_name": "resolvers",
+          "method_name": "cancelTask",
+          "param_types": [
+            "CancelTaskInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.cancelTask"
+        },
+        {
+          "id": "resolvers.setEnvironmentServices",
+          "class_name": "resolvers",
+          "method_name": "setEnvironmentServices",
+          "param_types": [
+            "SetEnvironmentServicesInput"
+          ],
+          "return_type": "List<EnvironmentService>",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.setEnvironmentServices"
+        },
+        {
+          "id": "resolvers.uploadFilesForTask",
+          "class_name": "resolvers",
+          "method_name": "uploadFilesForTask",
+          "param_types": [
+            "UploadFilesForTaskInput"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.uploadFilesForTask"
+        },
+        {
+          "id": "resolvers.deleteFilesForTask",
+          "class_name": "resolvers",
+          "method_name": "deleteFilesForTask",
+          "param_types": [
+            "DeleteFilesForTaskInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteFilesForTask"
+        },
+        {
+          "id": "resolvers.deleteFilesForProjectClone",
+          "class_name": "resolvers",
+          "method_name": "deleteFilesForProjectClone",
+          "param_types": [
+            "DeleteFilesForProjectCloneInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteFilesForProjectClone"
+        },
+        {
+          "id": "resolvers.deployEnvironmentLatest",
+          "class_name": "resolvers",
+          "method_name": "deployEnvironmentLatest",
+          "param_types": [
+            "DeployEnvironmentLatestInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deployEnvironmentLatest"
+        },
+        {
+          "id": "resolvers.deployEnvironmentBranch",
+          "class_name": "resolvers",
+          "method_name": "deployEnvironmentBranch",
+          "param_types": [
+            "DeployEnvironmentBranchInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deployEnvironmentBranch"
+        },
+        {
+          "id": "resolvers.deployEnvironmentPullrequest",
+          "class_name": "resolvers",
+          "method_name": "deployEnvironmentPullrequest",
+          "param_types": [
+            "DeployEnvironmentPullrequestInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deployEnvironmentPullrequest"
+        },
+        {
+          "id": "resolvers.deployEnvironmentPromote",
+          "class_name": "resolvers",
+          "method_name": "deployEnvironmentPromote",
+          "param_types": [
+            "DeployEnvironmentPromoteInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deployEnvironmentPromote"
+        },
+        {
+          "id": "resolvers.switchActiveStandby",
+          "class_name": "resolvers",
+          "method_name": "switchActiveStandby",
+          "param_types": [
+            "switchActiveStandbyInput"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.switchActiveStandby"
+        },
+        {
+          "id": "resolvers.addGroup",
+          "class_name": "resolvers",
+          "method_name": "addGroup",
+          "param_types": [
+            "AddGroupInput"
+          ],
+          "return_type": "GroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addGroup"
+        },
+        {
+          "id": "resolvers.updateGroup",
+          "class_name": "resolvers",
+          "method_name": "updateGroup",
+          "param_types": [
+            "UpdateGroupInput"
+          ],
+          "return_type": "GroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateGroup"
+        },
+        {
+          "id": "resolvers.deleteGroup",
+          "class_name": "resolvers",
+          "method_name": "deleteGroup",
+          "param_types": [
+            "DeleteGroupInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteGroup"
+        },
+        {
+          "id": "resolvers.addUserToGroup",
+          "class_name": "resolvers",
+          "method_name": "addUserToGroup",
+          "param_types": [
+            "UserGroupRoleInput"
+          ],
+          "return_type": "GroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addUserToGroup"
+        },
+        {
+          "id": "resolvers.removeUserFromGroup",
+          "class_name": "resolvers",
+          "method_name": "removeUserFromGroup",
+          "param_types": [
+            "UserGroupInput"
+          ],
+          "return_type": "GroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeUserFromGroup"
+        },
+        {
+          "id": "resolvers.addGroupsToProject",
+          "class_name": "resolvers",
+          "method_name": "addGroupsToProject",
+          "param_types": [
+            "ProjectGroupsInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addGroupsToProject"
+        },
+        {
+          "id": "resolvers.removeGroupsFromProject",
+          "class_name": "resolvers",
+          "method_name": "removeGroupsFromProject",
+          "param_types": [
+            "ProjectGroupsInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeGroupsFromProject"
+        },
+        {
+          "id": "resolvers.addDeployTargetConfig",
+          "class_name": "resolvers",
+          "method_name": "addDeployTargetConfig",
+          "param_types": [
+            "AddDeployTargetConfigInput"
+          ],
+          "return_type": "DeployTargetConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addDeployTargetConfig"
+        },
+        {
+          "id": "resolvers.deleteDeployTargetConfig",
+          "class_name": "resolvers",
+          "method_name": "deleteDeployTargetConfig",
+          "param_types": [
+            "DeleteDeployTargetConfigInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteDeployTargetConfig"
+        },
+        {
+          "id": "resolvers.updateDeployTargetConfig",
+          "class_name": "resolvers",
+          "method_name": "updateDeployTargetConfig",
+          "param_types": [
+            "UpdateDeployTargetConfigInput"
+          ],
+          "return_type": "DeployTargetConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateDeployTargetConfig"
+        },
+        {
+          "id": "resolvers.addOrganization",
+          "class_name": "resolvers",
+          "method_name": "addOrganization",
+          "param_types": [
+            "AddOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrganization"
+        },
+        {
+          "id": "resolvers.updateOrganization",
+          "class_name": "resolvers",
+          "method_name": "updateOrganization",
+          "param_types": [
+            "UpdateOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateOrganization"
+        },
+        {
+          "id": "resolvers.deleteOrganization",
+          "class_name": "resolvers",
+          "method_name": "deleteOrganization",
+          "param_types": [
+            "DeleteOrganizationInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteOrganization"
+        },
+        {
+          "id": "resolvers.addGroupAddGroupToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addGroup",
+          "param_types": [
+            "AddGroupToOrganizationInput"
+          ],
+          "return_type": "OrgGroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addGroupToOrganization"
+        },
+        {
+          "id": "resolvers.addExistingGroupToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addExistingGroupToOrganization",
+          "param_types": [
+            "AddGroupToOrganizationInput"
+          ],
+          "return_type": "OrgGroupInterface",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addExistingGroupToOrganization"
+        },
+        {
+          "id": "resolvers.addExistingProjectToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addExistingProjectToOrganization",
+          "param_types": [
+            "AddProjectToOrganizationInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addExistingProjectToOrganization"
+        },
+        {
+          "id": "resolvers.removeProjectFromOrganization",
+          "class_name": "resolvers",
+          "method_name": "removeProjectFromOrganization",
+          "param_types": [
+            "RemoveProjectFromOrganizationInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeProjectFromOrganization"
+        },
+        {
+          "id": "resolvers.addDeployTargetToOrganization",
+          "class_name": "resolvers",
+          "method_name": "addDeployTargetToOrganization",
+          "param_types": [
+            "AddDeployTargetToOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addDeployTargetToOrganization"
+        },
+        {
+          "id": "resolvers.removeDeployTargetFromOrganization",
+          "class_name": "resolvers",
+          "method_name": "removeDeployTargetFromOrganization",
+          "param_types": [
+            "RemoveDeployTargetFromOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeDeployTargetFromOrganization"
+        },
+        {
+          "id": "resolvers.updateEnvironmentDeployTarget",
+          "class_name": "resolvers",
+          "method_name": "updateEnvironmentDeployTarget",
+          "param_types": [
+            "Int",
+            "Int"
+          ],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateEnvironmentDeployTarget"
+        },
+        {
+          "id": "resolvers.removeUserFromOrganizationGroups",
+          "class_name": "resolvers",
+          "method_name": "removeUserFromOrganizationGroups",
+          "param_types": [
+            "UserOrganizationInput"
+          ],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeUserFromOrganizationGroups"
+        },
+        {
+          "id": "resolvers.bulkImportProjectsAndGroupsToOrganization",
+          "class_name": "resolvers",
+          "method_name": "bulkImportProjectsAndGroupsToOrganization",
+          "param_types": [
+            "AddProjectToOrganizationInput",
+            "Boolean"
+          ],
+          "return_type": "ProjectGroupsToOrganization",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.bulkImportProjectsAndGroupsToOrganization"
+        },
+        {
+          "id": "resolvers.addOrUpdateEnvironmentService",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateEnvironmentService",
+          "param_types": [
+            "AddEnvironmentServiceInput"
+          ],
+          "return_type": "EnvironmentService",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateEnvironmentService"
+        },
+        {
+          "id": "resolvers.deleteEnvironmentService",
+          "class_name": "resolvers",
+          "method_name": "deleteEnvironmentService",
+          "param_types": [
+            "DeleteEnvironmentServiceInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteEnvironmentService"
+        },
+        {
+          "id": "resolvers.addOrUpdateEnvironmentVolume",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateEnvironmentVolume",
+          "param_types": [
+            "AddEnvironmentVolumeInput"
+          ],
+          "return_type": "EnvironmentVolume",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateEnvironmentVolume"
+        },
+        {
+          "id": "resolvers.deleteEnvironmentVolume",
+          "class_name": "resolvers",
+          "method_name": "deleteEnvironmentVolume",
+          "param_types": [
+            "DeleteEnvironmentVolumeInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteEnvironmentVolume"
+        },
+        {
+          "id": "resolvers.addPlatformRoleToUser",
+          "class_name": "resolvers",
+          "method_name": "addPlatformRoleToUser",
+          "param_types": [
+            "UserInput",
+            "PlatformRole"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addPlatformRoleToUser"
+        },
+        {
+          "id": "resolvers.removePlatformRoleFromUser",
+          "class_name": "resolvers",
+          "method_name": "removePlatformRoleFromUser",
+          "param_types": [
+            "UserInput",
+            "PlatformRole"
+          ],
+          "return_type": "User",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removePlatformRoleFromUser"
+        },
+        {
+          "id": "resolvers.createHarborRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "createHarborRetentionPolicy",
+          "param_types": [
+            "AddHarborRetentionPolicyInput"
+          ],
+          "return_type": "HarborRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.createHarborRetentionPolicy"
+        },
+        {
+          "id": "resolvers.updateHarborRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "updateHarborRetentionPolicy",
+          "param_types": [
+            "UpdateHarborRetentionPolicyInput"
+          ],
+          "return_type": "HarborRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateHarborRetentionPolicy"
+        },
+        {
+          "id": "resolvers.deleteHarborRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "deleteHarborRetentionPolicy",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteHarborRetentionPolicy"
+        },
+        {
+          "id": "resolvers.addHarborRetentionPolicyLink",
+          "class_name": "resolvers",
+          "method_name": "addHarborRetentionPolicyLink",
+          "param_types": [
+            "AddRetentionPolicyLinkInput"
+          ],
+          "return_type": "HarborRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addHarborRetentionPolicyLink"
+        },
+        {
+          "id": "resolvers.removeHarborRetentionPolicyLink",
+          "class_name": "resolvers",
+          "method_name": "removeHarborRetentionPolicyLink",
+          "param_types": [
+            "RemoveRetentionPolicyLinkInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeHarborRetentionPolicyLink"
+        },
+        {
+          "id": "resolvers.createHistoryRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "createHistoryRetentionPolicy",
+          "param_types": [
+            "AddHistoryRetentionPolicyInput"
+          ],
+          "return_type": "HistoryRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.createHistoryRetentionPolicy"
+        },
+        {
+          "id": "resolvers.updateHistoryRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "updateHistoryRetentionPolicy",
+          "param_types": [
+            "UpdateHistoryRetentionPolicyInput"
+          ],
+          "return_type": "HistoryRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateHistoryRetentionPolicy"
+        },
+        {
+          "id": "resolvers.deleteHistoryRetentionPolicy",
+          "class_name": "resolvers",
+          "method_name": "deleteHistoryRetentionPolicy",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteHistoryRetentionPolicy"
+        },
+        {
+          "id": "resolvers.addHistoryRetentionPolicyLink",
+          "class_name": "resolvers",
+          "method_name": "addHistoryRetentionPolicyLink",
+          "param_types": [
+            "AddRetentionPolicyLinkInput"
+          ],
+          "return_type": "HistoryRetentionPolicy",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addHistoryRetentionPolicyLink"
+        },
+        {
+          "id": "resolvers.removeHistoryRetentionPolicyLink",
+          "class_name": "resolvers",
+          "method_name": "removeHistoryRetentionPolicyLink",
+          "param_types": [
+            "RemoveRetentionPolicyLinkInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeHistoryRetentionPolicyLink"
+        },
+        {
+          "id": "resolvers.addRouteToProject",
+          "class_name": "resolvers",
+          "method_name": "addRouteToProject",
+          "param_types": [
+            "AddRouteToProjectInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addRouteToProject"
+        },
+        {
+          "id": "resolvers.addOrUpdateRouteOnEnvironment",
+          "class_name": "resolvers",
+          "method_name": "addOrUpdateRouteOnEnvironment",
+          "param_types": [
+            "AddOrUpdateEnvironmentRouteInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrUpdateRouteOnEnvironment"
+        },
+        {
+          "id": "resolvers.updateRouteOnProject",
+          "class_name": "resolvers",
+          "method_name": "updateRouteOnProject",
+          "param_types": [
+            "UpdateRouteInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateRouteOnProject"
+        },
+        {
+          "id": "resolvers.activeStandbyRouteMove",
+          "class_name": "resolvers",
+          "method_name": "activeStandbyRouteMove",
+          "param_types": [
+            "ActiveStandbyRouteMoveInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.activeStandbyRouteMove"
+        },
+        {
+          "id": "resolvers.removeRouteFromEnvironment",
+          "class_name": "resolvers",
+          "method_name": "removeRouteFromEnvironment",
+          "param_types": [
+            "RemoveRouteFromEnvironmentInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeRouteFromEnvironment"
+        },
+        {
+          "id": "resolvers.addRouteAlternativeDomains",
+          "class_name": "resolvers",
+          "method_name": "addRouteAlternativeDomains",
+          "param_types": [
+            "AddRouteAlternativeDomainInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addRouteAlternativeDomains"
+        },
+        {
+          "id": "resolvers.removeRouteAlternativeDomain",
+          "class_name": "resolvers",
+          "method_name": "removeRouteAlternativeDomain",
+          "param_types": [
+            "RemoveRouteAlternativeDomainInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeRouteAlternativeDomain"
+        },
+        {
+          "id": "resolvers.deleteRoute",
+          "class_name": "resolvers",
+          "method_name": "deleteRoute",
+          "param_types": [
+            "DeleteRouteInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteRoute"
+        },
+        {
+          "id": "resolvers.addRouteAnnotation",
+          "class_name": "resolvers",
+          "method_name": "addRouteAnnotation",
+          "param_types": [
+            "AddRouteAnnotationsInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addRouteAnnotation"
+        },
+        {
+          "id": "resolvers.removeRouteAnnotation",
+          "class_name": "resolvers",
+          "method_name": "removeRouteAnnotation",
+          "param_types": [
+            "RemoveRouteAnnotationInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeRouteAnnotation"
+        },
+        {
+          "id": "resolvers.addPathRoutesToRoute",
+          "class_name": "resolvers",
+          "method_name": "addPathRoutesToRoute",
+          "param_types": [
+            "AddPathRoutesInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addPathRoutesToRoute"
+        },
+        {
+          "id": "resolvers.removePathRouteFromRoute",
+          "class_name": "resolvers",
+          "method_name": "removePathRouteFromRoute",
+          "param_types": [
+            "RemovePathRoutesInput"
+          ],
+          "return_type": "Route",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removePathRouteFromRoute"
+        },
+        {
+          "id": "resolvers.updateAutogeneratedRouteConfigOnProject",
+          "class_name": "resolvers",
+          "method_name": "updateAutogeneratedRouteConfigOnProject",
+          "param_types": [
+            "UpdateProjectAutogeneratedRouteConfigInput"
+          ],
+          "return_type": "AutogeneratedRouteConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateAutogeneratedRouteConfigOnProject"
+        },
+        {
+          "id": "resolvers.updateAutogeneratedRouteConfigOnEnvironment",
+          "class_name": "resolvers",
+          "method_name": "updateAutogeneratedRouteConfigOnEnvironment",
+          "param_types": [
+            "UpdateEnvironmentAutogeneratedRouteConfigInput"
+          ],
+          "return_type": "AutogeneratedRouteConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateAutogeneratedRouteConfigOnEnvironment"
+        },
+        {
+          "id": "resolvers.removeAutogeneratedRouteConfigFromProject",
+          "class_name": "resolvers",
+          "method_name": "removeAutogeneratedRouteConfigFromProject",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeAutogeneratedRouteConfigFromProject"
+        },
+        {
+          "id": "resolvers.removeAutogeneratedRouteConfigFromEnvironment",
+          "class_name": "resolvers",
+          "method_name": "removeAutogeneratedRouteConfigFromEnvironment",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeAutogeneratedRouteConfigFromEnvironment"
+        },
+        {
+          "id": "resolvers.idleOrUnidleEnvironment",
+          "class_name": "resolvers",
+          "method_name": "idleOrUnidleEnvironment",
+          "param_types": [
+            "IdleEnvironmentInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.idleOrUnidleEnvironment"
+        },
+        {
+          "id": "resolvers.stopOrStartEnvironmentService",
+          "class_name": "resolvers",
+          "method_name": "stopOrStartEnvironmentService",
+          "param_types": [
+            "EnvironmentServiceActionInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.stopOrStartEnvironmentService"
+        },
+        {
+          "id": "resolvers.cloneProject",
+          "class_name": "resolvers",
+          "method_name": "cloneProject",
+          "param_types": [
+            "CloneProjectInput"
+          ],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.cloneProject"
+        },
+        {
+          "id": "resolvers.updateProjectClone",
+          "class_name": "resolvers",
+          "method_name": "updateProjectClone",
+          "param_types": [
+            "UpdateProjectCloneInput"
+          ],
+          "return_type": "ProjectClone",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateProjectClone"
+        },
+        {
+          "id": "resolvers.executeCloneRestoreTask",
+          "class_name": "resolvers",
+          "method_name": "executeCloneRestoreTask",
+          "param_types": [
+            "ExecuteCloneRestoreTaskInput"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.executeCloneRestoreTask"
+        },
+        {
+          "id": "resolvers.executeCloneDeployment",
+          "class_name": "resolvers",
+          "method_name": "executeCloneDeployment",
+          "param_types": [
+            "ExecuteCloneDeploymentInput"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.executeCloneDeployment"
+        },
+        {
+          "id": "resolvers.copyProjectGroups",
+          "class_name": "resolvers",
+          "method_name": "copyProjectGroups",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.copyProjectGroups"
+        },
+        {
+          "id": "resolvers.copyProjectNotifications",
+          "class_name": "resolvers",
+          "method_name": "copyProjectNotifications",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.copyProjectNotifications"
+        },
+        {
+          "id": "resolvers.copyProjectMetadata",
+          "class_name": "resolvers",
+          "method_name": "copyProjectMetadata",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.copyProjectMetadata"
+        },
+        {
+          "id": "resolvers.copyProjectVariables",
+          "class_name": "resolvers",
+          "method_name": "copyProjectVariables",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.copyProjectVariables"
+        },
+        {
+          "id": "resolvers.copyEnvironmentVariables",
+          "class_name": "resolvers",
+          "method_name": "copyEnvironmentVariables",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.copyEnvironmentVariables"
+        },
+        {
+          "id": "resolvers.addOrganizationKey",
+          "class_name": "resolvers",
+          "method_name": "addOrganizationKey",
+          "param_types": [
+            "AddOrganizationKeyInput"
+          ],
+          "return_type": "OrganizationKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrganizationKey"
+        },
+        {
+          "id": "resolvers.updateOrganizationKey",
+          "class_name": "resolvers",
+          "method_name": "updateOrganizationKey",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "OrganizationKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.updateOrganizationKey"
+        },
+        {
+          "id": "resolvers.deleteOrganizationKey",
+          "class_name": "resolvers",
+          "method_name": "deleteOrganizationKey",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.deleteOrganizationKey"
+        },
+        {
+          "id": "resolvers.addOrganizationKeyToProject",
+          "class_name": "resolvers",
+          "method_name": "addOrganizationKeyToProject",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "OrganizationKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.addOrganizationKeyToProject"
+        },
+        {
+          "id": "resolvers.removeOrganizationKeyFromProject",
+          "class_name": "resolvers",
+          "method_name": "removeOrganizationKeyFromProject",
+          "param_types": [
+            "Int",
+            "String"
+          ],
+          "return_type": "OrganizationKey",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.removeOrganizationKeyFromProject"
+        },
+        {
+          "id": "resolvers.cancelProjectClone",
+          "class_name": "resolvers",
+          "method_name": "cancelProjectClone",
+          "param_types": [
+            "CancelProjectCloneInput"
+          ],
+          "return_type": "ProjectClone",
+          "protocol": "GraphQL",
+          "endpoint": "Mutation.cancelProjectClone"
+        },
+        {
+          "id": "resolvers.backupSubscriber",
+          "class_name": "resolvers",
+          "method_name": "backupSubscriber",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Backup",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.backupChanged"
+        },
+        {
+          "id": "resolvers.deploymentSubscriber",
+          "class_name": "resolvers",
+          "method_name": "deploymentSubscriber",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Deployment",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.deploymentChanged"
+        },
+        {
+          "id": "resolvers.taskSubscriber",
+          "class_name": "resolvers",
+          "method_name": "taskSubscriber",
+          "param_types": [
+            "Int"
+          ],
+          "return_type": "Task",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.taskChanged"
+        },
+        {
+          "id": "resolvers.projectCloneSubscriber",
+          "class_name": "resolvers",
+          "method_name": "projectCloneSubscriber",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ProjectClone",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.projectCloneChanged"
+        },
+        {
+          "id": "resolvers.organizationProjectSubscriber",
+          "class_name": "resolvers",
+          "method_name": "organizationProjectSubscriber",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "OrgProject",
+          "protocol": "GraphQL",
+          "endpoint": "Subscription.organizationProjectChanged"
+        },
+        {
+          "id": "resolvers.getProjectUser",
+          "class_name": "resolvers",
+          "method_name": "getProjectUser",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Openshift.projectUser"
+        },
+        {
+          "id": "resolvers.getToken",
+          "class_name": "resolvers",
+          "method_name": "getToken",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Openshift.token"
+        },
+        {
+          "id": "resolvers.getConsoleUrl",
+          "class_name": "resolvers",
+          "method_name": "getConsoleUrl",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Openshift.consoleUrl"
+        },
+        {
+          "id": "resolvers.getMonitoringConfig",
+          "class_name": "resolvers",
+          "method_name": "getMonitoringConfig",
+          "param_types": [],
+          "return_type": "JSON",
+          "protocol": "GraphQL",
+          "endpoint": "Openshift.monitoringConfig"
+        },
+        {
+          "id": "resolvers.getProjectUserKubernetesProjectUser",
+          "class_name": "resolvers",
+          "method_name": "getProjectUser",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Kubernetes.projectUser"
+        },
+        {
+          "id": "resolvers.getTokenKubernetesToken",
+          "class_name": "resolvers",
+          "method_name": "getToken",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Kubernetes.token"
+        },
+        {
+          "id": "resolvers.getConsoleUrlKubernetesConsoleUrl",
+          "class_name": "resolvers",
+          "method_name": "getConsoleUrl",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Kubernetes.consoleUrl"
+        },
+        {
+          "id": "resolvers.getMonitoringConfigKubernetesMonitoringConfig",
+          "class_name": "resolvers",
+          "method_name": "getMonitoringConfig",
+          "param_types": [],
+          "return_type": "JSON",
+          "protocol": "GraphQL",
+          "endpoint": "Kubernetes.monitoringConfig"
+        },
+        {
+          "id": "resolvers.getNotificationsByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getNotificationsByProjectId",
+          "param_types": [
+            "NotificationType",
+            "NotificationContentType",
+            "ProblemSeverityRating"
+          ],
+          "return_type": "List<Notification>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.notifications"
+        },
+        {
+          "id": "resolvers.getOpenshiftByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByProjectId",
+          "param_types": [],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "Project.openshift"
+        },
+        {
+          "id": "resolvers.getOpenshiftByProjectIdProjectKubernetes",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByProjectId",
+          "param_types": [],
+          "return_type": "Kubernetes",
+          "protocol": "GraphQL",
+          "endpoint": "Project.kubernetes"
+        },
+        {
+          "id": "resolvers.getEnvironmentsByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentsByProjectId",
+          "param_types": [
+            "EnvType  includeDeleted: Boolean  factFilter: FactFilterInput"
+          ],
+          "return_type": "List<Environment>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.environments"
+        },
+        {
+          "id": "resolvers.getDeployTargetConfigsByProjectIdProjectDeployTargetConfigs",
+          "class_name": "resolvers",
+          "method_name": "getDeployTargetConfigsByProjectId",
+          "param_types": [],
+          "return_type": "List<DeployTargetConfig>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.deployTargetConfigs"
+        },
+        {
+          "id": "resolvers.getEnvVarsByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getEnvVarsByProjectId",
+          "param_types": [],
+          "return_type": "List<EnvKeyValue>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.envVariables"
+        },
+        {
+          "id": "resolvers.getGroupsByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getGroupsByProjectId",
+          "param_types": [],
+          "return_type": "List<GroupInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.groups"
+        },
+        {
+          "id": "resolvers.getPrivateKey",
+          "class_name": "resolvers",
+          "method_name": "getPrivateKey",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Project.privateKey"
+        },
+        {
+          "id": "resolvers.getProjectDeployKey",
+          "class_name": "resolvers",
+          "method_name": "getProjectDeployKey",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Project.publicKey"
+        },
+        {
+          "id": "resolvers.getOrganizationByProject",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationByProject",
+          "param_types": [],
+          "return_type": "Organization",
+          "protocol": "GraphQL",
+          "endpoint": "Project.organizationDetails"
+        },
+        {
+          "id": "resolvers.getRetentionPoliciesByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getRetentionPoliciesByProjectId",
+          "param_types": [
+            "RetentionPolicyType"
+          ],
+          "return_type": "List<RetentionPolicy>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.retentionPolicies"
+        },
+        {
+          "id": "resolvers.getRoutesByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getRoutesByProjectId",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Route>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.apiRoutes"
+        },
+        {
+          "id": "resolvers.getAutogeneratedRouteConfigByProjectId",
+          "class_name": "resolvers",
+          "method_name": "getAutogeneratedRouteConfigByProjectId",
+          "param_types": [],
+          "return_type": "AutogeneratedRouteConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Project.autogeneratedRouteConfig"
+        },
+        {
+          "id": "resolvers.getFeatureApiRoutes",
+          "class_name": "resolvers",
+          "method_name": "getFeatureApiRoutes",
+          "param_types": [],
+          "return_type": "Boolean",
+          "protocol": "GraphQL",
+          "endpoint": "Project.featureApiRoutes"
+        },
+        {
+          "id": "resolvers.getProjectCloneByProject",
+          "class_name": "resolvers",
+          "method_name": "getProjectCloneByProject",
+          "param_types": [],
+          "return_type": "ProjectClone",
+          "protocol": "GraphQL",
+          "endpoint": "Project.clone"
+        },
+        {
+          "id": "resolvers.getRestrictionsByProject",
+          "class_name": "resolvers",
+          "method_name": "getRestrictionsByProject",
+          "param_types": [],
+          "return_type": "List<Restriction>",
+          "protocol": "GraphQL",
+          "endpoint": "Project.restrictions"
+        },
+        {
+          "id": "resolvers.getSourceProjectForCloneProject",
+          "class_name": "resolvers",
+          "method_name": "getSourceProjectForCloneProject",
+          "param_types": [],
+          "return_type": "ProjectCloneSource",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectClone.sourceProject"
+        },
+        {
+          "id": "resolvers.getDestinationProjectForCloneProject",
+          "class_name": "resolvers",
+          "method_name": "getDestinationProjectForCloneProject",
+          "param_types": [],
+          "return_type": "ProjectCloneDestination",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectClone.destinationProject"
+        },
+        {
+          "id": "resolvers.getFilesByProjectCloneId",
+          "class_name": "resolvers",
+          "method_name": "getFilesByProjectCloneId",
+          "param_types": [],
+          "return_type": "List<File>",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectClone.files"
+        },
+        {
+          "id": "resolvers.getTasksBySourceProjectForCloneProjectId",
+          "class_name": "resolvers",
+          "method_name": "getTasksBySourceProjectForCloneProjectId",
+          "param_types": [],
+          "return_type": "List<Task>",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectCloneSource.tasks"
+        },
+        {
+          "id": "resolvers.getDeploymentsByDestinationProjectForCloneProjectId",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentsByDestinationProjectForCloneProjectId",
+          "param_types": [],
+          "return_type": "List<Deployment>",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectCloneDestination.deployments"
+        },
+        {
+          "id": "resolvers.getTasksByDestinationProjectForCloneProjectId",
+          "class_name": "resolvers",
+          "method_name": "getTasksByDestinationProjectForCloneProjectId",
+          "param_types": [],
+          "return_type": "List<Task>",
+          "protocol": "GraphQL",
+          "endpoint": "ProjectCloneDestination.tasks"
+        },
+        {
+          "id": "resolvers.getAutogeneratedRoutePrefixes",
+          "class_name": "resolvers",
+          "method_name": "getAutogeneratedRoutePrefixes",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "GraphQL",
+          "endpoint": "AutogeneratedRouteConfig.prefixes"
+        },
+        {
+          "id": "resolvers.getAutogeneratedPathRoutes",
+          "class_name": "resolvers",
+          "method_name": "getAutogeneratedPathRoutes",
+          "param_types": [],
+          "return_type": "List<AutogeneratedPathRoute>",
+          "protocol": "GraphQL",
+          "endpoint": "AutogeneratedRouteConfig.pathRoutes"
+        },
+        {
+          "id": "resolvers.getAllProjectsByGroupId",
+          "class_name": "resolvers",
+          "method_name": "getAllProjectsByGroupId",
+          "param_types": [],
+          "return_type": "List<Project>",
+          "protocol": "GraphQL",
+          "endpoint": "Group.projects"
+        },
+        {
+          "id": "resolvers.getMembersByGroupId",
+          "class_name": "resolvers",
+          "method_name": "getMembersByGroupId",
+          "param_types": [],
+          "return_type": "List<GroupMembership>",
+          "protocol": "GraphQL",
+          "endpoint": "Group.members"
+        },
+        {
+          "id": "resolvers.getMemberCountByGroupId",
+          "class_name": "resolvers",
+          "method_name": "getMemberCountByGroupId",
+          "param_types": [],
+          "return_type": "Int",
+          "protocol": "GraphQL",
+          "endpoint": "Group.memberCount"
+        },
+        {
+          "id": "resolvers.getAllProjectsByGroupIdOrgGroupProjects",
+          "class_name": "resolvers",
+          "method_name": "getAllProjectsByGroupId",
+          "param_types": [],
+          "return_type": "List<OrgProject>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgGroup.projects"
+        },
+        {
+          "id": "resolvers.getMembersByGroupIdOrgGroupMembers",
+          "class_name": "resolvers",
+          "method_name": "getMembersByGroupId",
+          "param_types": [],
+          "return_type": "List<GroupMembership>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgGroup.members"
+        },
+        {
+          "id": "resolvers.getMemberCountByGroupIdOrgGroupMemberCount",
+          "class_name": "resolvers",
+          "method_name": "getMemberCountByGroupId",
+          "param_types": [],
+          "return_type": "Int",
+          "protocol": "GraphQL",
+          "endpoint": "OrgGroup.memberCount"
+        },
+        {
+          "id": "resolvers.getProjectById",
+          "class_name": "resolvers",
+          "method_name": "getProjectById",
+          "param_types": [],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "DeployTargetConfig.project"
+        },
+        {
+          "id": "resolvers.getOpenshiftByDeployTargetId",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByDeployTargetId",
+          "param_types": [],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "DeployTargetConfig.deployTarget"
+        },
+        {
+          "id": "resolvers.getProjectByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getProjectByEnvironmentId",
+          "param_types": [],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.project"
+        },
+        {
+          "id": "resolvers.getDeploymentsByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentsByEnvironmentId",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "List<Deployment>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.deployments"
+        },
+        {
+          "id": "resolvers.getInsightsFilesByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getInsightsFilesByEnvironmentId",
+          "param_types": [
+            "String",
+            "Int"
+          ],
+          "return_type": "List<Insight>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.insights"
+        },
+        {
+          "id": "resolvers.getTasksByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getTasksByEnvironmentId",
+          "param_types": [
+            "Int",
+            "String",
+            "Int"
+          ],
+          "return_type": "List<Task>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.tasks"
+        },
+        {
+          "id": "task_definition_resolvers.getRegisteredTasksByEnvironmentId",
+          "class_name": "task_definition_resolvers",
+          "method_name": "getRegisteredTasksByEnvironmentId",
+          "param_types": [],
+          "return_type": "List<AdvancedTaskDefinition>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.advancedTasks"
+        },
+        {
+          "id": "resolvers.getEnvironmentHoursMonthByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentHoursMonthByEnvironmentId",
+          "param_types": [
+            "Date"
+          ],
+          "return_type": "EnvironmentHoursMonth",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.hoursMonth"
+        },
+        {
+          "id": "resolvers.getEnvironmentStorageByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentStorageByEnvironmentId",
+          "param_types": [
+            "Date",
+            "Date",
+            "Int",
+            "String"
+          ],
+          "return_type": "List<EnvironmentStorage>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.storages"
+        },
+        {
+          "id": "resolvers.getEnvironmentStorageMonthByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentStorageMonthByEnvironmentId",
+          "param_types": [
+            "Date"
+          ],
+          "return_type": "EnvironmentStorageMonth",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.storageMonth"
+        },
+        {
+          "id": "resolvers.getEnvironmentHitsMonthByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentHitsMonthByEnvironmentId",
+          "param_types": [
+            "Date"
+          ],
+          "return_type": "EnvironmentHitsMonth",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.hitsMonth"
+        },
+        {
+          "id": "resolvers.getBackupsByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getBackupsByEnvironmentId",
+          "param_types": [
+            "Boolean",
+            "Int"
+          ],
+          "return_type": "List<Backup>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.backups"
+        },
+        {
+          "id": "resolvers.getEnvVarsByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvVarsByEnvironmentId",
+          "param_types": [],
+          "return_type": "List<EnvKeyValue>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.envVariables"
+        },
+        {
+          "id": "resolvers.getEnvironmentServicesByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentServicesByEnvironmentId",
+          "param_types": [],
+          "return_type": "List<EnvironmentService>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.services"
+        },
+        {
+          "id": "resolvers.getEnvironmentVolumesByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentVolumesByEnvironmentId",
+          "param_types": [],
+          "return_type": "List<EnvironmentVolume>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.volumes"
+        },
+        {
+          "id": "resolvers.getProblemsByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getProblemsByEnvironmentId",
+          "param_types": [
+            "List<ProblemSeverityRating>",
+            "List<String>"
+          ],
+          "return_type": "List<Problem>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.problems"
+        },
+        {
+          "id": "resolvers.getFactsByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getFactsByEnvironmentId",
+          "param_types": [
+            "Boolean",
+            "Int",
+            "Boolean"
+          ],
+          "return_type": "List<Fact>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.facts"
+        },
+        {
+          "id": "resolvers.getOpenshiftByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByEnvironmentId",
+          "param_types": [],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.openshift"
+        },
+        {
+          "id": "resolvers.getOpenshiftByEnvironmentIdEnvironmentKubernetes",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByEnvironmentId",
+          "param_types": [],
+          "return_type": "Kubernetes",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.kubernetes"
+        },
+        {
+          "id": "environment_redeploy.getPendingChangesByEnvironmentId",
+          "class_name": "environment_redeploy",
+          "method_name": "getPendingChangesByEnvironmentId",
+          "param_types": [],
+          "return_type": "List<EnvironmentPendingChanges>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.pendingChanges"
+        },
+        {
+          "id": "resolvers.getRoutesByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getRoutesByEnvironmentId",
+          "param_types": [
+            "String",
+            "RouteSource"
+          ],
+          "return_type": "List<Route>",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.apiRoutes"
+        },
+        {
+          "id": "resolvers.getAutogeneratedRouteConfigByEnvironmentId",
+          "class_name": "resolvers",
+          "method_name": "getAutogeneratedRouteConfigByEnvironmentId",
+          "param_types": [],
+          "return_type": "AutogeneratedRouteConfig",
+          "protocol": "GraphQL",
+          "endpoint": "Environment.autogeneratedRouteConfig"
+        },
+        {
+          "id": "resolvers.getBytesUsed",
+          "class_name": "resolvers",
+          "method_name": "getBytesUsed",
+          "param_types": [],
+          "return_type": "Float",
+          "protocol": "GraphQL",
+          "endpoint": "EnvironmentStorage.bytesUsed"
+        },
+        {
+          "id": "resolvers.getEnvironmentByIdEnvironmentStorageEnvironment",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentById",
+          "param_types": [],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "EnvironmentStorage.environment"
+        },
+        {
+          "id": "resolvers.getBytesUsedEnvironmentStorageMonthBytesUsed",
+          "class_name": "resolvers",
+          "method_name": "getBytesUsed",
+          "param_types": [],
+          "return_type": "Float",
+          "protocol": "GraphQL",
+          "endpoint": "EnvironmentStorageMonth.bytesUsed"
+        },
+        {
+          "id": "resolvers.getAlternateRoutesByRouteId",
+          "class_name": "resolvers",
+          "method_name": "getAlternateRoutesByRouteId",
+          "param_types": [],
+          "return_type": "List<AlternativeName>",
+          "protocol": "GraphQL",
+          "endpoint": "Route.alternativeNames"
+        },
+        {
+          "id": "resolvers.getRouteAnnotationsByRouteId",
+          "class_name": "resolvers",
+          "method_name": "getRouteAnnotationsByRouteId",
+          "param_types": [],
+          "return_type": "List<RouteAnnotation>",
+          "protocol": "GraphQL",
+          "endpoint": "Route.annotations"
+        },
+        {
+          "id": "resolvers.getPathRoutesByRouteId",
+          "class_name": "resolvers",
+          "method_name": "getPathRoutesByRouteId",
+          "param_types": [],
+          "return_type": "List<PathRoute>",
+          "protocol": "GraphQL",
+          "endpoint": "Route.pathRoutes"
+        },
+        {
+          "id": "resolvers.getEnvironmentByIdRouteEnvironment",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentById",
+          "param_types": [],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Route.environment"
+        },
+        {
+          "id": "resolvers.getProjectByIdRouteProject",
+          "class_name": "resolvers",
+          "method_name": "getProjectById",
+          "param_types": [],
+          "return_type": "Project",
+          "protocol": "GraphQL",
+          "endpoint": "Route.project"
+        },
+        {
+          "id": "resolvers.getGroupsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getGroupsByOrganizationId",
+          "param_types": [],
+          "return_type": "List<OrgGroupInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.groups"
+        },
+        {
+          "id": "resolvers.getProjectsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getProjectsByOrganizationId",
+          "param_types": [],
+          "return_type": "List<OrgProject>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.projects"
+        },
+        {
+          "id": "resolvers.getEnvironmentsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentsByOrganizationId",
+          "param_types": [],
+          "return_type": "List<OrgEnvironment>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.environments"
+        },
+        {
+          "id": "resolvers.getOwnersByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getOwnersByOrganizationId",
+          "param_types": [],
+          "return_type": "List<OrgUser>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.owners"
+        },
+        {
+          "id": "resolvers.getDeployTargetsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getDeployTargetsByOrganizationId",
+          "param_types": [],
+          "return_type": "List<Openshift>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.deployTargets"
+        },
+        {
+          "id": "resolvers.getNotificationsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getNotificationsByOrganizationId",
+          "param_types": [
+            "NotificationType"
+          ],
+          "return_type": "List<Notification>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.notifications"
+        },
+        {
+          "id": "resolvers.getEnvVarsByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getEnvVarsByOrganizationId",
+          "param_types": [],
+          "return_type": "List<EnvKeyValue>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.envVariables"
+        },
+        {
+          "id": "resolvers.getRetentionPoliciesByOrganizationId",
+          "class_name": "resolvers",
+          "method_name": "getRetentionPoliciesByOrganizationId",
+          "param_types": [
+            "RetentionPolicyType"
+          ],
+          "return_type": "List<RetentionPolicy>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.retentionPolicies"
+        },
+        {
+          "id": "resolvers.getOrganizationKeys",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationKeys",
+          "param_types": [],
+          "return_type": "List<OrganizationKey>",
+          "protocol": "GraphQL",
+          "endpoint": "Organization.keys"
+        },
+        {
+          "id": "resolvers.getOrganizationKeyPublicKey",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationKeyPublicKey",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "OrganizationKey.publicKey"
+        },
+        {
+          "id": "resolvers.getOrganizationKeyPrivateKey",
+          "class_name": "resolvers",
+          "method_name": "getOrganizationKeyPrivateKey",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "OrganizationKey.privateKey"
+        },
+        {
+          "id": "resolvers.getProjectsByOrganizationKey",
+          "class_name": "resolvers",
+          "method_name": "getProjectsByOrganizationKey",
+          "param_types": [],
+          "return_type": "List<OrgProject>",
+          "protocol": "GraphQL",
+          "endpoint": "OrganizationKey.projects"
+        },
+        {
+          "id": "resolvers.getGroupsByOrganizationsProject",
+          "class_name": "resolvers",
+          "method_name": "getGroupsByOrganizationsProject",
+          "param_types": [],
+          "return_type": "List<OrgGroupInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.groups"
+        },
+        {
+          "id": "resolvers.getGroupCountByOrganizationProject",
+          "class_name": "resolvers",
+          "method_name": "getGroupCountByOrganizationProject",
+          "param_types": [],
+          "return_type": "Int",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.groupCount"
+        },
+        {
+          "id": "resolvers.getNotificationsForOrganizationProjectId",
+          "class_name": "resolvers",
+          "method_name": "getNotificationsForOrganizationProjectId",
+          "param_types": [],
+          "return_type": "List<OrganizationNotification>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.notifications"
+        },
+        {
+          "id": "resolvers.getRetentionPoliciesByProjectIdOrgProjectRetentionPolicies",
+          "class_name": "resolvers",
+          "method_name": "getRetentionPoliciesByProjectId",
+          "param_types": [
+            "RetentionPolicyType"
+          ],
+          "return_type": "List<RetentionPolicy>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.retentionPolicies"
+        },
+        {
+          "id": "resolvers.getProjectCloneByProjectOrgProjectClone",
+          "class_name": "resolvers",
+          "method_name": "getProjectCloneByProject",
+          "param_types": [],
+          "return_type": "ProjectClone",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.clone"
+        },
+        {
+          "id": "resolvers.getRestrictionsByProjectOrgProjectRestrictions",
+          "class_name": "resolvers",
+          "method_name": "getRestrictionsByProject",
+          "param_types": [],
+          "return_type": "List<Restriction>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.restrictions"
+        },
+        {
+          "id": "resolvers.getEnvironmentsByProjectIdOrgProjectEnvironments",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentsByProjectId",
+          "param_types": [
+            "EnvType  includeDeleted: Boolean  factFilter: FactFilterInput"
+          ],
+          "return_type": "List<OrgEnvironment>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgProject.environments"
+        },
+        {
+          "id": "resolvers.getProjectByIdOrgEnvironmentProject",
+          "class_name": "resolvers",
+          "method_name": "getProjectById",
+          "param_types": [],
+          "return_type": "OrgProject",
+          "protocol": "GraphQL",
+          "endpoint": "OrgEnvironment.project"
+        },
+        {
+          "id": "resolvers.getOpenshiftByEnvironmentIdOrgEnvironmentOpenshift",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByEnvironmentId",
+          "param_types": [],
+          "return_type": "Openshift",
+          "protocol": "GraphQL",
+          "endpoint": "OrgEnvironment.openshift"
+        },
+        {
+          "id": "resolvers.getOpenshiftByEnvironmentIdOrgEnvironmentKubernetes",
+          "class_name": "resolvers",
+          "method_name": "getOpenshiftByEnvironmentId",
+          "param_types": [],
+          "return_type": "Kubernetes",
+          "protocol": "GraphQL",
+          "endpoint": "OrgEnvironment.kubernetes"
+        },
+        {
+          "id": "resolvers.getFactReferencesByFactId",
+          "class_name": "resolvers",
+          "method_name": "getFactReferencesByFactId",
+          "param_types": [],
+          "return_type": "List<FactReference>",
+          "protocol": "GraphQL",
+          "endpoint": "Fact.references"
+        },
+        {
+          "id": "resolvers.getServiceContainersByServiceId",
+          "class_name": "resolvers",
+          "method_name": "getServiceContainersByServiceId",
+          "param_types": [],
+          "return_type": "List<ServiceContainer>",
+          "protocol": "GraphQL",
+          "endpoint": "EnvironmentService.containers"
+        },
+        {
+          "id": "resolvers.getEnvironmentVolumeSizeByName",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentVolumeSizeByName",
+          "param_types": [],
+          "return_type": "Float",
+          "protocol": "GraphQL",
+          "endpoint": "EnvironmentVolume.kibUsed"
+        },
+        {
+          "id": "resolvers.getServiceVolumemountsByServiceId",
+          "class_name": "resolvers",
+          "method_name": "getServiceVolumemountsByServiceId",
+          "param_types": [],
+          "return_type": "List<ServiceVolumeMount>",
+          "protocol": "GraphQL",
+          "endpoint": "ServiceContainer.volumemounts"
+        },
+        {
+          "id": "resolvers.getServiceContainerportsByServiceId",
+          "class_name": "resolvers",
+          "method_name": "getServiceContainerportsByServiceId",
+          "param_types": [],
+          "return_type": "List<ServiceContainerPort>",
+          "protocol": "GraphQL",
+          "endpoint": "ServiceContainer.ports"
+        },
+        {
+          "id": "resolvers.getEnvironmentVolumeByName",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentVolumeByName",
+          "param_types": [],
+          "return_type": "EnvironmentVolume",
+          "protocol": "GraphQL",
+          "endpoint": "ServiceVolumeMount.volume"
+        },
+        {
+          "id": "resolvers.getEnvironmentByDeploymentId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentByDeploymentId",
+          "param_types": [],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Deployment.environment"
+        },
+        {
+          "id": "resolvers.getDeploymentUrl",
+          "class_name": "resolvers",
+          "method_name": "getDeploymentUrl",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Deployment.uiLink"
+        },
+        {
+          "id": "resolvers.getBuildLog",
+          "class_name": "resolvers",
+          "method_name": "getBuildLog",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Deployment.buildLog"
+        },
+        {
+          "id": "resolvers.getInsightsFileData",
+          "class_name": "resolvers",
+          "method_name": "getInsightsFileData",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Insight.data"
+        },
+        {
+          "id": "resolvers.getInsightsDownloadUrl",
+          "class_name": "resolvers",
+          "method_name": "getInsightsDownloadUrl",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "GraphQL",
+          "endpoint": "Insight.downloadUrl"
+        },
+        {
+          "id": "resolvers.getEnvironmentByTaskId",
+          "class_name": "resolvers",
+          "method_name": "getEnvironmentByTaskId",
+          "param_types": [],
+          "return_type": "Environment",
+          "protocol": "GraphQL",
+          "endpoint": "Task.environment"
+        },
+        {
+          "id": "resolvers.getFilesByTaskId",
+          "class_name": "resolvers",
+          "method_name": "getFilesByTaskId",
+          "param_types": [],
+          "return_type": "List<File>",
+          "protocol": "GraphQL",
+          "endpoint": "Task.files"
+        },
+        {
+          "id": "resolvers.getUser2fa",
+          "class_name": "resolvers",
+          "method_name": "getUser2fa",
+          "param_types": [],
+          "return_type": "Boolean",
+          "protocol": "GraphQL",
+          "endpoint": "User.has2faEnabled"
+        },
+        {
+          "id": "resolvers.getUserSshKeys",
+          "class_name": "resolvers",
+          "method_name": "getUserSshKeys",
+          "param_types": [],
+          "return_type": "List<SshKey>",
+          "protocol": "GraphQL",
+          "endpoint": "User.sshKeys"
+        },
+        {
+          "id": "resolvers.getGroupsByUserId",
+          "class_name": "resolvers",
+          "method_name": "getGroupsByUserId",
+          "param_types": [],
+          "return_type": "List<GroupInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "User.groups"
+        },
+        {
+          "id": "resolvers.getGroupRolesByUserId",
+          "class_name": "resolvers",
+          "method_name": "getGroupRolesByUserId",
+          "param_types": [],
+          "return_type": "List<GroupRoleInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "User.groupRoles"
+        },
+        {
+          "id": "resolvers.getUser2faOrgUserHas2faEnabled",
+          "class_name": "resolvers",
+          "method_name": "getUser2fa",
+          "param_types": [],
+          "return_type": "Boolean",
+          "protocol": "GraphQL",
+          "endpoint": "OrgUser.has2faEnabled"
+        },
+        {
+          "id": "resolvers.getGroupRolesByUserIdAndOrganization",
+          "class_name": "resolvers",
+          "method_name": "getGroupRolesByUserIdAndOrganization",
+          "param_types": [],
+          "return_type": "List<GroupRoleInterface>",
+          "protocol": "GraphQL",
+          "endpoint": "OrgUser.groupRoles"
+        },
+        {
+          "id": "resolvers.getRestoreByBackupId",
+          "class_name": "resolvers",
+          "method_name": "getRestoreByBackupId",
+          "param_types": [],
+          "return_type": "Restore",
+          "protocol": "GraphQL",
+          "endpoint": "Backup.restore"
+        },
+        {
+          "id": "keys.keysRoute",
+          "class_name": "keys",
+          "method_name": "keysRoute",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /keys"
+        },
+        {
+          "id": "well-known.wellKnown",
+          "class_name": "well-known",
+          "method_name": "wellKnown",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /.well-known/appspecific/sh.lagoon.discovery.json"
+        }
+      ]
+    },
+    "api-sidecar-handler": {
+      "exposed_interfaces": [
+        {
+          "id": "server.validatePublicKey",
+          "class_name": "server",
+          "method_name": "validatePublicKey",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ParsedPublicKeyResponse",
+          "protocol": "REST",
+          "endpoint": "POST /validate/public"
+        },
+        {
+          "id": "server.validatePrivateKey",
+          "class_name": "server",
+          "method_name": "validatePrivateKey",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ParsedPrivateKeyResponse",
+          "protocol": "REST",
+          "endpoint": "POST /validate/private"
+        },
+        {
+          "id": "server.generateED25519Key",
+          "class_name": "server",
+          "method_name": "generateED25519Key",
+          "param_types": [],
+          "return_type": "ParsedPrivateKeyResponse",
+          "protocol": "REST",
+          "endpoint": "GET /generate/ed25519"
+        },
+        {
+          "id": "Server.deployEnvironment",
+          "class_name": "server.Server",
+          "method_name": "deployEnvironment",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /environment/deploy"
+        },
+        {
+          "id": "Server.removeEnvironment",
+          "class_name": "server.Server",
+          "method_name": "removeEnvironment",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /environment/remove"
+        },
+        {
+          "id": "Server.getRouterPatternAndVariables",
+          "class_name": "server.Server",
+          "method_name": "getRouterPatternAndVariables",
+          "param_types": [
+            "int",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "RouterPatternAndVariablesResponse",
+          "protocol": "REST",
+          "endpoint": "POST /environment/routerpatternvariables"
+        }
+      ]
+    },
+    "ssh": {
+      "exposed_interfaces": []
+    },
+    "logs2notifications": {
+      "exposed_interfaces": [
+        {
+          "id": "Messaging.Consumer",
+          "class_name": "handler.Messaging",
+          "method_name": "Consumer",
+          "param_types": [
+            "Notification"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "lagoon-logs:notifications"
+        }
+      ]
+    },
+    "keycloak": {
+      "exposed_interfaces": []
+    },
+    "actions-handler": {
+      "exposed_interfaces": [
+        {
+          "id": "Messenger.ConsumerActions",
+          "class_name": "handler.Messenger",
+          "method_name": "Consumer",
+          "param_types": [
+            "Action"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "lagoon-actions:items"
+        },
+        {
+          "id": "Messenger.ConsumerController",
+          "class_name": "handler.Messenger",
+          "method_name": "Consumer",
+          "param_types": [
+            "LagoonMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "lagoon-tasks:controller"
+        }
+      ]
+    },
+    "backup-handler": {
+      "exposed_interfaces": [
+        {
+          "id": "BackupHandler.WebhookHandler",
+          "class_name": "handler.BackupHandler",
+          "method_name": "WebhookHandler",
+          "param_types": [
+            "Backups"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentLatest",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.deployEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:934 3333/environment/deploy"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployBranch",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.deployEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1092 3333/environment/deploy"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentPullrequest",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.deployEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1257 3333/environment/deploy"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentPromote",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.deployEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1432 3333/environment/deploy"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deleteEnvironment",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.removeEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/environment/resolvers.ts:758 3333/environment/remove"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "cancelProjectClone",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.removeEnvironment",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/project/resolvers.ts:1801 3333/environment/remove"
+    },
+    {
+      "src_service": "api",
+      "src_class": "Helpers",
+      "src_method": "addTask",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.getRouterPatternAndVariables",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/task/helpers.ts:130 3333/environment/routerpatternvariables"
+    },
+    {
+      "src_service": "api",
+      "src_class": "Helpers",
+      "src_method": "addAdvancedTask",
+      "dst_service": "api-sidecar-handler",
+      "dst_class": "server.Server",
+      "dst_interface_id": "Server.getRouterPatternAndVariables",
+      "protocol": "REST",
+      "evidence": "services/api/src/resources/task/helpers.ts:268 3333/environment/routerpatternvariables"
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "addRestore",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/backup/resolvers.ts:458 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "cancelDeployment",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:695 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentLatest",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:951 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployBranch",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1109 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentPullrequest",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1274 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deployEnvironmentPromote",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1449 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "switchActiveStandby",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1508 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "deleteEnvironment",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/environment/resolvers.ts:684 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "idleOrUnidleEnvironment",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/environment/resolvers.ts:1333 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "stopOrStartEnvironmentService",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/environment/resolvers.ts:1454 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "getGroupEmailDetails",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/group/resolvers.ts:984 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "cancelProjectClone",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/project/resolvers.ts:1732 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "getSshEmailDetails",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/sshKey/resolvers.ts:378 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "Helpers",
+      "src_method": "addTask",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/task/helpers.ts:156 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "Helpers",
+      "src_method": "addAdvancedTask",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/task/helpers.ts:294 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "cancelTask",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/task/resolvers.ts:457 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "getUserOrgEmailDetails",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/user/resolvers.ts:784 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "LagoonLogsTransport",
+      "src_method": "log",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/loggers/lagoonLogsTransport.ts:78 sendToLagoonLogs("
+    },
+    {
+      "src_service": "api",
+      "src_class": "resolvers",
+      "src_method": "bulkDeployEnvironmentLatest",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/deployment/resolvers.ts:1762 sendToLagoonActions(\"deployEnvironmentLatest\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupTask",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:33 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupTasks",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:69 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupDeployment",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:101 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupDeployments",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:135 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupAllDeployments",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:170 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "cleanupAllTasks",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:194 sendToLagoonActions(\"retentionCleanup\", actionData)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "HistoryRetentionEnforcer",
+      "src_method": "saveEnvironmentHistoryBeforeDeletion",
+      "dst_service": "actions-handler",
+      "dst_class": "handler.Messenger",
+      "dst_interface_id": "Messenger.ConsumerActions",
+      "protocol": "Messaging",
+      "evidence": "services/api/src/resources/retentionpolicy/history.ts:227 sendToLagoonActions(\"retentionHistory\", actionData)"
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "authorize.sh",
+      "src_method": "main",
+      "dst_service": "api",
+      "dst_class": "keys",
+      "dst_interface_id": "keys.keysRoute",
+      "protocol": "REST",
+      "evidence": "services/ssh/authorize.sh:28 $api/keys --post-data"
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "token.sh",
+      "src_method": "main",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getUserBySshKey",
+      "protocol": "GraphQL",
+      "evidence": "services/ssh/home/token.sh:19 userBySshKey(sshKey"
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "token.sh",
+      "src_method": "main",
+      "dst_service": "auth-server",
+      "dst_class": "routes",
+      "dst_interface_id": "routes.route",
+      "protocol": "REST",
+      "evidence": "services/ssh/home/token.sh:35 wget \"$server/generate\""
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "grant.sh",
+      "src_method": "main",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getUserBySshKey",
+      "protocol": "GraphQL",
+      "evidence": "services/ssh/home/grant.sh:19 userBySshKey(sshKey"
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "grant.sh",
+      "src_method": "main",
+      "dst_service": "auth-server",
+      "dst_class": "routes",
+      "dst_interface_id": "routes.route",
+      "protocol": "REST",
+      "evidence": "services/ssh/home/grant.sh:35 wget \"$server/generate\""
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "rsh.sh",
+      "src_method": "main",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.userCanSshToEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/ssh/home/rsh.sh:51 userCanSshToEnvironment(openshiftProjectName"
+    },
+    {
+      "src_service": "ssh",
+      "src_class": "rsh.sh",
+      "src_method": "main",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentByOpenshiftProjectName",
+      "protocol": "GraphQL",
+      "evidence": "services/ssh/home/rsh.sh:71 environmentByOpenshiftProjectName(openshiftProjectName"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "server.Server",
+      "src_method": "handleWebhookPost",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getAllProjects",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/server/server.go:169 e.HandlePush(gitType"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "server.Server",
+      "src_method": "handleWebhookPost",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/server/server.go:169 e.HandlePush(gitType"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "server.Server",
+      "src_method": "handleWebhookPost",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addDeployment",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/server/server.go:169 e.HandlePush(gitType"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "server.Server",
+      "src_method": "handleWebhookPost",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getOrganizationKeyByProjectName",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/server/server.go:169 e.HandlePush(gitType"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "server.Server",
+      "src_method": "handleWebhookPost",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/webhook-handler/internal/server/server.go:169 e.HandlePush(gitType"
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabGroupCreate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/group.go:62 lc.AddGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabGroupUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/group.go:95 lc.UpdateGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabGroupDelete",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/group.go:117 lc.DeleteGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabSshKeyAdd",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addSshKeyAddUserSSHPublicKey",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/key.go:50 lc.AddUserSSHPublicKey("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabSshKeyRemove",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getUserBySshKey",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/key.go:69 lc.UserBySSHKey("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabSshKeyRemove",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getUserByEmail",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/key.go:74 lc.GetUserSSHKeysByEmail("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabSshKeyRemove",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteSshKeyByIdDeleteUserSSHPublicKey",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/key.go:81 lc.DeleteUserSSHPublicKey("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectCreate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:93 lc.AddProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectCreate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:101 lc.ProjectKeyByName("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectCreate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addGroupsToProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:127 lc.AddGroupsToProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:162 lc.DeleteProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:171 lc.ProjectByName("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:185 lc.AddProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addGroupsToProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:199 lc.AddGroupsToProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:211 lc.UpdateProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.removeGroupsFromProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:234 lc.RemoveGroupsFromProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabProjectDelete",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteProject",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/project.go:286 lc.DeleteProject("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserCreate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addUser",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:138 lc.AddUser("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserUpdate",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateUser",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:178 lc.UpdateUser("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserDelete",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteUser",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:200 lc.DeleteUser("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserGroupAdd",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addUserToGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:232 lc.AddUserToGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserGroupRemove",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.removeUserFromGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:263 lc.RemoveUserFromGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserProjectAdd",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addUserToGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:290 lc.AddUserToGroup("
+    },
+    {
+      "src_service": "webhook-handler",
+      "src_class": "gitlab.SystemHook",
+      "src_method": "gitlabUserProjectRemove",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.removeUserFromGroup",
+      "protocol": "GraphQL",
+      "evidence": "services/webhook-handler/internal/gitlab/user.go:316 lc.RemoveUserFromGroup("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "deployEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/deploy.go:72 e.LagoonAPI.ProjectByName("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "deployEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/deploy.go:103 e.CreateDeployTask("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "deployEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addDeployment",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/deploy.go:103 e.CreateDeployTask("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "deployEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getOrganizationKeyByProjectName",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/deploy.go:103 e.CreateDeployTask("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "removeEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/remove.go:27 e.LagoonAPI.ProjectByName("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "getRouterPatternAndVariables",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/routerpattern_variables.go:39 s.LagoonAPI.GetTaskProjectEnvironmentVariables("
+    },
+    {
+      "src_service": "api-sidecar-handler",
+      "src_class": "server.Server",
+      "src_method": "getRouterPatternAndVariables",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentById",
+      "protocol": "GraphQL",
+      "evidence": "services/api-sidecar-handler/internal/server/routerpattern_variables.go:39 s.LagoonAPI.GetTaskProjectEnvironmentVariables("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleDeployEnvironment",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deployEnvironmentLatest",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/action_deploy.go:32 lagoon.DeployLatest("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleUpdateStorage",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateStorageOnEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/action_storage.go:56 lagoon.UpdateStorageOnEnvironment("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentByKubernetesNamespaceName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:110 lagoon.GetEnvironmentByNamespace("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getDeploymentByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:126 lagoon.GetDeploymentByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateDeployment",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:169 lagoon.UpdateDeployment("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:207 lagoon.UpdateEnvironment("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteEnvironmentService",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:238 lagoon.DeleteEnvironmentService("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteEnvironmentVolume",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:265 lagoon.DeleteEnvironmentVolume("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateEnvironmentVolume",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:292 lagoon.AddOrUpdateEnvironmentVolume("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleBuild",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateEnvironmentService",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_builds.go:336 lagoon.AddOrUpdateEnvironmentService("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleIdling",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:41 lagoon.GetMinimalProjectByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleIdling",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:55 lagoon.GetEnvironmentByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleIdling",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:92 lagoon.UpdateEnvironment("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleServiceState",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:127 lagoon.GetMinimalProjectByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleServiceState",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:141 lagoon.GetEnvironmentByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleServiceState",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addOrUpdateEnvironmentService",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_idling.go:165 lagoon.AddOrUpdateEnvironmentService("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleRemoval",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteEnvironment",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_remove.go:32 lagoon.DeleteEnvironment("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleTask",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_tasks.go:60 lagoon.GetMinimalProjectByName("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleTask",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateProject",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_tasks.go:94 lagoon.UpdateProject("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "handleTask",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateTask",
+      "protocol": "GraphQL",
+      "evidence": "services/actions-handler/handler/controller_tasks.go:133 lagoon.UpdateTask("
+    },
+    {
+      "src_service": "actions-handler",
+      "src_class": "handler.Messenger",
+      "src_method": "toLagoonLogs",
+      "dst_service": "logs2notifications",
+      "dst_class": "handler.Messaging",
+      "dst_interface_id": "Messaging.Consumer",
+      "protocol": "Messaging",
+      "evidence": "services/actions-handler/handler/handler.go:189 messageQueue.AsyncProducer(\"lagoon-logs\")"
+    },
+    {
+      "src_service": "logs2notifications",
+      "src_class": "handler.Messaging",
+      "src_method": "getProjectNotifictions",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getProjectByName",
+      "protocol": "GraphQL",
+      "evidence": "services/logs2notifications/internal/handler/main.go:322 lagoon.NotificationsForProject("
+    },
+    {
+      "src_service": "backup-handler",
+      "src_class": "handler.BackupHandler",
+      "src_method": "WebhookHandler",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.updateRestore",
+      "protocol": "GraphQL",
+      "evidence": "services/backup-handler/internal/handler/main.go:79 lagoon.UpdateRestore("
+    },
+    {
+      "src_service": "backup-handler",
+      "src_class": "handler.BackupHandler",
+      "src_method": "WebhookHandler",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.getEnvironmentByKubernetesNamespaceName",
+      "protocol": "GraphQL",
+      "evidence": "services/backup-handler/internal/handler/main.go:95 lagoon.GetBackupsByEnvironmentNamespace("
+    },
+    {
+      "src_service": "backup-handler",
+      "src_class": "handler.BackupHandler",
+      "src_method": "WebhookHandler",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.deleteBackup",
+      "protocol": "GraphQL",
+      "evidence": "services/backup-handler/internal/handler/main.go:112 lagoon.DeleteBackup("
+    },
+    {
+      "src_service": "backup-handler",
+      "src_class": "handler.BackupHandler",
+      "src_method": "processBackups",
+      "dst_service": "api",
+      "dst_class": "resolvers",
+      "dst_interface_id": "resolvers.addBackup",
+      "protocol": "GraphQL",
+      "evidence": "services/backup-handler/internal/handler/main.go:153 lagoon.AddBackup("
+    }
+  ]
+}

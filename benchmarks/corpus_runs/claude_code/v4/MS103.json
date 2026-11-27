@@ -1,0 +1,383 @@
+{
+  "system_id": "MS103",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "ApiGateways": {
+      "exposed_interfaces": []
+    },
+    "WebApps": {
+      "exposed_interfaces": []
+    },
+    "Services": {
+      "exposed_interfaces": [
+        {
+          "id": "CreateProductEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.CreateProduct.CreateProductEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "CreateProductRequest"
+          ],
+          "return_type": "CreateProductResponse",
+          "protocol": "REST",
+          "endpoint": "POST /products"
+        },
+        {
+          "id": "DeleteProductEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.DeleteProduct.DeleteProductEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "DeleteProductResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /products/{id}"
+        },
+        {
+          "id": "GetProductByCategoryEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.GetProductByCategory.GetProductByCategoryEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "GetProductByCategoryResponse",
+          "protocol": "REST",
+          "endpoint": "GET /products/category/{category}"
+        },
+        {
+          "id": "GetProductByIdEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.GetProductById.GetProductByIdEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "GetProductByIdResponse",
+          "protocol": "REST",
+          "endpoint": "GET /products/{id}"
+        },
+        {
+          "id": "GetProductsEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.GetProducts.GetProductsEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "int?",
+            "int?"
+          ],
+          "return_type": "GetProductsResponse",
+          "protocol": "REST",
+          "endpoint": "GET /products"
+        },
+        {
+          "id": "UpdateProductEndpoint.AddRoutes",
+          "class_name": "Catalog.API.Products.UpdateProduct.UpdateProductEndpoint",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "UpdateProductRequest"
+          ],
+          "return_type": "UpdateProductResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /products"
+        },
+        {
+          "id": "CheckoutBasketEndpoints.AddRoutes",
+          "class_name": "Basket.API.Basket.CheckoutBasket.CheckoutBasketEndpoints",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "CheckoutBasketRequest"
+          ],
+          "return_type": "CheckoutBasketResponse",
+          "protocol": "REST",
+          "endpoint": "POST /basket/checkout"
+        },
+        {
+          "id": "DeleteBasketEndpoints.AddRoutes",
+          "class_name": "Basket.API.Basket.DeleteBasket.DeleteBasketEndpoints",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "DeleteBasketResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /basket/{userName}"
+        },
+        {
+          "id": "GetBasketEndpoints.AddRoutes",
+          "class_name": "Basket.API.Basket.GetBasket.GetBasketEndpoints",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "GetBasketResponse",
+          "protocol": "REST",
+          "endpoint": "GET /basket/{userName}"
+        },
+        {
+          "id": "StoreBasketEndpoints.AddRoutes",
+          "class_name": "Basket.API.Basket.StoreBasket.StoreBasketEndpoints",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "StoreBasketRequest"
+          ],
+          "return_type": "StoreBasketResponse",
+          "protocol": "REST",
+          "endpoint": "POST /basket"
+        },
+        {
+          "id": "CreateOrder.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.CreateOrder",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "CreateOrderRequest"
+          ],
+          "return_type": "CreateOrderResponse",
+          "protocol": "REST",
+          "endpoint": "POST /orders"
+        },
+        {
+          "id": "DeleteOrder.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.DeleteOrder",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "DeleteOrderResponse",
+          "protocol": "REST",
+          "endpoint": "DELETE /orders/{id}"
+        },
+        {
+          "id": "GetOrders.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.GetOrders",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "GetOrdersResponse",
+          "protocol": "REST",
+          "endpoint": "GET /orders"
+        },
+        {
+          "id": "GetOrdersByCustomer.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.GetOrdersByCustomer",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "GetOrdersByCustomerResponse",
+          "protocol": "REST",
+          "endpoint": "GET /orders/customer/{customerId}"
+        },
+        {
+          "id": "GetOrdersByName.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.GetOrdersByName",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "GetOrdersByNameResponse",
+          "protocol": "REST",
+          "endpoint": "GET /orders/{orderName}"
+        },
+        {
+          "id": "UpdateOrder.AddRoutes",
+          "class_name": "Ordering.API.Endpoints.UpdateOrder",
+          "method_name": "AddRoutes",
+          "param_types": [
+            "UpdateOrderRequest"
+          ],
+          "return_type": "UpdateOrderResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /orders"
+        },
+        {
+          "id": "DiscountService.GetDiscount",
+          "class_name": "Discount.Grpc.Services.DiscountService",
+          "method_name": "GetDiscount",
+          "param_types": [
+            "GetDiscountRequest"
+          ],
+          "return_type": "CouponModel",
+          "protocol": "gRPC",
+          "endpoint": "DiscountProtoService/GetDiscount"
+        },
+        {
+          "id": "DiscountService.CreateDiscount",
+          "class_name": "Discount.Grpc.Services.DiscountService",
+          "method_name": "CreateDiscount",
+          "param_types": [
+            "CreateDiscountRequest"
+          ],
+          "return_type": "CouponModel",
+          "protocol": "gRPC",
+          "endpoint": "DiscountProtoService/CreateDiscount"
+        },
+        {
+          "id": "DiscountService.UpdateDiscount",
+          "class_name": "Discount.Grpc.Services.DiscountService",
+          "method_name": "UpdateDiscount",
+          "param_types": [
+            "UpdateDiscountRequest"
+          ],
+          "return_type": "CouponModel",
+          "protocol": "gRPC",
+          "endpoint": "DiscountProtoService/UpdateDiscount"
+        },
+        {
+          "id": "DiscountService.DeleteDiscount",
+          "class_name": "Discount.Grpc.Services.DiscountService",
+          "method_name": "DeleteDiscount",
+          "param_types": [
+            "DeleteDiscountRequest"
+          ],
+          "return_type": "DeleteDiscountResponse",
+          "protocol": "gRPC",
+          "endpoint": "DiscountProtoService/DeleteDiscount"
+        },
+        {
+          "id": "BasketCheckoutEventHandler.Consume",
+          "class_name": "Ordering.Application.Orders.EventHandlers.Integration.BasketCheckoutEventHandler",
+          "method_name": "Consume",
+          "param_types": [
+            "BasketCheckoutEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "BasketCheckoutEvent"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Services.IBasketService",
+      "src_method": "LoadUserBasket",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.GetBasket.GetBasketEndpoints",
+      "dst_interface_id": "GetBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Services/IBasketService.cs:27 var getBasketResponse = await GetBasket(userName); -> src/Services/Basket/Basket.API/Basket/GetBasket/GetBasketEndpoints.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.CartModel",
+      "src_method": "OnPostRemoveToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.StoreBasket.StoreBasketEndpoints",
+      "dst_interface_id": "StoreBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/Cart.cshtml.cs:22 await basketService.StoreBasket(new StoreBasketRequest(Cart)); -> src/Services/Basket/Basket.API/Basket/StoreBasket/StoreBasketEndpoints.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.CheckoutModel",
+      "src_method": "OnPostCheckOutAsync",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.CheckoutBasket.CheckoutBasketEndpoints",
+      "dst_interface_id": "CheckoutBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/Checkout.cshtml.cs:34 await basketService.CheckoutBasket(new CheckoutBasketRequest(Order)); -> src/Services/Basket/Basket.API/Basket/CheckoutBasket/CheckoutBasketEndpoints.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.IndexModel",
+      "src_method": "OnGetAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProducts.GetProductsEndpoint",
+      "dst_interface_id": "GetProductsEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/Index.cshtml.cs:11 var result = await catalogService.GetProducts(); -> src/Services/Catalog/Catalog.API/Products/GetProducts/GetProductsEndpoint.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.IndexModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProductById.GetProductByIdEndpoint",
+      "dst_interface_id": "GetProductByIdEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/Index.cshtml.cs:21 var productResponse = await catalogService.GetProduct(productId); -> src/Services/Catalog/Catalog.API/Products/GetProductById/GetProductByIdEndpoint.cs:11"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.IndexModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.StoreBasket.StoreBasketEndpoints",
+      "dst_interface_id": "StoreBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/Index.cshtml.cs:34 await basketService.StoreBasket(new StoreBasketRequest(basket)); -> src/Services/Basket/Basket.API/Basket/StoreBasket/StoreBasketEndpoints.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.OrderListModel",
+      "src_method": "OnGetAsync",
+      "dst_service": "Services",
+      "dst_class": "Ordering.API.Endpoints.GetOrdersByCustomer",
+      "dst_interface_id": "GetOrdersByCustomer.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/OrderList.cshtml.cs:14 var response = await orderingService.GetOrdersByCustomer(customerId); -> src/Services/Ordering/Ordering.API/Endpoints/GetOrdersByCustomer.cs:16"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductDetailModel",
+      "src_method": "OnGetAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProductById.GetProductByIdEndpoint",
+      "dst_interface_id": "GetProductByIdEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductDetail.cshtml.cs:17 var response = await catalogService.GetProduct(productId); -> src/Services/Catalog/Catalog.API/Products/GetProductById/GetProductByIdEndpoint.cs:11"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductDetailModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProductById.GetProductByIdEndpoint",
+      "dst_interface_id": "GetProductByIdEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductDetail.cshtml.cs:26 var productResponse = await catalogService.GetProduct(productId); -> src/Services/Catalog/Catalog.API/Products/GetProductById/GetProductByIdEndpoint.cs:11"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductDetailModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.StoreBasket.StoreBasketEndpoints",
+      "dst_interface_id": "StoreBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductDetail.cshtml.cs:39 await basketService.StoreBasket(new StoreBasketRequest(basket)); -> src/Services/Basket/Basket.API/Basket/StoreBasket/StoreBasketEndpoints.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductListModel",
+      "src_method": "OnGetAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProducts.GetProductsEndpoint",
+      "dst_interface_id": "GetProductsEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductList.cshtml.cs:15 var response = await catalogService.GetProducts(); -> src/Services/Catalog/Catalog.API/Products/GetProducts/GetProductsEndpoint.cs:10"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductListModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Catalog.API.Products.GetProductById.GetProductByIdEndpoint",
+      "dst_interface_id": "GetProductByIdEndpoint.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductList.cshtml.cs:35 var productResponse = await catalogService.GetProduct(productId); -> src/Services/Catalog/Catalog.API/Products/GetProductById/GetProductByIdEndpoint.cs:11"
+    },
+    {
+      "src_service": "WebApps",
+      "src_class": "Shopping.Web.Pages.ProductListModel",
+      "src_method": "OnPostAddToCartAsync",
+      "dst_service": "Services",
+      "dst_class": "Basket.API.Basket.StoreBasket.StoreBasketEndpoints",
+      "dst_interface_id": "StoreBasketEndpoints.AddRoutes",
+      "protocol": "REST",
+      "evidence": "src/WebApps/Shopping.Web/Pages/ProductList.cshtml.cs:48 await basketService.StoreBasket(new StoreBasketRequest(basket)); -> src/Services/Basket/Basket.API/Basket/StoreBasket/StoreBasketEndpoints.cs:10"
+    }
+  ]
+}

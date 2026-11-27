@@ -1,0 +1,79 @@
+{
+  "system_id": "MS059",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "multi-datacenter": {
+      "exposed_interfaces": []
+    },
+    "security": {
+      "exposed_interfaces": []
+    },
+    "clients": {
+      "exposed_interfaces": [
+        {
+          "id": "ConsumerExample.consume",
+          "class_name": "ConsumerExample",
+          "method_name": "consume",
+          "param_types": [
+            "DataRecordAvro"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "test"
+        }
+      ]
+    },
+    "ccloud-observability": {
+      "exposed_interfaces": []
+    },
+    "cloud-etl": {
+      "exposed_interfaces": []
+    },
+    "microservices-orders": {
+      "exposed_interfaces": [
+        {
+          "id": "OrdersService.getWithTimeout",
+          "class_name": "OrdersService",
+          "method_name": "getWithTimeout",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OrderBean",
+          "protocol": "REST",
+          "endpoint": "GET /v1/orders/{id}"
+        },
+        {
+          "id": "OrdersService.getPostValidationWithTimeout",
+          "class_name": "OrdersService",
+          "method_name": "getPostValidationWithTimeout",
+          "param_types": [
+            "String",
+            "Long"
+          ],
+          "return_type": "OrderBean",
+          "protocol": "REST",
+          "endpoint": "GET /v1/orders/{id}/validated"
+        },
+        {
+          "id": "OrdersService.submitOrder",
+          "class_name": "OrdersService",
+          "method_name": "submitOrder",
+          "param_types": [
+            "Long",
+            "OrderBean"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /v1/orders"
+        }
+      ]
+    },
+    "connect-streams-pipeline": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

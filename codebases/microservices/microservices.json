@@ -21,9 +21,7 @@
     "name": "acmeair-mainservice-java",
     "path": "MS003_acmeair-mainservice-java",
     "language": "Java",
-    "services": {
-      "build": "nginx"
-    }
+    "services": {}
   },
   "MS004": {
     "name": "ftgo-application",
@@ -194,7 +192,11 @@
       "ts-train-food-service": "ts-train-food-service",
       "ts-gateway-service": "ts-gateway-service",
       "ts-food-delivery-service": "ts-food-delivery-service",
-      "ts-wait-order-service": "ts-wait-order-service"
+      "ts-wait-order-service": "ts-wait-order-service",
+      "ts-avatar-service": "ts-avatar-service",
+      "ts-news-service": "ts-news-service",
+      "ts-ticket-office-service": "ts-ticket-office-service",
+      "ts-voucher-service": "ts-voucher-service"
     }
   },
   "MS020": {
@@ -269,7 +271,7 @@
     "path": "MS024_jeecg-boot",
     "language": "Java",
     "services": {
-      "jeecg-boot-system": "jeecg-boot/jeecg-module-system/jeecg-system-start",
+      "jeecg-boot-system": "jeecg-boot/jeecg-module-system",
       "jeecg-vue": "jeecgboot-vue3"
     }
   },
@@ -308,7 +310,8 @@
     "path": "MS027_pravega",
     "language": "Java",
     "services": {
-      "common": "common"
+      "controller": "controller",
+      "segmentstore": "segmentstore"
     }
   },
   "MS028": {
@@ -362,20 +365,12 @@
     "path": "MS029_kapua",
     "language": "Java",
     "services": {
-      "locator": "locator",
-      "service": "service",
-      "message": "message",
-      "transport": "transport",
-      "translator": "translator",
-      "extras": "extras",
-      "plug-ins": "plug-ins",
+      "console": "console",
       "rest-api": "rest-api",
       "job-engine": "job-engine",
       "broker": "broker",
       "consumer": "consumer",
-      "client": "client",
-      "simulator-kura": "simulator-kura",
-      "console": "console"
+      "authentication": "service/authentication"
     }
   },
   "MS030": {
@@ -416,9 +411,11 @@
     "path": "MS033_java-microservice",
     "language": "Java",
     "services": {
-      "todo-infra": "todo-infra",
       "mail-service": "mail-service",
-      "remainder-service": "remainder-service"
+      "remainder-service": "remainder-service",
+      "api-gateway": "api-gateway",
+      "user-service": "user-service",
+      "oauth-server": "oauth-server"
     }
   },
   "MS034": {
@@ -453,11 +450,19 @@
     "path": "MS036_java-microservices-examples",
     "language": "Java",
     "services": {
-      "spring-cloud-gateway": "spring-cloud-gateway",
-      "reactive-jhipster": "reactive-jhipster",
-      "jhipster-k8s": "jhipster-k8s",
-      "spring-boot+cloud": "spring-boot+cloud",
-      "jhipster": "jhipster"
+      "jhipster-gateway": "jhipster/gateway",
+      "jhipster-blog": "jhipster/blog",
+      "jhipster-store": "jhipster/store",
+      "reactive-jhipster-gateway": "reactive-jhipster/gateway",
+      "reactive-jhipster-blog": "reactive-jhipster/blog",
+      "reactive-jhipster-store": "reactive-jhipster/store",
+      "jhipster-k8s-gateway": "jhipster-k8s/gateway",
+      "jhipster-k8s-blog": "jhipster-k8s/blog",
+      "jhipster-k8s-store": "jhipster-k8s/store",
+      "spring-boot+cloud-api-gateway": "spring-boot+cloud/api-gateway",
+      "spring-boot+cloud-car-service": "spring-boot+cloud/car-service",
+      "spring-cloud-gateway-api-gateway": "spring-cloud-gateway/api-gateway",
+      "spring-cloud-gateway-car-service": "spring-cloud-gateway/car-service"
     }
   },
   "MS037": {
@@ -476,54 +481,7 @@
     "name": "alpakka",
     "path": "MS038_alpakka",
     "language": "Scala / Java",
-    "services": {
-      "ironmq": "ironmq",
-      "s3": "s3",
-      "couchbase": "couchbase",
-      "solr": "solr",
-      "unix-domain-socket": "unix-domain-socket",
-      "spring-web": "spring-web",
-      "sns": "sns",
-      "google-cloud-pub-sub-grpc": "google-cloud-pub-sub-grpc",
-      "azure-storage": "azure-storage",
-      "sse": "sse",
-      "google-cloud-pub-sub": "google-cloud-pub-sub",
-      "geode": "geode",
-      "text": "text",
-      "simple-codecs": "simple-codecs",
-      "pravega": "pravega",
-      "cassandra": "cassandra",
-      "google-cloud-bigquery": "google-cloud-bigquery",
-      "mongodb": "mongodb",
-      "google-fcm": "google-fcm",
-      "csv": "csv",
-      "kinesis": "kinesis",
-      "huawei-push-kit": "huawei-push-kit",
-      "hdfs": "hdfs",
-      "azure-storage-queue": "azure-storage-queue",
-      "aws-event-bridge": "aws-event-bridge",
-      "awslambda": "awslambda",
-      "xml": "xml",
-      "reference": "reference",
-      "mqtt": "mqtt",
-      "jms": "jms",
-      "google-cloud-bigquery-storage": "google-cloud-bigquery-storage",
-      "elasticsearch": "elasticsearch",
-      "influxdb": "influxdb",
-      "json-streaming": "json-streaming",
-      "dynamodb": "dynamodb",
-      "mqtt-streaming": "mqtt-streaming",
-      "google-common": "google-common",
-      "file": "file",
-      "hbase": "hbase",
-      "google-cloud-storage": "google-cloud-storage",
-      "slick": "slick",
-      "sqs": "sqs",
-      "jakarta-jms": "jakarta-jms",
-      "amqp": "amqp",
-      "ftp": "ftp",
-      "udp": "udp"
-    }
+    "services": {}
   },
   "MS039": {
     "name": "microservices-demo",
@@ -560,25 +518,39 @@
       "mcp": "src/mcp",
       "product-catalog": "src/product-catalog",
       "checkout": "src/checkout",
-      "cart": "src/cart"
+      "cart": "src/cart",
+      "shipping": "src/shipping",
+      "quote": "src/quote",
+      "currency": "src/currency",
+      "email": "src/email",
+      "fraud-detection": "src/fraud-detection"
     }
   },
   "MS041": {
     "name": "microservices-demo",
     "path": "MS041_microservices-demo",
     "language": "Polyglot",
-    "services": {
-      "graphs": "graphs"
-    }
+    "services": {}
   },
   "MS042": {
     "name": "DeathStarBench-socialNetwork",
     "path": "MS042_DeathStarBench_socialNetwork",
     "language": "C++ / Go / Python",
     "services": {
-      "openshift": "socialNetwork/openshift",
-      "gen-py": "socialNetwork/gen-py",
-      "nginx-web-server": "socialNetwork/nginx-web-server"
+      "ComposePostService": "socialNetwork/src/ComposePostService",
+      "HomeTimelineService": "socialNetwork/src/HomeTimelineService",
+      "MediaService": "socialNetwork/src/MediaService",
+      "PostStorageService": "socialNetwork/src/PostStorageService",
+      "SocialGraphService": "socialNetwork/src/SocialGraphService",
+      "TextService": "socialNetwork/src/TextService",
+      "UniqueIdService": "socialNetwork/src/UniqueIdService",
+      "UrlShortenService": "socialNetwork/src/UrlShortenService",
+      "UserMentionService": "socialNetwork/src/UserMentionService",
+      "UserService": "socialNetwork/src/UserService",
+      "UserTimelineService": "socialNetwork/src/UserTimelineService",
+      "WriteHomeTimelineService": "socialNetwork/src/WriteHomeTimelineService",
+      "nginx-web-server": "socialNetwork/nginx-web-server",
+      "media-frontend": "socialNetwork/media-frontend"
     }
   },
   "MS043": {
@@ -603,9 +575,20 @@
     "path": "MS044_DeathStarBench_mediaMicroservices",
     "language": "C++ / Go",
     "services": {
-      "config": "mediaMicroservices/config",
-      "datasets": "mediaMicroservices/datasets",
-      "gen-py": "mediaMicroservices/gen-py"
+      "CastInfoService": "mediaMicroservices/src/CastInfoService",
+      "ComposeReviewService": "mediaMicroservices/src/ComposeReviewService",
+      "MovieIdService": "mediaMicroservices/src/MovieIdService",
+      "MovieInfoService": "mediaMicroservices/src/MovieInfoService",
+      "MovieReviewService": "mediaMicroservices/src/MovieReviewService",
+      "PageService": "mediaMicroservices/src/PageService",
+      "PlotService": "mediaMicroservices/src/PlotService",
+      "RatingService": "mediaMicroservices/src/RatingService",
+      "ReviewStorageService": "mediaMicroservices/src/ReviewStorageService",
+      "TextService": "mediaMicroservices/src/TextService",
+      "UniqueIdService": "mediaMicroservices/src/UniqueIdService",
+      "UserReviewService": "mediaMicroservices/src/UserReviewService",
+      "UserService": "mediaMicroservices/src/UserService",
+      "nginx-web-server": "mediaMicroservices/nginx-web-server"
     }
   },
   "MS045": {
@@ -613,24 +596,34 @@
     "path": "MS045_DeathStarBench_swarm-ecommerce",
     "language": "Go",
     "services": {
-      "daprApps_v1": "daprApps_v1",
-      "mediaMicroservices": "mediaMicroservices",
-      "socialNetwork": "socialNetwork",
-      "ms_collecter": "ms_collecter",
-      "hotelReservation": "hotelReservation"
+      "social-frontend": "daprApps_v1/socialNetwork/frontend",
+      "social-object-detect": "daprApps_v1/socialNetwork/object-detect",
+      "social-post": "daprApps_v1/socialNetwork/post",
+      "social-proxy": "daprApps_v1/socialNetwork/proxy",
+      "social-recommend": "daprApps_v1/socialNetwork/recommend",
+      "social-sentiment": "daprApps_v1/socialNetwork/sentiment",
+      "social-socialgraph": "daprApps_v1/socialNetwork/socialgraph",
+      "social-timeline-read": "daprApps_v1/socialNetwork/timeline-read",
+      "social-timeline-update": "daprApps_v1/socialNetwork/timeline-update",
+      "social-translate": "daprApps_v1/socialNetwork/translate",
+      "social-user": "daprApps_v1/socialNetwork/user",
+      "vpipe-face-detect": "daprApps_v1/video-pipe/face-detect",
+      "vpipe-video-meta": "daprApps_v1/video-pipe/video-meta",
+      "vpipe-video-scene": "daprApps_v1/video-pipe/video-scene",
+      "vshare-dates": "daprApps_v1/video-sharing/dates",
+      "vshare-proxy": "daprApps_v1/video-sharing/proxy",
+      "vshare-user-rating": "daprApps_v1/video-sharing/user-rating",
+      "vshare-video-frontend": "daprApps_v1/video-sharing/video-frontend",
+      "vshare-video-info": "daprApps_v1/video-sharing/video-info",
+      "vshare-video-scale": "daprApps_v1/video-sharing/video-scale",
+      "vshare-video-thumbnail": "daprApps_v1/video-sharing/video-thumbnail"
     }
   },
   "MS046": {
     "name": "DeathStarBench-banking",
     "path": "MS046_DeathStarBench_banking",
     "language": "C++",
-    "services": {
-      "daprApps_v1": "daprApps_v1",
-      "mediaMicroservices": "mediaMicroservices",
-      "socialNetwork": "socialNetwork",
-      "ms_collecter": "ms_collecter",
-      "hotelReservation": "hotelReservation"
-    }
+    "services": {}
   },
   "MS047": {
     "name": "robot-shop",
@@ -675,23 +668,14 @@
     "path": "MS050_argo-cd",
     "language": "Go",
     "services": {
-      "cmd": "cmd",
-      "gitops-engine": "gitops-engine",
       "applicationset": "applicationset",
-      "tools": "tools",
-      "assets": "assets",
-      "resource_customizations": "resource_customizations",
       "commitserver": "commitserver",
       "ui": "ui",
-      "hack": "hack",
-      "util": "util",
-      "common": "common",
       "notification_controller": "notification_controller",
       "reposerver": "reposerver",
       "controller": "controller",
       "server": "server",
-      "cmpserver": "cmpserver",
-      "pkg": "pkg"
+      "cmpserver": "cmpserver"
     }
   },
   "MS051": {
@@ -699,12 +683,13 @@
     "path": "MS051_kubevirt",
     "language": "Go",
     "services": {
-      "cmd": "cmd",
-      "tools": "tools",
-      "hack": "hack",
-      "automation": "automation",
-      "pkg": "pkg",
-      "staging": "staging"
+      "virt-api": "pkg/virt-api",
+      "virt-controller": "pkg/virt-controller",
+      "virt-handler": "pkg/virt-handler",
+      "virt-launcher": "pkg/virt-launcher",
+      "virt-operator": "pkg/virt-operator",
+      "synchronization-controller": "pkg/synchronization-controller",
+      "virt-exportserver": "pkg/storage/export/virt-exportserver"
     }
   },
   "MS052": {
@@ -748,13 +733,7 @@
     "name": "docker-elk",
     "path": "MS054_docker-elk",
     "language": "Infrastructure",
-    "services": {
-      "setup": "setup",
-      "kibana-genkeys": "kibana",
-      "elasticsearch": "elasticsearch",
-      "logstash": "logstash",
-      "kibana": "kibana"
-    }
+    "services": {}
   },
   "MS055": {
     "name": "saleor",
@@ -807,8 +786,7 @@
     "path": "MS060_agile-lorawan-support",
     "language": "Python",
     "services": {
-      "backup_app": "backup_app",
-      "backup_app_postgres": "backup_app"
+      "backup_app": "backup_app"
     }
   },
   "MS061": {
@@ -816,9 +794,7 @@
     "path": "MS061_marathon",
     "language": "Scala",
     "services": {
-      "ci": "ci",
-      "tools": "tools",
-      "src": "src"
+      "marathon": "src"
     }
   },
   "MS062": {
@@ -826,9 +802,7 @@
     "path": "MS062_front-end",
     "language": "Javascript",
     "services": {
-      "api": "api",
-      "public": "public",
-      "helpers": "helpers"
+      "front-end": "."
     }
   },
   "MS063": {
@@ -836,10 +810,8 @@
     "path": "MS063_kudu",
     "language": "Java",
     "services": {
-      "www": "www",
-      "java": "java",
-      "python": "python",
-      "src": "src"
+      "master": "src/kudu/master",
+      "tserver": "src/kudu/tserver"
     }
   },
   "MS064": {
@@ -847,8 +819,23 @@
     "path": "MS064_hmda-platform",
     "language": "Scala",
     "services": {
-      "kubernetes": "kubernetes",
-      "common": "common"
+      "hmda": "hmda",
+      "hmda-dashboard": "hmda-dashboard",
+      "hmda-quarterly-data-service": "hmda-quarterly-data-service",
+      "hmda-data-publisher": "hmda-data-publisher",
+      "data-browser": "data-browser",
+      "institutions-api": "institutions-api",
+      "ratespread-calculator": "ratespread-calculator",
+      "email-service": "email-service",
+      "modified-lar": "modified-lar",
+      "irs-publisher": "irs-publisher",
+      "submission-errors": "submission-errors",
+      "check-digit": "check-digit",
+      "hmda-analytics": "hmda-analytics",
+      "hmda-reporting": "hmda-reporting",
+      "hmda-auth": "hmda-auth",
+      "rate-limit": "rate-limit",
+      "file-proxy": "file-proxy"
     }
   },
   "MS065": {
@@ -862,12 +849,14 @@
     "path": "MS066_milvus",
     "language": "Python",
     "services": {
-      "client": "client",
-      "cmd": "cmd",
-      "tools": "tools",
-      "internal": "internal",
-      "deployments": "deployments",
-      "pkg": "pkg"
+      "proxy": "internal/proxy",
+      "rootcoord": "internal/rootcoord",
+      "datacoord": "internal/datacoord",
+      "datanode": "internal/datanode",
+      "querycoordv2": "internal/querycoordv2",
+      "querynodev2": "internal/querynodev2",
+      "streamingcoord": "internal/streamingcoord",
+      "streamingnode": "internal/streamingnode"
     }
   },
   "MS067": {
@@ -875,8 +864,7 @@
     "path": "MS067_mailcow-dockerized",
     "language": "PHP",
     "services": {
-      "data": "data",
-      "helper-scripts": "helper-scripts"
+      "data": "data"
     }
   },
   "MS068": {
@@ -884,9 +872,8 @@
     "path": "MS068_crates.io",
     "language": "Rust",
     "services": {
-      "svelte": "svelte",
-      "crates": "crates",
-      "packages": "packages"
+      "backend": "src",
+      "svelte": "svelte"
     }
   },
   "MS069": {
@@ -939,9 +926,19 @@
     "path": "MS071_cortex",
     "language": "Go",
     "services": {
-      "cmd": "cmd",
-      "tools": "tools",
-      "pkg": "pkg"
+      "distributor": "pkg/distributor",
+      "ingester": "pkg/ingester",
+      "querier": "pkg/querier",
+      "frontend": "pkg/frontend",
+      "scheduler": "pkg/scheduler",
+      "ruler": "pkg/ruler",
+      "storegateway": "pkg/storegateway",
+      "compactor": "pkg/compactor",
+      "alertmanager": "pkg/alertmanager",
+      "parquetconverter": "pkg/parquetconverter",
+      "purger": "pkg/purger",
+      "configs": "pkg/configs",
+      "overrides": "pkg/overrides"
     }
   },
   "MS072": {
@@ -969,7 +966,6 @@
     "path": "MS074_hyrax",
     "language": "Ruby",
     "services": {
-      "lib": "lib",
       "app": "app"
     }
   },
@@ -979,8 +975,8 @@
     "language": "Elixir",
     "services": {
       "explorer": "apps/explorer",
-      "ethereum_jsonrpc": "apps/ethereum_jsonrpc",
-      "block_scout_web": "apps/block_scout_web"
+      "block_scout_web": "apps/block_scout_web",
+      "indexer": "apps/indexer"
     }
   },
   "MS076": {
@@ -988,7 +984,7 @@
     "path": "MS076_bmo",
     "language": "Perl",
     "services": {
-      "bq": "docker/bigquery"
+      "bmo": "."
     }
   },
   "MS077": {
@@ -996,8 +992,7 @@
     "path": "MS077_Mayan-EDMS",
     "language": "Python",
     "services": {
-      "mayan": "mayan",
-      "contrib": "contrib"
+      "mayan": "mayan"
     }
   },
   "MS078": {
@@ -1044,7 +1039,8 @@
     "services": {
       "web": "src/web",
       "dotnet": "src/dotnet",
-      "go": "src/go"
+      "go": "src/go",
+      "rust": "src/rust"
     }
   },
   "MS082": {
@@ -1094,9 +1090,7 @@
     "name": "kitsu-tools",
     "path": "MS085_kitsu-tools",
     "language": "Infrastructure",
-    "services": {
-      "router": "router"
-    }
+    "services": {}
   },
   "MS086": {
     "name": "cds",
@@ -1115,17 +1109,14 @@
     "name": "jx-docs",
     "path": "MS087_jx-docs",
     "language": "Documentation",
-    "services": {
-      "static": "static"
-    }
+    "services": {}
   },
   "MS088": {
     "name": "Markus",
     "path": "MS088_Markus",
     "language": "Ruby",
     "services": {
-      "app": "app",
-      "db": "db"
+      "app": "app"
     }
   },
   "MS089": {
@@ -1133,17 +1124,15 @@
     "path": "MS089_Farmbot-Web-App",
     "language": "Ruby",
     "services": {
-      "frontend": "frontend",
-      "public": "public"
+      "api": "app",
+      "frontend": "frontend"
     }
   },
   "MS090": {
     "name": "openvas-docker",
     "path": "MS090_openvas-docker",
     "language": "Infrastructure",
-    "services": {
-      "9": "9"
-    }
+    "services": {}
   },
   "MS091": {
     "name": "codalab-competitions",
@@ -1157,40 +1146,29 @@
     "name": "dd-trace-py",
     "path": "MS092_dd-trace-py",
     "language": "Python",
-    "services": {
-      "ddtrace": "ddtrace",
-      "lib-injection": "lib-injection"
-    }
+    "services": {}
   },
   "MS093": {
     "name": "cp-all-in-one",
     "path": "MS093_cp-all-in-one",
     "language": "Infrastructure",
-    "services": {
-      "github-actions-example": "github-actions-example"
-    }
+    "services": {}
   },
   "MS094": {
     "name": "bugsnag-js",
     "path": "MS094_bugsnag-js",
     "language": "Javascript",
-    "services": {
-      "packages": "packages"
-    }
+    "services": {}
   },
   "MS095": {
     "name": "waypoint",
     "path": "MS095_waypoint",
     "language": "Go",
     "services": {
-      "cmd": "cmd",
-      "tools": "tools",
       "internal": "internal",
       "ui": "ui",
       "builtin": "builtin",
-      "x": "x",
-      "pkg": "pkg",
-      "embedJson": "embedJson"
+      "pkg": "pkg"
     }
   },
   "MS096": {
@@ -1210,7 +1188,8 @@
     "language": "Javascript",
     "services": {
       "backend-service": "backend",
-      "client": "client"
+      "client": "client",
+      "notification": "services/notification"
     }
   },
   "MS098": {
@@ -1240,9 +1219,7 @@
     "path": "MS100_rucio",
     "language": "Python",
     "services": {
-      "lib": "lib",
-      "tools": "tools",
-      "etc": "etc"
+      "rucio": "lib"
     }
   },
   "MS101": {
@@ -1250,8 +1227,8 @@
     "path": "MS101_spryker-demoshop",
     "language": "PHP",
     "services": {
-      "assets": "assets",
-      "src": "src"
+      "yves": "src/Pyz/Yves",
+      "zed": "src/Pyz/Zed"
     }
   },
   "MS102": {
@@ -1259,7 +1236,12 @@
     "path": "MS102_Practical.CleanArchitecture",
     "language": "C#",
     "services": {
-      "Microservices": "src/Microservices",
+      "Services.AuditLog": "src/Microservices/Services.AuditLog",
+      "Services.Configuration": "src/Microservices/Services.Configuration",
+      "Services.Identity": "src/Microservices/Services.Identity",
+      "Services.Notification": "src/Microservices/Services.Notification",
+      "Services.Product": "src/Microservices/Services.Product",
+      "Services.Storage": "src/Microservices/Services.Storage",
       "IdentityServers": "src/IdentityServers",
       "UIs": "src/UIs"
     }
@@ -1269,9 +1251,11 @@
     "path": "MS103_run-aspnetcore-microservices",
     "language": "C#",
     "services": {
-      "ApiGateways": "src/ApiGateways",
-      "WebApps": "src/WebApps",
-      "Services": "src/Services"
+      "Basket": "src/Services/Basket",
+      "Catalog": "src/Services/Catalog",
+      "Discount": "src/Services/Discount",
+      "Ordering": "src/Services/Ordering",
+      "Shopping.Web": "src/WebApps/Shopping.Web"
     }
   },
   "MS104": {
@@ -1287,9 +1271,11 @@
     "path": "MS105_go-micro-services",
     "language": "Go",
     "services": {
-      "data": "data",
-      "cmd": "cmd",
-      "internal": "internal"
+      "frontend": "internal/services/frontend",
+      "geo": "internal/services/geo",
+      "profile": "internal/services/profile",
+      "rate": "internal/services/rate",
+      "search": "internal/services/search"
     }
   },
   "MS106": {
@@ -1332,22 +1318,23 @@
     "name": "php-ddd-example",
     "path": "MS108_php-ddd-example",
     "language": "PHP",
-    "services": {}
+    "services": {
+      "mooc-backend": "apps/mooc/backend",
+      "backoffice-backend": "apps/backoffice/backend",
+      "backoffice-frontend": "apps/backoffice/frontend"
+    }
   },
   "MS109": {
     "name": "st2-docker",
     "path": "MS109_st2-docker",
     "language": "Infrastructure",
-    "services": {
-      "files": "files"
-    }
+    "services": {}
   },
   "MS110": {
     "name": "flagr",
     "path": "MS110_flagr",
     "language": "Go",
     "services": {
-      "cmd": "cmd",
       "browser": "browser",
       "pkg": "pkg"
     }

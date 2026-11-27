@@ -1,0 +1,37 @@
+{
+  "system_id": "MS011",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "city-service": {
+      "exposed_interfaces": [
+        {
+          "id": "CityController.getCity",
+          "class_name": "CityController",
+          "method_name": "getCity",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "City",
+          "protocol": "REST",
+          "endpoint": "GET /info"
+        }
+      ]
+    },
+    "route-service": {
+      "exposed_interfaces": [
+        {
+          "id": "RouteController.getRoute",
+          "class_name": "RouteController",
+          "method_name": "getRoute",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /route"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,2863 @@
+{
+  "system_id": "MS051",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "virt-api": {
+      "exposed_interfaces": [
+        {
+          "id": "SubresourceAPIApp.RestartVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "RestartVMRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "RestartOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/restart"
+        },
+        {
+          "id": "SubresourceAPIApp.MigrateVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "MigrateVMRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "MigrateOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/migrate"
+        },
+        {
+          "id": "SubresourceAPIApp.StartVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "StartVMRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "StartOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/start"
+        },
+        {
+          "id": "SubresourceAPIApp.StopVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "StopVMRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "StopOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/stop"
+        },
+        {
+          "id": "SubresourceAPIApp.ExpandSpecVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "ExpandSpecVMRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachine",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/expand-spec"
+        },
+        {
+          "id": "SubresourceAPIApp.FreezeVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "FreezeVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "FreezeUnfreezeTimeout"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/freeze"
+        },
+        {
+          "id": "SubresourceAPIApp.UnfreezeVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "UnfreezeVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/unfreeze"
+        },
+        {
+          "id": "SubresourceAPIApp.ResetVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "ResetVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/reset"
+        },
+        {
+          "id": "SubresourceAPIApp.SoftRebootVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "SoftRebootVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/softreboot"
+        },
+        {
+          "id": "SubresourceAPIApp.PauseVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "PauseVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "PauseOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/pause"
+        },
+        {
+          "id": "SubresourceAPIApp.UnpauseVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "UnpauseVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "UnpauseOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/unpause"
+        },
+        {
+          "id": "SubresourceAPIApp.ConsoleRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "ConsoleRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/console"
+        },
+        {
+          "id": "SubresourceAPIApp.VNCRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VNCRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/vnc"
+        },
+        {
+          "id": "SubresourceAPIApp.ScreenshotRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "ScreenshotRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/vnc/screenshot"
+        },
+        {
+          "id": "SubresourceAPIApp.USBRedirRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "USBRedirRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/usbredir"
+        },
+        {
+          "id": "SubresourceAPIApp.PortForwardRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "PortForwardRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/portforward/{port}"
+        },
+        {
+          "id": "SubresourceAPIApp.PortForwardRequestHandlerVMIWithProtocol",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "PortForwardRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/portforward/{port}/{protocol}"
+        },
+        {
+          "id": "SubresourceAPIApp.VSOCKRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VSOCKRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/vsock"
+        },
+        {
+          "id": "SubresourceAPIApp.PortForwardRequestHandlerVM",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "PortForwardRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/portforward/{port}"
+        },
+        {
+          "id": "SubresourceAPIApp.PortForwardRequestHandlerVMWithProtocol",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "PortForwardRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/portforward/{port}/{protocol}"
+        },
+        {
+          "id": "SubresourceAPIApp.ExpandSpecRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "ExpandSpecRequestHandler",
+          "param_types": [
+            "string",
+            "VirtualMachine"
+          ],
+          "return_type": "VirtualMachine",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/expand-vm-spec"
+        },
+        {
+          "id": "virtAPIApp.GetGsInfo",
+          "class_name": "virt_api.virtAPIApp",
+          "method_name": "GetGsInfo",
+          "param_types": [],
+          "return_type": "GuestfsInfo",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/guestfs"
+        },
+        {
+          "id": "SubresourceAPIApp.GuestOSInfo",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "GuestOSInfo",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceGuestAgentInfo",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/guestosinfo"
+        },
+        {
+          "id": "SubresourceAPIApp.UserList",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "UserList",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceGuestOSUserList",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/userlist"
+        },
+        {
+          "id": "SubresourceAPIApp.FilesystemList",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "FilesystemList",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceFileSystemList",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/filesystemlist"
+        },
+        {
+          "id": "SubresourceAPIApp.VMIObjectGraph",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMIObjectGraph",
+          "param_types": [
+            "string",
+            "string",
+            "ObjectGraphOptions"
+          ],
+          "return_type": "ObjectGraphNode",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/objectgraph"
+        },
+        {
+          "id": "SubresourceAPIApp.VMObjectGraph",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMObjectGraph",
+          "param_types": [
+            "string",
+            "string",
+            "ObjectGraphOptions"
+          ],
+          "return_type": "ObjectGraphNode",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/objectgraph"
+        },
+        {
+          "id": "SubresourceAPIApp.VMIAddVolumeRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMIAddVolumeRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "AddVolumeOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/addvolume"
+        },
+        {
+          "id": "SubresourceAPIApp.VMIRemoveVolumeRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMIRemoveVolumeRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "RemoveVolumeOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/removevolume"
+        },
+        {
+          "id": "SubresourceAPIApp.VMAddVolumeRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMAddVolumeRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "AddVolumeOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/addvolume"
+        },
+        {
+          "id": "SubresourceAPIApp.VMRemoveVolumeRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "VMRemoveVolumeRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "RemoveVolumeOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/removevolume"
+        },
+        {
+          "id": "SubresourceAPIApp.MemoryDumpVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "MemoryDumpVMRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "VirtualMachineMemoryDumpRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/memorydump"
+        },
+        {
+          "id": "SubresourceAPIApp.RemoveMemoryDumpVMRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "RemoveMemoryDumpVMRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/removememorydump"
+        },
+        {
+          "id": "SubresourceAPIApp.SEVFetchCertChainRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "SEVFetchCertChainRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "SEVPlatformInfo",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/fetchcertchain"
+        },
+        {
+          "id": "SubresourceAPIApp.SEVQueryLaunchMeasurementHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "SEVQueryLaunchMeasurementHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "SEVMeasurementInfo",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/querylaunchmeasurement"
+        },
+        {
+          "id": "SubresourceAPIApp.SEVSetupSessionHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "SEVSetupSessionHandler",
+          "param_types": [
+            "string",
+            "string",
+            "SEVSessionOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/setupsession"
+        },
+        {
+          "id": "SubresourceAPIApp.SEVInjectLaunchSecretHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "SEVInjectLaunchSecretHandler",
+          "param_types": [
+            "string",
+            "string",
+            "SEVSecretOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/injectlaunchsecret"
+        },
+        {
+          "id": "SubresourceAPIApp.EvacuateCancelHandlerVM",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "EvacuateCancelHandler",
+          "param_types": [
+            "string",
+            "string",
+            "EvacuateCancelOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachines/{name}/evacuate/cancel"
+        },
+        {
+          "id": "SubresourceAPIApp.EvacuateCancelHandlerVMI",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "EvacuateCancelHandler",
+          "param_types": [
+            "string",
+            "string",
+            "EvacuateCancelOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/evacuate/cancel"
+        },
+        {
+          "id": "SubresourceAPIApp.BackupVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "BackupVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "BackupOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/backup"
+        },
+        {
+          "id": "SubresourceAPIApp.RedefineCheckpointVMIRequestHandler",
+          "class_name": "rest.SubresourceAPIApp",
+          "method_name": "RedefineCheckpointVMIRequestHandler",
+          "param_types": [
+            "string",
+            "string",
+            "BackupCheckpoint"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /apis/subresources.kubevirt.io/v1/namespaces/{namespace}/virtualmachineinstances/{name}/redefine-checkpoint"
+        },
+        {
+          "id": "api.get_apis_subresources_kubevirt_io_v1",
+          "class_name": "api.go",
+          "method_name": "get_apis_subresources_kubevirt_io_v1",
+          "param_types": [],
+          "return_type": "APIResourceList",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io/v1"
+        },
+        {
+          "id": "api.get_root",
+          "class_name": "api.go",
+          "method_name": "get_root",
+          "param_types": [],
+          "return_type": "RootPaths",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "api.get_apis_subresources_kubevirt_io",
+          "class_name": "api.go",
+          "method_name": "get_apis_subresources_kubevirt_io",
+          "param_types": [],
+          "return_type": "APIGroup",
+          "protocol": "REST",
+          "endpoint": "GET /apis/subresources.kubevirt.io"
+        },
+        {
+          "id": "api.get_apis",
+          "class_name": "api.go",
+          "method_name": "get_apis",
+          "param_types": [],
+          "return_type": "APIGroupList",
+          "protocol": "REST",
+          "endpoint": "GET /apis"
+        },
+        {
+          "id": "api.get_openapi_v2",
+          "class_name": "api.go",
+          "method_name": "get_openapi_v2",
+          "param_types": [],
+          "return_type": "Swagger",
+          "protocol": "REST",
+          "endpoint": "GET /openapi/v2"
+        },
+        {
+          "id": "api.get_openapi_v3",
+          "class_name": "api.go",
+          "method_name": "get_openapi_v3",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /openapi/v3"
+        },
+        {
+          "id": "api.get_openapi_v3_apis_subresources_kubevirt_io_v1",
+          "class_name": "api.go",
+          "method_name": "get_openapi_v3_apis_subresources_kubevirt_io_v1",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /openapi/v3/apis/subresources.kubevirt.io/v1"
+        },
+        {
+          "id": "api.post_virtualmachineinstances_validate_create",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineinstances_validate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineinstances-validate-create"
+        },
+        {
+          "id": "api.post_virtualmachineinstances_validate_update",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineinstances_validate_update",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineinstances-validate-update"
+        },
+        {
+          "id": "api.post_virtualmachines_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachines_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachines-validate"
+        },
+        {
+          "id": "api.post_virtualmachinereplicaset_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinereplicaset_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinereplicaset-validate"
+        },
+        {
+          "id": "api.post_virtualmachinepool_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinepool_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinepool-validate"
+        },
+        {
+          "id": "api.post_vmipreset_validate",
+          "class_name": "api.go",
+          "method_name": "post_vmipreset_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /vmipreset-validate"
+        },
+        {
+          "id": "api.post_migration_validate_create",
+          "class_name": "api.go",
+          "method_name": "post_migration_validate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /migration-validate-create"
+        },
+        {
+          "id": "api.post_migration_validate_update",
+          "class_name": "api.go",
+          "method_name": "post_migration_validate_update",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /migration-validate-update"
+        },
+        {
+          "id": "api.post_virtualmachinesnapshots_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinesnapshots_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinesnapshots-validate"
+        },
+        {
+          "id": "api.post_virtualmachinerestores_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinerestores_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinerestores-validate"
+        },
+        {
+          "id": "api.post_virtualmachinebackups_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinebackups_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinebackups-validate"
+        },
+        {
+          "id": "api.post_virtualmachinebackuptrackers_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinebackuptrackers_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinebackuptrackers-validate"
+        },
+        {
+          "id": "api.post_virtualmachineexports_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineexports_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineexports-validate"
+        },
+        {
+          "id": "api.post_virtualmachineinstancetypes_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineinstancetypes_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineinstancetypes-validate"
+        },
+        {
+          "id": "api.post_virtualmachineclusterinstancetypes_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineclusterinstancetypes_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineclusterinstancetypes-validate"
+        },
+        {
+          "id": "api.post_virtualmachinepreferences_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachinepreferences_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachinepreferences-validate"
+        },
+        {
+          "id": "api.post_virtualmachineclusterpreferences_validate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineclusterpreferences_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineclusterpreferences-validate"
+        },
+        {
+          "id": "api.post_status_validate",
+          "class_name": "api.go",
+          "method_name": "post_status_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /status-validate"
+        },
+        {
+          "id": "api.post_pod_eviction_validate",
+          "class_name": "api.go",
+          "method_name": "post_pod_eviction_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /pod-eviction-validate"
+        },
+        {
+          "id": "api.post_migration_policy_validate_create",
+          "class_name": "api.go",
+          "method_name": "post_migration_policy_validate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /migration-policy-validate-create"
+        },
+        {
+          "id": "api.post_vm_clone_validate_create",
+          "class_name": "api.go",
+          "method_name": "post_vm_clone_validate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /vm-clone-validate-create"
+        },
+        {
+          "id": "api.post_plugin_validate",
+          "class_name": "api.go",
+          "method_name": "post_plugin_validate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /plugin-validate"
+        },
+        {
+          "id": "api.post_virtualmachines_mutate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachines_mutate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachines-mutate"
+        },
+        {
+          "id": "api.post_virtualmachineinstances_mutate",
+          "class_name": "api.go",
+          "method_name": "post_virtualmachineinstances_mutate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virtualmachineinstances-mutate"
+        },
+        {
+          "id": "api.post_migration_mutate_create",
+          "class_name": "api.go",
+          "method_name": "post_migration_mutate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /migration-mutate-create"
+        },
+        {
+          "id": "api.post_vm_clone_mutate_create",
+          "class_name": "api.go",
+          "method_name": "post_vm_clone_mutate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /vm-clone-mutate-create"
+        },
+        {
+          "id": "api.post_virt_launcher_pod_mutate",
+          "class_name": "api.go",
+          "method_name": "post_virt_launcher_pod_mutate",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /virt-launcher-pod-mutate"
+        }
+      ]
+    },
+    "virt-controller": {
+      "exposed_interfaces": [
+        {
+          "id": "ProfileManager.HandleStartProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStartProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /start-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleStopProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStopProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /stop-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleDumpProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleDumpProfiler",
+          "param_types": [],
+          "return_type": "ProfilerResult",
+          "protocol": "REST",
+          "endpoint": "GET /dump-profiler"
+        }
+      ]
+    },
+    "virt-handler": {
+      "exposed_interfaces": [
+        {
+          "id": "ProfileManager.HandleStartProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStartProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /start-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleStopProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStopProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /stop-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleDumpProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleDumpProfiler",
+          "param_types": [],
+          "return_type": "ProfilerResult",
+          "protocol": "REST",
+          "endpoint": "GET /dump-profiler"
+        },
+        {
+          "id": "ConsoleHandler.SerialHandler",
+          "class_name": "rest.ConsoleHandler",
+          "method_name": "SerialHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/console"
+        },
+        {
+          "id": "ConsoleHandler.VNCHandler",
+          "class_name": "rest.ConsoleHandler",
+          "method_name": "VNCHandler",
+          "param_types": [
+            "string",
+            "string",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/vnc"
+        },
+        {
+          "id": "LifecycleHandler.ScreenshotRequestHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "ScreenshotRequestHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/vnc/screenshot"
+        },
+        {
+          "id": "ConsoleHandler.USBRedirHandler",
+          "class_name": "rest.ConsoleHandler",
+          "method_name": "USBRedirHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/usbredir"
+        },
+        {
+          "id": "LifecycleHandler.BackupHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "BackupHandler",
+          "param_types": [
+            "string",
+            "string",
+            "BackupOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/backup"
+        },
+        {
+          "id": "LifecycleHandler.RedefineCheckpointHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "RedefineCheckpointHandler",
+          "param_types": [
+            "string",
+            "string",
+            "BackupCheckpoint"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/redefine-checkpoint"
+        },
+        {
+          "id": "LifecycleHandler.PauseHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "PauseHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/pause"
+        },
+        {
+          "id": "LifecycleHandler.UnpauseHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "UnpauseHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/unpause"
+        },
+        {
+          "id": "LifecycleHandler.FreezeHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "FreezeHandler",
+          "param_types": [
+            "string",
+            "string",
+            "FreezeUnfreezeTimeout"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/freeze"
+        },
+        {
+          "id": "LifecycleHandler.UnfreezeHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "UnfreezeHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/unfreeze"
+        },
+        {
+          "id": "LifecycleHandler.SoftRebootHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "SoftRebootHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/softreboot"
+        },
+        {
+          "id": "LifecycleHandler.ResetHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "ResetHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/reset"
+        },
+        {
+          "id": "LifecycleHandler.GetGuestInfo",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "GetGuestInfo",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceGuestAgentInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/guestosinfo"
+        },
+        {
+          "id": "LifecycleHandler.GetUsers",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "GetUsers",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceGuestOSUserList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/userlist"
+        },
+        {
+          "id": "LifecycleHandler.GetFilesystems",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "GetFilesystems",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "VirtualMachineInstanceFileSystemList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/filesystemlist"
+        },
+        {
+          "id": "ConsoleHandler.VSOCKHandler",
+          "class_name": "rest.ConsoleHandler",
+          "method_name": "VSOCKHandler",
+          "param_types": [
+            "string",
+            "string",
+            "uint32",
+            "bool"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/vsock"
+        },
+        {
+          "id": "LifecycleHandler.SEVFetchCertChainHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "SEVFetchCertChainHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "SEVPlatformInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/fetchcertchain"
+        },
+        {
+          "id": "LifecycleHandler.SEVQueryLaunchMeasurementHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "SEVQueryLaunchMeasurementHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "SEVMeasurementInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/querylaunchmeasurement"
+        },
+        {
+          "id": "LifecycleHandler.SEVInjectLaunchSecretHandler",
+          "class_name": "rest.LifecycleHandler",
+          "method_name": "SEVInjectLaunchSecretHandler",
+          "param_types": [
+            "string",
+            "string",
+            "SEVSecretOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/namespaces/{namespace}/virtualmachineinstances/{name}/sev/injectlaunchsecret"
+        },
+        {
+          "id": "VMStatsHandler.GetVMStats",
+          "class_name": "rest.VMStatsHandler",
+          "method_name": "GetVMStats",
+          "param_types": [
+            "vmStatsRequestBody"
+          ],
+          "return_type": "map[string]*VMStatsResult",
+          "protocol": "REST",
+          "endpoint": "POST /v1/vmstats"
+        },
+        {
+          "id": "Notify.HandleDomainEvent",
+          "class_name": "eventsserver.Notify",
+          "method_name": "HandleDomainEvent",
+          "param_types": [
+            "DomainEventRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Notify/HandleDomainEvent"
+        },
+        {
+          "id": "Notify.HandleK8SEvent",
+          "class_name": "eventsserver.Notify",
+          "method_name": "HandleK8SEvent",
+          "param_types": [
+            "K8sEventRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Notify/HandleK8sEvent"
+        },
+        {
+          "id": "InfoServer.Info",
+          "class_name": "eventsserver.InfoServer",
+          "method_name": "Info",
+          "param_types": [
+            "NotifyInfoRequest"
+          ],
+          "return_type": "NotifyInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "NotifyInfo/Info"
+        },
+        {
+          "id": "SystemService.CABundle",
+          "class_name": "system.SystemService",
+          "method_name": "CABundle",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "Bundle",
+          "protocol": "gRPC",
+          "endpoint": "System/CABundle"
+        },
+        {
+          "id": "GenericDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.GenericDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "GenericDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.GenericDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "GenericDevicePlugin.Allocate",
+          "class_name": "device_manager.GenericDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "GenericDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.GenericDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        },
+        {
+          "id": "IOMMUFDDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.IOMMUFDDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "IOMMUFDDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.IOMMUFDDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "IOMMUFDDevicePlugin.Allocate",
+          "class_name": "device_manager.IOMMUFDDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "IOMMUFDDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.IOMMUFDDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        },
+        {
+          "id": "MediatedDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.MediatedDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "MediatedDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.MediatedDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "MediatedDevicePlugin.Allocate",
+          "class_name": "device_manager.MediatedDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "MediatedDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.MediatedDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        },
+        {
+          "id": "PCIDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.PCIDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "PCIDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.PCIDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "PCIDevicePlugin.Allocate",
+          "class_name": "device_manager.PCIDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "PCIDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.PCIDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        },
+        {
+          "id": "SocketDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.SocketDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "SocketDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.SocketDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "SocketDevicePlugin.Allocate",
+          "class_name": "device_manager.SocketDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "SocketDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.SocketDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        },
+        {
+          "id": "USBDevicePlugin.GetDevicePluginOptions",
+          "class_name": "device_manager.USBDevicePlugin",
+          "method_name": "GetDevicePluginOptions",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "DevicePluginOptions",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/GetDevicePluginOptions"
+        },
+        {
+          "id": "USBDevicePlugin.ListAndWatch",
+          "class_name": "device_manager.USBDevicePlugin",
+          "method_name": "ListAndWatch",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<ListAndWatchResponse>",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/ListAndWatch"
+        },
+        {
+          "id": "USBDevicePlugin.Allocate",
+          "class_name": "device_manager.USBDevicePlugin",
+          "method_name": "Allocate",
+          "param_types": [
+            "AllocateRequest"
+          ],
+          "return_type": "AllocateResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/Allocate"
+        },
+        {
+          "id": "USBDevicePlugin.PreStartContainer",
+          "class_name": "device_manager.USBDevicePlugin",
+          "method_name": "PreStartContainer",
+          "param_types": [
+            "PreStartContainerRequest"
+          ],
+          "return_type": "PreStartContainerResponse",
+          "protocol": "gRPC",
+          "endpoint": "DevicePlugin/PreStartContainer"
+        }
+      ]
+    },
+    "virt-launcher": {
+      "exposed_interfaces": [
+        {
+          "id": "Launcher.SyncVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SyncVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SyncVirtualMachine"
+        },
+        {
+          "id": "Launcher.PauseVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "PauseVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/PauseVirtualMachine"
+        },
+        {
+          "id": "Launcher.UnpauseVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "UnpauseVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/UnpauseVirtualMachine"
+        },
+        {
+          "id": "Launcher.FreezeVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "FreezeVirtualMachine",
+          "param_types": [
+            "FreezeRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/FreezeVirtualMachine"
+        },
+        {
+          "id": "Launcher.UnfreezeVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "UnfreezeVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/UnfreezeVirtualMachine"
+        },
+        {
+          "id": "Launcher.ResetVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "ResetVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/ResetVirtualMachine"
+        },
+        {
+          "id": "Launcher.SoftRebootVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SoftRebootVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SoftRebootVirtualMachine"
+        },
+        {
+          "id": "Launcher.ShutdownVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "ShutdownVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/ShutdownVirtualMachine"
+        },
+        {
+          "id": "Launcher.KillVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "KillVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/KillVirtualMachine"
+        },
+        {
+          "id": "Launcher.DeleteVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "DeleteVirtualMachine",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/DeleteVirtualMachine"
+        },
+        {
+          "id": "Launcher.MigrateVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "MigrateVirtualMachine",
+          "param_types": [
+            "MigrationRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/MigrateVirtualMachine"
+        },
+        {
+          "id": "Launcher.SyncMigrationTarget",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SyncMigrationTarget",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SyncMigrationTarget"
+        },
+        {
+          "id": "Launcher.CancelVirtualMachineMigration",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "CancelVirtualMachineMigration",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/CancelVirtualMachineMigration"
+        },
+        {
+          "id": "Launcher.SignalTargetPodCleanup",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SignalTargetPodCleanup",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SignalTargetPodCleanup"
+        },
+        {
+          "id": "Launcher.FinalizeVirtualMachineMigration",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "FinalizeVirtualMachineMigration",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/FinalizeVirtualMachineMigration"
+        },
+        {
+          "id": "Launcher.HotplugHostDevices",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "HotplugHostDevices",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/HotplugHostDevices"
+        },
+        {
+          "id": "Launcher.GetDomain",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetDomain",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "DomainResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetDomain"
+        },
+        {
+          "id": "Launcher.GetDomainStats",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetDomainStats",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "DomainStatsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetDomainStats"
+        },
+        {
+          "id": "Launcher.GetGuestInfo",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetGuestInfo",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "GuestInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetGuestInfo"
+        },
+        {
+          "id": "Launcher.GetUsers",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetUsers",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "GuestUserListResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetUsers"
+        },
+        {
+          "id": "Launcher.GetFilesystems",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetFilesystems",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "GuestFilesystemsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetFilesystems"
+        },
+        {
+          "id": "Launcher.Ping",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "Ping",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/Ping"
+        },
+        {
+          "id": "Launcher.Exec",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "Exec",
+          "param_types": [
+            "ExecRequest"
+          ],
+          "return_type": "ExecResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/Exec"
+        },
+        {
+          "id": "Launcher.GuestPing",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GuestPing",
+          "param_types": [
+            "GuestPingRequest"
+          ],
+          "return_type": "GuestPingResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GuestPing"
+        },
+        {
+          "id": "Launcher.VirtualMachineMemoryDump",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "VirtualMachineMemoryDump",
+          "param_types": [
+            "MemoryDumpRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/VirtualMachineMemoryDump"
+        },
+        {
+          "id": "Launcher.GetQemuVersion",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetQemuVersion",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "QemuVersionResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetQemuVersion"
+        },
+        {
+          "id": "Launcher.SyncVirtualMachineCPUs",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SyncVirtualMachineCPUs",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SyncVirtualMachineCPUs"
+        },
+        {
+          "id": "Launcher.SyncVirtualMachineMemory",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "SyncVirtualMachineMemory",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/SyncVirtualMachineMemory"
+        },
+        {
+          "id": "Launcher.GetSEVInfo",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetSEVInfo",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "SEVInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetSEVInfo"
+        },
+        {
+          "id": "Launcher.GetLaunchMeasurement",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetLaunchMeasurement",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "LaunchMeasurementResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetLaunchMeasurement"
+        },
+        {
+          "id": "Launcher.InjectLaunchSecret",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "InjectLaunchSecret",
+          "param_types": [
+            "InjectLaunchSecretRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/InjectLaunchSecret"
+        },
+        {
+          "id": "Launcher.GetDomainDirtyRateStats",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetDomainDirtyRateStats",
+          "param_types": [
+            "EmptyRequest"
+          ],
+          "return_type": "DirtyRateStatsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetDomainDirtyRateStats"
+        },
+        {
+          "id": "Launcher.GetScreenshot",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetScreenshot",
+          "param_types": [
+            "VMIRequest"
+          ],
+          "return_type": "ScreenshotResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetScreenshot"
+        },
+        {
+          "id": "Launcher.BackupVirtualMachine",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "BackupVirtualMachine",
+          "param_types": [
+            "BackupRequest"
+          ],
+          "return_type": "Response",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/BackupVirtualMachine"
+        },
+        {
+          "id": "Launcher.RedefineCheckpoint",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "RedefineCheckpoint",
+          "param_types": [
+            "RedefineCheckpointRequest"
+          ],
+          "return_type": "RedefineCheckpointResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/RedefineCheckpoint"
+        },
+        {
+          "id": "Launcher.GetVMStats",
+          "class_name": "cmdserver.Launcher",
+          "method_name": "GetVMStats",
+          "param_types": [
+            "VMStatsRequest"
+          ],
+          "return_type": "VMStatsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Cmd/GetVMStats"
+        },
+        {
+          "id": "InfoServer.Info",
+          "class_name": "cmdserver.InfoServer",
+          "method_name": "Info",
+          "param_types": [
+            "CmdInfoRequest"
+          ],
+          "return_type": "CmdInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "CmdInfo/Info"
+        }
+      ]
+    },
+    "virt-operator": {
+      "exposed_interfaces": [
+        {
+          "id": "application.post_kubevirt_validate_delete",
+          "class_name": "application.go",
+          "method_name": "post_kubevirt_validate_delete",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /kubevirt-validate-delete"
+        },
+        {
+          "id": "application.post_kubevirt_validate_update",
+          "class_name": "application.go",
+          "method_name": "post_kubevirt_validate_update",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /kubevirt-validate-update"
+        },
+        {
+          "id": "application.post_kubevirt_validate_create",
+          "class_name": "application.go",
+          "method_name": "post_kubevirt_validate_create",
+          "param_types": [
+            "AdmissionReview"
+          ],
+          "return_type": "AdmissionReview",
+          "protocol": "REST",
+          "endpoint": "POST /kubevirt-validate-create"
+        },
+        {
+          "id": "ProfileManager.HandleStartProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStartProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /start-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleStopProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleStopProfiler",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /stop-profiler"
+        },
+        {
+          "id": "ProfileManager.HandleDumpProfiler",
+          "class_name": "profiler.ProfileManager",
+          "method_name": "HandleDumpProfiler",
+          "param_types": [],
+          "return_type": "ProfilerResult",
+          "protocol": "REST",
+          "endpoint": "GET /dump-profiler"
+        }
+      ]
+    },
+    "synchronization-controller": {
+      "exposed_interfaces": [
+        {
+          "id": "SynchronizationController.SyncSourceMigrationStatus",
+          "class_name": "synchronization.SynchronizationController",
+          "method_name": "SyncSourceMigrationStatus",
+          "param_types": [
+            "VMIStatusRequest"
+          ],
+          "return_type": "VMIStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "Synchronize/SyncSourceMigrationStatus"
+        },
+        {
+          "id": "SynchronizationController.SyncTargetMigrationStatus",
+          "class_name": "synchronization.SynchronizationController",
+          "method_name": "SyncTargetMigrationStatus",
+          "param_types": [
+            "VMIStatusRequest"
+          ],
+          "return_type": "VMIStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "Synchronize/SyncTargetMigrationStatus"
+        },
+        {
+          "id": "SynchronizationController.CancelMigration",
+          "class_name": "synchronization.SynchronizationController",
+          "method_name": "CancelMigration",
+          "param_types": [
+            "MigrationCancelRequest"
+          ],
+          "return_type": "MigrationCancelResponse",
+          "protocol": "gRPC",
+          "endpoint": "Synchronize/CancelMigration"
+        },
+        {
+          "id": "SynchronizationController.MigrationTunnel",
+          "class_name": "synchronization.SynchronizationController",
+          "method_name": "MigrationTunnel",
+          "param_types": [
+            "MigrationFrame"
+          ],
+          "return_type": "List<MigrationFrame>",
+          "protocol": "gRPC",
+          "endpoint": "Synchronize/MigrationTunnel"
+        }
+      ]
+    },
+    "virt-exportserver": {
+      "exposed_interfaces": [
+        {
+          "id": "exportserver.archiveHandler",
+          "class_name": "exportserver.go",
+          "method_name": "archiveHandler",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {ArchiveURI}"
+        },
+        {
+          "id": "exportserver.dirHandler",
+          "class_name": "exportserver.go",
+          "method_name": "dirHandler",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {DirURI}"
+        },
+        {
+          "id": "exportserver.fileHandler",
+          "class_name": "exportserver.go",
+          "method_name": "fileHandler",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {RawURI}"
+        },
+        {
+          "id": "exportserver.gzipHandler",
+          "class_name": "exportserver.go",
+          "method_name": "gzipHandler",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {RawGzURI}"
+        },
+        {
+          "id": "exportServer.backupMapHandler",
+          "class_name": "virtexportserver.exportServer",
+          "method_name": "backupMapHandler",
+          "param_types": [
+            "uint64",
+            "uint64",
+            "int"
+          ],
+          "return_type": "ExportMapResponse",
+          "protocol": "REST",
+          "endpoint": "GET {MapURI}"
+        },
+        {
+          "id": "exportServer.backupDataHandler",
+          "class_name": "virtexportserver.exportServer",
+          "method_name": "backupDataHandler",
+          "param_types": [
+            "uint64",
+            "uint64"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {DataURI}"
+        },
+        {
+          "id": "exportserver.vmHandler",
+          "class_name": "exportserver.go",
+          "method_name": "vmHandler",
+          "param_types": [],
+          "return_type": "List<runtime.Object>",
+          "protocol": "REST",
+          "endpoint": "GET /{internal|external}/{VMURI}"
+        },
+        {
+          "id": "exportserver.secretHandler",
+          "class_name": "exportserver.go",
+          "method_name": "secretHandler",
+          "param_types": [],
+          "return_type": "List<Secret>",
+          "protocol": "REST",
+          "endpoint": "GET /{internal|external}/{SecretURI}"
+        },
+        {
+          "id": "oci.ociHTTPHandler",
+          "class_name": "oci.go",
+          "method_name": "ociHTTPHandler",
+          "param_types": [],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET {OCIURI}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.handlerDial",
+      "src_method": "Dial",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.ConsoleHandler",
+      "dst_interface_id": "ConsoleHandler.SerialHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/dialers.go:58 kvcorev1.Dial(url, h.app.handlerTLSConfiguration)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.handlerDial",
+      "src_method": "Dial",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.ConsoleHandler",
+      "dst_interface_id": "ConsoleHandler.VNCHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/dialers.go:58 kvcorev1.Dial(url, h.app.handlerTLSConfiguration)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.handlerDial",
+      "src_method": "Dial",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.ConsoleHandler",
+      "dst_interface_id": "ConsoleHandler.USBRedirHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/dialers.go:58 kvcorev1.Dial(url, h.app.handlerTLSConfiguration)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.handlerDial",
+      "src_method": "Dial",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.ConsoleHandler",
+      "dst_interface_id": "ConsoleHandler.VSOCKHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/dialers.go:58 kvcorev1.Dial(url, h.app.handlerTLSConfiguration)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.PauseHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.UnpauseHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.FreezeHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.UnfreezeHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.ResetHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.SoftRebootHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.BackupHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.RedefineCheckpointHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "putRequestHandlerWithErrorPostProcessing",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.SEVInjectLaunchSecretHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:181 conn.Put(url, request.Request.Body)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.GetGuestInfo",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:197 conn.Get(url, restful.MIME_JSON)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.GetUsers",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:197 conn.Get(url, restful.MIME_JSON)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.GetFilesystems",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:197 conn.Get(url, restful.MIME_JSON)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.SEVFetchCertChainHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:197 conn.Get(url, restful.MIME_JSON)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.SEVQueryLaunchMeasurementHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:197 conn.Get(url, restful.MIME_JSON)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "httpGetRequestBinaryHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "rest.LifecycleHandler",
+      "dst_interface_id": "LifecycleHandler.ScreenshotRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/subresource.go:221 conn.Get(url, \"\")"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-controller",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStartProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-controller",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStopProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "DumpClusterProfilerHandler",
+      "dst_service": "virt-controller",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleDumpProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:284 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStartProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStopProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "DumpClusterProfilerHandler",
+      "dst_service": "virt-handler",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleDumpProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:284 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-operator",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStartProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "stopStartHandler",
+      "dst_service": "virt-operator",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleStopProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:183 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-api",
+      "src_class": "rest.SubresourceAPIApp",
+      "src_method": "DumpClusterProfilerHandler",
+      "dst_service": "virt-operator",
+      "dst_class": "profiler.ProfileManager",
+      "dst_interface_id": "ProfileManager.HandleDumpProfiler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-api/rest/profiler.go:284 resp, err := client.Do(req)"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "vm.Controller",
+      "src_method": "handleVolumeRequests",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.VMIAddVolumeRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/vm/vm.go:833 .AddVolume(context.Background(), vmi.Name, request.AddVolumeOptions)"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "vm.Controller",
+      "src_method": "handleVolumeRequests",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.VMIRemoveVolumeRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/vm/vm.go:841 .RemoveVolume(context.Background(), vmi.Name, request.RemoveVolumeOptions)"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "migration.Controller",
+      "src_method": "abortBackupForCriticalMigration",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.BackupVMIRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/migration/migration.go:1618 .Backup(context.Background(), vmi.Name, backupOptions)"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "watch.VirtControllerApp",
+      "src_method": "onStartedLeading",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.FreezeVMIRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/application.go:647 vca.snapshotController.Run( -> pkg/storage/snapshot/source.go:460"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "watch.VirtControllerApp",
+      "src_method": "onStartedLeading",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.UnfreezeVMIRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/application.go:647 vca.snapshotController.Run( -> pkg/storage/snapshot/source.go:479"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "watch.VirtControllerApp",
+      "src_method": "onStartedLeading",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.StopVMRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/application.go:652 vca.restoreController.Run( -> pkg/storage/snapshot/restore.go:655"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "watch.VirtControllerApp",
+      "src_method": "onStartedLeading",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.BackupVMIRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/application.go:669 vca.vmBackupController.Run( -> pkg/storage/cbt/backup.go:684"
+    },
+    {
+      "src_service": "virt-controller",
+      "src_class": "watch.VirtControllerApp",
+      "src_method": "onStartedLeading",
+      "dst_service": "virt-api",
+      "dst_class": "rest.SubresourceAPIApp",
+      "dst_interface_id": "SubresourceAPIApp.RedefineCheckpointVMIRequestHandler",
+      "protocol": "REST",
+      "evidence": "pkg/virt-controller/watch/application.go:669 vca.vmBackupController.Run( -> pkg/storage/cbt/backuptracker.go:126"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SyncVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SyncVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:335 return c.genericSendVMICmd(\"SyncVMI\", c.v1client.SyncVirtualMachine, vmi, options)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "PauseVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.PauseVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:339 return c.genericSendVMICmd(\"Pause\", c.v1client.PauseVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "UnpauseVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.UnpauseVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:343 return c.genericSendVMICmd(\"Unpause\", c.v1client.UnpauseVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "FreezeVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.FreezeVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:362 response, err := c.v1client.FreezeVirtualMachine(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "UnfreezeVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.UnfreezeVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:384 response, err := c.v1client.UnfreezeVirtualMachine(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "VirtualMachineMemoryDump",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.VirtualMachineMemoryDump",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:405 response, err := c.v1client.VirtualMachineMemoryDump(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SoftRebootVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SoftRebootVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:411 return c.genericSendVMICmd(\"SoftReboot\", c.v1client.SoftRebootVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "ResetVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.ResetVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:415 return c.genericSendVMICmd(\"Reset\", c.v1client.ResetVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "ShutdownVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.ShutdownVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:419 return c.genericSendVMICmd(\"Shutdown\", c.v1client.ShutdownVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "KillVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.KillVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:423 return c.genericSendVMICmd(\"Kill\", c.v1client.KillVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "DeleteDomain",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.DeleteVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:427 return c.genericSendVMICmd(\"Delete\", c.v1client.DeleteVirtualMachine, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "MigrateVirtualMachine",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.MigrateVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:451 response, err := c.v1client.MigrateVirtualMachine(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "CancelVirtualMachineMigration",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.CancelVirtualMachineMigration",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:459 return c.genericSendVMICmd(\"CancelMigration\", c.v1client.CancelVirtualMachineMigration, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SyncMigrationTarget",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SyncMigrationTarget",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:463 return c.genericSendVMICmd(\"SyncMigrationTarget\", c.v1client.SyncMigrationTarget, vmi, options)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SyncVirtualMachineCPUs",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SyncVirtualMachineCPUs",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:467 return c.genericSendVMICmd(\"SyncVirtualMachineCPUs\", c.v1client.SyncVirtualMachineCPUs, vmi, options)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SignalTargetPodCleanup",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SignalTargetPodCleanup",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:471 return c.genericSendVMICmd(\"SignalTargetPodCleanup\", c.v1client.SignalTargetPodCleanup, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "FinalizeVirtualMachineMigration",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.FinalizeVirtualMachineMigration",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:475 return c.genericSendVMICmd(\"FinalizeVirtualMachineMigration\", c.v1client.FinalizeVirtualMachineMigration, vmi, options)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "HotplugHostDevices",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.HotplugHostDevices",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:479 return c.genericSendVMICmd(\"HotplugHostDevices\", c.v1client.HotplugHostDevices, vmi, &cmdv1.VirtualMachineOptions{})"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetDomain",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetDomain",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:491 domainResponse, err := c.v1client.GetDomain(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetDomainDirtyRateStats",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetDomainDirtyRateStats",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:516 domainDirtyRateStatsResponse, err := c.v1client.GetDomainDirtyRateStats(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetVMStats",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetVMStats",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:534 vmstatsResponse, err := c.v1client.GetVMStats(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetQemuVersion",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetQemuVersion",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:595 versionResponse, err := c.v1client.GetQemuVersion(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetDomainStats",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetDomainStats",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:620 domainStatsResponse, err := c.v1client.GetDomainStats(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "Ping",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.Ping",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:644 response, err := c.v1client.Ping(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetGuestInfo",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetGuestInfo",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:658 gaRespose, err := c.v1client.GetGuestInfo(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetUsers",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetUsers",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:685 uResponse, err := c.v1client.GetUsers(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetFilesystems",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetFilesystems",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:717 fsResponse, err := c.v1client.GetFilesystems(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetScreenshot",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetScreenshot",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:800 resp, err := c.v1client.GetScreenshot(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetSEVInfo",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetSEVInfo",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:813 sevInfoResponse, err := c.v1client.GetSEVInfo(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "GetLaunchMeasurement",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.GetLaunchMeasurement",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:842 launchMeasurementRespose, err := c.v1client.GetLaunchMeasurement(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "InjectLaunchSecret",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.InjectLaunchSecret",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:877 response, err := c.v1client.InjectLaunchSecret(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "SyncVirtualMachineMemory",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.SyncVirtualMachineMemory",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:883 return c.genericSendVMICmd(\"SyncVirtualMachineMemory\", c.v1client.SyncVirtualMachineMemory, vmi, options)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "VirtualMachineBackup",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.BackupVirtualMachine",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:906 response, err := c.v1client.BackupVirtualMachine(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "cmdclient.VirtLauncherClient",
+      "src_method": "RedefineCheckpoint",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.Launcher",
+      "dst_interface_id": "Launcher.RedefineCheckpoint",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:932 response, err := c.v1client.RedefineCheckpoint(ctx, request)"
+    },
+    {
+      "src_service": "virt-handler",
+      "src_class": "client.go",
+      "src_method": "newClientWithInfoClient",
+      "dst_service": "virt-launcher",
+      "dst_class": "cmdserver.InfoServer",
+      "dst_interface_id": "InfoServer.Info",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-handler/cmd-client/client.go:280 infoClient.Info(ctx, &info.CmdInfoRequest{})"
+    },
+    {
+      "src_service": "virt-launcher",
+      "src_class": "eventsclient.notifyClient",
+      "src_method": "HandleDomainEvent",
+      "dst_service": "virt-handler",
+      "dst_class": "eventsserver.Notify",
+      "dst_interface_id": "Notify.HandleDomainEvent",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-launcher/notify-client/grpcclient.go:114 n.v1client.HandleDomainEvent(ctx, &request)"
+    },
+    {
+      "src_service": "virt-launcher",
+      "src_class": "eventsclient.notifyClient",
+      "src_method": "HandleK8SEvent",
+      "dst_service": "virt-handler",
+      "dst_class": "eventsserver.Notify",
+      "dst_interface_id": "Notify.HandleK8SEvent",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-launcher/notify-client/grpcclient.go:224 n.v1client.HandleK8SEvent(ctx, &request)"
+    },
+    {
+      "src_service": "virt-launcher",
+      "src_class": "grpcclient.go",
+      "src_method": "negotiateVersion",
+      "dst_service": "virt-handler",
+      "dst_class": "eventsserver.InfoServer",
+      "dst_interface_id": "InfoServer.Info",
+      "protocol": "gRPC",
+      "evidence": "pkg/virt-launcher/notify-client/grpcclient.go:260 infoClient.Info(ctx, &info.NotifyInfoRequest{})"
+    }
+  ]
+}

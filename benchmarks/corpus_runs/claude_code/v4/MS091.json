@@ -1,0 +1,2130 @@
+{
+  "system_id": "MS091",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "codalab": {
+      "exposed_interfaces": [
+        {
+          "id": "CompetitionParticipantAPIViewSet.list",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<CompetitionParticipant>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/participants/"
+        },
+        {
+          "id": "CompetitionParticipantAPIViewSet.create",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "CompetitionParticipantSerial"
+          ],
+          "return_type": "CompetitionParticipant",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/participants/"
+        },
+        {
+          "id": "CompetitionParticipantAPIViewSet.retrieve",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "CompetitionParticipant",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/participants/{pk}/"
+        },
+        {
+          "id": "CompetitionParticipantAPIViewSet.update",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "CompetitionParticipantSerial"
+          ],
+          "return_type": "CompetitionParticipant",
+          "protocol": "REST",
+          "endpoint": "PUT /api/competition/{competition_id}/participants/{pk}/"
+        },
+        {
+          "id": "CompetitionParticipantAPIViewSet.partial_update",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "string",
+            "CompetitionParticipantSerial"
+          ],
+          "return_type": "CompetitionParticipant",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/competition/{competition_id}/participants/{pk}/"
+        },
+        {
+          "id": "CompetitionParticipantAPIViewSet.destroy",
+          "class_name": "CompetitionParticipantAPIViewSet",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/competition/{competition_id}/participants/{pk}/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.list",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<Competition>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.create",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "create",
+          "param_types": [
+            "CompetitionSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.retrieve",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.update",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "CompetitionSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "PUT /api/competition/{pk}/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.partial_update",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "CompetitionSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/competition/{pk}/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.destroy",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/competition/{pk}/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.publish",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "publish",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/publish/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.unpublish",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "unpublish",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/unpublish/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.participate",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "participate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{pk}/participate/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.mystatus",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "mystatus",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/mystatus/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.participation_status",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "participation_status",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{pk}/participation_status/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.team_status",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "team_status",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{pk}/team_status/"
+        },
+        {
+          "id": "CompetitionAPIViewSet.info",
+          "class_name": "CompetitionAPIViewSet",
+          "method_name": "info",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/info/"
+        },
+        {
+          "id": "LeaderBoardViewSet.list",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<PhaseLeaderBoard>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/leaderboards/"
+        },
+        {
+          "id": "LeaderBoardViewSet.create",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "LeaderBoardSerial"
+          ],
+          "return_type": "PhaseLeaderBoard",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/leaderboards/"
+        },
+        {
+          "id": "LeaderBoardViewSet.retrieve",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "PhaseLeaderBoard",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/leaderboards/{pk}/"
+        },
+        {
+          "id": "LeaderBoardViewSet.update",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "LeaderBoardSerial"
+          ],
+          "return_type": "PhaseLeaderBoard",
+          "protocol": "REST",
+          "endpoint": "PUT /api/competition/{competition_id}/leaderboards/{pk}/"
+        },
+        {
+          "id": "LeaderBoardViewSet.partial_update",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "string",
+            "LeaderBoardSerial"
+          ],
+          "return_type": "PhaseLeaderBoard",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/competition/{competition_id}/leaderboards/{pk}/"
+        },
+        {
+          "id": "LeaderBoardViewSet.destroy",
+          "class_name": "LeaderBoardViewSet",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/competition/{competition_id}/leaderboards/{pk}/"
+        },
+        {
+          "id": "DefaultContentViewSet.list",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "list",
+          "param_types": [],
+          "return_type": "List<DefaultContentItem>",
+          "protocol": "REST",
+          "endpoint": "GET /api/defaultcontent/"
+        },
+        {
+          "id": "DefaultContentViewSet.create",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "create",
+          "param_types": [
+            "DefaultContentSerial"
+          ],
+          "return_type": "DefaultContentItem",
+          "protocol": "REST",
+          "endpoint": "POST /api/defaultcontent/"
+        },
+        {
+          "id": "DefaultContentViewSet.retrieve",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "DefaultContentItem",
+          "protocol": "REST",
+          "endpoint": "GET /api/defaultcontent/{pk}/"
+        },
+        {
+          "id": "DefaultContentViewSet.update",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "DefaultContentSerial"
+          ],
+          "return_type": "DefaultContentItem",
+          "protocol": "REST",
+          "endpoint": "PUT /api/defaultcontent/{pk}/"
+        },
+        {
+          "id": "DefaultContentViewSet.partial_update",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "DefaultContentSerial"
+          ],
+          "return_type": "DefaultContentItem",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/defaultcontent/{pk}/"
+        },
+        {
+          "id": "DefaultContentViewSet.destroy",
+          "class_name": "DefaultContentViewSet",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/defaultcontent/{pk}/"
+        },
+        {
+          "id": "CompetitionPhaseAPIViewset.list",
+          "class_name": "CompetitionPhaseAPIViewset",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Competition>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/phases/"
+        },
+        {
+          "id": "CompetitionPhaseAPIViewset.create",
+          "class_name": "CompetitionPhaseAPIViewset",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "CompetitionPhaseSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{pk}/phases/"
+        },
+        {
+          "id": "CompetitionPhaseAPIViewset.retrieve",
+          "class_name": "CompetitionPhaseAPIViewset",
+          "method_name": "retrieve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{pk}/phases/{phasenumber}"
+        },
+        {
+          "id": "CompetitionPhaseAPIViewset.update",
+          "class_name": "CompetitionPhaseAPIViewset",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "CompetitionPhaseSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "PUT /api/competition/{pk}/phases/{phasenumber}"
+        },
+        {
+          "id": "CompetitionPhaseAPIViewset.partial_update",
+          "class_name": "CompetitionPhaseAPIViewset",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "string",
+            "CompetitionPhaseSerial"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/competition/{pk}/phases/{phasenumber}"
+        },
+        {
+          "id": "CompetitionPageViewSet.list",
+          "class_name": "CompetitionPageViewSet",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Page>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/pages/"
+        },
+        {
+          "id": "CompetitionPageViewSet.create",
+          "class_name": "CompetitionPageViewSet",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "PageSerial"
+          ],
+          "return_type": "Page",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/pages/"
+        },
+        {
+          "id": "CompetitionPageViewSet.retrieve",
+          "class_name": "CompetitionPageViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Page",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/pages/{pk}"
+        },
+        {
+          "id": "CompetitionPageViewSet.update",
+          "class_name": "CompetitionPageViewSet",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "PageSerial"
+          ],
+          "return_type": "Page",
+          "protocol": "REST",
+          "endpoint": "PUT /api/competition/{competition_id}/pages/{pk}"
+        },
+        {
+          "id": "CompetitionPageViewSet.partial_update",
+          "class_name": "CompetitionPageViewSet",
+          "method_name": "partial_update",
+          "param_types": [
+            "string",
+            "string",
+            "PageSerial"
+          ],
+          "return_type": "Page",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/competition/{competition_id}/pages/{pk}"
+        },
+        {
+          "id": "CompetitionSubmissionViewSet.retrieve",
+          "class_name": "CompetitionSubmissionViewSet",
+          "method_name": "retrieve",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "CompetitionSubmission",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/submission/{pk}"
+        },
+        {
+          "id": "CompetitionSubmissionViewSet.create",
+          "class_name": "CompetitionSubmissionViewSet",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "CompetitionSubmissionSerial"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/submission"
+        },
+        {
+          "id": "CompetitionSubmissionViewSet.addToLeaderboard",
+          "class_name": "CompetitionSubmissionViewSet",
+          "method_name": "addToLeaderboard",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/submission/{pk}/leaderboard"
+        },
+        {
+          "id": "CompetitionSubmissionViewSet.removeFromLeaderboard",
+          "class_name": "CompetitionSubmissionViewSet",
+          "method_name": "removeFromLeaderboard",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/competition/{competition_id}/submission/{pk}/leaderboard"
+        },
+        {
+          "id": "CompetitionSubmissionListViewSet.list",
+          "class_name": "CompetitionSubmissionListViewSet",
+          "method_name": "list",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<CompetitionSubmission>",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/submissions"
+        },
+        {
+          "id": "CompetitionCreationApi.post",
+          "class_name": "CompetitionCreationApi",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/create"
+        },
+        {
+          "id": "CompetitionCreationSasApi.post",
+          "class_name": "CompetitionCreationSasApi",
+          "method_name": "post",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/create/sas"
+        },
+        {
+          "id": "CompetitionCreationStatusApi.get",
+          "class_name": "CompetitionCreationStatusApi",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/create/{token}"
+        },
+        {
+          "id": "CompetitionSubmissionSasApi.post",
+          "class_name": "CompetitionSubmissionSasApi",
+          "method_name": "post",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/submission/sas"
+        },
+        {
+          "id": "LeaderBoardDataViewSet.get",
+          "class_name": "LeaderBoardDataViewSet",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/competition/{competition_id}/phases/{phase_id}/leaderboard/data"
+        },
+        {
+          "id": "SubmissionScoreView.get",
+          "class_name": "SubmissionScoreView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/submission/{submission_id}/get_score"
+        },
+        {
+          "id": "AddChagradeBotView.post",
+          "class_name": "AddChagradeBotView",
+          "method_name": "post",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /api/competition/{competition_id}/enable_chagrade"
+        },
+        {
+          "id": "GetExistingStorageAnalytics.get",
+          "class_name": "GetExistingStorageAnalytics",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/storage/analytics"
+        },
+        {
+          "id": "GetStorageUsageHistory.get",
+          "class_name": "GetStorageUsageHistory",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/storage/usage-history"
+        },
+        {
+          "id": "GetCompetitions.get",
+          "class_name": "GetCompetitions",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "List<Competition>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/competitions/list"
+        },
+        {
+          "id": "UpdateCompetitions.post",
+          "class_name": "UpdateCompetitions",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Competition>",
+          "protocol": "REST",
+          "endpoint": "POST /api/admin/competitions/update"
+        },
+        {
+          "id": "ApplyUpperBoundLimit.patch",
+          "class_name": "ApplyUpperBoundLimit",
+          "method_name": "patch",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Competition",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/admin/competition/{competition_id}/apply_upper_bound_limit"
+        },
+        {
+          "id": "GetDefaultUpperBoundLimit.get",
+          "class_name": "GetDefaultUpperBoundLimit",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/competitions/default_upper_bound_limit"
+        },
+        {
+          "id": "ValidationApi.post",
+          "class_name": "ValidationApi",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/validation"
+        },
+        {
+          "id": "InfoApi.post",
+          "class_name": "InfoApi",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /clients/info"
+        },
+        {
+          "id": "views.oauth2_login",
+          "class_name": "views",
+          "method_name": "oauth2_login",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/chahub/login/"
+        },
+        {
+          "id": "views.oauth2_callback",
+          "class_name": "views",
+          "method_name": "oauth2_callback",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /accounts/chahub/login/callback/"
+        },
+        {
+          "id": "views.user_lookup",
+          "class_name": "views",
+          "method_name": "user_lookup",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /user_lookup/"
+        },
+        {
+          "id": "MyAdminView.get",
+          "class_name": "MyAdminView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin_monitoring_links/"
+        },
+        {
+          "id": "views.admin_competitions_manager",
+          "class_name": "views",
+          "method_name": "admin_competitions_manager",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin_competitions_manager"
+        },
+        {
+          "id": "HomePageView.get",
+          "class_name": "HomePageView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "UserDetailView.get",
+          "class_name": "UserDetailView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /profile/{pk}"
+        },
+        {
+          "id": "Highlights.get",
+          "class_name": "Highlights",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /highlights"
+        },
+        {
+          "id": "urls.get_about",
+          "class_name": "urls",
+          "method_name": "get_about",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /about/"
+        },
+        {
+          "id": "urls.get_close",
+          "class_name": "urls",
+          "method_name": "get_close",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /close/"
+        },
+        {
+          "id": "urls.get_automl",
+          "class_name": "urls",
+          "method_name": "get_automl",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /AutoML"
+        },
+        {
+          "id": "urls.get_chalearnlap_pose",
+          "class_name": "urls",
+          "method_name": "get_chalearnlap_pose",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ChalearnLAP_Pose"
+        },
+        {
+          "id": "urls.get_chalearnlap_action",
+          "class_name": "urls",
+          "method_name": "get_chalearnlap_action",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /ChalearnLAP_Action"
+        },
+        {
+          "id": "urls.get_age",
+          "class_name": "urls",
+          "method_name": "get_age",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /Age"
+        },
+        {
+          "id": "urls.get_caption",
+          "class_name": "urls",
+          "method_name": "get_caption",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /Caption"
+        },
+        {
+          "id": "views.competition_index",
+          "class_name": "views",
+          "method_name": "competition_index",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/"
+        },
+        {
+          "id": "CompetitionDetailView.get",
+          "class_name": "CompetitionDetailView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{pk}"
+        },
+        {
+          "id": "CompetitionUpload.get",
+          "class_name": "CompetitionUpload",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/create"
+        },
+        {
+          "id": "CompetitionUpload.post",
+          "class_name": "CompetitionUpload",
+          "method_name": "post",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/create"
+        },
+        {
+          "id": "CompetitionS3Upload.get",
+          "class_name": "CompetitionS3Upload",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/s3_create_competition"
+        },
+        {
+          "id": "CompetitionS3Upload.post",
+          "class_name": "CompetitionS3Upload",
+          "method_name": "post",
+          "param_types": [
+            "CompetitionS3UploadForm"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/s3_create_competition"
+        },
+        {
+          "id": "CompetitionEdit.get",
+          "class_name": "CompetitionEdit",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/edit_competition/{pk}"
+        },
+        {
+          "id": "CompetitionEdit.post",
+          "class_name": "CompetitionEdit",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "CompetitionForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/edit_competition/{pk}"
+        },
+        {
+          "id": "CompetitionDelete.get",
+          "class_name": "CompetitionDelete",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/delete_competition/{pk}"
+        },
+        {
+          "id": "CompetitionDelete.delete",
+          "class_name": "CompetitionDelete",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /competitions/delete_competition/{pk}"
+        },
+        {
+          "id": "CompetitionSubmissionsPage.get",
+          "class_name": "CompetitionSubmissionsPage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{id}/submissions/{phase}"
+        },
+        {
+          "id": "views.competition_submission_metadata_page",
+          "class_name": "views",
+          "method_name": "competition_submission_metadata_page",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{competition_id}/submission_metadata/{phase_id}"
+        },
+        {
+          "id": "CompetitionResultsPage.get",
+          "class_name": "CompetitionResultsPage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{id}/results/{phase}"
+        },
+        {
+          "id": "MyCompetitionSubmissionOutput.get",
+          "class_name": "MyCompetitionSubmissionOutput",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/competition/submission/{submission_id}/{filetype}"
+        },
+        {
+          "id": "CompetitionResultsDownload.get",
+          "class_name": "CompetitionResultsDownload",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{id}/results/{phase}/data"
+        },
+        {
+          "id": "CompetitionCompleteResultsDownload.get",
+          "class_name": "CompetitionCompleteResultsDownload",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{id}/results_complete/{phase}/data"
+        },
+        {
+          "id": "views.competition_message_participants",
+          "class_name": "views",
+          "method_name": "competition_message_participants",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/message_participants/{competition_id}"
+        },
+        {
+          "id": "SubmissionDelete.get",
+          "class_name": "SubmissionDelete",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/submission_delete/{pk}"
+        },
+        {
+          "id": "SubmissionDelete.post",
+          "class_name": "SubmissionDelete",
+          "method_name": "post",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/submission_delete/{pk}"
+        },
+        {
+          "id": "views.download_competition_yaml",
+          "class_name": "views",
+          "method_name": "download_competition_yaml",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/download_yaml/{competition_pk}"
+        },
+        {
+          "id": "views.start_make_bundle_task",
+          "class_name": "views",
+          "method_name": "start_make_bundle_task",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/make_modified_bundle/{competition_pk}/"
+        },
+        {
+          "id": "views.download_competition_bundle",
+          "class_name": "views",
+          "method_name": "download_competition_bundle",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/download/{competition_pk}"
+        },
+        {
+          "id": "views.download_leaderboard_results",
+          "class_name": "views",
+          "method_name": "download_leaderboard_results",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/download_leaderboard_results/{competition_pk}/{phase_pk}"
+        },
+        {
+          "id": "views.submission_update_description",
+          "class_name": "views",
+          "method_name": "submission_update_description",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/update_description/{submission_pk}"
+        },
+        {
+          "id": "views.submission_mark_as_failed",
+          "class_name": "views",
+          "method_name": "submission_mark_as_failed",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/mark_as_failed/{submission_pk}"
+        },
+        {
+          "id": "views.submission_toggle_leaderboard",
+          "class_name": "views",
+          "method_name": "submission_toggle_leaderboard",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/toggle_leaderboard/{submission_pk}"
+        },
+        {
+          "id": "views.submission_re_run",
+          "class_name": "views",
+          "method_name": "submission_re_run",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/submission_re_run/{submission_pk}"
+        },
+        {
+          "id": "views.submission_re_run_all",
+          "class_name": "views",
+          "method_name": "submission_re_run_all",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/submission_re_run_all/{phase_pk}"
+        },
+        {
+          "id": "views.submission_migrate",
+          "class_name": "views",
+          "method_name": "submission_migrate",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/submission_migrate/{pk}"
+        },
+        {
+          "id": "CompetitionPublicSubmission.get",
+          "class_name": "CompetitionPublicSubmission",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/public_submissions/{pk}"
+        },
+        {
+          "id": "CompetitionPublicSubmissionByPhases.get",
+          "class_name": "CompetitionPublicSubmissionByPhases",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{pk}/public_submissions/{phase}"
+        },
+        {
+          "id": "views.competition_dumps_view",
+          "class_name": "views",
+          "method_name": "competition_dumps_view",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{competition_pk}/dumps/"
+        },
+        {
+          "id": "CompetitionDumpDeleteView.get",
+          "class_name": "CompetitionDumpDeleteView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{pk}/delete_dump/"
+        },
+        {
+          "id": "CompetitionDumpDeleteView.post",
+          "class_name": "CompetitionDumpDeleteView",
+          "method_name": "post",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /competitions/{pk}/delete_dump/"
+        },
+        {
+          "id": "CompetitionWidgetsView.get",
+          "class_name": "CompetitionWidgetsView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/{pk}/widgets/"
+        },
+        {
+          "id": "CompetitionSubmissionWidgetView.get",
+          "class_name": "CompetitionSubmissionWidgetView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/submission_widget/{pk}/"
+        },
+        {
+          "id": "CompetitionLeaderboardWidgetView.get",
+          "class_name": "CompetitionLeaderboardWidgetView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /competitions/leaderboard_widget/{pk}/"
+        },
+        {
+          "id": "views.my_index",
+          "class_name": "views",
+          "method_name": "my_index",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/"
+        },
+        {
+          "id": "MyCompetitionParticipantView.get",
+          "class_name": "MyCompetitionParticipantView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/competition/{competition_id}/participants/"
+        },
+        {
+          "id": "MyCompetitionSubmissionsPage.get",
+          "class_name": "MyCompetitionSubmissionsPage",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/competition/{competition_id}/submissions/"
+        },
+        {
+          "id": "MyCompetitionSubmissionToggleMakePublic.get",
+          "class_name": "MyCompetitionSubmissionToggleMakePublic",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/competition/submission/{submission_id}/toggle_make_public"
+        },
+        {
+          "id": "MyCompetitionSubmissionDetailedResults.get",
+          "class_name": "MyCompetitionSubmissionDetailedResults",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/competition/submission/{submission_id}/detailed_results/"
+        },
+        {
+          "id": "MyCompetitionsManagedPartial.get",
+          "class_name": "MyCompetitionsManagedPartial",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/_partials/_competitions_managed"
+        },
+        {
+          "id": "MyCompetitionsEnteredPartial.get",
+          "class_name": "MyCompetitionsEnteredPartial",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/_partials/_competitions_entered"
+        },
+        {
+          "id": "MySubmissionResultsPartial.get",
+          "class_name": "MySubmissionResultsPartial",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/_partials/{phase_id}/{participant_id}/_submission_results"
+        },
+        {
+          "id": "OrganizerDataSetListView.get",
+          "class_name": "OrganizerDataSetListView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/datasets/"
+        },
+        {
+          "id": "OrganizerDataSetCreate.get",
+          "class_name": "OrganizerDataSetCreate",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/datasets/create"
+        },
+        {
+          "id": "OrganizerDataSetCreate.post",
+          "class_name": "OrganizerDataSetCreate",
+          "method_name": "post",
+          "param_types": [
+            "OrganizerDataSetModelForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /my/datasets/create"
+        },
+        {
+          "id": "OrganizerDataSetUpdate.get",
+          "class_name": "OrganizerDataSetUpdate",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/datasets/update/{pk}"
+        },
+        {
+          "id": "OrganizerDataSetUpdate.post",
+          "class_name": "OrganizerDataSetUpdate",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "OrganizerDataSetModelForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /my/datasets/update/{pk}"
+        },
+        {
+          "id": "OrganizerDataSetDelete.get",
+          "class_name": "OrganizerDataSetDelete",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/datasets/delete/{pk}"
+        },
+        {
+          "id": "OrganizerDataSetDelete.post",
+          "class_name": "OrganizerDataSetDelete",
+          "method_name": "post",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /my/datasets/delete/{pk}"
+        },
+        {
+          "id": "views.datasets_delete_multiple",
+          "class_name": "views",
+          "method_name": "datasets_delete_multiple",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /my/datasets/delete_multiple/"
+        },
+        {
+          "id": "views.download_dataset",
+          "class_name": "views",
+          "method_name": "download_dataset",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/datasets/download/{dataset_key}"
+        },
+        {
+          "id": "UserSettingsView.get",
+          "class_name": "UserSettingsView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /my/settings/"
+        },
+        {
+          "id": "UserSettingsView.post",
+          "class_name": "UserSettingsView",
+          "method_name": "post",
+          "param_types": [
+            "UserSettingsForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /my/settings/"
+        },
+        {
+          "id": "views.email_settings",
+          "class_name": "views",
+          "method_name": "email_settings",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /health/email_settings"
+        },
+        {
+          "id": "views.check_thresholds",
+          "class_name": "views",
+          "method_name": "check_thresholds",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /health/check_thresholds"
+        },
+        {
+          "id": "views.storage_analytics",
+          "class_name": "views",
+          "method_name": "storage_analytics",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /health/storage"
+        },
+        {
+          "id": "views.analytics_detail",
+          "class_name": "views",
+          "method_name": "analytics_detail",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /analytics/"
+        },
+        {
+          "id": "views.pin_thread",
+          "class_name": "views",
+          "method_name": "pin_thread",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /forums/pin/{thread_pk}/"
+        },
+        {
+          "id": "ForumDetailView.get",
+          "class_name": "ForumDetailView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/"
+        },
+        {
+          "id": "CreateThreadView.get",
+          "class_name": "CreateThreadView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/new_thread/"
+        },
+        {
+          "id": "CreateThreadView.post",
+          "class_name": "CreateThreadView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "ThreadForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /forums/{forum_pk}/new_thread/"
+        },
+        {
+          "id": "ThreadDetailView.get",
+          "class_name": "ThreadDetailView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/{thread_pk}/"
+        },
+        {
+          "id": "CreatePostView.get",
+          "class_name": "CreatePostView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/{thread_pk}/new_post/"
+        },
+        {
+          "id": "CreatePostView.post",
+          "class_name": "CreatePostView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "PostForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /forums/{forum_pk}/{thread_pk}/new_post/"
+        },
+        {
+          "id": "DeleteThreadView.get",
+          "class_name": "DeleteThreadView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/{thread_pk}/delete/"
+        },
+        {
+          "id": "DeleteThreadView.delete",
+          "class_name": "DeleteThreadView",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /forums/{forum_pk}/{thread_pk}/delete/"
+        },
+        {
+          "id": "DeletePostView.get",
+          "class_name": "DeletePostView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /forums/{forum_pk}/{thread_pk}/delete/{post_pk}/"
+        },
+        {
+          "id": "DeletePostView.delete",
+          "class_name": "DeletePostView",
+          "method_name": "delete",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /forums/{forum_pk}/{thread_pk}/delete/{post_pk}/"
+        },
+        {
+          "id": "views.like",
+          "class_name": "views",
+          "method_name": "like",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /coopetitions/like/{submission_pk}/"
+        },
+        {
+          "id": "views.dislike",
+          "class_name": "views",
+          "method_name": "dislike",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /coopetitions/dislike/{submission_pk}/"
+        },
+        {
+          "id": "QueueListView.get",
+          "class_name": "QueueListView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /queues/"
+        },
+        {
+          "id": "QueueCreateView.get",
+          "class_name": "QueueCreateView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /queues/create"
+        },
+        {
+          "id": "QueueCreateView.post",
+          "class_name": "QueueCreateView",
+          "method_name": "post",
+          "param_types": [
+            "QueueForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /queues/create"
+        },
+        {
+          "id": "QueueUpdateView.get",
+          "class_name": "QueueUpdateView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /queues/update/{pk}"
+        },
+        {
+          "id": "QueueUpdateView.post",
+          "class_name": "QueueUpdateView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "QueueForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /queues/update/{pk}"
+        },
+        {
+          "id": "QueueDeleteView.get",
+          "class_name": "QueueDeleteView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /queues/delete/{pk}"
+        },
+        {
+          "id": "QueueDeleteView.delete",
+          "class_name": "QueueDeleteView",
+          "method_name": "delete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /queues/delete/{pk}"
+        },
+        {
+          "id": "ConfigurationFormView.get",
+          "class_name": "ConfigurationFormView",
+          "method_name": "get",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /customizer/"
+        },
+        {
+          "id": "ConfigurationFormView.post",
+          "class_name": "ConfigurationFormView",
+          "method_name": "post",
+          "param_types": [
+            "ConfigurationForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /customizer/"
+        },
+        {
+          "id": "TeamDetailView.get",
+          "class_name": "TeamDetailView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/"
+        },
+        {
+          "id": "TeamDetailView.post",
+          "class_name": "TeamDetailView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/"
+        },
+        {
+          "id": "TeamCreateView.get",
+          "class_name": "TeamCreateView",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/create"
+        },
+        {
+          "id": "TeamCreateView.post",
+          "class_name": "TeamCreateView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "TeamEditForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/create"
+        },
+        {
+          "id": "TeamEditView.get",
+          "class_name": "TeamEditView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/{team_pk}/edit/"
+        },
+        {
+          "id": "TeamEditView.post",
+          "class_name": "TeamEditView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "TeamEditForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/{team_pk}/edit/"
+        },
+        {
+          "id": "TeamCancelView.get",
+          "class_name": "TeamCancelView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/{team_pk}/delete/"
+        },
+        {
+          "id": "TeamCancelView.post",
+          "class_name": "TeamCancelView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/{team_pk}/delete/"
+        },
+        {
+          "id": "RequestTeamView.get",
+          "class_name": "RequestTeamView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/{request_pk}/{action}/"
+        },
+        {
+          "id": "RequestTeamView.post",
+          "class_name": "RequestTeamView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/{request_pk}/{action}/"
+        },
+        {
+          "id": "NewRequestTeamView.get",
+          "class_name": "NewRequestTeamView",
+          "method_name": "get",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/request/{team_pk}/"
+        },
+        {
+          "id": "NewRequestTeamView.post",
+          "class_name": "NewRequestTeamView",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "string",
+            "TeamMembershipForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/request/{team_pk}/"
+        },
+        {
+          "id": "CompetitionOrganizerTeams.get",
+          "class_name": "CompetitionOrganizerTeams",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/create_org_team/"
+        },
+        {
+          "id": "CompetitionOrganizerTeams.post",
+          "class_name": "CompetitionOrganizerTeams",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "OrganizerTeamForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/create_org_team/"
+        },
+        {
+          "id": "CompetitionOrganizerCSVTeams.get",
+          "class_name": "CompetitionOrganizerCSVTeams",
+          "method_name": "get",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /teams/{competition_pk}/create_org_teams_from_csv/"
+        },
+        {
+          "id": "CompetitionOrganizerCSVTeams.post",
+          "class_name": "CompetitionOrganizerCSVTeams",
+          "method_name": "post",
+          "param_types": [
+            "string",
+            "OrganizerTeamsCSVForm"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/create_org_teams_from_csv/"
+        },
+        {
+          "id": "views.delete_organizer_team",
+          "class_name": "views",
+          "method_name": "delete_organizer_team",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /teams/{competition_pk}/delete_org_team/{team_pk}"
+        },
+        {
+          "id": "views.newsletter_signup",
+          "class_name": "views",
+          "method_name": "newsletter_signup",
+          "param_types": [
+            "NewsletterSubscriptionSignUpForm"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /newsletter/signup/"
+        },
+        {
+          "id": "views.newsletter_unsubscribe",
+          "class_name": "views",
+          "method_name": "newsletter_unsubscribe",
+          "param_types": [
+            "NewsletterSubscriptionUnsubscribeForm"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /newsletter/unsubscribe/"
+        },
+        {
+          "id": "tasks.create_competition",
+          "class_name": "tasks",
+          "method_name": "create_competition",
+          "param_types": [
+            "object",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.update_submission",
+          "class_name": "tasks",
+          "method_name": "update_submission",
+          "param_types": [
+            "object",
+            "object",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "submission-updates"
+        },
+        {
+          "id": "tasks.re_run_all_submissions_in_phase",
+          "class_name": "tasks",
+          "method_name": "re_run_all_submissions_in_phase",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.evaluate_submission",
+          "class_name": "tasks",
+          "method_name": "evaluate_submission",
+          "param_types": [
+            "object",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.send_mass_email",
+          "class_name": "tasks",
+          "method_name": "send_mass_email",
+          "param_types": [
+            "object",
+            "object",
+            "object",
+            "object",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.do_chahub_retries",
+          "class_name": "tasks",
+          "method_name": "do_chahub_retries",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.send_chahub_general_stats",
+          "class_name": "tasks",
+          "method_name": "send_chahub_general_stats",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.send_chahub_updates",
+          "class_name": "tasks",
+          "method_name": "send_chahub_updates",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.create_storage_analytics_snapshot",
+          "class_name": "tasks",
+          "method_name": "create_storage_analytics_snapshot",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.do_phase_migrations",
+          "class_name": "tasks",
+          "method_name": "do_phase_migrations",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.make_modified_bundle",
+          "class_name": "tasks",
+          "method_name": "make_modified_bundle",
+          "param_types": [
+            "object",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        },
+        {
+          "id": "tasks.retry_mailing_list",
+          "class_name": "tasks",
+          "method_name": "retry_mailing_list",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "site-worker"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

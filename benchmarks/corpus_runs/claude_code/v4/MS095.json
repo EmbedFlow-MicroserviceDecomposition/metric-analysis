@@ -1,0 +1,3904 @@
+{
+  "system_id": "MS095",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cmd": {
+      "exposed_interfaces": []
+    },
+    "tools": {
+      "exposed_interfaces": []
+    },
+    "internal": {
+      "exposed_interfaces": [
+        {
+          "id": "exec.HandleExec",
+          "class_name": "exec",
+          "method_name": "HandleExec",
+          "param_types": [
+            "string",
+            "ExecStreamRequest"
+          ],
+          "return_type": "List<ExecStreamResponse>",
+          "protocol": "WebSocket",
+          "endpoint": "GET /v1/exec"
+        },
+        {
+          "id": "trigger.HandleTrigger",
+          "class_name": "trigger",
+          "method_name": "HandleTrigger",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "Message",
+          "protocol": "REST",
+          "endpoint": "GET /v1/trigger/{id}"
+        },
+        {
+          "id": "Server.listTags",
+          "class_name": "ociregistry.Server",
+          "method_name": "listTags",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /v2/{name}/tags/list"
+        },
+        {
+          "id": "Server.checkManifest",
+          "class_name": "ociregistry.Server",
+          "method_name": "checkManifest",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "HEAD /v2/{name}/manifests/{reference}"
+        },
+        {
+          "id": "Server.getManifest",
+          "class_name": "ociregistry.Server",
+          "method_name": "getManifest",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /v2/{name}/manifests/{reference}"
+        },
+        {
+          "id": "Server.updateManifest",
+          "class_name": "ociregistry.Server",
+          "method_name": "updateManifest",
+          "param_types": [
+            "string",
+            "string",
+            "v1.Manifest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/{name}/manifests/{reference}"
+        },
+        {
+          "id": "Server.checkBlob",
+          "class_name": "ociregistry.Server",
+          "method_name": "checkBlob",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "HEAD /v2/{name}/blobs/{digest}"
+        },
+        {
+          "id": "Server.getBlob",
+          "class_name": "ociregistry.Server",
+          "method_name": "getBlob",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "[]byte",
+          "protocol": "REST",
+          "endpoint": "GET /v2/{name}/blobs/{digest}"
+        },
+        {
+          "id": "Server.createBlobUpload",
+          "class_name": "ociregistry.Server",
+          "method_name": "createBlobUpload",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /v2/{name}/blobs/uploads/"
+        },
+        {
+          "id": "Server.patchBlobUpload",
+          "class_name": "ociregistry.Server",
+          "method_name": "patchBlobUpload",
+          "param_types": [
+            "string",
+            "string",
+            "[]byte"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /v2/{name}/blobs/uploads/{session_id}"
+        },
+        {
+          "id": "Server.updateBlobUpload",
+          "class_name": "ociregistry.Server",
+          "method_name": "updateBlobUpload",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "[]byte"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/{name}/blobs/uploads/{session_id}"
+        },
+        {
+          "id": "Server.listRepositories",
+          "class_name": "ociregistry.Server",
+          "method_name": "listRepositories",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /v2/_catalog"
+        },
+        {
+          "id": "Server.checkVersionSupport",
+          "class_name": "ociregistry.Server",
+          "method_name": "checkVersionSupport",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v2/"
+        }
+      ]
+    },
+    "ui": {
+      "exposed_interfaces": []
+    },
+    "builtin": {
+      "exposed_interfaces": []
+    },
+    "x": {
+      "exposed_interfaces": []
+    },
+    "pkg": {
+      "exposed_interfaces": [
+        {
+          "id": "Service.GetVersionInfo",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetVersionInfo",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "GetVersionInfoResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetVersionInfo"
+        },
+        {
+          "id": "Service.ListOIDCAuthMethods",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListOIDCAuthMethods",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListOIDCAuthMethodsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListOIDCAuthMethods"
+        },
+        {
+          "id": "Service.GetOIDCAuthURL",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetOIDCAuthURL",
+          "param_types": [
+            "GetOIDCAuthURLRequest"
+          ],
+          "return_type": "GetOIDCAuthURLResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetOIDCAuthURL"
+        },
+        {
+          "id": "Service.CompleteOIDCAuth",
+          "class_name": "singleprocess.Service",
+          "method_name": "CompleteOIDCAuth",
+          "param_types": [
+            "CompleteOIDCAuthRequest"
+          ],
+          "return_type": "CompleteOIDCAuthResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CompleteOIDCAuth"
+        },
+        {
+          "id": "Service.NoAuthRunTrigger",
+          "class_name": "singleprocess.Service",
+          "method_name": "NoAuthRunTrigger",
+          "param_types": [
+            "RunTriggerRequest"
+          ],
+          "return_type": "RunTriggerResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/NoAuthRunTrigger"
+        },
+        {
+          "id": "Service.GetUser",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetUser",
+          "param_types": [
+            "GetUserRequest"
+          ],
+          "return_type": "GetUserResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetUser"
+        },
+        {
+          "id": "Service.ListUsers",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListUsers",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListUsersResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListUsers"
+        },
+        {
+          "id": "Service.UpdateUser",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpdateUser",
+          "param_types": [
+            "UpdateUserRequest"
+          ],
+          "return_type": "UpdateUserResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpdateUser"
+        },
+        {
+          "id": "Service.DeleteUser",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteUser",
+          "param_types": [
+            "DeleteUserRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteUser"
+        },
+        {
+          "id": "Service.UpsertAuthMethod",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertAuthMethod",
+          "param_types": [
+            "UpsertAuthMethodRequest"
+          ],
+          "return_type": "UpsertAuthMethodResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertAuthMethod"
+        },
+        {
+          "id": "Service.GetAuthMethod",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetAuthMethod",
+          "param_types": [
+            "GetAuthMethodRequest"
+          ],
+          "return_type": "GetAuthMethodResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetAuthMethod"
+        },
+        {
+          "id": "Service.ListAuthMethods",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListAuthMethods",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListAuthMethodsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListAuthMethods"
+        },
+        {
+          "id": "Service.DeleteAuthMethod",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteAuthMethod",
+          "param_types": [
+            "DeleteAuthMethodRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteAuthMethod"
+        },
+        {
+          "id": "Service.ListWorkspaces",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListWorkspaces",
+          "param_types": [
+            "ListWorkspacesRequest"
+          ],
+          "return_type": "ListWorkspacesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListWorkspaces"
+        },
+        {
+          "id": "Service.GetWorkspace",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetWorkspace",
+          "param_types": [
+            "GetWorkspaceRequest"
+          ],
+          "return_type": "GetWorkspaceResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetWorkspace"
+        },
+        {
+          "id": "Service.UpsertWorkspace",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertWorkspace",
+          "param_types": [
+            "UpsertWorkspaceRequest"
+          ],
+          "return_type": "UpsertWorkspaceResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertWorkspace"
+        },
+        {
+          "id": "Service.UpsertProject",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertProject",
+          "param_types": [
+            "UpsertProjectRequest"
+          ],
+          "return_type": "UpsertProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertProject"
+        },
+        {
+          "id": "Service.GetProject",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetProject",
+          "param_types": [
+            "GetProjectRequest"
+          ],
+          "return_type": "GetProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetProject"
+        },
+        {
+          "id": "Service.ListProjects",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListProjects",
+          "param_types": [
+            "ListProjectsRequest"
+          ],
+          "return_type": "ListProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListProjects"
+        },
+        {
+          "id": "Service.DestroyProject",
+          "class_name": "singleprocess.Service",
+          "method_name": "DestroyProject",
+          "param_types": [
+            "DestroyProjectRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DestroyProject"
+        },
+        {
+          "id": "Service.GetApplication",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetApplication",
+          "param_types": [
+            "GetApplicationRequest"
+          ],
+          "return_type": "GetApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetApplication"
+        },
+        {
+          "id": "Service.UpsertApplication",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertApplication",
+          "param_types": [
+            "UpsertApplicationRequest"
+          ],
+          "return_type": "UpsertApplicationResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertApplication"
+        },
+        {
+          "id": "Service.ListBuilds",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListBuilds",
+          "param_types": [
+            "ListBuildsRequest"
+          ],
+          "return_type": "ListBuildsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListBuilds"
+        },
+        {
+          "id": "Service.GetBuild",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetBuild",
+          "param_types": [
+            "GetBuildRequest"
+          ],
+          "return_type": "Build",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetBuild"
+        },
+        {
+          "id": "Service.GetLatestBuild",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestBuild",
+          "param_types": [
+            "GetLatestBuildRequest"
+          ],
+          "return_type": "Build",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestBuild"
+        },
+        {
+          "id": "Service.ListPushedArtifacts",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListPushedArtifacts",
+          "param_types": [
+            "ListPushedArtifactsRequest"
+          ],
+          "return_type": "ListPushedArtifactsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListPushedArtifacts"
+        },
+        {
+          "id": "Service.GetPushedArtifact",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetPushedArtifact",
+          "param_types": [
+            "GetPushedArtifactRequest"
+          ],
+          "return_type": "PushedArtifact",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetPushedArtifact"
+        },
+        {
+          "id": "Service.GetLatestPushedArtifact",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestPushedArtifact",
+          "param_types": [
+            "GetLatestPushedArtifactRequest"
+          ],
+          "return_type": "PushedArtifact",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestPushedArtifact"
+        },
+        {
+          "id": "Service.ListDeployments",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListDeployments",
+          "param_types": [
+            "ListDeploymentsRequest"
+          ],
+          "return_type": "ListDeploymentsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListDeployments"
+        },
+        {
+          "id": "Service.GetDeployment",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetDeployment",
+          "param_types": [
+            "GetDeploymentRequest"
+          ],
+          "return_type": "Deployment",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetDeployment"
+        },
+        {
+          "id": "Service.GetLatestDeployment",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestDeployment",
+          "param_types": [
+            "GetLatestDeploymentRequest"
+          ],
+          "return_type": "GetDeploymentResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestDeployment"
+        },
+        {
+          "id": "Service.ListInstances",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListInstances",
+          "param_types": [
+            "ListInstancesRequest"
+          ],
+          "return_type": "ListInstancesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListInstances"
+        },
+        {
+          "id": "Service.ListReleases",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListReleases",
+          "param_types": [
+            "ListReleasesRequest"
+          ],
+          "return_type": "ListReleasesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListReleases"
+        },
+        {
+          "id": "Service.GetRelease",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetRelease",
+          "param_types": [
+            "GetReleaseRequest"
+          ],
+          "return_type": "Release",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetRelease"
+        },
+        {
+          "id": "Service.GetLatestRelease",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestRelease",
+          "param_types": [
+            "GetLatestReleaseRequest"
+          ],
+          "return_type": "Release",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestRelease"
+        },
+        {
+          "id": "Service.GetStatusReport",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetStatusReport",
+          "param_types": [
+            "GetStatusReportRequest"
+          ],
+          "return_type": "StatusReport",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetStatusReport"
+        },
+        {
+          "id": "Service.GetLatestStatusReport",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestStatusReport",
+          "param_types": [
+            "GetLatestStatusReportRequest"
+          ],
+          "return_type": "StatusReport",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestStatusReport"
+        },
+        {
+          "id": "Service.ListStatusReports",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListStatusReports",
+          "param_types": [
+            "ListStatusReportsRequest"
+          ],
+          "return_type": "ListStatusReportsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListStatusReports"
+        },
+        {
+          "id": "Service.ExpediteStatusReport",
+          "class_name": "singleprocess.Service",
+          "method_name": "ExpediteStatusReport",
+          "param_types": [
+            "ExpediteStatusReportRequest"
+          ],
+          "return_type": "ExpediteStatusReportResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ExpediteStatusReport"
+        },
+        {
+          "id": "Service.GetLogStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLogStream",
+          "param_types": [
+            "GetLogStreamRequest"
+          ],
+          "return_type": "List<LogBatch>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLogStream"
+        },
+        {
+          "id": "Service.StartExecStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "StartExecStream",
+          "param_types": [
+            "ExecStreamRequest"
+          ],
+          "return_type": "List<ExecStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/StartExecStream"
+        },
+        {
+          "id": "Service.SetConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "SetConfig",
+          "param_types": [
+            "ConfigSetRequest"
+          ],
+          "return_type": "ConfigSetResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/SetConfig"
+        },
+        {
+          "id": "Service.DeleteConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteConfig",
+          "param_types": [
+            "ConfigDeleteRequest"
+          ],
+          "return_type": "ConfigDeleteResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteConfig"
+        },
+        {
+          "id": "Service.GetConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetConfig",
+          "param_types": [
+            "ConfigGetRequest"
+          ],
+          "return_type": "ConfigGetResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetConfig"
+        },
+        {
+          "id": "Service.SetConfigSource",
+          "class_name": "singleprocess.Service",
+          "method_name": "SetConfigSource",
+          "param_types": [
+            "SetConfigSourceRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/SetConfigSource"
+        },
+        {
+          "id": "Service.DeleteConfigSource",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteConfigSource",
+          "param_types": [
+            "DeleteConfigSourceRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteConfigSource"
+        },
+        {
+          "id": "Service.GetConfigSource",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetConfigSource",
+          "param_types": [
+            "GetConfigSourceRequest"
+          ],
+          "return_type": "GetConfigSourceResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetConfigSource"
+        },
+        {
+          "id": "Service.CreateHostname",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateHostname",
+          "param_types": [
+            "CreateHostnameRequest"
+          ],
+          "return_type": "CreateHostnameResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateHostname"
+        },
+        {
+          "id": "Service.DeleteHostname",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteHostname",
+          "param_types": [
+            "DeleteHostnameRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteHostname"
+        },
+        {
+          "id": "Service.ListHostnames",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListHostnames",
+          "param_types": [
+            "ListHostnamesRequest"
+          ],
+          "return_type": "ListHostnamesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListHostnames"
+        },
+        {
+          "id": "Service.QueueJob",
+          "class_name": "singleprocess.Service",
+          "method_name": "QueueJob",
+          "param_types": [
+            "QueueJobRequest"
+          ],
+          "return_type": "QueueJobResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/QueueJob"
+        },
+        {
+          "id": "Service.CancelJob",
+          "class_name": "singleprocess.Service",
+          "method_name": "CancelJob",
+          "param_types": [
+            "CancelJobRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CancelJob"
+        },
+        {
+          "id": "Service.GetJob",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetJob",
+          "param_types": [
+            "GetJobRequest"
+          ],
+          "return_type": "Job",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetJob"
+        },
+        {
+          "id": "Service.ListJobs",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListJobs",
+          "param_types": [
+            "ListJobsRequest"
+          ],
+          "return_type": "ListJobsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListJobs"
+        },
+        {
+          "id": "Service.ValidateJob",
+          "class_name": "singleprocess.Service",
+          "method_name": "ValidateJob",
+          "param_types": [
+            "ValidateJobRequest"
+          ],
+          "return_type": "ValidateJobResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ValidateJob"
+        },
+        {
+          "id": "Service.GetJobStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetJobStream",
+          "param_types": [
+            "GetJobStreamRequest"
+          ],
+          "return_type": "List<GetJobStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetJobStream"
+        },
+        {
+          "id": "Service.GetRunner",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetRunner",
+          "param_types": [
+            "GetRunnerRequest"
+          ],
+          "return_type": "Runner",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetRunner"
+        },
+        {
+          "id": "Service.ListRunners",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListRunners",
+          "param_types": [
+            "ListRunnersRequest"
+          ],
+          "return_type": "ListRunnersResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListRunners"
+        },
+        {
+          "id": "Service.AdoptRunner",
+          "class_name": "singleprocess.Service",
+          "method_name": "AdoptRunner",
+          "param_types": [
+            "AdoptRunnerRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/AdoptRunner"
+        },
+        {
+          "id": "Service.ForgetRunner",
+          "class_name": "singleprocess.Service",
+          "method_name": "ForgetRunner",
+          "param_types": [
+            "ForgetRunnerRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ForgetRunner"
+        },
+        {
+          "id": "Service.GetServerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetServerConfig",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "GetServerConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetServerConfig"
+        },
+        {
+          "id": "Service.SetServerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "SetServerConfig",
+          "param_types": [
+            "SetServerConfigRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/SetServerConfig"
+        },
+        {
+          "id": "Service.CreateSnapshot",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateSnapshot",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "List<CreateSnapshotResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateSnapshot"
+        },
+        {
+          "id": "Service.RestoreSnapshot",
+          "class_name": "singleprocess.Service",
+          "method_name": "RestoreSnapshot",
+          "param_types": [
+            "RestoreSnapshotRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RestoreSnapshot"
+        },
+        {
+          "id": "Service.BootstrapToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "BootstrapToken",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "NewTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/BootstrapToken"
+        },
+        {
+          "id": "Service.DecodeToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "DecodeToken",
+          "param_types": [
+            "DecodeTokenRequest"
+          ],
+          "return_type": "DecodeTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DecodeToken"
+        },
+        {
+          "id": "Service.GenerateInviteToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "GenerateInviteToken",
+          "param_types": [
+            "InviteTokenRequest"
+          ],
+          "return_type": "NewTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GenerateInviteToken"
+        },
+        {
+          "id": "Service.GenerateLoginToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "GenerateLoginToken",
+          "param_types": [
+            "LoginTokenRequest"
+          ],
+          "return_type": "NewTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GenerateLoginToken"
+        },
+        {
+          "id": "Service.GenerateRunnerToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "GenerateRunnerToken",
+          "param_types": [
+            "GenerateRunnerTokenRequest"
+          ],
+          "return_type": "NewTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GenerateRunnerToken"
+        },
+        {
+          "id": "Service.ConvertInviteToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "ConvertInviteToken",
+          "param_types": [
+            "ConvertInviteTokenRequest"
+          ],
+          "return_type": "NewTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ConvertInviteToken"
+        },
+        {
+          "id": "Service.RunnerToken",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunnerToken",
+          "param_types": [
+            "RunnerTokenRequest"
+          ],
+          "return_type": "RunnerTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunnerToken"
+        },
+        {
+          "id": "Service.RunnerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunnerConfig",
+          "param_types": [
+            "RunnerConfigRequest"
+          ],
+          "return_type": "List<RunnerConfigResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunnerConfig"
+        },
+        {
+          "id": "Service.RunnerJobStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunnerJobStream",
+          "param_types": [
+            "RunnerJobStreamRequest"
+          ],
+          "return_type": "List<RunnerJobStreamResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunnerJobStream"
+        },
+        {
+          "id": "Service.RunnerGetDeploymentConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunnerGetDeploymentConfig",
+          "param_types": [
+            "RunnerGetDeploymentConfigRequest"
+          ],
+          "return_type": "RunnerGetDeploymentConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunnerGetDeploymentConfig"
+        },
+        {
+          "id": "Service.EntrypointConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "EntrypointConfig",
+          "param_types": [
+            "EntrypointConfigRequest"
+          ],
+          "return_type": "List<EntrypointConfigResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/EntrypointConfig"
+        },
+        {
+          "id": "Service.EntrypointLogStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "EntrypointLogStream",
+          "param_types": [
+            "EntrypointLogBatch"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/EntrypointLogStream"
+        },
+        {
+          "id": "Service.EntrypointExecStream",
+          "class_name": "singleprocess.Service",
+          "method_name": "EntrypointExecStream",
+          "param_types": [
+            "EntrypointExecRequest"
+          ],
+          "return_type": "List<EntrypointExecResponse>",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/EntrypointExecStream"
+        },
+        {
+          "id": "Service.WaypointHclFmt",
+          "class_name": "singleprocess.Service",
+          "method_name": "WaypointHclFmt",
+          "param_types": [
+            "WaypointHclFmtRequest"
+          ],
+          "return_type": "WaypointHclFmtResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/WaypointHclFmt"
+        },
+        {
+          "id": "Service.UpsertOnDemandRunnerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertOnDemandRunnerConfig",
+          "param_types": [
+            "UpsertOnDemandRunnerConfigRequest"
+          ],
+          "return_type": "UpsertOnDemandRunnerConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertOnDemandRunnerConfig"
+        },
+        {
+          "id": "Service.GetOnDemandRunnerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetOnDemandRunnerConfig",
+          "param_types": [
+            "GetOnDemandRunnerConfigRequest"
+          ],
+          "return_type": "GetOnDemandRunnerConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetOnDemandRunnerConfig"
+        },
+        {
+          "id": "Service.GetDefaultOnDemandRunnerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetDefaultOnDemandRunnerConfig",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "GetOnDemandRunnerConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetDefaultOnDemandRunnerConfig"
+        },
+        {
+          "id": "Service.DeleteOnDemandRunnerConfig",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteOnDemandRunnerConfig",
+          "param_types": [
+            "DeleteOnDemandRunnerConfigRequest"
+          ],
+          "return_type": "DeleteOnDemandRunnerConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteOnDemandRunnerConfig"
+        },
+        {
+          "id": "Service.ListOnDemandRunnerConfigs",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListOnDemandRunnerConfigs",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "ListOnDemandRunnerConfigsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListOnDemandRunnerConfigs"
+        },
+        {
+          "id": "Service.UpsertBuild",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertBuild",
+          "param_types": [
+            "UpsertBuildRequest"
+          ],
+          "return_type": "UpsertBuildResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertBuild"
+        },
+        {
+          "id": "Service.UpsertPushedArtifact",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertPushedArtifact",
+          "param_types": [
+            "UpsertPushedArtifactRequest"
+          ],
+          "return_type": "UpsertPushedArtifactResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertPushedArtifact"
+        },
+        {
+          "id": "Service.UpsertDeployment",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertDeployment",
+          "param_types": [
+            "UpsertDeploymentRequest"
+          ],
+          "return_type": "UpsertDeploymentResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertDeployment"
+        },
+        {
+          "id": "Service.UpsertRelease",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertRelease",
+          "param_types": [
+            "UpsertReleaseRequest"
+          ],
+          "return_type": "UpsertReleaseResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertRelease"
+        },
+        {
+          "id": "Service.UpsertStatusReport",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertStatusReport",
+          "param_types": [
+            "UpsertStatusReportRequest"
+          ],
+          "return_type": "UpsertStatusReportResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertStatusReport"
+        },
+        {
+          "id": "Service.GetTask",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetTask",
+          "param_types": [
+            "GetTaskRequest"
+          ],
+          "return_type": "GetTaskResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetTask"
+        },
+        {
+          "id": "Service.ListTask",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListTask",
+          "param_types": [
+            "ListTaskRequest"
+          ],
+          "return_type": "ListTaskResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListTask"
+        },
+        {
+          "id": "Service.CancelTask",
+          "class_name": "singleprocess.Service",
+          "method_name": "CancelTask",
+          "param_types": [
+            "CancelTaskRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CancelTask"
+        },
+        {
+          "id": "Service.UpsertTrigger",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertTrigger",
+          "param_types": [
+            "UpsertTriggerRequest"
+          ],
+          "return_type": "UpsertTriggerResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertTrigger"
+        },
+        {
+          "id": "Service.GetTrigger",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetTrigger",
+          "param_types": [
+            "GetTriggerRequest"
+          ],
+          "return_type": "GetTriggerResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetTrigger"
+        },
+        {
+          "id": "Service.DeleteTrigger",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteTrigger",
+          "param_types": [
+            "DeleteTriggerRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteTrigger"
+        },
+        {
+          "id": "Service.ListTriggers",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListTriggers",
+          "param_types": [
+            "ListTriggerRequest"
+          ],
+          "return_type": "ListTriggerResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListTriggers"
+        },
+        {
+          "id": "Service.RunTrigger",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunTrigger",
+          "param_types": [
+            "RunTriggerRequest"
+          ],
+          "return_type": "RunTriggerResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunTrigger"
+        },
+        {
+          "id": "Service.UpsertPipeline",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpsertPipeline",
+          "param_types": [
+            "UpsertPipelineRequest"
+          ],
+          "return_type": "UpsertPipelineResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpsertPipeline"
+        },
+        {
+          "id": "Service.RunPipeline",
+          "class_name": "singleprocess.Service",
+          "method_name": "RunPipeline",
+          "param_types": [
+            "RunPipelineRequest"
+          ],
+          "return_type": "RunPipelineResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/RunPipeline"
+        },
+        {
+          "id": "Service.GetPipeline",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetPipeline",
+          "param_types": [
+            "GetPipelineRequest"
+          ],
+          "return_type": "GetPipelineResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetPipeline"
+        },
+        {
+          "id": "Service.GetPipelineRun",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetPipelineRun",
+          "param_types": [
+            "GetPipelineRunRequest"
+          ],
+          "return_type": "GetPipelineRunResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetPipelineRun"
+        },
+        {
+          "id": "Service.GetLatestPipelineRun",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetLatestPipelineRun",
+          "param_types": [
+            "GetPipelineRequest"
+          ],
+          "return_type": "GetPipelineRunResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetLatestPipelineRun"
+        },
+        {
+          "id": "Service.ListPipelines",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListPipelines",
+          "param_types": [
+            "ListPipelinesRequest"
+          ],
+          "return_type": "ListPipelinesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListPipelines"
+        },
+        {
+          "id": "Service.ListPipelineRuns",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListPipelineRuns",
+          "param_types": [
+            "ListPipelineRunsRequest"
+          ],
+          "return_type": "ListPipelineRunsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListPipelineRuns"
+        },
+        {
+          "id": "Service.ConfigSyncPipeline",
+          "class_name": "singleprocess.Service",
+          "method_name": "ConfigSyncPipeline",
+          "param_types": [
+            "ConfigSyncPipelineRequest"
+          ],
+          "return_type": "ConfigSyncPipelineResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ConfigSyncPipeline"
+        },
+        {
+          "id": "Service.CreateProjectTemplate",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateProjectTemplate",
+          "param_types": [
+            "CreateProjectTemplateRequest"
+          ],
+          "return_type": "CreateProjectTemplateResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateProjectTemplate"
+        },
+        {
+          "id": "Service.UpdateProjectTemplate",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpdateProjectTemplate",
+          "param_types": [
+            "UpdateProjectTemplateRequest"
+          ],
+          "return_type": "UpdateProjectTemplateResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpdateProjectTemplate"
+        },
+        {
+          "id": "Service.GetProjectTemplate",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetProjectTemplate",
+          "param_types": [
+            "GetProjectTemplateRequest"
+          ],
+          "return_type": "GetProjectTemplateResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetProjectTemplate"
+        },
+        {
+          "id": "Service.DeleteProjectTemplate",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteProjectTemplate",
+          "param_types": [
+            "DeleteProjectTemplateRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteProjectTemplate"
+        },
+        {
+          "id": "Service.ListProjectTemplates",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListProjectTemplates",
+          "param_types": [
+            "ListProjectTemplatesRequest"
+          ],
+          "return_type": "ListProjectTemplatesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListProjectTemplates"
+        },
+        {
+          "id": "Service.CreateProjectFromTemplate",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateProjectFromTemplate",
+          "param_types": [
+            "CreateProjectFromTemplateRequest"
+          ],
+          "return_type": "CreateProjectFromTemplateResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateProjectFromTemplate"
+        },
+        {
+          "id": "Service.GetTFCRunStatus",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetTFCRunStatus",
+          "param_types": [
+            "GetTFCRunStatusRequest"
+          ],
+          "return_type": "GetTFCRunStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetTFCRunStatus"
+        },
+        {
+          "id": "Service.CreateAddOnDefinition",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateAddOnDefinition",
+          "param_types": [
+            "CreateAddOnDefinitionRequest"
+          ],
+          "return_type": "CreateAddOnDefinitionResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateAddOnDefinition"
+        },
+        {
+          "id": "Service.GetAddOnDefinition",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetAddOnDefinition",
+          "param_types": [
+            "GetAddOnDefinitionRequest"
+          ],
+          "return_type": "GetAddOnDefinitionResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetAddOnDefinition"
+        },
+        {
+          "id": "Service.ListAddOnDefinitions",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListAddOnDefinitions",
+          "param_types": [
+            "ListAddOnDefinitionsRequest"
+          ],
+          "return_type": "ListAddOnDefinitionsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListAddOnDefinitions"
+        },
+        {
+          "id": "Service.UpdateAddOnDefinition",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpdateAddOnDefinition",
+          "param_types": [
+            "UpdateAddOnDefinitionRequest"
+          ],
+          "return_type": "UpdateAddOnDefinitionResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpdateAddOnDefinition"
+        },
+        {
+          "id": "Service.DeleteAddOnDefinition",
+          "class_name": "singleprocess.Service",
+          "method_name": "DeleteAddOnDefinition",
+          "param_types": [
+            "DeleteAddOnDefinitionRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DeleteAddOnDefinition"
+        },
+        {
+          "id": "Service.CreateAddOn",
+          "class_name": "singleprocess.Service",
+          "method_name": "CreateAddOn",
+          "param_types": [
+            "CreateAddOnRequest"
+          ],
+          "return_type": "CreateAddOnResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/CreateAddOn"
+        },
+        {
+          "id": "Service.GetAddOn",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetAddOn",
+          "param_types": [
+            "GetAddOnRequest"
+          ],
+          "return_type": "GetAddOnResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetAddOn"
+        },
+        {
+          "id": "Service.UpdateAddOn",
+          "class_name": "singleprocess.Service",
+          "method_name": "UpdateAddOn",
+          "param_types": [
+            "UpdateAddOnRequest"
+          ],
+          "return_type": "UpdateAddOnResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UpdateAddOn"
+        },
+        {
+          "id": "Service.DestroyAddOn",
+          "class_name": "singleprocess.Service",
+          "method_name": "DestroyAddOn",
+          "param_types": [
+            "DestroyAddOnRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/DestroyAddOn"
+        },
+        {
+          "id": "Service.ListAddOns",
+          "class_name": "singleprocess.Service",
+          "method_name": "ListAddOns",
+          "param_types": [
+            "ListAddOnsRequest"
+          ],
+          "return_type": "ListAddOnsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/ListAddOns"
+        },
+        {
+          "id": "Service.GetTFRunStatus",
+          "class_name": "singleprocess.Service",
+          "method_name": "GetTFRunStatus",
+          "param_types": [
+            "GetTFRunStatusRequest"
+          ],
+          "return_type": "GetTFRunStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/GetTFRunStatus"
+        },
+        {
+          "id": "Service.UI_ListProjects",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListProjects",
+          "param_types": [
+            "UI.ListProjectsRequest"
+          ],
+          "return_type": "UI.ListProjectsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListProjects"
+        },
+        {
+          "id": "Service.UI_GetProject",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_GetProject",
+          "param_types": [
+            "UI.GetProjectRequest"
+          ],
+          "return_type": "UI.GetProjectResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_GetProject"
+        },
+        {
+          "id": "Service.UI_ListPipelines",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListPipelines",
+          "param_types": [
+            "UI.ListPipelinesRequest"
+          ],
+          "return_type": "UI.ListPipelinesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListPipelines"
+        },
+        {
+          "id": "Service.UI_ListPipelineRuns",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListPipelineRuns",
+          "param_types": [
+            "UI.ListPipelineRunsRequest"
+          ],
+          "return_type": "UI.ListPipelineRunsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListPipelineRuns"
+        },
+        {
+          "id": "Service.UI_GetPipelineRun",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_GetPipelineRun",
+          "param_types": [
+            "UI.GetPipelineRunRequest"
+          ],
+          "return_type": "UI.GetPipelineRunResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_GetPipelineRun"
+        },
+        {
+          "id": "Service.UI_ListDeployments",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListDeployments",
+          "param_types": [
+            "UI.ListDeploymentsRequest"
+          ],
+          "return_type": "UI.ListDeploymentsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListDeployments"
+        },
+        {
+          "id": "Service.UI_GetDeployment",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_GetDeployment",
+          "param_types": [
+            "UI.GetDeploymentRequest"
+          ],
+          "return_type": "UI.GetDeploymentResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_GetDeployment"
+        },
+        {
+          "id": "Service.UI_ListReleases",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListReleases",
+          "param_types": [
+            "UI.ListReleasesRequest"
+          ],
+          "return_type": "UI.ListReleasesResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListReleases"
+        },
+        {
+          "id": "Service.UI_ListEvents",
+          "class_name": "singleprocess.Service",
+          "method_name": "UI_ListEvents",
+          "param_types": [
+            "UI.ListEventsRequest"
+          ],
+          "return_type": "UI.ListEventsResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/UI_ListEvents"
+        },
+        {
+          "id": "Service.INTERNAL_AdditionalMessages",
+          "class_name": "singleprocess.Service",
+          "method_name": "INTERNAL_AdditionalMessages",
+          "param_types": [
+            "Empty"
+          ],
+          "return_type": "UI.ListEventSchemasResponse",
+          "protocol": "gRPC",
+          "endpoint": "Waypoint/INTERNAL_AdditionalMessages"
+        },
+        {
+          "id": "CallbackServer.ServeHTTP",
+          "class_name": "oidc.CallbackServer",
+          "method_name": "ServeHTTP",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /oidc/callback"
+        }
+      ]
+    },
+    "embedJson": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "internal",
+      "src_class": "ceb.CEB",
+      "src_method": "initConfigStreamReceiver",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/config.go:73 client, err := serverClient.EntrypointConfig(ctx, &pb.EntrypointConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "ceb.CEB",
+      "src_method": "startExec",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointExecStream",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/exec.go:63 client, err := serverClient.EntrypointExecStream(ceb.context)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "ceb.CEB",
+      "src_method": "initLogStreamSender",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointLogStream",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/log.go:128 client, err := serverClient.EntrypointLogStream(ctx, grpc.WaitForReady(true))"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "ceb.CEB",
+      "src_method": "dialServer",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ConvertInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/server.go:166 resp, err := client.ConvertInviteToken(ctx, &pb.ConvertInviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "ceb.CEB",
+      "src_method": "dialServer",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetVersionInfo",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/server.go:205 vsnResp, err := client.GetVersionInfo(ctx, &empty.Empty{}, grpc.WaitForReady(isRetry))"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "virtualceb.Virtual",
+      "src_method": "RunExec",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/virtualceb/ceb.go:111 epclient, err := v.cfg.Client.EntrypointConfig(ctx, &pb.EntrypointConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "virtualceb.Virtual",
+      "src_method": "startExec",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointExecStream",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/virtualceb/ceb.go:217 client, err := v.cfg.Client.EntrypointExecStream(ctx)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "virtualceb.Virtual",
+      "src_method": "RunLogs",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.EntrypointLogStream",
+      "protocol": "gRPC",
+      "evidence": "internal/ceb/virtualceb/ceb.go:364 client, err := v.cfg.Client.EntrypointLogStream(ctx)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ArtifactBuildCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/artifact_build.go:49 resp, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ArtifactListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListPushedArtifacts",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/artifact_list.go:62 resp, err := client.ListPushedArtifacts(c.Ctx, &pb.ListPushedArtifactsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ArtifactPushCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestBuild",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/artifact_push.go:37 build, err := client.GetLatestBuild(ctx, &pb.GetLatestBuildRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.AuthMethodDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetAuthMethod",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/auth_method_delete.go:45 _, err := c.project.Client().GetAuthMethod(c.Ctx, &pb.GetAuthMethodRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.AuthMethodDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteAuthMethod",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/auth_method_delete.go:59 _, err := c.project.Client().DeleteAuthMethod(c.Ctx, &pb.DeleteAuthMethodRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.AuthMethodInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetAuthMethod",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/auth_method_inspect.go:43 resp, err := c.project.Client().GetAuthMethod(c.Ctx, &pb.GetAuthMethodRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.AuthMethodListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListAuthMethods",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/auth_method_list.go:33 resp, err := c.project.Client().ListAuthMethods(c.Ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.AuthMethodSetOIDCCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertAuthMethod",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/auth_method_set_oidc.go:50 _, err := c.project.Client().UpsertAuthMethod(c.Ctx, &pb.UpsertAuthMethodRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.baseCommand",
+      "src_method": "Init",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/base.go:400 resp, err := c.project.Client().GetProject(c.Ctx, &pb.GetProjectRequest{Project: c.refProject})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.BuildListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListBuilds",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/build_list.go:50 resp, err := client.ListBuilds(c.Ctx, &pb.ListBuildsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.BuildListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/build_list.go:91 j, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_delete.go:144 _, err := client.DeleteConfig(c.Ctx, &req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigGetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_get.go:101 resp, err := client.GetConfig(c.Ctx, req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigSetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_set.go:164 _, err := client.SetConfig(c.Ctx, &req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigSourceDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteConfigSource",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_source_delete.go:87 _, err := client.DeleteConfigSource(c.Ctx, &pb.DeleteConfigSourceRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigSourceGetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetConfigSource",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_source_get.go:84 resp, err := client.GetConfigSource(c.Ctx, getConfigSourceRequest)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ConfigSourceSetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetConfigSource",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/config_source_set.go:90 _, err := client.SetConfigSource(c.Ctx, &pb.SetConfigSourceRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_create.go:43 push, err := client.GetLatestPushedArtifact(ctx, &pb.GetLatestPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_create.go:66 hostnamesResp, err := client.ListHostnames(ctx, &pb.ListHostnamesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_create.go:124 resp, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentDestroyCommand",
+      "src_method": "getDeployments",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_destroy.go:118 deployment, err := client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentDestroyCommand",
+      "src_method": "allDeployments",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_destroy.go:138 resp, err := client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentDestroyCommand",
+      "src_method": "allDeployments",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_destroy.go:154 release, err := client.GetLatestRelease(ctx, &pb.GetLatestReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_list.go:99 release, err := client.GetLatestRelease(ctx, &pb.GetLatestReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UI_ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_list.go:113 resp, err := client.UI_ListDeployments(c.Ctx, &pb.UI_ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.DeploymentListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/deployment_list.go:264 j, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ExecCommand",
+      "src_method": "targeted",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListInstances",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/exec.go:32 resp, err := client.ListInstances(ctx, &pb.ListInstancesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ExecCommand",
+      "src_method": "searchDeployments",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/exec.go:72 resp, err := client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.HostnameDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteHostname",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/hostname_delete.go:34 _, err := c.project.Client().DeleteHostname(c.Ctx, &pb.DeleteHostnameRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.HostnameListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/hostname_list.go:31 resp, err := c.project.Client().ListHostnames(c.Ctx, &pb.ListHostnamesRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.HostnameRegisterCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CreateHostname",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/hostname_register.go:45 resp, err := client.CreateHostname(ctx, &pb.CreateHostnameRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InitCommand",
+      "src_method": "validateProject",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/init.go:321 resp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{Project: ref})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InitCommand",
+      "src_method": "validateProject",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/init.go:371 resp, err := client.UpsertProject(c.Ctx, &pb.UpsertProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InitCommand",
+      "src_method": "validateProject",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertApplication",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/init.go:398 _, err := client.UpsertApplication(c.Ctx, &pb.UpsertApplicationRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InitCommand",
+      "src_method": "validateProject",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertPipeline",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/init.go:423 _, err := client.UpsertPipeline(c.Ctx, &pb.UpsertPipelineRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.BootstrapToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:205 tokenResp, err := client.BootstrapToken(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:271 _, err = client.GetServerConfig(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.InstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:352 _, err = client.SetServerConfig(ctx, &pb.SetServerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "install",
+      "src_method": "installRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateLoginToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:528 resp, err := client.GenerateLoginToken(ctx, &pb.LoginTokenRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "install",
+      "src_method": "installRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:539 config, err := client.GetServerConfig(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "install",
+      "src_method": "installRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.AdoptRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:583 err = installutil.AdoptRunner(ctx, ui, client, installutil.Id, advertiseAddr.Addr)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "install",
+      "src_method": "installRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/install.go:605 _, err = client.UpsertOnDemandRunnerConfig(ctx, &pb.UpsertOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.JobCancelCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CancelJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/job_cancel.go:58 _, err := c.project.Client().CancelJob(ctx, &pb.CancelJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.JobCancelCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/job_cancel.go:78 job, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{JobId: jobId})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.JobInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/job_inspect.go:44 resp, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.JobListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListJobs",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/job_list.go:126 resp, err := c.project.Client().ListJobs(ctx, req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.K8SBootstrapCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.BootstrapToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/k8s_bootstrap.go:142 resp, err := client.BootstrapToken(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.K8SBootstrapCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/k8s_bootstrap.go:186 _, err = client.SetServerConfig(ctx, &pb.SetServerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.K8SBootstrapCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateLoginToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/k8s_bootstrap.go:209 tokenResp, err := client.GenerateLoginToken(c.Ctx, &pb.LoginTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.K8SBootstrapCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/k8s_bootstrap.go:248 _, err = client.UpsertOnDemandRunnerConfig(ctx, &pb.UpsertOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.LoginCommand",
+      "src_method": "loginToken",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DecodeToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/login.go:200 decodeResp, err := c.project.Client().DecodeToken(ctx, &pb.DecodeTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.LoginCommand",
+      "src_method": "loginToken",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ConvertInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/login.go:221 convertResp, err := c.project.Client().ConvertInviteToken(ctx, &pb.ConvertInviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.LoginCommand",
+      "src_method": "loginOIDC",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListOIDCAuthMethods",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/login.go:234 respList, err := c.project.Client().ListOIDCAuthMethods(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.LoginCommand",
+      "src_method": "loginOIDC",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOIDCAuthURL",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/login.go:274 respURL, err := c.project.Client().GetOIDCAuthURL(ctx, &pb.GetOIDCAuthURLRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.LoginCommand",
+      "src_method": "loginOIDC",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CompleteOIDCAuth",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/login.go:309 respToken, err := c.project.Client().CompleteOIDCAuth(ctx, req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPipeline",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_inspect.go:76 resp, err := c.project.Client().GetPipeline(c.Ctx, &pb.GetPipelineRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListPipelineRuns",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_inspect.go:96 runs, err := c.project.Client().ListPipelineRuns(c.Ctx, &pb.ListPipelineRunsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPipelineRun",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_inspect.go:158 runResp, err := c.project.Client().GetPipelineRun(c.Ctx, &pb.GetPipelineRunRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_inspect.go:178 startJob, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListPipelines",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_list.go:50 pipelinesResp, err := c.project.Client().ListPipelines(c.Ctx, &pb.ListPipelinesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListPipelineRuns",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_list.go:94 pipelineRunsResp, err := c.project.Client().ListPipelineRuns(c.Ctx, &pb.ListPipelineRunsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_list.go:123 j, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineRunCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunPipeline",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_run.go:150 resp, err = c.project.Client().RunPipeline(c.Ctx, runPipelineReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineRunCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestPipelineRun",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_run.go:168 respGet, err = c.project.Client().GetLatestPipelineRun(c.Ctx, getPipelineReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineRunCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPipelineRun",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_run.go:174 respGet, err = c.project.Client().GetPipelineRun(c.Ctx, &pb.GetPipelineRunRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineRunCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_run.go:213 job, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.PipelineRunCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/pipeline_run.go:295 hostnamesResp, err := c.project.Client().ListHostnames(ctx, &pb.ListHostnamesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectApplyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_apply.go:74 resp, err := c.project.Client().GetProject(ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectApplyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_apply.go:378 _, err = c.project.Client().UpsertProject(ctx, &pb.UpsertProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectDestroyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_destroy.go:37 project, err := c.project.Client().GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectDestroyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DestroyProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_destroy.go:68 _, err = c.project.Client().DestroyProject(c.Ctx, &pb.DestroyProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectInspectCommand",
+      "src_method": "FormatProject",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_inspect.go:70 resp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListProjects",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/project_list.go:35 resp, err := c.project.Client().ListProjects(c.Ctx, &pb.ListProjectsRequest{Pagination: &pb.PaginationRequest{}})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_create.go:53 release, err := client.GetLatestRelease(ctx, &pb.GetLatestReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_create.go:73 resp, err := client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_create.go:93 deploy, err = client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_create.go:179 resp, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UI_ListReleases",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_list.go:66 resp, err := client.UI_ListReleases(c.Ctx, &pb.UI_ListReleasesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ReleaseListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/release_list.go:207 j, err := c.project.Client().GetJob(c.Ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerAdoptCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.AdoptRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_adopt.go:41 _, err := c.project.Client().AdoptRunner(ctx, &pb.AdoptRunnerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerForgetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ForgetRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_forget.go:41 _, err := c.project.Client().ForgetRunner(ctx, &pb.ForgetRunnerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_inspect.go:46 resp, err := c.project.Client().GetRunner(c.Ctx, &pb.GetRunnerRequest{RunnerId: id})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerInstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_install.go:159 serverConfig, err := c.project.Client().GetServerConfig(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerInstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.AdoptRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_install.go:286 err = installutil.AdoptRunner(ctx, c.ui, client, id, c.serverUrl)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerInstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListOnDemandRunnerConfigs",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_install.go:323 profiles, err := client.ListOnDemandRunnerConfigs(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerInstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_install.go:332 runnerProfile, err := client.UpsertOnDemandRunnerConfig(ctx, &pb.UpsertOnDemandRunnerConfigRequest{Config: odrConfig})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListRunners",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_list.go:39 resp, err := c.project.Client().ListRunners(ctx, &pb.ListRunnersRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_delete.go:49 _, err := c.project.Client().DeleteOnDemandRunnerConfig(c.Ctx, &pb.DeleteOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileEditCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_edit.go:63 resp, err := c.project.Client().GetOnDemandRunnerConfig(ctx, &pb.GetOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileEditCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_edit.go:111 resp, err := c.project.Client().UpsertOnDemandRunnerConfig(ctx, &pb.UpsertOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDefaultOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_inspect.go:45 resp, err := c.project.Client().GetDefaultOnDemandRunnerConfig(c.Ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_inspect.go:60 resp, err := c.project.Client().GetOnDemandRunnerConfig(c.Ctx, &pb.GetOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListOnDemandRunnerConfigs",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_list.go:32 resp, err := c.project.Client().ListOnDemandRunnerConfigs(c.Ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileSetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_set.go:87 resp, err := c.project.Client().GetOnDemandRunnerConfig(ctx, &pb.GetOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerProfileSetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_profile_set.go:272 resp, err := c.project.Client().UpsertOnDemandRunnerConfig(ctx, &pb.UpsertOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerRejectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.AdoptRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_reject.go:41 _, err := c.project.Client().AdoptRunner(ctx, &pb.AdoptRunnerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerTokenCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateRunnerToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_token.go:40 resp, err := client.GenerateRunnerToken(c.Ctx, &pb.GenerateRunnerTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerUninstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListRunners",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_uninstall.go:154 runners, err := c.project.Client().ListRunners(ctx, &pb.ListRunnersRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.RunnerUninstallCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ForgetRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/runner_uninstall.go:165 _, err = c.project.Client().ForgetRunner(ctx, &pb.ForgetRunnerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerBootstrapCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.BootstrapToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_bootstrap.go:49 resp, err := client.BootstrapToken(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerConfigSetCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_config_set.go:62 _, err := client.SetServerConfig(c.Ctx, &pb.SetServerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerCookieCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_cookie.go:36 resp, err := c.project.Client().GetServerConfig(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerUpgradeCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetVersionInfo",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_upgrade.go:172 resp, err := client.GetVersionInfo(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerUpgradeCommand",
+      "src_method": "upgradeRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_upgrade.go:428 oldRunnerConfig, err := client.GetOnDemandRunnerConfig(ctx, &pb.GetOnDemandRunnerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ServerUpgradeCommand",
+      "src_method": "upgradeRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListOnDemandRunnerConfigs",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/server_upgrade.go:461 resp, err := client.ListOnDemandRunnerConfigs(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.StatusCommand",
+      "src_method": "RefreshApplicationStatus",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:158 projectResp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "status",
+      "src_method": "ListDeployments",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UI_ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:357 resp, err := client.UI_ListDeployments(c, &pb.UI_ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "status",
+      "src_method": "ListReleases",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UI_ListReleases",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:375 resp, err := client.UI_ListReleases(c, &pb.UI_ListReleasesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.StatusCommand",
+      "src_method": "FormatProjectAppStatus",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:404 resp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.StatusCommand",
+      "src_method": "FormatAppStatus",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:530 projResp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.StatusCommand",
+      "src_method": "FormatProjectStatus",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListProjects",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:844 projectResp, err := client.ListProjects(c.Ctx, &pb.ListProjectsRequest{Pagination: &pb.PaginationRequest{}})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.StatusCommand",
+      "src_method": "FormatProjectStatus",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/status.go:858 resp, err := client.GetProject(c.Ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TaskCancelCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CancelTask",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/task_cancel.go:56 _, err := c.project.Client().CancelTask(ctx, taskReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TaskInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetTask",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/task_inspect.go:71 taskResp, err := c.project.Client().GetTask(ctx, taskReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TaskListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListTask",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/task_list.go:59 resp, err := c.project.Client().ListTask(ctx, listTaskReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CreateProjectTemplate",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_create.go:105 _, err := c.project.Client().CreateProjectTemplate(ctx, &pb.CreateProjectTemplateRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteProjectTemplate",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_delete.go:65 _, err := c.project.Client().DeleteProjectTemplate(ctx, &pb.DeleteProjectTemplateRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProjectTemplate",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_inspect.go:80 tr, err := c.project.Client().GetProjectTemplate(ctx, &pb.GetProjectTemplateRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListProjectTemplates",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_list.go:38 ptr, err := c.project.Client().ListProjectTemplates(ctx, &pb.ListProjectTemplatesRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateUpdateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProjectTemplate",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_update.go:67 checkResp, err := c.project.Client().GetProjectTemplate(ctx, &pb.GetProjectTemplateRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ProjectTemplateUpdateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpdateProjectTemplate",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/template_update.go:136 _, err = c.project.Client().UpdateProjectTemplate(ctx, &pb.UpdateProjectTemplateRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.GetInviteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/token.go:38 resp, err := client.GenerateInviteToken(c.Ctx, &pb.InviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.ExchangeInviteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ConvertInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/token.go:113 resp, err := client.ConvertInviteToken(c.Ctx, &pb.ConvertInviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.GetTokenCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateLoginToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/token.go:179 resp, err := client.GenerateLoginToken(c.Ctx, &pb.LoginTokenRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TriggerApplyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/trigger_apply.go:70 respTrigger, err := c.project.Client().GetTrigger(ctx, &pb.GetTriggerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TriggerApplyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/trigger_apply.go:311 resp, err := c.project.Client().UpsertTrigger(ctx, &pb.UpsertTriggerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TriggerDeleteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/trigger_delete.go:43 _, err := c.project.Client().DeleteTrigger(ctx, &pb.DeleteTriggerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TriggerInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/trigger_inspect.go:49 resp, err := c.project.Client().GetTrigger(ctx, &pb.GetTriggerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.TriggerListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListTriggers",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/trigger_list.go:65 resp, err := c.project.Client().ListTriggers(ctx, req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UICommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/ui.go:77 resp, err := client.GenerateInviteToken(c.Ctx, &pb.InviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UpCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/up.go:65 resp, err := c.project.Client().GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UpCommand",
+      "src_method": "legacyUp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/up.go:181 push, err := client.GetLatestPushedArtifact(ctx, &pb.GetLatestPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UpCommand",
+      "src_method": "legacyUp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/up.go:204 hostnamesResp, err := client.ListHostnames(ctx, &pb.ListHostnamesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserInspectCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetUser",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_inspect.go:46 userResp, err := client.GetUser(c.Ctx, &pb.GetUserRequest{User: refUser})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserInviteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetUser",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_invite.go:47 userResp, err := client.GetUser(c.Ctx, &pb.GetUserRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserInviteCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_invite.go:60 resp, err := client.GenerateInviteToken(c.Ctx, req)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserModifyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetUser",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_modify.go:48 userResp, err := client.GetUser(c.Ctx, &pb.GetUserRequest{User: refUser})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserModifyCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpdateUser",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_modify.go:72 if _, err := client.UpdateUser(c.Ctx, &pb.UpdateUserRequest{User: user}); err != nil {"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.UserTokenCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateLoginToken",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/user_token.go:50 resp, err := client.GenerateLoginToken(c.Ctx, &pb.LoginTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.WorkspaceCreateCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertWorkspace",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/workspace_create.go:40 resp, err := client.UpsertWorkspace(c.Ctx, &pb.UpsertWorkspaceRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "cli.WorkspaceListCommand",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListWorkspaces",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/workspace_list.go:37 resp, err := c.project.Client().ListWorkspaces(c.Ctx, &pb.ListWorkspacesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "workspace_list",
+      "src_method": "getWorkspace",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetWorkspace",
+      "protocol": "gRPC",
+      "evidence": "internal/cli/workspace_list.go:106 resp, err := client.GetWorkspace(ctx, &pb.GetWorkspaceRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.Project",
+      "src_method": "setupLocalJobSystem",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/client/job.go:94 getProjectResp, err := c.client.GetProject(ctx, &pb.GetProjectRequest{Project: c.project})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.Project",
+      "src_method": "queueAndStreamJob",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.QueueJob",
+      "protocol": "gRPC",
+      "evidence": "internal/client/job.go:291 queueResp, err := c.client.QueueJob(ctx, &pb.QueueJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.App",
+      "src_method": "Logs",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/client/operation.go:237 deploy, err := a.project.client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.App",
+      "src_method": "Logs",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLogStream",
+      "protocol": "gRPC",
+      "evidence": "internal/client/operation.go:267 client, err := a.project.client.GetLogStream(ctx, logStreamRequest)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner",
+      "src_method": "remoteOpPreferred",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListRunners",
+      "protocol": "gRPC",
+      "evidence": "internal/client/runner.go:90 runnersResp, err := client.ListRunners(ctx, &pb.ListRunnersRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner",
+      "src_method": "remoteOpPreferred",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListOnDemandRunnerConfigs",
+      "protocol": "gRPC",
+      "evidence": "internal/client/runner.go:127 configsResp, err := client.ListOnDemandRunnerConfigs(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.Project",
+      "src_method": "initLocalServer",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/client/server.go:148 _, err = client.SetServerConfig(ctx, &pb.SetServerConfigRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "client.Project",
+      "src_method": "negotiateApiVersion",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetVersionInfo",
+      "protocol": "gRPC",
+      "evidence": "internal/client/server.go:181 resp, err := c.client.GetVersionInfo(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "snapshot",
+      "src_method": "WriteSnapshot",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CreateSnapshot",
+      "protocol": "gRPC",
+      "evidence": "internal/clisnapshot/snapshot.go:23 stream, err := client.CreateSnapshot(ctx, &emptypb.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "snapshot",
+      "src_method": "ReadSnapshot",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RestoreSnapshot",
+      "protocol": "gRPC",
+      "evidence": "internal/clisnapshot/snapshot.go:64 stream, err := client.RestoreSnapshot(ctx)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.buildOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertBuild",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_build.go:153 resp, err := client.UpsertBuild(ctx, &pb.UpsertBuildRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "ConfigSync",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.SetConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_config.go:37 _, err = a.client.SetConfig(ctx, &pb.ConfigSetRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "ConfigSync",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_config.go:49 resp, err := a.client.GetProject(ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "ConfigSync",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertProject",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_config.go:58 _, err = a.client.UpsertProject(ctx, &pb.UpsertProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "ConfigSync",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertApplication",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_config.go:67 _, err := a.client.UpsertApplication(ctx, &pb.UpsertApplicationRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "deployEvalContext",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunnerGetDeploymentConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy.go:80 resp, err := a.client.RunnerGetDeploymentConfig(ctx, &pb.RunnerGetDeploymentConfigRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "deployArtifact",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy.go:114 resp, err := a.client.GetPushedArtifact(ctx, &pb.GetPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.deployOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy.go:282 resp, err := client.UpsertDeployment(ctx, &pb.UpsertDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.deployOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GenerateInviteToken",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy.go:296 resp, err := client.GenerateInviteToken(ctx, &pb.InviteTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "destroyAllDeploys",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy_destroy.go:48 resp, err := a.client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "destroyDeployWorkspace",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy_destroy.go:178 resp, err := a.client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.deployDestroyOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_deploy_destroy.go:269 resp, err := client.UpsertDeployment(ctx, &pb.UpsertDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "Exec",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_exec.go:42 resp, err := a.client.GetPushedArtifact(ctx, &pb.GetPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.pushBuildOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_push.go:156 resp, err := client.UpsertPushedArtifact(ctx, &pb.UpsertPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "Release",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release.go:39 resp, err := a.client.GetPushedArtifact(ctx, &pb.GetPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.releaseOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release.go:213 resp, err := client.UpsertRelease(ctx, &pb.UpsertReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "releaserEvalContext",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release_destroy.go:85 resp, err := a.client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "destroyAllReleases",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListReleases",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release_destroy.go:125 resp, err := a.client.ListReleases(ctx, &pb.ListReleasesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "destroyReleaseWorkspace",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListReleases",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release_destroy.go:157 resp, err := a.client.ListReleases(ctx, &pb.ListReleasesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.releaseDestroyOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_release_destroy.go:235 resp, err := client.UpsertRelease(ctx, &pb.UpsertReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "DeploymentStatusReport",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestStatusReport",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:45 lastResp, err := a.client.GetLatestStatusReport(ctx, &pb.GetLatestStatusReportRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "DeploymentStatusReport",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListInstances",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:92 resp, err := a.client.ListInstances(ctx, &pb.ListInstancesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "DeploymentStatusReport",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertStatusReport",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:110 newReport, err := a.client.UpsertStatusReport(ctx, &pb.UpsertStatusReportRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "ReleaseStatusReport",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestStatusReport",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:146 lastResp, err := a.client.GetLatestStatusReport(ctx, &pb.GetLatestStatusReportRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "deployStatusReportEvalContext",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:227 resp, err := a.client.GetPushedArtifact(ctx, &pb.GetPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.App",
+      "src_method": "releaseStatusReportEvalContext",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:260 resp, err := a.client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.statusReportOperation",
+      "src_method": "Upsert",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertStatusReport",
+      "protocol": "gRPC",
+      "evidence": "internal/core/app_status_report.go:350 resp, err := client.UpsertStatusReport(ctx, &pb.UpsertStatusReportRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "core.Pipeline",
+      "src_method": "ConfigSync",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertPipeline",
+      "protocol": "gRPC",
+      "evidence": "internal/core/pipeline_config.go:28 _, err = p.client.UpsertPipeline(ctx, &pb.UpsertPipelineRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "adoption",
+      "src_method": "AdoptRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListRunners",
+      "protocol": "gRPC",
+      "evidence": "internal/installutil/adoption.go:36 runners, err := client.ListRunners(ctx, &pb.ListRunnersRequest{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "adoption",
+      "src_method": "AdoptRunner",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.AdoptRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/installutil/adoption.go:50 _, err := client.AdoptRunner(ctx, &pb.AdoptRunnerRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "jobstream.stream",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJobStream",
+      "protocol": "gRPC",
+      "evidence": "internal/jobstream/stream.go:60 stream, err := s.client.GetJobStream(ctx, &pb.GetJobStreamRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "jobstream.stream",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.CancelJob",
+      "protocol": "gRPC",
+      "evidence": "internal/jobstream/stream.go:103 _, err := s.client.CancelJob(ctx, &pb.CancelJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "jobstream.stream",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetRunner",
+      "protocol": "gRPC",
+      "evidence": "internal/jobstream/stream.go:188 runner, err := s.client.GetRunner(ctx, &pb.GetRunnerRequest{RunnerId: assignedRunner.Id})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "jobstream.stream",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetOnDemandRunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/jobstream/stream.go:207 profile, err := s.client.GetOnDemandRunnerConfig("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "accept",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunnerJobStream",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/accept.go:239 client, err = r.client.RunnerJobStream(streamCtx, grpc.WaitForReady(retry))"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "initConfigStreamReceiver",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunnerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/config.go:62 client, err := r.client.RunnerConfig(ctx, grpc.WaitForReady(isRetry))"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeJob",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation.go:52 resp, err := r.client.GetProject(ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeJob",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetServerConfig",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation.go:249 clientResp, err := r.client.GetServerConfig(ctx, &empty.Empty{})"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDeployOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestPushedArtifact",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_deploy.go:32 push, err := r.client.GetLatestPushedArtifact(ctx, &pb.GetLatestPushedArtifactRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDeployOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetDeployment",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_deploy.go:49 deployment, err := r.client.GetDeployment(ctx, &pb.GetDeploymentRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeInitOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertWorkspace",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_init.go:25 resp, err := client.UpsertWorkspace(ctx, &pb.UpsertWorkspaceRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeInitOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertApplication",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_init.go:46 _, err := client.UpsertApplication(ctx, &pb.UpsertApplicationRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "queueAndHandleJob",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.QueueJob",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_pipeline_step.go:50 queueResp, err := r.client.QueueJob(ctx, &pb.QueueJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "queueAndHandleJob",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJobStream",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_pipeline_step.go:60 stream, err := r.client.GetJobStream(ctx, &pb.GetJobStreamRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executePollOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetProject",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_poll.go:32 resp, err := r.client.GetProject(ctx, &pb.GetProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executePollOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.QueueJob",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_poll.go:128 queueResp, err := r.client.QueueJob(ctx, &pb.QueueJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDestroyProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.UpsertProject",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_project_destroy.go:33 _, err := client.UpsertProject(ctx,"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDestroyProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListWorkspaces",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_project_destroy.go:48 workspaces, err := client.ListWorkspaces(ctx, &pb.ListWorkspacesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDestroyProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_project_destroy.go:90 if hostnames, err := client.ListHostnames(ctx, &pb.ListHostnamesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDestroyProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DeleteHostname",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_project_destroy.go:116 if _, err = client.DeleteHostname(ctx, &pb.DeleteHostnameRequest{Hostname: hostname.Hostname}); err != nil {"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeDestroyProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.DestroyProject",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_project_destroy.go:128 _, err = client.DestroyProject(ctx, &pb.DestroyProjectRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeQueueProjectOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.QueueJob",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_queue_project.go:48 resp, err := r.client.QueueJob(ctx, &pb.QueueJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeReleaseOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListDeployments",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_release.go:42 resp, err := r.client.ListDeployments(ctx, &pb.ListDeploymentsRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeReleaseOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetLatestRelease",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_release.go:72 resp, err := r.client.GetLatestRelease(ctx, &pb.GetLatestReleaseRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeReleaseOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListReleases",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_release.go:157 rl, err := r.client.ListReleases(ctx, &pb.ListReleasesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeStopTaskOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_task.go:106 job, err := r.client.GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeWatchTaskOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJob",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_task.go:204 job, err := r.client.GetJob(ctx, &pb.GetJobRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "executeUpOp",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.ListHostnames",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/operation_up.go:132 hostnamesResp, err := r.client.ListHostnames(ctx, &pb.ListHostnamesRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.reattachClient",
+      "src_method": "do",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunnerJobStream",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/reattach.go:191 client, err = r.client.RunnerJobStream(c.ctx, grpc.WaitForReady(true))"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "runner.Runner",
+      "src_method": "Start",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunnerToken",
+      "protocol": "gRPC",
+      "evidence": "internal/runner/runner.go:280 tokenResp, err := r.client.RunnerToken(tokenCtx, &pb.RunnerTokenRequest{"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "execclient.Client",
+      "src_method": "Run",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.StartExecStream",
+      "protocol": "gRPC",
+      "evidence": "internal/server/execclient/client.go:88 client, err := c.Client.StartExecStream(c.Context)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "exec",
+      "src_method": "HandleExec",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.StartExecStream",
+      "protocol": "gRPC",
+      "evidence": "internal/server/httpapi/exec.go:83 exec, err := client.StartExecStream(ctx)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "trigger",
+      "src_method": "HandleTrigger",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.RunTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/server/httpapi/trigger.go:136 resp, err = client.RunTrigger(ctx, runTriggerReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "trigger",
+      "src_method": "HandleTrigger",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.NoAuthRunTrigger",
+      "protocol": "gRPC",
+      "evidence": "internal/server/httpapi/trigger.go:138 resp, err = client.NoAuthRunTrigger(ctx, runTriggerReq)"
+    },
+    {
+      "src_service": "internal",
+      "src_class": "trigger",
+      "src_method": "HandleTrigger",
+      "dst_service": "pkg",
+      "dst_class": "singleprocess.Service",
+      "dst_interface_id": "Service.GetJobStream",
+      "protocol": "gRPC",
+      "evidence": "internal/server/httpapi/trigger.go:218 stream, err := client.GetJobStream(ctx, &pb.GetJobStreamRequest{"
+    }
+  ]
+}

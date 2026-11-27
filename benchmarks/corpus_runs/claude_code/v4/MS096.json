@@ -1,0 +1,842 @@
+{
+  "system_id": "MS096",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "shopping-server": {
+      "exposed_interfaces": [
+        {
+          "id": "catalogController.searchCatalog",
+          "class_name": "catalogController",
+          "method_name": "searchCatalog",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "POST /catalog/search"
+        },
+        {
+          "id": "catalogController.getProductDetails",
+          "class_name": "catalogController",
+          "method_name": "getProductDetails",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /catalog/getProductDetails"
+        },
+        {
+          "id": "orderController.createCheckout",
+          "class_name": "orderController",
+          "method_name": "createCheckout",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Checkout",
+          "protocol": "REST",
+          "endpoint": "POST /orders/createCheckout"
+        },
+        {
+          "id": "orderController.completeCheckoutUsingCard",
+          "class_name": "orderController",
+          "method_name": "completeCheckoutUsingCard",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/completeCheckoutUsingCard"
+        },
+        {
+          "id": "orderController.completeCheckoutUsingKhalti",
+          "class_name": "orderController",
+          "method_name": "completeCheckoutUsingKhalti",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/completeCheckoutUsingKhalti"
+        },
+        {
+          "id": "orderController.isCheckoutValid",
+          "class_name": "orderController",
+          "method_name": "isCheckoutValid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /orders/isCheckoutValid"
+        },
+        {
+          "id": "orderController.createPaymentToken",
+          "class_name": "orderController",
+          "method_name": "createPaymentToken",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/createPaymentToken"
+        },
+        {
+          "id": "orderController.completeCheckout",
+          "class_name": "orderController",
+          "method_name": "completeCheckout",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/completeCheckout"
+        },
+        {
+          "id": "orderController.stripePaymentInstant",
+          "class_name": "orderController",
+          "method_name": "stripePaymentInstant",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/stripePaymentInstant"
+        },
+        {
+          "id": "orderController.completeCheckoutUsingStripePaymentInstant",
+          "class_name": "orderController",
+          "method_name": "completeCheckoutUsingStripePaymentInstant",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /orders/completeCheckoutUsingStripePaymentInstant"
+        },
+        {
+          "id": "securityController.signup",
+          "class_name": "securityController",
+          "method_name": "signup",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /security/signup"
+        },
+        {
+          "id": "security.post_security_login",
+          "class_name": "security.js",
+          "method_name": "post_security_login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /security/login"
+        },
+        {
+          "id": "security.get_security_isloggedin",
+          "class_name": "security.js",
+          "method_name": "get_security_isloggedin",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/isLoggedIn"
+        },
+        {
+          "id": "security.get_security_logout",
+          "class_name": "security.js",
+          "method_name": "get_security_logout",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /security/logout"
+        },
+        {
+          "id": "securityController.resendEmailAddressConfirmationLink",
+          "class_name": "securityController",
+          "method_name": "resendEmailAddressConfirmationLink",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/resendEmailAddressConfirmationLink"
+        },
+        {
+          "id": "securityController.confirmEmailAddress",
+          "class_name": "securityController",
+          "method_name": "confirmEmailAddress",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/confirmEmailAddress/:token"
+        },
+        {
+          "id": "securityController.forgotPassword",
+          "class_name": "securityController",
+          "method_name": "forgotPassword",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/forgotPassword"
+        },
+        {
+          "id": "securityController.validatePasswordResetToken",
+          "class_name": "securityController",
+          "method_name": "validatePasswordResetToken",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/validatePasswordResetToken/:token"
+        },
+        {
+          "id": "securityController.resetPassword",
+          "class_name": "securityController",
+          "method_name": "resetPassword",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /security/resetPassword"
+        },
+        {
+          "id": "shoppingController.addToCart",
+          "class_name": "shoppingController",
+          "method_name": "addToCart",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "POST /shopping/addToCart"
+        },
+        {
+          "id": "shoppingController.getCart",
+          "class_name": "shoppingController",
+          "method_name": "getCart",
+          "param_types": [],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "GET /shopping/getCart"
+        },
+        {
+          "id": "shoppingController.updateCart",
+          "class_name": "shoppingController",
+          "method_name": "updateCart",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "PUT /shopping/updateCart"
+        },
+        {
+          "id": "shoppingController.deleteFromCart",
+          "class_name": "shoppingController",
+          "method_name": "deleteFromCart",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "ShoppingCart",
+          "protocol": "REST",
+          "endpoint": "DELETE /shopping/deleteFromCart"
+        },
+        {
+          "id": "userController.addNewAddress",
+          "class_name": "userController",
+          "method_name": "addNewAddress",
+          "param_types": [
+            "Address"
+          ],
+          "return_type": "List<Address>",
+          "protocol": "REST",
+          "endpoint": "POST /user/address"
+        },
+        {
+          "id": "userController.getAddresses",
+          "class_name": "userController",
+          "method_name": "getAddresses",
+          "param_types": [],
+          "return_type": "List<Address>",
+          "protocol": "REST",
+          "endpoint": "GET /user/address"
+        },
+        {
+          "id": "userController.updateAddress",
+          "class_name": "userController",
+          "method_name": "updateAddress",
+          "param_types": [
+            "Address"
+          ],
+          "return_type": "List<Address>",
+          "protocol": "REST",
+          "endpoint": "PUT /user/address"
+        },
+        {
+          "id": "userController.deleteAddress",
+          "class_name": "userController",
+          "method_name": "deleteAddress",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Address>",
+          "protocol": "REST",
+          "endpoint": "DELETE /user/address"
+        },
+        {
+          "id": "userController.getOrderList",
+          "class_name": "userController",
+          "method_name": "getOrderList",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "POST /user/orderList"
+        },
+        {
+          "id": "userController.getOrderDetails",
+          "class_name": "userController",
+          "method_name": "getOrderDetails",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "GET /user/orderDetails"
+        },
+        {
+          "id": "uiController.getFeaturedSection",
+          "class_name": "uiController",
+          "method_name": "getFeaturedSection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FeaturedSection",
+          "protocol": "REST",
+          "endpoint": "GET /ui/featured"
+        },
+        {
+          "id": "uiController.getProductCategoryList",
+          "class_name": "uiController",
+          "method_name": "getProductCategoryList",
+          "param_types": [],
+          "return_type": "List<ProductCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /ui/productCategoryList"
+        }
+      ]
+    },
+    "management-server": {
+      "exposed_interfaces": [
+        {
+          "id": "catalogController.searchCatalog",
+          "class_name": "catalogController",
+          "method_name": "searchCatalog",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "POST /catalog/search"
+        },
+        {
+          "id": "catalogController.addProductToCatalog",
+          "class_name": "catalogController",
+          "method_name": "addProductToCatalog",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "POST /catalog/addProduct"
+        },
+        {
+          "id": "catalogController.getProductDetails",
+          "class_name": "catalogController",
+          "method_name": "getProductDetails",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /catalog/getProductDetails"
+        },
+        {
+          "id": "catalogController.updateProductInCatalog",
+          "class_name": "catalogController",
+          "method_name": "updateProductInCatalog",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PUT /catalog/updateProduct"
+        },
+        {
+          "id": "catalogController.deleteProductFromCatalog",
+          "class_name": "catalogController",
+          "method_name": "deleteProductFromCatalog",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /catalog/deleteProduct"
+        },
+        {
+          "id": "catalogController.getPresignedUrlsForCatalogImageUploads",
+          "class_name": "catalogController",
+          "method_name": "getPresignedUrlsForCatalogImageUploads",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /catalog/getPresignedUrlsForCatalogImageUploads"
+        },
+        {
+          "id": "securityController.login",
+          "class_name": "securityController",
+          "method_name": "login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /security/login"
+        },
+        {
+          "id": "security.get_security_isloggedin",
+          "class_name": "security.js",
+          "method_name": "get_security_isloggedin",
+          "param_types": [],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/isLoggedIn"
+        },
+        {
+          "id": "securityController.logout",
+          "class_name": "securityController",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /security/logout"
+        },
+        {
+          "id": "securityController.forgotPassword",
+          "class_name": "securityController",
+          "method_name": "forgotPassword",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/forgotPassword"
+        },
+        {
+          "id": "securityController.validatePasswordResetToken",
+          "class_name": "securityController",
+          "method_name": "validatePasswordResetToken",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "GET /security/validatePasswordResetToken/:token"
+        },
+        {
+          "id": "securityController.resetPassword",
+          "class_name": "securityController",
+          "method_name": "resetPassword",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /security/resetPassword"
+        },
+        {
+          "id": "superAdminController.createAdmin",
+          "class_name": "superAdminController",
+          "method_name": "createAdmin",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /superAdmin/createAdmin"
+        },
+        {
+          "id": "superAdminController.getAllAdmins",
+          "class_name": "superAdminController",
+          "method_name": "getAllAdmins",
+          "param_types": [],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /superAdmin/getAllAdmins"
+        },
+        {
+          "id": "superAdminController.getAdminDetails",
+          "class_name": "superAdminController",
+          "method_name": "getAdminDetails",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /superAdmin/getAdminDetails"
+        },
+        {
+          "id": "superAdminController.updateAdminAccess",
+          "class_name": "superAdminController",
+          "method_name": "updateAdminAccess",
+          "param_types": [
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "PUT /superAdmin/updateAdminAccess"
+        },
+        {
+          "id": "superAdminController.deleteAdmin",
+          "class_name": "superAdminController",
+          "method_name": "deleteAdmin",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /superAdmin/deleteAdmin"
+        },
+        {
+          "id": "referenceDataController.getCatalogBundle",
+          "class_name": "referenceDataController",
+          "method_name": "getCatalogBundle",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/getCatalogBundle"
+        },
+        {
+          "id": "referenceDataController.getStores",
+          "class_name": "referenceDataController",
+          "method_name": "getStores",
+          "param_types": [],
+          "return_type": "List<Store>",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/getStores"
+        },
+        {
+          "id": "referenceDataController.getRoles",
+          "class_name": "referenceDataController",
+          "method_name": "getRoles",
+          "param_types": [],
+          "return_type": "List<Role>",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/getRoles"
+        },
+        {
+          "id": "referenceDataController.getWeightUnits",
+          "class_name": "referenceDataController",
+          "method_name": "getWeightUnits",
+          "param_types": [],
+          "return_type": "List<WeightUnit>",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/getWeightUnits"
+        },
+        {
+          "id": "referenceDataController.getProductCategoryList",
+          "class_name": "referenceDataController",
+          "method_name": "getProductCategoryList",
+          "param_types": [],
+          "return_type": "List<ProductCategory>",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/productCategoryList"
+        },
+        {
+          "id": "referenceDataController.addProductCategory",
+          "class_name": "referenceDataController",
+          "method_name": "addProductCategory",
+          "param_types": [
+            "ProductCategory"
+          ],
+          "return_type": "ProductCategory",
+          "protocol": "REST",
+          "endpoint": "POST /referenceData/productCategory"
+        },
+        {
+          "id": "referenceDataController.getProductCategory",
+          "class_name": "referenceDataController",
+          "method_name": "getProductCategory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ProductCategory",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/productCategory"
+        },
+        {
+          "id": "referenceDataController.updateProductCategory",
+          "class_name": "referenceDataController",
+          "method_name": "updateProductCategory",
+          "param_types": [
+            "ProductCategory"
+          ],
+          "return_type": "ProductCategory",
+          "protocol": "REST",
+          "endpoint": "PUT /referenceData/productCategory"
+        },
+        {
+          "id": "referenceDataController.getTariffList",
+          "class_name": "referenceDataController",
+          "method_name": "getTariffList",
+          "param_types": [],
+          "return_type": "List<Tariff>",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/tariffList"
+        },
+        {
+          "id": "referenceDataController.addTariffCategory",
+          "class_name": "referenceDataController",
+          "method_name": "addTariffCategory",
+          "param_types": [
+            "Tariff"
+          ],
+          "return_type": "Tariff",
+          "protocol": "REST",
+          "endpoint": "POST /referenceData/tariff"
+        },
+        {
+          "id": "referenceDataController.getTariffCategory",
+          "class_name": "referenceDataController",
+          "method_name": "getTariffCategory",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Tariff",
+          "protocol": "REST",
+          "endpoint": "GET /referenceData/tariff"
+        },
+        {
+          "id": "referenceDataController.updateTariffCategory",
+          "class_name": "referenceDataController",
+          "method_name": "updateTariffCategory",
+          "param_types": [
+            "Tariff"
+          ],
+          "return_type": "Tariff",
+          "protocol": "REST",
+          "endpoint": "PUT /referenceData/tariff"
+        },
+        {
+          "id": "orderController.getOrderList",
+          "class_name": "orderController",
+          "method_name": "getOrderList",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Order>",
+          "protocol": "REST",
+          "endpoint": "POST /orders/orderList"
+        },
+        {
+          "id": "orderController.getOrderDetails",
+          "class_name": "orderController",
+          "method_name": "getOrderDetails",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "GET /orders/order"
+        },
+        {
+          "id": "orderController.confirmOrder",
+          "class_name": "orderController",
+          "method_name": "confirmOrder",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders/confirmOrder"
+        },
+        {
+          "id": "orderController.cancelOrder",
+          "class_name": "orderController",
+          "method_name": "cancelOrder",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders/cancelOrder"
+        },
+        {
+          "id": "orderController.markItemAsFulfilling",
+          "class_name": "orderController",
+          "method_name": "markItemAsFulfilling",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders/markItemAsFulfilling"
+        },
+        {
+          "id": "orderController.markItemAsShipped",
+          "class_name": "orderController",
+          "method_name": "markItemAsShipped",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders/markItemAsShipped"
+        },
+        {
+          "id": "orderController.markItemAsDelivered",
+          "class_name": "orderController",
+          "method_name": "markItemAsDelivered",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "POST /orders/markItemAsDelivered"
+        },
+        {
+          "id": "orderController.updateOrderFulfillmentDetails",
+          "class_name": "orderController",
+          "method_name": "updateOrderFulfillmentDetails",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "PUT /orders/updateOrderFulfillmentDetails"
+        },
+        {
+          "id": "orderController.updateShipmentDetails",
+          "class_name": "orderController",
+          "method_name": "updateShipmentDetails",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "PUT /orders/updateShipmentDetails"
+        },
+        {
+          "id": "orderController.updateDeliveryDetails",
+          "class_name": "orderController",
+          "method_name": "updateDeliveryDetails",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Order",
+          "protocol": "REST",
+          "endpoint": "PUT /orders/updateDeliveryDetails"
+        },
+        {
+          "id": "orderController.addComment",
+          "class_name": "orderController",
+          "method_name": "addComment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Comment>",
+          "protocol": "REST",
+          "endpoint": "POST /orders/addComment"
+        },
+        {
+          "id": "orderController.editComment",
+          "class_name": "orderController",
+          "method_name": "editComment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Comment>",
+          "protocol": "REST",
+          "endpoint": "PUT /orders/editComment"
+        },
+        {
+          "id": "orderController.deleteComment",
+          "class_name": "orderController",
+          "method_name": "deleteComment",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Comment>",
+          "protocol": "REST",
+          "endpoint": "DELETE /orders/deleteComment"
+        },
+        {
+          "id": "uiController.updateOrUpsertFeaturedSection",
+          "class_name": "uiController",
+          "method_name": "updateOrUpsertFeaturedSection",
+          "param_types": [
+            "FeaturedSection"
+          ],
+          "return_type": "FeaturedSection",
+          "protocol": "REST",
+          "endpoint": "POST /ui/featured"
+        },
+        {
+          "id": "uiController.getAllFeaturedSections",
+          "class_name": "uiController",
+          "method_name": "getAllFeaturedSections",
+          "param_types": [],
+          "return_type": "List<FeaturedSection>",
+          "protocol": "REST",
+          "endpoint": "GET /ui/featuredList"
+        },
+        {
+          "id": "uiController.getFeaturedSection",
+          "class_name": "uiController",
+          "method_name": "getFeaturedSection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FeaturedSection",
+          "protocol": "REST",
+          "endpoint": "GET /ui/featured"
+        },
+        {
+          "id": "uiController.deleteFeaturedSection",
+          "class_name": "uiController",
+          "method_name": "deleteFeaturedSection",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "DELETE /ui/featured"
+        }
+      ]
+    },
+    "shopping-webclient": {
+      "exposed_interfaces": []
+    },
+    "management-webclient": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

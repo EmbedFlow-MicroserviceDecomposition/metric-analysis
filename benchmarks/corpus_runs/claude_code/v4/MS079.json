@@ -1,0 +1,355 @@
+{
+  "system_id": "MS079",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "eShopLegacyWebFormsSolution": {
+      "exposed_interfaces": []
+    },
+    "eShopLegacyMVCSolution": {
+      "exposed_interfaces": [
+        {
+          "id": "BrandsController.Get",
+          "class_name": "BrandsController",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "REST",
+          "endpoint": "GET api/Brands"
+        },
+        {
+          "id": "BrandsController.GetById",
+          "class_name": "BrandsController",
+          "method_name": "Get",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CatalogBrand",
+          "protocol": "REST",
+          "endpoint": "GET api/Brands/{id}"
+        },
+        {
+          "id": "BrandsController.Delete",
+          "class_name": "BrandsController",
+          "method_name": "Delete",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE api/Brands/{id}"
+        },
+        {
+          "id": "FilesController.Get",
+          "class_name": "FilesController",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<BrandDTO>",
+          "protocol": "REST",
+          "endpoint": "GET api/Files"
+        },
+        {
+          "id": "PicController.Index",
+          "class_name": "PicController",
+          "method_name": "Index",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET items/{catalogItemId}/pic"
+        },
+        {
+          "id": "BrandsController.IndexPorted",
+          "class_name": "BrandsController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "REST",
+          "endpoint": "GET api/Brands"
+        },
+        {
+          "id": "BrandsController.DeletePorted",
+          "class_name": "BrandsController",
+          "method_name": "Delete",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE api/Brands/{id}"
+        },
+        {
+          "id": "FilesController.IndexPorted",
+          "class_name": "FilesController",
+          "method_name": "Index",
+          "param_types": [],
+          "return_type": "Stream",
+          "protocol": "REST",
+          "endpoint": "GET api/Files"
+        }
+      ]
+    },
+    "eShopModernizedWebFormsSolution": {
+      "exposed_interfaces": [
+        {
+          "id": "PicUploader.UploadImage",
+          "class_name": "PicUploader",
+          "method_name": "UploadImage",
+          "param_types": [
+            "HttpPostedFile",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "POST Catalog/PicUploader.asmx/UploadImage"
+        }
+      ]
+    },
+    "eShopModernizedNTier": {
+      "exposed_interfaces": [
+        {
+          "id": "CatalogService.FindCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "FindCatalogItem",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CatalogItem",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/FindCatalogItem"
+        },
+        {
+          "id": "CatalogService.GetCatalogBrands",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogBrands",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogBrands"
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "List<CatalogItem>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogItems"
+        },
+        {
+          "id": "CatalogService.GetCatalogTypes",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogTypes",
+          "param_types": [],
+          "return_type": "List<CatalogType>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogTypes"
+        },
+        {
+          "id": "CatalogService.GetAvailableStock",
+          "class_name": "CatalogService",
+          "method_name": "GetAvailableStock",
+          "param_types": [
+            "DateTime",
+            "int"
+          ],
+          "return_type": "int",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetAvailableStock"
+        },
+        {
+          "id": "CatalogService.CreateAvailableStock",
+          "class_name": "CatalogService",
+          "method_name": "CreateAvailableStock",
+          "param_types": [
+            "CatalogItemsStock"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/CreateAvailableStock"
+        },
+        {
+          "id": "CatalogService.CreateCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "CreateCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/CreateCatalogItem"
+        },
+        {
+          "id": "CatalogService.UpdateCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "UpdateCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/UpdateCatalogItem"
+        },
+        {
+          "id": "CatalogService.RemoveCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "RemoveCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/RemoveCatalogItem"
+        },
+        {
+          "id": "CatalogService.GetDiscount",
+          "class_name": "CatalogService",
+          "method_name": "GetDiscount",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "DiscountItem",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetDiscount"
+        }
+      ]
+    },
+    "ServiceFabric": {
+      "exposed_interfaces": []
+    },
+    "eShopModernizedMVCSolution": {
+      "exposed_interfaces": [
+        {
+          "id": "PicController.UploadImage",
+          "class_name": "PicController",
+          "method_name": "UploadImage",
+          "param_types": [
+            "HttpPostedFile",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST uploadimage"
+        }
+      ]
+    },
+    "eShopLegacyNTier": {
+      "exposed_interfaces": [
+        {
+          "id": "CatalogService.FindCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "FindCatalogItem",
+          "param_types": [
+            "int"
+          ],
+          "return_type": "CatalogItem",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/FindCatalogItem"
+        },
+        {
+          "id": "CatalogService.GetCatalogBrands",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogBrands",
+          "param_types": [],
+          "return_type": "List<CatalogBrand>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogBrands"
+        },
+        {
+          "id": "CatalogService.GetCatalogItems",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogItems",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "List<CatalogItem>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogItems"
+        },
+        {
+          "id": "CatalogService.GetCatalogTypes",
+          "class_name": "CatalogService",
+          "method_name": "GetCatalogTypes",
+          "param_types": [],
+          "return_type": "List<CatalogType>",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetCatalogTypes"
+        },
+        {
+          "id": "CatalogService.GetAvailableStock",
+          "class_name": "CatalogService",
+          "method_name": "GetAvailableStock",
+          "param_types": [
+            "DateTime",
+            "int"
+          ],
+          "return_type": "int",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetAvailableStock"
+        },
+        {
+          "id": "CatalogService.CreateAvailableStock",
+          "class_name": "CatalogService",
+          "method_name": "CreateAvailableStock",
+          "param_types": [
+            "CatalogItemsStock"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/CreateAvailableStock"
+        },
+        {
+          "id": "CatalogService.CreateCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "CreateCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/CreateCatalogItem"
+        },
+        {
+          "id": "CatalogService.UpdateCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "UpdateCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/UpdateCatalogItem"
+        },
+        {
+          "id": "CatalogService.RemoveCatalogItem",
+          "class_name": "CatalogService",
+          "method_name": "RemoveCatalogItem",
+          "param_types": [
+            "CatalogItem"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/RemoveCatalogItem"
+        },
+        {
+          "id": "CatalogService.GetDiscount",
+          "class_name": "CatalogService",
+          "method_name": "GetDiscount",
+          "param_types": [
+            "DateTime"
+          ],
+          "return_type": "DiscountItem",
+          "protocol": "RPC",
+          "endpoint": "ICatalogService/GetDiscount"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

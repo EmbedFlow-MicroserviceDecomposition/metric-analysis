@@ -1,0 +1,101 @@
+{
+  "system_id": "MS008",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "cargotracker": {
+      "exposed_interfaces": [
+        {
+          "id": "RealtimeCargoTrackingService.tracking",
+          "class_name": "org.eclipse.cargotracker.interfaces.booking.sse.RealtimeCargoTrackingService",
+          "method_name": "tracking",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /rest/cargo"
+        },
+        {
+          "id": "HandlingReportService.submitReport",
+          "class_name": "org.eclipse.cargotracker.interfaces.handling.rest.HandlingReportService",
+          "method_name": "submitReport",
+          "param_types": [
+            "HandlingReport"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /rest/handling/reports"
+        },
+        {
+          "id": "GraphTraversalService.findShortestPath",
+          "class_name": "org.eclipse.pathfinder.api.GraphTraversalService",
+          "method_name": "findShortestPath",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "List<TransitPath>",
+          "protocol": "REST",
+          "endpoint": "GET /rest/graph-traversal/shortest-path"
+        },
+        {
+          "id": "CargoHandledConsumer.onMessage",
+          "class_name": "org.eclipse.cargotracker.infrastructure.messaging.jms.CargoHandledConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "CargoHandledQueue"
+        },
+        {
+          "id": "DeliveredCargoConsumer.onMessage",
+          "class_name": "org.eclipse.cargotracker.infrastructure.messaging.jms.DeliveredCargoConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "DeliveredCargoQueue"
+        },
+        {
+          "id": "HandlingEventRegistrationAttemptConsumer.onMessage",
+          "class_name": "org.eclipse.cargotracker.infrastructure.messaging.jms.HandlingEventRegistrationAttemptConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "HandlingEventRegistrationAttempt"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "HandlingEventRegistrationAttemptQueue"
+        },
+        {
+          "id": "MisdirectedCargoConsumer.onMessage",
+          "class_name": "org.eclipse.cargotracker.infrastructure.messaging.jms.MisdirectedCargoConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "MisdirectedCargoQueue"
+        },
+        {
+          "id": "RejectedRegistrationAttemptsConsumer.onMessage",
+          "class_name": "org.eclipse.cargotracker.infrastructure.messaging.jms.RejectedRegistrationAttemptsConsumer",
+          "method_name": "onMessage",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "RejectedRegistrationAttemptsQueue"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

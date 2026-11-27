@@ -1,0 +1,777 @@
+{
+  "system_id": "MS097",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "backend-service": {
+      "exposed_interfaces": [
+        {
+          "id": "auth.post_auth_oauth",
+          "class_name": "auth.js",
+          "method_name": "post_auth_oauth",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/auth/oauth"
+        },
+        {
+          "id": "auth.get_auth_oauth_provider",
+          "class_name": "auth.js",
+          "method_name": "get_auth_oauth_provider",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/auth/oauth/:provider"
+        },
+        {
+          "id": "auth.post_auth_signup",
+          "class_name": "auth.js",
+          "method_name": "post_auth_signup",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/auth/signup"
+        },
+        {
+          "id": "auth.post_auth_login",
+          "class_name": "auth.js",
+          "method_name": "post_auth_login",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/auth/login"
+        },
+        {
+          "id": "auth.put_auth_password",
+          "class_name": "auth.js",
+          "method_name": "put_auth_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/auth/password"
+        },
+        {
+          "id": "auth.post_auth_change_password",
+          "class_name": "auth.js",
+          "method_name": "post_auth_change_password",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/auth/change-password"
+        },
+        {
+          "id": "auth.post_auth_link_accounts",
+          "class_name": "auth.js",
+          "method_name": "post_auth_link_accounts",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/auth/link-accounts"
+        },
+        {
+          "id": "feedback.post_feedback",
+          "class_name": "feedback.js",
+          "method_name": "post_feedback",
+          "param_types": [
+            "Feedback"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/feedback"
+        },
+        {
+          "id": "geo.get_geo_address_predictions",
+          "class_name": "geo.js",
+          "method_name": "get_geo_address_predictions",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/geo/address-predictions"
+        },
+        {
+          "id": "geo.get_geo_location_details",
+          "class_name": "geo.js",
+          "method_name": "get_geo_location_details",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/geo/location-details"
+        },
+        {
+          "id": "geo.get_geo_location_reverse_geocode",
+          "class_name": "geo.js",
+          "method_name": "get_geo_location_reverse_geocode",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/geo/location-reverse-geocode"
+        },
+        {
+          "id": "geo.get_geo_health_facility_places",
+          "class_name": "geo.js",
+          "method_name": "get_geo_health_facility_places",
+          "param_types": [
+            "number",
+            "number",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/geo/health-facility-places"
+        },
+        {
+          "id": "organisations.get_organisations",
+          "class_name": "organisations.js",
+          "method_name": "get_organisations",
+          "param_types": [
+            "boolean",
+            "string",
+            "string",
+            "number",
+            "string",
+            "number",
+            "boolean"
+          ],
+          "return_type": "List<OrganisationUser>",
+          "protocol": "REST",
+          "endpoint": "GET /api/organisations"
+        },
+        {
+          "id": "organisations.delete_organisations_organisationid",
+          "class_name": "organisations.js",
+          "method_name": "delete_organisations_organisationid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/organisations/:organisationId"
+        },
+        {
+          "id": "organisations.get_organisations_organisationid",
+          "class_name": "organisations.js",
+          "method_name": "get_organisations_organisationid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "OrganisationUser",
+          "protocol": "REST",
+          "endpoint": "GET /api/organisations/:organisationId"
+        },
+        {
+          "id": "organisations.patch_organisations_organisationid",
+          "class_name": "organisations.js",
+          "method_name": "patch_organisations_organisationid",
+          "param_types": [
+            "string",
+            "OrganisationUser"
+          ],
+          "return_type": "OrganisationUser",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/organisations/:organisationId"
+        },
+        {
+          "id": "organisations.post_organisations",
+          "class_name": "organisations.js",
+          "method_name": "post_organisations",
+          "param_types": [
+            "OrganisationUser"
+          ],
+          "return_type": "OrganisationUser",
+          "protocol": "REST",
+          "endpoint": "POST /api/organisations"
+        },
+        {
+          "id": "organisations.post_organisations_organisationid_avatar",
+          "class_name": "organisations.js",
+          "method_name": "post_organisations_organisationid_avatar",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "OrganisationUser",
+          "protocol": "REST",
+          "endpoint": "POST /api/organisations/:organisationId/avatar"
+        },
+        {
+          "id": "organisations.delete_organisations_organisationid_avatar",
+          "class_name": "organisations.js",
+          "method_name": "delete_organisations_organisationid_avatar",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "OrganisationUser",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/organisations/:organisationId/avatar"
+        },
+        {
+          "id": "posts.get_posts",
+          "class_name": "posts.js",
+          "method_name": "get_posts",
+          "param_types": [
+            "string",
+            "boolean",
+            "string",
+            "string",
+            "string",
+            "string",
+            "number",
+            "string",
+            "number",
+            "string",
+            "boolean"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts"
+        },
+        {
+          "id": "posts.post_posts",
+          "class_name": "posts.js",
+          "method_name": "post_posts",
+          "param_types": [
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "POST /api/posts"
+        },
+        {
+          "id": "posts.get_posts_postid",
+          "class_name": "posts.js",
+          "method_name": "get_posts_postid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts/:postId"
+        },
+        {
+          "id": "posts.delete_posts_postid",
+          "class_name": "posts.js",
+          "method_name": "delete_posts_postid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/:postId"
+        },
+        {
+          "id": "posts.patch_posts_postid",
+          "class_name": "posts.js",
+          "method_name": "patch_posts_postid",
+          "param_types": [
+            "string",
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/posts/:postId"
+        },
+        {
+          "id": "posts.put_posts_postid_likes_actorid",
+          "class_name": "posts.js",
+          "method_name": "put_posts_postid_likes_actorid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/posts/:postId/likes/:actorId"
+        },
+        {
+          "id": "posts.delete_posts_postid_likes_actorid",
+          "class_name": "posts.js",
+          "method_name": "delete_posts_postid_likes_actorid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/:postId/likes/:actorId"
+        },
+        {
+          "id": "posts.get_posts_postid_comments",
+          "class_name": "posts.js",
+          "method_name": "get_posts_postid_comments",
+          "param_types": [
+            "string",
+            "number",
+            "number"
+          ],
+          "return_type": "List<Comment>",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts/:postId/comments"
+        },
+        {
+          "id": "posts.post_posts_postid_comments",
+          "class_name": "posts.js",
+          "method_name": "post_posts_postid_comments",
+          "param_types": [
+            "string",
+            "Comment"
+          ],
+          "return_type": "Comment",
+          "protocol": "REST",
+          "endpoint": "POST /api/posts/:postId/comments"
+        },
+        {
+          "id": "posts.patch_posts_postid_comments_commentid",
+          "class_name": "posts.js",
+          "method_name": "patch_posts_postid_comments_commentid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Comment",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/posts/:postId/comments/:commentId"
+        },
+        {
+          "id": "posts.delete_posts_postid_comments_commentid",
+          "class_name": "posts.js",
+          "method_name": "delete_posts_postid_comments_commentid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/:postId/comments/:commentId"
+        },
+        {
+          "id": "posts.put_posts_postid_comments_commentid_likes_actorid",
+          "class_name": "posts.js",
+          "method_name": "put_posts_postid_comments_commentid_likes_actorid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/posts/:postId/comments/:commentId/likes/:actorId"
+        },
+        {
+          "id": "posts.delete_posts_postid_comments_commentid_likes_actorid",
+          "class_name": "posts.js",
+          "method_name": "delete_posts_postid_comments_commentid_likes_actorid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/:postId/comments/:commentId/likes/:actorId"
+        },
+        {
+          "id": "users.get_users",
+          "class_name": "users.js",
+          "method_name": "get_users",
+          "param_types": [
+            "boolean",
+            "string",
+            "string",
+            "number",
+            "string",
+            "number",
+            "boolean"
+          ],
+          "return_type": "List<IndividualUser>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "users.get_users_current",
+          "class_name": "users.js",
+          "method_name": "get_users_current",
+          "param_types": [],
+          "return_type": "IndividualUser",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/current"
+        },
+        {
+          "id": "users.patch_users_current",
+          "class_name": "users.js",
+          "method_name": "patch_users_current",
+          "param_types": [
+            "IndividualUser"
+          ],
+          "return_type": "IndividualUser",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/users/current"
+        },
+        {
+          "id": "users.get_users_userid",
+          "class_name": "users.js",
+          "method_name": "get_users_userid",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "IndividualUser",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/:userId"
+        },
+        {
+          "id": "users.post_users_current_avatar",
+          "class_name": "users.js",
+          "method_name": "post_users_current_avatar",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/current/avatar"
+        },
+        {
+          "id": "users.delete_users_current_avatar",
+          "class_name": "users.js",
+          "method_name": "delete_users_current_avatar",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/users/current/avatar"
+        },
+        {
+          "id": "users.post_users",
+          "class_name": "users.js",
+          "method_name": "post_users",
+          "param_types": [
+            "IndividualUser"
+          ],
+          "return_type": "IndividualUser",
+          "protocol": "REST",
+          "endpoint": "POST /api/users"
+        },
+        {
+          "id": "users.get_users_unsubscribe",
+          "class_name": "users.js",
+          "method_name": "get_users_unsubscribe",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/unsubscribe"
+        },
+        {
+          "id": "users.patch_users_unsubscribe",
+          "class_name": "users.js",
+          "method_name": "patch_users_unsubscribe",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/users/unsubscribe"
+        },
+        {
+          "id": "users.patch_users_userid_permissions",
+          "class_name": "users.js",
+          "method_name": "patch_users_userid_permissions",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/users/:userId/permissions"
+        },
+        {
+          "id": "users.get_users_roles",
+          "class_name": "users.js",
+          "method_name": "get_users_roles",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/roles"
+        },
+        {
+          "id": "users.get_users_verification",
+          "class_name": "users.js",
+          "method_name": "get_users_verification",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/verification"
+        },
+        {
+          "id": "users.post_users_verification_decision",
+          "class_name": "users.js",
+          "method_name": "post_users_verification_decision",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "boolean",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/verification/decision"
+        },
+        {
+          "id": "reports.post_reports_posts_postid",
+          "class_name": "reports.js",
+          "method_name": "post_reports_posts_postid",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/reports/posts/:postId"
+        },
+        {
+          "id": "reports.get_reports_posts",
+          "class_name": "reports.js",
+          "method_name": "get_reports_posts",
+          "param_types": [
+            "number",
+            "string",
+            "number",
+            "boolean",
+            "string"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/reports/posts"
+        },
+        {
+          "id": "reports.patch_reports_posts_postid",
+          "class_name": "reports.js",
+          "method_name": "patch_reports_posts_postid",
+          "param_types": [
+            "string",
+            "Audit"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/reports/posts/:postId"
+        },
+        {
+          "id": "reports.get_reports_logs",
+          "class_name": "reports.js",
+          "method_name": "get_reports_logs",
+          "param_types": [
+            "number",
+            "number"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/reports/logs"
+        },
+        {
+          "id": "reports.get_reports_stats",
+          "class_name": "reports.js",
+          "method_name": "get_reports_stats",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/reports/stats"
+        },
+        {
+          "id": "sendgrid.put_sendgrid_create_contact",
+          "class_name": "sendgrid.js",
+          "method_name": "put_sendgrid_create_contact",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "PUT /api/sendgrid/create-contact"
+        },
+        {
+          "id": "socket.on_identify",
+          "class_name": "socket.js",
+          "method_name": "on_identify",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "string",
+          "protocol": "WebSocket",
+          "endpoint": "IDENTIFY"
+        },
+        {
+          "id": "socket.on_join_room",
+          "class_name": "socket.js",
+          "method_name": "on_join_room",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Thread",
+          "protocol": "WebSocket",
+          "endpoint": "JOIN_ROOM"
+        },
+        {
+          "id": "socket.on_get_user_threads",
+          "class_name": "socket.js",
+          "method_name": "on_get_user_threads",
+          "param_types": [],
+          "return_type": "List<Thread>",
+          "protocol": "WebSocket",
+          "endpoint": "GET_USER_THREADS"
+        },
+        {
+          "id": "socket.on_get_user_status",
+          "class_name": "socket.js",
+          "method_name": "on_get_user_status",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "WebSocket",
+          "endpoint": "GET_USER_STATUS"
+        },
+        {
+          "id": "socket.on_get_chat_log",
+          "class_name": "socket.js",
+          "method_name": "on_get_chat_log",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Message>",
+          "protocol": "WebSocket",
+          "endpoint": "GET_CHAT_LOG"
+        },
+        {
+          "id": "socket.on_get_chat_log_more",
+          "class_name": "socket.js",
+          "method_name": "on_get_chat_log_more",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "List<Message>",
+          "protocol": "WebSocket",
+          "endpoint": "GET_CHAT_LOG_MORE"
+        },
+        {
+          "id": "socket.on_send_message",
+          "class_name": "socket.js",
+          "method_name": "on_send_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "SEND_MESSAGE"
+        },
+        {
+          "id": "socket.on_delete_message",
+          "class_name": "socket.js",
+          "method_name": "on_delete_message",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "DELETE_MESSAGE"
+        },
+        {
+          "id": "socket.on_edit_message",
+          "class_name": "socket.js",
+          "method_name": "on_edit_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "EDIT_MESSAGE"
+        },
+        {
+          "id": "socket.on_update_thread_status",
+          "class_name": "socket.js",
+          "method_name": "on_update_thread_status",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "UPDATE_THREAD_STATUS"
+        },
+        {
+          "id": "socket.on_get_notifications",
+          "class_name": "socket.js",
+          "method_name": "on_get_notifications",
+          "param_types": [],
+          "return_type": "List<Notification>",
+          "protocol": "WebSocket",
+          "endpoint": "GET_NOTIFICATIONS"
+        },
+        {
+          "id": "socket.on_mark_notifications_as_read",
+          "class_name": "socket.js",
+          "method_name": "on_mark_notifications_as_read",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "MARK_NOTIFICATIONS_AS_READ"
+        },
+        {
+          "id": "socket.on_clear_notification",
+          "class_name": "socket.js",
+          "method_name": "on_clear_notification",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "CLEAR_NOTIFICATION"
+        },
+        {
+          "id": "socket.on_clear_all_notifications",
+          "class_name": "socket.js",
+          "method_name": "on_clear_all_notifications",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "CLEAR_ALL_NOTIFICATIONS"
+        },
+        {
+          "id": "socket.on_post_shared",
+          "class_name": "socket.js",
+          "method_name": "on_post_shared",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "POST_SHARED"
+        }
+      ]
+    },
+    "client": {
+      "exposed_interfaces": []
+    },
+    "notification": {
+      "exposed_interfaces": [
+        {
+          "id": "lambda.handler",
+          "class_name": "lambda.js",
+          "method_name": "handler",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "Messaging",
+          "endpoint": "notification-service"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

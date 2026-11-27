@@ -1,0 +1,92 @@
+{
+  "system_id": "MS084",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "0-model-store": {
+      "exposed_interfaces": []
+    },
+    "3-data-fetching": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_green_recos",
+          "class_name": "server.js",
+          "method_name": "get_green_recos",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /green-recos"
+        },
+        {
+          "id": "api.recoApi",
+          "class_name": "api.js",
+          "method_name": "recoApi",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /green/api/reco"
+        }
+      ]
+    },
+    "2-composition-universal": {
+      "exposed_interfaces": [
+        {
+          "id": "server.get_blue_buy",
+          "class_name": "server.js",
+          "method_name": "get_blue_buy",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /blue-buy"
+        },
+        {
+          "id": "server.get_blue_basket",
+          "class_name": "server.js",
+          "method_name": "get_blue_basket",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /blue-basket"
+        },
+        {
+          "id": "server.get_green_recos",
+          "class_name": "server.js",
+          "method_name": "get_green_recos",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /green-recos"
+        },
+        {
+          "id": "server.handlePage",
+          "class_name": "server.js",
+          "method_name": "handlePage",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "server.handlePageSku",
+          "class_name": "server.js",
+          "method_name": "handlePage",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /:sku"
+        }
+      ]
+    },
+    "1-composition-client-only": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": []
+}

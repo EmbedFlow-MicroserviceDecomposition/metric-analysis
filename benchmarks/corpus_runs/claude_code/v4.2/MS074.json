@@ -1,0 +1,1620 @@
+{
+  "system_id": "MS074",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "app": {
+      "exposed_interfaces": [
+        {
+          "id": "HomepageController.index",
+          "class_name": "Hyrax::HomepageController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /homepage"
+        },
+        {
+          "id": "TranscriptsController.show",
+          "class_name": "Hyrax::TranscriptsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /transcripts/:id.:file_ext"
+        },
+        {
+          "id": "DownloadsController.show",
+          "class_name": "Hyrax::DownloadsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /downloads/:id"
+        },
+        {
+          "id": "ResourceSyncController.source_description",
+          "class_name": "Hyrax::ResourceSyncController",
+          "method_name": "source_description",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /.well-known/resourcesync"
+        },
+        {
+          "id": "ResourceSyncController.capability_list",
+          "class_name": "Hyrax::ResourceSyncController",
+          "method_name": "capability_list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /capabilitylist"
+        },
+        {
+          "id": "ResourceSyncController.resource_list",
+          "class_name": "Hyrax::ResourceSyncController",
+          "method_name": "resource_list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /resourcelist"
+        },
+        {
+          "id": "ResourceSyncController.change_list",
+          "class_name": "Hyrax::ResourceSyncController",
+          "method_name": "change_list",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /changelist"
+        },
+        {
+          "id": "CompoundLinkedRecordsController.create",
+          "class_name": "Hyrax::CompoundLinkedRecordsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /linked_records/:source"
+        },
+        {
+          "id": "UploadsController.destroy",
+          "class_name": "Hyrax::UploadsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /uploads/:id"
+        },
+        {
+          "id": "UploadsController.create",
+          "class_name": "Hyrax::UploadsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "UploadedFile",
+          "protocol": "REST",
+          "endpoint": "POST /uploads"
+        },
+        {
+          "id": "BatchEditsController.destroy_collection",
+          "class_name": "Hyrax::BatchEditsController",
+          "method_name": "destroy_collection",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /batch_edits"
+        },
+        {
+          "id": "BatchEditsController.edit",
+          "class_name": "Hyrax::BatchEditsController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /batch_edits/edit"
+        },
+        {
+          "id": "BatchEditsController.update",
+          "class_name": "Hyrax::BatchEditsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /batch_edits"
+        },
+        {
+          "id": "BatchUploadsController.new",
+          "class_name": "Hyrax::BatchUploadsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /batch_uploads/new"
+        },
+        {
+          "id": "BatchUploadsController.create",
+          "class_name": "Hyrax::BatchUploadsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /batch_uploads"
+        },
+        {
+          "id": "CollectionsController.show",
+          "class_name": "Hyrax::CollectionsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "GET /collections/:id"
+        },
+        {
+          "id": "CollectionsController.files",
+          "class_name": "Hyrax::CollectionsController",
+          "method_name": "files",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /collections/:id/files"
+        },
+        {
+          "id": "FixityChecksController.create",
+          "class_name": "Hyrax::FixityChecksController",
+          "method_name": "create",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /concern/file_sets/:file_set_id/fixity_checks"
+        },
+        {
+          "id": "FileSetsController.stats",
+          "class_name": "Hyrax::FileSetsController",
+          "method_name": "stats",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FileUsage",
+          "protocol": "REST",
+          "endpoint": "GET /concern/file_sets/:id/stats"
+        },
+        {
+          "id": "FileSetsController.show",
+          "class_name": "Hyrax::FileSetsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FileSet",
+          "protocol": "REST",
+          "endpoint": "GET /concern/file_sets/:id"
+        },
+        {
+          "id": "FileSetsController.edit",
+          "class_name": "Hyrax::FileSetsController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FileSet",
+          "protocol": "REST",
+          "endpoint": "GET /concern/file_sets/:id/edit"
+        },
+        {
+          "id": "FileSetsController.update",
+          "class_name": "Hyrax::FileSetsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /concern/file_sets/:id"
+        },
+        {
+          "id": "FileSetsController.destroy",
+          "class_name": "Hyrax::FileSetsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /concern/file_sets/:id"
+        },
+        {
+          "id": "CitationsController.file",
+          "class_name": "Hyrax::CitationsController",
+          "method_name": "file",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /files/:id/citation"
+        },
+        {
+          "id": "CitationsController.work",
+          "class_name": "Hyrax::CitationsController",
+          "method_name": "work",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /works/:id/citation"
+        },
+        {
+          "id": "StatsController.file",
+          "class_name": "Hyrax::StatsController",
+          "method_name": "file",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FileUsage",
+          "protocol": "REST",
+          "endpoint": "GET /files/:id/stats"
+        },
+        {
+          "id": "StatsController.work",
+          "class_name": "Hyrax::StatsController",
+          "method_name": "work",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "SolrDocument",
+          "protocol": "REST",
+          "endpoint": "GET /works/:id/stats"
+        },
+        {
+          "id": "TransfersController.new",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /works/:id/transfers/new"
+        },
+        {
+          "id": "TransfersController.create",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "ProxyDepositRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /works/:id/transfers"
+        },
+        {
+          "id": "TransfersController.index",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/transfers"
+        },
+        {
+          "id": "TransfersController.destroy",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dashboard/transfers/:id"
+        },
+        {
+          "id": "TransfersController.accept",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "accept",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /dashboard/transfers/:id/accept"
+        },
+        {
+          "id": "TransfersController.reject",
+          "class_name": "Hyrax::TransfersController",
+          "method_name": "reject",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /dashboard/transfers/:id/reject"
+        },
+        {
+          "id": "FeaturedWorksController.create",
+          "class_name": "Hyrax::FeaturedWorksController",
+          "method_name": "create",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FeaturedWork",
+          "protocol": "REST",
+          "endpoint": "POST /works/:id/featured_work"
+        },
+        {
+          "id": "FeaturedWorksController.destroy",
+          "class_name": "Hyrax::FeaturedWorksController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /works/:id/featured_work"
+        },
+        {
+          "id": "TrophiesController.toggle_trophy",
+          "class_name": "Hyrax::TrophiesController",
+          "method_name": "toggle_trophy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Trophy",
+          "protocol": "REST",
+          "endpoint": "POST /works/:id/trophy"
+        },
+        {
+          "id": "DepositorsController.create",
+          "class_name": "Hyrax::DepositorsController",
+          "method_name": "create",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /users/:user_id/depositors"
+        },
+        {
+          "id": "DepositorsController.destroy",
+          "class_name": "Hyrax::DepositorsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /users/:user_id/depositors/:id"
+        },
+        {
+          "id": "DepositorsController.index",
+          "class_name": "Hyrax::DepositorsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /proxies"
+        },
+        {
+          "id": "FeaturedWorkListsController.create",
+          "class_name": "Hyrax::FeaturedWorkListsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /featured_works"
+        },
+        {
+          "id": "NotificationsController.destroy",
+          "class_name": "Hyrax::NotificationsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /notifications/:id"
+        },
+        {
+          "id": "NotificationsController.index",
+          "class_name": "Hyrax::NotificationsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /notifications"
+        },
+        {
+          "id": "NotificationsController.delete_all",
+          "class_name": "Hyrax::NotificationsController",
+          "method_name": "delete_all",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /notifications/delete_all"
+        },
+        {
+          "id": "UsersController.index",
+          "class_name": "Hyrax::UsersController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "List<User>",
+          "protocol": "REST",
+          "endpoint": "GET /users"
+        },
+        {
+          "id": "UsersController.show",
+          "class_name": "Hyrax::UsersController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /users/:id"
+        },
+        {
+          "id": "OperationsController.index",
+          "class_name": "Hyrax::OperationsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "List<Operation>",
+          "protocol": "REST",
+          "endpoint": "GET /users/:user_id/operations"
+        },
+        {
+          "id": "OperationsController.show",
+          "class_name": "Hyrax::OperationsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "Operation",
+          "protocol": "REST",
+          "endpoint": "GET /users/:user_id/operations/:id"
+        },
+        {
+          "id": "DashboardController.show",
+          "class_name": "Hyrax::DashboardController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard"
+        },
+        {
+          "id": "WorksController.index",
+          "class_name": "Hyrax::Dashboard::WorksController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/works"
+        },
+        {
+          "id": "WorksController.facet",
+          "class_name": "Hyrax::Dashboard::WorksController",
+          "method_name": "facet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/works/facet/:id"
+        },
+        {
+          "id": "CollectionsController.index",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections"
+        },
+        {
+          "id": "CollectionsController.new",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "new",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/new"
+        },
+        {
+          "id": "CollectionsController.create",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections"
+        },
+        {
+          "id": "CollectionsController.show_dashboard",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/:id"
+        },
+        {
+          "id": "CollectionsController.edit",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/:id/edit"
+        },
+        {
+          "id": "CollectionsController.update",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "PATCH /dashboard/collections/:id"
+        },
+        {
+          "id": "CollectionsController.destroy",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /dashboard/collections/:id"
+        },
+        {
+          "id": "CollectionsController.facet",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "facet",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/:id/facet/:id"
+        },
+        {
+          "id": "CollectionsController.files_dashboard",
+          "class_name": "Hyrax::Dashboard::CollectionsController",
+          "method_name": "files",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/:id/files"
+        },
+        {
+          "id": "CollectionMembersController.update_members",
+          "class_name": "Hyrax::Dashboard::CollectionMembersController",
+          "method_name": "update_members",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "Collection",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections/:id"
+        },
+        {
+          "id": "NestCollectionsController.create_relationship_within",
+          "class_name": "Hyrax::Dashboard::NestCollectionsController",
+          "method_name": "create_relationship_within",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections/:child_id/within"
+        },
+        {
+          "id": "NestCollectionsController.create_collection_under",
+          "class_name": "Hyrax::Dashboard::NestCollectionsController",
+          "method_name": "create_collection_under",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/collections/:parent_id/under"
+        },
+        {
+          "id": "NestCollectionsController.create_relationship_under",
+          "class_name": "Hyrax::Dashboard::NestCollectionsController",
+          "method_name": "create_relationship_under",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections/:parent_id/under"
+        },
+        {
+          "id": "NestCollectionsController.remove_relationship_above",
+          "class_name": "Hyrax::Dashboard::NestCollectionsController",
+          "method_name": "remove_relationship_above",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections/:child_id/remove_parent/:parent_id"
+        },
+        {
+          "id": "NestCollectionsController.remove_relationship_under",
+          "class_name": "Hyrax::Dashboard::NestCollectionsController",
+          "method_name": "remove_relationship_under",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /dashboard/collections/:parent_id/remove_child/:child_id"
+        },
+        {
+          "id": "ProfilesController.show",
+          "class_name": "Hyrax::Dashboard::ProfilesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/profiles/:id"
+        },
+        {
+          "id": "ProfilesController.edit",
+          "class_name": "Hyrax::Dashboard::ProfilesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/profiles/:id/edit"
+        },
+        {
+          "id": "ProfilesController.update",
+          "class_name": "Hyrax::Dashboard::ProfilesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "User"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /dashboard/profiles/:id"
+        },
+        {
+          "id": "WorksController.index_my",
+          "class_name": "Hyrax::My::WorksController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/my/works"
+        },
+        {
+          "id": "WorksController.facet_my",
+          "class_name": "Hyrax::My::WorksController",
+          "method_name": "facet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/my/works/facet/:id"
+        },
+        {
+          "id": "CollectionsController.index_my",
+          "class_name": "Hyrax::My::CollectionsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/my/collections"
+        },
+        {
+          "id": "HighlightsController.index",
+          "class_name": "Hyrax::My::HighlightsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/highlights"
+        },
+        {
+          "id": "HighlightsController.facet",
+          "class_name": "Hyrax::My::HighlightsController",
+          "method_name": "facet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/highlights/facet/:id"
+        },
+        {
+          "id": "SharesController.index",
+          "class_name": "Hyrax::My::SharesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<SolrDocument>",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/shares"
+        },
+        {
+          "id": "SharesController.facet",
+          "class_name": "Hyrax::My::SharesController",
+          "method_name": "facet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /dashboard/shares/facet/:id"
+        },
+        {
+          "id": "PermissionTemplatesController.update",
+          "class_name": "Hyrax::Admin::PermissionTemplatesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "PermissionTemplate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/admin_sets/:admin_set_id/permission_template"
+        },
+        {
+          "id": "ContactFormController.create",
+          "class_name": "Hyrax::ContactFormController",
+          "method_name": "create",
+          "param_types": [
+            "ContactForm"
+          ],
+          "return_type": "ContactForm",
+          "protocol": "REST",
+          "endpoint": "POST /contact"
+        },
+        {
+          "id": "ContactFormController.new",
+          "class_name": "Hyrax::ContactFormController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "ContactForm",
+          "protocol": "REST",
+          "endpoint": "GET /contact"
+        },
+        {
+          "id": "SingleUseLinksViewerController.show",
+          "class_name": "Hyrax::SingleUseLinksViewerController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /single_use_link/show/:id"
+        },
+        {
+          "id": "SingleUseLinksViewerController.download",
+          "class_name": "Hyrax::SingleUseLinksViewerController",
+          "method_name": "download",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /single_use_link/download/:id"
+        },
+        {
+          "id": "SingleUseLinksController.create_download",
+          "class_name": "Hyrax::SingleUseLinksController",
+          "method_name": "create_download",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /single_use_link/generate_download/:id"
+        },
+        {
+          "id": "SingleUseLinksController.create_show",
+          "class_name": "Hyrax::SingleUseLinksController",
+          "method_name": "create_show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "POST /single_use_link/generate_show/:id"
+        },
+        {
+          "id": "SingleUseLinksController.index",
+          "class_name": "Hyrax::SingleUseLinksController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<SingleUseLink>",
+          "protocol": "REST",
+          "endpoint": "GET /single_use_link/generated/:id"
+        },
+        {
+          "id": "SingleUseLinksController.destroy",
+          "class_name": "Hyrax::SingleUseLinksController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /single_use_link/:id/delete/:link_id"
+        },
+        {
+          "id": "EmbargoesController.index",
+          "class_name": "Hyrax::EmbargoesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /embargoes"
+        },
+        {
+          "id": "EmbargoesController.edit",
+          "class_name": "Hyrax::EmbargoesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /embargoes/:id/edit"
+        },
+        {
+          "id": "EmbargoesController.destroy",
+          "class_name": "Hyrax::EmbargoesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /embargoes/:id"
+        },
+        {
+          "id": "EmbargoesController.update",
+          "class_name": "Hyrax::EmbargoesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /embargoes"
+        },
+        {
+          "id": "LeasesController.index",
+          "class_name": "Hyrax::LeasesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /leases"
+        },
+        {
+          "id": "LeasesController.edit",
+          "class_name": "Hyrax::LeasesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /leases/:id/edit"
+        },
+        {
+          "id": "LeasesController.destroy",
+          "class_name": "Hyrax::LeasesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /leases/:id"
+        },
+        {
+          "id": "LeasesController.update",
+          "class_name": "Hyrax::LeasesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /leases"
+        },
+        {
+          "id": "PermissionsController.confirm",
+          "class_name": "Hyrax::PermissionsController",
+          "method_name": "confirm",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /concern/permissions/:id/confirm"
+        },
+        {
+          "id": "PermissionsController.copy",
+          "class_name": "Hyrax::PermissionsController",
+          "method_name": "copy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /concern/permissions/:id/copy"
+        },
+        {
+          "id": "PermissionsController.confirm_access",
+          "class_name": "Hyrax::PermissionsController",
+          "method_name": "confirm_access",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /concern/permissions/:id/confirm_access"
+        },
+        {
+          "id": "PermissionsController.copy_access",
+          "class_name": "Hyrax::PermissionsController",
+          "method_name": "copy_access",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /concern/permissions/:id/copy_access"
+        },
+        {
+          "id": "ItemsController.create",
+          "class_name": "Hyrax::API::ItemsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/items"
+        },
+        {
+          "id": "ItemsController.show",
+          "class_name": "Hyrax::API::ItemsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/items/:id"
+        },
+        {
+          "id": "ItemsController.update",
+          "class_name": "Hyrax::API::ItemsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/items/:id"
+        },
+        {
+          "id": "ItemsController.destroy",
+          "class_name": "Hyrax::API::ItemsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/items/:id"
+        },
+        {
+          "id": "ZoteroController.initiate",
+          "class_name": "Hyrax::API::ZoteroController",
+          "method_name": "initiate",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/zotero"
+        },
+        {
+          "id": "ZoteroController.callback",
+          "class_name": "Hyrax::API::ZoteroController",
+          "method_name": "callback",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /api/zotero/callback"
+        },
+        {
+          "id": "CollectionReportsController.index",
+          "class_name": "Hyrax::Admin::Analytics::CollectionReportsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/analytics/collection_reports"
+        },
+        {
+          "id": "CollectionReportsController.show",
+          "class_name": "Hyrax::Admin::Analytics::CollectionReportsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/analytics/collection_reports/:id"
+        },
+        {
+          "id": "WorkReportsController.index",
+          "class_name": "Hyrax::Admin::Analytics::WorkReportsController",
+          "method_name": "index",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/analytics/work_reports"
+        },
+        {
+          "id": "WorkReportsController.show",
+          "class_name": "Hyrax::Admin::Analytics::WorkReportsController",
+          "method_name": "show",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/analytics/work_reports/:id"
+        },
+        {
+          "id": "AdminSetsController.index",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /admin/admin_sets"
+        },
+        {
+          "id": "AdminSetsController.new",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "AdminSet",
+          "protocol": "REST",
+          "endpoint": "GET /admin/admin_sets/new"
+        },
+        {
+          "id": "AdminSetsController.create",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/admin_sets"
+        },
+        {
+          "id": "AdminSetsController.show",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "AdminSet",
+          "protocol": "REST",
+          "endpoint": "GET /admin/admin_sets/:id"
+        },
+        {
+          "id": "AdminSetsController.edit",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "AdminSet",
+          "protocol": "REST",
+          "endpoint": "GET /admin/admin_sets/:id/edit"
+        },
+        {
+          "id": "AdminSetsController.update",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/admin_sets/:id"
+        },
+        {
+          "id": "AdminSetsController.destroy",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/admin_sets/:id"
+        },
+        {
+          "id": "AdminSetsController.files",
+          "class_name": "Hyrax::Admin::AdminSetsController",
+          "method_name": "files",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<object>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/admin_sets/:id/files"
+        },
+        {
+          "id": "UsersController.index_admin",
+          "class_name": "Hyrax::Admin::UsersController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/users"
+        },
+        {
+          "id": "PermissionTemplateAccessesController.destroy",
+          "class_name": "Hyrax::Admin::PermissionTemplateAccessesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/permission_template_accesses/:id"
+        },
+        {
+          "id": "StatsController.show",
+          "class_name": "Hyrax::Admin::StatsController",
+          "method_name": "show",
+          "param_types": [
+            "object",
+            "Integer"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/stats"
+        },
+        {
+          "id": "FeaturesController.index",
+          "class_name": "Hyrax::Admin::FeaturesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/features"
+        },
+        {
+          "id": "StrategiesController.update",
+          "class_name": "Hyrax::Admin::StrategiesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/features/:feature_id/strategies/:id"
+        },
+        {
+          "id": "StrategiesController.destroy",
+          "class_name": "Hyrax::Admin::StrategiesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/features/:feature_id/strategies/:id"
+        },
+        {
+          "id": "WorkflowsController.index",
+          "class_name": "Hyrax::Admin::WorkflowsController",
+          "method_name": "index",
+          "param_types": [
+            "Integer",
+            "Integer",
+            "string"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/workflows"
+        },
+        {
+          "id": "WorkflowRolesController.index",
+          "class_name": "Hyrax::Admin::WorkflowRolesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /admin/workflow_roles"
+        },
+        {
+          "id": "WorkflowRolesController.create",
+          "class_name": "Hyrax::Admin::WorkflowRolesController",
+          "method_name": "create",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/workflow_roles"
+        },
+        {
+          "id": "WorkflowRolesController.destroy",
+          "class_name": "Hyrax::Admin::WorkflowRolesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/workflow_roles/:id"
+        },
+        {
+          "id": "AppearancesController.show",
+          "class_name": "Hyrax::Admin::AppearancesController",
+          "method_name": "show",
+          "param_types": [],
+          "return_type": "Appearance",
+          "protocol": "REST",
+          "endpoint": "GET /admin/appearance"
+        },
+        {
+          "id": "AppearancesController.update",
+          "class_name": "Hyrax::Admin::AppearancesController",
+          "method_name": "update",
+          "param_types": [
+            "Appearance"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/appearance"
+        },
+        {
+          "id": "CollectionTypesController.index",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "List<CollectionType>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/collection_types"
+        },
+        {
+          "id": "CollectionTypesController.new",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "new",
+          "param_types": [],
+          "return_type": "CollectionType",
+          "protocol": "REST",
+          "endpoint": "GET /admin/collection_types/new"
+        },
+        {
+          "id": "CollectionTypesController.create",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "create",
+          "param_types": [
+            "CollectionType"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/collection_types"
+        },
+        {
+          "id": "CollectionTypesController.edit",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "edit",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "CollectionType",
+          "protocol": "REST",
+          "endpoint": "GET /admin/collection_types/:id/edit"
+        },
+        {
+          "id": "CollectionTypesController.update",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "string",
+            "CollectionType"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /admin/collection_types/:id"
+        },
+        {
+          "id": "CollectionTypesController.destroy",
+          "class_name": "Hyrax::Admin::CollectionTypesController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/collection_types/:id"
+        },
+        {
+          "id": "CollectionTypeParticipantsController.create",
+          "class_name": "Hyrax::Admin::CollectionTypeParticipantsController",
+          "method_name": "create",
+          "param_types": [
+            "CollectionTypeParticipant"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/collection_type_participants"
+        },
+        {
+          "id": "CollectionTypeParticipantsController.destroy",
+          "class_name": "Hyrax::Admin::CollectionTypeParticipantsController",
+          "method_name": "destroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /admin/collection_type_participants/:id"
+        },
+        {
+          "id": "MetadataProfilesController.index",
+          "class_name": "Hyrax::Admin::MetadataProfilesController",
+          "method_name": "index",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<FlexibleSchema>",
+          "protocol": "REST",
+          "endpoint": "GET /admin/metadata_profiles"
+        },
+        {
+          "id": "MetadataProfilesController.import",
+          "class_name": "Hyrax::Admin::MetadataProfilesController",
+          "method_name": "import",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /admin/metadata_profiles/import"
+        },
+        {
+          "id": "MetadataProfilesController.export",
+          "class_name": "Hyrax::Admin::MetadataProfilesController",
+          "method_name": "export",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /admin/metadata_profiles/:metadata_profile_id/export"
+        },
+        {
+          "id": "ContentBlocksController.edit",
+          "class_name": "Hyrax::ContentBlocksController",
+          "method_name": "edit",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /content_blocks/edit"
+        },
+        {
+          "id": "ContentBlocksController.update",
+          "class_name": "Hyrax::ContentBlocksController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "ContentBlock"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /content_blocks/:id"
+        },
+        {
+          "id": "PagesController.edit",
+          "class_name": "Hyrax::PagesController",
+          "method_name": "edit",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /pages/edit"
+        },
+        {
+          "id": "PagesController.update",
+          "class_name": "Hyrax::PagesController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "ContentBlock"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /pages/:id"
+        },
+        {
+          "id": "PagesController.show",
+          "class_name": "Hyrax::PagesController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ContentBlock",
+          "protocol": "REST",
+          "endpoint": "GET /about"
+        },
+        {
+          "id": "StaticController.zotero",
+          "class_name": "Hyrax::StaticController",
+          "method_name": "zotero",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /zotero"
+        },
+        {
+          "id": "StaticController.mendeley",
+          "class_name": "Hyrax::StaticController",
+          "method_name": "mendeley",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /mendeley"
+        },
+        {
+          "id": "WorkflowActionsController.update",
+          "class_name": "Hyrax::WorkflowActionsController",
+          "method_name": "update",
+          "param_types": [
+            "string",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /concern/workflow_actions/:id"
+        },
+        {
+          "id": "RedirectsController.show",
+          "class_name": "Hyrax::RedirectsController",
+          "method_name": "show",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /*alias_path"
+        },
+        {
+          "id": "NotificationsChannel.update_locale",
+          "class_name": "Hyrax::NotificationsChannel",
+          "method_name": "update_locale",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "notifications/endpoint NotificationsChannel#update_locale"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

@@ -1,0 +1,1079 @@
+{
+  "system_id": "MS045",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "social-frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "main.saveHandler",
+          "class_name": "main",
+          "method_name": "saveHandler",
+          "param_types": [
+            "frontend.SaveReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "main.delHandler",
+          "class_name": "main",
+          "method_name": "delHandler",
+          "param_types": [
+            "frontend.DelReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "main.commentHandler",
+          "class_name": "main",
+          "method_name": "commentHandler",
+          "param_types": [
+            "frontend.CommentReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "main.upvoteHandler",
+          "class_name": "main",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "frontend.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "main.imageHandler",
+          "class_name": "main",
+          "method_name": "imageHandler",
+          "param_types": [
+            "frontend.ImageReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "image"
+        },
+        {
+          "id": "main.timelineHandler",
+          "class_name": "main",
+          "method_name": "timelineHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "post.ReadResp",
+          "protocol": "RPC",
+          "endpoint": "timeline"
+        }
+      ]
+    },
+    "social-object-detect": {
+      "exposed_interfaces": [
+        {
+          "id": "server.objectDetect",
+          "class_name": "server",
+          "method_name": "objectDetect",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "object-detect"
+        }
+      ]
+    },
+    "social-post": {
+      "exposed_interfaces": [
+        {
+          "id": "main.saveHandler",
+          "class_name": "main",
+          "method_name": "saveHandler",
+          "param_types": [
+            "post.SavePostReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "main.delHandler",
+          "class_name": "main",
+          "method_name": "delHandler",
+          "param_types": [
+            "post.DelPostReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "main.metaHandler",
+          "class_name": "main",
+          "method_name": "metaHandler",
+          "param_types": [
+            "post.MetaReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "meta"
+        },
+        {
+          "id": "main.commentHandler",
+          "class_name": "main",
+          "method_name": "commentHandler",
+          "param_types": [
+            "post.CommentReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "main.upvoteHandler",
+          "class_name": "main",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "post.UpdatePostResp",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "main.readHandler",
+          "class_name": "main",
+          "method_name": "readHandler",
+          "param_types": [
+            "post.ReadPostReq"
+          ],
+          "return_type": "post.ReadPostResp",
+          "protocol": "RPC",
+          "endpoint": "read"
+        }
+      ]
+    },
+    "social-proxy": {
+      "exposed_interfaces": [
+        {
+          "id": "main.saveHandler",
+          "class_name": "main",
+          "method_name": "saveHandler",
+          "param_types": [
+            "frontend.SaveReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "save"
+        },
+        {
+          "id": "main.delHandler",
+          "class_name": "main",
+          "method_name": "delHandler",
+          "param_types": [
+            "frontend.DelReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "del"
+        },
+        {
+          "id": "main.commentHandler",
+          "class_name": "main",
+          "method_name": "commentHandler",
+          "param_types": [
+            "frontend.CommentReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "comment"
+        },
+        {
+          "id": "main.upvoteHandler",
+          "class_name": "main",
+          "method_name": "upvoteHandler",
+          "param_types": [
+            "post.UpvoteReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "upvote"
+        },
+        {
+          "id": "main.imageHandler",
+          "class_name": "main",
+          "method_name": "imageHandler",
+          "param_types": [
+            "frontend.ImageReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "image"
+        },
+        {
+          "id": "main.timelineHandler",
+          "class_name": "main",
+          "method_name": "timelineHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "timeline"
+        },
+        {
+          "id": "main.recmdHandler",
+          "class_name": "main",
+          "method_name": "recmdHandler",
+          "param_types": [
+            "recommend.Req"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "recmd"
+        }
+      ]
+    },
+    "social-recommend": {
+      "exposed_interfaces": [
+        {
+          "id": "main.recmdHandler",
+          "class_name": "main",
+          "method_name": "recmdHandler",
+          "param_types": [
+            "recommend.Req"
+          ],
+          "return_type": "recommend.Resp",
+          "protocol": "RPC",
+          "endpoint": "recmd"
+        }
+      ]
+    },
+    "social-sentiment": {
+      "exposed_interfaces": [
+        {
+          "id": "server.sentimentAnalysis",
+          "class_name": "server",
+          "method_name": "sentimentAnalysis",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "sentiment"
+        }
+      ]
+    },
+    "social-socialgraph": {
+      "exposed_interfaces": [
+        {
+          "id": "main.getFollowHandler",
+          "class_name": "main",
+          "method_name": "getFollowHandler",
+          "param_types": [
+            "socialgraph.GetReq"
+          ],
+          "return_type": "socialgraph.GetFollowResp",
+          "protocol": "RPC",
+          "endpoint": "getfollow"
+        },
+        {
+          "id": "main.getRecmdHandler",
+          "class_name": "main",
+          "method_name": "getRecmdHandler",
+          "param_types": [
+            "socialgraph.GetRecmdReq"
+          ],
+          "return_type": "socialgraph.GetRecmdResp",
+          "protocol": "RPC",
+          "endpoint": "getrecmd"
+        },
+        {
+          "id": "main.getFollowerHandler",
+          "class_name": "main",
+          "method_name": "getFollowerHandler",
+          "param_types": [
+            "socialgraph.GetReq"
+          ],
+          "return_type": "socialgraph.GetFollowerResp",
+          "protocol": "RPC",
+          "endpoint": "getfollower"
+        },
+        {
+          "id": "main.followHandler",
+          "class_name": "main",
+          "method_name": "followHandler",
+          "param_types": [
+            "socialgraph.FollowReq"
+          ],
+          "return_type": "socialgraph.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "follow"
+        },
+        {
+          "id": "main.unfollowHandler",
+          "class_name": "main",
+          "method_name": "unfollowHandler",
+          "param_types": [
+            "socialgraph.UnfollowReq"
+          ],
+          "return_type": "socialgraph.UpdateResp",
+          "protocol": "RPC",
+          "endpoint": "unfollow"
+        }
+      ]
+    },
+    "social-timeline-read": {
+      "exposed_interfaces": [
+        {
+          "id": "main.readHandler",
+          "class_name": "main",
+          "method_name": "readHandler",
+          "param_types": [
+            "timeline.ReadReq"
+          ],
+          "return_type": "timeline.ReadResp",
+          "protocol": "RPC",
+          "endpoint": "read"
+        }
+      ]
+    },
+    "social-timeline-update": {
+      "exposed_interfaces": [
+        {
+          "id": "main.updateHandler",
+          "class_name": "main",
+          "method_name": "updateHandler",
+          "param_types": [
+            "timeline.UpdateReq"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "timeline"
+        }
+      ]
+    },
+    "social-translate": {
+      "exposed_interfaces": [
+        {
+          "id": "server.transEnToDe",
+          "class_name": "server",
+          "method_name": "transEnToDe",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "en_to_de"
+        }
+      ]
+    },
+    "social-user": {
+      "exposed_interfaces": [
+        {
+          "id": "main.regHandler",
+          "class_name": "main",
+          "method_name": "regHandler",
+          "param_types": [
+            "user.RegisterReq"
+          ],
+          "return_type": "user.RegisterResp",
+          "protocol": "RPC",
+          "endpoint": "register"
+        }
+      ]
+    },
+    "vpipe-face-detect": {
+      "exposed_interfaces": [
+        {
+          "id": "server.videoScene",
+          "class_name": "server",
+          "method_name": "videoScene",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "face"
+        }
+      ]
+    },
+    "vpipe-video-meta": {
+      "exposed_interfaces": [
+        {
+          "id": "server.videoMeta",
+          "class_name": "server",
+          "method_name": "videoMeta",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "meta"
+        }
+      ]
+    },
+    "vpipe-video-scene": {
+      "exposed_interfaces": [
+        {
+          "id": "server.videoScene",
+          "class_name": "server",
+          "method_name": "videoScene",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "scene"
+        }
+      ]
+    },
+    "vshare-dates": {
+      "exposed_interfaces": [
+        {
+          "id": "main.getHandler",
+          "class_name": "main",
+          "method_name": "getHandler",
+          "param_types": [
+            "dates.GetReq"
+          ],
+          "return_type": "dates.GetResp",
+          "protocol": "RPC",
+          "endpoint": "get"
+        },
+        {
+          "id": "main.uploadHandler",
+          "class_name": "main",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "dates.UploadReq"
+          ],
+          "return_type": "dates.UploadResp",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        }
+      ]
+    },
+    "vshare-proxy": {
+      "exposed_interfaces": [
+        {
+          "id": "main.uploadHandler",
+          "class_name": "main",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "UploadReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "main.infoHandler",
+          "class_name": "main",
+          "method_name": "infoHandler",
+          "param_types": [
+            "InfoReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "info"
+        },
+        {
+          "id": "main.videoHandler",
+          "class_name": "main",
+          "method_name": "videoHandler",
+          "param_types": [
+            "VideoReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "video"
+        },
+        {
+          "id": "main.rateHandler",
+          "class_name": "main",
+          "method_name": "rateHandler",
+          "param_types": [
+            "RateReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "main.getRateHandler",
+          "class_name": "main",
+          "method_name": "getRateHandler",
+          "param_types": [
+            "GetRateReq"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "getRate"
+        },
+        {
+          "id": "main.trendngHandler",
+          "class_name": "main",
+          "method_name": "trendngHandler",
+          "param_types": [
+            "trending.Req"
+          ],
+          "return_type": "[]byte",
+          "protocol": "RPC",
+          "endpoint": "trending"
+        }
+      ]
+    },
+    "vshare-user-rating": {
+      "exposed_interfaces": [
+        {
+          "id": "main.getHandler",
+          "class_name": "main",
+          "method_name": "getHandler",
+          "param_types": [
+            "rating.GetReq"
+          ],
+          "return_type": "rating.GetResp",
+          "protocol": "RPC",
+          "endpoint": "get"
+        },
+        {
+          "id": "main.rateHandler",
+          "class_name": "main",
+          "method_name": "rateHandler",
+          "param_types": [
+            "rating.RateReq"
+          ],
+          "return_type": "rating.RateResp",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        }
+      ]
+    },
+    "vshare-video-frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "server.uploadVideo",
+          "class_name": "server",
+          "method_name": "uploadVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "server.getVideoInfo",
+          "class_name": "server",
+          "method_name": "getVideoInfo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "info"
+        },
+        {
+          "id": "server.getVideoData",
+          "class_name": "server",
+          "method_name": "getVideoData",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "video"
+        },
+        {
+          "id": "server.rateVideo",
+          "class_name": "server",
+          "method_name": "rateVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "server.getVideoRating",
+          "class_name": "server",
+          "method_name": "getVideoRating",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "RPC",
+          "endpoint": "get_rate"
+        }
+      ]
+    },
+    "vshare-video-info": {
+      "exposed_interfaces": [
+        {
+          "id": "main.uploadHandler",
+          "class_name": "main",
+          "method_name": "uploadHandler",
+          "param_types": [
+            "info.UploadReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "upload"
+        },
+        {
+          "id": "main.rateHandler",
+          "class_name": "main",
+          "method_name": "rateHandler",
+          "param_types": [
+            "info.RateReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "rate"
+        },
+        {
+          "id": "main.viewHandler",
+          "class_name": "main",
+          "method_name": "viewHandler",
+          "param_types": [
+            "info.ViewReq"
+          ],
+          "return_type": "info.Resp",
+          "protocol": "RPC",
+          "endpoint": "view"
+        },
+        {
+          "id": "main.infoHandler",
+          "class_name": "main",
+          "method_name": "infoHandler",
+          "param_types": [
+            "info.InfoReq"
+          ],
+          "return_type": "info.InfoResp",
+          "protocol": "RPC",
+          "endpoint": "info"
+        }
+      ]
+    },
+    "vshare-video-scale": {
+      "exposed_interfaces": [
+        {
+          "id": "server.scaleVideo",
+          "class_name": "server",
+          "method_name": "scaleVideo",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "scale"
+        }
+      ]
+    },
+    "vshare-video-thumbnail": {
+      "exposed_interfaces": [
+        {
+          "id": "server.videoThumbnail",
+          "class_name": "server",
+          "method_name": "videoThumbnail",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "thumbnail"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "saveHandler",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.saveHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:312 saveRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-post\", \"save\", \"post\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "delHandler",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.delHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:430 delRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-post\", \"del\", \"post\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "commentHandler",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.commentHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:513 commRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-post\", \"comment\", \"post\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "upvoteHandler",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.upvoteHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:575 upvoteRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-post\", \"upvote\", \"post\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "timelineHandler",
+      "dst_service": "social-timeline-read",
+      "dst_class": "main",
+      "dst_interface_id": "main.readHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:675 tlRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-timeline-read\", \"read\", \"get\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "timelineHandler",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.readHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:721 postRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-post\", \"read\", \"get\", content)"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "saveHandler",
+      "dst_service": "social-timeline-update",
+      "dst_class": "main",
+      "dst_interface_id": "main.updateHandler",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:336 if err := client.PublishEventfromCustomContent(ctx, timelinePubsub, timelineTopic, timelineReq); err != nil {"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "saveHandler",
+      "dst_service": "social-object-detect",
+      "dst_class": "server",
+      "dst_interface_id": "server.objectDetect",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:349 if err := client.PublishEventfromCustomContent(ctx, objectPubsub, objectTopic, objReq); err != nil {"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "saveHandler",
+      "dst_service": "social-sentiment",
+      "dst_class": "server",
+      "dst_interface_id": "server.sentimentAnalysis",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:364 if err := client.PublishEventfromCustomContent(ctx, sentiPubsub, sentiTopic, sentiReq); err != nil {"
+    },
+    {
+      "src_service": "social-frontend",
+      "src_class": "main",
+      "src_method": "delHandler",
+      "dst_service": "social-timeline-update",
+      "dst_class": "main",
+      "dst_interface_id": "main.updateHandler",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/socialNetwork/frontend/main.go:450 if err := client.PublishEventfromCustomContent(ctx, timelinePubsub, timelineTopic, timelineReq); err != nil {"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "saveHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.saveHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:108 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"save\", \"post\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "delHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.delHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:156 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"del\", \"post\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "commentHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.commentHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:205 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"comment\", \"post\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "upvoteHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.upvoteHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:253 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"upvote\", \"post\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "imageHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.imageHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:299 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"image\", \"get\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "timelineHandler",
+      "dst_service": "social-frontend",
+      "dst_class": "main",
+      "dst_interface_id": "main.timelineHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:346 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-socialnet-frontend\", \"timeline\", \"get\", content)"
+    },
+    {
+      "src_service": "social-proxy",
+      "src_class": "main",
+      "src_method": "recmdHandler",
+      "dst_service": "social-recommend",
+      "dst_class": "main",
+      "dst_interface_id": "main.recmdHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/proxy/main.go:392 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-recommend\", \"recmd\", \"get\", content)"
+    },
+    {
+      "src_service": "social-recommend",
+      "src_class": "main",
+      "src_method": "recmdHandler",
+      "dst_service": "social-socialgraph",
+      "dst_class": "main",
+      "dst_interface_id": "main.getRecmdHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/recommend/main.go:131 flwRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-social-graph\", \"getrecmd\", \"get\", content)"
+    },
+    {
+      "src_service": "social-timeline-update",
+      "src_class": "main",
+      "src_method": "updateHandler",
+      "dst_service": "social-socialgraph",
+      "dst_class": "main",
+      "dst_interface_id": "main.getFollowerHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/timeline-update/main.go:358 graphRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-social-graph\", \"getfollower\", \"get\", content)"
+    },
+    {
+      "src_service": "social-user",
+      "src_class": "main",
+      "src_method": "regHandler",
+      "dst_service": "social-socialgraph",
+      "dst_class": "main",
+      "dst_interface_id": "main.followHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/user/main.go:111 flwRespData, err := client.InvokeMethodWithContent(ctx, \"dapr-social-graph\", \"follow\", \"post\", content)"
+    },
+    {
+      "src_service": "social-object-detect",
+      "src_class": "server",
+      "src_method": "objectDetect",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.metaHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/object-detect/server.py:148 resp = d.invoke_method("
+    },
+    {
+      "src_service": "social-sentiment",
+      "src_class": "server",
+      "src_method": "sentimentAnalysis",
+      "dst_service": "social-post",
+      "dst_class": "main",
+      "dst_interface_id": "main.metaHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/socialNetwork/sentiment/server.py:109 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vpipe-video-meta",
+      "src_class": "server",
+      "src_method": "extractMeta",
+      "dst_service": "vpipe-video-scene",
+      "dst_class": "server",
+      "dst_interface_id": "server.videoScene",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/video-pipe/video-meta/server.py:155 resp = d.publish_event("
+    },
+    {
+      "src_service": "vpipe-video-scene",
+      "src_class": "server",
+      "src_method": "extractScene",
+      "dst_service": "vpipe-face-detect",
+      "dst_class": "server",
+      "dst_interface_id": "server.videoScene",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/video-pipe/video-scene/server.py:237 resp = d.publish_event("
+    },
+    {
+      "src_service": "vshare-proxy",
+      "src_class": "main",
+      "src_method": "uploadHandler",
+      "dst_service": "vshare-video-frontend",
+      "dst_class": "server",
+      "dst_interface_id": "server.uploadVideo",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/proxy/main.go:215 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-video-frontend\", \"upload\", \"post\", content)"
+    },
+    {
+      "src_service": "vshare-proxy",
+      "src_class": "main",
+      "src_method": "infoHandler",
+      "dst_service": "vshare-video-frontend",
+      "dst_class": "server",
+      "dst_interface_id": "server.getVideoInfo",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/proxy/main.go:264 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-video-frontend\", \"info\", \"get\", content)"
+    },
+    {
+      "src_service": "vshare-proxy",
+      "src_class": "main",
+      "src_method": "videoHandler",
+      "dst_service": "vshare-video-frontend",
+      "dst_class": "server",
+      "dst_interface_id": "server.getVideoData",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/proxy/main.go:315 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-video-frontend\", \"video\", \"get\", content)"
+    },
+    {
+      "src_service": "vshare-proxy",
+      "src_class": "main",
+      "src_method": "rateHandler",
+      "dst_service": "vshare-video-frontend",
+      "dst_class": "server",
+      "dst_interface_id": "server.rateVideo",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/proxy/main.go:363 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-video-frontend\", \"rate\", \"post\", content)"
+    },
+    {
+      "src_service": "vshare-proxy",
+      "src_class": "main",
+      "src_method": "getRateHandler",
+      "dst_service": "vshare-video-frontend",
+      "dst_class": "server",
+      "dst_interface_id": "server.getVideoRating",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/proxy/main.go:409 respdata, err := client.InvokeMethodWithContent(ctx, \"dapr-video-frontend\", \"get_rate\", \"get\", content)"
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "uploadVideo",
+      "dst_service": "vshare-video-scale",
+      "dst_class": "server",
+      "dst_interface_id": "server.scaleVideo",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:283 resp = d.publish_event("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "uploadVideo",
+      "dst_service": "vshare-video-thumbnail",
+      "dst_class": "server",
+      "dst_interface_id": "server.videoThumbnail",
+      "protocol": "Messaging",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:299 resp = d.publish_event("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "uploadVideo",
+      "dst_service": "vshare-video-info",
+      "dst_class": "main",
+      "dst_interface_id": "main.uploadHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:317 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "uploadVideo",
+      "dst_service": "vshare-dates",
+      "dst_class": "main",
+      "dst_interface_id": "main.uploadHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:331 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "getVideoInfo",
+      "dst_service": "vshare-video-info",
+      "dst_class": "main",
+      "dst_interface_id": "main.infoHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:400 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "getVideoData",
+      "dst_service": "vshare-video-info",
+      "dst_class": "main",
+      "dst_interface_id": "main.viewHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:452 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "rateVideo",
+      "dst_service": "vshare-user-rating",
+      "dst_class": "main",
+      "dst_interface_id": "main.rateHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:510 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "rateVideo",
+      "dst_service": "vshare-video-info",
+      "dst_class": "main",
+      "dst_interface_id": "main.rateHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:529 resp = d.invoke_method("
+    },
+    {
+      "src_service": "vshare-video-frontend",
+      "src_class": "server",
+      "src_method": "getVideoRating",
+      "dst_service": "vshare-user-rating",
+      "dst_class": "main",
+      "dst_interface_id": "main.getHandler",
+      "protocol": "RPC",
+      "evidence": "daprApps_v1/video-sharing/video-frontend/server.py:570 resp = d.invoke_method("
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "system_id": "MS060",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "backup_app": {
+      "exposed_interfaces": [
+        {
+          "id": "__main__.on_message",
+          "class_name": "__main__",
+          "method_name": "on_message",
+          "param_types": [
+            "object"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "application/+/node/+/rx"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

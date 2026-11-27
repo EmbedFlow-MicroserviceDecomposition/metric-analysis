@@ -1,0 +1,4960 @@
+{
+  "system_id": "MS052",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "lib": {
+      "exposed_interfaces": []
+    },
+    "version": {
+      "exposed_interfaces": []
+    },
+    "acl": {
+      "exposed_interfaces": []
+    },
+    "snapshot": {
+      "exposed_interfaces": []
+    },
+    "ipaddr": {
+      "exposed_interfaces": []
+    },
+    "api": {
+      "exposed_interfaces": []
+    },
+    "logging": {
+      "exposed_interfaces": []
+    },
+    "tools": {
+      "exposed_interfaces": []
+    },
+    "internal": {
+      "exposed_interfaces": [
+        {
+          "id": "forwardingServer.Write",
+          "class_name": "raft.forwardingServer",
+          "method_name": "Write",
+          "param_types": [
+            "WriteRequest"
+          ],
+          "return_type": "WriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "ForwardingService/Write"
+        },
+        {
+          "id": "forwardingServer.Delete",
+          "class_name": "raft.forwardingServer",
+          "method_name": "Delete",
+          "param_types": [
+            "DeleteRequest"
+          ],
+          "return_type": "Empty",
+          "protocol": "gRPC",
+          "endpoint": "ForwardingService/Delete"
+        },
+        {
+          "id": "forwardingServer.Read",
+          "class_name": "raft.forwardingServer",
+          "method_name": "Read",
+          "param_types": [
+            "ReadRequest"
+          ],
+          "return_type": "ReadResponse",
+          "protocol": "gRPC",
+          "endpoint": "ForwardingService/Read"
+        },
+        {
+          "id": "forwardingServer.List",
+          "class_name": "raft.forwardingServer",
+          "method_name": "List",
+          "param_types": [
+            "ListRequest"
+          ],
+          "return_type": "ListResponse",
+          "protocol": "gRPC",
+          "endpoint": "ForwardingService/List"
+        },
+        {
+          "id": "resourceHandler.handleWrite",
+          "class_name": "http.resourceHandler",
+          "method_name": "handleWrite",
+          "param_types": [
+            "string",
+            "writeRequest"
+          ],
+          "return_type": "Resource",
+          "protocol": "REST",
+          "endpoint": "PUT /api/{group}/{version}/{kind}/{name}"
+        },
+        {
+          "id": "resourceHandler.handleRead",
+          "class_name": "http.resourceHandler",
+          "method_name": "handleRead",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Resource",
+          "protocol": "REST",
+          "endpoint": "GET /api/{group}/{version}/{kind}/{name}"
+        },
+        {
+          "id": "resourceHandler.handleDelete",
+          "class_name": "http.resourceHandler",
+          "method_name": "handleDelete",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/{group}/{version}/{kind}/{name}"
+        },
+        {
+          "id": "listHandler.ServeHTTP",
+          "class_name": "http.listHandler",
+          "method_name": "ServeHTTP",
+          "param_types": [],
+          "return_type": "List<Resource>",
+          "protocol": "REST",
+          "endpoint": "GET /api/{group}/{version}/{kind}"
+        }
+      ]
+    },
+    "command": {
+      "exposed_interfaces": []
+    },
+    "ui": {
+      "exposed_interfaces": []
+    },
+    "sdk": {
+      "exposed_interfaces": []
+    },
+    "service_os": {
+      "exposed_interfaces": []
+    },
+    "troubleshoot": {
+      "exposed_interfaces": []
+    },
+    "proto": {
+      "exposed_interfaces": []
+    },
+    "types": {
+      "exposed_interfaces": []
+    },
+    "proto-public": {
+      "exposed_interfaces": []
+    },
+    "sentinel": {
+      "exposed_interfaces": []
+    },
+    "agent": {
+      "exposed_interfaces": [
+        {
+          "id": "HTTPHandlers.ACLBootstrap",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLBootstrap",
+          "param_types": [],
+          "return_type": "aclBootstrapResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/bootstrap"
+        },
+        {
+          "id": "HTTPHandlers.ACLLogin",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLLogin",
+          "param_types": [
+            "ACLLoginParams"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "REST",
+          "endpoint": "POST /v1/acl/login"
+        },
+        {
+          "id": "HTTPHandlers.ACLLogout",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLLogout",
+          "param_types": [],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": "POST /v1/acl/logout"
+        },
+        {
+          "id": "HTTPHandlers.ACLReplicationStatus",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLReplicationStatus",
+          "param_types": [],
+          "return_type": "ACLReplicationStatus",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/replication"
+        },
+        {
+          "id": "HTTPHandlers.ACLPolicyList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLPolicyList",
+          "param_types": [],
+          "return_type": "List<ACLPolicyListStub>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/policies"
+        },
+        {
+          "id": "HTTPHandlers.ACLPolicyCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLPolicyCreate",
+          "param_types": [
+            "ACLPolicy"
+          ],
+          "return_type": "ACLPolicy",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/policy"
+        },
+        {
+          "id": "HTTPHandlers.ACLPolicyCRUD",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLPolicyCRUD",
+          "param_types": [
+            "string",
+            "ACLPolicy"
+          ],
+          "return_type": "ACLPolicy",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/policy/{id}"
+        },
+        {
+          "id": "HTTPHandlers.ACLPolicyReadByName",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLPolicyReadByName",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ACLPolicy",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/policy/name/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ACLRoleList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLRoleList",
+          "param_types": [],
+          "return_type": "List<ACLRole>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/roles"
+        },
+        {
+          "id": "HTTPHandlers.ACLRoleCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLRoleCreate",
+          "param_types": [
+            "ACLRole"
+          ],
+          "return_type": "ACLRole",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/role"
+        },
+        {
+          "id": "HTTPHandlers.ACLRoleReadByName",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLRoleReadByName",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ACLRole",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/role/name/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ACLRoleCRUD",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLRoleCRUD",
+          "param_types": [
+            "string",
+            "ACLRole"
+          ],
+          "return_type": "ACLRole",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/role/{id}"
+        },
+        {
+          "id": "HTTPHandlers.ACLBindingRuleList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLBindingRuleList",
+          "param_types": [],
+          "return_type": "List<ACLBindingRule>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/binding-rules"
+        },
+        {
+          "id": "HTTPHandlers.ACLBindingRuleCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLBindingRuleCreate",
+          "param_types": [
+            "ACLBindingRule"
+          ],
+          "return_type": "ACLBindingRule",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/binding-rule"
+        },
+        {
+          "id": "HTTPHandlers.ACLBindingRuleCRUD",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLBindingRuleCRUD",
+          "param_types": [
+            "string",
+            "ACLBindingRule"
+          ],
+          "return_type": "ACLBindingRule",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/binding-rule/{id}"
+        },
+        {
+          "id": "HTTPHandlers.ACLAuthMethodList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLAuthMethodList",
+          "param_types": [],
+          "return_type": "List<ACLAuthMethodListStub>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/auth-methods"
+        },
+        {
+          "id": "HTTPHandlers.ACLAuthMethodCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLAuthMethodCreate",
+          "param_types": [
+            "ACLAuthMethod"
+          ],
+          "return_type": "ACLAuthMethod",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/auth-method"
+        },
+        {
+          "id": "HTTPHandlers.ACLAuthMethodCRUD",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLAuthMethodCRUD",
+          "param_types": [
+            "string",
+            "ACLAuthMethod"
+          ],
+          "return_type": "ACLAuthMethod",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/auth-method/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ACLTokenList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTokenList",
+          "param_types": [],
+          "return_type": "List<ACLTokenListStub>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/tokens"
+        },
+        {
+          "id": "HTTPHandlers.ACLTokenCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTokenCreate",
+          "param_types": [
+            "ACLToken"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/acl/token"
+        },
+        {
+          "id": "HTTPHandlers.ACLTokenSelf",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTokenSelf",
+          "param_types": [],
+          "return_type": "ACLToken",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/token/self"
+        },
+        {
+          "id": "HTTPHandlers.ACLTokenCRUD",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTokenCRUD",
+          "param_types": [
+            "string",
+            "ACLToken"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/token/{accessorId}"
+        },
+        {
+          "id": "HTTPHandlers.ACLTemplatedPoliciesList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTemplatedPoliciesList",
+          "param_types": [],
+          "return_type": "map[string]ACLTemplatedPolicyResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/templated-policies"
+        },
+        {
+          "id": "HTTPHandlers.ACLTemplatedPolicyRead",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTemplatedPolicyRead",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ACLTemplatedPolicyResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/acl/templated-policy/name/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ACLTemplatedPolicyPreview",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLTemplatedPolicyPreview",
+          "param_types": [
+            "string",
+            "ACLTemplatedPolicyVariables"
+          ],
+          "return_type": "ACLPolicy",
+          "protocol": "REST",
+          "endpoint": "POST /v1/acl/templated-policy/preview/{name}"
+        },
+        {
+          "id": "HTTPHandlers.AgentToken",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentToken",
+          "param_types": [
+            "string",
+            "AgentToken"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/token/{target}"
+        },
+        {
+          "id": "HTTPHandlers.AgentSelf",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentSelf",
+          "param_types": [],
+          "return_type": "Self",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/self"
+        },
+        {
+          "id": "HTTPHandlers.AgentHost",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentHost",
+          "param_types": [],
+          "return_type": "HostInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/host"
+        },
+        {
+          "id": "HTTPHandlers.AgentVersion",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentVersion",
+          "param_types": [],
+          "return_type": "BuildInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/version"
+        },
+        {
+          "id": "HTTPHandlers.AgentNodeMaintenance",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentNodeMaintenance",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/maintenance"
+        },
+        {
+          "id": "HTTPHandlers.AgentReload",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentReload",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/reload"
+        },
+        {
+          "id": "HTTPHandlers.AgentMonitor",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentMonitor",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/monitor"
+        },
+        {
+          "id": "HTTPHandlers.AgentMetrics",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentMetrics",
+          "param_types": [],
+          "return_type": "MetricsInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/metrics"
+        },
+        {
+          "id": "HTTPHandlers.AgentMetricsStream",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentMetricsStream",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/metrics/stream"
+        },
+        {
+          "id": "HTTPHandlers.AgentServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentServices",
+          "param_types": [],
+          "return_type": "map[string]AgentService",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/services"
+        },
+        {
+          "id": "HTTPHandlers.AgentService",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentService",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "AgentService",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/service/{serviceId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentChecks",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentChecks",
+          "param_types": [],
+          "return_type": "map[string]HealthCheck",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/checks"
+        },
+        {
+          "id": "HTTPHandlers.AgentMembers",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentMembers",
+          "param_types": [],
+          "return_type": "List<Member>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/members"
+        },
+        {
+          "id": "HTTPHandlers.AgentJoin",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentJoin",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/join/{address}"
+        },
+        {
+          "id": "HTTPHandlers.AgentLeave",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentLeave",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/leave"
+        },
+        {
+          "id": "HTTPHandlers.AgentForceLeave",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentForceLeave",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/force-leave/{node}"
+        },
+        {
+          "id": "HTTPHandlers.AgentHealthServiceByID",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentHealthServiceByID",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "AgentServiceChecksInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/health/service/id/{serviceId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentHealthServiceByName",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentHealthServiceByName",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<AgentServiceChecksInfo>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/health/service/name/{service}"
+        },
+        {
+          "id": "HTTPHandlers.AgentRegisterCheck",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentRegisterCheck",
+          "param_types": [
+            "CheckDefinition"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/register"
+        },
+        {
+          "id": "HTTPHandlers.AgentDeregisterCheck",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentDeregisterCheck",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/deregister/{checkId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentCheckPass",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentCheckPass",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/pass/{checkId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentCheckWarn",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentCheckWarn",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/warn/{checkId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentCheckFail",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentCheckFail",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/fail/{checkId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentCheckUpdate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentCheckUpdate",
+          "param_types": [
+            "string",
+            "checkUpdate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/check/update/{checkId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentConnectAuthorize",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentConnectAuthorize",
+          "param_types": [
+            "ConnectAuthorizeRequest"
+          ],
+          "return_type": "connectAuthorizeResp",
+          "protocol": "REST",
+          "endpoint": "POST /v1/agent/connect/authorize"
+        },
+        {
+          "id": "HTTPHandlers.AgentConnectCARoots",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentConnectCARoots",
+          "param_types": [],
+          "return_type": "IndexedCARoots",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/connect/ca/roots"
+        },
+        {
+          "id": "HTTPHandlers.AgentConnectCALeafCert",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentConnectCALeafCert",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "IssuedCert",
+          "protocol": "REST",
+          "endpoint": "GET /v1/agent/connect/ca/leaf/{serviceId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentRegisterService",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentRegisterService",
+          "param_types": [
+            "ServiceDefinition"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/service/register"
+        },
+        {
+          "id": "HTTPHandlers.AgentDeregisterService",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentDeregisterService",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/service/deregister/{serviceId}"
+        },
+        {
+          "id": "HTTPHandlers.AgentServiceMaintenance",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AgentServiceMaintenance",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/agent/service/maintenance/{serviceId}"
+        },
+        {
+          "id": "HTTPHandlers.CatalogRegister",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogRegister",
+          "param_types": [
+            "RegisterRequest"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/catalog/register"
+        },
+        {
+          "id": "HTTPHandlers.CatalogConnectServiceNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogConnectServiceNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<ServiceNode>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/connect/{service}"
+        },
+        {
+          "id": "HTTPHandlers.CatalogDeregister",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogDeregister",
+          "param_types": [
+            "DeregisterRequest"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/catalog/deregister"
+        },
+        {
+          "id": "HTTPHandlers.CatalogDatacenters",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogDatacenters",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/datacenters"
+        },
+        {
+          "id": "HTTPHandlers.CatalogNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogNodes",
+          "param_types": [],
+          "return_type": "List<Node>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/nodes"
+        },
+        {
+          "id": "HTTPHandlers.CatalogServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogServices",
+          "param_types": [],
+          "return_type": "map[string][]string",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/services"
+        },
+        {
+          "id": "HTTPHandlers.CatalogServiceNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogServiceNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<ServiceNode>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/service/{service}"
+        },
+        {
+          "id": "HTTPHandlers.CatalogNodeServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogNodeServices",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "NodeServices",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/node/{node}"
+        },
+        {
+          "id": "HTTPHandlers.CatalogNodeServiceList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogNodeServiceList",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "NodeServiceList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/node-services/{node}"
+        },
+        {
+          "id": "HTTPHandlers.CatalogGatewayServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CatalogGatewayServices",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<GatewayService>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/catalog/gateway-services/{gateway}"
+        },
+        {
+          "id": "HTTPHandlers.Config",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "Config",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "ConfigEntry",
+          "protocol": "REST",
+          "endpoint": "GET /v1/config/{kind}/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ConfigApply",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ConfigApply",
+          "param_types": [
+            "ConfigEntry"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/config"
+        },
+        {
+          "id": "HTTPHandlers.ConnectCAConfiguration",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ConnectCAConfiguration",
+          "param_types": [
+            "CAConfiguration"
+          ],
+          "return_type": "CAConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/ca/configuration"
+        },
+        {
+          "id": "HTTPHandlers.ConnectCARoots",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ConnectCARoots",
+          "param_types": [],
+          "return_type": "IndexedCARoots",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/ca/roots"
+        },
+        {
+          "id": "HTTPHandlers.IntentionEndpoint",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "IntentionEndpoint",
+          "param_types": [
+            "Intention"
+          ],
+          "return_type": "List<Intention>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/intentions"
+        },
+        {
+          "id": "HTTPHandlers.IntentionMatch",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "IntentionMatch",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]Intentions",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/intentions/match"
+        },
+        {
+          "id": "HTTPHandlers.IntentionCheck",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "IntentionCheck",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "IntentionQueryCheckResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/intentions/check"
+        },
+        {
+          "id": "HTTPHandlers.IntentionExact",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "IntentionExact",
+          "param_types": [
+            "string",
+            "string",
+            "Intention"
+          ],
+          "return_type": "Intention",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/intentions/exact"
+        },
+        {
+          "id": "HTTPHandlers.IntentionSpecific",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "IntentionSpecific",
+          "param_types": [
+            "string",
+            "Intention"
+          ],
+          "return_type": "Intention",
+          "protocol": "REST",
+          "endpoint": "GET /v1/connect/intentions/{id}"
+        },
+        {
+          "id": "HTTPHandlers.CoordinateDatacenters",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CoordinateDatacenters",
+          "param_types": [],
+          "return_type": "List<DatacenterMap>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/coordinate/datacenters"
+        },
+        {
+          "id": "HTTPHandlers.CoordinateNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CoordinateNodes",
+          "param_types": [],
+          "return_type": "List<Coordinate>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/coordinate/nodes"
+        },
+        {
+          "id": "HTTPHandlers.CoordinateNode",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CoordinateNode",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Coordinate>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/coordinate/node/{node}"
+        },
+        {
+          "id": "HTTPHandlers.CoordinateUpdate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "CoordinateUpdate",
+          "param_types": [
+            "CoordinateUpdateRequest"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/coordinate/update"
+        },
+        {
+          "id": "HTTPHandlers.FederationStateList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "FederationStateList",
+          "param_types": [],
+          "return_type": "List<FederationState>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/federation-states"
+        },
+        {
+          "id": "HTTPHandlers.FederationStateListMeshGateways",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "FederationStateListMeshGateways",
+          "param_types": [],
+          "return_type": "map[string]CheckServiceNodes",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/federation-states/mesh-gateways"
+        },
+        {
+          "id": "HTTPHandlers.FederationStateGet",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "FederationStateGet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "FederationStateResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/federation-state/{datacenter}"
+        },
+        {
+          "id": "HTTPHandlers.DiscoveryChainRead",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "DiscoveryChainRead",
+          "param_types": [
+            "string",
+            "DiscoveryChainRequest"
+          ],
+          "return_type": "DiscoveryChainResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/discovery-chain/{name}"
+        },
+        {
+          "id": "HTTPHandlers.ExportedServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ExportedServices",
+          "param_types": [],
+          "return_type": "List<ResolvedExportedService>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/exported-services"
+        },
+        {
+          "id": "HTTPHandlers.ImportedServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ImportedServices",
+          "param_types": [],
+          "return_type": "List<ImportedService>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/imported-services"
+        },
+        {
+          "id": "HTTPHandlers.EventFire",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "EventFire",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "UserEvent",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/event/fire/{name}"
+        },
+        {
+          "id": "HTTPHandlers.EventList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "EventList",
+          "param_types": [],
+          "return_type": "List<UserEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/event/list"
+        },
+        {
+          "id": "HTTPHandlers.HealthNodeChecks",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthNodeChecks",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<HealthCheck>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/node/{node}"
+        },
+        {
+          "id": "HTTPHandlers.HealthServiceChecks",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthServiceChecks",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<HealthCheck>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/checks/{service}"
+        },
+        {
+          "id": "HTTPHandlers.HealthChecksInState",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthChecksInState",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<HealthCheck>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/state/{state}"
+        },
+        {
+          "id": "HTTPHandlers.HealthServiceNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthServiceNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<CheckServiceNode>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/service/{service}"
+        },
+        {
+          "id": "HTTPHandlers.HealthConnectServiceNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthConnectServiceNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<CheckServiceNode>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/connect/{service}"
+        },
+        {
+          "id": "HTTPHandlers.HealthIngressServiceNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "HealthIngressServiceNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<CheckServiceNode>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/health/ingress/{service}"
+        },
+        {
+          "id": "HTTPHandlers.UIMetricsProxy",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIMetricsProxy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/metrics-proxy/{path}"
+        },
+        {
+          "id": "HTTPHandlers.UINodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UINodes",
+          "param_types": [],
+          "return_type": "List<NodeInfo>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/nodes"
+        },
+        {
+          "id": "HTTPHandlers.UINodeInfo",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UINodeInfo",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "NodeInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/node/{node}"
+        },
+        {
+          "id": "HTTPHandlers.UIServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIServices",
+          "param_types": [],
+          "return_type": "List<ServiceListingSummary>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/services"
+        },
+        {
+          "id": "HTTPHandlers.UIExportedServices",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIExportedServices",
+          "param_types": [],
+          "return_type": "List<ServiceListingSummary>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/exported-services"
+        },
+        {
+          "id": "HTTPHandlers.UICatalogOverview",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UICatalogOverview",
+          "param_types": [],
+          "return_type": "CatalogSummary",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/catalog-overview"
+        },
+        {
+          "id": "HTTPHandlers.UIGatewayServicesNodes",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIGatewayServicesNodes",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<ServiceSummary>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/gateway-services-nodes/{gateway}"
+        },
+        {
+          "id": "HTTPHandlers.UIGatewayIntentions",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIGatewayIntentions",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Intention>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/gateway-intentions/{gateway}"
+        },
+        {
+          "id": "HTTPHandlers.UIServiceTopology",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "UIServiceTopology",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "ServiceTopology",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/ui/service-topology/{service}"
+        },
+        {
+          "id": "HTTPHandlers.ACLAuthorize",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "ACLAuthorize",
+          "param_types": [
+            "List<ACLAuthorizationRequest>"
+          ],
+          "return_type": "List<ACLAuthorizationResponse>",
+          "protocol": "REST",
+          "endpoint": "POST /v1/internal/acl/authorize"
+        },
+        {
+          "id": "HTTPHandlers.AssignManualServiceVIPs",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "AssignManualServiceVIPs",
+          "param_types": [
+            "AssignServiceManualVIPsRequest"
+          ],
+          "return_type": "AssignServiceManualVIPsResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/internal/service-virtual-ip"
+        },
+        {
+          "id": "HTTPHandlers.InternalRPCMethods",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "InternalRPCMethods",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/internal/rpc/methods"
+        },
+        {
+          "id": "HTTPHandlers.KVSEndpoint",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "KVSEndpoint",
+          "param_types": [
+            "string",
+            "byte[]"
+          ],
+          "return_type": "List<DirEntry>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/kv/{key}"
+        },
+        {
+          "id": "HTTPHandlers.OperatorRaftConfiguration",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorRaftConfiguration",
+          "param_types": [],
+          "return_type": "RaftConfigurationResponse",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/raft/configuration"
+        },
+        {
+          "id": "HTTPHandlers.OperatorRaftTransferLeader",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorRaftTransferLeader",
+          "param_types": [],
+          "return_type": "TransferLeaderResponse",
+          "protocol": "REST",
+          "endpoint": "POST /v1/operator/raft/transfer-leader"
+        },
+        {
+          "id": "HTTPHandlers.OperatorRaftPeer",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorRaftPeer",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/operator/raft/peer"
+        },
+        {
+          "id": "HTTPHandlers.OperatorKeyringEndpoint",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorKeyringEndpoint",
+          "param_types": [
+            "keyringArgs"
+          ],
+          "return_type": "List<KeyringResponse>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/keyring"
+        },
+        {
+          "id": "HTTPHandlers.OperatorUsage",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorUsage",
+          "param_types": [],
+          "return_type": "Usage",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/usage"
+        },
+        {
+          "id": "HTTPHandlers.OperatorUtilizationEndpoint",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorUtilizationEndpoint",
+          "param_types": [],
+          "return_type": "map[string]string",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/utilization"
+        },
+        {
+          "id": "HTTPHandlers.OperatorAutopilotConfiguration",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorAutopilotConfiguration",
+          "param_types": [
+            "AutopilotConfiguration"
+          ],
+          "return_type": "AutopilotConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/autopilot/configuration"
+        },
+        {
+          "id": "HTTPHandlers.OperatorServerHealth",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorServerHealth",
+          "param_types": [],
+          "return_type": "OperatorHealthReply",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/autopilot/health"
+        },
+        {
+          "id": "HTTPHandlers.OperatorAutopilotState",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorAutopilotState",
+          "param_types": [],
+          "return_type": "AutopilotState",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/autopilot/state"
+        },
+        {
+          "id": "HTTPHandlers.OperatorFeatureGateList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorFeatureGateList",
+          "param_types": [],
+          "return_type": "List<FeatureGate>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/features"
+        },
+        {
+          "id": "HTTPHandlers.OperatorFeatureGate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "OperatorFeatureGate",
+          "param_types": [
+            "string",
+            "FeatureGateSetRequest"
+          ],
+          "return_type": "FeatureGate",
+          "protocol": "REST",
+          "endpoint": "GET /v1/operator/feature/{name}"
+        },
+        {
+          "id": "HTTPHandlers.PeeringGenerateToken",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PeeringGenerateToken",
+          "param_types": [
+            "PeeringGenerateTokenRequest"
+          ],
+          "return_type": "PeeringGenerateTokenResponse",
+          "protocol": "REST",
+          "endpoint": "POST /v1/peering/token"
+        },
+        {
+          "id": "HTTPHandlers.PeeringEstablish",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PeeringEstablish",
+          "param_types": [
+            "PeeringEstablishRequest"
+          ],
+          "return_type": "PeeringEstablishResponse",
+          "protocol": "REST",
+          "endpoint": "POST /v1/peering/establish"
+        },
+        {
+          "id": "HTTPHandlers.PeeringEndpoint",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PeeringEndpoint",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "Peering",
+          "protocol": "REST",
+          "endpoint": "GET /v1/peering/{name}"
+        },
+        {
+          "id": "HTTPHandlers.PeeringList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PeeringList",
+          "param_types": [],
+          "return_type": "List<Peering>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/peerings"
+        },
+        {
+          "id": "HTTPHandlers.PreparedQueryGeneral",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PreparedQueryGeneral",
+          "param_types": [
+            "PreparedQuery"
+          ],
+          "return_type": "List<PreparedQuery>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/query"
+        },
+        {
+          "id": "HTTPHandlers.PreparedQuerySpecific",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "PreparedQuerySpecific",
+          "param_types": [
+            "string",
+            "PreparedQuery"
+          ],
+          "return_type": "List<PreparedQuery>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/query/{id}"
+        },
+        {
+          "id": "HTTPHandlers.SessionCreate",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionCreate",
+          "param_types": [
+            "Session"
+          ],
+          "return_type": "sessionCreateResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/session/create"
+        },
+        {
+          "id": "HTTPHandlers.SessionDestroy",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionDestroy",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "bool",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/session/destroy/{id}"
+        },
+        {
+          "id": "HTTPHandlers.SessionRenew",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionRenew",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Session>",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/session/renew/{id}"
+        },
+        {
+          "id": "HTTPHandlers.SessionGet",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionGet",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Session>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/session/info/{id}"
+        },
+        {
+          "id": "HTTPHandlers.SessionsForNode",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionsForNode",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "List<Session>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/session/node/{node}"
+        },
+        {
+          "id": "HTTPHandlers.SessionList",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "SessionList",
+          "param_types": [],
+          "return_type": "List<Session>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/session/list"
+        },
+        {
+          "id": "HTTPHandlers.StatusLeader",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "StatusLeader",
+          "param_types": [],
+          "return_type": "string",
+          "protocol": "REST",
+          "endpoint": "GET /v1/status/leader"
+        },
+        {
+          "id": "HTTPHandlers.StatusPeers",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "StatusPeers",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/status/peers"
+        },
+        {
+          "id": "HTTPHandlers.Snapshot",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "Snapshot",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v1/snapshot"
+        },
+        {
+          "id": "HTTPHandlers.Txn",
+          "class_name": "agent.HTTPHandlers",
+          "method_name": "Txn",
+          "param_types": [
+            "TxnOps"
+          ],
+          "return_type": "TxnResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/txn"
+        },
+        {
+          "id": "ACL.BootstrapTokens",
+          "class_name": "consul.ACL",
+          "method_name": "BootstrapTokens",
+          "param_types": [
+            "structs.ACLInitialTokenBootstrapRequest,"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "RPC",
+          "endpoint": "ACL.BootstrapTokens"
+        },
+        {
+          "id": "ACL.TokenRead",
+          "class_name": "consul.ACL",
+          "method_name": "TokenRead",
+          "param_types": [
+            "structs.ACLTokenGetRequest,"
+          ],
+          "return_type": "ACLTokenResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenRead"
+        },
+        {
+          "id": "ACL.TokenClone",
+          "class_name": "consul.ACL",
+          "method_name": "TokenClone",
+          "param_types": [
+            "structs.ACLTokenSetRequest,"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenClone"
+        },
+        {
+          "id": "ACL.TokenSet",
+          "class_name": "consul.ACL",
+          "method_name": "TokenSet",
+          "param_types": [
+            "structs.ACLTokenSetRequest,"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenSet"
+        },
+        {
+          "id": "ACL.TokenDelete",
+          "class_name": "consul.ACL",
+          "method_name": "TokenDelete",
+          "param_types": [
+            "structs.ACLTokenDeleteRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenDelete"
+        },
+        {
+          "id": "ACL.TokenList",
+          "class_name": "consul.ACL",
+          "method_name": "TokenList",
+          "param_types": [
+            "structs.ACLTokenListRequest,"
+          ],
+          "return_type": "ACLTokenListResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenList"
+        },
+        {
+          "id": "ACL.TokenBatchRead",
+          "class_name": "consul.ACL",
+          "method_name": "TokenBatchRead",
+          "param_types": [
+            "structs.ACLTokenBatchGetRequest,"
+          ],
+          "return_type": "ACLTokenBatchResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.TokenBatchRead"
+        },
+        {
+          "id": "ACL.PolicyRead",
+          "class_name": "consul.ACL",
+          "method_name": "PolicyRead",
+          "param_types": [
+            "structs.ACLPolicyGetRequest,"
+          ],
+          "return_type": "ACLPolicyResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicyRead"
+        },
+        {
+          "id": "ACL.PolicyBatchRead",
+          "class_name": "consul.ACL",
+          "method_name": "PolicyBatchRead",
+          "param_types": [
+            "structs.ACLPolicyBatchGetRequest,"
+          ],
+          "return_type": "ACLPolicyBatchResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicyBatchRead"
+        },
+        {
+          "id": "ACL.PolicySet",
+          "class_name": "consul.ACL",
+          "method_name": "PolicySet",
+          "param_types": [
+            "structs.ACLPolicySetRequest,"
+          ],
+          "return_type": "ACLPolicy",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicySet"
+        },
+        {
+          "id": "ACL.PolicyDelete",
+          "class_name": "consul.ACL",
+          "method_name": "PolicyDelete",
+          "param_types": [
+            "structs.ACLPolicyDeleteRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicyDelete"
+        },
+        {
+          "id": "ACL.PolicyList",
+          "class_name": "consul.ACL",
+          "method_name": "PolicyList",
+          "param_types": [
+            "structs.ACLPolicyListRequest,"
+          ],
+          "return_type": "ACLPolicyListResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicyList"
+        },
+        {
+          "id": "ACL.PolicyResolve",
+          "class_name": "consul.ACL",
+          "method_name": "PolicyResolve",
+          "param_types": [
+            "structs.ACLPolicyBatchGetRequest,"
+          ],
+          "return_type": "ACLPolicyBatchResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.PolicyResolve"
+        },
+        {
+          "id": "ACL.ReplicationStatus",
+          "class_name": "consul.ACL",
+          "method_name": "ReplicationStatus",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "ACLReplicationStatus",
+          "protocol": "RPC",
+          "endpoint": "ACL.ReplicationStatus"
+        },
+        {
+          "id": "ACL.RoleRead",
+          "class_name": "consul.ACL",
+          "method_name": "RoleRead",
+          "param_types": [
+            "structs.ACLRoleGetRequest,"
+          ],
+          "return_type": "ACLRoleResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleRead"
+        },
+        {
+          "id": "ACL.RoleBatchRead",
+          "class_name": "consul.ACL",
+          "method_name": "RoleBatchRead",
+          "param_types": [
+            "structs.ACLRoleBatchGetRequest,"
+          ],
+          "return_type": "ACLRoleBatchResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleBatchRead"
+        },
+        {
+          "id": "ACL.RoleSet",
+          "class_name": "consul.ACL",
+          "method_name": "RoleSet",
+          "param_types": [
+            "structs.ACLRoleSetRequest,"
+          ],
+          "return_type": "ACLRole",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleSet"
+        },
+        {
+          "id": "ACL.RoleDelete",
+          "class_name": "consul.ACL",
+          "method_name": "RoleDelete",
+          "param_types": [
+            "structs.ACLRoleDeleteRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleDelete"
+        },
+        {
+          "id": "ACL.RoleList",
+          "class_name": "consul.ACL",
+          "method_name": "RoleList",
+          "param_types": [
+            "structs.ACLRoleListRequest,"
+          ],
+          "return_type": "ACLRoleListResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleList"
+        },
+        {
+          "id": "ACL.RoleResolve",
+          "class_name": "consul.ACL",
+          "method_name": "RoleResolve",
+          "param_types": [
+            "structs.ACLRoleBatchGetRequest,"
+          ],
+          "return_type": "ACLRoleBatchResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.RoleResolve"
+        },
+        {
+          "id": "ACL.BindingRuleRead",
+          "class_name": "consul.ACL",
+          "method_name": "BindingRuleRead",
+          "param_types": [
+            "structs.ACLBindingRuleGetRequest,"
+          ],
+          "return_type": "ACLBindingRuleResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.BindingRuleRead"
+        },
+        {
+          "id": "ACL.BindingRuleSet",
+          "class_name": "consul.ACL",
+          "method_name": "BindingRuleSet",
+          "param_types": [
+            "structs.ACLBindingRuleSetRequest,"
+          ],
+          "return_type": "ACLBindingRule",
+          "protocol": "RPC",
+          "endpoint": "ACL.BindingRuleSet"
+        },
+        {
+          "id": "ACL.BindingRuleDelete",
+          "class_name": "consul.ACL",
+          "method_name": "BindingRuleDelete",
+          "param_types": [
+            "structs.ACLBindingRuleDeleteRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "ACL.BindingRuleDelete"
+        },
+        {
+          "id": "ACL.BindingRuleList",
+          "class_name": "consul.ACL",
+          "method_name": "BindingRuleList",
+          "param_types": [
+            "structs.ACLBindingRuleListRequest,"
+          ],
+          "return_type": "ACLBindingRuleListResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.BindingRuleList"
+        },
+        {
+          "id": "ACL.AuthMethodRead",
+          "class_name": "consul.ACL",
+          "method_name": "AuthMethodRead",
+          "param_types": [
+            "structs.ACLAuthMethodGetRequest,"
+          ],
+          "return_type": "ACLAuthMethodResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.AuthMethodRead"
+        },
+        {
+          "id": "ACL.AuthMethodSet",
+          "class_name": "consul.ACL",
+          "method_name": "AuthMethodSet",
+          "param_types": [
+            "structs.ACLAuthMethodSetRequest,"
+          ],
+          "return_type": "ACLAuthMethod",
+          "protocol": "RPC",
+          "endpoint": "ACL.AuthMethodSet"
+        },
+        {
+          "id": "ACL.AuthMethodDelete",
+          "class_name": "consul.ACL",
+          "method_name": "AuthMethodDelete",
+          "param_types": [
+            "structs.ACLAuthMethodDeleteRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "ACL.AuthMethodDelete"
+        },
+        {
+          "id": "ACL.AuthMethodList",
+          "class_name": "consul.ACL",
+          "method_name": "AuthMethodList",
+          "param_types": [
+            "structs.ACLAuthMethodListRequest,"
+          ],
+          "return_type": "ACLAuthMethodListResponse",
+          "protocol": "RPC",
+          "endpoint": "ACL.AuthMethodList"
+        },
+        {
+          "id": "ACL.Login",
+          "class_name": "consul.ACL",
+          "method_name": "Login",
+          "param_types": [
+            "structs.ACLLoginRequest,"
+          ],
+          "return_type": "ACLToken",
+          "protocol": "RPC",
+          "endpoint": "ACL.Login"
+        },
+        {
+          "id": "ACL.Logout",
+          "class_name": "consul.ACL",
+          "method_name": "Logout",
+          "param_types": [
+            "structs.ACLLogoutRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "ACL.Logout"
+        },
+        {
+          "id": "ACL.Authorize",
+          "class_name": "consul.ACL",
+          "method_name": "Authorize",
+          "param_types": [
+            "structs.RemoteACLAuthorizationRequest,"
+          ],
+          "return_type": "List<ACLAuthorizationResponse>",
+          "protocol": "RPC",
+          "endpoint": "ACL.Authorize"
+        },
+        {
+          "id": "AutoConfig.InitialConfiguration",
+          "class_name": "consul.AutoConfig",
+          "method_name": "InitialConfiguration",
+          "param_types": [
+            "pbautoconf.AutoConfigRequest,"
+          ],
+          "return_type": "AutoConfigResponse",
+          "protocol": "RPC",
+          "endpoint": "AutoConfig.InitialConfiguration"
+        },
+        {
+          "id": "AutoEncrypt.Sign",
+          "class_name": "consul.AutoEncrypt",
+          "method_name": "Sign",
+          "param_types": [
+            "structs.CASignRequest,"
+          ],
+          "return_type": "SignedResponse",
+          "protocol": "RPC",
+          "endpoint": "AutoEncrypt.Sign"
+        },
+        {
+          "id": "Catalog.Register",
+          "class_name": "consul.Catalog",
+          "method_name": "Register",
+          "param_types": [
+            "structs.RegisterRequest,"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "Catalog.Register"
+        },
+        {
+          "id": "Catalog.Deregister",
+          "class_name": "consul.Catalog",
+          "method_name": "Deregister",
+          "param_types": [
+            "structs.DeregisterRequest,"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "Catalog.Deregister"
+        },
+        {
+          "id": "Catalog.ListDatacenters",
+          "class_name": "consul.Catalog",
+          "method_name": "ListDatacenters",
+          "param_types": [
+            "structs.DatacentersRequest,"
+          ],
+          "return_type": "List<string>",
+          "protocol": "RPC",
+          "endpoint": "Catalog.ListDatacenters"
+        },
+        {
+          "id": "Catalog.ListNodes",
+          "class_name": "consul.Catalog",
+          "method_name": "ListNodes",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedNodes",
+          "protocol": "RPC",
+          "endpoint": "Catalog.ListNodes"
+        },
+        {
+          "id": "Catalog.ListServices",
+          "class_name": "consul.Catalog",
+          "method_name": "ListServices",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedServices",
+          "protocol": "RPC",
+          "endpoint": "Catalog.ListServices"
+        },
+        {
+          "id": "Catalog.ServiceList",
+          "class_name": "consul.Catalog",
+          "method_name": "ServiceList",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceList",
+          "protocol": "RPC",
+          "endpoint": "Catalog.ServiceList"
+        },
+        {
+          "id": "Catalog.ServiceNodes",
+          "class_name": "consul.Catalog",
+          "method_name": "ServiceNodes",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceNodes",
+          "protocol": "RPC",
+          "endpoint": "Catalog.ServiceNodes"
+        },
+        {
+          "id": "Catalog.NodeServices",
+          "class_name": "consul.Catalog",
+          "method_name": "NodeServices",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedNodeServices",
+          "protocol": "RPC",
+          "endpoint": "Catalog.NodeServices"
+        },
+        {
+          "id": "Catalog.NodeServiceList",
+          "class_name": "consul.Catalog",
+          "method_name": "NodeServiceList",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedNodeServiceList",
+          "protocol": "RPC",
+          "endpoint": "Catalog.NodeServiceList"
+        },
+        {
+          "id": "Catalog.GatewayServices",
+          "class_name": "consul.Catalog",
+          "method_name": "GatewayServices",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedGatewayServices",
+          "protocol": "RPC",
+          "endpoint": "Catalog.GatewayServices"
+        },
+        {
+          "id": "Catalog.VirtualIPForService",
+          "class_name": "consul.Catalog",
+          "method_name": "VirtualIPForService",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "Catalog.VirtualIPForService"
+        },
+        {
+          "id": "ConfigEntry.Apply",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.ConfigEntryRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.Apply"
+        },
+        {
+          "id": "ConfigEntry.Get",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "Get",
+          "param_types": [
+            "structs.ConfigEntryQuery,"
+          ],
+          "return_type": "ConfigEntryResponse",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.Get"
+        },
+        {
+          "id": "ConfigEntry.List",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "List",
+          "param_types": [
+            "structs.ConfigEntryQuery,"
+          ],
+          "return_type": "IndexedConfigEntries",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.List"
+        },
+        {
+          "id": "ConfigEntry.ListAll",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "ListAll",
+          "param_types": [
+            "structs.ConfigEntryListAllRequest,"
+          ],
+          "return_type": "IndexedGenericConfigEntries",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.ListAll"
+        },
+        {
+          "id": "ConfigEntry.Delete",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "Delete",
+          "param_types": [
+            "structs.ConfigEntryRequest,"
+          ],
+          "return_type": "ConfigEntryDeleteResponse",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.Delete"
+        },
+        {
+          "id": "ConfigEntry.ResolveServiceConfig",
+          "class_name": "consul.ConfigEntry",
+          "method_name": "ResolveServiceConfig",
+          "param_types": [
+            "structs.ServiceConfigRequest,"
+          ],
+          "return_type": "ServiceConfigResponse",
+          "protocol": "RPC",
+          "endpoint": "ConfigEntry.ResolveServiceConfig"
+        },
+        {
+          "id": "ConnectCA.ConfigurationGet",
+          "class_name": "consul.ConnectCA",
+          "method_name": "ConfigurationGet",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "CAConfiguration",
+          "protocol": "RPC",
+          "endpoint": "ConnectCA.ConfigurationGet"
+        },
+        {
+          "id": "ConnectCA.ConfigurationSet",
+          "class_name": "consul.ConnectCA",
+          "method_name": "ConfigurationSet",
+          "param_types": [
+            "structs.CARequest,"
+          ],
+          "return_type": "interface{}",
+          "protocol": "RPC",
+          "endpoint": "ConnectCA.ConfigurationSet"
+        },
+        {
+          "id": "ConnectCA.Roots",
+          "class_name": "consul.ConnectCA",
+          "method_name": "Roots",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedCARoots",
+          "protocol": "RPC",
+          "endpoint": "ConnectCA.Roots"
+        },
+        {
+          "id": "ConnectCA.Sign",
+          "class_name": "consul.ConnectCA",
+          "method_name": "Sign",
+          "param_types": [
+            "structs.CASignRequest,"
+          ],
+          "return_type": "IssuedCert",
+          "protocol": "RPC",
+          "endpoint": "ConnectCA.Sign"
+        },
+        {
+          "id": "ConnectCA.SignIntermediate",
+          "class_name": "consul.ConnectCA",
+          "method_name": "SignIntermediate",
+          "param_types": [
+            "structs.CASignRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "ConnectCA.SignIntermediate"
+        },
+        {
+          "id": "Coordinate.ListDatacenters",
+          "class_name": "consul.Coordinate",
+          "method_name": "ListDatacenters",
+          "param_types": [
+            "struct{},"
+          ],
+          "return_type": "List<DatacenterMap>",
+          "protocol": "RPC",
+          "endpoint": "Coordinate.ListDatacenters"
+        },
+        {
+          "id": "Coordinate.ListNodes",
+          "class_name": "consul.Coordinate",
+          "method_name": "ListNodes",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedCoordinates",
+          "protocol": "RPC",
+          "endpoint": "Coordinate.ListNodes"
+        },
+        {
+          "id": "Coordinate.Node",
+          "class_name": "consul.Coordinate",
+          "method_name": "Node",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedCoordinates",
+          "protocol": "RPC",
+          "endpoint": "Coordinate.Node"
+        },
+        {
+          "id": "DiscoveryChain.Get",
+          "class_name": "consul.DiscoveryChain",
+          "method_name": "Get",
+          "param_types": [
+            "structs.DiscoveryChainRequest,"
+          ],
+          "return_type": "DiscoveryChainResponse",
+          "protocol": "RPC",
+          "endpoint": "DiscoveryChain.Get"
+        },
+        {
+          "id": "FederationState.Apply",
+          "class_name": "consul.FederationState",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.FederationStateRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "FederationState.Apply"
+        },
+        {
+          "id": "FederationState.Get",
+          "class_name": "consul.FederationState",
+          "method_name": "Get",
+          "param_types": [
+            "structs.FederationStateQuery,"
+          ],
+          "return_type": "FederationStateResponse",
+          "protocol": "RPC",
+          "endpoint": "FederationState.Get"
+        },
+        {
+          "id": "FederationState.List",
+          "class_name": "consul.FederationState",
+          "method_name": "List",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedFederationStates",
+          "protocol": "RPC",
+          "endpoint": "FederationState.List"
+        },
+        {
+          "id": "FederationState.ListMeshGateways",
+          "class_name": "consul.FederationState",
+          "method_name": "ListMeshGateways",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "DatacenterIndexedCheckServiceNodes",
+          "protocol": "RPC",
+          "endpoint": "FederationState.ListMeshGateways"
+        },
+        {
+          "id": "Health.ChecksInState",
+          "class_name": "consul.Health",
+          "method_name": "ChecksInState",
+          "param_types": [
+            "structs.ChecksInStateRequest,"
+          ],
+          "return_type": "IndexedHealthChecks",
+          "protocol": "RPC",
+          "endpoint": "Health.ChecksInState"
+        },
+        {
+          "id": "Health.NodeChecks",
+          "class_name": "consul.Health",
+          "method_name": "NodeChecks",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedHealthChecks",
+          "protocol": "RPC",
+          "endpoint": "Health.NodeChecks"
+        },
+        {
+          "id": "Health.ServiceChecks",
+          "class_name": "consul.Health",
+          "method_name": "ServiceChecks",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedHealthChecks",
+          "protocol": "RPC",
+          "endpoint": "Health.ServiceChecks"
+        },
+        {
+          "id": "Health.ServiceNodes",
+          "class_name": "consul.Health",
+          "method_name": "ServiceNodes",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedCheckServiceNodes",
+          "protocol": "RPC",
+          "endpoint": "Health.ServiceNodes"
+        },
+        {
+          "id": "Intention.Apply",
+          "class_name": "consul.Intention",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.IntentionRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "Intention.Apply"
+        },
+        {
+          "id": "Intention.Get",
+          "class_name": "consul.Intention",
+          "method_name": "Get",
+          "param_types": [
+            "structs.IntentionQueryRequest,"
+          ],
+          "return_type": "IndexedIntentions",
+          "protocol": "RPC",
+          "endpoint": "Intention.Get"
+        },
+        {
+          "id": "Intention.List",
+          "class_name": "consul.Intention",
+          "method_name": "List",
+          "param_types": [
+            "structs.IntentionListRequest,"
+          ],
+          "return_type": "IndexedIntentions",
+          "protocol": "RPC",
+          "endpoint": "Intention.List"
+        },
+        {
+          "id": "Intention.Match",
+          "class_name": "consul.Intention",
+          "method_name": "Match",
+          "param_types": [
+            "structs.IntentionQueryRequest,"
+          ],
+          "return_type": "IndexedIntentionMatches",
+          "protocol": "RPC",
+          "endpoint": "Intention.Match"
+        },
+        {
+          "id": "Intention.Check",
+          "class_name": "consul.Intention",
+          "method_name": "Check",
+          "param_types": [
+            "structs.IntentionQueryRequest,"
+          ],
+          "return_type": "IntentionQueryCheckResponse",
+          "protocol": "RPC",
+          "endpoint": "Intention.Check"
+        },
+        {
+          "id": "Internal.NodeInfo",
+          "class_name": "consul.Internal",
+          "method_name": "NodeInfo",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedNodeDump",
+          "protocol": "RPC",
+          "endpoint": "Internal.NodeInfo"
+        },
+        {
+          "id": "Internal.NodeDump",
+          "class_name": "consul.Internal",
+          "method_name": "NodeDump",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedNodeDump",
+          "protocol": "RPC",
+          "endpoint": "Internal.NodeDump"
+        },
+        {
+          "id": "Internal.ServiceDump",
+          "class_name": "consul.Internal",
+          "method_name": "ServiceDump",
+          "param_types": [
+            "structs.ServiceDumpRequest,"
+          ],
+          "return_type": "IndexedNodesWithGateways",
+          "protocol": "RPC",
+          "endpoint": "Internal.ServiceDump"
+        },
+        {
+          "id": "Internal.CatalogOverview",
+          "class_name": "consul.Internal",
+          "method_name": "CatalogOverview",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "CatalogSummary",
+          "protocol": "RPC",
+          "endpoint": "Internal.CatalogOverview"
+        },
+        {
+          "id": "Internal.ServiceTopology",
+          "class_name": "consul.Internal",
+          "method_name": "ServiceTopology",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceTopology",
+          "protocol": "RPC",
+          "endpoint": "Internal.ServiceTopology"
+        },
+        {
+          "id": "Internal.IntentionUpstreams",
+          "class_name": "consul.Internal",
+          "method_name": "IntentionUpstreams",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceList",
+          "protocol": "RPC",
+          "endpoint": "Internal.IntentionUpstreams"
+        },
+        {
+          "id": "Internal.IntentionUpstreamsDestination",
+          "class_name": "consul.Internal",
+          "method_name": "IntentionUpstreamsDestination",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceList",
+          "protocol": "RPC",
+          "endpoint": "Internal.IntentionUpstreamsDestination"
+        },
+        {
+          "id": "Internal.GatewayServiceDump",
+          "class_name": "consul.Internal",
+          "method_name": "GatewayServiceDump",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedServiceDump",
+          "protocol": "RPC",
+          "endpoint": "Internal.GatewayServiceDump"
+        },
+        {
+          "id": "Internal.ServiceGateways",
+          "class_name": "consul.Internal",
+          "method_name": "ServiceGateways",
+          "param_types": [
+            "structs.ServiceSpecificRequest,"
+          ],
+          "return_type": "IndexedCheckServiceNodes",
+          "protocol": "RPC",
+          "endpoint": "Internal.ServiceGateways"
+        },
+        {
+          "id": "Internal.GatewayIntentions",
+          "class_name": "consul.Internal",
+          "method_name": "GatewayIntentions",
+          "param_types": [
+            "structs.IntentionQueryRequest,"
+          ],
+          "return_type": "IndexedIntentions",
+          "protocol": "RPC",
+          "endpoint": "Internal.GatewayIntentions"
+        },
+        {
+          "id": "Internal.ExportedPeeredServices",
+          "class_name": "consul.Internal",
+          "method_name": "ExportedPeeredServices",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedExportedServiceList",
+          "protocol": "RPC",
+          "endpoint": "Internal.ExportedPeeredServices"
+        },
+        {
+          "id": "Internal.ExportedServicesForPeer",
+          "class_name": "consul.Internal",
+          "method_name": "ExportedServicesForPeer",
+          "param_types": [
+            "structs.ServiceDumpRequest,"
+          ],
+          "return_type": "IndexedServiceList",
+          "protocol": "RPC",
+          "endpoint": "Internal.ExportedServicesForPeer"
+        },
+        {
+          "id": "Internal.PeeredUpstreams",
+          "class_name": "consul.Internal",
+          "method_name": "PeeredUpstreams",
+          "param_types": [
+            "structs.PartitionSpecificRequest,"
+          ],
+          "return_type": "IndexedPeeredServiceList",
+          "protocol": "RPC",
+          "endpoint": "Internal.PeeredUpstreams"
+        },
+        {
+          "id": "Internal.AssignManualServiceVIPs",
+          "class_name": "consul.Internal",
+          "method_name": "AssignManualServiceVIPs",
+          "param_types": [
+            "structs.AssignServiceManualVIPsRequest,"
+          ],
+          "return_type": "AssignServiceManualVIPsResponse",
+          "protocol": "RPC",
+          "endpoint": "Internal.AssignManualServiceVIPs"
+        },
+        {
+          "id": "Internal.EventFire",
+          "class_name": "consul.Internal",
+          "method_name": "EventFire",
+          "param_types": [
+            "structs.EventFireRequest,"
+          ],
+          "return_type": "EventFireResponse",
+          "protocol": "RPC",
+          "endpoint": "Internal.EventFire"
+        },
+        {
+          "id": "Internal.KeyringOperation",
+          "class_name": "consul.Internal",
+          "method_name": "KeyringOperation",
+          "param_types": [
+            "structs.KeyringRequest,"
+          ],
+          "return_type": "KeyringResponses",
+          "protocol": "RPC",
+          "endpoint": "Internal.KeyringOperation"
+        },
+        {
+          "id": "KVS.Apply",
+          "class_name": "consul.KVS",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.KVSRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "KVS.Apply"
+        },
+        {
+          "id": "KVS.Get",
+          "class_name": "consul.KVS",
+          "method_name": "Get",
+          "param_types": [
+            "structs.KeyRequest,"
+          ],
+          "return_type": "IndexedDirEntries",
+          "protocol": "RPC",
+          "endpoint": "KVS.Get"
+        },
+        {
+          "id": "KVS.List",
+          "class_name": "consul.KVS",
+          "method_name": "List",
+          "param_types": [
+            "structs.KeyRequest,"
+          ],
+          "return_type": "IndexedDirEntries",
+          "protocol": "RPC",
+          "endpoint": "KVS.List"
+        },
+        {
+          "id": "KVS.ListKeys",
+          "class_name": "consul.KVS",
+          "method_name": "ListKeys",
+          "param_types": [
+            "structs.KeyListRequest,"
+          ],
+          "return_type": "IndexedKeyList",
+          "protocol": "RPC",
+          "endpoint": "KVS.ListKeys"
+        },
+        {
+          "id": "Operator.AutopilotGetConfiguration",
+          "class_name": "consul.Operator",
+          "method_name": "AutopilotGetConfiguration",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "AutopilotConfig",
+          "protocol": "RPC",
+          "endpoint": "Operator.AutopilotGetConfiguration"
+        },
+        {
+          "id": "Operator.AutopilotSetConfiguration",
+          "class_name": "consul.Operator",
+          "method_name": "AutopilotSetConfiguration",
+          "param_types": [
+            "structs.AutopilotSetConfigRequest,"
+          ],
+          "return_type": "bool",
+          "protocol": "RPC",
+          "endpoint": "Operator.AutopilotSetConfiguration"
+        },
+        {
+          "id": "Operator.ServerHealth",
+          "class_name": "consul.Operator",
+          "method_name": "ServerHealth",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "AutopilotHealthReply",
+          "protocol": "RPC",
+          "endpoint": "Operator.ServerHealth"
+        },
+        {
+          "id": "Operator.AutopilotState",
+          "class_name": "consul.Operator",
+          "method_name": "AutopilotState",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "State",
+          "protocol": "RPC",
+          "endpoint": "Operator.AutopilotState"
+        },
+        {
+          "id": "Operator.FeatureGateGet",
+          "class_name": "consul.Operator",
+          "method_name": "FeatureGateGet",
+          "param_types": [
+            "structs.FeatureGateQueryRequest,"
+          ],
+          "return_type": "FeatureGateQueryResponse",
+          "protocol": "RPC",
+          "endpoint": "Operator.FeatureGateGet"
+        },
+        {
+          "id": "Operator.FeatureGateSet",
+          "class_name": "consul.Operator",
+          "method_name": "FeatureGateSet",
+          "param_types": [
+            "structs.FeatureGateSetRequest,"
+          ],
+          "return_type": "FeatureGateSetResponse",
+          "protocol": "RPC",
+          "endpoint": "Operator.FeatureGateSet"
+        },
+        {
+          "id": "Operator.RaftGetConfiguration",
+          "class_name": "consul.Operator",
+          "method_name": "RaftGetConfiguration",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "RaftConfigurationResponse",
+          "protocol": "RPC",
+          "endpoint": "Operator.RaftGetConfiguration"
+        },
+        {
+          "id": "Operator.RaftRemovePeerByAddress",
+          "class_name": "consul.Operator",
+          "method_name": "RaftRemovePeerByAddress",
+          "param_types": [
+            "structs.RaftRemovePeerRequest,"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "Operator.RaftRemovePeerByAddress"
+        },
+        {
+          "id": "Operator.RaftRemovePeerByID",
+          "class_name": "consul.Operator",
+          "method_name": "RaftRemovePeerByID",
+          "param_types": [
+            "structs.RaftRemovePeerRequest,"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "Operator.RaftRemovePeerByID"
+        },
+        {
+          "id": "Operator.Usage",
+          "class_name": "consul.Operator",
+          "method_name": "Usage",
+          "param_types": [
+            "structs.OperatorUsageRequest,"
+          ],
+          "return_type": "Usage",
+          "protocol": "RPC",
+          "endpoint": "Operator.Usage"
+        },
+        {
+          "id": "PreparedQuery.Get",
+          "class_name": "consul.PreparedQuery",
+          "method_name": "Get",
+          "param_types": [
+            "structs.PreparedQuerySpecificRequest,"
+          ],
+          "return_type": "IndexedPreparedQueries",
+          "protocol": "RPC",
+          "endpoint": "PreparedQuery.Get"
+        },
+        {
+          "id": "PreparedQuery.List",
+          "class_name": "consul.PreparedQuery",
+          "method_name": "List",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "IndexedPreparedQueries",
+          "protocol": "RPC",
+          "endpoint": "PreparedQuery.List"
+        },
+        {
+          "id": "PreparedQuery.Explain",
+          "class_name": "consul.PreparedQuery",
+          "method_name": "Explain",
+          "param_types": [
+            "structs.PreparedQueryExecuteRequest,"
+          ],
+          "return_type": "PreparedQueryExplainResponse",
+          "protocol": "RPC",
+          "endpoint": "PreparedQuery.Explain"
+        },
+        {
+          "id": "PreparedQuery.Execute",
+          "class_name": "consul.PreparedQuery",
+          "method_name": "Execute",
+          "param_types": [
+            "structs.PreparedQueryExecuteRequest,"
+          ],
+          "return_type": "PreparedQueryExecuteResponse",
+          "protocol": "RPC",
+          "endpoint": "PreparedQuery.Execute"
+        },
+        {
+          "id": "PreparedQuery.ExecuteRemote",
+          "class_name": "consul.PreparedQuery",
+          "method_name": "ExecuteRemote",
+          "param_types": [
+            "structs.PreparedQueryExecuteRemoteRequest,"
+          ],
+          "return_type": "PreparedQueryExecuteResponse",
+          "protocol": "RPC",
+          "endpoint": "PreparedQuery.ExecuteRemote"
+        },
+        {
+          "id": "Session.Apply",
+          "class_name": "consul.Session",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.SessionRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "Session.Apply"
+        },
+        {
+          "id": "Session.Get",
+          "class_name": "consul.Session",
+          "method_name": "Get",
+          "param_types": [
+            "structs.SessionSpecificRequest,"
+          ],
+          "return_type": "IndexedSessions",
+          "protocol": "RPC",
+          "endpoint": "Session.Get"
+        },
+        {
+          "id": "Session.List",
+          "class_name": "consul.Session",
+          "method_name": "List",
+          "param_types": [
+            "structs.SessionSpecificRequest,"
+          ],
+          "return_type": "IndexedSessions",
+          "protocol": "RPC",
+          "endpoint": "Session.List"
+        },
+        {
+          "id": "Session.NodeSessions",
+          "class_name": "consul.Session",
+          "method_name": "NodeSessions",
+          "param_types": [
+            "structs.NodeSpecificRequest,"
+          ],
+          "return_type": "IndexedSessions",
+          "protocol": "RPC",
+          "endpoint": "Session.NodeSessions"
+        },
+        {
+          "id": "Session.Renew",
+          "class_name": "consul.Session",
+          "method_name": "Renew",
+          "param_types": [
+            "structs.SessionSpecificRequest,"
+          ],
+          "return_type": "IndexedSessions",
+          "protocol": "RPC",
+          "endpoint": "Session.Renew"
+        },
+        {
+          "id": "Status.Leader",
+          "class_name": "consul.Status",
+          "method_name": "Leader",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "string",
+          "protocol": "RPC",
+          "endpoint": "Status.Leader"
+        },
+        {
+          "id": "Status.Peers",
+          "class_name": "consul.Status",
+          "method_name": "Peers",
+          "param_types": [
+            "structs.DCSpecificRequest,"
+          ],
+          "return_type": "List<string>",
+          "protocol": "RPC",
+          "endpoint": "Status.Peers"
+        },
+        {
+          "id": "Status.RaftStats",
+          "class_name": "consul.Status",
+          "method_name": "RaftStats",
+          "param_types": [
+            "EmptyReadRequest,"
+          ],
+          "return_type": "RaftStats",
+          "protocol": "RPC",
+          "endpoint": "Status.RaftStats"
+        },
+        {
+          "id": "Txn.Apply",
+          "class_name": "consul.Txn",
+          "method_name": "Apply",
+          "param_types": [
+            "structs.TxnRequest,"
+          ],
+          "return_type": "TxnResponse",
+          "protocol": "RPC",
+          "endpoint": "Txn.Apply"
+        },
+        {
+          "id": "Txn.Read",
+          "class_name": "consul.Txn",
+          "method_name": "Read",
+          "param_types": [
+            "structs.TxnReadRequest,"
+          ],
+          "return_type": "TxnReadResponse",
+          "protocol": "RPC",
+          "endpoint": "Txn.Read"
+        },
+        {
+          "id": "Server.Login",
+          "class_name": "acl.Server",
+          "method_name": "Login",
+          "param_types": [
+            "LoginRequest"
+          ],
+          "return_type": "LoginResponse",
+          "protocol": "gRPC",
+          "endpoint": "ACLService/Login"
+        },
+        {
+          "id": "Server.Logout",
+          "class_name": "acl.Server",
+          "method_name": "Logout",
+          "param_types": [
+            "LogoutRequest"
+          ],
+          "return_type": "LogoutResponse",
+          "protocol": "gRPC",
+          "endpoint": "ACLService/Logout"
+        },
+        {
+          "id": "Server.GetResolvedExportedServices",
+          "class_name": "configentry.Server",
+          "method_name": "GetResolvedExportedServices",
+          "param_types": [
+            "GetResolvedExportedServicesRequest"
+          ],
+          "return_type": "GetResolvedExportedServicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigEntryService/GetResolvedExportedServices"
+        },
+        {
+          "id": "Server.GetImportedServices",
+          "class_name": "configentry.Server",
+          "method_name": "GetImportedServices",
+          "param_types": [
+            "GetImportedServicesRequest"
+          ],
+          "return_type": "GetImportedServicesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConfigEntryService/GetImportedServices"
+        },
+        {
+          "id": "Server.Sign",
+          "class_name": "connectca.Server",
+          "method_name": "Sign",
+          "param_types": [
+            "SignRequest"
+          ],
+          "return_type": "SignResponse",
+          "protocol": "gRPC",
+          "endpoint": "ConnectCAService/Sign"
+        },
+        {
+          "id": "Server.WatchRoots",
+          "class_name": "connectca.Server",
+          "method_name": "WatchRoots",
+          "param_types": [
+            "WatchRootsRequest"
+          ],
+          "return_type": "List<WatchRootsResponse>",
+          "protocol": "gRPC",
+          "endpoint": "ConnectCAService/WatchRoots"
+        },
+        {
+          "id": "Server.GetEnvoyBootstrapParams",
+          "class_name": "dataplane.Server",
+          "method_name": "GetEnvoyBootstrapParams",
+          "param_types": [
+            "GetEnvoyBootstrapParamsRequest"
+          ],
+          "return_type": "GetEnvoyBootstrapParamsResponse",
+          "protocol": "gRPC",
+          "endpoint": "DataplaneService/GetEnvoyBootstrapParams"
+        },
+        {
+          "id": "Server.GetSupportedDataplaneFeatures",
+          "class_name": "dataplane.Server",
+          "method_name": "GetSupportedDataplaneFeatures",
+          "param_types": [
+            "GetSupportedDataplaneFeaturesRequest"
+          ],
+          "return_type": "GetSupportedDataplaneFeaturesResponse",
+          "protocol": "gRPC",
+          "endpoint": "DataplaneService/GetSupportedDataplaneFeatures"
+        },
+        {
+          "id": "Server.Query",
+          "class_name": "dns.Server",
+          "method_name": "Query",
+          "param_types": [
+            "QueryRequest"
+          ],
+          "return_type": "QueryResponse",
+          "protocol": "gRPC",
+          "endpoint": "DNSService/Query"
+        },
+        {
+          "id": "Server.ExchangeSecret",
+          "class_name": "peerstream.Server",
+          "method_name": "ExchangeSecret",
+          "param_types": [
+            "ExchangeSecretRequest"
+          ],
+          "return_type": "ExchangeSecretResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeerStreamService/ExchangeSecret"
+        },
+        {
+          "id": "Server.StreamResources",
+          "class_name": "peerstream.Server",
+          "method_name": "StreamResources",
+          "param_types": [
+            "ReplicationMessage"
+          ],
+          "return_type": "List<ReplicationMessage>",
+          "protocol": "gRPC",
+          "endpoint": "PeerStreamService/StreamResources"
+        },
+        {
+          "id": "Server.Read",
+          "class_name": "resource.Server",
+          "method_name": "Read",
+          "param_types": [
+            "ReadRequest"
+          ],
+          "return_type": "ReadResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/Read"
+        },
+        {
+          "id": "Server.Write",
+          "class_name": "resource.Server",
+          "method_name": "Write",
+          "param_types": [
+            "WriteRequest"
+          ],
+          "return_type": "WriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/Write"
+        },
+        {
+          "id": "Server.WriteStatus",
+          "class_name": "resource.Server",
+          "method_name": "WriteStatus",
+          "param_types": [
+            "WriteStatusRequest"
+          ],
+          "return_type": "WriteStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/WriteStatus"
+        },
+        {
+          "id": "Server.List",
+          "class_name": "resource.Server",
+          "method_name": "List",
+          "param_types": [
+            "ListRequest"
+          ],
+          "return_type": "ListResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/List"
+        },
+        {
+          "id": "Server.ListByOwner",
+          "class_name": "resource.Server",
+          "method_name": "ListByOwner",
+          "param_types": [
+            "ListByOwnerRequest"
+          ],
+          "return_type": "ListByOwnerResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/ListByOwner"
+        },
+        {
+          "id": "Server.Delete",
+          "class_name": "resource.Server",
+          "method_name": "Delete",
+          "param_types": [
+            "DeleteRequest"
+          ],
+          "return_type": "DeleteResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/Delete"
+        },
+        {
+          "id": "Server.WatchList",
+          "class_name": "resource.Server",
+          "method_name": "WatchList",
+          "param_types": [
+            "WatchListRequest"
+          ],
+          "return_type": "List<WatchEvent>",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/WatchList"
+        },
+        {
+          "id": "Server.MutateAndValidate",
+          "class_name": "resource.Server",
+          "method_name": "MutateAndValidate",
+          "param_types": [
+            "MutateAndValidateRequest"
+          ],
+          "return_type": "MutateAndValidateResponse",
+          "protocol": "gRPC",
+          "endpoint": "ResourceService/MutateAndValidate"
+        },
+        {
+          "id": "Server.WatchServers",
+          "class_name": "serverdiscovery.Server",
+          "method_name": "WatchServers",
+          "param_types": [
+            "WatchServersRequest"
+          ],
+          "return_type": "List<WatchServersResponse>",
+          "protocol": "gRPC",
+          "endpoint": "ServerDiscoveryService/WatchServers"
+        },
+        {
+          "id": "Server.TransferLeader",
+          "class_name": "operator.Server",
+          "method_name": "TransferLeader",
+          "param_types": [
+            "TransferLeaderRequest"
+          ],
+          "return_type": "TransferLeaderResponse",
+          "protocol": "gRPC",
+          "endpoint": "OperatorService/TransferLeader"
+        },
+        {
+          "id": "Server.GenerateToken",
+          "class_name": "peering.Server",
+          "method_name": "GenerateToken",
+          "param_types": [
+            "GenerateTokenRequest"
+          ],
+          "return_type": "GenerateTokenResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/GenerateToken"
+        },
+        {
+          "id": "Server.Establish",
+          "class_name": "peering.Server",
+          "method_name": "Establish",
+          "param_types": [
+            "EstablishRequest"
+          ],
+          "return_type": "EstablishResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/Establish"
+        },
+        {
+          "id": "Server.PeeringRead",
+          "class_name": "peering.Server",
+          "method_name": "PeeringRead",
+          "param_types": [
+            "PeeringReadRequest"
+          ],
+          "return_type": "PeeringReadResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/PeeringRead"
+        },
+        {
+          "id": "Server.PeeringList",
+          "class_name": "peering.Server",
+          "method_name": "PeeringList",
+          "param_types": [
+            "PeeringListRequest"
+          ],
+          "return_type": "PeeringListResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/PeeringList"
+        },
+        {
+          "id": "Server.PeeringDelete",
+          "class_name": "peering.Server",
+          "method_name": "PeeringDelete",
+          "param_types": [
+            "PeeringDeleteRequest"
+          ],
+          "return_type": "PeeringDeleteResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/PeeringDelete"
+        },
+        {
+          "id": "Server.PeeringWrite",
+          "class_name": "peering.Server",
+          "method_name": "PeeringWrite",
+          "param_types": [
+            "PeeringWriteRequest"
+          ],
+          "return_type": "PeeringWriteResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/PeeringWrite"
+        },
+        {
+          "id": "Server.TrustBundleListByService",
+          "class_name": "peering.Server",
+          "method_name": "TrustBundleListByService",
+          "param_types": [
+            "TrustBundleListByServiceRequest"
+          ],
+          "return_type": "TrustBundleListByServiceResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/TrustBundleListByService"
+        },
+        {
+          "id": "Server.TrustBundleRead",
+          "class_name": "peering.Server",
+          "method_name": "TrustBundleRead",
+          "param_types": [
+            "TrustBundleReadRequest"
+          ],
+          "return_type": "TrustBundleReadResponse",
+          "protocol": "gRPC",
+          "endpoint": "PeeringService/TrustBundleRead"
+        },
+        {
+          "id": "Server.Subscribe",
+          "class_name": "subscribe.Server",
+          "method_name": "Subscribe",
+          "param_types": [
+            "SubscribeRequest"
+          ],
+          "return_type": "List<Event>",
+          "protocol": "gRPC",
+          "endpoint": "StateChangeSubscription/Subscribe"
+        },
+        {
+          "id": "Server.DeltaAggregatedResources",
+          "class_name": "xds.Server",
+          "method_name": "DeltaAggregatedResources",
+          "param_types": [
+            "DeltaDiscoveryRequest"
+          ],
+          "return_type": "List<DeltaDiscoveryResponse>",
+          "protocol": "gRPC",
+          "endpoint": "AggregatedDiscoveryService/DeltaAggregatedResources"
+        },
+        {
+          "id": "Server.StreamAggregatedResources",
+          "class_name": "xds.Server",
+          "method_name": "StreamAggregatedResources",
+          "param_types": [
+            "DiscoveryRequest"
+          ],
+          "return_type": "List<DiscoveryResponse>",
+          "protocol": "gRPC",
+          "endpoint": "AggregatedDiscoveryService/StreamAggregatedResources"
+        }
+      ]
+    },
+    "tlsutil": {
+      "exposed_interfaces": []
+    },
+    "connect": {
+      "exposed_interfaces": []
+    },
+    "envoyextensions": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BootstrapWithToken",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBootstrap",
+      "protocol": "REST",
+      "evidence": "api/acl.go:601 r := a.c.newRequest(\"PUT\", \"/v1/acl/bootstrap\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "Replication",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLReplicationStatus",
+      "protocol": "REST",
+      "evidence": "api/acl.go:763 r := a.c.newRequest(\"GET\", \"/v1/acl/replication\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCreate",
+      "protocol": "REST",
+      "evidence": "api/acl.go:787 r := a.c.newRequest(\"PUT\", \"/v1/acl/token\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:814 r := a.c.newRequest(\"PUT\", \"/v1/acl/token/\"+token.AccessorID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenClone",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:843 r := a.c.newRequest(\"PUT\", \"/v1/acl/token/\"+accessorID+\"/clone\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:866 r := a.c.newRequest(\"DELETE\", \"/v1/acl/token/\"+accessorID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenRead",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:884 r := a.c.newRequest(\"GET\", \"/v1/acl/token/\"+accessorID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenReadExpanded",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:909 r := a.c.newRequest(\"GET\", \"/v1/acl/token/\"+accessorID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenReadSelf",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenSelf",
+      "protocol": "REST",
+      "evidence": "api/acl.go:936 r := a.c.newRequest(\"GET\", \"/v1/acl/token/self\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:961 r := a.c.newRequest(\"GET\", \"/v1/acl/tokens\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TokenListFiltered",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTokenList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:985 r := a.c.newRequest(\"GET\", \"/v1/acl/tokens\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyCreate",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1026 r := a.c.newRequest(\"PUT\", \"/v1/acl/policy\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1053 r := a.c.newRequest(\"PUT\", \"/v1/acl/policy/\"+policy.ID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1075 r := a.c.newRequest(\"DELETE\", \"/v1/acl/policy/\"+policyID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyRead",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1092 r := a.c.newRequest(\"GET\", \"/v1/acl/policy/\"+policyID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyReadByName",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyReadByName",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1116 r := a.c.newRequest(\"GET\", \"/v1/acl/policy/name/\"+url.QueryEscape(policyName))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "PolicyList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLPolicyList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1147 r := a.c.newRequest(\"GET\", \"/v1/acl/policies\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleCreate",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1192 r := a.c.newRequest(\"PUT\", \"/v1/acl/role\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1219 r := a.c.newRequest(\"PUT\", \"/v1/acl/role/\"+role.ID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1241 r := a.c.newRequest(\"DELETE\", \"/v1/acl/role/\"+roleID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleRead",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1258 r := a.c.newRequest(\"GET\", \"/v1/acl/role/\"+roleID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleReadByName",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleReadByName",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1288 r := a.c.newRequest(\"GET\", \"/v1/acl/role/name/\"+url.QueryEscape(roleName))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "RoleList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLRoleList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1320 r := a.c.newRequest(\"GET\", \"/v1/acl/roles\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "AuthMethodCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLAuthMethodCreate",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1347 r := a.c.newRequest(\"PUT\", \"/v1/acl/auth-method\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "AuthMethodUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLAuthMethodCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1373 r := a.c.newRequest(\"PUT\", \"/v1/acl/auth-method/\"+url.QueryEscape(method.Name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "AuthMethodDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLAuthMethodCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1399 r := a.c.newRequest(\"DELETE\", \"/v1/acl/auth-method/\"+url.QueryEscape(methodName))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "AuthMethodRead",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLAuthMethodCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1420 r := a.c.newRequest(\"GET\", \"/v1/acl/auth-method/\"+url.QueryEscape(methodName))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "AuthMethodList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLAuthMethodList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1452 r := a.c.newRequest(\"GET\", \"/v1/acl/auth-methods\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BindingRuleCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBindingRuleCreate",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1481 r := a.c.newRequest(\"PUT\", \"/v1/acl/binding-rule\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BindingRuleUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBindingRuleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1508 r := a.c.newRequest(\"PUT\", \"/v1/acl/binding-rule/\"+rule.ID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BindingRuleDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBindingRuleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1530 r := a.c.newRequest(\"DELETE\", \"/v1/acl/binding-rule/\"+bindingRuleID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BindingRuleRead",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBindingRuleCRUD",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1547 r := a.c.newRequest(\"GET\", \"/v1/acl/binding-rule/\"+bindingRuleID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "BindingRuleList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLBindingRuleList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1577 r := a.c.newRequest(\"GET\", \"/v1/acl/binding-rules\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "Login",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLLogin",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1603 r := a.c.newRequest(\"POST\", \"/v1/acl/login\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "Logout",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLLogout",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1625 r := a.c.newRequest(\"POST\", \"/v1/acl/logout\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TemplatedPolicyReadByName",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTemplatedPolicyRead",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1706 r := a.c.newRequest(\"GET\", \"/v1/acl/templated-policy/name/\"+templateName)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TemplatedPolicyList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTemplatedPoliciesList",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1736 r := a.c.newRequest(\"GET\", \"/v1/acl/templated-policies\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ACL",
+      "src_method": "TemplatedPolicyPreview",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ACLTemplatedPolicyPreview",
+      "protocol": "REST",
+      "evidence": "api/acl.go:1759 r := a.c.newRequest(\"POST\", \"/v1/acl/templated-policy/preview/\"+tp.TemplateName)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Self",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentSelf",
+      "protocol": "REST",
+      "evidence": "api/agent.go:639 r := a.c.newRequest(\"GET\", \"/v1/agent/self\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Host",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentHost",
+      "protocol": "REST",
+      "evidence": "api/agent.go:660 r := a.c.newRequest(\"GET\", \"/v1/agent/host\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Version",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentVersion",
+      "protocol": "REST",
+      "evidence": "api/agent.go:678 r := a.c.newRequest(\"GET\", \"/v1/agent/version\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Metrics",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentMetrics",
+      "protocol": "REST",
+      "evidence": "api/agent.go:697 r := a.c.newRequest(\"GET\", \"/v1/agent/metrics\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "MetricsStream",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentMetricsStream",
+      "protocol": "REST",
+      "evidence": "api/agent.go:717 r := a.c.newRequest(\"GET\", \"/v1/agent/metrics/stream\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Reload",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentReload",
+      "protocol": "REST",
+      "evidence": "api/agent.go:731 r := a.c.newRequest(\"PUT\", \"/v1/agent/reload\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ChecksWithFilterOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentChecks",
+      "protocol": "REST",
+      "evidence": "api/agent.go:771 r := a.c.newRequest(\"GET\", \"/v1/agent/checks\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ServicesWithFilterOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentServices",
+      "protocol": "REST",
+      "evidence": "api/agent.go:803 r := a.c.newRequest(\"GET\", \"/v1/agent/services\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "AgentHealthServiceByIDOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentHealthServiceByID",
+      "protocol": "REST",
+      "evidence": "api/agent.go:832 r := a.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "AgentHealthServiceByNameOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentHealthServiceByName",
+      "protocol": "REST",
+      "evidence": "api/agent.go:873 r := a.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentService",
+      "protocol": "REST",
+      "evidence": "api/agent.go:910 r := a.c.newRequest(\"GET\", \"/v1/agent/service/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Members",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentMembers",
+      "protocol": "REST",
+      "evidence": "api/agent.go:935 r := a.c.newRequest(\"GET\", \"/v1/agent/members\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "MembersOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentMembers",
+      "protocol": "REST",
+      "evidence": "api/agent.go:957 r := a.c.newRequest(\"GET\", \"/v1/agent/members\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "serviceRegister",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentRegisterService",
+      "protocol": "REST",
+      "evidence": "api/agent.go:999 r := a.c.newRequest(\"PUT\", \"/v1/agent/service/register\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ServiceDeregister",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentDeregisterService",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1022 r := a.c.newRequest(\"PUT\", \"/v1/agent/service/deregister/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ServiceDeregisterOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentDeregisterService",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1037 r := a.c.newRequest(\"PUT\", \"/v1/agent/service/deregister/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "updateTTL",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentCheckPass",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1095 r := a.c.newRequest(\"PUT\", endpoint)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "updateTTL",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentCheckWarn",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1095 r := a.c.newRequest(\"PUT\", endpoint)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "updateTTL",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentCheckFail",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1095 r := a.c.newRequest(\"PUT\", endpoint)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "UpdateTTLOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentCheckUpdate",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1143 r := a.c.newRequest(\"PUT\", endpoint)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "CheckRegisterOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentRegisterCheck",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1170 r := a.c.newRequest(\"PUT\", \"/v1/agent/check/register\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "CheckDeregisterOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentDeregisterCheck",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1193 r := a.c.newRequest(\"PUT\", \"/v1/agent/check/deregister/\"+checkID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Join",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentJoin",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1209 r := a.c.newRequest(\"PUT\", \"/v1/agent/join/\"+addr)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "Leave",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentLeave",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1226 r := a.c.newRequest(\"PUT\", \"/v1/agent/leave\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ForceLeaveOptions",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentForceLeave",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1269 r := a.c.newRequest(\"PUT\", \"/v1/agent/force-leave/\"+node)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ConnectAuthorize",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentConnectAuthorize",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1291 r := a.c.newRequest(\"POST\", \"/v1/agent/connect/authorize\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ConnectCARoots",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentConnectCARoots",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1310 r := a.c.newRequest(\"GET\", \"/v1/agent/connect/ca/roots\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "ConnectCALeaf",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentConnectCALeafCert",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1334 r := a.c.newRequest(\"GET\", \"/v1/agent/connect/ca/leaf/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "EnableServiceMaintenanceOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentServiceMaintenance",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1362 r := a.c.newRequest(\"PUT\", \"/v1/agent/service/maintenance/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "DisableServiceMaintenanceOpts",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentServiceMaintenance",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1384 r := a.c.newRequest(\"PUT\", \"/v1/agent/service/maintenance/\"+serviceID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "EnableNodeMaintenance",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentNodeMaintenance",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1401 r := a.c.newRequest(\"PUT\", \"/v1/agent/maintenance\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "DisableNodeMaintenance",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentNodeMaintenance",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1418 r := a.c.newRequest(\"PUT\", \"/v1/agent/maintenance\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "monitor",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentMonitor",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1445 r := a.c.newRequest(\"GET\", \"/v1/agent/monitor\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Agent",
+      "src_method": "updateTokenOnce",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AgentToken",
+      "protocol": "REST",
+      "evidence": "api/agent.go:1591 r := a.c.newRequest(\"PUT\", fmt.Sprintf(\"/v1/agent/token/%s\", target))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Register",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogRegister",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:131 r := c.c.newRequest(\"PUT\", \"/v1/catalog/register\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Deregister",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogDeregister",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:150 r := c.c.newRequest(\"PUT\", \"/v1/catalog/deregister\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Datacenters",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogDatacenters",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:170 r := c.c.newRequest(\"GET\", \"/v1/catalog/datacenters\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Nodes",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogNodes",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:189 r := c.c.newRequest(\"GET\", \"/v1/catalog/nodes\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Services",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogServices",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:213 r := c.c.newRequest(\"GET\", \"/v1/catalog/services\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogServiceNodes",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:268 r := c.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogConnectServiceNodes",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:268 r := c.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "Node",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogNodeServices",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:297 r := c.c.newRequest(\"GET\", \"/v1/catalog/node/\"+node)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "NodeServiceList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogNodeServiceList",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:324 r := c.c.newRequest(\"GET\", \"/v1/catalog/node-services/\"+node)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Catalog",
+      "src_method": "GatewayServices",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CatalogGatewayServices",
+      "protocol": "REST",
+      "evidence": "api/catalog.go:348 r := c.c.newRequest(\"GET\", \"/v1/catalog/gateway-services/\"+gateway)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ConfigEntries",
+      "src_method": "Get",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Config",
+      "protocol": "REST",
+      "evidence": "api/config_entry.go:587 r := conf.c.newRequest(\"GET\", fmt.Sprintf(\"/v1/config/%s/%s\", kind, name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ConfigEntries",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Config",
+      "protocol": "REST",
+      "evidence": "api/config_entry.go:614 r := conf.c.newRequest(\"GET\", fmt.Sprintf(\"/v1/config/%s\", kind))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ConfigEntries",
+      "src_method": "set",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ConfigApply",
+      "protocol": "REST",
+      "evidence": "api/config_entry.go:651 r := conf.c.newRequest(\"PUT\", \"/v1/config\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.ConfigEntries",
+      "src_method": "delete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Config",
+      "protocol": "REST",
+      "evidence": "api/config_entry.go:694 r := conf.c.newRequest(\"DELETE\", fmt.Sprintf(\"/v1/config/%s/%s\", kind, name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "CARoots",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ConnectCARoots",
+      "protocol": "REST",
+      "evidence": "api/connect_ca.go:149 r := h.c.newRequest(\"GET\", \"/v1/connect/ca/roots\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "CAGetConfig",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ConnectCAConfiguration",
+      "protocol": "REST",
+      "evidence": "api/connect_ca.go:173 r := h.c.newRequest(\"GET\", \"/v1/connect/ca/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "CASetConfig",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ConnectCAConfiguration",
+      "protocol": "REST",
+      "evidence": "api/connect_ca.go:197 r := h.c.newRequest(\"PUT\", \"/v1/connect/ca/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "Intentions",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionEndpoint",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:184 r := h.c.newRequest(\"GET\", \"/v1/connect/intentions\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionGetExact",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionExact",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:209 r := h.c.newRequest(\"GET\", \"/v1/connect/intentions/exact\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionGet",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionSpecific",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:243 r := h.c.newRequest(\"GET\", \"/v1/connect/intentions/\"+id)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionDeleteExact",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionExact",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:273 r := h.c.newRequest(\"DELETE\", \"/v1/connect/intentions/exact\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionDelete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionSpecific",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:297 r := h.c.newRequest(\"DELETE\", \"/v1/connect/intentions/\"+id)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionMatch",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionMatch",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:322 r := h.c.newRequest(\"GET\", \"/v1/connect/intentions/match\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionCheck",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionCheck",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:351 r := h.c.newRequest(\"GET\", \"/v1/connect/intentions/check\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionUpsert",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionExact",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:381 r := c.c.newRequest(\"PUT\", \"/v1/connect/intentions/exact\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionCreate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionEndpoint",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:419 r := c.c.newRequest(\"POST\", \"/v1/connect/intentions\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Connect",
+      "src_method": "IntentionUpdate",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.IntentionSpecific",
+      "protocol": "REST",
+      "evidence": "api/connect_intention.go:446 r := c.c.newRequest(\"PUT\", \"/v1/connect/intentions/\"+ixn.ID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Coordinate",
+      "src_method": "Datacenters",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CoordinateDatacenters",
+      "protocol": "REST",
+      "evidence": "api/coordinate.go:39 r := c.c.newRequest(\"GET\", \"/v1/coordinate/datacenters\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Coordinate",
+      "src_method": "Nodes",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CoordinateNodes",
+      "protocol": "REST",
+      "evidence": "api/coordinate.go:58 r := c.c.newRequest(\"GET\", \"/v1/coordinate/nodes\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Coordinate",
+      "src_method": "Update",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CoordinateUpdate",
+      "protocol": "REST",
+      "evidence": "api/coordinate.go:82 r := c.c.newRequest(\"PUT\", \"/v1/coordinate/update\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Coordinate",
+      "src_method": "Node",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.CoordinateNode",
+      "protocol": "REST",
+      "evidence": "api/coordinate.go:102 r := c.c.newRequest(\"GET\", \"/v1/coordinate/node/\"+node)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.DiscoveryChain",
+      "src_method": "Get",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.DiscoveryChainRead",
+      "protocol": "REST",
+      "evidence": "api/discovery_chain.go:32 r := d.c.newRequest(method, fmt.Sprintf(\"/v1/discovery-chain/%s\", name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Event",
+      "src_method": "Fire",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.EventFire",
+      "protocol": "REST",
+      "evidence": "api/event.go:37 r := e.c.newRequest(\"PUT\", \"/v1/event/fire/\"+params.Name)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Event",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.EventList",
+      "protocol": "REST",
+      "evidence": "api/event.go:75 r := e.c.newRequest(\"GET\", \"/v1/event/list\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Client",
+      "src_method": "ExportedServices",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ExportedServices",
+      "protocol": "REST",
+      "evidence": "api/exported_services.go:27 r := c.newRequest(\"GET\", \"/v1/exported-services\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "Node",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthNodeChecks",
+      "protocol": "REST",
+      "evidence": "api/health.go:243 r := h.c.newRequest(\"GET\", \"/v1/health/node/\"+node)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "Checks",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthServiceChecks",
+      "protocol": "REST",
+      "evidence": "api/health.go:267 r := h.c.newRequest(\"GET\", \"/v1/health/checks/\"+service)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthServiceNodes",
+      "protocol": "REST",
+      "evidence": "api/health.go:339 r := h.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthConnectServiceNodes",
+      "protocol": "REST",
+      "evidence": "api/health.go:339 r := h.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "service",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthIngressServiceNodes",
+      "protocol": "REST",
+      "evidence": "api/health.go:339 r := h.c.newRequest(\"GET\", path)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Health",
+      "src_method": "State",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.HealthChecksInState",
+      "protocol": "REST",
+      "evidence": "api/health.go:380 r := h.c.newRequest(\"GET\", \"/v1/health/state/\"+state)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Client",
+      "src_method": "ImportedServices",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.ImportedServices",
+      "protocol": "REST",
+      "evidence": "api/imported_services.go:35 r := c.newRequest(\"GET\", \"/v1/imported-services\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Internal",
+      "src_method": "AssignServiceVirtualIP",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.AssignManualServiceVIPs",
+      "protocol": "REST",
+      "evidence": "api/internal.go:43 req := i.c.newRequest(\"PUT\", \"/v1/internal/service-virtual-ip\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.KV",
+      "src_method": "getInternal",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.KVSEndpoint",
+      "protocol": "REST",
+      "evidence": "api/kv.go:133 r := k.c.newRequest(\"GET\", \"/v1/kv/\"+strings.TrimPrefix(key, \"/\"))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.KV",
+      "src_method": "put",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.KVSEndpoint",
+      "protocol": "REST",
+      "evidence": "api/kv.go:212 r := k.c.newRequest(\"PUT\", \"/v1/kv/\"+key)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.KV",
+      "src_method": "deleteInternal",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.KVSEndpoint",
+      "protocol": "REST",
+      "evidence": "api/kv.go:266 r := k.c.newRequest(\"DELETE\", \"/v1/kv/\"+strings.TrimPrefix(key, \"/\"))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "AutopilotGetConfiguration",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorAutopilotConfiguration",
+      "protocol": "REST",
+      "evidence": "api/operator_autopilot.go:301 r := op.c.newRequest(\"GET\", \"/v1/operator/autopilot/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "AutopilotSetConfiguration",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorAutopilotConfiguration",
+      "protocol": "REST",
+      "evidence": "api/operator_autopilot.go:322 r := op.c.newRequest(\"PUT\", \"/v1/operator/autopilot/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "AutopilotCASConfiguration",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorAutopilotConfiguration",
+      "protocol": "REST",
+      "evidence": "api/operator_autopilot.go:340 r := op.c.newRequest(\"PUT\", \"/v1/operator/autopilot/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "AutopilotServerHealth",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorServerHealth",
+      "protocol": "REST",
+      "evidence": "api/operator_autopilot.go:364 r := op.c.newRequest(\"GET\", \"/v1/operator/autopilot/health\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "AutopilotState",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorAutopilotState",
+      "protocol": "REST",
+      "evidence": "api/operator_autopilot.go:387 r := op.c.newRequest(\"GET\", \"/v1/operator/autopilot/state\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "FeatureGateList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorFeatureGateList",
+      "protocol": "REST",
+      "evidence": "api/operator_feature_gate.go:38 r := op.c.newRequest(\"GET\", \"/v1/operator/features\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "FeatureGateGet",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorFeatureGate",
+      "protocol": "REST",
+      "evidence": "api/operator_feature_gate.go:60 r := op.c.newRequest(\"GET\", \"/v1/operator/feature/\"+url.PathEscape(name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "FeatureGateSet",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorFeatureGate",
+      "protocol": "REST",
+      "evidence": "api/operator_feature_gate.go:84 r := op.c.newRequest(\"PUT\", \"/v1/operator/feature/\"+url.PathEscape(name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "KeyringInstall",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorKeyringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/operator_keyring.go:40 r := op.c.newRequest(\"POST\", \"/v1/operator/keyring\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "KeyringList",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorKeyringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/operator_keyring.go:58 r := op.c.newRequest(\"GET\", \"/v1/operator/keyring\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "KeyringRemove",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorKeyringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/operator_keyring.go:78 r := op.c.newRequest(\"DELETE\", \"/v1/operator/keyring\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "KeyringUse",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorKeyringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/operator_keyring.go:96 r := op.c.newRequest(\"PUT\", \"/v1/operator/keyring\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "RaftGetConfiguration",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorRaftConfiguration",
+      "protocol": "REST",
+      "evidence": "api/operator_raft.go:52 r := op.c.newRequest(\"GET\", \"/v1/operator/raft/configuration\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "RaftLeaderTransfer",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorRaftTransferLeader",
+      "protocol": "REST",
+      "evidence": "api/operator_raft.go:73 r := op.c.newRequest(\"POST\", \"/v1/operator/raft/transfer-leader\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "RaftRemovePeerByAddress",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorRaftPeer",
+      "protocol": "REST",
+      "evidence": "api/operator_raft.go:99 r := op.c.newRequest(\"DELETE\", \"/v1/operator/raft/peer\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "RaftRemovePeerByID",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorRaftPeer",
+      "protocol": "REST",
+      "evidence": "api/operator_raft.go:118 r := op.c.newRequest(\"DELETE\", \"/v1/operator/raft/peer\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Operator",
+      "src_method": "Usage",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorUsage",
+      "protocol": "REST",
+      "evidence": "api/operator_usage.go:37 r := op.c.newRequest(\"GET\", \"/v1/operator/usage\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Census",
+      "src_method": "Utilization",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.OperatorUtilizationEndpoint",
+      "protocol": "REST",
+      "evidence": "api/operator_utilization.go:30 r := c.client.newRequest(\"GET\", \"/v1/operator/utilization\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Peerings",
+      "src_method": "Read",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PeeringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/peering.go:163 req := p.c.newRequest(\"GET\", fmt.Sprintf(\"/v1/peering/%s\", name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Peerings",
+      "src_method": "Delete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PeeringEndpoint",
+      "protocol": "REST",
+      "evidence": "api/peering.go:198 req := p.c.newRequest(\"DELETE\", fmt.Sprintf(\"/v1/peering/%s\", name))"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Peerings",
+      "src_method": "GenerateToken",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PeeringGenerateToken",
+      "protocol": "REST",
+      "evidence": "api/peering.go:221 req := p.c.newRequest(\"POST\", \"/v1/peering/token\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Peerings",
+      "src_method": "Establish",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PeeringEstablish",
+      "protocol": "REST",
+      "evidence": "api/peering.go:247 req := p.c.newRequest(\"POST\", \"/v1/peering/establish\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Peerings",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PeeringList",
+      "protocol": "REST",
+      "evidence": "api/peering.go:272 req := p.c.newRequest(\"GET\", \"/v1/peerings\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "Create",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQueryGeneral",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:194 r := c.c.newRequest(\"POST\", \"/v1/query\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "Update",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQuerySpecific",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:218 return c.c.write(\"/v1/query/\"+query.ID, query, nil, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQueryGeneral",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:225 qm, err := c.c.query(\"/v1/query\", &out, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "Get",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQuerySpecific",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:235 qm, err := c.c.query(\"/v1/query/\"+queryID, &out, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "Delete",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQuerySpecific",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:244 r := c.c.newRequest(\"DELETE\", \"/v1/query/\"+queryID)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.PreparedQuery",
+      "src_method": "Execute",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.PreparedQuerySpecific",
+      "protocol": "REST",
+      "evidence": "api/prepared_query.go:264 qm, err := c.c.query(\"/v1/query/\"+queryIDOrName+\"/execute\", &out, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "create",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionCreate",
+      "protocol": "REST",
+      "evidence": "api/session.go:123 wm, err := s.c.write(\"/v1/session/create\", obj, &out, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "Destroy",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionDestroy",
+      "protocol": "REST",
+      "evidence": "api/session.go:132 wm, err := s.c.write(\"/v1/session/destroy/\"+id, nil, nil, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "Renew",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionRenew",
+      "protocol": "REST",
+      "evidence": "api/session.go:141 r := s.c.newRequest(\"PUT\", \"/v1/session/renew/\"+id)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "Info",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionGet",
+      "protocol": "REST",
+      "evidence": "api/session.go:218 qm, err := s.c.query(\"/v1/session/info/\"+id, &entries, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "Node",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionsForNode",
+      "protocol": "REST",
+      "evidence": "api/session.go:231 qm, err := s.c.query(\"/v1/session/node/\"+node, &entries, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Session",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.SessionList",
+      "protocol": "REST",
+      "evidence": "api/session.go:241 qm, err := s.c.query(\"/v1/session/list\", &entries, q)"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Snapshot",
+      "src_method": "Save",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Snapshot",
+      "protocol": "REST",
+      "evidence": "api/snapshot.go:26 r := s.c.newRequest(\"GET\", \"/v1/snapshot\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Snapshot",
+      "src_method": "Restore",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Snapshot",
+      "protocol": "REST",
+      "evidence": "api/snapshot.go:45 r := s.c.newRequest(\"PUT\", \"/v1/snapshot\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Status",
+      "src_method": "LeaderWithQueryOptions",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.StatusLeader",
+      "protocol": "REST",
+      "evidence": "api/status.go:18 r := s.c.newRequest(\"GET\", \"/v1/status/leader\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Status",
+      "src_method": "PeersWithQueryOptions",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.StatusPeers",
+      "protocol": "REST",
+      "evidence": "api/status.go:46 r := s.c.newRequest(\"GET\", \"/v1/status/peers\")"
+    },
+    {
+      "src_service": "api",
+      "src_class": "api.Client",
+      "src_method": "txn",
+      "dst_service": "agent",
+      "dst_class": "agent.HTTPHandlers",
+      "dst_interface_id": "HTTPHandlers.Txn",
+      "protocol": "REST",
+      "evidence": "api/txn.go:228 r := c.newRequest(\"PUT\", \"/v1/txn\")"
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.ResourceGRPC",
+      "src_method": "Apply",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Write",
+      "protocol": "gRPC",
+      "evidence": "command/resource/resource-grpc.go:35 .Client.Write("
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.ResourceGRPC",
+      "src_method": "Read",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Read",
+      "protocol": "gRPC",
+      "evidence": "command/resource/resource-grpc.go:57 .Client.Read("
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.ResourceGRPC",
+      "src_method": "List",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.List",
+      "protocol": "gRPC",
+      "evidence": "command/resource/resource-grpc.go:86 .Client.List("
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.ResourceGRPC",
+      "src_method": "Delete",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Delete",
+      "protocol": "gRPC",
+      "evidence": "command/resource/resource-grpc.go:110 .Client.Delete("
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.Resource",
+      "src_method": "Read",
+      "dst_service": "internal",
+      "dst_class": "http.resourceHandler",
+      "dst_interface_id": "resourceHandler.handleRead",
+      "protocol": "REST",
+      "evidence": "command/resource/helper.go:196 resource.C.NewRequest(\"GET\", strings.ToLower(fmt.Sprintf(\"/api/%s/%s/%s/%s\""
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.Resource",
+      "src_method": "Delete",
+      "dst_service": "internal",
+      "dst_class": "http.resourceHandler",
+      "dst_interface_id": "resourceHandler.handleDelete",
+      "protocol": "REST",
+      "evidence": "command/resource/helper.go:216 resource.C.NewRequest(\"DELETE\""
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.Resource",
+      "src_method": "Apply",
+      "dst_service": "internal",
+      "dst_class": "http.resourceHandler",
+      "dst_interface_id": "resourceHandler.handleWrite",
+      "protocol": "REST",
+      "evidence": "command/resource/helper.go:232 r := resource.C.NewRequest(\"PUT\", url)"
+    },
+    {
+      "src_service": "command",
+      "src_class": "resource.Resource",
+      "src_method": "List",
+      "dst_service": "internal",
+      "dst_class": "http.listHandler",
+      "dst_interface_id": "listHandler.ServeHTTP",
+      "protocol": "REST",
+      "evidence": "command/resource/helper.go:254 resource.C.NewRequest(\"GET\", strings.ToLower(fmt.Sprintf(\"/api/%s/%s/%s\""
+    },
+    {
+      "src_service": "internal",
+      "src_class": "http.resourceHandler",
+      "src_method": "handleWrite",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Write",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/http/http.go:115 h.client.Write("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "http.resourceHandler",
+      "src_method": "handleRead",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Read",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/http/http.go:148 h.client.Read("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "http.resourceHandler",
+      "src_method": "handleDelete",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Delete",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/http/http.go:172 h.client.Delete("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "http.listHandler",
+      "src_method": "ServeHTTP",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.List",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/http/http.go:284 h.client.List("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "controller.controllerRunner",
+      "src_method": "primeCache",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.WatchList",
+      "protocol": "gRPC",
+      "evidence": "internal/controller/runner.go:187 cr.watchClient.WatchList("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "controller.controllerRunner",
+      "src_method": "watch",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.WatchList",
+      "protocol": "gRPC",
+      "evidence": "internal/controller/runner.go:224 cr.watchClient.WatchList("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "controller.controllerRunner",
+      "src_method": "maybeScheduleForcedReconcile",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Read",
+      "protocol": "gRPC",
+      "evidence": "internal/controller/runner.go:367 cr.runtimeClient.Read("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "resource",
+      "src_method": "GetDecodedResource",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Read",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/decode.go:80 client.Read("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "resource",
+      "src_method": "ListDecodedResource",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.List",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/decode.go:91 client.List("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "reaper.tombstoneReconciler",
+      "src_method": "Reconcile",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Read",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/reaper/controller.go:52 rt.Client.Read("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "reaper.tombstoneReconciler",
+      "src_method": "Reconcile",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.ListByOwner",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/reaper/controller.go:80 rt.Client.ListByOwner("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "reaper.tombstoneReconciler",
+      "src_method": "Reconcile",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.Delete",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/reaper/controller.go:87 rt.Client.Delete("
+    },
+    {
+      "src_service": "internal",
+      "src_class": "reaper.tombstoneReconciler",
+      "src_method": "Reconcile",
+      "dst_service": "agent",
+      "dst_class": "resource.Server",
+      "dst_interface_id": "Server.WriteStatus",
+      "protocol": "gRPC",
+      "evidence": "internal/resource/reaper/controller.go:104 rt.Client.WriteStatus("
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "system_id": "MS043",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "reservation": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.MakeReservation",
+          "class_name": "reservation.Server",
+          "method_name": "MakeReservation",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Reservation/MakeReservation"
+        },
+        {
+          "id": "Server.CheckAvailability",
+          "class_name": "reservation.Server",
+          "method_name": "CheckAvailability",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Reservation/CheckAvailability"
+        }
+      ]
+    },
+    "attractions": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.NearbyRest",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyRest",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyRest"
+        },
+        {
+          "id": "Server.NearbyMus",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyMus",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyMus"
+        },
+        {
+          "id": "Server.NearbyCinema",
+          "class_name": "attractions.Server",
+          "method_name": "NearbyCinema",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Attractions/NearbyCinema"
+        }
+      ]
+    },
+    "frontend": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.searchHandler",
+          "class_name": "frontend.Server",
+          "method_name": "searchHandler",
+          "param_types": [
+            "string",
+            "string",
+            "float32",
+            "float32",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /hotels"
+        },
+        {
+          "id": "Server.recommendHandler",
+          "class_name": "frontend.Server",
+          "method_name": "recommendHandler",
+          "param_types": [
+            "float64",
+            "float64",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /recommendations"
+        },
+        {
+          "id": "Server.userHandler",
+          "class_name": "frontend.Server",
+          "method_name": "userHandler",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /user"
+        },
+        {
+          "id": "Server.reviewHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reviewHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /review"
+        },
+        {
+          "id": "Server.restaurantHandler",
+          "class_name": "frontend.Server",
+          "method_name": "restaurantHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /restaurants"
+        },
+        {
+          "id": "Server.museumHandler",
+          "class_name": "frontend.Server",
+          "method_name": "museumHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /museums"
+        },
+        {
+          "id": "Server.cinemaHandler",
+          "class_name": "frontend.Server",
+          "method_name": "cinemaHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /cinema"
+        },
+        {
+          "id": "Server.reservationHandler",
+          "class_name": "frontend.Server",
+          "method_name": "reservationHandler",
+          "param_types": [
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "string",
+            "int"
+          ],
+          "return_type": "map[string]interface{}",
+          "protocol": "REST",
+          "endpoint": "GET /reservation"
+        }
+      ]
+    },
+    "user": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.CheckUser",
+          "class_name": "user.Server",
+          "method_name": "CheckUser",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "User/CheckUser"
+        }
+      ]
+    },
+    "search": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.Nearby",
+          "class_name": "search.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "NearbyRequest"
+          ],
+          "return_type": "SearchResult",
+          "protocol": "gRPC",
+          "endpoint": "Search/Nearby"
+        }
+      ]
+    },
+    "review": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetReviews",
+          "class_name": "review.Server",
+          "method_name": "GetReviews",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Review/GetReviews"
+        }
+      ]
+    },
+    "geo": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.Nearby",
+          "class_name": "geo.Server",
+          "method_name": "Nearby",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Geo/Nearby"
+        }
+      ]
+    },
+    "recommendation": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetRecommendations",
+          "class_name": "recommendation.Server",
+          "method_name": "GetRecommendations",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Recommendation/GetRecommendations"
+        }
+      ]
+    },
+    "rate": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetRates",
+          "class_name": "rate.Server",
+          "method_name": "GetRates",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Rate/GetRates"
+        }
+      ]
+    },
+    "profile": {
+      "exposed_interfaces": [
+        {
+          "id": "Server.GetProfiles",
+          "class_name": "profile.Server",
+          "method_name": "GetProfiles",
+          "param_types": [
+            "Request"
+          ],
+          "return_type": "Result",
+          "protocol": "gRPC",
+          "endpoint": "Profile/GetProfiles"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "searchHandler",
+      "dst_service": "search",
+      "dst_class": "search.Server",
+      "dst_interface_id": "Server.Nearby",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:241 s.searchClient.Nearby( -> hotelReservation/services/search/server.go:129"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "searchHandler",
+      "dst_service": "reservation",
+      "dst_class": "reservation.Server",
+      "dst_interface_id": "Server.CheckAvailability",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:263 s.reservationClient.CheckAvailability( -> hotelReservation/services/reservation/server.go:221"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "searchHandler",
+      "dst_service": "profile",
+      "dst_class": "profile.Server",
+      "dst_interface_id": "Server.GetProfiles",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:280 s.profileClient.GetProfiles( -> hotelReservation/services/profile/server.go:93"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "recommendHandler",
+      "dst_service": "recommendation",
+      "dst_class": "recommendation.Server",
+      "dst_interface_id": "Server.GetRecommendations",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:316 s.recommendationClient.GetRecommendations( -> hotelReservation/services/recommendation/server.go:92"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "recommendHandler",
+      "dst_service": "profile",
+      "dst_class": "profile.Server",
+      "dst_interface_id": "Server.GetProfiles",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:333 s.profileClient.GetProfiles( -> hotelReservation/services/profile/server.go:93"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "reviewHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:356 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "reviewHandler",
+      "dst_service": "review",
+      "dst_class": "review.Server",
+      "dst_interface_id": "Server.GetReviews",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:378 s.reviewClient.GetReviews( -> hotelReservation/services/review/server.go:112"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "restaurantHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:408 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "restaurantHandler",
+      "dst_service": "attractions",
+      "dst_class": "attractions.Server",
+      "dst_interface_id": "Server.NearbyRest",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:430 s.attractionsClient.NearbyRest( -> hotelReservation/services/attractions/server.go:111"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "museumHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:460 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "museumHandler",
+      "dst_service": "attractions",
+      "dst_class": "attractions.Server",
+      "dst_interface_id": "Server.NearbyMus",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:482 s.attractionsClient.NearbyMus( -> hotelReservation/services/attractions/server.go:148"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "cinemaHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:512 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "cinemaHandler",
+      "dst_service": "attractions",
+      "dst_class": "attractions.Server",
+      "dst_interface_id": "Server.NearbyCinema",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:534 s.attractionsClient.NearbyCinema( -> hotelReservation/services/attractions/server.go:185"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "userHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:564 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "reservationHandler",
+      "dst_service": "user",
+      "dst_class": "user.Server",
+      "dst_interface_id": "Server.CheckUser",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:625 s.userClient.CheckUser( -> hotelReservation/services/user/server.go:91"
+    },
+    {
+      "src_service": "frontend",
+      "src_class": "frontend.Server",
+      "src_method": "reservationHandler",
+      "dst_service": "reservation",
+      "dst_class": "reservation.Server",
+      "dst_interface_id": "Server.MakeReservation",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/frontend/server.go:640 s.reservationClient.MakeReservation( -> hotelReservation/services/reservation/server.go:94"
+    },
+    {
+      "src_service": "search",
+      "src_class": "search.Server",
+      "src_method": "Nearby",
+      "dst_service": "geo",
+      "dst_class": "geo.Server",
+      "dst_interface_id": "Server.Nearby",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/search/server.go:136 s.geoClient.Nearby( -> hotelReservation/services/geo/server.go:96"
+    },
+    {
+      "src_service": "search",
+      "src_class": "search.Server",
+      "src_method": "Nearby",
+      "dst_service": "rate",
+      "dst_class": "rate.Server",
+      "dst_interface_id": "Server.GetRates",
+      "protocol": "gRPC",
+      "evidence": "hotelReservation/services/search/server.go:149 s.rateClient.GetRates( -> hotelReservation/services/rate/server.go:93"
+    }
+  ]
+}

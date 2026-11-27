@@ -1,0 +1,441 @@
+{
+  "system_id": "MS057",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "rasa": {
+      "exposed_interfaces": [
+        {
+          "id": "server.status",
+          "class_name": "server",
+          "method_name": "status",
+          "param_types": [],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /status"
+        },
+        {
+          "id": "server.retrieve_tracker",
+          "class_name": "server",
+          "method_name": "retrieve_tracker",
+          "param_types": [
+            "str",
+            "str",
+            "float"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "GET /conversations/{conversation_id}/tracker"
+        },
+        {
+          "id": "server.append_events",
+          "class_name": "server",
+          "method_name": "append_events",
+          "param_types": [
+            "str",
+            "str",
+            "bool",
+            "str",
+            "List<Event>"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /conversations/{conversation_id}/tracker/events"
+        },
+        {
+          "id": "server.replace_events",
+          "class_name": "server",
+          "method_name": "replace_events",
+          "param_types": [
+            "str",
+            "str",
+            "list"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "PUT /conversations/{conversation_id}/tracker/events"
+        },
+        {
+          "id": "server.retrieve_story",
+          "class_name": "server",
+          "method_name": "retrieve_story",
+          "param_types": [
+            "str",
+            "float",
+            "bool"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /conversations/{conversation_id}/story"
+        },
+        {
+          "id": "server.execute_action",
+          "class_name": "server",
+          "method_name": "execute_action",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /conversations/{conversation_id}/execute"
+        },
+        {
+          "id": "server.trigger_intent",
+          "class_name": "server",
+          "method_name": "trigger_intent",
+          "param_types": [
+            "str",
+            "str",
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /conversations/{conversation_id}/trigger_intent"
+        },
+        {
+          "id": "server.predict",
+          "class_name": "server",
+          "method_name": "predict",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /conversations/{conversation_id}/predict"
+        },
+        {
+          "id": "server.add_message",
+          "class_name": "server",
+          "method_name": "add_message",
+          "param_types": [
+            "str",
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /conversations/{conversation_id}/messages"
+        },
+        {
+          "id": "server.train",
+          "class_name": "server",
+          "method_name": "train",
+          "param_types": [
+            "str",
+            "bool",
+            "bool",
+            "str"
+          ],
+          "return_type": "bytes",
+          "protocol": "REST",
+          "endpoint": "POST /model/train"
+        },
+        {
+          "id": "server.evaluate_stories",
+          "class_name": "server",
+          "method_name": "evaluate_stories",
+          "param_types": [
+            "bool",
+            "str"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /model/test/stories"
+        },
+        {
+          "id": "server.evaluate_intents",
+          "class_name": "server",
+          "method_name": "evaluate_intents",
+          "param_types": [
+            "str",
+            "int",
+            "str",
+            "object"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /model/test/intents"
+        },
+        {
+          "id": "server.tracker_predict",
+          "class_name": "server",
+          "method_name": "tracker_predict",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /model/predict"
+        },
+        {
+          "id": "server.parse",
+          "class_name": "server",
+          "method_name": "parse",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "dict",
+          "protocol": "REST",
+          "endpoint": "POST /model/parse"
+        },
+        {
+          "id": "server.load_model",
+          "class_name": "server",
+          "method_name": "load_model",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /model"
+        },
+        {
+          "id": "server.unload_model",
+          "class_name": "server",
+          "method_name": "unload_model",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /model"
+        },
+        {
+          "id": "server.get_domain",
+          "class_name": "server",
+          "method_name": "get_domain",
+          "param_types": [],
+          "return_type": "Domain",
+          "protocol": "REST",
+          "endpoint": "GET /domain"
+        },
+        {
+          "id": "BotFrameworkInput.webhook",
+          "class_name": "BotFrameworkInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/botframework/webhook"
+        },
+        {
+          "id": "CallbackInput.webhook",
+          "class_name": "CallbackInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/callback/webhook"
+        },
+        {
+          "id": "FacebookInput.token_verification",
+          "class_name": "FacebookInput",
+          "method_name": "token_verification",
+          "param_types": [
+            "str",
+            "str"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /webhooks/facebook/webhook"
+        },
+        {
+          "id": "FacebookInput.webhook",
+          "class_name": "FacebookInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/facebook/webhook"
+        },
+        {
+          "id": "HangoutsInput.receive",
+          "class_name": "HangoutsInput",
+          "method_name": "receive",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "list",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/hangouts/webhook"
+        },
+        {
+          "id": "MattermostInput.webhook",
+          "class_name": "MattermostInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/mattermost/webhook"
+        },
+        {
+          "id": "RestInput.receive",
+          "class_name": "RestInput",
+          "method_name": "receive",
+          "param_types": [
+            "bool",
+            "dict"
+          ],
+          "return_type": "list",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/rest/webhook"
+        },
+        {
+          "id": "RocketChatInput.webhook",
+          "class_name": "RocketChatInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/rocketchat/webhook"
+        },
+        {
+          "id": "SlackInput.webhook",
+          "class_name": "SlackInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/slack/webhook"
+        },
+        {
+          "id": "TelegramInput.set_webhook",
+          "class_name": "TelegramInput",
+          "method_name": "set_webhook",
+          "param_types": [],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/telegram/set_webhook"
+        },
+        {
+          "id": "TelegramInput.message",
+          "class_name": "TelegramInput",
+          "method_name": "message",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/telegram/webhook"
+        },
+        {
+          "id": "TwilioInput.message",
+          "class_name": "TwilioInput",
+          "method_name": "message",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/twilio/webhook"
+        },
+        {
+          "id": "TwilioVoiceInput.receive",
+          "class_name": "TwilioVoiceInput",
+          "method_name": "receive",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/twilio_voice/webhook"
+        },
+        {
+          "id": "WebexTeamsInput.webhook",
+          "class_name": "WebexTeamsInput",
+          "method_name": "webhook",
+          "param_types": [
+            "dict"
+          ],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "POST /webhooks/webexteams/webhook"
+        },
+        {
+          "id": "SocketIOInput.connect",
+          "class_name": "SocketIOInput",
+          "method_name": "connect",
+          "param_types": [
+            "str",
+            "dict",
+            "dict"
+          ],
+          "return_type": "bool",
+          "protocol": "WebSocket",
+          "endpoint": "connect"
+        },
+        {
+          "id": "SocketIOInput.disconnect",
+          "class_name": "SocketIOInput",
+          "method_name": "disconnect",
+          "param_types": [
+            "str"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "disconnect"
+        },
+        {
+          "id": "SocketIOInput.session_request",
+          "class_name": "SocketIOInput",
+          "method_name": "session_request",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "session_request"
+        },
+        {
+          "id": "SocketIOInput.handle_message",
+          "class_name": "SocketIOInput",
+          "method_name": "handle_message",
+          "param_types": [
+            "str",
+            "dict"
+          ],
+          "return_type": "void",
+          "protocol": "WebSocket",
+          "endpoint": "user_uttered"
+        },
+        {
+          "id": "interactive.visualisation_html",
+          "class_name": "interactive",
+          "method_name": "visualisation_html",
+          "param_types": [],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /visualization.html"
+        },
+        {
+          "id": "interactive.visualisation_png",
+          "class_name": "interactive",
+          "method_name": "visualisation_png",
+          "param_types": [],
+          "return_type": "str",
+          "protocol": "REST",
+          "endpoint": "GET /visualization.dot"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

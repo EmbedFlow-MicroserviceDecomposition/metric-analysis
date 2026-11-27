@@ -1,0 +1,81 @@
+{
+  "system_id": "MS034",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "api-gateway": {
+      "exposed_interfaces": []
+    },
+    "service-one": {
+      "exposed_interfaces": [
+        {
+          "id": "NameValueController.getNameValue",
+          "class_name": "NameValueController",
+          "method_name": "getNameValue",
+          "param_types": [],
+          "return_type": "NameValue",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "ServiceOneRabbitMessageConsumer.process",
+          "class_name": "ServiceOneRabbitMessageConsumer",
+          "method_name": "process",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "com.mudigal.microservices-sample.service-one"
+        }
+      ]
+    },
+    "service-two": {
+      "exposed_interfaces": [
+        {
+          "id": "NameValueController.getAllNameValue",
+          "class_name": "NameValueController",
+          "method_name": "getAllNameValue",
+          "param_types": [],
+          "return_type": "AllNameValueTO",
+          "protocol": "REST",
+          "endpoint": "GET /"
+        },
+        {
+          "id": "ServiceTwoRabbitMessageConsumer.process",
+          "class_name": "ServiceTwoRabbitMessageConsumer",
+          "method_name": "process",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "com.mudigal.microservices-sample.service-two"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "service-one",
+      "src_class": "ServiceOneRabbitMessageProducer",
+      "src_method": "sendMessageToQueue",
+      "dst_service": "service-two",
+      "dst_class": "ServiceTwoRabbitMessageConsumer",
+      "dst_interface_id": "ServiceTwoRabbitMessageConsumer.process",
+      "protocol": "Messaging",
+      "evidence": "service-one/src/main/java/com/mudigal/one/service/impl/ServiceOneRabbitMessageProducer.java:35 this.rabbitTemplate.convertAndSend(ServiceOneRabbitMQBean.exchangeName, -> service-two/src/main/java/com/mudigal/two/service/impl/ServiceTwoRabbitMessageConsumer.java:35"
+    },
+    {
+      "src_service": "service-two",
+      "src_class": "ServiceTwoRabbitMessageProducer",
+      "src_method": "sendMessageToQueue",
+      "dst_service": "service-one",
+      "dst_class": "ServiceOneRabbitMessageConsumer",
+      "dst_interface_id": "ServiceOneRabbitMessageConsumer.process",
+      "protocol": "Messaging",
+      "evidence": "service-two/src/main/java/com/mudigal/two/service/impl/ServiceTwoRabbitMessageProducer.java:37 this.rabbitTemplate.convertAndSend(ServiceTwoRabbitMQBean.exchangeName, -> service-one/src/main/java/com/mudigal/one/service/impl/ServiceOneRabbitMessageConsumer.java:37"
+    }
+  ]
+}

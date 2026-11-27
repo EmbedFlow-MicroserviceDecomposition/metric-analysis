@@ -1,0 +1,4243 @@
+{
+  "system_id": "MS029",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "locator": {
+      "exposed_interfaces": []
+    },
+    "service": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthenticationServiceListener.brokerConnect",
+          "class_name": "AuthenticationServiceListener",
+          "method_name": "brokerConnect",
+          "param_types": [
+            "AuthRequest"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$SYS/SVC/auth/request (action=brokerConnect)"
+        },
+        {
+          "id": "AuthenticationServiceListener.brokerDisconnect",
+          "class_name": "AuthenticationServiceListener",
+          "method_name": "brokerDisconnect",
+          "param_types": [
+            "AuthRequest"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$SYS/SVC/auth/request (action=brokerDisconnect)"
+        },
+        {
+          "id": "AuthenticationServiceListener.getEntity",
+          "class_name": "AuthenticationServiceListener",
+          "method_name": "getEntity",
+          "param_types": [
+            "EntityRequest"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$SYS/SVC/auth/request (action=getEntity)"
+        },
+        {
+          "id": "DeviceConnectionEventListenerServiceImpl.onKapuaEvent",
+          "class_name": "DeviceConnectionEventListenerServiceImpl",
+          "method_name": "onKapuaEvent",
+          "param_types": [
+            "ServiceEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "device"
+        }
+      ]
+    },
+    "message": {
+      "exposed_interfaces": []
+    },
+    "transport": {
+      "exposed_interfaces": []
+    },
+    "translator": {
+      "exposed_interfaces": []
+    },
+    "extras": {
+      "exposed_interfaces": []
+    },
+    "plug-ins": {
+      "exposed_interfaces": []
+    },
+    "rest-api": {
+      "exposed_interfaces": [
+        {
+          "id": "AccessInfos.simpleQuery",
+          "class_name": "AccessInfos",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "int",
+            "int"
+          ],
+          "return_type": "AccessInfoListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos"
+        },
+        {
+          "id": "AccessInfos.query",
+          "class_name": "AccessInfos",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "AccessInfoQuery"
+          ],
+          "return_type": "AccessInfoListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/_query"
+        },
+        {
+          "id": "AccessInfos.count",
+          "class_name": "AccessInfos",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "AccessInfoQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/_count"
+        },
+        {
+          "id": "AccessInfos.create",
+          "class_name": "AccessInfos",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "AccessInfoCreator"
+          ],
+          "return_type": "AccessInfo",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos"
+        },
+        {
+          "id": "AccessInfos.find",
+          "class_name": "AccessInfos",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "AccessInfo",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos/{accessInfoId}"
+        },
+        {
+          "id": "AccessInfos.deleteAccessInfo",
+          "class_name": "AccessInfos",
+          "method_name": "deleteAccessInfo",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/accessinfos/{accessInfoId}"
+        },
+        {
+          "id": "AccessPermissions.simpleQuery",
+          "class_name": "AccessPermissions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "boolean",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "AccessPermissionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos/{accessInfoId}/permissions"
+        },
+        {
+          "id": "AccessPermissions.query",
+          "class_name": "AccessPermissions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessPermissionQuery"
+          ],
+          "return_type": "AccessPermissionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/permissions/_query"
+        },
+        {
+          "id": "AccessPermissions.count",
+          "class_name": "AccessPermissions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessPermissionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/permissions/_count"
+        },
+        {
+          "id": "AccessPermissions.create",
+          "class_name": "AccessPermissions",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessPermissionCreator"
+          ],
+          "return_type": "AccessPermission",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/permissions"
+        },
+        {
+          "id": "AccessPermissions.find",
+          "class_name": "AccessPermissions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "AccessPermission",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos/{accessInfoId}/permissions/{accessPermissionId}"
+        },
+        {
+          "id": "AccessPermissions.deleteAccessPermission",
+          "class_name": "AccessPermissions",
+          "method_name": "deleteAccessPermission",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/accessinfos/{accessInfoId}/permissions/{accessPermissionId}"
+        },
+        {
+          "id": "AccessRoles.simpleQuery",
+          "class_name": "AccessRoles",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "AccessRoleListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos/{accessInfoId}/roles"
+        },
+        {
+          "id": "AccessRoles.query",
+          "class_name": "AccessRoles",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessRoleQuery"
+          ],
+          "return_type": "AccessRoleListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/roles/_query"
+        },
+        {
+          "id": "AccessRoles.count",
+          "class_name": "AccessRoles",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessRoleQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/roles/_count"
+        },
+        {
+          "id": "AccessRoles.create",
+          "class_name": "AccessRoles",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "AccessRoleCreator"
+          ],
+          "return_type": "AccessRole",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accessinfos/{accessInfoId}/roles"
+        },
+        {
+          "id": "AccessRoles.find",
+          "class_name": "AccessRoles",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "AccessRole",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accessinfos/{accessInfoId}/roles/{accessRoleId}"
+        },
+        {
+          "id": "AccessRoles.deleteAccessRole",
+          "class_name": "AccessRoles",
+          "method_name": "deleteAccessRole",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/accessinfos/{accessInfoId}/roles/{accessRoleId}"
+        },
+        {
+          "id": "Account.find",
+          "class_name": "Account",
+          "method_name": "find",
+          "param_types": [
+            "EntityId"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accounts/{accountId}"
+        },
+        {
+          "id": "Account.update",
+          "class_name": "Account",
+          "method_name": "update",
+          "param_types": [
+            "EntityId",
+            "AccountUpdateRequest"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/accounts/{accountId}"
+        },
+        {
+          "id": "Account.deleteAccount",
+          "class_name": "Account",
+          "method_name": "deleteAccount",
+          "param_types": [
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/accounts/{accountId}"
+        },
+        {
+          "id": "Accounts.simpleQuery",
+          "class_name": "Accounts",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "AccountListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/accounts"
+        },
+        {
+          "id": "Accounts.query",
+          "class_name": "Accounts",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "AccountQuery"
+          ],
+          "return_type": "AccountListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accounts/_query"
+        },
+        {
+          "id": "Accounts.count",
+          "class_name": "Accounts",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "AccountQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accounts/_count"
+        },
+        {
+          "id": "Accounts.create",
+          "class_name": "Accounts",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "AccountCreator"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/accounts"
+        },
+        {
+          "id": "AllAccounts.simpleQuery",
+          "class_name": "AllAccounts",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "AccountListResult",
+          "protocol": "REST",
+          "endpoint": "GET /accounts"
+        },
+        {
+          "id": "Authentication.loginUsernamePassword",
+          "class_name": "Authentication",
+          "method_name": "loginUsernamePassword",
+          "param_types": [
+            "UsernamePasswordCredentials"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/user"
+        },
+        {
+          "id": "Authentication.loginUsernamePasswordCode",
+          "class_name": "Authentication",
+          "method_name": "loginUsernamePasswordCode",
+          "param_types": [
+            "boolean",
+            "UsernamePasswordCredentials"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/mfa"
+        },
+        {
+          "id": "Authentication.loginApiKey",
+          "class_name": "Authentication",
+          "method_name": "loginApiKey",
+          "param_types": [
+            "ApiKeyCredentials"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/apikey"
+        },
+        {
+          "id": "Authentication.loginJwt",
+          "class_name": "Authentication",
+          "method_name": "loginJwt",
+          "param_types": [
+            "JwtCredentials"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/jwt"
+        },
+        {
+          "id": "Authentication.logout",
+          "class_name": "Authentication",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/logout"
+        },
+        {
+          "id": "Authentication.refresh",
+          "class_name": "Authentication",
+          "method_name": "refresh",
+          "param_types": [
+            "RefreshTokenCredentials"
+          ],
+          "return_type": "AccessToken",
+          "protocol": "REST",
+          "endpoint": "POST /authentication/refresh"
+        },
+        {
+          "id": "Authentication.loginInfo",
+          "class_name": "Authentication",
+          "method_name": "loginInfo",
+          "param_types": [],
+          "return_type": "LoginInfo",
+          "protocol": "REST",
+          "endpoint": "GET /authentication/info"
+        },
+        {
+          "id": "Authorizations.fetchClaims",
+          "class_name": "Authorizations",
+          "method_name": "fetchClaims",
+          "param_types": [
+            "ScopeId"
+          ],
+          "return_type": "Set<String>",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/authorization/claims"
+        },
+        {
+          "id": "Credentials.simpleQuery",
+          "class_name": "Credentials",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "boolean",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "CredentialListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/credentials"
+        },
+        {
+          "id": "Credentials.query",
+          "class_name": "Credentials",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "CredentialQuery"
+          ],
+          "return_type": "CredentialListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/credentials/_query"
+        },
+        {
+          "id": "Credentials.count",
+          "class_name": "Credentials",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "CredentialQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/credentials/_count"
+        },
+        {
+          "id": "Credentials.create",
+          "class_name": "Credentials",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "CredentialCreator"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/credentials"
+        },
+        {
+          "id": "Credentials.find",
+          "class_name": "Credentials",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/credentials/{credentialId}"
+        },
+        {
+          "id": "Credentials.update",
+          "class_name": "Credentials",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Credential"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/credentials/{credentialId}"
+        },
+        {
+          "id": "Credentials.deleteCredential",
+          "class_name": "Credentials",
+          "method_name": "deleteCredential",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/credentials/{credentialId}"
+        },
+        {
+          "id": "Credentials.unlockCredential",
+          "class_name": "Credentials",
+          "method_name": "unlockCredential",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/credentials/{credentialId}/unlock"
+        },
+        {
+          "id": "Credentials.unlock",
+          "class_name": "Credentials",
+          "method_name": "unlock",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/credentials/{credentialId}/_unlock"
+        },
+        {
+          "id": "Credentials.getAvailableAuthAdapter",
+          "class_name": "Credentials",
+          "method_name": "getAvailableAuthAdapter",
+          "param_types": [],
+          "return_type": "SetResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/credentials/_availableCredentials"
+        },
+        {
+          "id": "CurrentAccount.find",
+          "class_name": "CurrentAccount",
+          "method_name": "find",
+          "param_types": [],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "GET /account"
+        },
+        {
+          "id": "CurrentAccount.update",
+          "class_name": "CurrentAccount",
+          "method_name": "update",
+          "param_types": [
+            "CurrentAccountUpdateRequest"
+          ],
+          "return_type": "Account",
+          "protocol": "REST",
+          "endpoint": "PUT /account"
+        },
+        {
+          "id": "DataChannels.simpleQuery",
+          "class_name": "DataChannels",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "List<String>",
+            "String",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "ChannelInfoListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/channels"
+        },
+        {
+          "id": "DataChannels.query",
+          "class_name": "DataChannels",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "ChannelInfoQuery"
+          ],
+          "return_type": "ChannelInfoListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/channels/_query"
+        },
+        {
+          "id": "DataChannels.count",
+          "class_name": "DataChannels",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "ChannelInfoQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/channels/_count"
+        },
+        {
+          "id": "DataChannels.find",
+          "class_name": "DataChannels",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "StorableEntityId"
+          ],
+          "return_type": "ChannelInfo",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/channels/{channelInfoId}"
+        },
+        {
+          "id": "DataClients.simpleQuery",
+          "class_name": "DataClients",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "List<String>",
+            "int",
+            "int"
+          ],
+          "return_type": "ClientInfoListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/clients"
+        },
+        {
+          "id": "DataClients.query",
+          "class_name": "DataClients",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "ClientInfoQuery"
+          ],
+          "return_type": "ClientInfoListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/clients/_query"
+        },
+        {
+          "id": "DataClients.count",
+          "class_name": "DataClients",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "ClientInfoQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/clients/_count"
+        },
+        {
+          "id": "DataClients.find",
+          "class_name": "DataClients",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "StorableEntityId"
+          ],
+          "return_type": "ClientInfo",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/clients/{clientInfoId}"
+        },
+        {
+          "id": "DataMessages.simpleQuery",
+          "class_name": "DataMessages",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "List<String>",
+            "String",
+            "boolean",
+            "DateParam",
+            "DateParam",
+            "String",
+            "String",
+            "String",
+            "String",
+            "SortDirection",
+            "int",
+            "int"
+          ],
+          "return_type": "MessageListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/messages"
+        },
+        {
+          "id": "DataMessages.storeMessage",
+          "class_name": "DataMessages",
+          "method_name": "storeMessage",
+          "param_types": [
+            "ScopeId",
+            "KapuaDataMessage"
+          ],
+          "return_type": "StorableEntityId",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/messages"
+        },
+        {
+          "id": "DataMessages.query",
+          "class_name": "DataMessages",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "MessageQuery"
+          ],
+          "return_type": "MessageListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/messages/_query"
+        },
+        {
+          "id": "DataMessages.count",
+          "class_name": "DataMessages",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "MessageQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/messages/_count"
+        },
+        {
+          "id": "DataMessages.find",
+          "class_name": "DataMessages",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "StorableEntityId"
+          ],
+          "return_type": "DatastoreMessage",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/messages/{datastoreMessageId}"
+        },
+        {
+          "id": "DataMessagesJson.simpleQueryJson",
+          "class_name": "DataMessagesJson",
+          "method_name": "simpleQueryJson",
+          "param_types": [
+            "ScopeId",
+            "List<String>",
+            "String",
+            "boolean",
+            "DateParam",
+            "DateParam",
+            "String",
+            "String",
+            "String",
+            "String",
+            "SortDirection",
+            "int",
+            "int"
+          ],
+          "return_type": "JsonMessageListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/messages"
+        },
+        {
+          "id": "DataMessagesJson.storeMessageJson",
+          "class_name": "DataMessagesJson",
+          "method_name": "storeMessageJson",
+          "param_types": [
+            "ScopeId",
+            "JsonKapuaDataMessage"
+          ],
+          "return_type": "StorableEntityId",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/messages"
+        },
+        {
+          "id": "DataMessagesJson.queryJson",
+          "class_name": "DataMessagesJson",
+          "method_name": "queryJson",
+          "param_types": [
+            "ScopeId",
+            "JsonMessageQuery"
+          ],
+          "return_type": "JsonMessageListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/messages/_query"
+        },
+        {
+          "id": "DataMessagesJson.findJson",
+          "class_name": "DataMessagesJson",
+          "method_name": "findJson",
+          "param_types": [
+            "ScopeId",
+            "StorableEntityId"
+          ],
+          "return_type": "JsonDatastoreMessage",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/messages/{datastoreMessageId}"
+        },
+        {
+          "id": "DataMetrics.simpleQuery",
+          "class_name": "DataMetrics",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "List<String>",
+            "String",
+            "String",
+            "int",
+            "int"
+          ],
+          "return_type": "MetricInfoListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/metrics"
+        },
+        {
+          "id": "DataMetrics.query",
+          "class_name": "DataMetrics",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "MetricInfoQuery"
+          ],
+          "return_type": "MetricInfoListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/metrics/_query"
+        },
+        {
+          "id": "DataMetrics.count",
+          "class_name": "DataMetrics",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "MetricInfoQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/data/metrics/_count"
+        },
+        {
+          "id": "DataMetrics.find",
+          "class_name": "DataMetrics",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "StorableEntityId"
+          ],
+          "return_type": "MetricInfo",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/data/metrics/{metricInfoId}"
+        },
+        {
+          "id": "DeviceConnectionOptions.find",
+          "class_name": "DeviceConnectionOptions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "DeviceConnectionOption",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceconnections/{connectionId}/options"
+        },
+        {
+          "id": "DeviceConnectionOptions.update",
+          "class_name": "DeviceConnectionOptions",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceConnectionOption"
+          ],
+          "return_type": "DeviceConnectionOption",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/deviceconnections/{connectionId}/options"
+        },
+        {
+          "id": "DeviceConnections.simpleQuery",
+          "class_name": "DeviceConnections",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "String",
+            "String",
+            "DeviceConnectionStatus",
+            "int",
+            "int"
+          ],
+          "return_type": "DeviceConnectionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceconnections"
+        },
+        {
+          "id": "DeviceConnections.query",
+          "class_name": "DeviceConnections",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "DeviceConnectionQuery"
+          ],
+          "return_type": "DeviceConnectionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceconnections/_query"
+        },
+        {
+          "id": "DeviceConnections.count",
+          "class_name": "DeviceConnections",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "DeviceConnectionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceconnections/_count"
+        },
+        {
+          "id": "DeviceConnections.find",
+          "class_name": "DeviceConnections",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "DeviceConnection",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceconnections/{deviceConnectionId}"
+        },
+        {
+          "id": "DeviceConnections.disconnect",
+          "class_name": "DeviceConnections",
+          "method_name": "disconnect",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceconnections/{deviceConnectionId}/_disconnect"
+        },
+        {
+          "id": "DeviceConnections.getAvailableAuthAdapter",
+          "class_name": "DeviceConnections",
+          "method_name": "getAvailableAuthAdapter",
+          "param_types": [],
+          "return_type": "SetResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceconnections/_availableAuth"
+        },
+        {
+          "id": "DeviceEvents.simpleQuery",
+          "class_name": "DeviceEvents",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "DateParam",
+            "DateParam",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "DeviceEventListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/events"
+        },
+        {
+          "id": "DeviceEvents.query",
+          "class_name": "DeviceEvents",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceEventQuery"
+          ],
+          "return_type": "DeviceEventListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/events/_query"
+        },
+        {
+          "id": "DeviceEvents.count",
+          "class_name": "DeviceEvents",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceEventQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/events/_count"
+        },
+        {
+          "id": "DeviceEvents.find",
+          "class_name": "DeviceEvents",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "DeviceEvent",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/events/{deviceEventId}"
+        },
+        {
+          "id": "DeviceEvents.deleteDeviceEvent",
+          "class_name": "DeviceEvents",
+          "method_name": "deleteDeviceEvent",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/events/{deviceEventId}"
+        },
+        {
+          "id": "DeviceGroups.simpleQuery",
+          "class_name": "DeviceGroups",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "DeviceGroupListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceGroups"
+        },
+        {
+          "id": "DeviceGroups.query",
+          "class_name": "DeviceGroups",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "DeviceGroupQuery"
+          ],
+          "return_type": "DeviceGroupListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceGroups/_query"
+        },
+        {
+          "id": "DeviceGroups.count",
+          "class_name": "DeviceGroups",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "DeviceGroupQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceGroups/_count"
+        },
+        {
+          "id": "DeviceGroups.create",
+          "class_name": "DeviceGroups",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "DeviceGroupCreator"
+          ],
+          "return_type": "DeviceGroup",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/deviceGroups"
+        },
+        {
+          "id": "DeviceGroups.find",
+          "class_name": "DeviceGroups",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "DeviceGroup",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/deviceGroups/{deviceGroupId}"
+        },
+        {
+          "id": "DeviceGroups.update",
+          "class_name": "DeviceGroups",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceGroup"
+          ],
+          "return_type": "DeviceGroup",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/deviceGroups/{deviceGroupId}"
+        },
+        {
+          "id": "DeviceGroups.delete",
+          "class_name": "DeviceGroups",
+          "method_name": "delete",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/deviceGroups/{deviceGroupId}"
+        },
+        {
+          "id": "DeviceManagementAssets.get",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceAssets",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/assets"
+        },
+        {
+          "id": "DeviceManagementAssets.getPost",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceAssets"
+          ],
+          "return_type": "DeviceAssets",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/assets"
+        },
+        {
+          "id": "DeviceManagementAssets.read",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "read",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceAssets"
+          ],
+          "return_type": "DeviceAssets",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/assets/_read"
+        },
+        {
+          "id": "DeviceManagementAssets.write",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "write",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceAssets"
+          ],
+          "return_type": "DeviceAssets",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/assets/_write"
+        },
+        {
+          "id": "DeviceManagementAssets.getSettings",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "getSettings",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "DeviceAssetStoreSettings",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/assets/_settings"
+        },
+        {
+          "id": "DeviceManagementAssets.postSettings",
+          "class_name": "DeviceManagementAssets",
+          "method_name": "postSettings",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceAssetStoreSettings"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}/assets/_settings"
+        },
+        {
+          "id": "DeviceManagementBundles.get",
+          "class_name": "DeviceManagementBundles",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "SortOrder",
+            "Long"
+          ],
+          "return_type": "DeviceBundles",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/bundles"
+        },
+        {
+          "id": "DeviceManagementBundles.start",
+          "class_name": "DeviceManagementBundles",
+          "method_name": "start",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/bundles/{bundleId}/_start"
+        },
+        {
+          "id": "DeviceManagementBundles.stop",
+          "class_name": "DeviceManagementBundles",
+          "method_name": "stop",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/bundles/{bundleId}/_stop"
+        },
+        {
+          "id": "DeviceManagementCommands.sendCommand",
+          "class_name": "DeviceManagementCommands",
+          "method_name": "sendCommand",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceCommandInput"
+          ],
+          "return_type": "DeviceCommandOutput",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/commands/_execute"
+        },
+        {
+          "id": "DeviceManagementConfigurations.get",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/configurations"
+        },
+        {
+          "id": "DeviceManagementConfigurations.update",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceConfiguration"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}/configurations"
+        },
+        {
+          "id": "DeviceManagementConfigurations.getComponent",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "getComponent",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long"
+          ],
+          "return_type": "DeviceConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/configurations/{componentId}"
+        },
+        {
+          "id": "DeviceManagementConfigurations.updateComponent",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "updateComponent",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long",
+            "DeviceComponentConfiguration"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}/configurations/{componentId}"
+        },
+        {
+          "id": "DeviceManagementConfigurations.getSettings",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "getSettings",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "DeviceConfigurationStoreSettings",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/configurations/_settings"
+        },
+        {
+          "id": "DeviceManagementConfigurations.postSettings",
+          "class_name": "DeviceManagementConfigurations",
+          "method_name": "postSettings",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceConfigurationStoreSettings"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}/configurations/_settings"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventory",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventory",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventory",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventoryBundles",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventoryBundles",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventoryBundles",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory/bundles"
+        },
+        {
+          "id": "DeviceManagementInventory.startInventoryBundles",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "startInventoryBundles",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceInventoryBundle"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/inventory/bundles/_start"
+        },
+        {
+          "id": "DeviceManagementInventory.stopInventoryBundles",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "stopInventoryBundles",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceInventoryBundle"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/inventory/bundles/_stop"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventoryContainers",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventoryContainers",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventoryContainers",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory/containers"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventoryImages",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventoryImages",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventoryImages",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory/images"
+        },
+        {
+          "id": "DeviceManagementInventory.deleteInventoryImage",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "deleteInventoryImage",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceInventoryImage"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/inventory/images/_delete"
+        },
+        {
+          "id": "DeviceManagementInventory.startInventoryContainers",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "startInventoryContainers",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceInventoryContainer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/inventory/containers/_start"
+        },
+        {
+          "id": "DeviceManagementInventory.stopInventoryContainers",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "stopInventoryContainers",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceInventoryContainer"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/inventory/containers/_stop"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventoryPackages",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventoryPackages",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventoryPackages",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory/packages"
+        },
+        {
+          "id": "DeviceManagementInventory.getInventorySystemPackages",
+          "class_name": "DeviceManagementInventory",
+          "method_name": "getInventorySystemPackages",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceInventorySystemPackages",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/inventory/system"
+        },
+        {
+          "id": "DeviceManagementKeystores.getKeystores",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "getKeystores",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceKeystores",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/keystore"
+        },
+        {
+          "id": "DeviceManagementKeystores.getKeystoreItems",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "getKeystoreItems",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "Long"
+          ],
+          "return_type": "DeviceKeystoreItems",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/keystore/items"
+        },
+        {
+          "id": "DeviceManagementKeystores.getKeystoreItem",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "getKeystoreItem",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "Long"
+          ],
+          "return_type": "DeviceKeystoreItem",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/keystore/item"
+        },
+        {
+          "id": "DeviceManagementKeystores.createDeviceKeystoreCertificate",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "createDeviceKeystoreCertificate",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceKeystoreCertificateInfo"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/keystore/items/certificateInfo"
+        },
+        {
+          "id": "DeviceManagementKeystores.createDeviceKeystoreCertificateRaw",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "createDeviceKeystoreCertificate",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceKeystoreCertificate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/keystore/items/certificateRaw"
+        },
+        {
+          "id": "DeviceManagementKeystores.createDeviceKeystoreKeypair",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "createDeviceKeystoreKeypair",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceKeystoreKeypair"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/keystore/items/keypair"
+        },
+        {
+          "id": "DeviceManagementKeystores.createDeviceKeystoreCSR",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "createDeviceKeystoreCSR",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceKeystoreCSRInfo"
+          ],
+          "return_type": "DeviceKeystoreCSR",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/keystore/items/csr"
+        },
+        {
+          "id": "DeviceManagementKeystores.deleteKeystoreItem",
+          "class_name": "DeviceManagementKeystores",
+          "method_name": "deleteKeystoreItem",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/keystore/item"
+        },
+        {
+          "id": "DeviceManagementOperationNotifications.simpleQuery",
+          "class_name": "DeviceManagementOperationNotifications",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "ManagementOperationNotificationListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/operations/{operationId}/notifications"
+        },
+        {
+          "id": "DeviceManagementOperationNotifications.query",
+          "class_name": "DeviceManagementOperationNotifications",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "ManagementOperationNotificationQuery"
+          ],
+          "return_type": "ManagementOperationNotificationListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/operations/{operationId}/notifications/_query"
+        },
+        {
+          "id": "DeviceManagementOperationNotifications.count",
+          "class_name": "DeviceManagementOperationNotifications",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "ManagementOperationNotificationQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/operations/{operationId}/notifications/_count"
+        },
+        {
+          "id": "DeviceManagementOperationNotifications.find",
+          "class_name": "DeviceManagementOperationNotifications",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "ManagementOperationNotification",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/operations/{operationId}/notifications/{managementOperationNotificationId}"
+        },
+        {
+          "id": "DeviceManagementOperationNotifications.deleteManagementOperationNotification",
+          "class_name": "DeviceManagementOperationNotifications",
+          "method_name": "deleteManagementOperationNotification",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/operations/{operationId}/notifications/{managementOperationNotificationId}"
+        },
+        {
+          "id": "DeviceManagementOperations.simpleQuery",
+          "class_name": "DeviceManagementOperations",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "DeviceManagementOperationStatus",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "DeviceManagementOperationListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/operations"
+        },
+        {
+          "id": "DeviceManagementOperations.query",
+          "class_name": "DeviceManagementOperations",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceManagementOperationQuery"
+          ],
+          "return_type": "DeviceManagementOperationListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/operations/_query"
+        },
+        {
+          "id": "DeviceManagementOperations.count",
+          "class_name": "DeviceManagementOperations",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "DeviceManagementOperationQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/operations/_count"
+        },
+        {
+          "id": "DeviceManagementOperations.find",
+          "class_name": "DeviceManagementOperations",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "DeviceManagementOperation",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/operations/{deviceManagementOperationId}"
+        },
+        {
+          "id": "DeviceManagementOperations.deleteDeviceManagementOperation",
+          "class_name": "DeviceManagementOperations",
+          "method_name": "deleteDeviceManagementOperation",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/operations/{deviceManagementOperationId}"
+        },
+        {
+          "id": "DeviceManagementPackages.get",
+          "class_name": "DeviceManagementPackages",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DevicePackages",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/packages"
+        },
+        {
+          "id": "DeviceManagementPackages.download",
+          "class_name": "DeviceManagementPackages",
+          "method_name": "download",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "boolean",
+            "DevicePackageDownloadRequest"
+          ],
+          "return_type": "DeviceManagementOperation",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/packages/_download"
+        },
+        {
+          "id": "DeviceManagementPackages.uninstall",
+          "class_name": "DeviceManagementPackages",
+          "method_name": "uninstall",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "boolean",
+            "DevicePackageUninstallRequest"
+          ],
+          "return_type": "DeviceManagementOperation",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/packages/_uninstall"
+        },
+        {
+          "id": "DeviceManagementRequests.sendRequest",
+          "class_name": "DeviceManagementRequests",
+          "method_name": "sendRequest",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "GenericRequestMessage"
+          ],
+          "return_type": "GenericResponseMessage",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/requests"
+        },
+        {
+          "id": "DeviceManagementRequestsJson.sendRequest",
+          "class_name": "DeviceManagementRequestsJson",
+          "method_name": "sendRequest",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "JsonGenericRequestMessage"
+          ],
+          "return_type": "JsonGenericResponseMessage",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/requests"
+        },
+        {
+          "id": "DeviceManagementSnapshots.get",
+          "class_name": "DeviceManagementSnapshots",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceSnapshots",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/snapshots"
+        },
+        {
+          "id": "DeviceManagementSnapshots.rollback",
+          "class_name": "DeviceManagementSnapshots",
+          "method_name": "rollback",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/{deviceId}/snapshots/{snapshotId}/_rollback"
+        },
+        {
+          "id": "DeviceManagementSnapshots.download",
+          "class_name": "DeviceManagementSnapshots",
+          "method_name": "download",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Long"
+          ],
+          "return_type": "DeviceConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/snapshots/{snapshotId}"
+        },
+        {
+          "id": "DeviceManagementWires.get",
+          "class_name": "DeviceManagementWires",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "DeviceConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}/wire/graph/snapshot"
+        },
+        {
+          "id": "DeviceManagementWires.update",
+          "class_name": "DeviceManagementWires",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long",
+            "DeviceConfiguration"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}/wire/graph/snapshot"
+        },
+        {
+          "id": "DeviceManagementWires.delete",
+          "class_name": "DeviceManagementWires",
+          "method_name": "delete",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}/wire/graph"
+        },
+        {
+          "id": "Devices.simpleQuery",
+          "class_name": "Devices",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "String",
+            "DeviceConnectionStatus",
+            "String",
+            "List<String>",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "DeviceListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices"
+        },
+        {
+          "id": "Devices.query",
+          "class_name": "Devices",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "DeviceQuery"
+          ],
+          "return_type": "DeviceListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/_query"
+        },
+        {
+          "id": "Devices.count",
+          "class_name": "Devices",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "DeviceQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices/_count"
+        },
+        {
+          "id": "Devices.create",
+          "class_name": "Devices",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "DeviceCreator"
+          ],
+          "return_type": "Device",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/devices"
+        },
+        {
+          "id": "Devices.find",
+          "class_name": "Devices",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Device",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/devices/{deviceId}"
+        },
+        {
+          "id": "Devices.update",
+          "class_name": "Devices",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Device"
+          ],
+          "return_type": "Device",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/devices/{deviceId}"
+        },
+        {
+          "id": "Devices.deleteDevice",
+          "class_name": "Devices",
+          "method_name": "deleteDevice",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/devices/{deviceId}"
+        },
+        {
+          "id": "Domains.simpleQuery",
+          "class_name": "Domains",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "int",
+            "int"
+          ],
+          "return_type": "DomainListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/domains"
+        },
+        {
+          "id": "Domains.query",
+          "class_name": "Domains",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "DomainQuery"
+          ],
+          "return_type": "DomainListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/domains/_query"
+        },
+        {
+          "id": "Domains.count",
+          "class_name": "Domains",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "DomainQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/domains/_count"
+        },
+        {
+          "id": "Domains.find",
+          "class_name": "Domains",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Domain",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/domains/{domainId}"
+        },
+        {
+          "id": "EndpointInfos.simpleQuery",
+          "class_name": "EndpointInfos",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "String",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "EndpointInfoListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/endpointInfos"
+        },
+        {
+          "id": "EndpointInfos.query",
+          "class_name": "EndpointInfos",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "EndpointInfoQuery"
+          ],
+          "return_type": "EndpointInfoListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/endpointInfos/_query"
+        },
+        {
+          "id": "EndpointInfos.count",
+          "class_name": "EndpointInfos",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "EndpointInfoQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/endpointInfos/_count"
+        },
+        {
+          "id": "EndpointInfos.create",
+          "class_name": "EndpointInfos",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EndpointInfoCreator"
+          ],
+          "return_type": "EndpointInfo",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/endpointInfos"
+        },
+        {
+          "id": "EndpointInfos.find",
+          "class_name": "EndpointInfos",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "EndpointInfo",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/endpointInfos/{endpointInfoId}"
+        },
+        {
+          "id": "EndpointInfos.update",
+          "class_name": "EndpointInfos",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EndpointInfo"
+          ],
+          "return_type": "EndpointInfo",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/endpointInfos/{endpointInfoId}"
+        },
+        {
+          "id": "EndpointInfos.deleteEndpointInfo",
+          "class_name": "EndpointInfos",
+          "method_name": "deleteEndpointInfo",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/endpointInfos/{endpointInfoId}"
+        },
+        {
+          "id": "Groups.simpleQuery",
+          "class_name": "Groups",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "boolean",
+            "String",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "GroupListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/groups"
+        },
+        {
+          "id": "Groups.query",
+          "class_name": "Groups",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "GroupQuery"
+          ],
+          "return_type": "GroupListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/groups/_query"
+        },
+        {
+          "id": "Groups.count",
+          "class_name": "Groups",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "GroupQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/groups/_count"
+        },
+        {
+          "id": "Groups.create",
+          "class_name": "Groups",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "GroupCreator"
+          ],
+          "return_type": "Group",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/groups"
+        },
+        {
+          "id": "Groups.find",
+          "class_name": "Groups",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Group",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/groups/{groupId}"
+        },
+        {
+          "id": "Groups.update",
+          "class_name": "Groups",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Group"
+          ],
+          "return_type": "Group",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/groups/{groupId}"
+        },
+        {
+          "id": "Groups.deleteGroup",
+          "class_name": "Groups",
+          "method_name": "deleteGroup",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/groups/{groupId}"
+        },
+        {
+          "id": "JobEngine.startJob",
+          "class_name": "JobEngine",
+          "method_name": "startJob",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobStartOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/_start"
+        },
+        {
+          "id": "JobEngine.stopJob",
+          "class_name": "JobEngine",
+          "method_name": "stopJob",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/_stop"
+        },
+        {
+          "id": "JobEngine.isRunning",
+          "class_name": "JobEngine",
+          "method_name": "isRunning",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "IsJobRunningResponse",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/_isRunning"
+        },
+        {
+          "id": "JobEngine.isRunningMultiple",
+          "class_name": "JobEngine",
+          "method_name": "isRunning",
+          "param_types": [
+            "ScopeId",
+            "MultipleJobIdRequest"
+          ],
+          "return_type": "IsJobRunningMultipleResponse",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/_isRunning"
+        },
+        {
+          "id": "JobEngine.resumeJobExecution",
+          "class_name": "JobEngine",
+          "method_name": "resumeJobExecution",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/executions/{executionId}/_resume"
+        },
+        {
+          "id": "JobEngine.stopJobExecution",
+          "class_name": "JobEngine",
+          "method_name": "stopJobExecution",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/executions/{executionId}/_stop"
+        },
+        {
+          "id": "JobExecutions.simpleQuery",
+          "class_name": "JobExecutions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "boolean",
+            "DateParam",
+            "DateParam",
+            "JobExecutionStatus",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "JobExecutionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/executions"
+        },
+        {
+          "id": "JobExecutions.query",
+          "class_name": "JobExecutions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobExecutionQuery"
+          ],
+          "return_type": "JobExecutionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/executions/_query"
+        },
+        {
+          "id": "JobExecutions.count",
+          "class_name": "JobExecutions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobExecutionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/executions/_count"
+        },
+        {
+          "id": "JobExecutions.find",
+          "class_name": "JobExecutions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "JobExecution",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/executions/{executionId}"
+        },
+        {
+          "id": "JobExecutions.executionsByTarget",
+          "class_name": "JobExecutions",
+          "method_name": "executionsByTarget",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "int",
+            "int"
+          ],
+          "return_type": "JobTargetListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/executions/{executionId}/targets"
+        },
+        {
+          "id": "JobStepDefinitions.simpleQuery",
+          "class_name": "JobStepDefinitions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "JobStepDefinitionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobStepDefinitions"
+        },
+        {
+          "id": "JobStepDefinitions.query",
+          "class_name": "JobStepDefinitions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "JobStepDefinitionQuery"
+          ],
+          "return_type": "JobStepDefinitionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobStepDefinitions/_query"
+        },
+        {
+          "id": "JobStepDefinitions.count",
+          "class_name": "JobStepDefinitions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "JobStepQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobStepDefinitions/_count"
+        },
+        {
+          "id": "JobStepDefinitions.find",
+          "class_name": "JobStepDefinitions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "JobStepDefinition",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobStepDefinitions/{stepDefinitionId}"
+        },
+        {
+          "id": "JobSteps.simpleQuery",
+          "class_name": "JobSteps",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "JobStepListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/steps"
+        },
+        {
+          "id": "JobSteps.query",
+          "class_name": "JobSteps",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobStepQuery"
+          ],
+          "return_type": "JobStepListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/steps/_query"
+        },
+        {
+          "id": "JobSteps.count",
+          "class_name": "JobSteps",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobStepQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/steps/_count"
+        },
+        {
+          "id": "JobSteps.find",
+          "class_name": "JobSteps",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "JobStep",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/steps/{stepId}"
+        },
+        {
+          "id": "JobSteps.create",
+          "class_name": "JobSteps",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobStepCreator"
+          ],
+          "return_type": "JobStep",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/steps"
+        },
+        {
+          "id": "JobSteps.update",
+          "class_name": "JobSteps",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "JobStep"
+          ],
+          "return_type": "JobStep",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/jobs/{jobId}/steps/{stepId}"
+        },
+        {
+          "id": "JobSteps.deleteJobStep",
+          "class_name": "JobSteps",
+          "method_name": "deleteJobStep",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/jobs/{jobId}/steps/{stepId}"
+        },
+        {
+          "id": "JobTargets.simpleQuery",
+          "class_name": "JobTargets",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobTargetStatus",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "JobTargetListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/targets"
+        },
+        {
+          "id": "JobTargets.query",
+          "class_name": "JobTargets",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobTargetQuery"
+          ],
+          "return_type": "JobTargetListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/targets/_query"
+        },
+        {
+          "id": "JobTargets.count",
+          "class_name": "JobTargets",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobTargetQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/targets/_count"
+        },
+        {
+          "id": "JobTargets.find",
+          "class_name": "JobTargets",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "JobTarget",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/targets/{targetId}"
+        },
+        {
+          "id": "JobTargets.executionsByTarget",
+          "class_name": "JobTargets",
+          "method_name": "executionsByTarget",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "int",
+            "int"
+          ],
+          "return_type": "JobExecutionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/targets/{targetId}/executions"
+        },
+        {
+          "id": "JobTargets.create",
+          "class_name": "JobTargets",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "JobTargetCreator"
+          ],
+          "return_type": "JobTarget",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/targets"
+        },
+        {
+          "id": "JobTargets.deleteJobTarget",
+          "class_name": "JobTargets",
+          "method_name": "deleteJobTarget",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/jobs/{jobId}/targets/{targetId}"
+        },
+        {
+          "id": "JobTriggerDefinitions.simpleQuery",
+          "class_name": "JobTriggerDefinitions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "TriggerDefinitionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/triggerDefinitions"
+        },
+        {
+          "id": "JobTriggerDefinitions.query",
+          "class_name": "JobTriggerDefinitions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "TriggerDefinitionQuery"
+          ],
+          "return_type": "TriggerDefinitionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/triggerDefinitions/_query"
+        },
+        {
+          "id": "JobTriggerDefinitions.count",
+          "class_name": "JobTriggerDefinitions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "TriggerDefinitionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/triggerDefinitions/_count"
+        },
+        {
+          "id": "JobTriggerDefinitions.find",
+          "class_name": "JobTriggerDefinitions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "TriggerDefinition",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/triggerDefinitions/{triggerDefinitionId}"
+        },
+        {
+          "id": "JobTriggers.simpleQuery",
+          "class_name": "JobTriggers",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "TriggerListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/triggers"
+        },
+        {
+          "id": "JobTriggers.query",
+          "class_name": "JobTriggers",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "TriggerQuery"
+          ],
+          "return_type": "TriggerListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/triggers/_query"
+        },
+        {
+          "id": "JobTriggers.count",
+          "class_name": "JobTriggers",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "TriggerQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/triggers/_count"
+        },
+        {
+          "id": "JobTriggers.find",
+          "class_name": "JobTriggers",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "Trigger",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/triggers/{triggerId}"
+        },
+        {
+          "id": "JobTriggers.create",
+          "class_name": "JobTriggers",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "TriggerCreator"
+          ],
+          "return_type": "Trigger",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/triggers"
+        },
+        {
+          "id": "JobTriggers.update",
+          "class_name": "JobTriggers",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "Trigger"
+          ],
+          "return_type": "Trigger",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/jobs/{jobId}/triggers/{triggerId}"
+        },
+        {
+          "id": "JobTriggers.deleteTrigger",
+          "class_name": "JobTriggers",
+          "method_name": "deleteTrigger",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/jobs/{jobId}/triggers/{triggerId}"
+        },
+        {
+          "id": "JobTriggersFired.simpleQuery",
+          "class_name": "JobTriggersFired",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "FiredTriggerStatus",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "FiredTriggerListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}/triggers/{triggerId}/fired"
+        },
+        {
+          "id": "JobTriggersFired.query",
+          "class_name": "JobTriggersFired",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "FiredTriggerQuery"
+          ],
+          "return_type": "FiredTriggerListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/triggers/{triggerId}/fired/_query"
+        },
+        {
+          "id": "JobTriggersFired.count",
+          "class_name": "JobTriggersFired",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "FiredTriggerQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/{jobId}/triggers/{triggerId}/fired/_count"
+        },
+        {
+          "id": "Jobs.simpleQuery",
+          "class_name": "Jobs",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "String",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "JobListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs"
+        },
+        {
+          "id": "Jobs.query",
+          "class_name": "Jobs",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "JobQuery"
+          ],
+          "return_type": "JobListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/_query"
+        },
+        {
+          "id": "Jobs.count",
+          "class_name": "Jobs",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "JobQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs/_count"
+        },
+        {
+          "id": "Jobs.find",
+          "class_name": "Jobs",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Job",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/jobs/{jobId}"
+        },
+        {
+          "id": "Jobs.create",
+          "class_name": "Jobs",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "JobCreator"
+          ],
+          "return_type": "Job",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/jobs"
+        },
+        {
+          "id": "Jobs.update",
+          "class_name": "Jobs",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Job"
+          ],
+          "return_type": "Job",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/jobs/{jobId}"
+        },
+        {
+          "id": "Jobs.deleteJob",
+          "class_name": "Jobs",
+          "method_name": "deleteJob",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Boolean"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/jobs/{jobId}"
+        },
+        {
+          "id": "Roles.simpleQuery",
+          "class_name": "Roles",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "RoleListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/roles"
+        },
+        {
+          "id": "Roles.query",
+          "class_name": "Roles",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "RoleQuery"
+          ],
+          "return_type": "RoleListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles/_query"
+        },
+        {
+          "id": "Roles.count",
+          "class_name": "Roles",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "RoleQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles/_count"
+        },
+        {
+          "id": "Roles.create",
+          "class_name": "Roles",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "RoleCreator"
+          ],
+          "return_type": "Role",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles"
+        },
+        {
+          "id": "Roles.find",
+          "class_name": "Roles",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Role",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/roles/{roleId}"
+        },
+        {
+          "id": "Roles.update",
+          "class_name": "Roles",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Role"
+          ],
+          "return_type": "Role",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/roles/{roleId}"
+        },
+        {
+          "id": "Roles.deleteRole",
+          "class_name": "Roles",
+          "method_name": "deleteRole",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/roles/{roleId}"
+        },
+        {
+          "id": "Roles.usersForRole",
+          "class_name": "Roles",
+          "method_name": "usersForRole",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "UserListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/roles/{roleId}/users"
+        },
+        {
+          "id": "RolesPermissions.simpleQuery",
+          "class_name": "RolesPermissions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "Actions",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "RolePermissionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/roles/{roleId}/permissions"
+        },
+        {
+          "id": "RolesPermissions.query",
+          "class_name": "RolesPermissions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "RolePermissionQuery"
+          ],
+          "return_type": "RolePermissionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles/{roleId}/permissions/_query"
+        },
+        {
+          "id": "RolesPermissions.count",
+          "class_name": "RolesPermissions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "RolePermissionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles/{roleId}/permissions/_count"
+        },
+        {
+          "id": "RolesPermissions.create",
+          "class_name": "RolesPermissions",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "RolePermissionCreator"
+          ],
+          "return_type": "RolePermission",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/roles/{roleId}/permissions"
+        },
+        {
+          "id": "RolesPermissions.find",
+          "class_name": "RolesPermissions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "RolePermission",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/roles/{roleId}/permissions/{rolePermissionId}"
+        },
+        {
+          "id": "RolesPermissions.deleteRolePermission",
+          "class_name": "RolesPermissions",
+          "method_name": "deleteRolePermission",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/roles/{roleId}/permissions/{rolePermissionId}"
+        },
+        {
+          "id": "ServiceConfigurations.get",
+          "class_name": "ServiceConfigurations",
+          "method_name": "get",
+          "param_types": [
+            "ScopeId"
+          ],
+          "return_type": "ServiceConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/serviceConfigurations"
+        },
+        {
+          "id": "ServiceConfigurations.update",
+          "class_name": "ServiceConfigurations",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "ServiceConfiguration"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/serviceConfigurations"
+        },
+        {
+          "id": "ServiceConfigurations.getComponent",
+          "class_name": "ServiceConfigurations",
+          "method_name": "getComponent",
+          "param_types": [
+            "ScopeId",
+            "String"
+          ],
+          "return_type": "ServiceComponentConfiguration",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/serviceConfigurations/{serviceId}"
+        },
+        {
+          "id": "ServiceConfigurations.updateComponent",
+          "class_name": "ServiceConfigurations",
+          "method_name": "updateComponent",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "ServiceComponentConfiguration"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/serviceConfigurations/{serviceId}"
+        },
+        {
+          "id": "Streams.publish",
+          "class_name": "Streams",
+          "method_name": "publish",
+          "param_types": [
+            "ScopeId",
+            "Long",
+            "KapuaDataMessage"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/streams/messages"
+        },
+        {
+          "id": "StreamsJson.publish",
+          "class_name": "StreamsJson",
+          "method_name": "publish",
+          "param_types": [
+            "ScopeId",
+            "Long",
+            "JsonKapuaDataMessage"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/streams/messages"
+        },
+        {
+          "id": "Tags.simpleQuery",
+          "class_name": "Tags",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "String",
+            "boolean",
+            "String",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "TagListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/tags"
+        },
+        {
+          "id": "Tags.query",
+          "class_name": "Tags",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "TagQuery"
+          ],
+          "return_type": "TagListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/tags/_query"
+        },
+        {
+          "id": "Tags.count",
+          "class_name": "Tags",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "TagQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/tags/_count"
+        },
+        {
+          "id": "Tags.create",
+          "class_name": "Tags",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "TagCreator"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/tags"
+        },
+        {
+          "id": "Tags.find",
+          "class_name": "Tags",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/tags/{tagId}"
+        },
+        {
+          "id": "Tags.update",
+          "class_name": "Tags",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/tags/{tagId}"
+        },
+        {
+          "id": "Tags.deleteTag",
+          "class_name": "Tags",
+          "method_name": "deleteTag",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/tags/{tagId}"
+        },
+        {
+          "id": "UserCredentials.newPassword",
+          "class_name": "UserCredentials",
+          "method_name": "newPassword",
+          "param_types": [
+            "PasswordChangeRequest"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/user/credentials/password"
+        },
+        {
+          "id": "UserCredentials.unlockCredential",
+          "class_name": "UserCredentials",
+          "method_name": "unlockCredential",
+          "param_types": [
+            "EntityId",
+            "PasswordResetRequest"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/user/credentials/{credentialId}/_reset"
+        },
+        {
+          "id": "UserGroupPermissions.simpleQuery",
+          "class_name": "UserGroupPermissions",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "boolean",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "GroupPermissionListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups/{userGroupId}/permissions"
+        },
+        {
+          "id": "UserGroupPermissions.query",
+          "class_name": "UserGroupPermissions",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupPermissionQuery"
+          ],
+          "return_type": "GroupPermissionListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/permissions/_query"
+        },
+        {
+          "id": "UserGroupPermissions.count",
+          "class_name": "UserGroupPermissions",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupPermissionQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/permissions/_count"
+        },
+        {
+          "id": "UserGroupPermissions.create",
+          "class_name": "UserGroupPermissions",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupPermissionCreator"
+          ],
+          "return_type": "GroupPermission",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/permissions"
+        },
+        {
+          "id": "UserGroupPermissions.find",
+          "class_name": "UserGroupPermissions",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "GroupPermission",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups/{userGroupId}/permissions/{groupPermissionId}"
+        },
+        {
+          "id": "UserGroupPermissions.delete",
+          "class_name": "UserGroupPermissions",
+          "method_name": "delete",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/userGroups/{userGroupId}/permissions/{groupPermissionId}"
+        },
+        {
+          "id": "UserGroupRoles.simpleQuery",
+          "class_name": "UserGroupRoles",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "GroupRoleListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups/{userGroupId}/roles"
+        },
+        {
+          "id": "UserGroupRoles.query",
+          "class_name": "UserGroupRoles",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupRoleQuery"
+          ],
+          "return_type": "GroupRoleListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/roles/_query"
+        },
+        {
+          "id": "UserGroupRoles.count",
+          "class_name": "UserGroupRoles",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupRoleQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/roles/_count"
+        },
+        {
+          "id": "UserGroupRoles.create",
+          "class_name": "UserGroupRoles",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "GroupRoleCreator"
+          ],
+          "return_type": "GroupRole",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/{userGroupId}/roles"
+        },
+        {
+          "id": "UserGroupRoles.find",
+          "class_name": "UserGroupRoles",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "GroupRole",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups/{userGroupId}/roles/{groupRoleId}"
+        },
+        {
+          "id": "UserGroupRoles.delete",
+          "class_name": "UserGroupRoles",
+          "method_name": "delete",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/userGroups/{userGroupId}/roles/{groupRoleId}"
+        },
+        {
+          "id": "UserGroups.simpleQuery",
+          "class_name": "UserGroups",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "String",
+            "boolean",
+            "String",
+            "SortOrder",
+            "int",
+            "int"
+          ],
+          "return_type": "UserGroupListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups"
+        },
+        {
+          "id": "UserGroups.query",
+          "class_name": "UserGroups",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "UserGroupQuery"
+          ],
+          "return_type": "UserGroupListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/_query"
+        },
+        {
+          "id": "UserGroups.count",
+          "class_name": "UserGroups",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "UserGroupQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups/_count"
+        },
+        {
+          "id": "UserGroups.create",
+          "class_name": "UserGroups",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "UserGroupCreator"
+          ],
+          "return_type": "UserGroup",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/userGroups"
+        },
+        {
+          "id": "UserGroups.find",
+          "class_name": "UserGroups",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "UserGroup",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/userGroups/{userGroupId}"
+        },
+        {
+          "id": "UserGroups.update",
+          "class_name": "UserGroups",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "UserGroup"
+          ],
+          "return_type": "UserGroup",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/userGroups/{userGroupId}"
+        },
+        {
+          "id": "UserGroups.delete",
+          "class_name": "UserGroups",
+          "method_name": "delete",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/userGroups/{userGroupId}"
+        },
+        {
+          "id": "UserMfa.activateMfa",
+          "class_name": "UserMfa",
+          "method_name": "activateMfa",
+          "param_types": [],
+          "return_type": "MfaOption",
+          "protocol": "REST",
+          "endpoint": "POST /user/mfa"
+        },
+        {
+          "id": "UserMfa.findMfa",
+          "class_name": "UserMfa",
+          "method_name": "findMfa",
+          "param_types": [],
+          "return_type": "MfaOption",
+          "protocol": "REST",
+          "endpoint": "GET /user/mfa"
+        },
+        {
+          "id": "UserMfa.deleteMfa",
+          "class_name": "UserMfa",
+          "method_name": "deleteMfa",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /user/mfa"
+        },
+        {
+          "id": "UserMfa.disableTrust",
+          "class_name": "UserMfa",
+          "method_name": "disableTrust",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /user/mfa/disableTrust"
+        },
+        {
+          "id": "UserProfiles.changeUserProfile",
+          "class_name": "UserProfiles",
+          "method_name": "changeUserProfile",
+          "param_types": [
+            "UserProfile"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/user/profile"
+        },
+        {
+          "id": "UserProfiles.getUserProfile",
+          "class_name": "UserProfiles",
+          "method_name": "getUserProfile",
+          "param_types": [],
+          "return_type": "UserProfile",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/user/profile"
+        },
+        {
+          "id": "Users.simpleQuery",
+          "class_name": "Users",
+          "method_name": "simpleQuery",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "EntityId",
+            "String",
+            "String",
+            "String",
+            "SortOrder",
+            "boolean",
+            "int",
+            "int"
+          ],
+          "return_type": "UserListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/users"
+        },
+        {
+          "id": "Users.query",
+          "class_name": "Users",
+          "method_name": "query",
+          "param_types": [
+            "ScopeId",
+            "UserQuery"
+          ],
+          "return_type": "UserListResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/_query"
+        },
+        {
+          "id": "Users.count",
+          "class_name": "Users",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "UserQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/_count"
+        },
+        {
+          "id": "Users.create",
+          "class_name": "Users",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "UserCreator"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users"
+        },
+        {
+          "id": "Users.find",
+          "class_name": "Users",
+          "method_name": "find",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/users/{userId}"
+        },
+        {
+          "id": "Users.update",
+          "class_name": "Users",
+          "method_name": "update",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "User"
+          ],
+          "return_type": "User",
+          "protocol": "REST",
+          "endpoint": "PUT /{scopeId}/users/{userId}"
+        },
+        {
+          "id": "Users.deleteUser",
+          "class_name": "Users",
+          "method_name": "deleteUser",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/users/{userId}"
+        },
+        {
+          "id": "UsersCredentials.getAll",
+          "class_name": "UsersCredentials",
+          "method_name": "getAll",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "int",
+            "int"
+          ],
+          "return_type": "CredentialListResult",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/users/{userId}/credentials"
+        },
+        {
+          "id": "UsersCredentials.count",
+          "class_name": "UsersCredentials",
+          "method_name": "count",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "CredentialQuery"
+          ],
+          "return_type": "CountResult",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/{userId}/credentials/_count"
+        },
+        {
+          "id": "UsersCredentials.create",
+          "class_name": "UsersCredentials",
+          "method_name": "create",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "CredentialCreator"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/{userId}/credentials"
+        },
+        {
+          "id": "UsersCredentials.unlockCredential",
+          "class_name": "UsersCredentials",
+          "method_name": "unlockCredential",
+          "param_types": [
+            "ScopeId",
+            "EntityId",
+            "PasswordResetRequest"
+          ],
+          "return_type": "Credential",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/{userId}/credentials/password/_reset"
+        },
+        {
+          "id": "UsersMfa.createMfa",
+          "class_name": "UsersMfa",
+          "method_name": "createMfa",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "MfaOption",
+          "protocol": "REST",
+          "endpoint": "POST /{scopeId}/users/{userId}/mfa"
+        },
+        {
+          "id": "UsersMfa.findMfa",
+          "class_name": "UsersMfa",
+          "method_name": "findMfa",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "MfaOption",
+          "protocol": "REST",
+          "endpoint": "GET /{scopeId}/users/{userId}/mfa"
+        },
+        {
+          "id": "UsersMfa.deleteMfa",
+          "class_name": "UsersMfa",
+          "method_name": "deleteMfa",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/users/{userId}/mfa"
+        },
+        {
+          "id": "UsersMfa.disableTrust",
+          "class_name": "UsersMfa",
+          "method_name": "disableTrust",
+          "param_types": [
+            "ScopeId",
+            "EntityId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /{scopeId}/users/{userId}/mfa/disableTrust"
+        }
+      ]
+    },
+    "job-engine": {
+      "exposed_interfaces": [
+        {
+          "id": "JobEngineResource.cleanJobData",
+          "class_name": "JobEngineResource",
+          "method_name": "cleanJobData",
+          "param_types": [
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /clean-data/{scopeId}/{jobId}"
+        },
+        {
+          "id": "JobEngineResource.isRunning",
+          "class_name": "JobEngineResource",
+          "method_name": "isRunning",
+          "param_types": [
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "IsJobRunningResponse",
+          "protocol": "REST",
+          "endpoint": "GET /is-running/{scopeId}/{jobId}"
+        },
+        {
+          "id": "JobEngineResource.isRunningMultiple",
+          "class_name": "JobEngineResource",
+          "method_name": "isRunning",
+          "param_types": [
+            "KapuaId",
+            "MultipleJobIdRequest"
+          ],
+          "return_type": "IsJobRunningMultipleResponse",
+          "protocol": "REST",
+          "endpoint": "POST /is-running/{scopeId}"
+        },
+        {
+          "id": "JobEngineResource.resumeJobExecution",
+          "class_name": "JobEngineResource",
+          "method_name": "resumeJobExecution",
+          "param_types": [
+            "KapuaId",
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /resume-execution/{scopeId}/{jobId}/{executionId}"
+        },
+        {
+          "id": "JobEngineResource.startJob",
+          "class_name": "JobEngineResource",
+          "method_name": "startJob",
+          "param_types": [
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /start/{scopeId}/{jobId}"
+        },
+        {
+          "id": "JobEngineResource.startJobWithOptions",
+          "class_name": "JobEngineResource",
+          "method_name": "startJob",
+          "param_types": [
+            "KapuaId",
+            "KapuaId",
+            "JobStartOptions"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /start-with-options/{scopeId}/{jobId}"
+        },
+        {
+          "id": "JobEngineResource.stopJob",
+          "class_name": "JobEngineResource",
+          "method_name": "stopJob",
+          "param_types": [
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /stop/{scopeId}/{jobId}"
+        },
+        {
+          "id": "JobEngineResource.stopJobExecution",
+          "class_name": "JobEngineResource",
+          "method_name": "stopJobExecution",
+          "param_types": [
+            "KapuaId",
+            "KapuaId",
+            "KapuaId"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /stop-execution/{scopeId}/{jobId}/{executionId}"
+        }
+      ]
+    },
+    "broker": {
+      "exposed_interfaces": []
+    },
+    "consumer": {
+      "exposed_interfaces": [
+        {
+          "id": "DeviceMessageListener.processBirthMessage",
+          "class_name": "DeviceMessageListener",
+          "method_name": "processBirthMessage",
+          "param_types": [
+            "KapuaBirthMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$EDC/+/+/MQTT/BIRTH"
+        },
+        {
+          "id": "DeviceMessageListener.processDisconnectMessage",
+          "class_name": "DeviceMessageListener",
+          "method_name": "processDisconnectMessage",
+          "param_types": [
+            "KapuaDisconnectMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$EDC/+/+/MQTT/DC"
+        },
+        {
+          "id": "DeviceMessageListener.processAppsMessage",
+          "class_name": "DeviceMessageListener",
+          "method_name": "processAppsMessage",
+          "param_types": [
+            "KapuaAppsMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$EDC/+/+/MQTT/APPS"
+        },
+        {
+          "id": "DeviceMessageListener.processMissingMessage",
+          "class_name": "DeviceMessageListener",
+          "method_name": "processMissingMessage",
+          "param_types": [
+            "KapuaMissingMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$EDC/+/+/MQTT/LWT"
+        },
+        {
+          "id": "DeviceManagementNotificationMessageProcessor.processMessage",
+          "class_name": "DeviceManagementNotificationMessageProcessor",
+          "method_name": "processMessage",
+          "param_types": [
+            "KapuaNotifyMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "$EDC/+/+/DEPLOY-V2/NOTIFY/#"
+        },
+        {
+          "id": "DataStorageMessageProcessor.processMessage",
+          "class_name": "DataStorageMessageProcessor",
+          "method_name": "processMessage",
+          "param_types": [
+            "KapuaDataMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "# (KAPUA_MESSAGE_TYPE=TEL)"
+        },
+        {
+          "id": "DataStorageMessageProcessor.updateAssets",
+          "class_name": "DataStorageMessageProcessor",
+          "method_name": "updateAssets",
+          "param_types": [
+            "KapuaDataMessage"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "# (KAPUA_MESSAGE_TYPE=TEL)"
+        }
+      ]
+    },
+    "client": {
+      "exposed_interfaces": []
+    },
+    "simulator-kura": {
+      "exposed_interfaces": []
+    },
+    "console": {
+      "exposed_interfaces": []
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "startJob",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:49 jobEngineService.startJob(scopeId, jobId, jobStartOptions);"
+    },
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "stopJob",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.stopJob",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:58 jobEngineService.stopJob(scopeId, jobId);"
+    },
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "isRunning",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.isRunning",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:70 return new IsJobRunningResponse(jobId, jobEngineService.isRunning(scopeId, jobId));"
+    },
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "isRunning",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.isRunningMultiple",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:79 return new IsJobRunningMultipleResponse(jobEngineService.isRunning(scopeId, jobIds.getJobIds()));"
+    },
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "resumeJobExecution",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.resumeJobExecution",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:88 jobEngineService.resumeJobExecution(scopeId, jobId, executionId);"
+    },
+    {
+      "src_service": "rest-api",
+      "src_class": "JobEngine",
+      "src_method": "stopJobExecution",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.stopJobExecution",
+      "protocol": "REST",
+      "evidence": "rest-api/resources/src/main/java/org/eclipse/kapua/app/api/resources/v1/resources/JobEngine.java:98 jobEngineService.stopJobExecution(scopeId, jobId, executionId);"
+    },
+    {
+      "src_service": "console",
+      "src_class": "GwtJobEngineServiceImpl",
+      "src_method": "start",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "console/module/job/src/main/java/org/eclipse/kapua/app/console/module/job/server/GwtJobEngineServiceImpl.java:71 JOB_ENGINE_SERVICE.startJob(scopeId, jobId, jobStartOptions);"
+    },
+    {
+      "src_service": "console",
+      "src_class": "GwtJobEngineServiceImpl",
+      "src_method": "stopExecution",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.stopJobExecution",
+      "protocol": "REST",
+      "evidence": "console/module/job/src/main/java/org/eclipse/kapua/app/console/module/job/server/GwtJobEngineServiceImpl.java:112 JOB_ENGINE_SERVICE.stopJobExecution(scopeId, jobId, jobExecutionId);"
+    },
+    {
+      "src_service": "service",
+      "src_class": "JobServiceImpl",
+      "src_method": "deleteInternal",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.cleanJobData",
+      "protocol": "REST",
+      "evidence": "service/job/internal/src/main/java/org/eclipse/kapua/service/job/internal/JobServiceImpl.java:198 jobEngineService.cleanJobData(scopeId, jobId);"
+    },
+    {
+      "src_service": "service",
+      "src_class": "JobDeviceManagementOperationManagerServiceImpl",
+      "src_method": "processJobTargetOnNotification",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "service/device/management/job/internal/src/main/java/org/eclipse/kapua/service/device/management/job/manager/internal/JobDeviceManagementOperationManagerServiceImpl.java:165 jobEngineService.startJob(scopeId, jobDeviceManagementOperation.getJobId(), jobStartOptions);"
+    },
+    {
+      "src_service": "service",
+      "src_class": "JobDeviceManagementTriggerManagerServiceImpl",
+      "src_method": "processOnConnect",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "service/device/management/job/internal/src/main/java/org/eclipse/kapua/service/device/management/job/scheduler/internal/JobDeviceManagementTriggerManagerServiceImpl.java:145 KapuaSecurityUtils.doPrivileged(() -> jobEngineService.startJob(jt.getScopeId(), jt.getJobId(), jobStartOptions));"
+    },
+    {
+      "src_service": "service",
+      "src_class": "AbstractDevicePackageTargetProcessor",
+      "src_method": "createJobDeviceManagementOperation",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "service/device/management/packages/job/src/main/java/org/eclipse/kapua/service/device/management/packages/job/AbstractDevicePackageTargetProcessor.java:90 KapuaSecurityUtils.doPrivileged(() -> jobEngineService.startJob(scopeId, jobDeviceManagementOperation.getJobId(), jobStartOptions));"
+    },
+    {
+      "src_service": "service",
+      "src_class": "KapuaJobLauncher",
+      "src_method": "execute",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJob",
+      "protocol": "REST",
+      "evidence": "service/scheduler/quartz/src/main/java/org/eclipse/kapua/service/scheduler/quartz/job/KapuaJobLauncher.java:94 jobEngineService.startJob(scopeId, jobId);"
+    },
+    {
+      "src_service": "service",
+      "src_class": "KapuaJobLauncher",
+      "src_method": "execute",
+      "dst_service": "job-engine",
+      "dst_class": "JobEngineResource",
+      "dst_interface_id": "JobEngineResource.startJobWithOptions",
+      "protocol": "REST",
+      "evidence": "service/scheduler/quartz/src/main/java/org/eclipse/kapua/service/scheduler/quartz/job/KapuaJobLauncher.java:96 jobEngineService.startJob(scopeId, jobId, jobStartOptions);"
+    },
+    {
+      "src_service": "broker",
+      "src_class": "SecurityPlugin",
+      "src_method": "authenticateExternalConnCallable",
+      "dst_service": "service",
+      "dst_class": "AuthenticationServiceListener",
+      "dst_interface_id": "AuthenticationServiceListener.brokerConnect",
+      "protocol": "Messaging",
+      "evidence": "broker/artemis/plugin/src/main/java/org/eclipse/kapua/broker/artemis/plugin/security/SecurityPlugin.java:211 AuthResponse authResponse = serverContext.getAuthServiceClient().brokerConnect(authRequest);"
+    },
+    {
+      "src_service": "broker",
+      "src_class": "SecurityPlugin",
+      "src_method": "getAdminAccountInfoNoCache",
+      "dst_service": "service",
+      "dst_class": "AuthenticationServiceListener",
+      "dst_interface_id": "AuthenticationServiceListener.getEntity",
+      "protocol": "Messaging",
+      "evidence": "broker/artemis/plugin/src/main/java/org/eclipse/kapua/broker/artemis/plugin/security/SecurityPlugin.java:409 accountResponse = serverContext.getAuthServiceClient().getEntity(accountRequest);"
+    },
+    {
+      "src_service": "broker",
+      "src_class": "SecurityPlugin",
+      "src_method": "getScopeIdNoCache",
+      "dst_service": "service",
+      "dst_class": "AuthenticationServiceListener",
+      "dst_interface_id": "AuthenticationServiceListener.getEntity",
+      "protocol": "Messaging",
+      "evidence": "broker/artemis/plugin/src/main/java/org/eclipse/kapua/broker/artemis/plugin/security/SecurityPlugin.java:437 EntityResponse userResponse = serverContext.getAuthServiceClient().getEntity(userRequest);"
+    },
+    {
+      "src_service": "broker",
+      "src_class": "ServerContext",
+      "src_method": "cleanUpConnectionData",
+      "dst_service": "service",
+      "dst_class": "AuthenticationServiceListener",
+      "dst_interface_id": "AuthenticationServiceListener.brokerDisconnect",
+      "protocol": "Messaging",
+      "evidence": "broker/artemis/plugin/src/main/java/org/eclipse/kapua/broker/artemis/plugin/security/ServerContext.java:126 authServiceClient.brokerDisconnect(authRequest);"
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "system_id": "MS061",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "marathon": {
+      "exposed_interfaces": [
+        {
+          "id": "SystemResource.config",
+          "class_name": "mesosphere.marathon.api.SystemResource",
+          "method_name": "config",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /config"
+        },
+        {
+          "id": "SystemResource.showLoggers",
+          "class_name": "mesosphere.marathon.api.SystemResource",
+          "method_name": "showLoggers",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "GET /logging"
+        },
+        {
+          "id": "SystemResource.changeLogger",
+          "class_name": "mesosphere.marathon.api.SystemResource",
+          "method_name": "changeLogger",
+          "param_types": [
+            "LoggerChange"
+          ],
+          "return_type": "LoggerChange",
+          "protocol": "REST",
+          "endpoint": "POST /logging"
+        },
+        {
+          "id": "AppsResource.index",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "index",
+          "param_types": [
+            "String",
+            "String",
+            "String",
+            "List<String>"
+          ],
+          "return_type": "AppList",
+          "protocol": "REST",
+          "endpoint": "GET /v2/apps"
+        },
+        {
+          "id": "AppsResource.create",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "create",
+          "param_types": [
+            "App",
+            "Boolean"
+          ],
+          "return_type": "AppInfo",
+          "protocol": "REST",
+          "endpoint": "POST /v2/apps"
+        },
+        {
+          "id": "AppsResource.show",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "show",
+          "param_types": [
+            "String",
+            "List<String>"
+          ],
+          "return_type": "AppInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v2/apps/{id}"
+        },
+        {
+          "id": "AppsResource.replace",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "replace",
+          "param_types": [
+            "String",
+            "AppUpdate",
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/apps/{id}"
+        },
+        {
+          "id": "AppsResource.patch",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "patch",
+          "param_types": [
+            "String",
+            "AppUpdate",
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PATCH /v2/apps/{id}"
+        },
+        {
+          "id": "AppsResource.replaceMultiple",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "replaceMultiple",
+          "param_types": [
+            "Boolean",
+            "Boolean",
+            "List<AppUpdate>"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/apps"
+        },
+        {
+          "id": "AppsResource.patchMultiple",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "patchMultiple",
+          "param_types": [
+            "Boolean",
+            "List<AppUpdate>"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PATCH /v2/apps"
+        },
+        {
+          "id": "AppsResource.delete",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "delete",
+          "param_types": [
+            "Boolean",
+            "String"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/apps/{id}"
+        },
+        {
+          "id": "AppsResource.deleteRestart",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "deleteRestart",
+          "param_types": [
+            "Boolean",
+            "String"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/apps/{id}/restart"
+        },
+        {
+          "id": "AppsResource.restart",
+          "class_name": "mesosphere.marathon.api.v2.AppsResource",
+          "method_name": "restart",
+          "param_types": [
+            "String",
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "POST /v2/apps/{id}/restart"
+        },
+        {
+          "id": "AppTasksResource.indexJson",
+          "class_name": "mesosphere.marathon.api.v2.AppTasksResource",
+          "method_name": "indexJson",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "TaskList",
+          "protocol": "REST",
+          "endpoint": "GET /v2/apps/{appId}/tasks"
+        },
+        {
+          "id": "AppTasksResource.deleteMany",
+          "class_name": "mesosphere.marathon.api.v2.AppTasksResource",
+          "method_name": "deleteMany",
+          "param_types": [
+            "String",
+            "String",
+            "Boolean",
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "TaskList",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/apps/{appId}/tasks"
+        },
+        {
+          "id": "AppTasksResource.deleteOne",
+          "class_name": "mesosphere.marathon.api.v2.AppTasksResource",
+          "method_name": "deleteOne",
+          "param_types": [
+            "String",
+            "String",
+            "Boolean",
+            "Boolean",
+            "Boolean"
+          ],
+          "return_type": "TaskSingle",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/apps/{appId}/tasks/{taskId}"
+        },
+        {
+          "id": "AppVersionsResource.index",
+          "class_name": "mesosphere.marathon.api.v2.AppVersionsResource",
+          "method_name": "index",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "VersionList",
+          "protocol": "REST",
+          "endpoint": "GET /v2/apps/{appId}/versions"
+        },
+        {
+          "id": "AppVersionsResource.show",
+          "class_name": "mesosphere.marathon.api.v2.AppVersionsResource",
+          "method_name": "show",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "App",
+          "protocol": "REST",
+          "endpoint": "GET /v2/apps/{appId}/versions/{version}"
+        },
+        {
+          "id": "DeploymentsResource.running",
+          "class_name": "mesosphere.marathon.api.v2.DeploymentsResource",
+          "method_name": "running",
+          "param_types": [],
+          "return_type": "List<DeploymentStepInfo>",
+          "protocol": "REST",
+          "endpoint": "GET /v2/deployments"
+        },
+        {
+          "id": "DeploymentsResource.cancel",
+          "class_name": "mesosphere.marathon.api.v2.DeploymentsResource",
+          "method_name": "cancel",
+          "param_types": [
+            "String",
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/deployments/{id}"
+        },
+        {
+          "id": "GroupsResource.root",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "root",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "GroupInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v2/groups"
+        },
+        {
+          "id": "GroupsResource.group",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "group",
+          "param_types": [
+            "String",
+            "List<String>"
+          ],
+          "return_type": "GroupInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v2/groups/{id}"
+        },
+        {
+          "id": "GroupsResource.create",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "create",
+          "param_types": [
+            "Boolean",
+            "GroupUpdate"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "POST /v2/groups"
+        },
+        {
+          "id": "GroupsResource.createWithPath",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "createWithPath",
+          "param_types": [
+            "String",
+            "Boolean",
+            "GroupUpdate"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "POST /v2/groups/{id}"
+        },
+        {
+          "id": "GroupsResource.updateRoot",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "updateRoot",
+          "param_types": [
+            "Boolean",
+            "Boolean",
+            "GroupUpdate"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/groups"
+        },
+        {
+          "id": "GroupsResource.patchGroup",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "patchGroup",
+          "param_types": [
+            "String",
+            "GroupPartialUpdate"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PATCH /v2/groups/{id}"
+        },
+        {
+          "id": "GroupsResource.update",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "update",
+          "param_types": [
+            "String",
+            "Boolean",
+            "Boolean",
+            "GroupUpdate"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/groups/{id}"
+        },
+        {
+          "id": "GroupsResource.delete",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "delete",
+          "param_types": [
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/groups"
+        },
+        {
+          "id": "GroupsResource.deleteById",
+          "class_name": "mesosphere.marathon.api.v2.GroupsResource",
+          "method_name": "delete",
+          "param_types": [
+            "String",
+            "Boolean"
+          ],
+          "return_type": "DeploymentResult",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/groups/{id}"
+        },
+        {
+          "id": "InfoResource.index",
+          "class_name": "mesosphere.marathon.api.v2.InfoResource",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "JsObject",
+          "protocol": "REST",
+          "endpoint": "GET /v2/info"
+        },
+        {
+          "id": "LeaderResource.index",
+          "class_name": "mesosphere.marathon.api.v2.LeaderResource",
+          "method_name": "index",
+          "param_types": [],
+          "return_type": "LeaderInfo",
+          "protocol": "REST",
+          "endpoint": "GET /v2/leader"
+        },
+        {
+          "id": "LeaderResource.delete",
+          "class_name": "mesosphere.marathon.api.v2.LeaderResource",
+          "method_name": "delete",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Error",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/leader"
+        },
+        {
+          "id": "PluginsResource.plugins",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "plugins",
+          "param_types": [],
+          "return_type": "PluginDefinitions",
+          "protocol": "REST",
+          "endpoint": "GET /v2/plugins"
+        },
+        {
+          "id": "PluginsResource.get",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "get",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /v2/plugins/{pluginId}/{path}"
+        },
+        {
+          "id": "PluginsResource.head",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "head",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "HEAD /v2/plugins/{pluginId}/{path}"
+        },
+        {
+          "id": "PluginsResource.put",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "put",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/plugins/{pluginId}/{path}"
+        },
+        {
+          "id": "PluginsResource.post",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "post",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /v2/plugins/{pluginId}/{path}"
+        },
+        {
+          "id": "PluginsResource.delete",
+          "class_name": "mesosphere.marathon.api.v2.PluginsResource",
+          "method_name": "delete",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/plugins/{pluginId}/{path}"
+        },
+        {
+          "id": "PodsResource.capability",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "capability",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "HEAD /v2/pods"
+        },
+        {
+          "id": "PodsResource.create",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "create",
+          "param_types": [
+            "Pod",
+            "Boolean"
+          ],
+          "return_type": "Pod",
+          "protocol": "REST",
+          "endpoint": "POST /v2/pods"
+        },
+        {
+          "id": "PodsResource.update",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "update",
+          "param_types": [
+            "String",
+            "Pod",
+            "Boolean"
+          ],
+          "return_type": "Pod",
+          "protocol": "REST",
+          "endpoint": "PUT /v2/pods/{id}"
+        },
+        {
+          "id": "PodsResource.findAll",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "findAll",
+          "param_types": [],
+          "return_type": "List<Pod>",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods"
+        },
+        {
+          "id": "PodsResource.find",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "find",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Pod",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods/{id}"
+        },
+        {
+          "id": "PodsResource.remove",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "remove",
+          "param_types": [
+            "String",
+            "Boolean"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/pods/{id}"
+        },
+        {
+          "id": "PodsResource.status",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "status",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "PodStatus",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods/{id}::status"
+        },
+        {
+          "id": "PodsResource.versions",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "versions",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "List<Timestamp>",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods/{id}::versions"
+        },
+        {
+          "id": "PodsResource.version",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "version",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "Pod",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods/{id}::versions/{version}"
+        },
+        {
+          "id": "PodsResource.allStatus",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "allStatus",
+          "param_types": [],
+          "return_type": "List<PodStatus>",
+          "protocol": "REST",
+          "endpoint": "GET /v2/pods/::status"
+        },
+        {
+          "id": "PodsResource.killInstance",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "killInstance",
+          "param_types": [
+            "String",
+            "String",
+            "Boolean"
+          ],
+          "return_type": "Instance",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/pods/{id}::instances/{instanceId}"
+        },
+        {
+          "id": "PodsResource.killInstances",
+          "class_name": "mesosphere.marathon.api.v2.PodsResource",
+          "method_name": "killInstances",
+          "param_types": [
+            "String",
+            "Boolean",
+            "List<String>"
+          ],
+          "return_type": "List<Instance>",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/pods/{id}::instances"
+        },
+        {
+          "id": "QueueResource.index",
+          "class_name": "mesosphere.marathon.api.v2.QueueResource",
+          "method_name": "index",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "Queue",
+          "protocol": "REST",
+          "endpoint": "GET /v2/queue"
+        },
+        {
+          "id": "QueueResource.resetDelay",
+          "class_name": "mesosphere.marathon.api.v2.QueueResource",
+          "method_name": "resetDelay",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v2/queue/{runSpecId}/delay"
+        },
+        {
+          "id": "TasksResource.indexJson",
+          "class_name": "mesosphere.marathon.api.v2.TasksResource",
+          "method_name": "indexJson",
+          "param_types": [
+            "String",
+            "List<String>"
+          ],
+          "return_type": "TaskList",
+          "protocol": "REST",
+          "endpoint": "GET /v2/tasks"
+        },
+        {
+          "id": "TasksResource.killTasks",
+          "class_name": "mesosphere.marathon.api.v2.TasksResource",
+          "method_name": "killTasks",
+          "param_types": [
+            "Boolean",
+            "Boolean",
+            "Boolean",
+            "List<String>"
+          ],
+          "return_type": "TaskList",
+          "protocol": "REST",
+          "endpoint": "POST /v2/tasks/delete"
+        },
+        {
+          "id": "HttpEventStreamServlet.doGet",
+          "class_name": "mesosphere.marathon.core.event.impl.stream.HttpEventStreamServlet",
+          "method_name": "doGet",
+          "param_types": [
+            "List<String>"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /v2/events"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

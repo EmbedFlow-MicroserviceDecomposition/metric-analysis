@@ -1,0 +1,1009 @@
+{
+  "system_id": "MS063",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "www": {
+      "exposed_interfaces": []
+    },
+    "java": {
+      "exposed_interfaces": []
+    },
+    "python": {
+      "exposed_interfaces": []
+    },
+    "src": {
+      "exposed_interfaces": [
+        {
+          "id": "MasterServiceImpl.TSHeartbeat",
+          "class_name": "MasterServiceImpl",
+          "method_name": "TSHeartbeat",
+          "param_types": [
+            "TSHeartbeatRequestPB"
+          ],
+          "return_type": "TSHeartbeatResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/TSHeartbeat"
+        },
+        {
+          "id": "MasterServiceImpl.ConnectToMaster",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ConnectToMaster",
+          "param_types": [
+            "ConnectToMasterRequestPB"
+          ],
+          "return_type": "ConnectToMasterResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ConnectToMaster"
+        },
+        {
+          "id": "MasterServiceImpl.GetTabletLocations",
+          "class_name": "MasterServiceImpl",
+          "method_name": "GetTabletLocations",
+          "param_types": [
+            "GetTabletLocationsRequestPB"
+          ],
+          "return_type": "GetTabletLocationsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/GetTabletLocations"
+        },
+        {
+          "id": "MasterServiceImpl.CreateTable",
+          "class_name": "MasterServiceImpl",
+          "method_name": "CreateTable",
+          "param_types": [
+            "CreateTableRequestPB"
+          ],
+          "return_type": "CreateTableResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/CreateTable"
+        },
+        {
+          "id": "MasterServiceImpl.IsCreateTableDone",
+          "class_name": "MasterServiceImpl",
+          "method_name": "IsCreateTableDone",
+          "param_types": [
+            "IsCreateTableDoneRequestPB"
+          ],
+          "return_type": "IsCreateTableDoneResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/IsCreateTableDone"
+        },
+        {
+          "id": "MasterServiceImpl.DeleteTable",
+          "class_name": "MasterServiceImpl",
+          "method_name": "DeleteTable",
+          "param_types": [
+            "DeleteTableRequestPB"
+          ],
+          "return_type": "DeleteTableResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/DeleteTable"
+        },
+        {
+          "id": "MasterServiceImpl.RecallDeletedTable",
+          "class_name": "MasterServiceImpl",
+          "method_name": "RecallDeletedTable",
+          "param_types": [
+            "RecallDeletedTableRequestPB"
+          ],
+          "return_type": "RecallDeletedTableResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/RecallDeletedTable"
+        },
+        {
+          "id": "MasterServiceImpl.AlterTable",
+          "class_name": "MasterServiceImpl",
+          "method_name": "AlterTable",
+          "param_types": [
+            "AlterTableRequestPB"
+          ],
+          "return_type": "AlterTableResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/AlterTable"
+        },
+        {
+          "id": "MasterServiceImpl.IsAlterTableDone",
+          "class_name": "MasterServiceImpl",
+          "method_name": "IsAlterTableDone",
+          "param_types": [
+            "IsAlterTableDoneRequestPB"
+          ],
+          "return_type": "IsAlterTableDoneResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/IsAlterTableDone"
+        },
+        {
+          "id": "MasterServiceImpl.ListTables",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ListTables",
+          "param_types": [
+            "ListTablesRequestPB"
+          ],
+          "return_type": "ListTablesResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ListTables"
+        },
+        {
+          "id": "MasterServiceImpl.ListInFlightTables",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ListInFlightTables",
+          "param_types": [
+            "ListInFlightTablesRequestPB"
+          ],
+          "return_type": "ListInFlightTablesResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ListInFlightTables"
+        },
+        {
+          "id": "MasterServiceImpl.GetTableStatistics",
+          "class_name": "MasterServiceImpl",
+          "method_name": "GetTableStatistics",
+          "param_types": [
+            "GetTableStatisticsRequestPB"
+          ],
+          "return_type": "GetTableStatisticsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/GetTableStatistics"
+        },
+        {
+          "id": "MasterServiceImpl.GetTableLocations",
+          "class_name": "MasterServiceImpl",
+          "method_name": "GetTableLocations",
+          "param_types": [
+            "GetTableLocationsRequestPB"
+          ],
+          "return_type": "GetTableLocationsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/GetTableLocations"
+        },
+        {
+          "id": "MasterServiceImpl.GetTableSchema",
+          "class_name": "MasterServiceImpl",
+          "method_name": "GetTableSchema",
+          "param_types": [
+            "GetTableSchemaRequestPB"
+          ],
+          "return_type": "GetTableSchemaResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/GetTableSchema"
+        },
+        {
+          "id": "MasterServiceImpl.ListTabletServers",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ListTabletServers",
+          "param_types": [
+            "ListTabletServersRequestPB"
+          ],
+          "return_type": "ListTabletServersResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ListTabletServers"
+        },
+        {
+          "id": "MasterServiceImpl.ListMasters",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ListMasters",
+          "param_types": [
+            "ListMastersRequestPB"
+          ],
+          "return_type": "ListMastersResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ListMasters"
+        },
+        {
+          "id": "MasterServiceImpl.Ping",
+          "class_name": "MasterServiceImpl",
+          "method_name": "Ping",
+          "param_types": [
+            "PingRequestPB"
+          ],
+          "return_type": "PingResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/Ping"
+        },
+        {
+          "id": "MasterServiceImpl.ReplaceTablet",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ReplaceTablet",
+          "param_types": [
+            "ReplaceTabletRequestPB"
+          ],
+          "return_type": "ReplaceTabletResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ReplaceTablet"
+        },
+        {
+          "id": "MasterServiceImpl.RefreshAuthzCache",
+          "class_name": "MasterServiceImpl",
+          "method_name": "RefreshAuthzCache",
+          "param_types": [
+            "RefreshAuthzCacheRequestPB"
+          ],
+          "return_type": "RefreshAuthzCacheResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/RefreshAuthzCache"
+        },
+        {
+          "id": "MasterServiceImpl.ChangeTServerState",
+          "class_name": "MasterServiceImpl",
+          "method_name": "ChangeTServerState",
+          "param_types": [
+            "ChangeTServerStateRequestPB"
+          ],
+          "return_type": "ChangeTServerStateResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/ChangeTServerState"
+        },
+        {
+          "id": "MasterServiceImpl.AddMaster",
+          "class_name": "MasterServiceImpl",
+          "method_name": "AddMaster",
+          "param_types": [
+            "AddMasterRequestPB"
+          ],
+          "return_type": "AddMasterResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/AddMaster"
+        },
+        {
+          "id": "MasterServiceImpl.RemoveMaster",
+          "class_name": "MasterServiceImpl",
+          "method_name": "RemoveMaster",
+          "param_types": [
+            "RemoveMasterRequestPB"
+          ],
+          "return_type": "RemoveMasterResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/RemoveMaster"
+        },
+        {
+          "id": "MasterServiceImpl.UnregisterTServer",
+          "class_name": "MasterServiceImpl",
+          "method_name": "UnregisterTServer",
+          "param_types": [
+            "UnregisterTServerRequestPB"
+          ],
+          "return_type": "UnregisterTServerResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/UnregisterTServer"
+        },
+        {
+          "id": "MasterServiceImpl.GetMasterRegistration",
+          "class_name": "MasterServiceImpl",
+          "method_name": "GetMasterRegistration",
+          "param_types": [
+            "GetMasterRegistrationRequestPB"
+          ],
+          "return_type": "GetMasterRegistrationResponsePB",
+          "protocol": "RPC",
+          "endpoint": "MasterService/GetMasterRegistration"
+        },
+        {
+          "id": "TxnManagerServiceImpl.BeginTransaction",
+          "class_name": "TxnManagerServiceImpl",
+          "method_name": "BeginTransaction",
+          "param_types": [
+            "BeginTransactionRequestPB"
+          ],
+          "return_type": "BeginTransactionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TxnManagerService/BeginTransaction"
+        },
+        {
+          "id": "TxnManagerServiceImpl.CommitTransaction",
+          "class_name": "TxnManagerServiceImpl",
+          "method_name": "CommitTransaction",
+          "param_types": [
+            "CommitTransactionRequestPB"
+          ],
+          "return_type": "CommitTransactionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TxnManagerService/CommitTransaction"
+        },
+        {
+          "id": "TxnManagerServiceImpl.AbortTransaction",
+          "class_name": "TxnManagerServiceImpl",
+          "method_name": "AbortTransaction",
+          "param_types": [
+            "AbortTransactionRequestPB"
+          ],
+          "return_type": "AbortTransactionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TxnManagerService/AbortTransaction"
+        },
+        {
+          "id": "TxnManagerServiceImpl.GetTransactionState",
+          "class_name": "TxnManagerServiceImpl",
+          "method_name": "GetTransactionState",
+          "param_types": [
+            "GetTransactionStateRequestPB"
+          ],
+          "return_type": "GetTransactionStateResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TxnManagerService/GetTransactionState"
+        },
+        {
+          "id": "TxnManagerServiceImpl.KeepTransactionAlive",
+          "class_name": "TxnManagerServiceImpl",
+          "method_name": "KeepTransactionAlive",
+          "param_types": [
+            "KeepTransactionAliveRequestPB"
+          ],
+          "return_type": "KeepTransactionAliveResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TxnManagerService/KeepTransactionAlive"
+        },
+        {
+          "id": "GenericServiceImpl.GetFlags",
+          "class_name": "GenericServiceImpl",
+          "method_name": "GetFlags",
+          "param_types": [
+            "GetFlagsRequestPB"
+          ],
+          "return_type": "GetFlagsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/GetFlags"
+        },
+        {
+          "id": "GenericServiceImpl.SetFlag",
+          "class_name": "GenericServiceImpl",
+          "method_name": "SetFlag",
+          "param_types": [
+            "SetFlagRequestPB"
+          ],
+          "return_type": "SetFlagResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/SetFlag"
+        },
+        {
+          "id": "GenericServiceImpl.FlushCoverage",
+          "class_name": "GenericServiceImpl",
+          "method_name": "FlushCoverage",
+          "param_types": [
+            "FlushCoverageRequestPB"
+          ],
+          "return_type": "FlushCoverageResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/FlushCoverage"
+        },
+        {
+          "id": "GenericServiceImpl.CheckLeaks",
+          "class_name": "GenericServiceImpl",
+          "method_name": "CheckLeaks",
+          "param_types": [
+            "CheckLeaksRequestPB"
+          ],
+          "return_type": "CheckLeaksResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/CheckLeaks"
+        },
+        {
+          "id": "GenericServiceImpl.ServerClock",
+          "class_name": "GenericServiceImpl",
+          "method_name": "ServerClock",
+          "param_types": [
+            "ServerClockRequestPB"
+          ],
+          "return_type": "ServerClockResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/ServerClock"
+        },
+        {
+          "id": "GenericServiceImpl.SetServerWallClockForTests",
+          "class_name": "GenericServiceImpl",
+          "method_name": "SetServerWallClockForTests",
+          "param_types": [
+            "SetServerWallClockForTestsRequestPB"
+          ],
+          "return_type": "SetServerWallClockForTestsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/SetServerWallClockForTests"
+        },
+        {
+          "id": "GenericServiceImpl.GetStatus",
+          "class_name": "GenericServiceImpl",
+          "method_name": "GetStatus",
+          "param_types": [
+            "GetStatusRequestPB"
+          ],
+          "return_type": "GetStatusResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/GetStatus"
+        },
+        {
+          "id": "GenericServiceImpl.DumpMemTrackers",
+          "class_name": "GenericServiceImpl",
+          "method_name": "DumpMemTrackers",
+          "param_types": [
+            "DumpMemTrackersRequestPB"
+          ],
+          "return_type": "DumpMemTrackersResponsePB",
+          "protocol": "RPC",
+          "endpoint": "GenericService/DumpMemTrackers"
+        },
+        {
+          "id": "TabletCopyServiceImpl.BeginTabletCopySession",
+          "class_name": "TabletCopyServiceImpl",
+          "method_name": "BeginTabletCopySession",
+          "param_types": [
+            "BeginTabletCopySessionRequestPB"
+          ],
+          "return_type": "BeginTabletCopySessionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletCopyService/BeginTabletCopySession"
+        },
+        {
+          "id": "TabletCopyServiceImpl.CheckSessionActive",
+          "class_name": "TabletCopyServiceImpl",
+          "method_name": "CheckSessionActive",
+          "param_types": [
+            "CheckTabletCopySessionActiveRequestPB"
+          ],
+          "return_type": "CheckTabletCopySessionActiveResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletCopyService/CheckSessionActive"
+        },
+        {
+          "id": "TabletCopyServiceImpl.FetchData",
+          "class_name": "TabletCopyServiceImpl",
+          "method_name": "FetchData",
+          "param_types": [
+            "FetchDataRequestPB"
+          ],
+          "return_type": "FetchDataResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletCopyService/FetchData"
+        },
+        {
+          "id": "TabletCopyServiceImpl.EndTabletCopySession",
+          "class_name": "TabletCopyServiceImpl",
+          "method_name": "EndTabletCopySession",
+          "param_types": [
+            "EndTabletCopySessionRequestPB"
+          ],
+          "return_type": "EndTabletCopySessionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletCopyService/EndTabletCopySession"
+        },
+        {
+          "id": "TabletServiceAdminImpl.CreateTablet",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "CreateTablet",
+          "param_types": [
+            "CreateTabletRequestPB"
+          ],
+          "return_type": "CreateTabletResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/CreateTablet"
+        },
+        {
+          "id": "TabletServiceAdminImpl.DeleteTablet",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "DeleteTablet",
+          "param_types": [
+            "DeleteTabletRequestPB"
+          ],
+          "return_type": "DeleteTabletResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/DeleteTablet"
+        },
+        {
+          "id": "TabletServiceAdminImpl.AlterSchema",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "AlterSchema",
+          "param_types": [
+            "AlterSchemaRequestPB"
+          ],
+          "return_type": "AlterSchemaResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/AlterSchema"
+        },
+        {
+          "id": "TabletServiceAdminImpl.Quiesce",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "Quiesce",
+          "param_types": [
+            "QuiesceTabletServerRequestPB"
+          ],
+          "return_type": "QuiesceTabletServerResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/Quiesce"
+        },
+        {
+          "id": "TabletServiceAdminImpl.CoordinateTransaction",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "CoordinateTransaction",
+          "param_types": [
+            "CoordinateTransactionRequestPB"
+          ],
+          "return_type": "CoordinateTransactionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/CoordinateTransaction"
+        },
+        {
+          "id": "TabletServiceAdminImpl.ParticipateInTransaction",
+          "class_name": "TabletServiceAdminImpl",
+          "method_name": "ParticipateInTransaction",
+          "param_types": [
+            "ParticipantRequestPB"
+          ],
+          "return_type": "ParticipantResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerAdminService/ParticipateInTransaction"
+        },
+        {
+          "id": "TabletServiceImpl.Ping",
+          "class_name": "TabletServiceImpl",
+          "method_name": "Ping",
+          "param_types": [
+            "PingRequestPB"
+          ],
+          "return_type": "PingResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/Ping"
+        },
+        {
+          "id": "TabletServiceImpl.Write",
+          "class_name": "TabletServiceImpl",
+          "method_name": "Write",
+          "param_types": [
+            "WriteRequestPB"
+          ],
+          "return_type": "WriteResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/Write"
+        },
+        {
+          "id": "TabletServiceImpl.Scan",
+          "class_name": "TabletServiceImpl",
+          "method_name": "Scan",
+          "param_types": [
+            "ScanRequestPB"
+          ],
+          "return_type": "ScanResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/Scan"
+        },
+        {
+          "id": "TabletServiceImpl.ScannerKeepAlive",
+          "class_name": "TabletServiceImpl",
+          "method_name": "ScannerKeepAlive",
+          "param_types": [
+            "ScannerKeepAliveRequestPB"
+          ],
+          "return_type": "ScannerKeepAliveResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/ScannerKeepAlive"
+        },
+        {
+          "id": "TabletServiceImpl.ListTablets",
+          "class_name": "TabletServiceImpl",
+          "method_name": "ListTablets",
+          "param_types": [
+            "ListTabletsRequestPB"
+          ],
+          "return_type": "ListTabletsResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/ListTablets"
+        },
+        {
+          "id": "TabletServiceImpl.SplitKeyRange",
+          "class_name": "TabletServiceImpl",
+          "method_name": "SplitKeyRange",
+          "param_types": [
+            "SplitKeyRangeRequestPB"
+          ],
+          "return_type": "SplitKeyRangeResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/SplitKeyRange"
+        },
+        {
+          "id": "TabletServiceImpl.Checksum",
+          "class_name": "TabletServiceImpl",
+          "method_name": "Checksum",
+          "param_types": [
+            "ChecksumRequestPB"
+          ],
+          "return_type": "ChecksumResponsePB",
+          "protocol": "RPC",
+          "endpoint": "TabletServerService/Checksum"
+        },
+        {
+          "id": "ConsensusServiceImpl.UpdateConsensus",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "UpdateConsensus",
+          "param_types": [
+            "ConsensusRequestPB"
+          ],
+          "return_type": "ConsensusResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/UpdateConsensus"
+        },
+        {
+          "id": "ConsensusServiceImpl.MultiRaftUpdateConsensus",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "MultiRaftUpdateConsensus",
+          "param_types": [
+            "MultiRaftConsensusRequestPB"
+          ],
+          "return_type": "MultiRaftConsensusResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/MultiRaftUpdateConsensus"
+        },
+        {
+          "id": "ConsensusServiceImpl.RequestConsensusVote",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "RequestConsensusVote",
+          "param_types": [
+            "VoteRequestPB"
+          ],
+          "return_type": "VoteResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/RequestConsensusVote"
+        },
+        {
+          "id": "ConsensusServiceImpl.ChangeConfig",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "ChangeConfig",
+          "param_types": [
+            "ChangeConfigRequestPB"
+          ],
+          "return_type": "ChangeConfigResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/ChangeConfig"
+        },
+        {
+          "id": "ConsensusServiceImpl.BulkChangeConfig",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "BulkChangeConfig",
+          "param_types": [
+            "BulkChangeConfigRequestPB"
+          ],
+          "return_type": "ChangeConfigResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/BulkChangeConfig"
+        },
+        {
+          "id": "ConsensusServiceImpl.UnsafeChangeConfig",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "UnsafeChangeConfig",
+          "param_types": [
+            "UnsafeChangeConfigRequestPB"
+          ],
+          "return_type": "UnsafeChangeConfigResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/UnsafeChangeConfig"
+        },
+        {
+          "id": "ConsensusServiceImpl.GetNodeInstance",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "GetNodeInstance",
+          "param_types": [
+            "GetNodeInstanceRequestPB"
+          ],
+          "return_type": "GetNodeInstanceResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/GetNodeInstance"
+        },
+        {
+          "id": "ConsensusServiceImpl.RunLeaderElection",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "RunLeaderElection",
+          "param_types": [
+            "RunLeaderElectionRequestPB"
+          ],
+          "return_type": "RunLeaderElectionResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/RunLeaderElection"
+        },
+        {
+          "id": "ConsensusServiceImpl.LeaderStepDown",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "LeaderStepDown",
+          "param_types": [
+            "LeaderStepDownRequestPB"
+          ],
+          "return_type": "LeaderStepDownResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/LeaderStepDown"
+        },
+        {
+          "id": "ConsensusServiceImpl.GetLastOpId",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "GetLastOpId",
+          "param_types": [
+            "GetLastOpIdRequestPB"
+          ],
+          "return_type": "GetLastOpIdResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/GetLastOpId"
+        },
+        {
+          "id": "ConsensusServiceImpl.GetConsensusState",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "GetConsensusState",
+          "param_types": [
+            "GetConsensusStateRequestPB"
+          ],
+          "return_type": "GetConsensusStateResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/GetConsensusState"
+        },
+        {
+          "id": "ConsensusServiceImpl.StartTabletCopy",
+          "class_name": "ConsensusServiceImpl",
+          "method_name": "StartTabletCopy",
+          "param_types": [
+            "StartTabletCopyRequestPB"
+          ],
+          "return_type": "StartTabletCopyResponsePB",
+          "protocol": "RPC",
+          "endpoint": "ConsensusService/StartTabletCopy"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "createTable",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.CreateTable",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:653 Deferred<CreateTableResponse> createTableD = sendRpcToTablet(create);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "doIsCreateTableDone",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.IsCreateTableDone",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:698 return sendRpcToTablet(request);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "deleteTable",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.DeleteTable",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:715 return sendRpcToTablet(delete);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "recallDeletedTable",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.RecallDeletedTable",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:758 return sendRpcToTablet(recall);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "alterTable",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.AlterTable",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:775 Deferred<AlterTableResponse> responseD = sendRpcToTablet(alter);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "doIsAlterTableDone",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.IsAlterTableDone",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:842 return sendRpcToTablet(request);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "listTabletServers",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.ListTabletServers",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:854 return sendRpcToTablet(rpc);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "getTableSchema",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.GetTableSchema",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:881 return sendRpcToTablet(rpc).addCallback(resp -> {"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "getTablesList",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.ListTables",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:927 return sendRpcToTablet(rpc);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "getTableStatistics",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.GetTableStatistics",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:966 return sendRpcToTablet(rpc).addCallback(resp ->"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "locateTablet",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.GetTableLocations",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:1937 d = sendRpcToTablet(rpc);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "supportsIgnoreOperations",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.Ping",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:2823 Deferred<PingResponse> response = sendRpcToTablet(ping);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "getTabletKeyRanges",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.SplitKeyRange",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:2149 return sendRpcToTablet(rpc);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "scanNextRows",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.Scan",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:1324 KuduRpc<AsyncKuduScanner.Response> nextRequest = scanner.getNextRowsRequest();"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "closeScanner",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.Scan",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:1353 final KuduRpc<AsyncKuduScanner.Response> closeRequest = scanner.getCloseRequest();"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduClient",
+      "src_method": "keepAlive",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.ScannerKeepAlive",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduClient.java:1381 final KuduRpc<Void> keepAliveRequest = scanner.getKeepAliveRequest();"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduScanner",
+      "src_method": "nextRows",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.Scan",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduScanner.java:766 return client.sendRpcToTablet(getOpenRequest()).addCallbackDeferring(cb).addErrback(eb);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AsyncKuduSession",
+      "src_method": "doAutoFlushSync",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.Write",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduSession.java:665 return client.sendRpcToTablet(operation)"
+    },
+    {
+      "src_service": "java",
+      "src_class": "TabletLookupCB",
+      "src_method": "call",
+      "dst_service": "src",
+      "dst_class": "TabletServiceImpl",
+      "dst_interface_id": "TabletServiceImpl.Write",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AsyncKuduSession.java:454 batchResponses.add(client.sendRpcToTablet(batch));"
+    },
+    {
+      "src_service": "java",
+      "src_class": "ConnectToCluster",
+      "src_method": "connectToMaster",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.ConnectToMaster",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/ConnectToCluster.java:108 new ConnectToMasterRequest(masterTable, timer, timeoutMillis);"
+    },
+    {
+      "src_service": "java",
+      "src_class": "AuthzTokenCache",
+      "src_method": "sendRetrievalForRpc",
+      "dst_service": "src",
+      "dst_class": "MasterServiceImpl",
+      "dst_interface_id": "MasterServiceImpl.GetTableSchema",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/AuthzTokenCache.java:154 GetTableSchemaRequest retrieveAuthzTokenReq = new GetTableSchemaRequest("
+    },
+    {
+      "src_service": "java",
+      "src_class": "KuduTransaction",
+      "src_method": "doBeginTransaction",
+      "dst_service": "src",
+      "dst_class": "TxnManagerServiceImpl",
+      "dst_interface_id": "TxnManagerServiceImpl.BeginTransaction",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/KuduTransaction.java:467 BeginTransactionRequest request = new BeginTransactionRequest("
+    },
+    {
+      "src_service": "java",
+      "src_class": "KuduTransaction",
+      "src_method": "doRollbackTransaction",
+      "dst_service": "src",
+      "dst_class": "TxnManagerServiceImpl",
+      "dst_interface_id": "TxnManagerServiceImpl.AbortTransaction",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/KuduTransaction.java:478 AbortTransactionRequest request = new AbortTransactionRequest("
+    },
+    {
+      "src_service": "java",
+      "src_class": "KuduTransaction",
+      "src_method": "doCommitTransaction",
+      "dst_service": "src",
+      "dst_class": "TxnManagerServiceImpl",
+      "dst_interface_id": "TxnManagerServiceImpl.CommitTransaction",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/KuduTransaction.java:488 CommitTransactionRequest request = new CommitTransactionRequest("
+    },
+    {
+      "src_service": "java",
+      "src_class": "KuduTransaction",
+      "src_method": "isTransactionCommittedAsync",
+      "dst_service": "src",
+      "dst_class": "TxnManagerServiceImpl",
+      "dst_interface_id": "TxnManagerServiceImpl.GetTransactionState",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/KuduTransaction.java:567 GetTransactionStateRequest request = new GetTransactionStateRequest("
+    },
+    {
+      "src_service": "java",
+      "src_class": "KuduTransaction",
+      "src_method": "doSendKeepTransactionAlive",
+      "dst_service": "src",
+      "dst_class": "TxnManagerServiceImpl",
+      "dst_interface_id": "TxnManagerServiceImpl.KeepTransactionAlive",
+      "protocol": "RPC",
+      "evidence": "java/kudu-client/src/main/java/org/apache/kudu/client/KuduTransaction.java:734 KeepTransactionAliveRequest request = new KeepTransactionAliveRequest("
+    }
+  ]
+}

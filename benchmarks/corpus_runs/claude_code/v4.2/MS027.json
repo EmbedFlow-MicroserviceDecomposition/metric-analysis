@@ -1,0 +1,1241 @@
+{
+  "system_id": "MS027",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "controller": {
+      "exposed_interfaces": [
+        {
+          "id": "ControllerServiceImpl.getControllerServerList",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getControllerServerList",
+          "param_types": [
+            "ServerRequest"
+          ],
+          "return_type": "ServerResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getControllerServerList"
+        },
+        {
+          "id": "ControllerServiceImpl.createReaderGroup",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "createReaderGroup",
+          "param_types": [
+            "ReaderGroupConfiguration"
+          ],
+          "return_type": "CreateReaderGroupResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/createReaderGroup"
+        },
+        {
+          "id": "ControllerServiceImpl.updateReaderGroup",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "updateReaderGroup",
+          "param_types": [
+            "ReaderGroupConfiguration"
+          ],
+          "return_type": "UpdateReaderGroupResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/updateReaderGroup"
+        },
+        {
+          "id": "ControllerServiceImpl.getReaderGroupConfig",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getReaderGroupConfig",
+          "param_types": [
+            "ReaderGroupInfo"
+          ],
+          "return_type": "ReaderGroupConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getReaderGroupConfig"
+        },
+        {
+          "id": "ControllerServiceImpl.deleteReaderGroup",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "deleteReaderGroup",
+          "param_types": [
+            "ReaderGroupInfo"
+          ],
+          "return_type": "DeleteReaderGroupStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/deleteReaderGroup"
+        },
+        {
+          "id": "ControllerServiceImpl.createKeyValueTable",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "createKeyValueTable",
+          "param_types": [
+            "KeyValueTableConfig"
+          ],
+          "return_type": "CreateKeyValueTableStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/createKeyValueTable"
+        },
+        {
+          "id": "ControllerServiceImpl.getCurrentSegmentsKeyValueTable",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getCurrentSegmentsKeyValueTable",
+          "param_types": [
+            "KeyValueTableInfo"
+          ],
+          "return_type": "SegmentRanges",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getCurrentSegmentsKeyValueTable"
+        },
+        {
+          "id": "ControllerServiceImpl.listKeyValueTablesInScope",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listKeyValueTablesInScope",
+          "param_types": [
+            "KVTablesInScopeRequest"
+          ],
+          "return_type": "KVTablesInScopeResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listKeyValueTablesInScope"
+        },
+        {
+          "id": "ControllerServiceImpl.getKeyValueTableConfiguration",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getKeyValueTableConfiguration",
+          "param_types": [
+            "KeyValueTableInfo"
+          ],
+          "return_type": "KeyValueTableConfigResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getKeyValueTableConfiguration"
+        },
+        {
+          "id": "ControllerServiceImpl.deleteKeyValueTable",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "deleteKeyValueTable",
+          "param_types": [
+            "KeyValueTableInfo"
+          ],
+          "return_type": "DeleteKVTableStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/deleteKeyValueTable"
+        },
+        {
+          "id": "ControllerServiceImpl.createStream",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "createStream",
+          "param_types": [
+            "StreamConfig"
+          ],
+          "return_type": "CreateStreamStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/createStream"
+        },
+        {
+          "id": "ControllerServiceImpl.listSubscribers",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listSubscribers",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "SubscribersResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listSubscribers"
+        },
+        {
+          "id": "ControllerServiceImpl.updateSubscriberStreamCut",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "updateSubscriberStreamCut",
+          "param_types": [
+            "SubscriberStreamCut"
+          ],
+          "return_type": "UpdateSubscriberStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/updateSubscriberStreamCut"
+        },
+        {
+          "id": "ControllerServiceImpl.updateStream",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "updateStream",
+          "param_types": [
+            "StreamConfig"
+          ],
+          "return_type": "UpdateStreamStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/updateStream"
+        },
+        {
+          "id": "ControllerServiceImpl.truncateStream",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "truncateStream",
+          "param_types": [
+            "StreamCut"
+          ],
+          "return_type": "UpdateStreamStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/truncateStream"
+        },
+        {
+          "id": "ControllerServiceImpl.sealStream",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "sealStream",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "UpdateStreamStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/sealStream"
+        },
+        {
+          "id": "ControllerServiceImpl.deleteStream",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "deleteStream",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "DeleteStreamStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/deleteStream"
+        },
+        {
+          "id": "ControllerServiceImpl.getCurrentSegments",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getCurrentSegments",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "SegmentRanges",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getCurrentSegments"
+        },
+        {
+          "id": "ControllerServiceImpl.getEpochSegments",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getEpochSegments",
+          "param_types": [
+            "GetEpochSegmentsRequest"
+          ],
+          "return_type": "SegmentRanges",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getEpochSegments"
+        },
+        {
+          "id": "ControllerServiceImpl.getSegments",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getSegments",
+          "param_types": [
+            "GetSegmentsRequest"
+          ],
+          "return_type": "SegmentsAtTime",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getSegments"
+        },
+        {
+          "id": "ControllerServiceImpl.getSegmentsImmediatelyFollowing",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getSegmentsImmediatelyFollowing",
+          "param_types": [
+            "SegmentId"
+          ],
+          "return_type": "SuccessorResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getSegmentsImmediatelyFollowing"
+        },
+        {
+          "id": "ControllerServiceImpl.getSegmentsImmediatlyFollowing",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getSegmentsImmediatlyFollowing",
+          "param_types": [
+            "SegmentId"
+          ],
+          "return_type": "SuccessorResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getSegmentsImmediatlyFollowing"
+        },
+        {
+          "id": "ControllerServiceImpl.getSegmentsBetween",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getSegmentsBetween",
+          "param_types": [
+            "StreamCutRange"
+          ],
+          "return_type": "StreamCutRangeResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getSegmentsBetween"
+        },
+        {
+          "id": "ControllerServiceImpl.scale",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "scale",
+          "param_types": [
+            "ScaleRequest"
+          ],
+          "return_type": "ScaleResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/scale"
+        },
+        {
+          "id": "ControllerServiceImpl.checkScale",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "checkScale",
+          "param_types": [
+            "ScaleStatusRequest"
+          ],
+          "return_type": "ScaleStatusResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/checkScale"
+        },
+        {
+          "id": "ControllerServiceImpl.getURI",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getURI",
+          "param_types": [
+            "SegmentId"
+          ],
+          "return_type": "NodeUri",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getURI"
+        },
+        {
+          "id": "ControllerServiceImpl.isSegmentValid",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "isSegmentValid",
+          "param_types": [
+            "SegmentId"
+          ],
+          "return_type": "SegmentValidityResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/isSegmentValid"
+        },
+        {
+          "id": "ControllerServiceImpl.isStreamCutValid",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "isStreamCutValid",
+          "param_types": [
+            "StreamCut"
+          ],
+          "return_type": "StreamCutValidityResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/isStreamCutValid"
+        },
+        {
+          "id": "ControllerServiceImpl.createTransaction",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "createTransaction",
+          "param_types": [
+            "CreateTxnRequest"
+          ],
+          "return_type": "CreateTxnResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/createTransaction"
+        },
+        {
+          "id": "ControllerServiceImpl.commitTransaction",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "commitTransaction",
+          "param_types": [
+            "TxnRequest"
+          ],
+          "return_type": "TxnStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/commitTransaction"
+        },
+        {
+          "id": "ControllerServiceImpl.abortTransaction",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "abortTransaction",
+          "param_types": [
+            "TxnRequest"
+          ],
+          "return_type": "TxnStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/abortTransaction"
+        },
+        {
+          "id": "ControllerServiceImpl.pingTransaction",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "pingTransaction",
+          "param_types": [
+            "PingTxnRequest"
+          ],
+          "return_type": "PingTxnStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/pingTransaction"
+        },
+        {
+          "id": "ControllerServiceImpl.checkTransactionState",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "checkTransactionState",
+          "param_types": [
+            "TxnRequest"
+          ],
+          "return_type": "TxnState",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/checkTransactionState"
+        },
+        {
+          "id": "ControllerServiceImpl.listCompletedTransactions",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listCompletedTransactions",
+          "param_types": [
+            "ListCompletedTxnRequest"
+          ],
+          "return_type": "ListCompletedTxnResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listCompletedTransactions"
+        },
+        {
+          "id": "ControllerServiceImpl.createScope",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "createScope",
+          "param_types": [
+            "ScopeInfo"
+          ],
+          "return_type": "CreateScopeStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/createScope"
+        },
+        {
+          "id": "ControllerServiceImpl.listScopes",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listScopes",
+          "param_types": [
+            "ScopesRequest"
+          ],
+          "return_type": "ScopesResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listScopes"
+        },
+        {
+          "id": "ControllerServiceImpl.checkScopeExists",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "checkScopeExists",
+          "param_types": [
+            "ScopeInfo"
+          ],
+          "return_type": "ExistsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/checkScopeExists"
+        },
+        {
+          "id": "ControllerServiceImpl.checkStreamExists",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "checkStreamExists",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "ExistsResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/checkStreamExists"
+        },
+        {
+          "id": "ControllerServiceImpl.getStreamConfiguration",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getStreamConfiguration",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "StreamConfig",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getStreamConfiguration"
+        },
+        {
+          "id": "ControllerServiceImpl.listStreamsInScope",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listStreamsInScope",
+          "param_types": [
+            "StreamsInScopeRequest"
+          ],
+          "return_type": "StreamsInScopeResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listStreamsInScope"
+        },
+        {
+          "id": "ControllerServiceImpl.listStreamsInScopeForTag",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "listStreamsInScopeForTag",
+          "param_types": [
+            "StreamsInScopeWithTagRequest"
+          ],
+          "return_type": "StreamsInScopeResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/listStreamsInScopeForTag"
+        },
+        {
+          "id": "ControllerServiceImpl.deleteScope",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "deleteScope",
+          "param_types": [
+            "ScopeInfo"
+          ],
+          "return_type": "DeleteScopeStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/deleteScope"
+        },
+        {
+          "id": "ControllerServiceImpl.getDelegationToken",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getDelegationToken",
+          "param_types": [
+            "StreamInfo"
+          ],
+          "return_type": "DelegationToken",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getDelegationToken"
+        },
+        {
+          "id": "ControllerServiceImpl.noteTimestampFromWriter",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "noteTimestampFromWriter",
+          "param_types": [
+            "TimestampFromWriter"
+          ],
+          "return_type": "TimestampResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/noteTimestampFromWriter"
+        },
+        {
+          "id": "ControllerServiceImpl.deleteScopeRecursive",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "deleteScopeRecursive",
+          "param_types": [
+            "ScopeInfo"
+          ],
+          "return_type": "DeleteScopeStatus",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/deleteScopeRecursive"
+        },
+        {
+          "id": "ControllerServiceImpl.getControllerToBucketMapping",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "getControllerToBucketMapping",
+          "param_types": [
+            "ControllerToBucketMappingRequest"
+          ],
+          "return_type": "ControllerToBucketMappingResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/getControllerToBucketMapping"
+        },
+        {
+          "id": "ControllerServiceImpl.removeWriter",
+          "class_name": "ControllerServiceImpl",
+          "method_name": "removeWriter",
+          "param_types": [
+            "RemoveWriterRequest"
+          ],
+          "return_type": "RemoveWriterResponse",
+          "protocol": "gRPC",
+          "endpoint": "ControllerService/removeWriter"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.createScope",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "createScope",
+          "param_types": [
+            "CreateScopeRequest"
+          ],
+          "return_type": "ScopeProperty",
+          "protocol": "REST",
+          "endpoint": "POST /v1/scopes"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.createStream",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "createStream",
+          "param_types": [
+            "String",
+            "CreateStreamRequest"
+          ],
+          "return_type": "StreamProperty",
+          "protocol": "REST",
+          "endpoint": "POST /v1/scopes/{scopeName}/streams"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.deleteScope",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "deleteScope",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/scopes/{scopeName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.deleteStream",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "deleteStream",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/scopes/{scopeName}/streams/{streamName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.deleteReaderGroup",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "deleteReaderGroup",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /v1/scopes/{scopeName}/readergroups/{readerGroupName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.getReaderGroup",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "getReaderGroup",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "ReaderGroupProperty",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}/readergroups/{readerGroupName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.getScalingEvents",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "getScalingEvents",
+          "param_types": [
+            "String",
+            "String",
+            "Long",
+            "Long"
+          ],
+          "return_type": "List<ScaleMetadata>",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}/streams/{streamName}/scaling-events"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.getScope",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "getScope",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ScopeProperty",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.getStream",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "getStream",
+          "param_types": [
+            "String",
+            "String"
+          ],
+          "return_type": "StreamProperty",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}/streams/{streamName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.listReaderGroups",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "listReaderGroups",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "ReaderGroupsList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}/readergroups"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.listScopes",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "listScopes",
+          "param_types": [],
+          "return_type": "ScopesList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.listStreams",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "listStreams",
+          "param_types": [
+            "String",
+            "String",
+            "String"
+          ],
+          "return_type": "StreamsList",
+          "protocol": "REST",
+          "endpoint": "GET /v1/scopes/{scopeName}/streams"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.updateStream",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "updateStream",
+          "param_types": [
+            "String",
+            "String",
+            "UpdateStreamRequest"
+          ],
+          "return_type": "StreamProperty",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/scopes/{scopeName}/streams/{streamName}"
+        },
+        {
+          "id": "StreamMetadataResourceImpl.updateStreamState",
+          "class_name": "StreamMetadataResourceImpl",
+          "method_name": "updateStreamState",
+          "param_types": [
+            "String",
+            "String",
+            "StreamState"
+          ],
+          "return_type": "StreamState",
+          "protocol": "REST",
+          "endpoint": "PUT /v1/scopes/{scopeName}/streams/{streamName}/state"
+        },
+        {
+          "id": "CommitRequestHandler.processEvent",
+          "class_name": "CommitRequestHandler",
+          "method_name": "processEvent",
+          "param_types": [
+            "CommitEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "_commitStream"
+        },
+        {
+          "id": "AbortRequestHandler.processEvent",
+          "class_name": "AbortRequestHandler",
+          "method_name": "processEvent",
+          "param_types": [
+            "AbortEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "_abortStream"
+        },
+        {
+          "id": "StreamRequestHandler.processEvent",
+          "class_name": "StreamRequestHandler",
+          "method_name": "processEvent",
+          "param_types": [
+            "ControllerEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "_requeststream"
+        },
+        {
+          "id": "TableRequestHandler.processEvent",
+          "class_name": "TableRequestHandler",
+          "method_name": "processEvent",
+          "param_types": [
+            "ControllerEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "_kvTableStream"
+        }
+      ]
+    },
+    "segmentstore": {
+      "exposed_interfaces": [
+        {
+          "id": "PravegaRequestProcessor.readSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "readSegment",
+          "param_types": [
+            "ReadSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/readSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.updateSegmentAttribute",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "updateSegmentAttribute",
+          "param_types": [
+            "UpdateSegmentAttribute"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/updateSegmentAttribute"
+        },
+        {
+          "id": "PravegaRequestProcessor.getSegmentAttribute",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "getSegmentAttribute",
+          "param_types": [
+            "GetSegmentAttribute"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/getSegmentAttribute"
+        },
+        {
+          "id": "PravegaRequestProcessor.getStreamSegmentInfo",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "getStreamSegmentInfo",
+          "param_types": [
+            "GetStreamSegmentInfo"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/getStreamSegmentInfo"
+        },
+        {
+          "id": "PravegaRequestProcessor.createSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "createSegment",
+          "param_types": [
+            "CreateSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/createSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.mergeSegments",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "mergeSegments",
+          "param_types": [
+            "MergeSegments"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/mergeSegments"
+        },
+        {
+          "id": "PravegaRequestProcessor.mergeSegmentsBatch",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "mergeSegmentsBatch",
+          "param_types": [
+            "MergeSegmentsBatch"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/mergeSegmentsBatch"
+        },
+        {
+          "id": "PravegaRequestProcessor.sealSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "sealSegment",
+          "param_types": [
+            "SealSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/sealSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.truncateSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "truncateSegment",
+          "param_types": [
+            "TruncateSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/truncateSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.deleteSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "deleteSegment",
+          "param_types": [
+            "DeleteSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/deleteSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.updateSegmentPolicy",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "updateSegmentPolicy",
+          "param_types": [
+            "UpdateSegmentPolicy"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/updateSegmentPolicy"
+        },
+        {
+          "id": "PravegaRequestProcessor.locateOffset",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "locateOffset",
+          "param_types": [
+            "LocateOffset"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/locateOffset"
+        },
+        {
+          "id": "PravegaRequestProcessor.getTableSegmentInfo",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "getTableSegmentInfo",
+          "param_types": [
+            "GetTableSegmentInfo"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/getTableSegmentInfo"
+        },
+        {
+          "id": "PravegaRequestProcessor.createTableSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "createTableSegment",
+          "param_types": [
+            "CreateTableSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/createTableSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.deleteTableSegment",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "deleteTableSegment",
+          "param_types": [
+            "DeleteTableSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/deleteTableSegment"
+        },
+        {
+          "id": "PravegaRequestProcessor.updateTableEntries",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "updateTableEntries",
+          "param_types": [
+            "UpdateTableEntries"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/updateTableEntries"
+        },
+        {
+          "id": "PravegaRequestProcessor.removeTableKeys",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "removeTableKeys",
+          "param_types": [
+            "RemoveTableKeys"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/removeTableKeys"
+        },
+        {
+          "id": "PravegaRequestProcessor.readTable",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "readTable",
+          "param_types": [
+            "ReadTable"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/readTable"
+        },
+        {
+          "id": "PravegaRequestProcessor.readTableKeys",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "readTableKeys",
+          "param_types": [
+            "ReadTableKeys"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/readTableKeys"
+        },
+        {
+          "id": "PravegaRequestProcessor.readTableEntries",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "readTableEntries",
+          "param_types": [
+            "ReadTableEntries"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/readTableEntries"
+        },
+        {
+          "id": "PravegaRequestProcessor.readTableEntriesDelta",
+          "class_name": "PravegaRequestProcessor",
+          "method_name": "readTableEntriesDelta",
+          "param_types": [
+            "ReadTableEntriesDelta"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "PravegaRequestProcessor/readTableEntriesDelta"
+        },
+        {
+          "id": "AppendProcessor.setupAppend",
+          "class_name": "AppendProcessor",
+          "method_name": "setupAppend",
+          "param_types": [
+            "SetupAppend"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "AppendProcessor/setupAppend"
+        },
+        {
+          "id": "AppendProcessor.append",
+          "class_name": "AppendProcessor",
+          "method_name": "append",
+          "param_types": [
+            "Append"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "AppendProcessor/append"
+        },
+        {
+          "id": "AppendProcessor.createTransientSegment",
+          "class_name": "AppendProcessor",
+          "method_name": "createTransientSegment",
+          "param_types": [
+            "CreateTransientSegment"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "AppendProcessor/createTransientSegment"
+        },
+        {
+          "id": "AdminRequestProcessorImpl.flushToStorage",
+          "class_name": "AdminRequestProcessorImpl",
+          "method_name": "flushToStorage",
+          "param_types": [
+            "FlushToStorage"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "AdminRequestProcessorImpl/flushToStorage"
+        },
+        {
+          "id": "AdminRequestProcessorImpl.listStorageChunks",
+          "class_name": "AdminRequestProcessorImpl",
+          "method_name": "listStorageChunks",
+          "param_types": [
+            "ListStorageChunks"
+          ],
+          "return_type": "void",
+          "protocol": "RPC",
+          "endpoint": "AdminRequestProcessorImpl/listStorageChunks"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "createSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.createSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:174 new WireCommands.CreateSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:470"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "truncateSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.truncateSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:193 new WireCommands.TruncateSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:670"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "deleteSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.deleteSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:210 new WireCommands.DeleteSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:688"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "sealSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.sealSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:237 new WireCommands.SealSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:649"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "createTransaction",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.createSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:255 new WireCommands.CreateSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:470"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "mergeTxnSegments",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.mergeSegmentsBatch",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:288 new WireCommands.MergeSegmentsBatch( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:575"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "abortTransaction",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.deleteSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:309 new WireCommands.DeleteSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:688"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "updatePolicy",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.updateSegmentPolicy",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:328 new WireCommands.UpdateSegmentPolicy( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:707"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "getSegmentInfo",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.getStreamSegmentInfo",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:349 new WireCommands.GetStreamSegmentInfo( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:445"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "createTableSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.createTableSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:400 new WireCommands.CreateTableSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:777"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "deleteTableSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.deleteTableSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:425 new WireCommands.DeleteTableSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:809"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "updateTableEntries",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.updateTableEntries",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:464 new WireCommands.UpdateTableEntries( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:828"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "getTableSegmentInfo",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.getTableSegmentInfo",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:497 new WireCommands.GetTableSegmentInfo( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:758"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "removeTableKeys",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.removeTableKeys",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:558 new WireCommands.RemoveTableKeys( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:866"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "readTable",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.readTable",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:596 new WireCommands.ReadTable( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:904"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "readTableKeys",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.readTableKeys",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:640 new WireCommands.ReadTableKeys( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:930"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "readTableEntries",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.readTableEntries",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:688 new WireCommands.ReadTableEntries( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:972"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "readSegment",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.readSegment",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:713 new WireCommands.ReadSegment( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:223"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "getSegmentAttribute",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.getSegmentAttribute",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:730 new WireCommands.GetSegmentAttribute( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:417"
+    },
+    {
+      "src_service": "controller",
+      "src_class": "SegmentHelper",
+      "src_method": "updateSegmentAttribute",
+      "dst_service": "segmentstore",
+      "dst_class": "PravegaRequestProcessor",
+      "dst_interface_id": "PravegaRequestProcessor.updateSegmentAttribute",
+      "protocol": "RPC",
+      "evidence": "controller/src/main/java/io/pravega/controller/server/SegmentHelper.java:748 new WireCommands.UpdateSegmentAttribute( -> segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/handler/PravegaRequestProcessor.java:382"
+    },
+    {
+      "src_service": "segmentstore",
+      "src_class": "AutoScaleProcessor",
+      "src_method": "writeRequest",
+      "dst_service": "controller",
+      "dst_class": "StreamRequestHandler",
+      "dst_interface_id": "StreamRequestHandler.processEvent",
+      "protocol": "Messaging",
+      "evidence": "segmentstore/server/host/src/main/java/io/pravega/segmentstore/server/host/stat/AutoScaleProcessor.java:263 w.writeEvent(event.getKey(), event) -> controller/src/main/java/io/pravega/controller/server/eventProcessor/requesthandlers/StreamRequestHandler.java:39"
+    }
+  ]
+}

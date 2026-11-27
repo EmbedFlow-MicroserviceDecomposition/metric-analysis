@@ -1,0 +1,1386 @@
+{
+  "system_id": "MS036",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.0",
+  "status": "pending_manual_review",
+  "microservices": {
+    "spring-cloud-gateway": {
+      "exposed_interfaces": [
+        {
+          "id": "FaveCarsController.faveCars",
+          "class_name": "com.example.apigateway.FaveCarsController",
+          "method_name": "faveCars",
+          "param_types": [],
+          "return_type": "List<Car>",
+          "protocol": "REST",
+          "endpoint": "GET /fave-cars"
+        },
+        {
+          "id": "CarController.addCar",
+          "class_name": "com.example.carservice.CarController",
+          "method_name": "addCar",
+          "param_types": [
+            "Car"
+          ],
+          "return_type": "Car",
+          "protocol": "REST",
+          "endpoint": "POST /cars"
+        },
+        {
+          "id": "CarController.getCars",
+          "class_name": "com.example.carservice.CarController",
+          "method_name": "getCars",
+          "param_types": [],
+          "return_type": "List<Car>",
+          "protocol": "REST",
+          "endpoint": "GET /cars"
+        },
+        {
+          "id": "CarController.deleteCar",
+          "class_name": "com.example.carservice.CarController",
+          "method_name": "deleteCar",
+          "param_types": [
+            "UUID"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /cars/{id}"
+        }
+      ]
+    },
+    "reactive-jhipster": {
+      "exposed_interfaces": [
+        {
+          "id": "BlogResource.createBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "createBlog",
+          "param_types": [
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "POST /api/blogs"
+        },
+        {
+          "id": "BlogResource.updateBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "updateBlog",
+          "param_types": [
+            "String",
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "PUT /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.partialUpdateBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "partialUpdateBlog",
+          "param_types": [
+            "String",
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.getAllBlogs",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getAllBlogs",
+          "param_types": [],
+          "return_type": "List<Blog>",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs"
+        },
+        {
+          "id": "BlogResource.getAllBlogsAsStream",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getAllBlogsAsStream",
+          "param_types": [],
+          "return_type": "List<Blog>",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs"
+        },
+        {
+          "id": "BlogResource.getBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getBlog",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.deleteBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "deleteBlog",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/blogs/{id}"
+        },
+        {
+          "id": "PostResource.createPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "createPost",
+          "param_types": [
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "POST /api/posts"
+        },
+        {
+          "id": "PostResource.updatePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "updatePost",
+          "param_types": [
+            "String",
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PUT /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.partialUpdatePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "partialUpdatePost",
+          "param_types": [
+            "String",
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.getAllPosts",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getAllPosts",
+          "param_types": [],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts"
+        },
+        {
+          "id": "PostResource.getPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getPost",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.deletePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "deletePost",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/{id}"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersBlog",
+          "class_name": "com.okta.developer.blog.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesBlog",
+          "class_name": "com.okta.developer.blog.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "TagResource.createTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "createTag",
+          "param_types": [
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "POST /api/tags"
+        },
+        {
+          "id": "TagResource.updateTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "updateTag",
+          "param_types": [
+            "String",
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.partialUpdateTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "partialUpdateTag",
+          "param_types": [
+            "String",
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.getAllTags",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getAllTags",
+          "param_types": [],
+          "return_type": "List<Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags"
+        },
+        {
+          "id": "TagResource.getTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getTag",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.deleteTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "deleteTag",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/tags/{id}"
+        },
+        {
+          "id": "UserResource.getAllUsersBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        },
+        {
+          "id": "AccountResource.getAccount",
+          "class_name": "com.okta.developer.gateway.web.rest.AccountResource",
+          "method_name": "getAccount",
+          "param_types": [],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/account"
+        },
+        {
+          "id": "AuthInfoResource.getAuthInfo",
+          "class_name": "com.okta.developer.gateway.web.rest.AuthInfoResource",
+          "method_name": "getAuthInfo",
+          "param_types": [],
+          "return_type": "AuthInfoVM",
+          "protocol": "REST",
+          "endpoint": "GET /api/auth-info"
+        },
+        {
+          "id": "GatewayResource.activeRoutes",
+          "class_name": "com.okta.developer.gateway.web.rest.GatewayResource",
+          "method_name": "activeRoutes",
+          "param_types": [],
+          "return_type": "List<RouteVM>",
+          "protocol": "REST",
+          "endpoint": "GET /api/gateway/routes"
+        },
+        {
+          "id": "LogoutResource.logout",
+          "class_name": "com.okta.developer.gateway.web.rest.LogoutResource",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/logout"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "UserResource.getAllUsersGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        },
+        {
+          "id": "ProductResource.createProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "createProduct",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "POST /api/products"
+        },
+        {
+          "id": "ProductResource.updateProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "updateProduct",
+          "param_types": [
+            "String",
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PUT /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.partialUpdateProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "partialUpdateProduct",
+          "param_types": [
+            "String",
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.getAllProducts",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getAllProducts",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "ProductResource.getProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.deleteProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "deleteProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/products/{id}"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersStore",
+          "class_name": "com.okta.developer.store.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesStore",
+          "class_name": "com.okta.developer.store.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "UserResource.getAllUsersStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        }
+      ]
+    },
+    "jhipster-k8s": {
+      "exposed_interfaces": [
+        {
+          "id": "BlogResource.createBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "createBlog",
+          "param_types": [
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "POST /api/blogs"
+        },
+        {
+          "id": "BlogResource.updateBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "updateBlog",
+          "param_types": [
+            "String",
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "PUT /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.partialUpdateBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "partialUpdateBlog",
+          "param_types": [
+            "String",
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.getAllBlogs",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getAllBlogs",
+          "param_types": [],
+          "return_type": "List<Blog>",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs"
+        },
+        {
+          "id": "BlogResource.getAllBlogsAsStream",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getAllBlogsAsStream",
+          "param_types": [],
+          "return_type": "List<Blog>",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs"
+        },
+        {
+          "id": "BlogResource.getBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getBlog",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.deleteBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "deleteBlog",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/blogs/{id}"
+        },
+        {
+          "id": "PostResource.createPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "createPost",
+          "param_types": [
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "POST /api/posts"
+        },
+        {
+          "id": "PostResource.updatePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "updatePost",
+          "param_types": [
+            "String",
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PUT /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.partialUpdatePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "partialUpdatePost",
+          "param_types": [
+            "String",
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.getAllPosts",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getAllPosts",
+          "param_types": [],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts"
+        },
+        {
+          "id": "PostResource.getPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getPost",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.deletePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "deletePost",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/{id}"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersBlog",
+          "class_name": "com.okta.developer.blog.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesBlog",
+          "class_name": "com.okta.developer.blog.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "TagResource.createTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "createTag",
+          "param_types": [
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "POST /api/tags"
+        },
+        {
+          "id": "TagResource.updateTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "updateTag",
+          "param_types": [
+            "String",
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.partialUpdateTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "partialUpdateTag",
+          "param_types": [
+            "String",
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.getAllTags",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getAllTags",
+          "param_types": [],
+          "return_type": "List<Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags"
+        },
+        {
+          "id": "TagResource.getTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getTag",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.deleteTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "deleteTag",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/tags/{id}"
+        },
+        {
+          "id": "UserResource.getAllUsersBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        },
+        {
+          "id": "AccountResource.getAccount",
+          "class_name": "com.okta.developer.gateway.web.rest.AccountResource",
+          "method_name": "getAccount",
+          "param_types": [],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/account"
+        },
+        {
+          "id": "AuthInfoResource.getAuthInfo",
+          "class_name": "com.okta.developer.gateway.web.rest.AuthInfoResource",
+          "method_name": "getAuthInfo",
+          "param_types": [],
+          "return_type": "AuthInfoVM",
+          "protocol": "REST",
+          "endpoint": "GET /api/auth-info"
+        },
+        {
+          "id": "GatewayResource.activeRoutes",
+          "class_name": "com.okta.developer.gateway.web.rest.GatewayResource",
+          "method_name": "activeRoutes",
+          "param_types": [],
+          "return_type": "List<RouteVM>",
+          "protocol": "REST",
+          "endpoint": "GET /api/gateway/routes"
+        },
+        {
+          "id": "LogoutResource.logout",
+          "class_name": "com.okta.developer.gateway.web.rest.LogoutResource",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/logout"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "UserResource.getAllUsersGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        },
+        {
+          "id": "ProductResource.createProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "createProduct",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "POST /api/products"
+        },
+        {
+          "id": "ProductResource.updateProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "updateProduct",
+          "param_types": [
+            "String",
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PUT /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.partialUpdateProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "partialUpdateProduct",
+          "param_types": [
+            "String",
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.getAllProducts",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getAllProducts",
+          "param_types": [],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "ProductResource.getProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.deleteProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "deleteProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/products/{id}"
+        },
+        {
+          "id": "PublicUserResource.getAllPublicUsersStore",
+          "class_name": "com.okta.developer.store.web.rest.PublicUserResource",
+          "method_name": "getAllPublicUsers",
+          "param_types": [],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "PublicUserResource.getAuthoritiesStore",
+          "class_name": "com.okta.developer.store.web.rest.PublicUserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/authorities"
+        },
+        {
+          "id": "UserResource.getAllUsersStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [],
+          "return_type": "List<AdminUserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users"
+        },
+        {
+          "id": "UserResource.getUserStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AdminUserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/admin/users/{login}"
+        }
+      ]
+    },
+    "spring-boot+cloud": {
+      "exposed_interfaces": [
+        {
+          "id": "CoolCarController.goodCars",
+          "class_name": "com.example.apigateway.CoolCarController",
+          "method_name": "goodCars",
+          "param_types": [],
+          "return_type": "List<Car>",
+          "protocol": "REST",
+          "endpoint": "GET /cool-cars"
+        },
+        {
+          "id": "HomeController.howdy",
+          "class_name": "com.example.carservice.HomeController",
+          "method_name": "howdy",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /home"
+        }
+      ]
+    },
+    "jhipster": {
+      "exposed_interfaces": [
+        {
+          "id": "AuditResource.getAllBlog",
+          "class_name": "com.okta.developer.blog.web.rest.AuditResource",
+          "method_name": "getAll",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getByDatesBlog",
+          "class_name": "com.okta.developer.blog.web.rest.AuditResource",
+          "method_name": "getByDates",
+          "param_types": [
+            "LocalDate",
+            "LocalDate",
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getBlog",
+          "class_name": "com.okta.developer.blog.web.rest.AuditResource",
+          "method_name": "get",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "AuditEvent",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits/{id}"
+        },
+        {
+          "id": "BlogResource.createBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "createBlog",
+          "param_types": [
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "POST /api/blogs"
+        },
+        {
+          "id": "BlogResource.updateBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "updateBlog",
+          "param_types": [
+            "Blog"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "PUT /api/blogs"
+        },
+        {
+          "id": "BlogResource.getAllBlogs",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getAllBlogs",
+          "param_types": [],
+          "return_type": "List<Blog>",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs"
+        },
+        {
+          "id": "BlogResource.getBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "getBlog",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Blog",
+          "protocol": "REST",
+          "endpoint": "GET /api/blogs/{id}"
+        },
+        {
+          "id": "BlogResource.deleteBlog",
+          "class_name": "com.okta.developer.blog.web.rest.BlogResource",
+          "method_name": "deleteBlog",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/blogs/{id}"
+        },
+        {
+          "id": "PostResource.createPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "createPost",
+          "param_types": [
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "POST /api/posts"
+        },
+        {
+          "id": "PostResource.updatePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "updatePost",
+          "param_types": [
+            "Post"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "PUT /api/posts"
+        },
+        {
+          "id": "PostResource.getAllPosts",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getAllPosts",
+          "param_types": [
+            "MultiValueMap<String,String>",
+            "boolean"
+          ],
+          "return_type": "List<Post>",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts"
+        },
+        {
+          "id": "PostResource.getPost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "getPost",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Post",
+          "protocol": "REST",
+          "endpoint": "GET /api/posts/{id}"
+        },
+        {
+          "id": "PostResource.deletePost",
+          "class_name": "com.okta.developer.blog.web.rest.PostResource",
+          "method_name": "deletePost",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/posts/{id}"
+        },
+        {
+          "id": "TagResource.createTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "createTag",
+          "param_types": [
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "POST /api/tags"
+        },
+        {
+          "id": "TagResource.updateTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "updateTag",
+          "param_types": [
+            "Tag"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "PUT /api/tags"
+        },
+        {
+          "id": "TagResource.getAllTags",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getAllTags",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<Tag>",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags"
+        },
+        {
+          "id": "TagResource.getTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "getTag",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "Tag",
+          "protocol": "REST",
+          "endpoint": "GET /api/tags/{id}"
+        },
+        {
+          "id": "TagResource.deleteTag",
+          "class_name": "com.okta.developer.blog.web.rest.TagResource",
+          "method_name": "deleteTag",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/tags/{id}"
+        },
+        {
+          "id": "UserResource.getAllUsersBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UserResource.getAuthoritiesBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/authorities"
+        },
+        {
+          "id": "UserResource.getUserBlog",
+          "class_name": "com.okta.developer.blog.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/{login}"
+        },
+        {
+          "id": "AccountResource.isAuthenticated",
+          "class_name": "com.okta.developer.gateway.web.rest.AccountResource",
+          "method_name": "isAuthenticated",
+          "param_types": [],
+          "return_type": "String",
+          "protocol": "REST",
+          "endpoint": "GET /api/authenticate"
+        },
+        {
+          "id": "AccountResource.getAccount",
+          "class_name": "com.okta.developer.gateway.web.rest.AccountResource",
+          "method_name": "getAccount",
+          "param_types": [],
+          "return_type": "UserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/account"
+        },
+        {
+          "id": "AuditResource.getAllGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.AuditResource",
+          "method_name": "getAll",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getByDatesGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.AuditResource",
+          "method_name": "getByDates",
+          "param_types": [
+            "LocalDate",
+            "LocalDate",
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.AuditResource",
+          "method_name": "get",
+          "param_types": [
+            "Long"
+          ],
+          "return_type": "AuditEvent",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits/{id}"
+        },
+        {
+          "id": "GatewayResource.activeRoutes",
+          "class_name": "com.okta.developer.gateway.web.rest.GatewayResource",
+          "method_name": "activeRoutes",
+          "param_types": [],
+          "return_type": "List<RouteVM>",
+          "protocol": "REST",
+          "endpoint": "GET /api/gateway/routes"
+        },
+        {
+          "id": "LogoutResource.logout",
+          "class_name": "com.okta.developer.gateway.web.rest.LogoutResource",
+          "method_name": "logout",
+          "param_types": [],
+          "return_type": "Map<String,String>",
+          "protocol": "REST",
+          "endpoint": "POST /api/logout"
+        },
+        {
+          "id": "UserResource.getAllUsersGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UserResource.getAuthoritiesGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/authorities"
+        },
+        {
+          "id": "UserResource.getUserGateway",
+          "class_name": "com.okta.developer.gateway.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/{login}"
+        },
+        {
+          "id": "AuditResource.getAllStore",
+          "class_name": "com.okta.developer.store.web.rest.AuditResource",
+          "method_name": "getAll",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getByDatesStore",
+          "class_name": "com.okta.developer.store.web.rest.AuditResource",
+          "method_name": "getByDates",
+          "param_types": [
+            "LocalDate",
+            "LocalDate",
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<AuditEvent>",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits"
+        },
+        {
+          "id": "AuditResource.getStore",
+          "class_name": "com.okta.developer.store.web.rest.AuditResource",
+          "method_name": "get",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "AuditEvent",
+          "protocol": "REST",
+          "endpoint": "GET /management/audits/{id}"
+        },
+        {
+          "id": "ProductResource.createProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "createProduct",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "POST /api/products"
+        },
+        {
+          "id": "ProductResource.updateProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "updateProduct",
+          "param_types": [
+            "Product"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "PUT /api/products"
+        },
+        {
+          "id": "ProductResource.getAllProducts",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getAllProducts",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "ProductResource.getProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "getProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "Product",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{id}"
+        },
+        {
+          "id": "ProductResource.deleteProduct",
+          "class_name": "com.okta.developer.store.web.rest.ProductResource",
+          "method_name": "deleteProduct",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/products/{id}"
+        },
+        {
+          "id": "UserResource.getAllUsersStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getAllUsers",
+          "param_types": [
+            "MultiValueMap<String,String>"
+          ],
+          "return_type": "List<UserDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UserResource.getAuthoritiesStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getAuthorities",
+          "param_types": [],
+          "return_type": "List<String>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/authorities"
+        },
+        {
+          "id": "UserResource.getUserStore",
+          "class_name": "com.okta.developer.store.web.rest.UserResource",
+          "method_name": "getUser",
+          "param_types": [
+            "String"
+          ],
+          "return_type": "UserDTO",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/{login}"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": []
+}

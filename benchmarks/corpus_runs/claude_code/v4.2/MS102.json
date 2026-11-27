@@ -1,0 +1,813 @@
+{
+  "system_id": "MS102",
+  "extractor_tool": "claude-code",
+  "prompt_version": "v4.2",
+  "status": "pending_manual_review",
+  "microservices": {
+    "Services.AuditLog": {
+      "exposed_interfaces": [
+        {
+          "id": "AuditLogEntriesEndpoints.Get",
+          "class_name": "AuditLogEntriesEndpoints",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<AuditLogEntryDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/auditlogentries"
+        },
+        {
+          "id": "AuditLogEntriesEndpoints.GetPaged",
+          "class_name": "AuditLogEntriesEndpoints",
+          "method_name": "GetPaged",
+          "param_types": [
+            "int",
+            "int"
+          ],
+          "return_type": "Paged<AuditLogEntryDTO>",
+          "protocol": "REST",
+          "endpoint": "GET /api/auditlogentries/paged"
+        },
+        {
+          "id": "AuditLogEntriesEndpoints.ReceiveAuditLogCreatedEvent",
+          "class_name": "AuditLogEntriesEndpoints",
+          "method_name": "ReceiveAuditLogCreatedEvent",
+          "param_types": [
+            "AuditLogCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/auditlogentries"
+        },
+        {
+          "id": "AuditLogService.GetAuditLogEntries",
+          "class_name": "AuditLogService",
+          "method_name": "GetAuditLogEntries",
+          "param_types": [
+            "GetAuditLogEntriesRequest"
+          ],
+          "return_type": "GetAuditLogEntriesResponse",
+          "protocol": "gRPC",
+          "endpoint": "AuditLog/GetAuditLogEntries"
+        },
+        {
+          "id": "AuditLogService.AddAuditLogEntry",
+          "class_name": "AuditLogService",
+          "method_name": "AddAuditLogEntry",
+          "param_types": [
+            "AddAuditLogEntryRequest"
+          ],
+          "return_type": "AddAuditLogEntryResponse",
+          "protocol": "gRPC",
+          "endpoint": "AuditLog/AddAuditLogEntry"
+        },
+        {
+          "id": "AuditLogAggregationConsumer.HandleAsync",
+          "class_name": "AuditLogAggregationConsumer",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "AuditLogCreatedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "AuditLogCreatedEvent"
+        }
+      ]
+    },
+    "Services.Configuration": {
+      "exposed_interfaces": [
+        {
+          "id": "ConfigurationEntriesEndpoints.Get",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<ConfigurationEntryModel>",
+          "protocol": "REST",
+          "endpoint": "GET /api/configurationentries"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.GetById",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "GetById",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "ConfigurationEntryModel",
+          "protocol": "REST",
+          "endpoint": "GET /api/configurationentries/{id}"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.Post",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "Post",
+          "param_types": [
+            "ConfigurationEntryModel"
+          ],
+          "return_type": "ConfigurationEntryModel",
+          "protocol": "REST",
+          "endpoint": "POST /api/configurationentries"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.Put",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "Put",
+          "param_types": [
+            "Guid",
+            "ConfigurationEntryModel"
+          ],
+          "return_type": "ConfigurationEntryModel",
+          "protocol": "REST",
+          "endpoint": "PUT /api/configurationentries/{id}"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.Delete",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "Delete",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/configurationentries/{id}"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.ExportAsExcel",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "ExportAsExcel",
+          "param_types": [],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/configurationentries/ExportAsExcel"
+        },
+        {
+          "id": "ConfigurationEntriesEndpoints.ImportExcel",
+          "class_name": "ConfigurationEntriesEndpoints",
+          "method_name": "ImportExcel",
+          "param_types": [
+            "UploadFileModel"
+          ],
+          "return_type": "List<ConfigurationEntry>",
+          "protocol": "REST",
+          "endpoint": "POST /api/configurationentries/ImportExcel"
+        }
+      ]
+    },
+    "Services.Identity": {
+      "exposed_interfaces": [
+        {
+          "id": "RolesEndpoints.Get",
+          "class_name": "RolesEndpoints",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<RoleModel>",
+          "protocol": "REST",
+          "endpoint": "GET /api/roles"
+        },
+        {
+          "id": "RolesEndpoints.GetById",
+          "class_name": "RolesEndpoints",
+          "method_name": "GetById",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "RoleModel",
+          "protocol": "REST",
+          "endpoint": "GET /api/roles/{id}"
+        },
+        {
+          "id": "RolesEndpoints.Post",
+          "class_name": "RolesEndpoints",
+          "method_name": "Post",
+          "param_types": [
+            "RoleModel"
+          ],
+          "return_type": "RoleModel",
+          "protocol": "REST",
+          "endpoint": "POST /api/roles"
+        },
+        {
+          "id": "RolesEndpoints.Put",
+          "class_name": "RolesEndpoints",
+          "method_name": "Put",
+          "param_types": [
+            "Guid",
+            "RoleModel"
+          ],
+          "return_type": "RoleModel",
+          "protocol": "REST",
+          "endpoint": "PUT /api/roles/{id}"
+        },
+        {
+          "id": "RolesEndpoints.Delete",
+          "class_name": "RolesEndpoints",
+          "method_name": "Delete",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/roles/{id}"
+        },
+        {
+          "id": "UsersEndpoints.Get",
+          "class_name": "UsersEndpoints",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<UserModel>",
+          "protocol": "REST",
+          "endpoint": "GET /api/users"
+        },
+        {
+          "id": "UsersEndpoints.GetById",
+          "class_name": "UsersEndpoints",
+          "method_name": "GetById",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "UserModel",
+          "protocol": "REST",
+          "endpoint": "GET /api/users/{id}"
+        },
+        {
+          "id": "UsersEndpoints.Post",
+          "class_name": "UsersEndpoints",
+          "method_name": "Post",
+          "param_types": [
+            "UserModel"
+          ],
+          "return_type": "UserModel",
+          "protocol": "REST",
+          "endpoint": "POST /api/users"
+        },
+        {
+          "id": "UsersEndpoints.Put",
+          "class_name": "UsersEndpoints",
+          "method_name": "Put",
+          "param_types": [
+            "Guid",
+            "UserModel"
+          ],
+          "return_type": "UserModel",
+          "protocol": "REST",
+          "endpoint": "PUT /api/users/{id}"
+        },
+        {
+          "id": "UsersEndpoints.SetPassword",
+          "class_name": "UsersEndpoints",
+          "method_name": "SetPassword",
+          "param_types": [
+            "Guid",
+            "SetPasswordModel"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "PUT /api/users/{id}/password"
+        },
+        {
+          "id": "UsersEndpoints.Delete",
+          "class_name": "UsersEndpoints",
+          "method_name": "Delete",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/users/{id}"
+        },
+        {
+          "id": "UsersEndpoints.SendResetPasswordEmail",
+          "class_name": "UsersEndpoints",
+          "method_name": "SendResetPasswordEmail",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/{id}/passwordresetemail"
+        },
+        {
+          "id": "UsersEndpoints.SendConfirmationEmailAddressEmail",
+          "class_name": "UsersEndpoints",
+          "method_name": "SendConfirmationEmailAddressEmail",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /api/users/{id}/emailaddressconfirmation"
+        },
+        {
+          "id": "UserService.GetUsers",
+          "class_name": "UserService",
+          "method_name": "GetUsers",
+          "param_types": [
+            "GetUsersRequest"
+          ],
+          "return_type": "GetUsersResponse",
+          "protocol": "gRPC",
+          "endpoint": "User/GetUsers"
+        },
+        {
+          "id": "UserService.GetUser",
+          "class_name": "UserService",
+          "method_name": "GetUser",
+          "param_types": [
+            "GetUserRequest"
+          ],
+          "return_type": "GetUserResponse",
+          "protocol": "gRPC",
+          "endpoint": "User/GetUser"
+        }
+      ]
+    },
+    "Services.Notification": {
+      "exposed_interfaces": [
+        {
+          "id": "EmailMessageService.AddEmailMessage",
+          "class_name": "EmailMessageService",
+          "method_name": "AddEmailMessage",
+          "param_types": [
+            "AddEmailMessageRequest"
+          ],
+          "return_type": "AddEmailMessageResponse",
+          "protocol": "gRPC",
+          "endpoint": "Email/AddEmailMessage"
+        },
+        {
+          "id": "SmsMessageService.AddSmsMessage",
+          "class_name": "SmsMessageService",
+          "method_name": "AddSmsMessage",
+          "param_types": [
+            "AddSmsMessageRequest"
+          ],
+          "return_type": "AddSmsMessageResponse",
+          "protocol": "gRPC",
+          "endpoint": "Sms/AddSmsMessage"
+        }
+      ]
+    },
+    "Services.Product": {
+      "exposed_interfaces": [
+        {
+          "id": "CreateProductRequestHandler.HandleAsync",
+          "class_name": "CreateProductRequestHandler",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "CreateProductRequest"
+          ],
+          "return_type": "CreateProductResponse",
+          "protocol": "REST",
+          "endpoint": "POST /api/products"
+        },
+        {
+          "id": "DeleteProductRequest.HandleAsync",
+          "class_name": "DeleteProductRequest",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/products/{id:guid}"
+        },
+        {
+          "id": "ExportProductsAsCsvRequest.HandleAsync",
+          "class_name": "ExportProductsAsCsvRequest",
+          "method_name": "HandleAsync",
+          "param_types": [],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/exportascsv"
+        },
+        {
+          "id": "ExportProductsAsPdfRequest.HandleAsync",
+          "class_name": "ExportProductsAsPdfRequest",
+          "method_name": "HandleAsync",
+          "param_types": [],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/exportaspdf"
+        },
+        {
+          "id": "GetProductAuditLogsRequest.HandleAsync",
+          "class_name": "GetProductAuditLogsRequest",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "List<dynamic>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{id}/auditlogs"
+        },
+        {
+          "id": "GetProductRequest.HandleAsync",
+          "class_name": "GetProductRequest",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "ProductModel",
+          "protocol": "REST",
+          "endpoint": "GET /api/products/{id}"
+        },
+        {
+          "id": "GetProductsRequest.HandleAsync",
+          "class_name": "GetProductsRequest",
+          "method_name": "HandleAsync",
+          "param_types": [],
+          "return_type": "List<ProductModel>",
+          "protocol": "REST",
+          "endpoint": "GET /api/products"
+        },
+        {
+          "id": "ImportCsvRequestHandler.HandleAsync",
+          "class_name": "ImportCsvRequestHandler",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "ImportCsvRequest"
+          ],
+          "return_type": "List<Product>",
+          "protocol": "REST",
+          "endpoint": "POST /api/products/importcsv"
+        },
+        {
+          "id": "UpdateProductRequestHandler.HandleAsync",
+          "class_name": "UpdateProductRequestHandler",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "Guid",
+            "UpdateProductRequest"
+          ],
+          "return_type": "UpdateProductResponse",
+          "protocol": "REST",
+          "endpoint": "PUT /api/products/{id}"
+        }
+      ]
+    },
+    "Services.Storage": {
+      "exposed_interfaces": [
+        {
+          "id": "FilesEndpoints.Get",
+          "class_name": "FilesEndpoints",
+          "method_name": "Get",
+          "param_types": [],
+          "return_type": "List<FileEntryModel>",
+          "protocol": "REST",
+          "endpoint": "GET /api/files"
+        },
+        {
+          "id": "FilesEndpoints.Upload",
+          "class_name": "FilesEndpoints",
+          "method_name": "Upload",
+          "param_types": [
+            "UploadFileModel"
+          ],
+          "return_type": "FileEntryModel",
+          "protocol": "REST",
+          "endpoint": "POST /api/files"
+        },
+        {
+          "id": "FilesEndpoints.GetById",
+          "class_name": "FilesEndpoints",
+          "method_name": "GetById",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "FileEntryModel",
+          "protocol": "REST",
+          "endpoint": "GET /api/files/{id}"
+        },
+        {
+          "id": "FilesEndpoints.Download",
+          "class_name": "FilesEndpoints",
+          "method_name": "Download",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "List<byte>",
+          "protocol": "REST",
+          "endpoint": "GET /api/files/{id}/download"
+        },
+        {
+          "id": "FilesEndpoints.Put",
+          "class_name": "FilesEndpoints",
+          "method_name": "Put",
+          "param_types": [
+            "Guid",
+            "FileEntryModel"
+          ],
+          "return_type": "FileEntryModel",
+          "protocol": "REST",
+          "endpoint": "PUT /api/files/{id}"
+        },
+        {
+          "id": "FilesEndpoints.Delete",
+          "class_name": "FilesEndpoints",
+          "method_name": "Delete",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/files/{id}"
+        },
+        {
+          "id": "FilesEndpoints.GetAuditLogs",
+          "class_name": "FilesEndpoints",
+          "method_name": "GetAuditLogs",
+          "param_types": [
+            "Guid"
+          ],
+          "return_type": "List<dynamic>",
+          "protocol": "REST",
+          "endpoint": "GET /api/files/{id}/auditlogs"
+        },
+        {
+          "id": "WebhookConsumer.HandleAsyncFileUploaded",
+          "class_name": "WebhookConsumer",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "FileUploadedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "FileUploadedEvent"
+        },
+        {
+          "id": "WebhookConsumer.HandleAsyncFileDeleted",
+          "class_name": "WebhookConsumer",
+          "method_name": "HandleAsync",
+          "param_types": [
+            "FileDeletedEvent"
+          ],
+          "return_type": "void",
+          "protocol": "Messaging",
+          "endpoint": "FileDeletedEvent"
+        }
+      ]
+    },
+    "IdentityServers": {
+      "exposed_interfaces": [
+        {
+          "id": "ClientController.GetScopes",
+          "class_name": "ClientController",
+          "method_name": "GetScopes",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /Client/GetScopes"
+        },
+        {
+          "id": "ClientController.GetGrantTypes",
+          "class_name": "ClientController",
+          "method_name": "GetGrantTypes",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /Client/GetGrantTypes"
+        },
+        {
+          "id": "IdentityResourceController.GetClaims",
+          "class_name": "IdentityResourceController",
+          "method_name": "GetClaims",
+          "param_types": [],
+          "return_type": "List<string>",
+          "protocol": "REST",
+          "endpoint": "GET /IdentityResource/GetClaims"
+        },
+        {
+          "id": "AuthorizationController.Exchange",
+          "class_name": "AuthorizationController",
+          "method_name": "Exchange",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "POST /connect/token"
+        },
+        {
+          "id": "UserInfoController.UserInfo",
+          "class_name": "UserInfoController",
+          "method_name": "UserInfo",
+          "param_types": [],
+          "return_type": "Dictionary<string,object>",
+          "protocol": "REST",
+          "endpoint": "GET /connect/userinfo"
+        }
+      ]
+    },
+    "UIs": {
+      "exposed_interfaces": [
+        {
+          "id": "AuthenticationController.LoginAsync",
+          "class_name": "AuthenticationController",
+          "method_name": "LoginAsync",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "AuthenticationController.LogoutAsync",
+          "class_name": "AuthenticationController",
+          "method_name": "LogoutAsync",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /logout"
+        },
+        {
+          "id": "AuthenticationController.UserInfor",
+          "class_name": "AuthenticationController",
+          "method_name": "UserInfor",
+          "param_types": [],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /userinfor"
+        },
+        {
+          "id": "route.GET_login",
+          "class_name": "login/route.ts",
+          "method_name": "GET",
+          "param_types": [
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /login"
+        },
+        {
+          "id": "route.GET_logout",
+          "class_name": "logout/route.ts",
+          "method_name": "GET",
+          "param_types": [],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /logout"
+        },
+        {
+          "id": "route.GET_oidc_login_redirect",
+          "class_name": "oidc-login-redirect/route.ts",
+          "method_name": "GET",
+          "param_types": [
+            "string",
+            "string"
+          ],
+          "return_type": "void",
+          "protocol": "REST",
+          "endpoint": "GET /oidc-login-redirect"
+        },
+        {
+          "id": "route.GET_api_path",
+          "class_name": "api/[...path]/route.ts",
+          "method_name": "GET",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "GET /api/[...path]"
+        },
+        {
+          "id": "route.POST_api_path",
+          "class_name": "api/[...path]/route.ts",
+          "method_name": "POST",
+          "param_types": [
+            "List<string>",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "POST /api/[...path]"
+        },
+        {
+          "id": "route.PUT_api_path",
+          "class_name": "api/[...path]/route.ts",
+          "method_name": "PUT",
+          "param_types": [
+            "List<string>",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PUT /api/[...path]"
+        },
+        {
+          "id": "route.DELETE_api_path",
+          "class_name": "api/[...path]/route.ts",
+          "method_name": "DELETE",
+          "param_types": [
+            "List<string>"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "DELETE /api/[...path]"
+        },
+        {
+          "id": "route.PATCH_api_path",
+          "class_name": "api/[...path]/route.ts",
+          "method_name": "PATCH",
+          "param_types": [
+            "List<string>",
+            "object"
+          ],
+          "return_type": "object",
+          "protocol": "REST",
+          "endpoint": "PATCH /api/[...path]"
+        }
+      ]
+    }
+  },
+  "inter_service_calls": [
+    {
+      "src_service": "Services.AuditLog",
+      "src_class": "GetUsersQueryHandler",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.Identity",
+      "dst_class": "UserService",
+      "dst_interface_id": "UserService.GetUsers",
+      "protocol": "gRPC",
+      "evidence": "src/Microservices/Services.AuditLog/ClassifiedAds.Services.AuditLog/Queries/GetUsersQuery.cs:46 client.GetUsersAsync(new GetUsersRequest(), headers)"
+    },
+    {
+      "src_service": "Services.Product",
+      "src_class": "GetUsersQueryHandler",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.Identity",
+      "dst_class": "UserService",
+      "dst_interface_id": "UserService.GetUsers",
+      "protocol": "gRPC",
+      "evidence": "src/Microservices/Services.Product/ClassifiedAds.Services.Product.Api/Queries/GetUsersQuery.cs:46 client.GetUsersAsync(new GetUsersRequest(), headers)"
+    },
+    {
+      "src_service": "Services.Storage",
+      "src_class": "GetUsersQueryHandler",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.Identity",
+      "dst_class": "UserService",
+      "dst_interface_id": "UserService.GetUsers",
+      "protocol": "gRPC",
+      "evidence": "src/Microservices/Services.Storage/ClassifiedAds.Services.Storage.Api/Queries/GetUsersQuery.cs:46 client.GetUsersAsync(new GetUsersRequest(), headers)"
+    },
+    {
+      "src_service": "Services.Identity",
+      "src_class": "AddEmailMessageCommandHandler",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.Notification",
+      "dst_class": "EmailMessageService",
+      "dst_interface_id": "EmailMessageService.AddEmailMessage",
+      "protocol": "gRPC",
+      "evidence": "src/Microservices/Services.Identity/ClassifiedAds.Services.Identity/Commands/EmailMessages/AddEmailMessageCommand.cs:40 client.AddEmailMessage("
+    },
+    {
+      "src_service": "Services.Identity",
+      "src_class": "AddSmsMessageCommandHandler",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.Notification",
+      "dst_class": "SmsMessageService",
+      "dst_interface_id": "SmsMessageService.AddSmsMessage",
+      "protocol": "gRPC",
+      "evidence": "src/Microservices/Services.Identity/ClassifiedAds.Services.Identity/Commands/SmsMessage/AddSmsMessageCommand.cs:40 client.AddSmsMessage("
+    },
+    {
+      "src_service": "Services.Product",
+      "src_class": "AuditLogEntryOutboxMessagePublisher",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.AuditLog",
+      "dst_class": "AuditLogAggregationConsumer",
+      "dst_interface_id": "AuditLogAggregationConsumer.HandleAsync",
+      "protocol": "Messaging",
+      "evidence": "src/Microservices/Services.Product/ClassifiedAds.Services.Product.Api/OutBoxEventPublishers/AuditLogEntryOutBoxMessagePublisher.cs:41 _messageBus.SendAsync(new AuditLogCreatedEvent"
+    },
+    {
+      "src_service": "Services.Product",
+      "src_class": "AuditLogEntryOutboxMessagePublisher",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.AuditLog",
+      "dst_class": "AuditLogEntriesEndpoints",
+      "dst_interface_id": "AuditLogEntriesEndpoints.ReceiveAuditLogCreatedEvent",
+      "protocol": "Messaging",
+      "evidence": "src/Microservices/Services.Product/ClassifiedAds.Services.Product.Api/OutBoxEventPublishers/AuditLogEntryOutBoxMessagePublisher.cs:49 _daprClient.PublishEventAsync(\"pubsub\", \"AuditLogCreatedEvent\""
+    },
+    {
+      "src_service": "Services.Storage",
+      "src_class": "AuditLogEntryOutboxMessagePublisher",
+      "src_method": "HandleAsync",
+      "dst_service": "Services.AuditLog",
+      "dst_class": "AuditLogAggregationConsumer",
+      "dst_interface_id": "AuditLogAggregationConsumer.HandleAsync",
+      "protocol": "Messaging",
+      "evidence": "src/Microservices/Services.Storage/ClassifiedAds.Services.Storage.Api/OutBoxEventPublishers/AuditLogEntryOutBoxMessagePublisher.cs:36 _messageBus.SendAsync(new AuditLogCreatedEvent"
+    },
+    {
+      "src_service": "UIs",
+      "src_class": "oidc-login-redirect/route.ts",
+      "src_method": "GET",
+      "dst_service": "IdentityServers",
+      "dst_class": "AuthorizationController",
+      "dst_interface_id": "AuthorizationController.Exchange",
+      "protocol": "REST",
+      "evidence": "src/UIs/nextjs/src/app/oidc-login-redirect/route.ts:57 fetch(tokenEndpoint, fetchOptions)"
+    }
+  ]
+}
